@@ -3,7 +3,7 @@
 #' @param xlsx chr string path for local excel file, to overwrite it not current
 #' @param download_latest_epchc logical to download latest file regardless of local copy
 #'
-#' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}
+#' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}.  The function does nothing if \code{download_latest_epchc = FALSE}.
 #'
 #' @export
 #'
@@ -17,18 +17,30 @@ get_epchc_wq <- function(xlsx, download_latest_epchc = TRUE){
 
   epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
 
-  if (!file.exists(xlsx) & download_latest_epchc){
-    # download data from EPCHC's ftp site
-    tmp_xlsx <- tempfile(fileext = "xlsx")
-    download.file(url = epchc_url, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
+  # exit the function if no download
+  if(!download_latest_epchc) return()
 
-    is_latest <- md5sum(xlsx) == md5sum(tmp_xlsx)
+  # download data from EPCHC's ftp site
+  tmp_xlsx <- tempfile(fileext = "xlsx")
+  download.file(url = epchc_url, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
+
+  # if the file exists, compare with downloaded
+  if (file.exists(xlsx)){
+
+    is_latest <- tools::md5sum(xlsx) == tools::md5sum(tmp_xlsx)
     if (!is_latest){
       cat('Replacing local file with current...\n')
       file.copy(tmp_xlsx, xlsx, overwrite=T)
     }
+
     if(is_latest){
       cat('File is current...\n')
     }
+
+  } else {
+
+    cat('File', xlsx, 'does not exist, replacing with downloaded file...\n')
+    file.copy(tmp_xlsx, xlsx)
+
   }
 }
