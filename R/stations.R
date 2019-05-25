@@ -5,7 +5,7 @@
 #' @format A data frame with 75 rows and 2 variables:
 #' \describe{
 #'   \item{bay_segment}{chr}
-#'   \item{station}{num}
+#'   \item{ecphc_station}{num}
 #' }
 #'
 "stations"

@@ -9,7 +9,7 @@ stations <- list(
   MTB = c(9, 11, 81, 84, 13, 14, 32, 33, 16, 19, 28, 82),
   LTB = c(23, 24, 25, 90, 91, 92, 93, 95)
   ) %>%
-  enframe('bay_segment', 'station') %>%
+  enframe('bay_segment', 'epchc_station') %>%
   unnest %>%
   data.frame(stringsAsFactors = F)
 

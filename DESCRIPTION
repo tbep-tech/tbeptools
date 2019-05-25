@@ -15,6 +15,11 @@ Authors@R: c(
   )
 Description: Utility functions for processing data from TBEP.
 Depends: R (>= 3.5)
+Imports:
+  dplyr,
+  lubridate,
+  magrittr, 
+  readxl
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
