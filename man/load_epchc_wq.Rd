@@ -16,7 +16,7 @@ load_epchc_wq(xlsx, na = "", download_latest_epchc = FALSE, ...)
 \item{...}{additional arguments passed to \code{\link[readxl]{read_xlsx}}}
 }
 \value{
-A formatted \code{data.frame} of water quality data
+A \code{data.frame} of water quality data, minimal formatting
 }
 \description{
 Load local water quality file
@@ -26,7 +26,10 @@ Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}
 }
 \examples{
 \dontrun{
+# file path
 xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
+
+# load and assign to object
 epcdata <- load_epchc_wq(xlsx)
 }
 }
