@@ -3,12 +3,15 @@
 #' @param xlsx chr string path for local excel file, to overwrite it not current
 #' @param na chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}
 #' @param download_latest_epchc logical passed to \link{get_epchc_wq} to download raw data and compare with existing in \code{xlsx} if available
+#' @param format logical if input file loaded from \code{xlsx} is formatted for chlorophyll and secchi data, uses \code{\link{form_epchc_wq}}
 #' @param ... additional arguments passed to \code{\link[readxl]{read_xlsx}}
 #'
 #' @return A \code{data.frame} of water quality data, minimal formatting
 #'
 #' @details Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}
 #' @export
+#'
+#' @seealso \code{\link{form_epchc_wq}}
 #'
 #' @examples
 #' \dontrun{
@@ -18,7 +21,7 @@
 #' # load and assign to object
 #' epcdata <- load_epchc_wq(xlsx)
 #' }
-load_epchc_wq <- function(xlsx, na = '', download_latest_epchc = FALSE, ...){
+load_epchc_wq <- function(xlsx, na = '', download_latest_epchc = FALSE, format = TRUE, ...){
 
   # download latest and compare with current if exists
   get_epchc_wq(xlsx, download_latest_epchc)
@@ -71,6 +74,10 @@ load_epchc_wq <- function(xlsx, na = '', download_latest_epchc = FALSE, ...){
   names(dat) <- gsub('F\\s', '_F', names(dat))
   names(dat) <- gsub('C\\u', 'c\\u', names(dat))
   names(dat) <- gsub('^Nitrates$', 'Nitrates_mgL', names(dat))
+
+  # format
+  if(format)
+    dat <- form_epchc_wq(dat)
 
   return(dat)
 
