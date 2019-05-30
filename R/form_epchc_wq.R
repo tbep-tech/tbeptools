@@ -1,6 +1,6 @@
 #' Format water quality data
 #'
-#' @param epcdata input \code{data.frame} loaded from \code{\link{load_epchc_wq}}
+#' @param datin input \code{data.frame} loaded from \code{\link{load_epchc_wq}}
 #'
 #' @return A lightly formatted \code{data.frame} with chloropyll and secchi observations
 #' @export
@@ -13,14 +13,19 @@
 #'
 #' @examples
 #' \dontrun{
+#' # file path
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-#' epcdata <- load_epchc_wq(xlsx, format = F) %>%
-#'   form_epch_wq
+#'
+#' # load and assign to object
+#' epcdata <- load_epchc_wq(xlsx)
+#'
+#' # view formatted data
+#' frmdat(epcdata)
 #' }
-form_epchc_wq <- function(epcdata){
+form_epchc_wq <- function(datin){
 
   # format
-  out <- epcdata %>%
+  out <- datin %>%
     dplyr::mutate(
       epchc_station = as.numeric(Station_Number),
       sd_m = as.numeric(Secchi_Depth_m),

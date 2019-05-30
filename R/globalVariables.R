@@ -8,3 +8,6 @@ NULL
 
 #' @importFrom tools md5sum
 NULL
+
+#' @importFrom methods .S4methods new
+NULL

@@ -4,10 +4,10 @@
 \alias{form_epchc_wq}
 \title{Format water quality data}
 \usage{
-form_epchc_wq(epcdata)
+form_epchc_wq(datin)
 }
 \arguments{
-\item{epcdata}{input \code{data.frame} loaded from \code{\link{load_epchc_wq}}}
+\item{datin}{input \code{data.frame} loaded from \code{\link{load_epchc_wq}}}
 }
 \value{
 A lightly formatted \code{data.frame} with chloropyll and secchi observations
@@ -20,9 +20,14 @@ Secchi data VOB depths or secchis < 0.5 ft from bottom are assigned \code{NA}
 }
 \examples{
 \dontrun{
+# file path
 xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-epcdata <- load_epchc_wq(xlsx, format = F) \%>\%
-  form_epch_wq
+
+# load and assign to object
+epcdata <- load_epchc_wq(xlsx)
+
+# view formatted data
+frmdat(epcdata)
 }
 }
 \seealso{

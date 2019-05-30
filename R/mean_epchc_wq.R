@@ -2,7 +2,7 @@
 #'
 #' Estimate annual means for chlorophyll and secchi data
 #'
-#' @param epcdata \code{data.frame} formatted from \code{load_epchc_wq}
+#' @param datin \code{data.frame} formatted from \code{load_epchc_wq}
 #'
 #' @return Mean estimates for chlorophyll and secchi
 #'
@@ -19,13 +19,13 @@
 #' # load and assign to object
 #' epcdata <- load_epchc_wq(xlsx)
 #'
-#' # get means
-#' epcdata <- mean_epchs_wq(epcdata)
+#' # view average estimates
+#' avedat(epcdata)
 #' }
-mean_epchc_wq <- function(epcdata){
+mean_epchc_wq <- function(datin){
 
   # remove MTB for initial calc
-  tbdata <- epcdata %>%
+  tbdata <- datin %>%
     dplyr::filter(!bay_segment %in% 'MTB')
 
   # chlorophyll monthly averages
@@ -61,7 +61,7 @@ mean_epchc_wq <- function(epcdata){
     ungroup
 
   # process MTB data using weighted averages of 3 subsegments
-  mtbdata <- epcdata %>%
+  mtbdata <- datin %>%
     dplyr::filter(bay_segment %in% "MTB") %>%
     mutate(
       bay_segment = case_when(

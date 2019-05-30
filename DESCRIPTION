@@ -14,7 +14,9 @@ Authors@R: c(
     )
   )
 Description: Utility functions for processing data from TBEP.
-Depends: R (>= 3.5)
+Depends: 
+  R (>= 3.5),
+  methods
 Imports:
   dplyr,
   lubridate,
@@ -27,3 +29,13 @@ LazyData: true
 RoxygenNote: 6.1.1
 URL: https://github.com/tbep-tech/tbeptools
 BugReports: https://github.com/tbep-tech/tbeptools/issues
+Collate: 
+    'class-epcdata.R'
+    'form_epchc_wq.R'
+    'get_epchc_wq.R'
+    'globalVariables.R'
+    'load_epchc_wq.R'
+    'mean_epchc_wq.R'
+    'methods-epcdata.R'
+    'stations.R'
+    'targets.R'

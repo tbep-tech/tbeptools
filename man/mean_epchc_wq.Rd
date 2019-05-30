@@ -4,10 +4,10 @@
 \alias{mean_epchc_wq}
 \title{Estimate annual means}
 \usage{
-mean_epchc_wq(epcdata)
+mean_epchc_wq(datin)
 }
 \arguments{
-\item{epcdata}{\code{data.frame} formatted from \code{load_epchc_wq}}
+\item{datin}{\code{data.frame} formatted from \code{load_epchc_wq}}
 }
 \value{
 Mean estimates for chlorophyll and secchi
@@ -23,7 +23,7 @@ xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 # load and assign to object
 epcdata <- load_epchc_wq(xlsx)
 
-# get means
-epcdata <- mean_epchs_wq(epcdata)
+# view average estimates
+avedat(epcdata)
 }
 }

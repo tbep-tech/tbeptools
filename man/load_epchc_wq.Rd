@@ -4,8 +4,7 @@
 \alias{load_epchc_wq}
 \title{Load local water quality file}
 \usage{
-load_epchc_wq(xlsx, na = "", download_latest_epchc = FALSE,
-  format = TRUE, ...)
+load_epchc_wq(xlsx, na = "", download_latest_epchc = FALSE, ...)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}
@@ -14,12 +13,10 @@ load_epchc_wq(xlsx, na = "", download_latest_epchc = FALSE,
 
 \item{download_latest_epchc}{logical passed to \link{get_epchc_wq} to download raw data and compare with existing in \code{xlsx} if available}
 
-\item{format}{logical if input file loaded from \code{xlsx} is formatted for chlorophyll and secchi data, uses \code{\link{form_epchc_wq}}}
-
 \item{...}{additional arguments passed to \code{\link[readxl]{read_xlsx}}}
 }
 \value{
-A \code{data.frame} of water quality data, minimal formatting
+A \code{\link{epcdata}} object with specific methods.  See the examples for accessing.
 }
 \description{
 Load local water quality file
@@ -34,6 +31,18 @@ xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 
 # load and assign to object
 epcdata <- load_epchc_wq(xlsx)
+
+##
+# access data
+
+# raw
+rawdat(epcdata)
+
+# formatted
+frmdat(epcdata)
+
+# averages
+avedat(epcdata)
 }
 }
 \seealso{

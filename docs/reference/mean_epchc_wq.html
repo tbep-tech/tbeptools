@@ -110,13 +110,13 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>mean_epchc_wq</span>(<span class='no'>epcdata</span>)</pre>
+    <pre class="usage"><span class='fu'>mean_epchc_wq</span>(<span class='no'>datin</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>epcdata</th>
+      <th>datin</th>
       <td><p><code>data.frame</code> formatted from <code>load_epchc_wq</code></p></td>
     </tr>
     </table>
@@ -132,10 +132,10 @@
 <span class='no'>xlsx</span> <span class='kw'>&lt;-</span> <span class='st'>'C:/Users/Owner/Desktop/2018_Results_Updated.xls'</span>
 
 <span class='co'># load and assign to object</span>
-<span class='no'>epcdata</span> <span class='kw'>&lt;-</span> <span class='fu'>load_epchc_wq</span>(<span class='no'>xlsx</span>)
+<span class='no'>epcdata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='load_epchc_wq.html'>load_epchc_wq</a></span>(<span class='no'>xlsx</span>)
 
-<span class='co'># get means</span>
-<span class='no'>epcdata</span> <span class='kw'>&lt;-</span> <span class='fu'>mean_epchs_wq</span>(<span class='no'>epcdata</span>)
+<span class='co'># view average estimates</span>
+<span class='fu'><a href='epcdata-class.html'>avedat</a></span>(<span class='no'>epcdata</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
