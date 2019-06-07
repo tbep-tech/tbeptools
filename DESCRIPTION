@@ -20,7 +20,8 @@ Depends:
 Imports:
   dplyr,
   lubridate,
-  magrittr, 
+  magrittr,
+  ggplot2,
   readxl,
   tidyr
 License: MIT + file LICENSE
