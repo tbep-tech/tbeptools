@@ -47,12 +47,13 @@ setGeneric('avedat', function(object) standardGeneric('avedat'))
 #' @rdname epcdata-class
 setMethod('avedat', 'epcdata', function(object) object@avedat)
 
-#' @title Plot annual chlorophyll for a segment
+#' @title Plot annual water quality values and thresholds for a segment
 #'
-#' @description Plot chlorophyll annual values by standard for a bay segment
+#' @description Plot annual water quality values and thresholds for a bay segment
 #'
 #' @param object \code{\link{epcdata}} object
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
+#' @param thr chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability
 #'
 #' @return A \code{\link[ggplot2]{ggplot2}} object
 #'
@@ -63,48 +64,61 @@ setMethod('avedat', 'epcdata', function(object) object@avedat)
 #'
 #' @examples
 #' \dontrun{
-#' chlplot(epcdata, bay_segment = 'OTB')
+#' thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
 #' }
-setGeneric('chlplot', function(object, bay_segment = c('OTB', 'HB', 'MTB', 'LTB')) standardGeneric('chlplot'))
+setGeneric('thrplot', function(object, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chl', 'la')) standardGeneric('thrplot'))
 
-#' @rdname chlplot
-setMethod('chlplot', 'epcdata', function(object, bay_segment = c('OTB', 'HB', 'MTB', 'LTB')){
+#' @rdname thrplot
+setMethod('thrplot', 'epcdata', function(object, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la')){
 
   # segment
   bay_segment <- match.arg(bay_segment)
 
+  # wq to plot
+  thr <- match.arg(thr)
+
+  # colors
+  cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "Small Mag. Exceedance"="blue", "Large Mag. Exceedance"="blue")
+
   # averages
   aves <- avedat(object)
 
-  # get chl data
-  chladata <- aves$ann %>%
-    dplyr::filter(grepl('chla', var)) %>%
-    tidyr::spread(var, val)
+  # axis label
+  axlab <- dplyr::case_when(
+    thr == 'chla' ~ expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")"),
+    thr == 'la' ~ expression("Mean Annual Light Attenuation (m  " ^-1 *")")
+  )
 
-  cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "Small Mag. Exceedance"="blue", "Large Mag. Exceedance"="blue")
+  # get threshold value
+  thrsvl <- targets %>%
+    dplyr::filter(bay_segment %in% !!bay_segment) %>%
+    dplyr::pull(!!paste0(thr, '_thresh'))
+
+  # threshold label
+  thrlab <- dplyr::case_when(
+    thr == 'chla' ~ paste(thrsvl, "~ mu * g%.%L^{-1}"),
+    thr == 'la' ~ paste(thrsvl, "~m","^{-1}")
+  )
 
   # bay segment plot title
   ttl <- targets %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::pull(name)
 
-  # chlorophyll thresh
-  chlthrs <- targets %>%
-    dplyr::filter(bay_segment %in% !!bay_segment) %>%
-    dplyr::pull(chla_thresh)
+  # get data to plo
+  toplo <- aves$ann %>%
+    dplyr::filter(grepl(paste0('_', thr, '$'), var)) %>%
+    mutate(var = 'yval') %>%
+    dplyr::filter(bay_segment == !!bay_segment & yr < 2019) %>%
+    tidyr::spread(var, val)
 
-  p <- chladata %>%
-    filter(bay_segment == !!bay_segment & yr < 2019) %>%
-    ggplot(aes(x = yr)) +
-    geom_point(aes(y = mean_chla, colour = "Annual Mean"), size = 3) +
-    geom_line(aes(y = mean_chla, colour = "Annual Mean"), size = 0.75) +
-    geom_hline(data = targets, aes(yintercept = chlthrs, colour = "Regulatory Threshold")) +
+  p <- ggplot(toplo, aes(x = yr)) +
+    geom_point(aes(y = yval, colour = "Annual Mean"), size = 3) +
+    geom_line(aes(y = yval, colour = "Annual Mean"), size = 0.75) +
+    geom_hline(data = targets, aes(yintercept = thrsvl, colour = "Regulatory Threshold")) +
     ggtitle(ttl) +
-    geom_text(data = targets, parse = TRUE,
-              aes(1973, chlthrs,
-                  label = paste(chlthrs,"~ mu * g%.%L^{-1}"),
-                  hjust = 0.2, vjust = -0.3)) +
-    ylab(expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")")) +
+    geom_text(aes(1973, thrsvl), parse = TRUE, label = thrlab, hjust = 0.2, vjust = -0.3) +
+    ylab(axlab) +
     xlab("") +
     scale_x_continuous(breaks = seq(1973,2019,by = 1)) +
     theme(plot.title = element_text(hjust = 0.5),
