@@ -11,15 +11,15 @@ setMethod('show',
             meths <-  attr(meths, 'info')$generic
             meths <- meths[!meths %in% 'show']
 
-            # # unique samples
-            # n <- scores(object)
-            # n <- unique(n$SampleID)
-            # n <- length(n)
+            # number of records in data
+            nobs <- nrow(rawdat(object))
 
             # on screen
             cat('An object of class', class(object), '\n')
-            # cat('Scores calculated for', paste(object@taxa, collapse = ', ') , 'indices for', n, 'unique samples\n')
-            cat('Use these functions for access:', paste(meths, collapse = ', '), '\n')
+            cat(nobs, 'records in imported data\n')
+            cat('Methods that can be used with this object:', paste(meths, collapse = ', '), '\n')
+            cat('Use methods as a function or slot, e.g., frmdat(epcdata) or epcdata@frmdat\n')
+            cat('View help files for more info, e.g., ?frmdat\n')
             invisible(NULL)
 
           })
