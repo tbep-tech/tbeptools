@@ -9,13 +9,15 @@
 #'
 #' @export
 #'
+#' @family read
+#'
 #' @details The local copy is checked against a temporary file downloade from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 #' @examples
 #' \dontrun{
-#' test_xlsx <- file.path(dir_gdrive, "data/wq/2018_Results_Updated.xls")
-#' get_epch_wq(test_xlsx)
+#' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
+#' read_dlcurrent(xlsx)
 #' }
-get_epchc_wq <- function(xlsx, download_latest_epchc = TRUE){
+read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE){
 
   epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
 

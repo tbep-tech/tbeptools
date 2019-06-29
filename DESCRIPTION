@@ -31,14 +31,3 @@ LazyData: true
 RoxygenNote: 6.1.1
 URL: https://github.com/tbep-tech/tbeptools
 BugReports: https://github.com/tbep-tech/tbeptools/issues
-Collate: 
-    'class-epcdata.R'
-    'form_epchc_wq.R'
-    'get_epchc_wq.R'
-    'globalVariables.R'
-    'load_epchc_wq.R'
-    'mean_epchc_wq.R'
-    'methods-epcdata.R'
-    'read_chkdate.R'
-    'stations.R'
-    'targets.R'

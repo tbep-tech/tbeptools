@@ -14,7 +14,7 @@
 #' @examples
 #' \dontrun{
 #' epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
-#' xlsx <- file.path(dir_gdrive, "data/wq/2018_Results_Updated.xls")
+#' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #' read_chkdate(epchc_url, xlsx)
 #' }
 read_chkdate <- function(epchc_url, xlsx) {

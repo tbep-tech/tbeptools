@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • tbeptools</title>
+<title>Plot annual water quality values and thresholds for a segment — show_thrplot • tbeptools</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Plot annual water quality values and thresholds for a segment — show_thrplot" />
+
+<meta property="og:description" content="Plot annual water quality values and thresholds for a bay segment" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -94,111 +97,59 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Plot annual water quality values and thresholds for a segment</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_thrplot.R'><code>R/show_thrplot.R</code></a></small>
+    <div class="hidden name"><code>show_thrplot.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Plot annual water quality values and thresholds for a bay segment</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-read" class="hasAnchor"><a href="#section-read" class="anchor"></a>Read</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="read_chkdate.html">read_chkdate()</a></code> </p>
-        </td>
-        <td><p>Compare date of local xlsx file with the same file on the server</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_dlcurrent.html">read_dlcurrent()</a></code> </p>
-        </td>
-        <td><p>Download latest water quality file from epchc.org</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_formwq.html">read_formwq()</a></code> </p>
-        </td>
-        <td><p>Format water quality data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_importwq.html">read_importwq()</a></code> </p>
-        </td>
-        <td><p>Load local water quality file</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-analyze" class="hasAnchor"><a href="#section-analyze" class="anchor"></a>Analyze</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="anlz_avedat.html">anlz_avedat()</a></code> </p>
-        </td>
-        <td><p>Estimate annual means</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-visualize" class="hasAnchor"><a href="#section-visualize" class="anchor"></a>Visualize</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="show_thrplot.html">show_thrplot()</a></code> </p>
-        </td>
-        <td><p>Plot annual water quality values and thresholds for a segment</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-utilities" class="hasAnchor"><a href="#section-utilities" class="anchor"></a>Utilities</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="stations.html">stations</a></code> </p>
-        </td>
-        <td><p>Bay stations by segment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="targets.html">targets</a></code> </p>
-        </td>
-        <td><p>Bay segment targets</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>show_thrplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
+  <span class='kw'>thr</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>))</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>epcdata</th>
+      <td><p>data frame of epc data returned by <code><a href='read_importwq.html'>read_importwq</a></code></p></td>
+    </tr>
+    <tr>
+      <th>bay_segment</th>
+      <td><p>chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"</p></td>
+    </tr>
+    <tr>
+      <th>thr</th>
+      <td><p>chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot2-package.html'>ggplot2</a></code> object</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>show_thrplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='st'>'OTB'</span>, <span class='kw'>thr</span> <span class='kw'>=</span> <span class='st'>'chl'</span>)
+<span class='co'># }</span></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-read">Read</a></li>
-      <li><a href="#section-analyze">Analyze</a></li>
-      <li><a href="#section-visualize">Visualize</a></li>
-      <li><a href="#section-utilities">Utilities</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

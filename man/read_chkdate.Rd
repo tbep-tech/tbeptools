@@ -20,8 +20,12 @@ Compare date of local xlsx file with the same file on the server
 \examples{
 \dontrun{
 epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
-xlsx <- file.path(dir_gdrive, "data/wq/2018_Results_Updated.xls")
+xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 read_chkdate(epchc_url, xlsx)
 }
+}
+\seealso{
+Other read: \code{\link{read_dlcurrent}},
+  \code{\link{read_formwq}}, \code{\link{read_importwq}}
 }
 \concept{read}
