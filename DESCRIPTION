@@ -18,6 +18,7 @@ Depends:
   R (>= 3.5),
   methods
 Imports:
+  curl,
   dplyr,
   lubridate,
   magrittr,
@@ -38,5 +39,6 @@ Collate:
     'load_epchc_wq.R'
     'mean_epchc_wq.R'
     'methods-epcdata.R'
+    'read_chkdate.R'
     'stations.R'
     'targets.R'
