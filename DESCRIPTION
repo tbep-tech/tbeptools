@@ -24,7 +24,9 @@ Imports:
   magrittr,
   ggplot2,
   readxl,
-  tidyr
+  scales,
+  tidyr,
+  gt
 Remotes:
   rstudio/gt
 License: MIT + file LICENSE

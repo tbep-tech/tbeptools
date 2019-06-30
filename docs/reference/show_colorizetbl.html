@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • tbeptools</title>
+<title>Colorize multiple fields with gt — show_colorizetbl • tbeptools</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Colorize multiple fields with gt — show_colorizetbl" />
+
+<meta property="og:description" content="Colorize multiple fields with gt" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -94,129 +97,63 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Colorize multiple fields with gt</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_colorizetbl.R'><code>R/show_colorizetbl.R</code></a></small>
+    <div class="hidden name"><code>show_colorizetbl.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Colorize multiple fields with gt</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-read" class="hasAnchor"><a href="#section-read" class="anchor"></a>Read</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="read_chkdate.html">read_chkdate()</a></code> </p>
-        </td>
-        <td><p>Compare date of local xlsx file with the same file on the server</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_dlcurrent.html">read_dlcurrent()</a></code> </p>
-        </td>
-        <td><p>Download latest water quality file from epchc.org</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_formwq.html">read_formwq()</a></code> </p>
-        </td>
-        <td><p>Format water quality data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_importwq.html">read_importwq()</a></code> </p>
-        </td>
-        <td><p>Load local water quality file</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-analyze" class="hasAnchor"><a href="#section-analyze" class="anchor"></a>Analyze</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="anlz_avedat.html">anlz_avedat()</a></code> </p>
-        </td>
-        <td><p>Estimate annual means</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-visualize" class="hasAnchor"><a href="#section-visualize" class="anchor"></a>Visualize</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="show_colorizefld.html">show_colorizefld()</a></code> </p>
-        </td>
-        <td><p>Colorize a field with gt</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="show_colorizetbl.html">show_colorizetbl()</a></code> </p>
-        </td>
-        <td><p>Colorize multiple fields with gt</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="show_matrix.html">show_matrix()</a></code> </p>
-        </td>
-        <td><p>Create a colorized table for indicator reporting</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="show_thrplot.html">show_thrplot()</a></code> </p>
-        </td>
-        <td><p>Plot annual water quality values and thresholds for a segment</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-utilities" class="hasAnchor"><a href="#section-utilities" class="anchor"></a>Utilities</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="stations.html">stations</a></code> </p>
-        </td>
-        <td><p>Bay stations by segment</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="targets.html">targets</a></code> </p>
-        </td>
-        <td><p>Bay segment targets</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>show_colorizetbl</span>(<span class='no'>gtbl</span>, <span class='kw'>exclude_cols</span> <span class='kw'>=</span> <span class='st'>"Year"</span>, <span class='kw'>pal</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"green"</span>,
+  <span class='st'>"yellow"</span>, <span class='st'>"red"</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>gtbl</th>
+      <td><p>input <code>gt</code> object</p></td>
+    </tr>
+    <tr>
+      <th>exclude_cols</th>
+      <td><p>which field(s) not to colorize</p></td>
+    </tr>
+    <tr>
+      <th>pal</th>
+      <td><p>chr vector of colors</p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>precision of digits to show</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>An object of class <code>gt_tbl</code></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>used internally in <code><a href='show_matrix.html'>show_matrix</a></code></p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-read">Read</a></li>
-      <li><a href="#section-analyze">Analyze</a></li>
-      <li><a href="#section-visualize">Visualize</a></li>
-      <li><a href="#section-utilities">Utilities</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
+
   </div>
 </div>
 

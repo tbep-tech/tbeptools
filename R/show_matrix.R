@@ -12,7 +12,6 @@
 #' @seealso \code{\link[gt]{gt}}
 #' @export
 #'
-#' @import gt
 #' @importFrom magrittr "%>%"
 #'
 #' @examples
@@ -24,28 +23,6 @@ show_matrix <- function(epcdata, thr = c('chla', 'la')){
   thr <- match.arg(thr)
   thr <- paste0('mean_', thr)
 
-  colorize_fld <- function(gtbl, fld, pal=c("green", "yellow", "red"), digits=1){
-    gtbl %>%
-      data_color(
-        #columns = vars(fld),
-        columns = fld,
-        colors = scales::col_numeric(
-          palette = pal,
-          domain =  gtbl[[fld]])) %>%
-      fmt_number(
-        #columns = vars(fld),
-        columns = fld,
-        decimals = 1)
-  }
-
-  colorize_tbl <- function(gtbl, exclude_cols="Year", pal=c("green", "yellow", "red"), digits=1){
-    flds <- setdiff(names(gtbl), exclude_cols)
-    for (fld in flds){
-      gtbl <- colorize_fld(gtbl, fld, pal, digits)
-    }
-    gtbl
-  }
-
   # make the table
   out <- epcdata %>%
     anlz_avedat %>%
@@ -54,8 +31,8 @@ show_matrix <- function(epcdata, thr = c('chla', 'la')){
     spread(var, val) %>%
     spread(bay_segment, !!thr) %>%
     rename(Year = yr) %>%
-    gt() %>%
-    colorize_tbl()
+    gt::gt() %>%
+    show_colorizetbl()
 
   return(out)
 
