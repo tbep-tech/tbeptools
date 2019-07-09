@@ -1,0 +1,127 @@
+---
+title: "Intro to TBEP Tools"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Intro to TBEP Tools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = F, warning = F
+)
+```
+
+```{r setup}
+# libraries
+library(leaflet)
+library(here)
+library(tbeptools) # remotes::install_github("tbep-tech/tbeptools")
+# devtools::load_all('../tbeptools/.')
+
+# local file path
+xlsx <- here('data-raw', '2018_Results_Updated.xls')
+```
+
+## Download and import EPCHC dataset
+
+```{r epchc_import}
+# load data and some light formatting
+epcdata <- read_importwq(xlsx, download_latest_epchc = T)
+epcdata
+```
+
+```{r ecphc_validate}
+#Display station locations
+wqsites <- epcdata[, c('epchc_station', 'Latitude', 'Longitude')] %>% 
+           unique()                                                   
+
+map <- leaflet(wqsites) %>%                                         
+              addProviderTiles(providers$CartoDB.Positron) %>% 
+              addCircleMarkers(~Longitude, ~Latitude,
+                               radius = 6,
+                               color = 'black',
+                               stroke = FALSE,
+                               opacity = 0.8,
+                               popup = ~as.character(paste('EPC Station:', epchc_station)), 
+                               group = 'Water quality') %>% 
+              addLayersControl(overlayGroups = c('Water quality'),
+                               options = layersControlOptions(collapsed = FALSE))
+map
+```
+
+## Plot Mean Annual Chl-a Values by Bay Segment {.tabset}
+
+### Old Tampa Bay
+
+```{r chlplot_otb}
+show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")
+```
+
+### Hillsborough Bay
+
+```{r chlplot_hb}
+show_thrplot(epcdata, bay_segment = "HB", thr = "chla")
+```
+
+### Middle Tampa Bay
+
+```{r chlplot_mtb}
+show_thrplot(epcdata, bay_segment = "MTB", thr = "chla")
+```
+
+### Lower Tampa Bay
+
+```{r chlplot_ltb}
+show_thrplot(epcdata, bay_segment = "LTB", thr = "chla")
+```
+
+## Plot Mean Annual Light Attenuation Values by Bay Segment {.tabset}
+
+### Old Tampa Bay
+
+```{r laplot_otb}
+show_thrplot(epcdata, bay_segment = "OTB", thr = "la")
+```
+
+### Hillsborough Bay
+
+```{r laplot_hb}
+show_thrplot(epcdata, bay_segment = "HB", thr = "la")
+```
+
+### Middle Tampa Bay
+
+```{r laplot_mtb}
+show_thrplot(epcdata, bay_segment = "MTB", thr = "la")
+```
+
+### Lower Tampa Bay
+
+```{r laplot_ltb}
+show_thrplot(epcdata, bay_segment = "LTB", thr = "la")
+```
+
+## Colorized Table {.tabset}
+
+Create a similer table as the one here: [tbep-tech:data/wq/TBEP_01_19_2018_**Decision_Matrix_Update**.pdf](https://drive.google.com/open?id=1NGq0VzaPv1_uxgoDkprVTAndSuBygSuq)
+  
+```{r, out.height = "50%"}
+knitr::include_graphics(here('img', 'decision-matrix_color-table-snip.png'))
+```
+
+### Chlorophyll
+
+```{r}
+show_matrix(epcdata, thr = 'chla')
+```
+
+### Light attenuation
+
+```{r}
+show_matrix(epcdata, thr = 'la')
+```
+

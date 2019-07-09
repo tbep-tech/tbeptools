@@ -40,3 +40,7 @@ Collate:
     'methods-epcdata.R'
     'stations.R'
     'targets.R'
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
