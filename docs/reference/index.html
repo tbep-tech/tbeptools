@@ -122,41 +122,89 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-read" class="hasAnchor"><a href="#section-read" class="anchor"></a>Read</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="epcdata-class.html">show(<i>&lt;epcdata&gt;</i>)</a></code> <code><a href="epcdata-class.html">rawdat()</a></code> <code><a href="epcdata-class.html">frmdat()</a></code> <code><a href="epcdata-class.html">avedat()</a></code> </p>
+          <p><code><a href="read_chkdate.html">read_chkdate()</a></code> </p>
         </td>
-        <td><p>An S4 class to represent an <code>epcdata</code> object</p></td>
+        <td><p>Compare date of local xlsx file with the same file on the server</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="form_epchc_wq.html">form_epchc_wq()</a></code> </p>
-        </td>
-        <td><p>Format water quality data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_epchc_wq.html">get_epchc_wq()</a></code> </p>
+          <p><code><a href="read_dlcurrent.html">read_dlcurrent()</a></code> </p>
         </td>
         <td><p>Download latest water quality file from epchc.org</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="load_epchc_wq.html">load_epchc_wq()</a></code> </p>
+          <p><code><a href="read_formwq.html">read_formwq()</a></code> </p>
         </td>
-        <td><p>Load local water quality file</p></td>
+        <td><p>Format water quality data</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mean_epchc_wq.html">mean_epchc_wq()</a></code> </p>
+          <p><code><a href="read_importwq.html">read_importwq()</a></code> </p>
+        </td>
+        <td><p>Load local water quality file</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-analyze" class="hasAnchor"><a href="#section-analyze" class="anchor"></a>Analyze</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="anlz_avedat.html">anlz_avedat()</a></code> </p>
         </td>
         <td><p>Estimate annual means</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-visualize" class="hasAnchor"><a href="#section-visualize" class="anchor"></a>Visualize</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="show_colorizefld.html">show_colorizefld()</a></code> </p>
+        </td>
+        <td><p>Colorize a field with gt</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="show_colorizetbl.html">show_colorizetbl()</a></code> </p>
+        </td>
+        <td><p>Colorize multiple fields with gt</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="show_matrix.html">show_matrix()</a></code> </p>
+        </td>
+        <td><p>Create a colorized table for indicator reporting</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="show_thrplot.html">show_thrplot()</a></code> </p>
+        </td>
+        <td><p>Plot annual water quality values and thresholds for a segment</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-utilities" class="hasAnchor"><a href="#section-utilities" class="anchor"></a>Utilities</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="stations.html">stations</a></code> </p>
@@ -168,12 +216,6 @@
           <p><code><a href="targets.html">targets</a></code> </p>
         </td>
         <td><p>Bay segment targets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="thrplot.html">thrplot()</a></code> </p>
-        </td>
-        <td><p>Plot annual water quality values and thresholds for a segment</p></td>
       </tr>
     </tbody>
     </table>
@@ -182,7 +224,10 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-read">Read</a></li>
+      <li><a href="#section-analyze">Analyze</a></li>
+      <li><a href="#section-visualize">Visualize</a></li>
+      <li><a href="#section-utilities">Utilities</a></li>
     </ul>
   </div>
 </div>

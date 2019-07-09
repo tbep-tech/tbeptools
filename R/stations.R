@@ -7,5 +7,5 @@
 #'   \item{bay_segment}{chr}
 #'   \item{epchc_station}{num}
 #' }
-#'
+#' @family utilities
 "stations"

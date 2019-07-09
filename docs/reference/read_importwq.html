@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bay stations by segment — stations • tbeptools</title>
+<title>Load local water quality file — read_importwq • tbeptools</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Bay stations by segment — stations" />
+<meta property="og:title" content="Load local water quality file — read_importwq" />
 
-<meta property="og:description" content="Bay stations by segment" />
+<meta property="og:description" content="Load local water quality file" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,40 +111,77 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bay stations by segment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/stations.R'><code>R/stations.R</code></a></small>
-    <div class="hidden name"><code>stations.Rd</code></div>
+    <h1>Load local water quality file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/read_importwq.R'><code>R/read_importwq.R</code></a></small>
+    <div class="hidden name"><code>read_importwq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Bay stations by segment</p>
+    <p>Load local water quality file</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>stations</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>read_importwq</span>(<span class='no'>xlsx</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>download_latest_epchc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>xlsx</th>
+      <td><p>chr string path for local excel file, to overwrite it not current</p></td>
+    </tr>
+    <tr>
+      <th>na</th>
+      <td><p>chr vector of strings to interpret as <code>NA</code>, passed to <code><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></code></p></td>
+    </tr>
+    <tr>
+      <th>download_latest_epchc</th>
+      <td><p>logical passed to <code><a href='read_dlcurrent.html'>read_dlcurrent</a></code> to download raw data and compare with existing in <code>xlsx</code> if available</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></code></p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with 75 rows and 2 variables:</p><dl class='dl-horizontal'>
-  <dt>bay_segment</dt><dd><p>chr</p></dd>
-  <dt>epchc_station</dt><dd><p>num</p></dd>
-</dl>
+    <p>A <code>data.frame</code> of formatted water quality data.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Loads the "RWMDataSpreadsheet" worksheet from the file located at <code>xlsx</code></p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other utilities: <code><a href='targets.html'>targets</a></code></p></div>
+    <div class='dont-index'><p><code><a href='read_formwq.html'>read_formwq</a></code></p>
+<p>Other read: <code><a href='read_chkdate.html'>read_chkdate</a></code>,
+  <code><a href='read_dlcurrent.html'>read_dlcurrent</a></code>, <code><a href='read_formwq.html'>read_formwq</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># file path</span>
+<span class='no'>xlsx</span> <span class='kw'>&lt;-</span> <span class='st'>'C:/Users/Owner/Desktop/2018_Results_Updated.xls'</span>
+
+<span class='co'># load and assign to object</span>
+<span class='no'>epcdata</span> <span class='kw'>&lt;-</span> <span class='fu'>read_importwq</span>(<span class='no'>xlsx</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

@@ -5,32 +5,40 @@
 #'
 #' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}.  The function does nothing if \code{download_latest_epchc = FALSE}.
 #'
+#' @importFrom magrittr %>%
+#'
 #' @export
+#'
+#' @family read
 #'
 #' @details The local copy is checked against a temporary file downloade from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 #' @examples
 #' \dontrun{
-#' test_xlsx <- file.path(dir_gdrive, "data/wq/2018_Results_Updated.xls")
-#' get_epch_wq(test_xlsx)
+#' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
+#' read_dlcurrent(xlsx)
 #' }
-get_epchc_wq <- function(xlsx, download_latest_epchc = TRUE){
+read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE){
 
   epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
 
   # exit the function if no download
   if(!download_latest_epchc) return()
 
-  # download data from EPCHC's ftp site
-  tmp_xlsx <- tempfile(fileext = "xlsx")
-  download.file(url = epchc_url, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
-
-  # if the file exists, compare with downloaded
+  # if the file exists, compare with the file on server
   if (file.exists(xlsx)){
 
-    is_latest <- tools::md5sum(xlsx) == tools::md5sum(tmp_xlsx)
+    # compare dates
+    is_latest <- read_chkdate(epchc_url, xlsx)
+
     if (!is_latest){
       cat('Replacing local file with current...\n')
+
+      # download data from EPCHC's ftp site
+      tmp_xlsx <- tempfile(fileext = "xlsx")
+      download.file(url = epchc_url, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
+
       file.copy(tmp_xlsx, xlsx, overwrite=T)
+
     }
 
     if(is_latest){
@@ -40,6 +48,11 @@ get_epchc_wq <- function(xlsx, download_latest_epchc = TRUE){
   } else {
 
     cat('File', xlsx, 'does not exist, replacing with downloaded file...\n')
+
+    # download data from EPCHC's ftp site
+    tmp_xlsx <- tempfile(fileext = "xlsx")
+    download.file(url = epchc_url, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
+
     file.copy(tmp_xlsx, xlsx)
 
   }

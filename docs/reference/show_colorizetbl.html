@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bay stations by segment — stations • tbeptools</title>
+<title>Colorize multiple fields with gt — show_colorizetbl • tbeptools</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Bay stations by segment — stations" />
+<meta property="og:title" content="Colorize multiple fields with gt — show_colorizetbl" />
 
-<meta property="og:description" content="Bay stations by segment" />
+<meta property="og:description" content="Colorize multiple fields with gt" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,39 +111,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bay stations by segment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/stations.R'><code>R/stations.R</code></a></small>
-    <div class="hidden name"><code>stations.Rd</code></div>
+    <h1>Colorize multiple fields with gt</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_colorizetbl.R'><code>R/show_colorizetbl.R</code></a></small>
+    <div class="hidden name"><code>show_colorizetbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Bay stations by segment</p>
+    <p>Colorize multiple fields with gt</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>stations</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>A data frame with 75 rows and 2 variables:</p><dl class='dl-horizontal'>
-  <dt>bay_segment</dt><dd><p>chr</p></dd>
-  <dt>epchc_station</dt><dd><p>num</p></dd>
-</dl>
+    <pre class="usage"><span class='fu'>show_colorizetbl</span>(<span class='no'>gtbl</span>, <span class='kw'>exclude_cols</span> <span class='kw'>=</span> <span class='st'>"Year"</span>, <span class='kw'>pal</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"green"</span>,
+  <span class='st'>"yellow"</span>, <span class='st'>"red"</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>gtbl</th>
+      <td><p>input <code>gt</code> object</p></td>
+    </tr>
+    <tr>
+      <th>exclude_cols</th>
+      <td><p>which field(s) not to colorize</p></td>
+    </tr>
+    <tr>
+      <th>pal</th>
+      <td><p>chr vector of colors</p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>precision of digits to show</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Other utilities: <code><a href='targets.html'>targets</a></code></p></div>
+    <p>An object of class <code>gt_tbl</code></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>used internally in <code><a href='show_matrix.html'>show_matrix</a></code></p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
 
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

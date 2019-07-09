@@ -1,15 +1,17 @@
 #' Format water quality data
 #'
-#' @param datin input \code{data.frame} loaded from \code{\link{load_epchc_wq}}
+#' @param datin input \code{data.frame} loaded from \code{\link{read_importwq}}
 #'
 #' @return A lightly formatted \code{data.frame} with chloropyll and secchi observations
 #' @export
 #'
+#' @family read
+#'
 #' @importFrom magrittr %>%
 #'
-#' @details Secchi data VOB depths or secchis < 0.5 ft from bottom are assigned \code{NA}
+#' @details Secchi data VOB depths or secchis < 0.5 ft from bottom are assigned \code{NA}, function is used internally within \code{\link{read_importwq}}
 #'
-#' @seealso \code{\link{load_epchc_wq}}
+#' @seealso \code{\link{read_importwq}}
 #'
 #' @examples
 #' \dontrun{
@@ -17,12 +19,9 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #'
 #' # load and assign to object
-#' epcdata <- load_epchc_wq(xlsx)
-#'
-#' # view formatted data
-#' frmdat(epcdata)
+#' epcdata <- read_importwq(xlsx)
 #' }
-form_epchc_wq <- function(datin){
+read_formwq <- function(datin){
 
   # format
   out <- datin %>%

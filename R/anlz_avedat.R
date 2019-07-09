@@ -2,9 +2,11 @@
 #'
 #' Estimate annual means for chlorophyll and secchi data
 #'
-#' @param datin \code{data.frame} formatted from \code{load_epchc_wq}
+#' @param datin \code{data.frame} formatted from \code{read_importwq}
 #'
 #' @return Mean estimates for chlorophyll and secchi
+#'
+#' @family analyze
 #'
 #' @import dplyr tidyr
 #' @importFrom magrittr %>%
@@ -17,12 +19,12 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #'
 #' # load and assign to object
-#' epcdata <- load_epchc_wq(xlsx)
+#' epcdata <- read_importwq(xlsx)
 #'
 #' # view average estimates
-#' avedat(epcdata)
+#' anlz_avedat(epcdata)
 #' }
-mean_epchc_wq <- function(datin){
+anlz_avedat <- function(datin){
 
   # remove MTB for initial calc
   tbdata <- datin %>%

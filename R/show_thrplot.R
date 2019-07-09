@@ -1,59 +1,12 @@
-#' @include class-epcdata.R
-NULL
-
-#' @rdname epcdata-class
-setMethod('show',
-          signature = 'epcdata',
-          definition = function(object){
-
-            # defined methods from below
-            meths <- .S4methods(class = 'epcdata')
-            meths <-  attr(meths, 'info')$generic
-            meths <- meths[!meths %in% 'show']
-
-            # number of records in data
-            nobs <- nrow(rawdat(object))
-
-            # on screen
-            cat('An object of class', class(object), '\n')
-            cat(nobs, 'records in imported data\n')
-            cat('Methods that can be used with this object:', paste(meths, collapse = ', '), '\n')
-            cat('Use methods as a function or slot, e.g., frmdat(epcdata) or epcdata@frmdat\n')
-            cat('View help files for more info, e.g., ?frmdat\n')
-            invisible(NULL)
-
-          })
-
-#' @param object \code{epcdata} object created with \code{\link{load_epchc_wq}}
-#' @rdname epcdata-class
-#'
-#' @export
-setGeneric('rawdat', function(object) standardGeneric('rawdat'))
-
-#' @rdname epcdata-class
-setMethod('rawdat', 'epcdata', function(object) object@rawdat)
-
-#' @rdname epcdata-class
-#' @export
-setGeneric('frmdat', function(object) standardGeneric('frmdat'))
-
-#' @rdname epcdata-class
-setMethod('frmdat', 'epcdata', function(object) object@frmdat)
-
-#' @rdname epcdata-class
-#' @export
-setGeneric('avedat', function(object) standardGeneric('avedat'))
-
-#' @rdname epcdata-class
-setMethod('avedat', 'epcdata', function(object) object@avedat)
-
 #' @title Plot annual water quality values and thresholds for a segment
 #'
 #' @description Plot annual water quality values and thresholds for a bay segment
 #'
-#' @param object \code{\link{epcdata}} object
+#' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
 #' @param thr chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability
+#'
+#' @family visualize
 #'
 #' @return A \code{\link[ggplot2]{ggplot2}} object
 #'
@@ -64,12 +17,9 @@ setMethod('avedat', 'epcdata', function(object) object@avedat)
 #'
 #' @examples
 #' \dontrun{
-#' thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
+#' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
 #' }
-setGeneric('thrplot', function(object, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chl', 'la')) standardGeneric('thrplot'))
-
-#' @rdname thrplot
-setMethod('thrplot', 'epcdata', function(object, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la')){
+show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la')){
 
   # segment
   bay_segment <- match.arg(bay_segment)
@@ -81,7 +31,7 @@ setMethod('thrplot', 'epcdata', function(object, bay_segment = c('OTB', 'HB', 'M
   cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "Small Mag. Exceedance"="blue", "Large Mag. Exceedance"="blue")
 
   # averages
-  aves <- avedat(object)
+  aves <- anlz_avedat(epcdata)
 
   # axis label
   axlab <- dplyr::case_when(
@@ -133,4 +83,4 @@ setMethod('thrplot', 'epcdata', function(object, bay_segment = c('OTB', 'HB', 'M
 
   return(p)
 
-})
+}
