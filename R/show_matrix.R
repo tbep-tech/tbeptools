@@ -35,6 +35,7 @@ show_matrix <- function(epcdata, thr = c('chla', 'la')){
     show_colorizetbl()
 
   # make some changes for hard breaks here...
+  # and more here...
 
   return(out)
 
