@@ -42,12 +42,12 @@ read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE){
     }
 
     if(is_latest){
-      cat('File is current...\n')
+      message('File is current...\n')
     }
 
   } else {
 
-    cat('File', xlsx, 'does not exist, replacing with downloaded file...\n')
+    message('File', xlsx, 'does not exist, replacing with downloaded file...\n')
 
     # download data from EPCHC's ftp site
     tmp_xlsx <- tempfile(fileext = "xlsx")
