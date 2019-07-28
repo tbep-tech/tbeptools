@@ -30,6 +30,12 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   # colors
   cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "Small Mag. Exceedance"="blue", "Large Mag. Exceedance"="blue")
 
+  # color labels
+  collab <- dplyr::case_when(
+    thr == 'chla' ~ 'Regulatory Threshold',
+    thr == 'la' ~ 'Management Target'
+  )
+
   # averages
   aves <- anlz_avedat(epcdata)
 
@@ -65,7 +71,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   p <- ggplot(toplo, aes(x = yr)) +
     geom_point(aes(y = yval, colour = "Annual Mean"), size = 3) +
     geom_line(aes(y = yval, colour = "Annual Mean"), size = 0.75) +
-    geom_hline(data = targets, aes(yintercept = thrsvl, colour = "Regulatory Threshold")) +
+    geom_hline(data = targets, aes(yintercept = thrsvl, colour = !!collab)) +
     ggtitle(ttl) +
     geom_text(aes(1973, thrsvl), parse = TRUE, label = thrlab, hjust = 0.2, vjust = -0.3) +
     ylab(axlab) +
@@ -74,12 +80,12 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     theme(plot.title = element_text(hjust = 0.5),
           panel.grid.minor=element_blank(),
           panel.grid.major=element_blank(),
-          legend.position = c(0.88, 0.95),
+          legend.position = c(0.85, 0.95),
           legend.background = element_rect(fill=NA),
           axis.text.x = element_text(angle = 45, size = 8, hjust = 1)
     ) +
     scale_colour_manual(name="", values = cols,
-                        labels=c("Annual Mean", "Regulatory Threshold"))
+                        labels=c("Annual Mean", collab))
 
   return(p)
 

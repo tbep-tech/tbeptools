@@ -7,7 +7,7 @@
 #'
 #' @importFrom magrittr %>%
 #'
-#' @import RCurl
+#' @importFrom RCurl getURL
 #'
 #' @family read
 #'
