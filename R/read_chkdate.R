@@ -25,7 +25,7 @@ read_chkdate <- function(epchc_url, xlsx) {
   con <- epchc_url %>%
     dirname %>%
     paste0(., '/')
-  dat <- getURL(con)
+  dat <- getURL(con, ssl.verifypeer = FALSE)
 
   # parse date of file
   srdate <- dat %>%

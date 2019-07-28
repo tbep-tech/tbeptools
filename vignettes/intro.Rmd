@@ -56,25 +56,25 @@ map
 
 ### Old Tampa Bay
 
-```{r chlplot_otb}
+```{r chlplot_otb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")
 ```
 
 ### Hillsborough Bay
 
-```{r chlplot_hb}
+```{r chlplot_hb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "HB", thr = "chla")
 ```
 
 ### Middle Tampa Bay
 
-```{r chlplot_mtb}
+```{r chlplot_mtb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "MTB", thr = "chla")
 ```
 
 ### Lower Tampa Bay
 
-```{r chlplot_ltb}
+```{r chlplot_ltb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "LTB", thr = "chla")
 ```
 
@@ -82,25 +82,25 @@ show_thrplot(epcdata, bay_segment = "LTB", thr = "chla")
 
 ### Old Tampa Bay
 
-```{r laplot_otb}
+```{r laplot_otb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "OTB", thr = "la")
 ```
 
 ### Hillsborough Bay
 
-```{r laplot_hb}
+```{r laplot_hb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "HB", thr = "la")
 ```
 
 ### Middle Tampa Bay
 
-```{r laplot_mtb}
+```{r laplot_mtb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "MTB", thr = "la")
 ```
 
 ### Lower Tampa Bay
 
-```{r laplot_ltb}
+```{r laplot_ltb, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "LTB", thr = "la")
 ```
 
