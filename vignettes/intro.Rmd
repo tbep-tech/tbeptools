@@ -18,12 +18,11 @@ knitr::opts_chunk$set(
 ```{r setup}
 # libraries
 library(leaflet)
-library(here)
 library(tbeptools) # remotes::install_github("tbep-tech/tbeptools")
 # devtools::load_all('../tbeptools/.')
 
 # local file path
-xlsx <- here('data-raw', '2018_Results_Updated.xls')
+xlsx <- '2018_Results_Updated.xls'
 ```
 
 ## Download and import EPCHC dataset
@@ -110,7 +109,7 @@ show_thrplot(epcdata, bay_segment = "LTB", thr = "la")
 Create a similer table as the one here: [tbep-tech:data/wq/TBEP_01_19_2018_**Decision_Matrix_Update**.pdf](https://drive.google.com/open?id=1NGq0VzaPv1_uxgoDkprVTAndSuBygSuq)
   
 ```{r, out.height = "50%"}
-knitr::include_graphics(here('img', 'decision-matrix_color-table-snip.png'))
+knitr::include_graphics('decision-matrix_color-table-snip.png')
 ```
 
 ### Chlorophyll

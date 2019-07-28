@@ -29,8 +29,13 @@ Imports:
   gt
 Remotes:
   rstudio/gt
+Suggests: 
+  knitr,
+  leaflet,
+  rmarkdown
 License: MIT + file LICENSE
 Encoding: UTF-8
+VignetteBuilder: knitr
 LazyData: true
 RoxygenNote: 6.1.1
 URL: https://github.com/tbep-tech/tbeptools
