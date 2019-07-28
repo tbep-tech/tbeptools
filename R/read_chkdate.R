@@ -7,6 +7,8 @@
 #'
 #' @importFrom magrittr %>%
 #'
+#' @import RCurl
+#'
 #' @family read
 #'
 #' @export
@@ -22,11 +24,13 @@ read_chkdate <- function(epchc_url, xlsx) {
   # get date of file on server
   con <- epchc_url %>%
     dirname %>%
-    paste0(., '/') %>%
-    curl::curl()
-  dat <- readLines(con)
-  close(con)
+    paste0(., '/')
+  dat <- getURL(con)
+
+  # parse date of file
   srdate <- dat %>%
+    strsplit('\\n') %>%
+    .[[1]] %>%
     grep(basename(epchc_url), ., value = TRUE) %>%
     gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
     lubridate::mdy_hm(.)

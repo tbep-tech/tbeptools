@@ -18,12 +18,12 @@ Depends:
   R (>= 3.5),
   methods
 Imports:
-  curl,
   dplyr,
   lubridate,
   magrittr,
   ggplot2,
   readxl,
+  RCurl,
   scales,
   tidyr,
   gt
