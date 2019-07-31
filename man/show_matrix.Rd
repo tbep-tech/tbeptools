@@ -4,12 +4,10 @@
 \alias{show_matrix}
 \title{Create a colorized table for indicator reporting}
 \usage{
-show_matrix(epcdata, thr = c("chla", "la"))
+show_matrix(epcdata)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
-
-\item{thr}{chr string indicating which water quality value to show, one of "chl" for chlorophyll and "la" for light availability}
 }
 \value{
 An object of class \code{gt_tbl}
@@ -19,7 +17,7 @@ Create a colorized table for indicator reporting
 }
 \examples{
 \dontrun{
-show_matrix(epcdata, thr = 'chl')
+show_matrix(epcdata)
 }
 }
 \seealso{

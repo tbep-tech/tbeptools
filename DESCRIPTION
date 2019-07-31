@@ -22,6 +22,7 @@ Imports:
   lubridate,
   magrittr,
   ggplot2,
+  purrr,
   readxl,
   RCurl,
   scales,

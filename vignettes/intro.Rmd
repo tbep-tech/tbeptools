@@ -18,8 +18,8 @@ knitr::opts_chunk$set(
 ```{r setup}
 # libraries
 library(leaflet)
-library(tbeptools) # remotes::install_github("tbep-tech/tbeptools")
-# devtools::load_all('../tbeptools/.')
+# library(tbeptools) # remotes::install_github("tbep-tech/tbeptools")
+devtools::load_all('.')
 
 # local file path
 xlsx <- '2018_Results_Updated.xls'
@@ -112,15 +112,9 @@ Create a similer table as the one here: [tbep-tech:data/wq/TBEP_01_19_2018_**Dec
 knitr::include_graphics('decision-matrix_color-table-snip.png')
 ```
 
-### Chlorophyll
+### Target attainment matrix
 
-```{r}
-show_matrix(epcdata, thr = 'chla')
-```
-
-### Light attenuation
-
-```{r}
-show_matrix(epcdata, thr = 'la')
+```{r, fig.height = 12, fig.width = 4}
+show_matrix(epcdata)
 ```
 
