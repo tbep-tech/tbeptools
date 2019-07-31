@@ -48,9 +48,15 @@ show_matrix <- function(epcdata, tab = FALSE, txtsz = 3){
     geom_tile(colour = 'black', fill = toplo$outcome) +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
-    geom_text(aes(label = outcome), size = txtsz) +
     theme_bw(base_family = 'serif') +
-    theme(axis.title = element_blank())
+    theme(
+      axis.title = element_blank(),
+      text = element_text(family = 'serif')
+    )
+
+  if(!is.null(txtsz))
+    p <- p +
+      geom_text(aes(label = outcome), size = txtsz)
 
   return(p)
 

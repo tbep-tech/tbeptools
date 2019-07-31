@@ -76,5 +76,5 @@ map
 ### Chart C
 
 ```{r}
-show_matrix(epcdata, txtsz = 0)
+show_matrix(epcdata, txtsz = 1)
 ```
