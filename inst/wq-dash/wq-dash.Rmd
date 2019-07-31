@@ -1,0 +1,80 @@
+---
+title: "Water Quality Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=F}
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+# libraries
+library(flexdashboard)
+library(leaflet)
+library(here)
+library(tbeptools)
+# local file path
+xlsx <- here('data-raw', '2018_Results_Updated.xls')
+```
+
+```{r epchc_import}
+# load data and some light formatting
+epcdata <- read_importwq(xlsx, download_latest_epchc = F)
+#epcdata
+```
+
+Column {.tabset .tabset-fade data-width=650}
+-----------------------------------------------------------------------
+
+### Old Tampa Bay
+
+```{r chlplot_otb}
+show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")
+```
+
+### Hillsborough Bay
+
+```{r chlplot_hb}
+show_thrplot(epcdata, bay_segment = "HB", thr = "chla")
+```
+
+### Middle Tampa Bay
+
+```{r chlplot_mtb}
+show_thrplot(epcdata, bay_segment = "MTB", thr = "chla")
+```
+
+### Lower Tampa Bay
+
+```{r chlplot_ltb}
+show_thrplot(epcdata, bay_segment = "LTB", thr = "chla")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Map
+
+```{r ecphc_validate}
+#Display station locations
+wqsites <- epcdata[, c('epchc_station', 'Latitude', 'Longitude')] %>% 
+           unique()                                                   
+map <- leaflet(wqsites) %>%                                         
+              addProviderTiles(providers$CartoDB.Positron) %>% 
+              addCircleMarkers(~Longitude, ~Latitude,
+                               radius = 6,
+                               color = 'black',
+                               stroke = FALSE,
+                               opacity = 0.8,
+                               popup = ~as.character(paste('EPC Station:', epchc_station)), 
+                               group = 'Water quality') %>% 
+              addLayersControl(overlayGroups = c('Water quality'),
+                               options = layersControlOptions(collapsed = FALSE))
+map
+```
+
+### Chart C
+
+```{r}
+show_matrix(epcdata, thr = 'chla')
+```

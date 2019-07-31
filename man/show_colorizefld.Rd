@@ -4,8 +4,7 @@
 \alias{show_colorizefld}
 \title{Colorize a field with gt}
 \usage{
-show_colorizefld(gtbl, fld, pal = c("green", "yellow", "red"),
-  digits = 1)
+show_colorizefld(gtbl, fld, pal = c("green", "yellow", "red"))
 }
 \arguments{
 \item{gtbl}{input \code{gt} object}
@@ -13,8 +12,6 @@ show_colorizefld(gtbl, fld, pal = c("green", "yellow", "red"),
 \item{fld}{which field to colorize}
 
 \item{pal}{chr vector of colors}
-
-\item{digits}{precision of digits to show}
 }
 \value{
 An object of class \code{gt_tbl}

@@ -111,5 +111,6 @@ avedat <- anlz_avedat(epcdata)
 anlz_attain(avedat, magdurout = T)
 anlz_attain(avedat)
 show_matrix(epcdata)
+show_matrix(epcdata, tab = T)
 ```
 

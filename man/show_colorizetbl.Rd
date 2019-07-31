@@ -5,7 +5,7 @@
 \title{Colorize multiple fields with gt}
 \usage{
 show_colorizetbl(gtbl, exclude_cols = "Year", pal = c("green",
-  "yellow", "red"), digits = 1)
+  "yellow", "red"))
 }
 \arguments{
 \item{gtbl}{input \code{gt} object}
@@ -13,8 +13,6 @@ show_colorizetbl(gtbl, exclude_cols = "Year", pal = c("green",
 \item{exclude_cols}{which field(s) not to colorize}
 
 \item{pal}{chr vector of colors}
-
-\item{digits}{precision of digits to show}
 }
 \value{
 An object of class \code{gt_tbl}
