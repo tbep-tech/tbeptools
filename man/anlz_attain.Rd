@@ -4,10 +4,12 @@
 \alias{anlz_attain}
 \title{Get attainment categories}
 \usage{
-anlz_attain(avedat)
+anlz_attain(avedat, magdurout = FALSE)
 }
 \arguments{
 \item{avedat}{result returned from \code{\link{anlz_avedat}}}
+
+\item{magdurout}{logical indicating if the separate magnitude and duration estimates are returned}
 }
 \value{
 a \code{data.frame} for each year and bay segment showing the attainment category

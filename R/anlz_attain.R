@@ -3,6 +3,7 @@
 #' Get attainment categories for each year and bay segment using chlorophyll and light attenuation
 #'
 #' @param avedat result returned from \code{\link{anlz_avedat}}
+#' @param magdurout logical indicating if the separate magnitude and duration estimates are returned
 #'
 #' @return a \code{data.frame} for each year and bay segment showing the attainment category
 #' @export
@@ -12,7 +13,7 @@
 #' avedat <- anlz_avedat(epcdata)
 #' anlz_attain(avedat)
 #' }
-anlz_attain <- function(avedat){
+anlz_attain <- function(avedat, magdurout = FALSE){
 
   # format targets
   trgs <- targets %>%
@@ -27,12 +28,42 @@ anlz_attain <- function(avedat){
     dplyr::mutate(var = gsub('mean\\_', '', var)) %>%
     dplyr::left_join(trgs, by = c('bay_segment', 'var'))
 
-  # get outcomes
-  out <- annave %>%
-    rowwise() %>%
-    mutate(
-      outcome = findInterval(val, c(target, smallex, thresh))
+  # get magnitude and durations
+  magdur <- annave %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(
+      mags = findInterval(val, c(smallex, thresh))
     ) %>%
+    dplyr::ungroup() %>%
+    dplyr::group_by(bay_segment) %>%
+    tidyr::nest() %>%
+    mutate(
+      data = purrr::map(data, function(data){
+
+        out <- data %>%
+          dplyr::mutate(
+            durats = stats::filter(val > target, filter = rep(1, 4), sides = 1),
+            durats = as.numeric(durats)
+          )
+
+        return(out)
+
+      })
+    ) %>%
+    unnest %>%
+    mutate(
+      outcome = dplyr::case_when(
+        is.na(durats) ~ mags,
+        durats == 4 & mags == 2 ~ 3L,
+        T ~ mags
+      )
+    )
+
+  if(magdurout)
+    return(magdur)
+
+  # get final outcomes
+  out <- magdur %>%
     dplyr::select(bay_segment, yr, var, outcome) %>%
     tidyr::spread(var, outcome) %>%
     na.omit %>%

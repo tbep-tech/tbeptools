@@ -104,17 +104,12 @@ show_thrplot(epcdata, bay_segment = "MTB", thr = "la")
 show_thrplot(epcdata, bay_segment = "LTB", thr = "la")
 ```
 
-## Colorized Table {.tabset}
-
-Create a similer table as the one here: [tbep-tech:data/wq/TBEP_01_19_2018_**Decision_Matrix_Update**.pdf](https://drive.google.com/open?id=1NGq0VzaPv1_uxgoDkprVTAndSuBygSuq)
-  
-```{r, out.height = "50%"}
-knitr::include_graphics('decision-matrix_color-table-snip.png')
-```
-
 ### Target attainment matrix
 
 ```{r, fig.height = 12, fig.width = 4}
+avedat <- anlz_avedat(epcdata)
+anlz_attain(avedat, magdurout = T)
+anlz_attain(avedat)
 show_matrix(epcdata)
 ```
 
