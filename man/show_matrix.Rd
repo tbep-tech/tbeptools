@@ -4,12 +4,14 @@
 \alias{show_matrix}
 \title{Create a colorized table for indicator reporting}
 \usage{
-show_matrix(epcdata, tab = FALSE)
+show_matrix(epcdata, tab = FALSE, txtsz = 3)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
 
 \item{tab}{logical indicating if a \code{gt_tbl} object is returned}
+
+\item{txtsz}{numeric for size of text in the plot, applies only if \code{tab = FALSE}}
 }
 \value{
 An object of class \code{gt_tbl} if \code{tab = TRUE}, otherwise a \code{ggplot} object is returned, both have similar appearances

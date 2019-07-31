@@ -8,19 +8,19 @@ output:
 
 ```{r setup, include=F}
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
+
 # libraries
 library(flexdashboard)
 library(leaflet)
 library(here)
 library(tbeptools)
+library(ggplot2)
+
 # local file path
 xlsx <- here('data-raw', '2018_Results_Updated.xls')
-```
 
-```{r epchc_import}
-# load data and some light formatting
+# import data
 epcdata <- read_importwq(xlsx, download_latest_epchc = F)
-#epcdata
 ```
 
 Column {.tabset .tabset-fade data-width=650}
@@ -76,5 +76,5 @@ map
 ### Chart C
 
 ```{r}
-show_matrix(epcdata, thr = 'chla')
+show_matrix(epcdata, txtsz = 0)
 ```

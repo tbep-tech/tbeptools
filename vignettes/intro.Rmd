@@ -104,13 +104,24 @@ show_thrplot(epcdata, bay_segment = "MTB", thr = "la")
 show_thrplot(epcdata, bay_segment = "LTB", thr = "la")
 ```
 
-### Target attainment matrix
+## Target attainment matrix {.tabset}
+
+### Numerical results
 
 ```{r, fig.height = 12, fig.width = 4}
 avedat <- anlz_avedat(epcdata)
 anlz_attain(avedat, magdurout = T)
 anlz_attain(avedat)
-show_matrix(epcdata)
-show_matrix(epcdata, tab = T)
 ```
 
+### Table with ggplot
+
+```{r, fig.height = 12, fig.width = 4}
+show_matrix(epcdata)
+```
+
+### Table with gt
+
+```{r}
+show_matrix(epcdata, tab = T)
+```

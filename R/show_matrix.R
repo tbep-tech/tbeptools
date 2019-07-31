@@ -4,6 +4,7 @@
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param tab logical indicating if a \code{gt_tbl} object is returned
+#' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
 #'
 #' @family visualize
 #'
@@ -20,7 +21,7 @@
 #' \dontrun{
 #' show_matrix(epcdata)
 #' }
-show_matrix <- function(epcdata, tab = FALSE){
+show_matrix <- function(epcdata, tab = FALSE, txtsz = 3){
 
   # process data to plot
   avedat <- anlz_avedat(epcdata)
@@ -47,7 +48,7 @@ show_matrix <- function(epcdata, tab = FALSE){
     geom_tile(colour = 'black', fill = toplo$outcome) +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
-    geom_text(aes(label = outcome), size = 3) +
+    geom_text(aes(label = outcome), size = txtsz) +
     theme_bw(base_family = 'serif') +
     theme(axis.title = element_blank())
 
