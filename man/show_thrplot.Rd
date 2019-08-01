@@ -5,7 +5,7 @@
 \title{Plot annual water quality values and thresholds for a segment}
 \usage{
 show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  thr = c("chla", "la"))
+  thr = c("chla", "la"), trgs = NULL)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -13,6 +13,8 @@ show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 \item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"}
 
 \item{thr}{chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability}
+
+\item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 }
 \value{
 A \code{\link[ggplot2]{ggplot2}} object

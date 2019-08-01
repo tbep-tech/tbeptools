@@ -5,6 +5,7 @@
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param tab logical indicating if a \code{gt_tbl} object is returned
 #' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
+#' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #'
 #' @family visualize
 #'
@@ -21,11 +22,15 @@
 #' \dontrun{
 #' show_matrix(epcdata)
 #' }
-show_matrix <- function(epcdata, tab = FALSE, txtsz = 3){
+show_matrix <- function(epcdata, tab = FALSE, txtsz = 3, trgs = NULL){
+
+  # default targets from data file
+  if(is.null(trgs))
+    trgs <- targets
 
   # process data to plot
   avedat <- anlz_avedat(epcdata)
-  toplo <- anlz_attain(avedat) %>%
+  toplo <- anlz_attain(avedat, trgs = trgs) %>%
     dplyr::mutate(
       bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
     )

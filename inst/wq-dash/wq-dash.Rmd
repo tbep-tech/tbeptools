@@ -1,9 +1,8 @@
 ---
 title: "Water Quality Dashboard"
 output: 
-  flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+  flexdashboard::flex_dashboard
+runtime: shiny
 ---
 
 ```{r setup, include=F}
@@ -15,6 +14,8 @@ library(leaflet)
 library(here)
 library(tbeptools)
 library(ggplot2)
+library(patchwork)
+library(shiny)
 
 # local file path
 xlsx <- here('data-raw', '2018_Results_Updated.xls')
@@ -23,32 +24,101 @@ xlsx <- here('data-raw', '2018_Results_Updated.xls')
 epcdata <- read_importwq(xlsx, download_latest_epchc = F)
 ```
 
+Sidebar {.sidebar data-width=400}
+===========================================================
+
+#### Chlorophyll large exceedence 
+
+<br>
+```{r}
+column(12, 
+       column(2, 'OTB'), 
+       column(10, sliderInput('otbchllrg', NULL, min = 0, max = 20, value = 9.3)
+       ))
+column(12, 
+       column(2, 'HB'), 
+       column(10, sliderInput('hbchllrg', NULL, min = 0, max = 20, value = 15.0)
+       ))
+column(12, 
+       column(2, 'MTB'),
+       column(10, sliderInput('mtbchllrg', NULL, min = 0, max = 20, value = 8.5)
+       ))
+column(12, 
+       column(2, 'LTB'),
+       column(10, sliderInput('ltbchllrg', NULL, min = 0, max = 20, value = 5.1)
+       ))
+```
+
+#### Light attenuation large exceedence 
+
+<br>
+```{r}
+column(12, 
+       column(2, 'OTB'), 
+       column(10, sliderInput('otblalrg', NULL, min = 0, max = 5, value = 0.88)
+       ))
+column(12, 
+       column(2, 'HB'), 
+       column(10, sliderInput('hblalrg', NULL, min = 0, max = 5, value = 1.67)
+       ))
+column(12, 
+       column(2, 'MTB'),
+       column(10, sliderInput('mtblalrg', NULL, min = 0, max = 5, value = 0.91)
+       ))
+column(12, 
+       column(2, 'LTB'),
+       column(10, sliderInput('ltblalrg', NULL, min = 0, max = 5, value = 0.68)
+       ))
+```
+
+Annual means time series plots
+===========================================================
+
 Column {.tabset .tabset-fade data-width=650}
 -----------------------------------------------------------------------
 
 ### Old Tampa Bay
 
-```{r chlplot_otb}
-show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")
+```{r plot_otb, fig.height = 8, fig.width = 10}
+p1 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "chla") + 
+  ggtitle(NULL)
+p2 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "la") + 
+  ggtitle(NULL)
+p1 + p2 + plot_layout(ncol = 1)
 ```
 
 ### Hillsborough Bay
 
-```{r chlplot_hb}
-show_thrplot(epcdata, bay_segment = "HB", thr = "chla")
+```{r plot_hb, fig.height = 8, fig.width = 10}
+p1 <- show_thrplot(epcdata, bay_segment = "HB", thr = "chla") + 
+  ggtitle(NULL)
+p2 <- show_thrplot(epcdata, bay_segment = "HB", thr = "la") + 
+  ggtitle(NULL)
+p1 + p2 + plot_layout(ncol = 1)
 ```
 
 ### Middle Tampa Bay
 
-```{r chlplot_mtb}
-show_thrplot(epcdata, bay_segment = "MTB", thr = "chla")
+```{r plot_mtb, fig.height = 8, fig.width = 10}
+p1 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "chla") + 
+  ggtitle(NULL)
+p2 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "la") + 
+  ggtitle(NULL)
+p1 + p2 + plot_layout(ncol = 1)
 ```
 
 ### Lower Tampa Bay
 
-```{r chlplot_ltb}
-show_thrplot(epcdata, bay_segment = "LTB", thr = "chla")
+```{r plot_ltb, fig.height = 8, fig.width = 10}
+p1 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "chla") + 
+  ggtitle(NULL)
+p2 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "la") + 
+  ggtitle(NULL)
+p1 + p2 + plot_layout(ncol = 1)
 ```
+
+Map
+===========================================================
 
 Column {data-width=350}
 -----------------------------------------------------------------------
@@ -73,8 +143,11 @@ map <- leaflet(wqsites) %>%
 map
 ```
 
-### Chart C
+Attainment matrix
+===========================================================
+
+### Matrix
 
 ```{r}
-show_matrix(epcdata, txtsz = 1)
+show_matrix(epcdata, txtsz = NULL)
 ```

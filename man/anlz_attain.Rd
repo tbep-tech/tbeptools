@@ -4,12 +4,14 @@
 \alias{anlz_attain}
 \title{Get attainment categories}
 \usage{
-anlz_attain(avedat, magdurout = FALSE)
+anlz_attain(avedat, magdurout = FALSE, trgs = NULL)
 }
 \arguments{
 \item{avedat}{result returned from \code{\link{anlz_avedat}}}
 
 \item{magdurout}{logical indicating if the separate magnitude and duration estimates are returned}
+
+\item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 }
 \value{
 a \code{data.frame} for each year and bay segment showing the attainment category

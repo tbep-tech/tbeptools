@@ -4,6 +4,7 @@
 #'
 #' @param avedat result returned from \code{\link{anlz_avedat}}
 #' @param magdurout logical indicating if the separate magnitude and duration estimates are returned
+#' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #'
 #' @return a \code{data.frame} for each year and bay segment showing the attainment category
 #' @export
@@ -13,10 +14,14 @@
 #' avedat <- anlz_avedat(epcdata)
 #' anlz_attain(avedat)
 #' }
-anlz_attain <- function(avedat, magdurout = FALSE){
+anlz_attain <- function(avedat, magdurout = FALSE, trgs = NULL){
+
+  # default targets from data file
+  if(is.null(trgs))
+    trgs <- targets
 
   # format targets
-  trgs <- targets %>%
+  trgs <- trgs %>%
     tidyr::gather('var', 'val', -bay_segment, -name) %>%
     tidyr::separate(var, c('var', 'trgtyp'), sep = '_') %>%
     spread(trgtyp, val) %>%

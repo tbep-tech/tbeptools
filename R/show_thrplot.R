@@ -5,6 +5,7 @@
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
 #' @param thr chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability
+#' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #'
 #' @family visualize
 #'
@@ -19,7 +20,11 @@
 #' \dontrun{
 #' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
 #' }
-show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la')){
+show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL){
+
+  # default targets from data file
+  if(is.null(trgs))
+    trgs <- targets
 
   # segment
   bay_segment <- match.arg(bay_segment)
@@ -46,7 +51,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   )
 
   # get threshold value
-  thrsvl <- targets %>%
+  thrsvl <- trgs %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::pull(!!paste0(thr, '_thresh'))
 
@@ -57,7 +62,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   )
 
   # bay segment plot title
-  ttl <- targets %>%
+  ttl <- trgs %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::pull(name)
 
@@ -71,7 +76,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   p <- ggplot(toplo, aes(x = yr)) +
     geom_point(aes(y = yval, colour = "Annual Mean"), size = 3) +
     geom_line(aes(y = yval, colour = "Annual Mean"), size = 0.75) +
-    geom_hline(data = targets, aes(yintercept = thrsvl, colour = !!collab)) +
+    geom_hline(data = trgs, aes(yintercept = thrsvl, colour = !!collab)) +
     ggtitle(ttl) +
     geom_text(aes(1973, thrsvl), parse = TRUE, label = thrlab, hjust = 0.2, vjust = -0.3) +
     ylab(axlab) +
