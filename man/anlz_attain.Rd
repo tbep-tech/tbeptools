@@ -14,7 +14,7 @@ anlz_attain(avedat, magdurout = FALSE, trgs = NULL)
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 }
 \value{
-a \code{data.frame} for each year and bay segment showing the attainment category
+A \code{data.frame} for each year and bay segment showing the attainment category
 }
 \description{
 Get attainment categories for each year and bay segment using chlorophyll and light attenuation

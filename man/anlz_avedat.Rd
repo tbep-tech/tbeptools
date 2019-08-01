@@ -4,10 +4,10 @@
 \alias{anlz_avedat}
 \title{Estimate annual means}
 \usage{
-anlz_avedat(datin)
+anlz_avedat(epcdata)
 }
 \arguments{
-\item{datin}{\code{data.frame} formatted from \code{read_importwq}}
+\item{epcdata}{\code{data.frame} formatted from \code{read_importwq}}
 }
 \value{
 Mean estimates for chlorophyll and secchi
@@ -18,5 +18,8 @@ Estimate annual means for chlorophyll and secchi data
 \examples{
 # view average estimates
 anlz_avedat(epcdata)
+}
+\seealso{
+Other analyze: \code{\link{anlz_avedatsite}}
 }
 \concept{analyze}

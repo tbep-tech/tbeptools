@@ -2,7 +2,7 @@
 #'
 #' Estimate annual means for chlorophyll and secchi data
 #'
-#' @param datin \code{data.frame} formatted from \code{read_importwq}
+#' @param epcdata \code{data.frame} formatted from \code{read_importwq}
 #'
 #' @return Mean estimates for chlorophyll and secchi
 #'
@@ -16,10 +16,10 @@
 #' @examples
 #' # view average estimates
 #' anlz_avedat(epcdata)
-anlz_avedat <- function(datin){
+anlz_avedat <- function(epcdata){
 
   # remove MTB for initial calc
-  tbdata <- datin %>%
+  tbdata <- epcdata %>%
     dplyr::filter(!bay_segment %in% 'MTB')
 
   # chlorophyll monthly averages
@@ -55,7 +55,7 @@ anlz_avedat <- function(datin){
     ungroup
 
   # process MTB data using weighted averages of 3 subsegments
-  mtbdata <- datin %>%
+  mtbdata <- epcdata %>%
     dplyr::filter(bay_segment %in% "MTB") %>%
     mutate(
       bay_segment = case_when(

@@ -6,7 +6,7 @@
 #' @param magdurout logical indicating if the separate magnitude and duration estimates are returned
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #'
-#' @return a \code{data.frame} for each year and bay segment showing the attainment category
+#' @return A \code{data.frame} for each year and bay segment showing the attainment category
 #' @export
 #'
 #' @examples

@@ -99,7 +99,7 @@ anlz_avedatsite <- function(epcdata){
   mtbmoyrchla <- mtbmonchla %>%
     select(yr, mo, bay_segment, epchc_station, chla) %>%
     drop_na() %>%
-    group_by(yr, mo, epchc_station, ) %>%
+    group_by(yr, mo, epchc_station) %>%
     summarise(sum_chla = sum(chla)) %>%
     ungroup %>%
     mutate(
