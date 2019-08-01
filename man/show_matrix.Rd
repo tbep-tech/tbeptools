@@ -4,7 +4,8 @@
 \alias{show_matrix}
 \title{Create a colorized table for indicator reporting}
 \usage{
-show_matrix(epcdata, tab = FALSE, txtsz = 3, trgs = NULL)
+show_matrix(epcdata, tab = FALSE, txtsz = 3, trgs = NULL,
+  yrrng = c(1975, 2018))
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -14,6 +15,8 @@ show_matrix(epcdata, tab = FALSE, txtsz = 3, trgs = NULL)
 \item{txtsz}{numeric for size of text in the plot, applies only if \code{tab = FALSE}}
 
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
+
+\item{yrrng}{numeric vector indicating min, max years to include}
 }
 \value{
 An object of class \code{gt_tbl} if \code{tab = TRUE}, otherwise a \code{ggplot} object is returned, both have similar appearances
@@ -22,9 +25,7 @@ An object of class \code{gt_tbl} if \code{tab = TRUE}, otherwise a \code{ggplot}
 Create a colorized table for indicator reporting
 }
 \examples{
-\dontrun{
 show_matrix(epcdata)
-}
 }
 \seealso{
 \code{\link[gt]{gt}}

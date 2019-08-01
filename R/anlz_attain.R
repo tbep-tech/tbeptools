@@ -10,10 +10,8 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' avedat <- anlz_avedat(epcdata)
 #' anlz_attain(avedat)
-#' }
 anlz_attain <- function(avedat, magdurout = FALSE, trgs = NULL){
 
   # default targets from data file

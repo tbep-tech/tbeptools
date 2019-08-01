@@ -15,15 +15,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' # file path
-#' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-#'
-#' # load and assign to object
-#' epcdata <- read_importwq(xlsx)
-#'
 #' # view average estimates
 #' anlz_avedat(epcdata)
-#' }
 anlz_avedat <- function(datin){
 
   # remove MTB for initial calc

@@ -15,16 +15,4 @@ Mean estimates for chlorophyll and secchi
 \description{
 Estimate annual means for chlorophyll and secchi data
 }
-\examples{
-\dontrun{
-# file path
-xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-
-# load and assign to object
-epcdata <- read_importwq(xlsx)
-
-# view average estimates
-anlz_avedat(epcdata)
-}
-}
 \concept{analyze}

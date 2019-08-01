@@ -6,6 +6,7 @@
 #' @param tab logical indicating if a \code{gt_tbl} object is returned
 #' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
+#' @param yrrng numeric vector indicating min, max years to include
 #'
 #' @family visualize
 #'
@@ -19,10 +20,8 @@
 #' @import ggplot2
 #'
 #' @examples
-#' \dontrun{
 #' show_matrix(epcdata)
-#' }
-show_matrix <- function(epcdata, tab = FALSE, txtsz = 3, trgs = NULL){
+show_matrix <- function(epcdata, tab = FALSE, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018)){
 
   # default targets from data file
   if(is.null(trgs))
@@ -33,7 +32,8 @@ show_matrix <- function(epcdata, tab = FALSE, txtsz = 3, trgs = NULL){
   toplo <- anlz_attain(avedat, trgs = trgs) %>%
     dplyr::mutate(
       bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
-    )
+    ) %>%
+    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2])
 
   if(tab){
 

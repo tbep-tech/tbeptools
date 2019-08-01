@@ -16,7 +16,8 @@ stations
 Bay stations by segment
 }
 \seealso{
-Other utilities: \code{\link{targets}}
+Other utilities: \code{\link{epcdata}},
+  \code{\link{targets}}
 }
 \concept{utilities}
 \keyword{datasets}

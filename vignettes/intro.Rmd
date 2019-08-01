@@ -17,11 +17,11 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 # libraries
-library(tbeptools) # remotes::install_github("tbep-tech/tbeptools")
-# devtools::load_all('.')
+library(tbeptools) 
+library(here)
 
 # local file path
-xlsx <- '2018_Results_Updated.xls'
+xlsx <- here('vignettes', '2018_Results_Updated.xls')
 ```
 
 ## Download and import EPCHC dataset
@@ -30,25 +30,6 @@ xlsx <- '2018_Results_Updated.xls'
 # load data and some light formatting
 epcdata <- read_importwq(xlsx, download_latest_epchc = T)
 epcdata
-```
-
-```{r ecphc_validate}
-#Display station locations
-wqsites <- epcdata[, c('epchc_station', 'Latitude', 'Longitude')] %>% 
-           unique()                                                   
-
-map <- leaflet(wqsites) %>%                                         
-              addProviderTiles(providers$CartoDB.Positron) %>% 
-              addCircleMarkers(~Longitude, ~Latitude,
-                               radius = 6,
-                               color = 'black',
-                               stroke = FALSE,
-                               opacity = 0.8,
-                               popup = ~as.character(paste('EPC Station:', epchc_station)), 
-                               group = 'Water quality') %>% 
-              addLayersControl(overlayGroups = c('Water quality'),
-                               options = layersControlOptions(collapsed = FALSE))
-map
 ```
 
 ## Plot Mean Annual Chl-a Values by Bay Segment {.tabset}

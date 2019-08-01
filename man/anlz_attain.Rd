@@ -20,8 +20,6 @@ a \code{data.frame} for each year and bay segment showing the attainment categor
 Get attainment categories for each year and bay segment using chlorophyll and light attenuation
 }
 \examples{
-\dontrun{
 avedat <- anlz_avedat(epcdata)
 anlz_attain(avedat)
-}
 }
