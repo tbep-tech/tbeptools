@@ -17,9 +17,8 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 # libraries
-library(leaflet)
-# library(tbeptools) # remotes::install_github("tbep-tech/tbeptools")
-devtools::load_all('.')
+library(tbeptools) # remotes::install_github("tbep-tech/tbeptools")
+# devtools::load_all('.')
 
 # local file path
 xlsx <- '2018_Results_Updated.xls'

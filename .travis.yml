@@ -2,19 +2,7 @@
 
 language: R
 cache: packages
-sudo: required
-
-requirements:
-  build:
-    - r
-    - r-RCurl
-  run:
-    - r
-    - r-RCurl
-
-env:
- global:
-   - CRAN: http://cran.rstudio.com
+sudo: false
 
 notifications:
   email:
