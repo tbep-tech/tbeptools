@@ -15,4 +15,8 @@ Mean estimates for chlorophyll and secchi
 \description{
 Estimate annual means for chlorophyll and secchi data
 }
+\examples{
+# view average estimates
+anlz_avedat(epcdata)
+}
 \concept{analyze}

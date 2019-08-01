@@ -14,7 +14,6 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' # view average estimates
 #' anlz_avedat(epcdata)
 anlz_avedat <- function(datin){

@@ -31,14 +31,15 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   # wq to plot
   thr <- match.arg(thr)
 
-  # colors
-  cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "Small Mag. Exceedance"="blue", "Large Mag. Exceedance"="blue")
-
   # color labels
   collab <- dplyr::case_when(
     thr == 'chla' ~ 'Regulatory Threshold',
     thr == 'la' ~ 'Management Target'
   )
+
+  # colors
+  cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "+1 se"="blue", "+2 se"="blue")
+  cols <- cols[c('Annual Mean', collab, '+1 se', '+2 se')]
 
   # averages
   aves <- anlz_avedat(epcdata)
@@ -49,15 +50,17 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     thr == 'la' ~ expression("Mean Annual Light Attenuation (m  " ^-1 *")")
   )
 
-  # get threshold value
-  thrsvl <- trgs %>%
-    dplyr::filter(bay_segment %in% !!bay_segment) %>%
-    dplyr::pull(!!paste0(thr, '_thresh'))
+  # get lines to plot
+  toln <- trgs %>%
+    dplyr::filter(bay_segment %in% !!bay_segment)
+  trgnum <- toln %>% dplyr::pull(!!paste0(thr, '_target'))
+  smlnum <- toln %>% dplyr::pull(!!paste0(thr, '_smallex'))
+  thrnum <- toln %>% dplyr::pull(!!paste0(thr, '_thresh'))
 
   # threshold label
-  thrlab <- dplyr::case_when(
-    thr == 'chla' ~ paste(thrsvl, "~ mu * g%.%L^{-1}"),
-    thr == 'la' ~ paste(thrsvl, "~m","^{-1}")
+  trglab <- dplyr::case_when(
+    thr == 'chla' ~ paste(trgnum, "~ mu * g%.%L^{-1}"),
+    thr == 'la' ~ paste(trgnum, "~m","^{-1}")
   )
 
   # bay segment plot title
@@ -73,24 +76,32 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     tidyr::spread(var, val)
 
-  p <- ggplot(toplo, aes(x = yr)) +
-    geom_point(aes(y = yval, colour = "Annual Mean"), size = 3) +
-    geom_line(aes(y = yval, colour = "Annual Mean"), size = 0.75) +
-    geom_hline(data = trgs, aes(yintercept = thrsvl, colour = !!collab)) +
-    ggtitle(ttl) +
-    geom_text(aes(yrrng[1], thrsvl), parse = TRUE, label = thrlab, hjust = 0.2, vjust = -0.3) +
-    ylab(axlab) +
-    xlab("") +
+  p <- ggplot() +
+    geom_point(data = toplo, aes(x = yr, y = yval, colour = "Annual Mean"), size = 3) +
+    geom_line(data = toplo, aes(x = yr, y = yval, colour = "Annual Mean"), linetype = 'solid', size = 0.75) +
+    geom_hline(aes(yintercept = trgnum, colour = !!collab)) +
+    geom_hline(aes(yintercept = smlnum, colour = '+1 se'), linetype = 'dashed') +
+    geom_hline(aes(yintercept = thrnum, colour = '+2 se'), linetype = 'dotted') +
+    geom_text(aes(yrrng[1], trgnum), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1) +
+    labs(y = axlab, title = ttl) +
     scale_x_continuous(breaks = seq(yrrng[1], yrrng[2], by = 1)) +
-    theme(plot.title = element_text(hjust = 0.5),
+    theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),
           panel.grid.major=element_blank(),
-          legend.position = c(0.85, 0.95),
+          legend.position = 'top',#c(0.85, 0.95),
           legend.background = element_rect(fill=NA),
+          legend.title = element_blank(),
           axis.text.x = element_text(angle = 45, size = 7, hjust = 1)
     ) +
-    scale_colour_manual(name="", values = cols,
-                        labels=c("Annual Mean", collab))
+    scale_colour_manual(values = cols, labels = factor(names(cols), levels = names(cols))) +
+    guides(colour = guide_legend(
+      override.aes = list(
+        shape = c(19, NA, NA, NA),
+        colour = cols,
+        linetype = c('solid', 'solid', 'dashed', 'dotted'),
+        size = c(0.75, 0.5, 0.5, 0.5)
+        )
+      ))
 
   return(p)
 
