@@ -13,7 +13,7 @@ library(flexdashboard)
 library(leaflet)
 library(here)
 library(tbeptools)
-library(ggplot2)
+library(tidyverse)
 library(patchwork)
 library(shiny)
 
@@ -22,6 +22,153 @@ xlsx <- here('data-raw', '2018_Results_Updated.xls')
 
 # import data
 epcdata <- read_importwq(xlsx, download_latest_epchc = F)
+```
+
+
+```{r reactives}
+
+shinyjs::useShinyjs(rmd = TRUE)
+observeEvent(input$reset_input, {
+      shinyjs::reset("otbchllrg")
+      shinyjs::reset("hbchllrg")
+      shinyjs::reset("mtbchllrg")
+      shinyjs::reset("ltbchllrg")
+      shinyjs::reset("otblalrg")
+      shinyjs::reset("hblalrg")
+      shinyjs::reset("mtblalrg")
+      shinyjs::reset("ltblalrg")
+    })
+
+# format target inputs
+trginps <- reactive({
+
+  # inputs
+  lrginps <- tibble(
+      otbchllrg = input$otbchllrg,
+      hbchllrg = input$hbchllrg, 
+      mtbchllrg = input$mtbchllrg, 
+      ltbchllrg = input$ltbchllrg,
+      otblalrg = input$ltblalrg,
+      hblalrg = input$hblalrg,
+      mtblalrg = input$mtblalrg,
+      ltblalrg = input$ltblalrg
+    ) %>% 
+    gather('var', 'val') %>% 
+    mutate(
+      bay_segment = gsub('chllrg$|lalrg$', '', var),
+      bay_segment = toupper(bay_segment), 
+      var = gsub('^.*(chllrg$|lalrg$)', '\\1', var), 
+      var = gsub('lrg$', '_thresh', var), 
+      var = gsub('^chl', 'chla', var)
+    ) %>% 
+    spread(var, val)
+  
+  # se diff for targets
+  trgs <- targets %>% 
+    mutate(
+      lase1 = la_smallex - la_target, 
+      chlase1 = chla_smallex - chla_target, 
+      lase2 = la_thresh - la_smallex,
+      chlase2 = chla_thresh - chla_smallex
+    ) %>% 
+    select(bay_segment, name, lase1, chlase1, lase2, chlase2)
+  
+  # combine with se, estimate new thresholds
+  out <- lrginps %>% 
+    left_join(trgs, by = 'bay_segment') %>% 
+    mutate(
+      chla_smallex = chla_thresh - chlase2, 
+      chla_target = chla_smallex - chlase1,
+      la_smallex = la_thresh - lase2, 
+      la_target = la_smallex - lase1
+    ) %>% 
+    select(bay_segment, name, chla_target, chla_smallex, chla_thresh, la_target, la_smallex, la_thresh)
+  
+  return(out)
+  
+})
+
+# OTB threshold plot
+thrplototb <- reactive({
+  
+  # inputs
+  trginps <- trginps()
+  
+  req(trginps)
+    
+  p1 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "chla", trgs = trginps) + 
+    ggtitle(NULL)
+  p2 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "la", trgs = trginps) + 
+    ggtitle(NULL)
+  
+  p1 + p2 + plot_layout(ncol = 1)
+  
+})
+
+# HB threshold plot
+thrplothb <- reactive({
+  
+  # inputs
+  trginps <- trginps()
+  
+  req(trginps)
+    
+  p1 <- show_thrplot(epcdata, bay_segment = "HB", thr = "chla", trgs = trginps) + 
+    ggtitle(NULL)
+  p2 <- show_thrplot(epcdata, bay_segment = "HB", thr = "la", trgs = trginps) + 
+    ggtitle(NULL)
+  
+  p1 + p2 + plot_layout(ncol = 1)
+  
+})
+
+# MTB threshold plot
+thrplotmtb <- reactive({
+  
+  # inputs
+  trginps <- trginps()
+  
+  req(trginps)
+  
+  p1 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "chla", trgs = trginps) + 
+    ggtitle(NULL)
+  p2 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "la", trgs = trginps) + 
+    ggtitle(NULL)
+  
+  p1 + p2 + plot_layout(ncol = 1)
+  
+})
+
+# LTB threshold plot
+thrplotltb <- reactive({
+  
+  # inputs
+  trginps <- trginps()
+  
+  req(trginps)
+  
+  p1 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "chla", trgs = trginps) + 
+    ggtitle(NULL)
+  p2 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "la", trgs = trginps) + 
+    ggtitle(NULL)
+  
+  p1 + p2 + plot_layout(ncol = 1)
+  
+})
+
+# attainment matrix
+attmat <- reactive({
+  
+  # input
+  trginps <- trginps()
+  
+  req(trginps)
+  
+  out <- show_matrix(epcdata, txtsz = NULL, trgs = trginps)
+  
+  return(out)
+  
+})
 ```
 
 Sidebar {.sidebar data-width=400}
@@ -33,19 +180,19 @@ Sidebar {.sidebar data-width=400}
 ```{r}
 column(12, 
        column(2, 'OTB'), 
-       column(10, sliderInput('otbchllrg', NULL, min = 0, max = 20, value = 9.3)
+       column(10, sliderInput('otbchllrg', NULL, min = 0, max = 20, value = 9.3, step = 0.1, round = F)
        ))
 column(12, 
        column(2, 'HB'), 
-       column(10, sliderInput('hbchllrg', NULL, min = 0, max = 20, value = 15.0)
+       column(10, sliderInput('hbchllrg', NULL, min = 0, max = 20, value = 15.0, step = 0.1, round = F)
        ))
 column(12, 
        column(2, 'MTB'),
-       column(10, sliderInput('mtbchllrg', NULL, min = 0, max = 20, value = 8.5)
+       column(10, sliderInput('mtbchllrg', NULL, min = 0, max = 20, value = 8.5, step = 0.1, round = F)
        ))
 column(12, 
        column(2, 'LTB'),
-       column(10, sliderInput('ltbchllrg', NULL, min = 0, max = 20, value = 5.1)
+       column(10, sliderInput('ltbchllrg', NULL, min = 0, max = 20, value = 5.1, step = 0.1, round = F)
        ))
 ```
 
@@ -55,20 +202,22 @@ column(12,
 ```{r}
 column(12, 
        column(2, 'OTB'), 
-       column(10, sliderInput('otblalrg', NULL, min = 0, max = 5, value = 0.88)
+       column(10, sliderInput('otblalrg', NULL, min = 0, max = 3, value = 0.88, step = 0.01, round = F)
        ))
 column(12, 
        column(2, 'HB'), 
-       column(10, sliderInput('hblalrg', NULL, min = 0, max = 5, value = 1.67)
+       column(10, sliderInput('hblalrg', NULL, min = 0, max = 3, value = 1.67, step = 0.01, round = F)
        ))
 column(12, 
        column(2, 'MTB'),
-       column(10, sliderInput('mtblalrg', NULL, min = 0, max = 5, value = 0.91)
+       column(10, sliderInput('mtblalrg', NULL, min = 0, max = 3, value = 0.91, step = 0.01, round = F)
        ))
 column(12, 
        column(2, 'LTB'),
-       column(10, sliderInput('ltblalrg', NULL, min = 0, max = 5, value = 0.68)
+       column(10, sliderInput('ltblalrg', NULL, min = 0, max = 3, value = 0.68, step = 0.01, round = F)
        ))
+
+actionButton("reset_input", "Reset inputs")
 ```
 
 Annual means time series plots
@@ -80,41 +229,29 @@ Column {.tabset .tabset-fade data-width=650}
 ### Old Tampa Bay
 
 ```{r plot_otb, fig.height = 8, fig.width = 10}
-p1 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "chla") + 
-  ggtitle(NULL)
-p2 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "la") + 
-  ggtitle(NULL)
-p1 + p2 + plot_layout(ncol = 1)
+output$thrplototb <- renderPlot({thrplototb()})
+plotOutput('thrplototb')
 ```
 
 ### Hillsborough Bay
 
 ```{r plot_hb, fig.height = 8, fig.width = 10}
-p1 <- show_thrplot(epcdata, bay_segment = "HB", thr = "chla") + 
-  ggtitle(NULL)
-p2 <- show_thrplot(epcdata, bay_segment = "HB", thr = "la") + 
-  ggtitle(NULL)
-p1 + p2 + plot_layout(ncol = 1)
+output$thrplothb <- renderPlot({thrplothb()})
+plotOutput('thrplothb')
 ```
 
 ### Middle Tampa Bay
 
 ```{r plot_mtb, fig.height = 8, fig.width = 10}
-p1 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "chla") + 
-  ggtitle(NULL)
-p2 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "la") + 
-  ggtitle(NULL)
-p1 + p2 + plot_layout(ncol = 1)
+output$thrplotmtb <- renderPlot({thrplotmtb()})
+plotOutput('thrplotmtb')
 ```
 
 ### Lower Tampa Bay
 
 ```{r plot_ltb, fig.height = 8, fig.width = 10}
-p1 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "chla") + 
-  ggtitle(NULL)
-p2 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "la") + 
-  ggtitle(NULL)
-p1 + p2 + plot_layout(ncol = 1)
+output$thrplotltb <- renderPlot({thrplotltb()})
+plotOutput('thrplotltb')
 ```
 
 Map
@@ -149,5 +286,6 @@ Attainment matrix
 ### Matrix
 
 ```{r}
-show_matrix(epcdata, txtsz = NULL)
+output$attmat <- renderPlot({attmat()})
+plotOutput('attmat')
 ```
