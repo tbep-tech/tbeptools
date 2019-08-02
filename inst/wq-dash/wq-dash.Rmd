@@ -19,6 +19,8 @@ library(tidyverse)
 library(patchwork)
 library(shiny)
 library(sf)
+library(scales)
+library(shinyjs)
 
 prj <- '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
 
@@ -36,16 +38,16 @@ locs <- epcdata %>%
 
 ```{r reactives}
 
-shinyjs::useShinyjs(rmd = TRUE)
+useShinyjs(rmd = TRUE)
 observeEvent(input$reset_input, {
-      shinyjs::reset("otbchltrg")
-      shinyjs::reset("hbchltrg")
-      shinyjs::reset("mtbchltrg")
-      shinyjs::reset("ltbchltrg")
-      shinyjs::reset("otblatrg")
-      shinyjs::reset("hblatrg")
-      shinyjs::reset("mtblatrg")
-      shinyjs::reset("ltblatrg")
+      reset("otbchltrg")
+      reset("hbchltrg")
+      reset("mtbchltrg")
+      reset("ltbchltrg")
+      reset("otblatrg")
+      reset("hblatrg")
+      reset("mtblatrg")
+      reset("ltblatrg")
     })
 
 # format target inputs
@@ -187,6 +189,12 @@ attmap <- reactive({
     ) %>% 
     left_join(locs, by = 'epchc_station') %>% 
     st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
+
+  # for point scaling, original range
+  scls <- dplyr::case_when(
+    thrsel == 'chla' ~ c(0.59, 58), 
+    thrsel == 'la' ~ c(0.38, 5.92)
+  )
   
   mapview(toplo, fill = F, homebutton = F, popup = NULL, legend = F) %>% 
     .@map %>% 
@@ -199,12 +207,12 @@ attmap <- reactive({
       color = 'black',
       fill = TRUE,
       fillColor = ~cols,
-      radius=~scales::rescale(val, to = c(1, 15)),
+      radius=~rescale(val, from = scls, to = c(2, 15)),
       weight = 1,
       fillOpacity = 1,
       label = ~paste0(epchc_station, ' (', trgtmet, ', ', round(val, 2), ')')
     ) %>% 
-    addLegend("bottomright", colors = c('green', 'red'), labels = c('yes', 'no'), opacity = 1, title = "Target met?")
+    addLegend("bottomright", colors = c('green', 'red'), labels = c('yes', 'no'), opacity = 1, title = paste0("Target met in ", yrsel, "?"))
   
 })
 
@@ -309,7 +317,7 @@ plotOutput('thrplotltb')
 Target attainments
 ===========================================================
 
-Column {data-width=400}
+Column {data-width=250}
 -----------------------------------------------------------------------
 
 ### Attainment matrix
@@ -319,19 +327,18 @@ output$attmat <- renderPlot({attmat()})
 plotOutput('attmat')
 ```
 
-Column {data-width=300}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Selection
+### Site attainment by year
 
 ```{r ecphc_validate}
-selectInput('yrsel', 'Select year:', choices = seq(1975, 2018), selected = 2018)
-selectInput('thrsel', 'Select indicator:', choices = list('Chlorophyll-a' = 'chla', 'Light attenuation ' = 'la'))
-```
-
-### Map
-
-```{r}
 output$attmap <- renderLeaflet({attmap()})
-leafletOutput('attmap')
+fillCol(flex = c(NA, 1),
+  inputPanel(
+    selectInput('yrsel', 'Select year:', choices = seq(1975, 2018), selected = 2018),
+    selectInput('thrsel', 'Select indicator:', choices = list('Chlorophyll-a' = 'chla', 'Light attenuation ' = 'la'))
+    ),
+  leafletOutput('attmap')
+)
 ```
