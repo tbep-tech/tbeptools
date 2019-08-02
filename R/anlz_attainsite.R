@@ -16,7 +16,7 @@
 #' @examples
 #' avedatsite <- anlz_avedatsite(epcdata)
 #' anlz_attainsite(avedatsite)
-anlz_attainsite <- function(avedatsite, thr = c('chl', 'la'), trgs = NULL, yrrng = NULL){
+anlz_attainsite <- function(avedatsite, thr = c('chla', 'la'), trgs = NULL, yrrng = NULL){
 
   # default targets from data file
   if(is.null(trgs))

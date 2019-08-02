@@ -4,7 +4,7 @@
 \alias{anlz_attainsite}
 \title{Get site attainments}
 \usage{
-anlz_attainsite(avedatsite, thr = c("chl", "la"), trgs = NULL,
+anlz_attainsite(avedatsite, thr = c("chla", "la"), trgs = NULL,
   yrrng = NULL)
 }
 \arguments{

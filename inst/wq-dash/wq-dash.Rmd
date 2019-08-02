@@ -10,19 +10,27 @@ knitr::opts_chunk$set(echo = F, message = F, warning = F)
 
 # libraries
 library(flexdashboard)
-library(leaflet)
 library(here)
+library(mapview)
+library(leaflet)
 # library(tbeptools)
 devtools::load_all(here())
 library(tidyverse)
 library(patchwork)
 library(shiny)
+library(sf)
+
+prj <- '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
 
 # local file path
 xlsx <- here('data-raw', '2018_Results_Updated.xls')
 
 # import data
 epcdata <- read_importwq(xlsx, download_latest_epchc = F)
+
+# locations
+locs <- epcdata %>% 
+  select(epchc_station, Longitude, Latitude)
 ```
 
 
@@ -157,6 +165,49 @@ thrplotltb <- reactive({
   
 })
 
+# site attainment map
+attmap <- reactive({
+  
+  # inputs
+  trginps <- trginps()
+  yrsel <- input$yrsel
+  thrsel <- input$thrsel
+  
+  req(trginps)
+  
+  # data to map
+  toplo <- epcdata %>% 
+    anlz_avedatsite %>% 
+    anlz_attainsite(thr = thrsel, trg = trginps, yrrng = yrsel) %>% 
+    dplyr::mutate(
+      cols = dplyr::case_when(
+        trgtmet == 'yes' ~ 'green', 
+        trgtmet == 'no' ~ 'red'
+      )
+    ) %>% 
+    left_join(locs, by = 'epchc_station') %>% 
+    st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
+  
+  mapview(toplo, fill = F, homebutton = F, popup = NULL, legend = F) %>% 
+    .@map %>% 
+    clearMarkers() %>% 
+    removeMouseCoordinates() %>%
+    addCircleMarkers(
+      data = toplo, 
+      layerId = ~epchc_station,
+      stroke = TRUE,
+      color = 'black',
+      fill = TRUE,
+      fillColor = ~cols,
+      radius=~scales::rescale(val, to = c(1, 15)),
+      weight = 1,
+      fillOpacity = 1,
+      label = ~paste0(epchc_station, ' (', trgtmet, ', ', round(val, 2), ')')
+    ) %>% 
+    addLegend("bottomright", colors = c('green', 'red'), labels = c('yes', 'no'), opacity = 1, title = "Target met?")
+  
+})
+
 # attainment matrix
 attmat <- reactive({
   
@@ -255,38 +306,32 @@ output$thrplotltb <- renderPlot({thrplotltb()})
 plotOutput('thrplotltb')
 ```
 
-Map
+Target attainments
 ===========================================================
 
-Column {data-width=350}
+Column {data-width=400}
 -----------------------------------------------------------------------
+
+### Attainment matrix
+
+```{r}
+output$attmat <- renderPlot({attmat()})
+plotOutput('attmat')
+```
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Selection
+
+```{r ecphc_validate}
+selectInput('yrsel', 'Select year:', choices = seq(1975, 2018), selected = 2018)
+selectInput('thrsel', 'Select indicator:', choices = list('Chlorophyll-a' = 'chla', 'Light attenuation ' = 'la'))
+```
 
 ### Map
 
-```{r ecphc_validate}
-#Display station locations
-wqsites <- epcdata[, c('epchc_station', 'Latitude', 'Longitude')] %>% 
-           unique()                                                   
-map <- leaflet(wqsites) %>%                                         
-              addProviderTiles(providers$CartoDB.Positron) %>% 
-              addCircleMarkers(~Longitude, ~Latitude,
-                               radius = 6,
-                               color = 'black',
-                               stroke = FALSE,
-                               opacity = 0.8,
-                               popup = ~as.character(paste('EPC Station:', epchc_station)), 
-                               group = 'Water quality') %>% 
-              addLayersControl(overlayGroups = c('Water quality'),
-                               options = layersControlOptions(collapsed = FALSE))
-map
-```
-
-Attainment matrix
-===========================================================
-
-### Matrix
-
 ```{r}
-output$attmat <- renderPlot({attmat()}, width = 400)
-plotOutput('attmat')
+output$attmap <- renderLeaflet({attmap()})
+leafletOutput('attmap')
 ```
