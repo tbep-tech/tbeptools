@@ -122,7 +122,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>show_matrix</span>(<span class='no'>epcdata</span>)</pre>
+    <pre class="usage"><span class='fu'>show_matrix</span>(<span class='no'>epcdata</span>, <span class='kw'>tab</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>txtsz</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,11 +132,27 @@
       <th>epcdata</th>
       <td><p>data frame of epc data returned by <code><a href='read_importwq.html'>read_importwq</a></code></p></td>
     </tr>
+    <tr>
+      <th>tab</th>
+      <td><p>logical indicating if a <code>gt_tbl</code> object is returned</p></td>
+    </tr>
+    <tr>
+      <th>txtsz</th>
+      <td><p>numeric for size of text in the plot, applies only if <code>tab = FALSE</code></p></td>
+    </tr>
+    <tr>
+      <th>trgs</th>
+      <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code></p></td>
+    </tr>
+    <tr>
+      <th>yrrng</th>
+      <td><p>numeric vector indicating min, max years to include</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>gt_tbl</code></p>
+    <p>An object of class <code>gt_tbl</code> if <code>tab = TRUE</code>, otherwise a <code>ggplot</code> object is returned, both have similar appearances</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -144,9 +161,7 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>show_matrix</span>(<span class='no'>epcdata</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>show_matrix</span>(<span class='no'>epcdata</span>)</div><div class='img'><img src='show_matrix-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
