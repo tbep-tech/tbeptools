@@ -122,7 +122,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_importwq</span>(<span class='no'>xlsx</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>download_latest_epchc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>read_importwq</span>(<span class='no'>xlsx</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>download_latest_epchc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>connecttimeout</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='kw'>tryurl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,6 +139,14 @@
     <tr>
       <th>download_latest_epchc</th>
       <td><p>logical passed to <code><a href='read_dlcurrent.html'>read_dlcurrent</a></code> to download raw data and compare with existing in <code>xlsx</code> if available</p></td>
+    </tr>
+    <tr>
+      <th>connecttimeout</th>
+      <td><p>numeric for maximum number of seconds to wait until connection timeout for <code><a href='https://www.rdocumentation.org/packages/RCurl/topics/getURL'>getURL</a></code></p></td>
+    </tr>
+    <tr>
+      <th>tryurl</th>
+      <td><p>logical indicating if <code><a href='https://www.rdocumentation.org/packages/RCurl/topics/getURL'>getURL</a></code> is repeatedly called in a <code>while</code> loop if first connection is unsuccessful</p></td>
     </tr>
     <tr>
       <th>...</th>

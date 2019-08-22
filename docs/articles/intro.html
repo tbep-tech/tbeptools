@@ -97,10 +97,10 @@
 <h2 class="hasAnchor">
 <a href="#download-and-import-epchc-dataset" class="anchor"></a>Download and import EPCHC dataset</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># load data and some light formatting</span></a>
-<a class="sourceLine" id="cb2-2" title="2">epcdata &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_importwq.html">read_importwq</a></span>(xlsx, <span class="dt">download_latest_epchc =</span> T)</a>
+<a class="sourceLine" id="cb2-2" title="2">epcdata &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_importwq.html">read_importwq</a></span>(xlsx, <span class="dt">download_latest_epchc =</span> T, <span class="dt">tryurl =</span> T)</a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt; Replacing local file with current...</span></a>
 <a class="sourceLine" id="cb2-4" title="4">epcdata</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; # A tibble: 25,486 x 11</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; # A tibble: 25,531 x 11</span></a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt;    bay_segment epchc_station SampleTime             yr    mo Latitude</span></a>
 <a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span></a>
 <a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;  1 HB                      6 2019-06-18 10:20:00  2019     6     27.9</span></a>
@@ -113,7 +113,7 @@
 <a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt;  8 MTB                    16 2019-06-17 09:46:00  2019     6     27.7</span></a>
 <a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt;  9 MTB                    19 2019-06-17 10:02:00  2019     6     27.7</span></a>
 <a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; 10 LTB                    23 2019-06-17 13:08:00  2019     6     27.7</span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; # ... with 25,476 more rows, and 5 more variables: Longitude &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; # ... with 25,521 more rows, and 5 more variables: Longitude &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; #   Total_Depth_m &lt;dbl&gt;, Sample_Depth_m &lt;dbl&gt;, sd_m &lt;dbl&gt;, chla &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 <div id="plot-mean-annual-chl-a-values-by-bay-segment" class="section level2 tabset">
@@ -224,12 +224,12 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#oanixnkzxf .gt_table {
+#rbmrhcesin .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
-  color: #000000;
+  color: #333333;
   font-size: 16px;
   background-color: #FFFFFF;
   /* table.background.color */
@@ -249,53 +249,53 @@
   /* table.border.bottom.color */
 }
 
-#oanixnkzxf .gt_heading {
+#rbmrhcesin .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#oanixnkzxf .gt_title {
-  color: #000000;
+#rbmrhcesin .gt_title {
+  color: #333333;
   font-size: 125%;
   /* heading.title.font.size */
   padding-top: 4px;
-  /* heading.top.padding */
+  /* heading.top.padding - not yet used */
   padding-bottom: 4px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#oanixnkzxf .gt_subtitle {
-  color: #000000;
+#rbmrhcesin .gt_subtitle {
+  color: #333333;
   font-size: 85%;
   /* heading.subtitle.font.size */
-  padding-top: 2px;
-  padding-bottom: 2px;
-  /* heading.bottom.padding */
+  padding-top: 0;
+  padding-bottom: 4px;
+  /* heading.bottom.padding - not yet used */
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#oanixnkzxf .gt_bottom_border {
+#rbmrhcesin .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
   /* heading.border.bottom.width */
-  border-bottom-color: #A8A8A8;
+  border-bottom-color: #D3D3D3;
   /* heading.border.bottom.color */
 }
 
-#oanixnkzxf .gt_column_spanner {
+#rbmrhcesin .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
+  border-bottom-color: #D3D3D3;
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oanixnkzxf .gt_col_heading {
-  color: #000000;
+#rbmrhcesin .gt_col_heading {
+  color: #333333;
   background-color: #FFFFFF;
   /* column_labels.background.color */
   font-size: 16px;
@@ -303,30 +303,31 @@
   font-weight: initial;
   /* column_labels.font.weight */
   vertical-align: middle;
-  padding: 10px;
+  padding: 5px;
   margin: 10px;
   overflow-x: hidden;
 }
 
-#oanixnkzxf .gt_columns_top_border {
+#rbmrhcesin .gt_columns_top_border {
   border-top-style: solid;
   border-top-width: 2px;
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
 }
 
-#oanixnkzxf .gt_columns_bottom_border {
+#rbmrhcesin .gt_columns_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
+  border-bottom-color: #D3D3D3;
 }
 
-#oanixnkzxf .gt_sep_right {
+#rbmrhcesin .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#oanixnkzxf .gt_group_heading {
+#rbmrhcesin .gt_group_heading {
   padding: 8px;
-  color: #000000;
+  /* row_group.padding */
+  color: #333333;
   background-color: #FFFFFF;
   /* row_group.background.color */
   font-size: 16px;
@@ -337,20 +338,20 @@
   /* row_group.border.top.style */
   border-top-width: 2px;
   /* row_group.border.top.width */
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
   /* row_group.border.top.color */
   border-bottom-style: solid;
   /* row_group.border.bottom.style */
   border-bottom-width: 2px;
   /* row_group.border.bottom.width */
-  border-bottom-color: #A8A8A8;
+  border-bottom-color: #D3D3D3;
   /* row_group.border.bottom.color */
   vertical-align: middle;
 }
 
-#oanixnkzxf .gt_empty_group_heading {
+#rbmrhcesin .gt_empty_group_heading {
   padding: 0.5px;
-  color: #000000;
+  color: #333333;
   background-color: #FFFFFF;
   /* row_group.background.color */
   font-size: 16px;
@@ -361,46 +362,49 @@
   /* row_group.border.top.style */
   border-top-width: 2px;
   /* row_group.border.top.width */
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
   /* row_group.border.top.color */
   border-bottom-style: solid;
   /* row_group.border.bottom.style */
   border-bottom-width: 2px;
   /* row_group.border.bottom.width */
-  border-bottom-color: #A8A8A8;
+  border-bottom-color: #D3D3D3;
   /* row_group.border.bottom.color */
   vertical-align: middle;
 }
 
-#oanixnkzxf .gt_striped {
-  background-color: #f2f2f2;
+#rbmrhcesin .gt_striped {
+  background-color: #8080800D;
 }
 
-#oanixnkzxf .gt_from_md > :first-child {
+#rbmrhcesin .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oanixnkzxf .gt_from_md > :last-child {
+#rbmrhcesin .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oanixnkzxf .gt_row {
+#rbmrhcesin .gt_row {
   padding: 8px;
   /* row.padding */
   margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
   vertical-align: middle;
   overflow-x: hidden;
 }
 
-#oanixnkzxf .gt_stub {
+#rbmrhcesin .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
-  border-right-color: #A8A8A8;
+  border-right-color: #D3D3D3;
   padding-left: 12px;
 }
 
-#oanixnkzxf .gt_summary_row {
-  color: #000000;
+#rbmrhcesin .gt_summary_row {
+  color: #333333;
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 8px;
@@ -409,8 +413,8 @@
   /* summary_row.text_transform */
 }
 
-#oanixnkzxf .gt_grand_summary_row {
-  color: #000000;
+#rbmrhcesin .gt_grand_summary_row {
+  color: #333333;
   background-color: #FFFFFF;
   /* grand_summary_row.background.color */
   padding: 8px;
@@ -419,43 +423,43 @@
   /* grand_summary_row.text_transform */
 }
 
-#oanixnkzxf .gt_first_summary_row {
+#rbmrhcesin .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
 }
 
-#oanixnkzxf .gt_first_grand_summary_row {
+#rbmrhcesin .gt_first_grand_summary_row {
   border-top-style: double;
   border-top-width: 6px;
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
 }
 
-#oanixnkzxf .gt_table_body {
+#rbmrhcesin .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
   /* table_body.border.top.width */
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
   /* table_body.border.top.color */
   border-bottom-style: solid;
   /* table_body.border.bottom.style */
   border-bottom-width: 2px;
   /* table_body.border.bottom.width */
-  border-bottom-color: #A8A8A8;
+  border-bottom-color: #D3D3D3;
   /* table_body.border.bottom.color */
 }
 
-#oanixnkzxf .gt_footnotes {
+#rbmrhcesin .gt_footnotes {
   border-top-style: solid;
   /* footnotes.border.top.style */
   border-top-width: 2px;
   /* footnotes.border.top.width */
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
   /* footnotes.border.top.color */
 }
 
-#oanixnkzxf .gt_footnote {
+#rbmrhcesin .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   margin: 0px;
@@ -463,57 +467,57 @@
   /* footnote.padding */
 }
 
-#oanixnkzxf .gt_sourcenotes {
+#rbmrhcesin .gt_sourcenotes {
   border-top-style: solid;
   /* sourcenotes.border.top.style */
   border-top-width: 2px;
   /* sourcenotes.border.top.width */
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
   /* sourcenotes.border.top.color */
 }
 
-#oanixnkzxf .gt_sourcenote {
+#rbmrhcesin .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#oanixnkzxf .gt_center {
+#rbmrhcesin .gt_center {
   text-align: center;
 }
 
-#oanixnkzxf .gt_left {
+#rbmrhcesin .gt_left {
   text-align: left;
 }
 
-#oanixnkzxf .gt_right {
+#rbmrhcesin .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oanixnkzxf .gt_font_normal {
+#rbmrhcesin .gt_font_normal {
   font-weight: normal;
 }
 
-#oanixnkzxf .gt_font_bold {
+#rbmrhcesin .gt_font_bold {
   font-weight: bold;
 }
 
-#oanixnkzxf .gt_font_italic {
+#rbmrhcesin .gt_font_italic {
   font-style: italic;
 }
 
-#oanixnkzxf .gt_super {
+#rbmrhcesin .gt_super {
   font-size: 65%;
 }
 
-#oanixnkzxf .gt_footnote_glyph {
+#rbmrhcesin .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="oanixnkzxf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="table gt_table">
+<div id="rbmrhcesin" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="table gt_table">
 <tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_center" rowspan="1" colspan="1">Year</th>
     <th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_left" rowspan="1" colspan="1">OTB</th>
@@ -522,326 +526,312 @@
     <th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_left" rowspan="1" colspan="1">LTB</th>
   </tr>
 <tr>
-<td class="gt_row gt_right">1974</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">1975</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1975</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">1976</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1976</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right">1977</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1977</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right gt_striped">1978</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1978</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right">1979</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1979</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right gt_striped">1980</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1980</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right">1981</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1981</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right gt_striped">1982</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1982</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right">1983</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1983</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right gt_striped">1984</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1984</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right">1985</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1985</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">1986</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1986</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">1987</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1987</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">1988</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1988</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">1989</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1989</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">1990</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1990</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">1991</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1991</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">1992</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1992</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right">1993</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1993</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">1994</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1994</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right">1995</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1995</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">1996</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1996</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">1997</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1997</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">1998</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">1998</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
+<td class="gt_row gt_right">1999</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">1999</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">2000</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2000</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right">2001</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2001</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">2002</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2002</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">2003</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2003</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">2004</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2004</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right">2005</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2005</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right gt_striped">2006</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2006</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">2007</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2007</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">2008</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2008</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
+<td class="gt_row gt_right">2009</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2009</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">2010</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2010</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">2011</td>
+      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2011</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">2012</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2012</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">2013</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2013</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">2014</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2014</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">2015</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2015</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">2016</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right">2016</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right">2017</td>
+      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 <tr>
-<td class="gt_row gt_right gt_striped">2017</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2018</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2019</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00; color: #000000FF;">green</td>
+<td class="gt_row gt_right gt_striped">2018</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
+      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
     </tr>
 </table></div>
 </div>
