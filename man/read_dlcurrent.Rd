@@ -4,7 +4,8 @@
 \alias{read_dlcurrent}
 \title{Download latest water quality file from epchc.org}
 \usage{
-read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 60)
+read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 60,
+  tryurl = FALSE)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}
@@ -12,6 +13,8 @@ read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 60)
 \item{download_latest_epchc}{logical to download latest file regardless of local copy}
 
 \item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
+
+\item{tryurl}{logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful}
 }
 \value{
 The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}.  The function does nothing if \code{download_latest_epchc = FALSE}.

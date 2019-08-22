@@ -28,7 +28,7 @@ xlsx <- here('vignettes', '2018_Results_Updated.xls')
 
 ```{r epchc_import}
 # load data and some light formatting
-epcdata <- read_importwq(xlsx, download_latest_epchc = T)
+epcdata <- read_importwq(xlsx, download_latest_epchc = T, tryurl = T)
 epcdata
 ```
 

@@ -5,7 +5,7 @@
 \title{Load local water quality file}
 \usage{
 read_importwq(xlsx, na = "", download_latest_epchc = FALSE,
-  connecttimeout = 60, ...)
+  connecttimeout = 60, tryurl = FALSE, ...)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}
@@ -15,6 +15,8 @@ read_importwq(xlsx, na = "", download_latest_epchc = FALSE,
 \item{download_latest_epchc}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available}
 
 \item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
+
+\item{tryurl}{logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful}
 
 \item{...}{additional arguments passed to \code{\link[readxl]{read_xlsx}}}
 }

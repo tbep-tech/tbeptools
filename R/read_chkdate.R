@@ -3,6 +3,7 @@
 #' @param epchc_url chr string of full path to file on the server
 #' @param xlsx chr string of full path to local file
 #' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
+#' @param tryurl logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful
 #'
 #' @return A logical vector indicating if the local file is current
 #'
@@ -20,16 +21,21 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #' read_chkdate(epchc_url, xlsx)
 #' }
-read_chkdate <- function(epchc_url, xlsx, connecttimeout = 20) {
+read_chkdate <- function(epchc_url, xlsx, connecttimeout = 20, tryurl = FALSE) {
 
   # URL on server to check
   con <- epchc_url %>%
     dirname %>%
     paste0(., '/')
 
+  # set timeout options for getULR
   opts <- curlOptions(connecttimeout = connecttimeout, ftp.response.timeout = connecttimeout, timeout = connecttimeout)
+
+  # attempt first connection
   dat <- try({getURL(con, ssl.verifypeer = FALSE, .opts = opts)})
-  while(inherits(dat, 'try-error')){
+
+  # try connection again if failed and tryurl = T
+  while(inherits(dat, 'try-error') & tryurl){
     cat('trying connection again...\n')
     dat <- try({getURL(con, ssl.verifypeer = FALSE, .opts = opts)})
   }
