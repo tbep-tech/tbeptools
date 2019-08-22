@@ -4,12 +4,14 @@
 \alias{read_chkdate}
 \title{Compare date of local xlsx file with the same file on the server}
 \usage{
-read_chkdate(epchc_url, xlsx)
+read_chkdate(epchc_url, xlsx, connecttimeout = 60)
 }
 \arguments{
 \item{epchc_url}{chr string of full path to file on the server}
 
 \item{xlsx}{chr string of full path to local file}
+
+\item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
 }
 \value{
 A logical vector indicating if the local file is current

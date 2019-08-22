@@ -10,7 +10,7 @@
 #'
 #' @family visualize
 #'
-#' @return A \code{\link[ggplot2]{ggplot2}} object
+#' @return A \code{\link[ggplot2]{ggplot}} object
 #'
 #' @export
 #'

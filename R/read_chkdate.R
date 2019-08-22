@@ -2,12 +2,13 @@
 #'
 #' @param epchc_url chr string of full path to file on the server
 #' @param xlsx chr string of full path to local file
+#' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
 #'
 #' @return A logical vector indicating if the local file is current
 #'
 #' @importFrom magrittr %>%
 #'
-#' @importFrom RCurl getURL
+#' @importFrom RCurl getURL curlOptions
 #'
 #' @family read
 #'
@@ -19,13 +20,15 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #' read_chkdate(epchc_url, xlsx)
 #' }
-read_chkdate <- function(epchc_url, xlsx) {
+read_chkdate <- function(epchc_url, xlsx, connecttimeout = 60) {
 
-  # get date of file on server
+  # URL on server to check
   con <- epchc_url %>%
     dirname %>%
     paste0(., '/')
-  dat <- getURL(con, ssl.verifypeer = FALSE)
+
+  opts <- curlOptions(connecttimeout = connecttimeout, ftp.response.timeout = connecttimeout, timeout = connecttimeout)
+  dat <- getURL(con, ssl.verifypeer = FALSE, .opts = opts)
 
   # parse date of file
   srdate <- dat %>%

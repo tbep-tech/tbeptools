@@ -19,7 +19,7 @@ show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 \item{yrrng}{numeric vector indicating min, max years to include}
 }
 \value{
-A \code{\link[ggplot2]{ggplot2}} object
+A \code{\link[ggplot2]{ggplot}} object
 }
 \description{
 Plot annual water quality values and thresholds for a bay segment

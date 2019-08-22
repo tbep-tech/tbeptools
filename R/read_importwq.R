@@ -3,6 +3,7 @@
 #' @param xlsx chr string path for local excel file, to overwrite it not current
 #' @param na chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}
 #' @param download_latest_epchc logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available
+#' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
 #' @param ... additional arguments passed to \code{\link[readxl]{read_xlsx}}
 #'
 #' @return A \code{data.frame} of formatted water quality data.
@@ -22,10 +23,10 @@
 #' # load and assign to object
 #' epcdata <- read_importwq(xlsx)
 #' }
-read_importwq <- function(xlsx, na = '', download_latest_epchc = FALSE, ...){
+read_importwq <- function(xlsx, na = '', download_latest_epchc = FALSE, connecttimeout = 60, ...){
 
   # download latest and compare with current if exists
-  read_dlcurrent(xlsx, download_latest_epchc)
+  read_dlcurrent(xlsx, download_latest_epchc, connecttimeout = connecttimeout)
 
   # sanity checks
   if(!download_latest_epchc)

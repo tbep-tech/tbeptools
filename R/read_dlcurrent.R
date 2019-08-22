@@ -2,6 +2,7 @@
 #'
 #' @param xlsx chr string path for local excel file, to overwrite it not current
 #' @param download_latest_epchc logical to download latest file regardless of local copy
+#' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
 #'
 #' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}.  The function does nothing if \code{download_latest_epchc = FALSE}.
 #'
@@ -17,7 +18,7 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #' read_dlcurrent(xlsx)
 #' }
-read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE){
+read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE, connecttimeout = 60){
 
   epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
 
@@ -28,7 +29,7 @@ read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE){
   if (file.exists(xlsx)){
 
     # compare dates
-    is_latest <- read_chkdate(epchc_url, xlsx)
+    is_latest <- read_chkdate(epchc_url, xlsx, connecttimeout = connecttimeout)
 
     if (!is_latest){
       cat('Replacing local file with current...\n')
