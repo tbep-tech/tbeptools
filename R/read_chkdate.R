@@ -20,7 +20,7 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #' read_chkdate(epchc_url, xlsx)
 #' }
-read_chkdate <- function(epchc_url, xlsx, connecttimeout = 60) {
+read_chkdate <- function(epchc_url, xlsx, connecttimeout = 20) {
 
   # URL on server to check
   con <- epchc_url %>%
@@ -28,7 +28,11 @@ read_chkdate <- function(epchc_url, xlsx, connecttimeout = 60) {
     paste0(., '/')
 
   opts <- curlOptions(connecttimeout = connecttimeout, ftp.response.timeout = connecttimeout, timeout = connecttimeout)
-  dat <- getURL(con, ssl.verifypeer = FALSE, .opts = opts)
+  dat <- try({getURL(con, ssl.verifypeer = FALSE, .opts = opts)})
+  while(inherits(dat, 'try-error')){
+    cat('trying connection again...\n')
+    dat <- try({getURL(con, ssl.verifypeer = FALSE, .opts = opts)})
+  }
 
   # parse date of file
   srdate <- dat %>%
