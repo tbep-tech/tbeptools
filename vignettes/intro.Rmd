@@ -1,5 +1,9 @@
 ---
 title: "Intro to TBEP Tools"
+csl: stylefile.csl
+bibliography: refs.bib
+author: "Marcus Beck, Ben Best"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Intro to TBEP Tools}
@@ -7,32 +11,184 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  message = F, warning = F
+  message = F, warning = F, 
+  fig.align = 'center'
 )
-```
 
-```{r setup}
 # libraries
 library(tbeptools) 
 library(here)
+library(Jabbrev)
+library(bookdown)
+library(english)
+library(magrittr)
 
-# local file path
-xlsx <- here('vignettes', '2018_Results_Updated.xls')
+bib_scrp(here('vignettes', 'intro.Rmd'), bib_new = here('vignettes', 'refs.bib'))
 ```
 
-## Download and import EPCHC dataset
+## Background
 
-```{r epchc_import}
+The environmental recovery of Tampa Bay is an exceptional success story for coastal water quality management. Nitrogen loads in the mid 1970s have been estimated at $8.2 \times 10^6$ kg yr$^{-1}$, with approximately $5.5 \times 10^6$ kg yr$^{-1}$ entering the upper Bay alone [@Poe05,@Greening06].  Reduced water clarity associated with phytoplankton biomass contributed to a dramatic reduction in the areal coverage of seagrass [@Tomasko05] and development of hypoxic events, causing a decline in benthic faunal production [@Santos80].  Extensive efforts to reduce nutrient loads to the Bay occurred by the late 1970s, with the most notable being improvements in infrastructure for wastewater treatment in 1979.  Improvements in water clarity and decreases in chlorophyll concentrations were observed Bay-wide in the 1980s, with conditions generally remaining constant to present day [@Beck15].
+
+Tracking changes in environmental condition from the past to present day would not have been possible without a long-term monitoring dataset. Data have been collected monthly by the Environmental Protection Commission of Hillsborough County since 1974 [@Sherwood16;@TBEP17].  Samples are taken at forty-five stations using by water collection or monitoring sonde at bottom, mid- or surface depths, depending on parameter.  The locations of monitoring stations are fixed and cover the entire Bay from the uppermost mesohaline sections to the lowermost euhaline portions that have direct interaction with the Gulf of Mexico.  Up to 515 observations are available for different parameters at each station, e.g., nitrogen, chlorophyll-a, and secchi depth. 
+
+```{r tbmap, out.width = '80%', echo = F, fig.cap = 'Locations of long-term monitoring stations in Tampa Bay. The Bay is separated into four segments defined by chemical, physical, and geopolitical boundaries.'}
+knitr::include_graphics(here("vignettes", "tb_map.png"))
+```
+
+## Package goal
+
+Data collected from the monitoring program are processed and maintained in a spreadsheet titled `RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx` at <ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/>.  These data include observations at all stations and for all parameters throughout the period of record.  To date, there have been no systematic tools for importing, analyzing, and reporting information from these data. The **tbeptools** package provides was developed to address this need.
+
+Functions in tbeptools fall in three categories depending on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
+
+* `read`: Import current data from the main ftp site.
+
+* `anlz`: Analyze or summarize the imported data. 
+
+* `show`: Create a plot of the analyzed data.
+
+The following shows all functions provided in tbeptools, organized by prefix. 
+
+```{r, fig.cap = "Functions provided in tbeptools.", out.width = "80%", echo = F}
+knitr::include_graphics(here("vignettes", "allfuncs.png"))
+```
+
+The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
+
+```{r, out.width = '80%', echo = F, fig.cap = "Searching for functions in tbeptools by typing in the prefix."}
+knitr::include_graphics(here('vignettes', 'readauto.png'))
+```
+
+## Installing tbeptools
+
+Begin by installing the package from GitHub.  The source code is available on the tbep-tech GitHub group web page: <https://github.com/tbep-tech/tbeptools>.  
+
+First, install the devtools package, load devtools, then install and load tbeptools.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(devtools)`).
+
+```{r, eval = F}
+install.packages('devtools')
+library(devtools)
+install_github('tbeptools')
+library(tbeptools)
+```
+
+After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required arguments that are needed to run the function.
+
+```{r, echo = F, out.width = '80%', fig.cap = "The help file for `read_importwq`."}
+knitr::include_graphics(here('vignettes', 'helpfileex.png'))
+```
+
+In the above example, the `read_importwq()` functions accepts six arguments.  All but one argument have default values that change the behavior of the function. In most cases, the default values are appropriate.  The only required argument is `xlsx` that specifies a path where a local excel file is located.  The details of this function are described below. 
+
+## Read
+
+There are `r lsf.str("package:tbeptools") %>% as.character %>% grepl('^read', .) %>% sum %>% english` functions in tbeptools for reading or importing data from the main ftp website listed above:
+
+* `read_chkdate()`: Compare date of local xlsx file with the same file on the server
+
+* `read_dlcurrent()`: Download latest water quality file from epchc.org
+
+* `read_formwq()`: Format water quality data
+
+* `read_importwq()`: Load local water quality file
+
+The main function is `read_importwq()` - the remainder are all used within `read_importwq()` to accomplish different tasks when importing the data.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.
+
+First, create a character path for the location of the file.  If one does not exist, specify a desired location and name for the downloaded file.  Here, we want to put the file in the vignettes folder and name is 2018_Results_updated.xls.  Note that this file path is relative to the root working directly for the current R session.  You can view the working directory with `getwd()`.
+
+```{r}
+xlsx <- 'vignettes/2018_Results_updated.xls'
+```
+
+Now we pass this `xlsx` object to the `read_importwq()` function. 
+
+```{r, eval = F}
+ecpdata <- read_importwq(xlsx)
+```
+```
+#> Error in read_importwq("empty") : file.exists(xlsx) is not TRUE
+```
+
+We get an error message from the function indicating that the file is not found. This makes sense because the file doesn't exist yet, so we need to tell the function to download the latest file.  This is done by changing the `download_latest_file` argument to `TRUE` (the default is `FALSE`). 
+
+```{r, eval = F}
+ecpdata <- read_importwq(xlsx, download_latest_epchc = TRUE)
+```
+```
+#> File vignettes/2018_Results_updated.xls does not exist, replacing with downloaded file...
+
+#> trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+ length 24562051 bytes (23.4 MB)
+```
+Now we get the same message, but with an indication that file on the server is being downloaded. We'll have the data downloaded and saved to the `epcdata` object after it finishes downloading. 
+
+If we try to run the function again after downloading the data from the server, we get the following message.  This check is done to make sure that the data are not unecessarily downloaded if the current matches the file on the server.
+
+```{r, eval = F}
+ecpdata <- read_importwq(xlsx, download_latest_epchc = TRUE)
+```
+```
+#> File is current...
+```
+
+Every time that tbeptools is used to work with the monitoring data, `read_importwq()` should be used to import the data. You will always receive the message `File is current...` if your local file matches the one on the server.  However, new data are regularly collected and posted on the server.  If `download_latest_file = TRUE` and your local file is out of date, you will receive the following message:
+
+```
+#> Replacing local file with current...
+```
+
+The additional arguments in `read_importwq()` can be used to troubleshoot the download if the connection to the server is unsuccessful.  Specifically, `connecttimeout` specifies the maximum number of seconds to wait before a timeout error occurs.  You can try increasing this number from the default of 10 seconds if the connection is unsuccessful, although the connection typically takes only a few seconds if successful.  The `tryurl` argument indicates if the data are requested again from the server if the first attempt is unsuccessful.  This is repeated if `tryurl = TRUE` until a successful connection is made.  
+
+The final argument `na` indicates which fields in the downloaded spreadsheet are treated as blank values and assigned to `NA`. Any number of strings can be added to this function to replace fields with `NA` values.  
+
+After the data are succesfully imported, you can view them from the assigned object: 
+
+```{r epchc_import, echo = F, message = F, include = F}
+# local file path
+xlsx <- here('vignettes', '2018_Results_Updated.xls')
+
 # load data and some light formatting
 epcdata <- read_importwq(xlsx, download_latest_epchc = T, tryurl = T)
+```
+```{r}
 epcdata
 ```
 
-## Plot Mean Annual Chl-a Values by Bay Segment {.tabset}
+These data include the bay segment name, station number, sample time, year, month, latitude, longitude, station depth, sample depth, secchi depth, and chlorophyll.  Note that the monitoring data include additional parameters.  Chlorophyll and secchi depth are currently the only parameters returned by `read_importwq()` given the reporting indicators used below. 
+
+## Analyze {.tabset}
+
+The analyze functions are used primarily to summarize the data returned by `read_importwq()`. 
+
+* `anlz_attain()`: Get attainment categories
+
+* `anlz_attainsite()`: Get site attainments
+
+* `anlz_avedat()`: Estimate annual means
+
+* `anlz_avedatsite()`: Estimate annual means by site
+
+The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
+
+Here we use `anlz_avedat()` tosummarize the data by bay segment to estimate annual and monthly means for chlorophyll and light attenuation.  The output is a two-element list for the annual (`ann`) and monthly (`mos`) means by segment.
+
+```{r}
+avedat <- anlz_avedat(epcdata)
+avedat
+```
+
+This output can then be further analyzed with `anlz_attain()` to determine if the bay segment targets are met in each year. 
+
+```{r}
+anlz_attain(avedat)
+```
+
+
 
 ### Old Tampa Bay
 
@@ -105,3 +261,6 @@ show_matrix(epcdata)
 ```{r}
 show_matrix(epcdata, tab = T)
 ```
+
+# References
+

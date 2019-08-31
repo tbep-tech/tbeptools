@@ -5,7 +5,7 @@
 \title{Load local water quality file}
 \usage{
 read_importwq(xlsx, na = "", download_latest_epchc = FALSE,
-  connecttimeout = 60, tryurl = FALSE, ...)
+  connecttimeout = 10, tryurl = FALSE, ...)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}

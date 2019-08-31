@@ -49,7 +49,7 @@ read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE, connecttimeout = 
 
   } else {
 
-    message('File', xlsx, 'does not exist, replacing with downloaded file...\n')
+    message('File ', xlsx, ' does not exist, replacing with downloaded file...\n')
 
     # download data from EPCHC's ftp site
     tmp_xlsx <- tempfile(fileext = "xlsx")

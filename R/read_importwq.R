@@ -24,7 +24,7 @@
 #' # load and assign to object
 #' epcdata <- read_importwq(xlsx)
 #' }
-read_importwq <- function(xlsx, na = '', download_latest_epchc = FALSE, connecttimeout = 60, tryurl = FALSE, ...){
+read_importwq <- function(xlsx, na = '', download_latest_epchc = FALSE, connecttimeout = 10, tryurl = FALSE, ...){
 
   # download latest and compare with current if exists
   read_dlcurrent(xlsx, download_latest_epchc, connecttimeout = connecttimeout, tryurl = tryurl)
