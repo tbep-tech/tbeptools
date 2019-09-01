@@ -175,14 +175,14 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
 
-Here we use `anlz_avedat()` tosummarize the data by bay segment to estimate annual and monthly means for chlorophyll and light attenuation.  The output is a two-element list for the annual (`ann`) and monthly (`mos`) means by segment.
+Here we use `anlz_avedat()` to summarize the data by bay segment to estimate annual and monthly means for chlorophyll and light attenuation.  The output is a two-element list for the annual (`ann`) and monthly (`mos`) means by segment.
 
 ```{r}
 avedat <- anlz_avedat(epcdata)
 avedat
 ```
 
-This output can then be further analyzed with `anlz_attain()` to determine if the bay segment targets are met in each year. 
+This output can then be further analyzed with `anlz_attain()` to determine if the bay segment outcomes are met in each year. 
 
 ```{r}
 anlz_attain(avedat)

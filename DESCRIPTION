@@ -29,9 +29,13 @@ Imports:
   tidyr,
   gt
 Remotes:
-  rstudio/gt
+  rstudio/gt,
+  fawda123/Jabbrev
 Suggests: 
+  bookdown,
+  english,
   here,
+  Jabbrev,
   knitr,
   leaflet,
   rmarkdown
