@@ -55,7 +55,7 @@ Functions in tbeptools fall in three categories depending on mode of use.  Each 
 The following shows all functions provided in tbeptools, organized by prefix. 
 
 ```{r, fig.cap = "Functions provided in tbeptools.", out.width = "70%", echo = F}
-knitr::include_graphics(here("vignettes", "allfuncs.png"))
+knitr::include_graphics(here("vignettes", "allfuncs.PNG"))
 ```
 
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
@@ -80,7 +80,7 @@ library(tbeptools)
 After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required arguments that are needed to run the function.
 
 ```{r, echo = F, out.width = '70%', fig.cap = "The help file for `read_importwq`."}
-knitr::include_graphics(here('vignettes', 'helpfileex.png'))
+knitr::include_graphics(here('vignettes', 'helpfileex.PNG'))
 ```
 
 In the above example, the `read_importwq()` functions accepts six arguments.  All but one argument have default values that change the behavior of the function. In most cases, the default values are appropriate.  The only required argument is `xlsx` that specifies a path where a local excel file is located.  The details of this function are described below. 
@@ -182,12 +182,13 @@ avedat <- anlz_avedat(epcdata)
 avedat
 ```
 
-This output can then be further analyzed with `anlz_attain()` to determine if the bay segment outcomes are met in each year. 
+This output can then be further analyzed with `anlz_attain()` to determine if the bay segment outcomes are met in each year.  The results are used by the plotting functions described below.  In short, the `chl_la` column indicates the categorical outcome for chlorophyll and light attenuation for each segment.  The outcomes are integer values from zero to three.  
 
 ```{r}
 anlz_attain(avedat)
 ```
 
+The same analysis can be repeated
 
 
 ### Old Tampa Bay

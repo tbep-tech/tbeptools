@@ -1,0 +1,365 @@
+[33mcommit 016b309d2019673d701baed2adff1a7268dc0d2a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sun Sep 1 10:16:25 2019 -0700
+
+    adding apt packages to travis for vignette build
+
+[33mcommit ca6257cdf173da19fab4d94454e3138da703db32[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sun Sep 1 09:56:17 2019 -0700
+
+    adding more content to vignette through read, fixing package builds for vignette suggests
+
+[33mcommit dc9f7a18feff8d48a20b90603b1384c9d2aea9a9[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sat Aug 31 16:40:33 2019 -0700
+
+    working on vignette
+
+[33mcommit f3c632c206b4f4c1e05c648ae2040c9de843a39c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 22 16:48:07 2019 -0700
+
+    rebuild site
+
+[33mcommit 41ae79650c24ca0e41d27b8a887ebde8a027ae69[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 22 16:30:15 2019 -0700
+
+    added option for geturl loop, default F
+
+[33mcommit 5ef6b6b22aff3c8f05f4a56c7dbb43f85d868611[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 22 16:10:39 2019 -0700
+
+    wrapping getURL in while loop
+
+[33mcommit fc53039bacc6bfb19aef14677d668c3d8160cd37[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 22 15:54:24 2019 -0700
+
+    added timout options for getURL, minor doc updates
+
+[33mcommit 1d75642ef475b838e13775d473e8d147dffb1536[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Fri Aug 2 14:50:59 2019 -0700
+
+    relative size ranges across all years for map, fixed inputs and map sizing using fillcol and flex
+
+[33mcommit 1abb70e72fc4da1099997c48c3d0e1dee0eeb925[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 1 22:11:05 2019 -0700
+
+    site rebuild
+
+[33mcommit 5555a23438dfa01e8f04da1b931df98596f36db7[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 1 17:52:39 2019 -0700
+
+    wq-dash now has map showing site attainment by year, changed layout slightly
+
+[33mcommit 18c7784ce7b67ddeb2841124b197b18e282c5b5c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 1 16:37:49 2019 -0700
+
+    added anlz_attainsite
+
+[33mcommit 40a4cc57e8fac0ceab34c6cf4c00f8c201a73306[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 1 16:26:22 2019 -0700
+
+    added anlz_avedatsite
+
+[33mcommit 4a7ee0f4ddcbfb9cccbc66d94acdac5e2e035b3c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 1 15:48:33 2019 -0700
+
+    changes to show_matrix now has all targets/thresholds, more informative legend, shiny now has sliders as targets, not large exceedences
+
+[33mcommit fca0cd68a0afddec825c91b4167b9ac3086f8aff[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 1 14:15:58 2019 -0700
+
+    added epcdata example data, removed dontrun for examples that use epcdata
+
+[33mcommit c5051ac783ef24b3f67add7cd0338cc6ee950056[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Aug 1 13:33:51 2019 -0700
+
+    simplifying vignette
+
+[33mcommit 5a642331bb88b9fec359cfe8a08fc93bf4fbb09c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Wed Jul 31 18:54:49 2019 -0700
+
+    wq-dash with dynamic target inputs, reset button
+
+[33mcommit acfba26a7c0d46bd59e28675dca7905a35f0ae00[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Wed Jul 31 17:43:24 2019 -0700
+
+    adding trgs option for functions for optional targets file input, reformatting wq-dash
+
+[33mcommit 2826cdf81dac6224b3fc18eaaaacc97f9e06b35c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Wed Jul 31 12:55:44 2019 -0700
+
+    txtsz argument that actually works
+
+[33mcommit 0496af7b1cba9067836d7e6b934222288206f617[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Wed Jul 31 12:39:24 2019 -0700
+
+    added txtsz argument to show_matrix, working shiny app in inst
+
+[33mcommit 8f41a7ebacbafbe04b09ec3ddaaba357e164347c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Wed Jul 31 11:45:35 2019 -0700
+
+    modified gt table object for new anlz_attain output, added tab option to show_matrix
+
+[33mcommit 7a6393ad82d30624ae10344d1a486c3544970497[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Wed Jul 31 11:11:32 2019 -0700
+
+    maybe final decision rules in anlz_attain
+
+[33mcommit 8ee86cad370b929aaacdc0d5fa03235487fa80cb[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Tue Jul 30 20:05:34 2019 -0700
+
+    added anlz_attain function to get attainment categories
+
+[33mcommit aa45bf53d56f4cb388292fdd94462f53a6049746[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Mon Jul 29 16:13:37 2019 -0700
+
+    messing with travis
+
+[33mcommit 792bb9711762304276d319b9b2c0b957a1341a2b[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sun Jul 28 11:36:52 2019 -0700
+
+    ssl.verifypeer = F on getURL
+
+[33mcommit f65334289dcb49a79e6e2946c08518c6637acc9c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sun Jul 28 11:04:52 2019 -0700
+
+    fix to la labels on show_thrplot, getURL importFrom in read_chdate
+
+[33mcommit 557d9fcdde2c18dd95a3ac8d562900f3eba50039[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sun Jul 28 10:51:58 2019 -0700
+
+    removed curl dependency, added RCurl for R/read_chkdate for simpler file date check
+
+[33mcommit 1a08b46a1b7fb6b7591025ffd8488d263797eac7[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sun Jul 28 10:26:06 2019 -0700
+
+    fixing vignette for package build
+
+[33mcommit d8b8432bcb6509f73285525c42ced260caf0da0a[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Wed Jul 10 10:35:39 2019 -0700
+
+    colorizing discussion
+    https://github.com/tbep-tech/tbep-tech.github.io/issues/3
+
+[33mcommit 155bf0e7ea879eea3d857b51de8a19ae74ff0f70[m
+Merge: 2ce016f 431d60e
+Author: Ben Best <ben@ecoquants.com>
+Date:   Wed Jul 10 10:34:46 2019 -0700
+
+    Merge branch 'master' of https://github.com/tbep-tech/tbeptools
+
+[33mcommit 2ce016f5ce6a19e50a95ae059b6115fa8e4eb2b0[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Wed Jul 10 10:34:40 2019 -0700
+
+    starting in on color coding #3
+
+[33mcommit 431d60e84524227f9b304f130b5cec12c70335b7[m
+Author: esherwoo77 <esherw77@gmail.com>
+Date:   Wed Jul 10 13:05:50 2019 -0400
+
+    Update README.md
+    
+    ... should be Tampa Bay Estuary Program throughout ...
+
+[33mcommit de5cff2efea56f17673ff5f8df60a582269f13b9[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Wed Jul 10 09:57:40 2019 -0700
+
+    cat() to message() for clean dashboard
+
+[33mcommit 15cdb9b1fb2d1c2ab0292602c21bb366bd3e9cf2[m
+Merge: 8345d8e 9f0115d
+Author: Ben Best <ben@ecoquants.com>
+Date:   Tue Jul 9 15:24:49 2019 -0700
+
+    merged and updated + intro vignette
+    
+    Merge branch 'master' of https://github.com/tbep-tech/tbeptools
+    
+    # Conflicts:
+    #       DESCRIPTION
+    #       docs/reference/thrplot.html
+
+[33mcommit 8345d8e9d80da836035f26364f70fa5207cd2f92[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Tue Jul 9 15:22:38 2019 -0700
+
+    + intro vignette
+
+[33mcommit 9f0115db5524e382df63b7a844c024397658880f[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sat Jun 29 18:25:02 2019 -0700
+
+    fixing namespace package build issues
+
+[33mcommit 3b7dd7df8c26f33b5c11f6e498a579bf962f61ac[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sat Jun 29 18:00:31 2019 -0700
+
+    added show_matrix function
+
+[33mcommit 8d3b9586bc066ad60cb01d4803e76f4396eb09e9[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sat Jun 29 15:40:02 2019 -0700
+
+    all functions renamed by families, no more S4 methods
+
+[33mcommit 854ca79b909b8887abaf0238690a9c149dd21a49[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sat Jun 29 14:54:16 2019 -0700
+
+    added read_chkdate function, concepts to site yaml
+
+[33mcommit 8969742ce725f074170d759295f8fb6f86208f85[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Wed Jun 12 11:22:49 2019 -0700
+
+    test app w/in pkg
+
+[33mcommit 34d12deccd450d5b6205aff2010b66bbdb0e8b3a[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Wed Jun 12 09:53:08 2019 -0700
+
+    show method for epcdata has more details
+
+[33mcommit f8b3f68d10e10a502f9862562eebf2e894c15afb[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Fri Jun 7 09:48:25 2019 -0700
+
+    thrplot is now generic for chla and la, no more chlplot
+
+[33mcommit 8de413bbd3dc1540b9f84d399e5bddd5d2242c9b[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu Jun 6 17:46:41 2019 -0700
+
+    added chlplot function for annual means by segment with threshold
+
+[33mcommit 22c92c0d548283e0f2304094602fe9f7ad261c24[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu May 30 15:46:06 2019 -0700
+
+    updated appveyor yml
+
+[33mcommit 49f48b31e60f63c4b22af314a988189281a99d55[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Thu May 30 13:37:25 2019 -0700
+
+    added epcdata s4 class and methods
+
+[33mcommit baac9e1582d5671d5110359a87b90be2a9409ca7[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Tue May 28 12:14:08 2019 -0700
+
+    usethis::use_github_links()
+
+[33mcommit 6f95ca1d6c99974821b01630c151dd72f6bd9391[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Tue May 28 12:02:35 2019 -0700
+
+    .nojekyll
+
+[33mcommit deae7b9009c3b29a782a4d46d799cab1f83ffdac[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Tue May 28 12:00:52 2019 -0700
+
+    pkgdown::build_site()
+
+[33mcommit 797d71ab4bf71c0c4f85ce8d21f2fde007b08bd5[m
+Merge: 779a6dd b3bbe53
+Author: Ben Best <ben@ecoquants.com>
+Date:   Tue May 28 11:53:30 2019 -0700
+
+    Merge branch 'master' of https://github.com/tbep-tech/tbeptools
+
+[33mcommit 779a6dddf8cbf41a853dcc0c28efd60ec26609ef[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Tue May 28 11:53:26 2019 -0700
+
+    tmp
+
+[33mcommit b3bbe535f1900d08dc3d82e11cadaf25d166d92c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Tue May 28 09:39:52 2019 -0700
+
+    added mean_epchc_wq function
+
+[33mcommit 8136615252a867aa321e9090a2f254ca7024ac71[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Tue May 28 08:29:34 2019 -0700
+
+    fixing build issues
+
+[33mcommit eb5a5d33fa1734c4c85790a2b4444a9fdb60ff84[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Sat May 25 00:30:14 2019 -0700
+
+    added load and format functions
+
+[33mcommit 10ea3f1d2bf56185ae67ee8be554fc6a413ae127[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Fri May 24 23:18:52 2019 -0700
+
+    stations doc
+
+[33mcommit 9ed66e3bf27c9e0b722b3ea46f73db46a8be2beb[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Fri May 24 23:00:38 2019 -0700
+
+    added stations data file
+
+[33mcommit 8e4ff6d0ef79c1f760d2ac8308cc5e325d4c1d04[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Fri May 24 22:51:30 2019 -0700
+
+    added targets data file
+
+[33mcommit 03f64ced4e97877271be7a0c2fc5f6887303fd79[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Tue May 7 19:19:03 2019 -0700
+
+    fixes to get_epchc_wq
+
+[33mcommit 4b01283b8fd3dcb3468c1755ca786b2216f7460c[m
+Author: fawda123 <mbafs2012@gmail.com>
+Date:   Tue May 7 18:41:07 2019 -0700
+
+    updating description, license file, continuous integration, get_data function, build fixes
+
+[33mcommit e4a226f7d7a82d29c582718422921e7830b67f5f[m
+Author: Ben Best <ben@ecoquants.com>
+Date:   Thu May 2 11:10:50 2019 -0700
+
+    init R package repo
+
+[33mcommit 8ea1b45c4810749d81045d1cf3e073a528fad0a5[m
+Author: Ben Best <bbest@users.noreply.github.com>
+Date:   Thu May 2 11:03:49 2019 -0700
+
+    Initial commit
