@@ -3,8 +3,8 @@ sudo: false
 cache: packages
 git:
   depth: false
-
-
+apt_packages:
+  - libpoppler-cpp-dev
 notifications:
   email:
     recipients:

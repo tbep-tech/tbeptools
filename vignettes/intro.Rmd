@@ -54,7 +54,7 @@ Functions in tbeptools fall in three categories depending on mode of use.  Each 
 
 The following shows all functions provided in tbeptools, organized by prefix. 
 
-```{r, fig.cap = "Functions provided in tbeptools.", out.width = "80%", echo = F}
+```{r, fig.cap = "Functions provided in tbeptools.", out.width = "70%", echo = F}
 knitr::include_graphics(here("vignettes", "allfuncs.png"))
 ```
 
@@ -79,7 +79,7 @@ library(tbeptools)
 
 After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required arguments that are needed to run the function.
 
-```{r, echo = F, out.width = '80%', fig.cap = "The help file for `read_importwq`."}
+```{r, echo = F, out.width = '70%', fig.cap = "The help file for `read_importwq`."}
 knitr::include_graphics(here('vignettes', 'helpfileex.png'))
 ```
 
