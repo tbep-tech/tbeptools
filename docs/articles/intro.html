@@ -112,7 +112,7 @@ Locations of long-term monitoring stations in Tampa Bay. The Bay is separated in
 </ul>
 <p>The following shows all functions provided in tbeptools, organized by prefix.</p>
 <div class="figure" style="text-align: center">
-<img src="allfuncs.PNG" alt="Functions provided in tbeptools." width="80%"><p class="caption">
+<img src="allfuncs.PNG" alt="Functions provided in tbeptools." width="70%"><p class="caption">
 Functions provided in tbeptools.
 </p>
 </div>
@@ -134,7 +134,7 @@ Searching for functions in tbeptools by typing in the prefix.
 <a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tbeptools)</a></code></pre></div>
 <p>After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., <code><a href="../reference/read_importwq.html">?read_importwq</a></code>, on the console. The help files provide a brief description of what each function does and the required arguments that are needed to run the function.</p>
 <div class="figure" style="text-align: center">
-<img src="helpfileex.png" alt="The help file for `read_importwq`." width="80%"><p class="caption">
+<img src="helpfileex.PNG" alt="The help file for `read_importwq`." width="70%"><p class="caption">
 The help file for <code>read_importwq</code>.
 </p>
 </div>
@@ -163,14 +163,14 @@ The help file for <code>read_importwq</code>.
 #&gt; trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
  length 24562051 bytes (23.4 MB)</code></pre>
 <p>Now we get the same message, but with an indication that file on the server is being downloaded. We’ll have the data downloaded and saved to the <code>epcdata</code> object after it finishes downloading.</p>
-<p>If we try to run the function again after downloading the data from the server, we get the following message. This check is done to make sure that the data are not unecessarily downloaded if the current matches the file on the server.</p>
+<p>If we try to run the function again after downloading the data from the server, we get the following message. This check is done to make sure that the data are not unnecessarily downloaded if the current matches the file on the server.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">ecpdata &lt;-<span class="st"> </span><span class="kw"><a href="../reference/read_importwq.html">read_importwq</a></span>(xlsx, <span class="dt">download_latest_epchc =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>#&gt; File is current...</code></pre>
 <p>Every time that tbeptools is used to work with the monitoring data, <code><a href="../reference/read_importwq.html">read_importwq()</a></code> should be used to import the data. You will always receive the message <code>File is current...</code> if your local file matches the one on the server. However, new data are regularly collected and posted on the server. If <code>download_latest_file = TRUE</code> and your local file is out of date, you will receive the following message:</p>
 <pre><code>#&gt; Replacing local file with current...</code></pre>
 <p>The additional arguments in <code><a href="../reference/read_importwq.html">read_importwq()</a></code> can be used to troubleshoot the download if the connection to the server is unsuccessful. Specifically, <code>connecttimeout</code> specifies the maximum number of seconds to wait before a timeout error occurs. You can try increasing this number from the default of 10 seconds if the connection is unsuccessful, although the connection typically takes only a few seconds if successful. The <code>tryurl</code> argument indicates if the data are requested again from the server if the first attempt is unsuccessful. This is repeated if <code>tryurl = TRUE</code> until a successful connection is made.</p>
 <p>The final argument <code>na</code> indicates which fields in the downloaded spreadsheet are treated as blank values and assigned to <code>NA</code>. Any number of strings can be added to this function to replace fields with <code>NA</code> values.</p>
-<p>After the data are succesfully imported, you can view them from the assigned object:</p>
+<p>After the data are successfully imported, you can view them from the assigned object:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">epcdata</a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="co">#&gt; # A tibble: 25,531 x 11</span></a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="co">#&gt;    bay_segment epchc_station SampleTime             yr    mo Latitude</span></a>
@@ -234,7 +234,7 @@ The help file for <code>read_importwq</code>.
 <a class="sourceLine" id="cb11-31" title="31"><span class="co">#&gt;  9  1974     4 HB          mean_chla 14.6 </span></a>
 <a class="sourceLine" id="cb11-32" title="32"><span class="co">#&gt; 10  1974     4 LTB         mean_chla  1.75</span></a>
 <a class="sourceLine" id="cb11-33" title="33"><span class="co">#&gt; # ... with 8,608 more rows</span></a></code></pre></div>
-<p>This output can then be further analyzed with <code><a href="../reference/anlz_attain.html">anlz_attain()</a></code> to determine if the bay segment outcomes are met in each year.</p>
+<p>This output can then be further analyzed with <code><a href="../reference/anlz_attain.html">anlz_attain()</a></code> to determine if the bay segment outcomes are met in each year. The results are used by the plotting functions described below. In short, the <code>chl_la</code> column indicates the categorical outcome for chlorophyll and light attenuation for each segment. The outcomes are integer values from zero to three. The relative exceedances of water quality thresholds for each segment, both in duration and magnitude, are indicated by higher integer values.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="../reference/anlz_attain.html">anlz_attain</a></span>(avedat)</a>
 <a class="sourceLine" id="cb12-2" title="2"><span class="co">#&gt; # A tibble: 184 x 4</span></a>
 <a class="sourceLine" id="cb12-3" title="3"><span class="co">#&gt;    bay_segment    yr chl_la outcome</span></a>
@@ -250,722 +250,127 @@ The help file for <code>read_importwq</code>.
 <a class="sourceLine" id="cb12-13" title="13"><span class="co">#&gt;  9 HB           1982 3_3    red    </span></a>
 <a class="sourceLine" id="cb12-14" title="14"><span class="co">#&gt; 10 HB           1983 3_0    yellow </span></a>
 <a class="sourceLine" id="cb12-15" title="15"><span class="co">#&gt; # ... with 174 more rows</span></a></code></pre></div>
-<div id="old-tampa-bay" class="section level3">
-<h3 class="hasAnchor">
-<a href="#old-tampa-bay" class="anchor"></a>Old Tampa Bay</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"chla"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/chlplot_otb-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>Similar information can be obtained for individual sites using <code><a href="../reference/anlz_avedatsite.html">anlz_avedatsite()</a></code> and <code><a href="../reference/anlz_attainsite.html">anlz_attainsite()</a></code>. The main difference is that a yes/no column <code>trgmet</code>is added that indicates only if the target was above or below the segment threshold for each site.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="../reference/anlz_avedatsite.html">anlz_avedatsite</a></span>(epcdata) <span class="op">%&gt;%</span><span class="st"> </span>anlz_attainsite</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="co">#&gt; # A tibble: 2,070 x 9</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co">#&gt;    bay_segment epchc_station    yr var     val target smallex thresh</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="co">#&gt;  1 HB                      6  1974 chla   25.6   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="co">#&gt;  2 HB                      6  1975 chla   24.8   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="co">#&gt;  3 HB                      6  1976 chla   33.0   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-8" title="8"><span class="co">#&gt;  4 HB                      6  1977 chla   43.9   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="co">#&gt;  5 HB                      6  1978 chla   28.5   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-10" title="10"><span class="co">#&gt;  6 HB                      6  1979 chla   27.2   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-11" title="11"><span class="co">#&gt;  7 HB                      6  1980 chla   23.8   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-12" title="12"><span class="co">#&gt;  8 HB                      6  1981 chla   41.0   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-13" title="13"><span class="co">#&gt;  9 HB                      6  1982 chla   25.4   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-14" title="14"><span class="co">#&gt; 10 HB                      6  1983 chla   25.9   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-15" title="15"><span class="co">#&gt; # ... with 2,060 more rows, and 1 more variable: trgtmet &lt;chr&gt;</span></a></code></pre></div>
+<p>As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.</p>
 </div>
-<div id="hillsborough-bay" class="section level3">
-<h3 class="hasAnchor">
-<a href="#hillsborough-bay" class="anchor"></a>Hillsborough Bay</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"HB"</span>, <span class="dt">thr =</span> <span class="st">"chla"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/chlplot_hb-1.png" width="768" style="display: block; margin: auto;"></p>
-</div>
-<div id="middle-tampa-bay" class="section level3">
-<h3 class="hasAnchor">
-<a href="#middle-tampa-bay" class="anchor"></a>Middle Tampa Bay</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"MTB"</span>, <span class="dt">thr =</span> <span class="st">"chla"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/chlplot_mtb-1.png" width="768" style="display: block; margin: auto;"></p>
-</div>
-<div id="lower-tampa-bay" class="section level3">
-<h3 class="hasAnchor">
-<a href="#lower-tampa-bay" class="anchor"></a>Lower Tampa Bay</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"LTB"</span>, <span class="dt">thr =</span> <span class="st">"chla"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/chlplot_ltb-1.png" width="768" style="display: block; margin: auto;"></p>
-</div>
-</div>
-<div id="plot-mean-annual-light-attenuation-values-by-bay-segment" class="section level2 tabset">
+<div id="show" class="section level2">
 <h2 class="hasAnchor">
-<a href="#plot-mean-annual-light-attenuation-values-by-bay-segment" class="anchor"></a>Plot Mean Annual Light Attenuation Values by Bay Segment</h2>
-<div id="old-tampa-bay-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#old-tampa-bay-1" class="anchor"></a>Old Tampa Bay</h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/laplot_otb-1.png" width="768" style="display: block; margin: auto;"></p>
+<a href="#show" class="anchor"></a>Show</h2>
+<p>The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:</p>
+<ul>
+<li><p><code><a href="../reference/show_colorizefld.html">show_colorizefld()</a></code>: Colorize a field with gt</p></li>
+<li><p><code><a href="../reference/show_colorizetbl.html">show_colorizetbl()</a></code>: Colorize multiple fields with gt</p></li>
+<li><p><code><a href="../reference/show_matrix.html">show_matrix()</a></code>: Create a colorized table for indicator reporting</p></li>
+<li><p><code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>: Plot annual water quality values and thresholds for a segment</p></li>
+</ul>
+<p>The main functions are <code><a href="../reference/show_matrix.html">show_matrix()</a></code> and <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>, the remainder are used internally in <code><a href="../reference/show_matrix.html">show_matrix()</a></code>.</p>
+<p>External package libraries in R can be used to plot the time series data. Here’s an example using the popular <a href="https://ggplot2.tidyverse.org/">ggplot2</a> package. Some data wrangling with the <a href="https://dplyr.tidyverse.org/">dplyr</a> is done first to filter the data we want to plot.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">toplo &lt;-<span class="st"> </span>epcdata <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(epchc_station <span class="op">==</span><span class="st"> '52'</span>)</a>
+<a class="sourceLine" id="cb14-3" title="3"></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="kw">ggplot</span>(toplo, <span class="kw">aes</span>(<span class="dt">x =</span> SampleTime, <span class="dt">y =</span> chla)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="st">  </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb14-9" title="9">    <span class="dt">y =</span> <span class="st">'Chlorophyll-a concentration (ug/L)'</span>, </a>
+<a class="sourceLine" id="cb14-10" title="10">    <span class="dt">x =</span> <span class="ot">NULL</span>, </a>
+<a class="sourceLine" id="cb14-11" title="11">    <span class="dt">title =</span> <span class="st">'Chlorophyll trends'</span>,</a>
+<a class="sourceLine" id="cb14-12" title="12">    <span class="dt">subtitle =</span> <span class="st">'Hillsborugh Bay station 52, all dates'</span></a>
+<a class="sourceLine" id="cb14-13" title="13">    ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-13-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>The <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code> function provides a more descriptive assessment of annual trends for a chosen bay segment relative to defined targets or thresholds. In this plot we show the annual averages across stations Old Tampa bay (<code>bay_segment = "OTB"</code>) for chlorophyll (<code>thr = "chla"</code>). The red line shows annual trends and the horizontal blue lines indicate the regulator threshold for chlorophyll-a that is specific to Old Tampa Bay. The dashed and dotted blue lines indicate +1 and +2 standard errors for the regulatory threshold. The threshold and standard errors are considered when identifying the annual segment outcome for chlorophyll.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"chla"</span>)</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-14-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>We can show the same plot but for light attenuation by changing the <code>thr = "chla"</code> to `thr = “la”. Note the change in the horizontal reference lines for the light attenuation target.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>)</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-15-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>The year range to plot can also be specified using the <code>yrrng</code> argument, where the default is <code>yrrng = c(1975, 2018)</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>, <span class="dt">yrrng =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2000</span>, <span class="dv">2018</span>))</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-16-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>The <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code> function uses results from the <code><a href="../reference/anlz_avedat.html">anlz_avedat()</a></code> function. For example, you can retrieve the values from the above plot as follows:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">epcdata <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span>anlz_avedat <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="st">  </span>.[[<span class="st">'ann'</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(bay_segment <span class="op">==</span><span class="st"> 'OTB'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(var <span class="op">==</span><span class="st"> 'mean_la'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(yr <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2000</span> <span class="op">&amp;</span><span class="st"> </span>yr <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2018</span>)</a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="co">#&gt; # A tibble: 19 x 4</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="co">#&gt;    bay_segment    yr var       val</span></a>
+<a class="sourceLine" id="cb18-9" title="9"><span class="co">#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb18-10" title="10"><span class="co">#&gt;  1 OTB          2000 mean_la 0.733</span></a>
+<a class="sourceLine" id="cb18-11" title="11"><span class="co">#&gt;  2 OTB          2001 mean_la 0.951</span></a>
+<a class="sourceLine" id="cb18-12" title="12"><span class="co">#&gt;  3 OTB          2002 mean_la 0.927</span></a>
+<a class="sourceLine" id="cb18-13" title="13"><span class="co">#&gt;  4 OTB          2003 mean_la 1.04 </span></a>
+<a class="sourceLine" id="cb18-14" title="14"><span class="co">#&gt;  5 OTB          2004 mean_la 0.878</span></a>
+<a class="sourceLine" id="cb18-15" title="15"><span class="co">#&gt;  6 OTB          2005 mean_la 0.769</span></a>
+<a class="sourceLine" id="cb18-16" title="16"><span class="co">#&gt;  7 OTB          2006 mean_la 0.620</span></a>
+<a class="sourceLine" id="cb18-17" title="17"><span class="co">#&gt;  8 OTB          2007 mean_la 0.677</span></a>
+<a class="sourceLine" id="cb18-18" title="18"><span class="co">#&gt;  9 OTB          2008 mean_la 0.696</span></a>
+<a class="sourceLine" id="cb18-19" title="19"><span class="co">#&gt; 10 OTB          2009 mean_la 0.808</span></a>
+<a class="sourceLine" id="cb18-20" title="20"><span class="co">#&gt; 11 OTB          2010 mean_la 0.842</span></a>
+<a class="sourceLine" id="cb18-21" title="21"><span class="co">#&gt; 12 OTB          2011 mean_la 0.912</span></a>
+<a class="sourceLine" id="cb18-22" title="22"><span class="co">#&gt; 13 OTB          2012 mean_la 0.687</span></a>
+<a class="sourceLine" id="cb18-23" title="23"><span class="co">#&gt; 14 OTB          2013 mean_la 0.567</span></a>
+<a class="sourceLine" id="cb18-24" title="24"><span class="co">#&gt; 15 OTB          2014 mean_la 0.606</span></a>
+<a class="sourceLine" id="cb18-25" title="25"><span class="co">#&gt; 16 OTB          2015 mean_la 0.560</span></a>
+<a class="sourceLine" id="cb18-26" title="26"><span class="co">#&gt; 17 OTB          2016 mean_la 0.575</span></a>
+<a class="sourceLine" id="cb18-27" title="27"><span class="co">#&gt; 18 OTB          2017 mean_la 0.682</span></a>
+<a class="sourceLine" id="cb18-28" title="28"><span class="co">#&gt; 19 OTB          2018 mean_la 0.678</span></a></code></pre></div>
+<p>The <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code> function is useful to understand annual variation in chlorophyll and light attenuation relative to management thresholds and targets for each bay segment. The information from these plots can provide an understanding of how the annual reporting outcomes are determined. As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation. These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>) and duration of the exceedance for the years prior. The following graphic describes this logic <span class="citation">[8]</span>.</p>
+<div class="figure" style="text-align: center">
+<img src="outints.PNG" alt="Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence." width="80%"><p class="caption">
+Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.
+</p>
 </div>
-<div id="hillsborough-bay-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#hillsborough-bay-1" class="anchor"></a>Hillsborough Bay</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"HB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/laplot_hb-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>These outcomes are assigned for both chlorophyll and light attenuation. The duration criteria are determined based on whether the exceedance was observed for years prior to the current year. The exceedance criteria for chlorophyll and light-attenuation are specific to each segment. The tbeptools package contains a <code>targets</code> data file that is a reference for determining annual outcomes. This file is loaded automatically with the package and can be viewed from the command line.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">targets</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="co">#&gt;   bay_segment             name chla_target chla_smallex chla_thresh</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="co">#&gt; 1         OTB    Old Tampa Bay         8.5          8.9         9.3</span></a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="co">#&gt; 2          HB Hillsborough Bay        13.2         14.1        15.0</span></a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="co">#&gt; 3         MTB Middle Tampa Bay         7.4          7.9         8.5</span></a>
+<a class="sourceLine" id="cb19-6" title="6"><span class="co">#&gt; 4         LTB  Lower Tampa Bay         4.6          4.8         5.1</span></a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="co">#&gt;   la_target la_smallex la_thresh</span></a>
+<a class="sourceLine" id="cb19-8" title="8"><span class="co">#&gt; 1      0.83       0.86      0.88</span></a>
+<a class="sourceLine" id="cb19-9" title="9"><span class="co">#&gt; 2      1.58       1.63      1.67</span></a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="co">#&gt; 3      0.83       0.87      0.91</span></a>
+<a class="sourceLine" id="cb19-11" title="11"><span class="co">#&gt; 4      0.63       0.66      0.68</span></a></code></pre></div>
+<p>The final plotting function is <code><a href="../reference/show_matrix.html">show_matrix()</a></code>, which creates an annual reporting matrix that reflects the combined outcomes for chlorophyll and light attenuation. Tracking the attainment of bay segment specific targets for these indicators provides the framework from which bay management actions are developed and initiated. For each year and segment, a color-coded management action is assigned:</p>
+<p><span style="color:#33FF3B"><strong>Stay the Course</strong></span>: Continue planned projects. Report data via annual progress reports and Baywide Environmental Monitoring Report.</p>
+<p><span style="color:#F9FF33"><strong>Caution</strong></span>: Review monitoring data and nitrogen loading estimates. Begin/continue TAC and Management Board development of specific management recommendations.</p>
+<p><span style="color:#FF3333"><strong>On Alert</strong></span>: Finalize development and implement appropriate management actions to get back on track.</p>
+<p>The management category or action is based on the combination of outcomes for chlorophyll and light attenuation <span class="citation">[8]</span>.</p>
+<div class="figure" style="text-align: center">
+<img src="matrixcats.PNG" alt="Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes." width="80%"><p class="caption">
+Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes.
+</p>
 </div>
-<div id="middle-tampa-bay-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#middle-tampa-bay-1" class="anchor"></a>Middle Tampa Bay</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"MTB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/laplot_mtb-1.png" width="768" style="display: block; margin: auto;"></p>
-</div>
-<div id="lower-tampa-bay-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#lower-tampa-bay-1" class="anchor"></a>Lower Tampa Bay</h3>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"LTB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/laplot_ltb-1.png" width="768" style="display: block; margin: auto;"></p>
-</div>
-</div>
-<div id="target-attainment-matrix" class="section level2 tabset">
-<h2 class="hasAnchor">
-<a href="#target-attainment-matrix" class="anchor"></a>Target attainment matrix</h2>
-<div id="numerical-results" class="section level3">
-<h3 class="hasAnchor">
-<a href="#numerical-results" class="anchor"></a>Numerical results</h3>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">avedat &lt;-<span class="st"> </span><span class="kw"><a href="../reference/anlz_avedat.html">anlz_avedat</a></span>(epcdata)</a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="kw"><a href="../reference/anlz_attain.html">anlz_attain</a></span>(avedat, <span class="dt">magdurout =</span> T)</a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="co">#&gt; # A tibble: 372 x 10</span></a>
-<a class="sourceLine" id="cb21-4" title="4"><span class="co">#&gt;    bay_segment    yr var     val target smallex thresh  mags durats outcome</span></a>
-<a class="sourceLine" id="cb21-5" title="5"><span class="co">#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;   &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb21-6" title="6"><span class="co">#&gt;  1 HB           1974 chla   22.4   13.2    14.1     15     2     NA       2</span></a>
-<a class="sourceLine" id="cb21-7" title="7"><span class="co">#&gt;  2 HB           1975 chla   27.9   13.2    14.1     15     2     NA       2</span></a>
-<a class="sourceLine" id="cb21-8" title="8"><span class="co">#&gt;  3 HB           1976 chla   29.5   13.2    14.1     15     2     NA       2</span></a>
-<a class="sourceLine" id="cb21-9" title="9"><span class="co">#&gt;  4 HB           1977 chla   32.5   13.2    14.1     15     2      4       3</span></a>
-<a class="sourceLine" id="cb21-10" title="10"><span class="co">#&gt;  5 HB           1978 chla   22.0   13.2    14.1     15     2      4       3</span></a>
-<a class="sourceLine" id="cb21-11" title="11"><span class="co">#&gt;  6 HB           1979 chla   29.7   13.2    14.1     15     2      4       3</span></a>
-<a class="sourceLine" id="cb21-12" title="12"><span class="co">#&gt;  7 HB           1980 chla   22.6   13.2    14.1     15     2      4       3</span></a>
-<a class="sourceLine" id="cb21-13" title="13"><span class="co">#&gt;  8 HB           1981 chla   31.1   13.2    14.1     15     2      4       3</span></a>
-<a class="sourceLine" id="cb21-14" title="14"><span class="co">#&gt;  9 HB           1982 chla   36.1   13.2    14.1     15     2      4       3</span></a>
-<a class="sourceLine" id="cb21-15" title="15"><span class="co">#&gt; 10 HB           1983 chla   25.9   13.2    14.1     15     2      4       3</span></a>
-<a class="sourceLine" id="cb21-16" title="16"><span class="co">#&gt; # ... with 362 more rows</span></a>
-<a class="sourceLine" id="cb21-17" title="17"><span class="kw"><a href="../reference/anlz_attain.html">anlz_attain</a></span>(avedat)</a>
-<a class="sourceLine" id="cb21-18" title="18"><span class="co">#&gt; # A tibble: 184 x 4</span></a>
-<a class="sourceLine" id="cb21-19" title="19"><span class="co">#&gt;    bay_segment    yr chl_la outcome</span></a>
-<a class="sourceLine" id="cb21-20" title="20"><span class="co">#&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  </span></a>
-<a class="sourceLine" id="cb21-21" title="21"><span class="co">#&gt;  1 HB           1974 2_0    yellow </span></a>
-<a class="sourceLine" id="cb21-22" title="22"><span class="co">#&gt;  2 HB           1975 2_2    red    </span></a>
-<a class="sourceLine" id="cb21-23" title="23"><span class="co">#&gt;  3 HB           1976 2_2    red    </span></a>
-<a class="sourceLine" id="cb21-24" title="24"><span class="co">#&gt;  4 HB           1977 3_2    red    </span></a>
-<a class="sourceLine" id="cb21-25" title="25"><span class="co">#&gt;  5 HB           1978 3_3    red    </span></a>
-<a class="sourceLine" id="cb21-26" title="26"><span class="co">#&gt;  6 HB           1979 3_3    red    </span></a>
-<a class="sourceLine" id="cb21-27" title="27"><span class="co">#&gt;  7 HB           1980 3_3    red    </span></a>
-<a class="sourceLine" id="cb21-28" title="28"><span class="co">#&gt;  8 HB           1981 3_3    red    </span></a>
-<a class="sourceLine" id="cb21-29" title="29"><span class="co">#&gt;  9 HB           1982 3_3    red    </span></a>
-<a class="sourceLine" id="cb21-30" title="30"><span class="co">#&gt; 10 HB           1983 3_0    yellow </span></a>
-<a class="sourceLine" id="cb21-31" title="31"><span class="co">#&gt; # ... with 174 more rows</span></a></code></pre></div>
-</div>
-<div id="table-with-ggplot" class="section level3">
-<h3 class="hasAnchor">
-<a href="#table-with-ggplot" class="anchor"></a>Table with ggplot</h3>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw"><a href="../reference/show_matrix.html">show_matrix</a></span>(epcdata)</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-13-1.png" width="384" style="display: block; margin: auto;"></p>
-</div>
-<div id="table-with-gt" class="section level3">
-<h3 class="hasAnchor">
-<a href="#table-with-gt" class="anchor"></a>Table with gt</h3>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw"><a href="../reference/show_matrix.html">show_matrix</a></span>(epcdata, <span class="dt">tab =</span> T)</a></code></pre></div>
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-#wllpndfvvc .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  background-color: #FFFFFF;
-  /* table.background.color */
-  width: auto;
-  /* table.width */
-  border-top-style: solid;
-  /* table.border.top.style */
-  border-top-width: 2px;
-  /* table.border.top.width */
-  border-top-color: #A8A8A8;
-  /* table.border.top.color */
-  border-bottom-style: solid;
-  /* table.border.bottom.style */
-  border-bottom-width: 2px;
-  /* table.border.bottom.width */
-  border-bottom-color: #A8A8A8;
-  /* table.border.bottom.color */
-}
-
-#wllpndfvvc .gt_heading {
-  background-color: #FFFFFF;
-  /* heading.background.color */
-  border-bottom-color: #FFFFFF;
-}
-
-#wllpndfvvc .gt_title {
-  color: #333333;
-  font-size: 125%;
-  /* heading.title.font.size */
-  padding-top: 4px;
-  /* heading.top.padding - not yet used */
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#wllpndfvvc .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  /* heading.subtitle.font.size */
-  padding-top: 0;
-  padding-bottom: 4px;
-  /* heading.bottom.padding - not yet used */
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#wllpndfvvc .gt_bottom_border {
-  border-bottom-style: solid;
-  /* heading.border.bottom.style */
-  border-bottom-width: 2px;
-  /* heading.border.bottom.width */
-  border-bottom-color: #D3D3D3;
-  /* heading.border.bottom.color */
-}
-
-#wllpndfvvc .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#wllpndfvvc .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  /* column_labels.background.color */
-  font-size: 16px;
-  /* column_labels.font.size */
-  font-weight: initial;
-  /* column_labels.font.weight */
-  vertical-align: middle;
-  padding: 5px;
-  margin: 10px;
-  overflow-x: hidden;
-}
-
-#wllpndfvvc .gt_columns_top_border {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
-
-#wllpndfvvc .gt_columns_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wllpndfvvc .gt_sep_right {
-  border-right: 5px solid #FFFFFF;
-}
-
-#wllpndfvvc .gt_group_heading {
-  padding: 8px;
-  /* row_group.padding */
-  color: #333333;
-  background-color: #FFFFFF;
-  /* row_group.background.color */
-  font-size: 16px;
-  /* row_group.font.size */
-  font-weight: initial;
-  /* row_group.font.weight */
-  border-top-style: solid;
-  /* row_group.border.top.style */
-  border-top-width: 2px;
-  /* row_group.border.top.width */
-  border-top-color: #D3D3D3;
-  /* row_group.border.top.color */
-  border-bottom-style: solid;
-  /* row_group.border.bottom.style */
-  border-bottom-width: 2px;
-  /* row_group.border.bottom.width */
-  border-bottom-color: #D3D3D3;
-  /* row_group.border.bottom.color */
-  vertical-align: middle;
-}
-
-#wllpndfvvc .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  /* row_group.background.color */
-  font-size: 16px;
-  /* row_group.font.size */
-  font-weight: initial;
-  /* row_group.font.weight */
-  border-top-style: solid;
-  /* row_group.border.top.style */
-  border-top-width: 2px;
-  /* row_group.border.top.width */
-  border-top-color: #D3D3D3;
-  /* row_group.border.top.color */
-  border-bottom-style: solid;
-  /* row_group.border.bottom.style */
-  border-bottom-width: 2px;
-  /* row_group.border.bottom.width */
-  border-bottom-color: #D3D3D3;
-  /* row_group.border.bottom.color */
-  vertical-align: middle;
-}
-
-#wllpndfvvc .gt_striped {
-  background-color: #8080800D;
-}
-
-#wllpndfvvc .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#wllpndfvvc .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#wllpndfvvc .gt_row {
-  padding: 8px;
-  /* row.padding */
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#wllpndfvvc .gt_stub {
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
-
-#wllpndfvvc .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  /* summary_row.background.color */
-  padding: 8px;
-  /* summary_row.padding */
-  text-transform: inherit;
-  /* summary_row.text_transform */
-}
-
-#wllpndfvvc .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  /* grand_summary_row.background.color */
-  padding: 8px;
-  /* grand_summary_row.padding */
-  text-transform: inherit;
-  /* grand_summary_row.text_transform */
-}
-
-#wllpndfvvc .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
-
-#wllpndfvvc .gt_first_grand_summary_row {
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#wllpndfvvc .gt_table_body {
-  border-top-style: solid;
-  /* table_body.border.top.style */
-  border-top-width: 2px;
-  /* table_body.border.top.width */
-  border-top-color: #D3D3D3;
-  /* table_body.border.top.color */
-  border-bottom-style: solid;
-  /* table_body.border.bottom.style */
-  border-bottom-width: 2px;
-  /* table_body.border.bottom.width */
-  border-bottom-color: #D3D3D3;
-  /* table_body.border.bottom.color */
-}
-
-#wllpndfvvc .gt_footnotes {
-  border-top-style: solid;
-  /* footnotes.border.top.style */
-  border-top-width: 2px;
-  /* footnotes.border.top.width */
-  border-top-color: #D3D3D3;
-  /* footnotes.border.top.color */
-}
-
-#wllpndfvvc .gt_footnote {
-  font-size: 90%;
-  /* footnote.font.size */
-  margin: 0px;
-  padding: 4px;
-  /* footnote.padding */
-}
-
-#wllpndfvvc .gt_sourcenotes {
-  border-top-style: solid;
-  /* sourcenotes.border.top.style */
-  border-top-width: 2px;
-  /* sourcenotes.border.top.width */
-  border-top-color: #D3D3D3;
-  /* sourcenotes.border.top.color */
-}
-
-#wllpndfvvc .gt_sourcenote {
-  font-size: 90%;
-  /* sourcenote.font.size */
-  padding: 4px;
-  /* sourcenote.padding */
-}
-
-#wllpndfvvc .gt_center {
-  text-align: center;
-}
-
-#wllpndfvvc .gt_left {
-  text-align: left;
-}
-
-#wllpndfvvc .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#wllpndfvvc .gt_font_normal {
-  font-weight: normal;
-}
-
-#wllpndfvvc .gt_font_bold {
-  font-weight: bold;
-}
-
-#wllpndfvvc .gt_font_italic {
-  font-style: italic;
-}
-
-#wllpndfvvc .gt_super {
-  font-size: 65%;
-}
-
-#wllpndfvvc .gt_footnote_marks {
-  font-style: italic;
-  font-size: 65%;
-}
-</style>
-<div id="wllpndfvvc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="table gt_table">
-<tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_center" rowspan="1" colspan="1">Year</th>
-    <th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_left" rowspan="1" colspan="1">OTB</th>
-    <th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_left" rowspan="1" colspan="1">HB</th>
-    <th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_left" rowspan="1" colspan="1">MTB</th>
-    <th class="gt_col_heading gt_columns_bottom_border gt_columns_top_border gt_left" rowspan="1" colspan="1">LTB</th>
-  </tr>
-<tr>
-<td class="gt_row gt_right">1975</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1976</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1977</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1978</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1979</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1980</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1981</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1982</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1983</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1984</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1985</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1986</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1987</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1988</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1989</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1990</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1991</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1992</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1993</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1994</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1995</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1996</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1997</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">1998</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">1999</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2000</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2001</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2002</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2003</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2004</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2005</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2006</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2007</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2008</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2009</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2010</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2011</td>
-      <td class="gt_row gt_left" style="background-color: #FF0000FF; color: #FFFFFFFF;">red</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2012</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2013</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2014</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2015</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2016</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right">2017</td>
-      <td class="gt_row gt_left" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-<tr>
-<td class="gt_row gt_right gt_striped">2018</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #FFFF00FF; color: #000000FF;">yellow</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-      <td class="gt_row gt_left gt_striped" style="background-color: #00FF00FF; color: #000000FF;">green</td>
-    </tr>
-</table></div>
-</div>
+<p>The results can be viewed with <code><a href="../reference/show_matrix.html">show_matrix()</a></code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw"><a href="../reference/show_matrix.html">show_matrix</a></span>(epcdata)</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-21-1.png" width="288" style="display: block; margin: auto;"></p>
+<p>The matrix is also a <code>ggplot</code> object and its layout can be changed using <code>ggplot</code> elements. Note the use of <code>txtsz = NULL</code> to remove the color labels.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw"><a href="../reference/show_matrix.html">show_matrix</a></span>(epcdata, <span class="dt">txtsz =</span> <span class="ot">NULL</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">breaks =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1975</span><span class="op">:</span><span class="dv">2018</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-22-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay. Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay. Conditions began to improve by the late 1980s and earl 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from “stay the course” to “caution”.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
@@ -992,6 +397,9 @@ The help file for <code>read_importwq</code>.
 <div id="ref-TBEP17">
 <p>[7] TBEP (Tampa Bay Estuary Program), Tampa Bay Water Atlas, (2017).</p>
 </div>
+<div id="ref-Janicki99">
+<p>[8] A. Janicki, D. Wade, J.R. Pribble, Development of a process to track the status of chlorophyll and light attenuation to support seagrass restoration goals in Tampa Bay, Tampa Bay National Estuary Program, St. Petersburg, Florida, 1999. <a href="https://tbeptech.org/TBEP_TECH_PUBS/2000/TBEP_04_00Chlor-A.pdf">https://tbeptech.org/TBEP_TECH_PUBS/2000/TBEP_04_00Chlor-A.pdf</a>.</p>
+</div>
 </div>
 </div>
   </div>
@@ -1006,8 +414,7 @@ The help file for <code>read_importwq</code>.
       <li><a href="#installing-tbeptools">Installing tbeptools</a></li>
       <li><a href="#read">Read</a></li>
       <li><a href="#analyze">Analyze</a></li>
-      <li><a href="#plot-mean-annual-light-attenuation-values-by-bay-segment">Plot Mean Annual Light Attenuation Values by Bay Segment</a></li>
-      <li><a href="#target-attainment-matrix">Target attainment matrix</a></li>
+      <li><a href="#show">Show</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>

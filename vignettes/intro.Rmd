@@ -4,7 +4,9 @@ csl: stylefile.csl
 bibliography: refs.bib
 author: "Marcus Beck, Ben Best"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Intro to TBEP Tools}
   %\VignetteEngine{knitr::rmarkdown}
@@ -26,8 +28,12 @@ library(Jabbrev)
 library(bookdown)
 library(english)
 library(magrittr)
+library(ggplot2)
+library(dplyr)
 
 bib_scrp(here('vignettes', 'intro.Rmd'), bib_new = here('vignettes', 'refs.bib'))
+
+# spelling::spell_check_files(here("vignettes", "intro.Rmd"))
 ```
 
 ## Background
@@ -127,7 +133,7 @@ ecpdata <- read_importwq(xlsx, download_latest_epchc = TRUE)
 ```
 Now we get the same message, but with an indication that file on the server is being downloaded. We'll have the data downloaded and saved to the `epcdata` object after it finishes downloading. 
 
-If we try to run the function again after downloading the data from the server, we get the following message.  This check is done to make sure that the data are not unecessarily downloaded if the current matches the file on the server.
+If we try to run the function again after downloading the data from the server, we get the following message.  This check is done to make sure that the data are not unnecessarily downloaded if the current matches the file on the server.
 
 ```{r, eval = F}
 ecpdata <- read_importwq(xlsx, download_latest_epchc = TRUE)
@@ -146,7 +152,7 @@ The additional arguments in `read_importwq()` can be used to troubleshoot the do
 
 The final argument `na` indicates which fields in the downloaded spreadsheet are treated as blank values and assigned to `NA`. Any number of strings can be added to this function to replace fields with `NA` values.  
 
-After the data are succesfully imported, you can view them from the assigned object: 
+After the data are successfully imported, you can view them from the assigned object: 
 
 ```{r epchc_import, echo = F, message = F, include = F}
 # local file path
@@ -182,86 +188,124 @@ avedat <- anlz_avedat(epcdata)
 avedat
 ```
 
-This output can then be further analyzed with `anlz_attain()` to determine if the bay segment outcomes are met in each year.  The results are used by the plotting functions described below.  In short, the `chl_la` column indicates the categorical outcome for chlorophyll and light attenuation for each segment.  The outcomes are integer values from zero to three.  
+This output can then be further analyzed with `anlz_attain()` to determine if the bay segment outcomes are met in each year.  The results are used by the plotting functions described below.  In short, the `chl_la` column indicates the categorical outcome for chlorophyll and light attenuation for each segment.  The outcomes are integer values from zero to three.  The relative exceedances of water quality thresholds for each segment, both in duration and magnitude, are indicated by higher integer values.  
 
 ```{r}
 anlz_attain(avedat)
 ```
 
-The same analysis can be repeated
+Similar information can be obtained for individual sites using `anlz_avedatsite()` and `anlz_attainsite()`.  The main difference is that a yes/no column `trgmet`is added that indicates only if the target was above or below the segment threshold for each site.
 
+```{r}
+anlz_avedatsite(epcdata) %>% anlz_attainsite
+```
 
-### Old Tampa Bay
+As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.
 
-```{r chlplot_otb, fig.height = 5, fig.width = 8}
+## Show 
+
+The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
+
+* `show_colorizefld()`: Colorize a field with gt
+
+* `show_colorizetbl()`: Colorize multiple fields with gt
+
+* `show_matrix()`: Create a colorized table for indicator reporting
+
+* `show_thrplot()`: Plot annual water quality values and thresholds for a segment
+
+The main functions are `show_matrix()` and `show_thrplot()`, the remainder are used internally in `show_matrix()`.
+
+External package libraries in R can be used to plot the time series data.  Here's an example using the popular [ggplot2](https://ggplot2.tidyverse.org/) package.  Some data wrangling with the [dplyr](https://dplyr.tidyverse.org/) is done first to filter the data we want to plot.
+
+```{r, fig.height = 3, fig.width = 8}
+toplo <- epcdata %>% 
+  filter(epchc_station == '52')
+
+ggplot(toplo, aes(x = SampleTime, y = chla)) + 
+  geom_line() + 
+  geom_point() + 
+  scale_y_log10() + 
+  labs(
+    y = 'Chlorophyll-a concentration (ug/L)', 
+    x = NULL, 
+    title = 'Chlorophyll trends',
+    subtitle = 'Hillsborugh Bay station 52, all dates'
+    ) + 
+  theme_bw()
+```
+
+The `show_thrplot()` function provides a more descriptive assessment of annual trends for a chosen bay segment relative to defined targets or thresholds. In this plot we show the annual averages across stations Old Tampa bay (`bay_segment = "OTB"`) for chlorophyll (`thr = "chla"`).  The red line shows annual trends and the horizontal blue lines indicate the regulator threshold for chlorophyll-a that is specific to Old Tampa Bay.  The dashed and dotted blue lines indicate +1 and +2 standard errors for the regulatory threshold.  The threshold and standard errors are considered when identifying the annual segment outcome for chlorophyll.
+
+```{r, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")
 ```
 
-### Hillsborough Bay
+We can show the same plot but for light attenuation by changing the `thr = "chla"` to `thr = "la".  Note the change in the horizontal reference lines for the light attenuation target.
 
-```{r chlplot_hb, fig.height = 5, fig.width = 8}
-show_thrplot(epcdata, bay_segment = "HB", thr = "chla")
-```
-
-### Middle Tampa Bay
-
-```{r chlplot_mtb, fig.height = 5, fig.width = 8}
-show_thrplot(epcdata, bay_segment = "MTB", thr = "chla")
-```
-
-### Lower Tampa Bay
-
-```{r chlplot_ltb, fig.height = 5, fig.width = 8}
-show_thrplot(epcdata, bay_segment = "LTB", thr = "chla")
-```
-
-## Plot Mean Annual Light Attenuation Values by Bay Segment {.tabset}
-
-### Old Tampa Bay
-
-```{r laplot_otb, fig.height = 5, fig.width = 8}
+```{r, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "OTB", thr = "la")
 ```
 
-### Hillsborough Bay
+The year range to plot can also be specified using the `yrrng` argument, where the default is `yrrng = c(1975, 2018)`.
 
-```{r laplot_hb, fig.height = 5, fig.width = 8}
-show_thrplot(epcdata, bay_segment = "HB", thr = "la")
+```{r, fig.height = 5, fig.width = 8}
+show_thrplot(epcdata, bay_segment = "OTB", thr = "la", yrrng = c(2000, 2018))
 ```
 
-### Middle Tampa Bay
+The `show_thrplot()` function uses results from the `anlz_avedat()` function.  For example, you can retrieve the values from the above plot as follows: 
 
-```{r laplot_mtb, fig.height = 5, fig.width = 8}
-show_thrplot(epcdata, bay_segment = "MTB", thr = "la")
+```{r}
+epcdata %>% 
+  anlz_avedat %>% 
+  .[['ann']] %>% 
+  filter(bay_segment == 'OTB') %>% 
+  filter(var == 'mean_la') %>% 
+  filter(yr >= 2000 & yr <= 2018)
 ```
 
-### Lower Tampa Bay
+The `show_thrplot()` function is useful to understand annual variation in chlorophyll and light attenuation relative to management thresholds and targets for each bay segment.  The information from these plots can provide an understanding of how the annual reporting outcomes are determined.  As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation.  These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in `show_thrplot()`) and duration of the exceedance for the years prior.  The following graphic describes this logic [@Janicki99]. 
 
-```{r laplot_ltb, fig.height = 5, fig.width = 8}
-show_thrplot(epcdata, bay_segment = "LTB", thr = "la")
+```{r, echo = F, fig.cap = 'Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.', out.width = '80%'}
+knitr::include_graphics(here('vignettes', 'outints.PNG'))
 ```
 
-## Target attainment matrix {.tabset}
+These outcomes are assigned for both chlorophyll and light attenuation. The duration criteria are determined based on whether the exceedance was observed for years prior to the current year. The exceedance criteria for chlorophyll and light-attenuation are specific to each segment.  The tbeptools package contains a `targets` data file that is a reference for determining annual outcomes.  This file is loaded automatically with the package and can be viewed from the command line.
 
-### Numerical results
-
-```{r, fig.height = 12, fig.width = 4}
-avedat <- anlz_avedat(epcdata)
-anlz_attain(avedat, magdurout = T)
-anlz_attain(avedat)
+```{r}
+targets
 ```
 
-### Table with ggplot
+The final plotting function is `show_matrix()`, which creates an annual reporting matrix that reflects the combined outcomes for chlorophyll and light attenuation. Tracking the attainment of bay segment specific targets for these indicators provides the framework from which bay management actions are developed and initiated.  For each year and segment, a color-coded management action is assigned:
 
-```{r, fig.height = 12, fig.width = 4}
+<span style="color:#33FF3B">__Stay the Course__</span>: Continue planned projects. Report data via annual progress reports and Baywide Environmental Monitoring Report. 
+
+<span style="color:#F9FF33">__Caution__</span>: Review monitoring data and nitrogen loading estimates. Begin/continue TAC and Management Board development of specific management recommendations.
+
+<span style="color:#FF3333">__On Alert__</span>: Finalize development and implement appropriate management actions to get back on track.
+
+The management category or action is based on the combination of outcomes for chlorophyll and light attenuation [@Janicki99].
+
+```{r, out.width = '80%', echo = F, fig.cap = "Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes."}
+knitr::include_graphics(here("vignettes", "matrixcats.PNG"))
+```
+
+The results can be viewed with `show_matrix()`.
+
+```{r, fig.height = 8, fig.width = 3}
 show_matrix(epcdata)
 ```
 
-### Table with gt
+The matrix is also a `ggplot` object and its layout can be changed using `ggplot` elements. Note the use of `txtsz = NULL` to remove the color labels. 
 
-```{r}
-show_matrix(epcdata, tab = T)
+```{r, fig.height = 1.5, fig.width = 8}
+show_matrix(epcdata, txtsz = NULL) +
+  scale_y_continuous(expand = c(0,0), breaks = c(1975:2018)) + 
+  coord_flip() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
+
+From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and earl 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
 
 # References
 
