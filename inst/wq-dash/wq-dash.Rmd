@@ -30,6 +30,13 @@ xlsx <- here('data-raw', '2018_Results_Updated.xls')
 # import data
 epcdata <- read_importwq(xlsx, download_latest_epchc = F)
 
+# minor theme tweaks
+pthm <- theme(
+      axis.text.x = element_text(size = 11, angle = 45, hjust = 1),
+      legend.text = element_text(size = 12), 
+      axis.title.y = element_text(size = 12)
+      )
+
 # locations
 locs <- epcdata %>% 
   select(epchc_station, Longitude, Latitude)
@@ -108,9 +115,11 @@ thrplototb <- reactive({
   req(trginps)
     
   p1 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "chla", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) +
+    pthm
   p2 <- show_thrplot(epcdata, bay_segment = "OTB", thr = "la", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) + 
+    pthm
   
   p1 + p2 + plot_layout(ncol = 1)
   
@@ -125,9 +134,11 @@ thrplothb <- reactive({
   req(trginps)
     
   p1 <- show_thrplot(epcdata, bay_segment = "HB", thr = "chla", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) +
+    pthm
   p2 <- show_thrplot(epcdata, bay_segment = "HB", thr = "la", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) +
+    pthm
   
   p1 + p2 + plot_layout(ncol = 1)
   
@@ -142,9 +153,11 @@ thrplotmtb <- reactive({
   req(trginps)
   
   p1 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "chla", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) +
+    pthm
   p2 <- show_thrplot(epcdata, bay_segment = "MTB", thr = "la", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) +
+    pthm
   
   p1 + p2 + plot_layout(ncol = 1)
   
@@ -159,9 +172,11 @@ thrplotltb <- reactive({
   req(trginps)
   
   p1 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "chla", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) +
+    pthm
   p2 <- show_thrplot(epcdata, bay_segment = "LTB", thr = "la", trgs = trginps) + 
-    ggtitle(NULL)
+    ggtitle(NULL) +
+    pthm
   
   p1 + p2 + plot_layout(ncol = 1)
   
@@ -224,7 +239,10 @@ attmat <- reactive({
   
   req(trginps)
   
-  out <- show_matrix(epcdata, txtsz = NULL, trgs = trginps)
+  out <- show_matrix(epcdata, trgs = trginps) + 
+    theme(
+      axis.text = element_text(size = 12)
+    )
   
   return(out)
   

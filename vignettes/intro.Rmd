@@ -91,7 +91,7 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_thrplot()`: Plot annual water quality values and thresholds for a segment
 
-The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
+The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
 
 ```{r, out.width = '80%', echo = F, fig.cap = "Searching for functions in tbeptools by typing in the prefix."}
 knitr::include_graphics('readauto.png')
@@ -229,7 +229,7 @@ anlz_avedatsite(epcdata) %>% anlz_attainsite
 
 As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.
 
-## Show 
+## Visualize
 
 The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
 
