@@ -30,6 +30,7 @@ library(english)
 library(magrittr)
 library(ggplot2)
 library(dplyr)
+library(knitr)
 
 bib_scrp(here('vignettes', 'intro.Rmd'), bib_new = here('vignettes', 'refs.bib'))
 
@@ -292,8 +293,8 @@ epcdata %>%
 
 The `show_thrplot()` function is useful to understand annual variation in chlorophyll and light attenuation relative to management thresholds and targets for each bay segment.  The information from these plots can provide an understanding of how the annual reporting outcomes are determined.  As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation.  These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in `show_thrplot()`) and duration of the exceedance for the years prior.  The following graphic describes this logic [@Janicki99]. 
 
-```{r, echo = F, fig.cap = 'Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.', out.width = '80%'}
-knitr::include_graphics('outints.png')
+```{r outints, fig.cap = 'Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.', out.width = '80%', echo = F}
+include_graphics('outints.png')
 ```
 
 These outcomes are assigned for both chlorophyll and light attenuation. The duration criteria are determined based on whether the exceedance was observed for years prior to the current year. The exceedance criteria for chlorophyll and light-attenuation are specific to each segment.  The tbeptools package contains a `targets` data file that is a reference for determining annual outcomes.  This file is loaded automatically with the package and can be viewed from the command line.
@@ -312,7 +313,7 @@ The final plotting function is `show_matrix()`, which creates an annual reportin
 
 The management category or action is based on the combination of outcomes for chlorophyll and light attenuation [@Janicki99].
 
-```{r, out.width = '80%', echo = F, fig.cap = "Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes."}
+```{r matrixcats, out.width = '80%', fig.cap = "Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes.", echo = F}
 knitr::include_graphics("matrixcats.png")
 ```
 
