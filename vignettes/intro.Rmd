@@ -44,7 +44,7 @@ The environmental recovery of Tampa Bay is an exceptional success story for coas
 Tracking changes in environmental condition from the past to present day would not have been possible without a long-term monitoring dataset. Data have been collected monthly by the Environmental Protection Commission of Hillsborough County since 1974 [@Sherwood16;@TBEP17].  Samples are taken at forty-five stations using by water collection or monitoring sonde at bottom, mid- or surface depths, depending on parameter.  The locations of monitoring stations are fixed and cover the entire Bay from the uppermost mesohaline sections to the lowermost euhaline portions that have direct interaction with the Gulf of Mexico.  Up to 515 observations are available for different parameters at each station, e.g., nitrogen, chlorophyll-a, and secchi depth. 
 
 ```{r tbmap, out.width = '80%', echo = F, fig.cap = 'Locations of long-term monitoring stations in Tampa Bay. The Bay is separated into four segments defined by chemical, physical, and geopolitical boundaries.'}
-knitr::include_graphics(here('vignettes', 'tb_map.png'))
+knitr::include_graphics(here('docs/articles', 'tb_map.png'))
 ```
 
 ## Package goal
@@ -94,7 +94,7 @@ The following shows all functions provided in tbeptools, organized by prefix.
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
 
 ```{r, out.width = '80%', echo = F, fig.cap = "Searching for functions in tbeptools by typing in the prefix."}
-knitr::include_graphics(here("vignettes", "readauto.png"))
+knitr::include_graphics(here('docs/articles', 'readauto.png'))
 ```
 
 ## Installing tbeptools
@@ -110,10 +110,10 @@ install_github('tbeptools')
 library(tbeptools)
 ```
 
-After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required arguments that are needed to run the function.
+After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required farguments that are needed to run the function.
 
 ```{r, echo = F, out.width = '70%', fig.cap = "The help file for `read_importwq`."}
-knitr::include_graphics(here('vignettes', 'helpfileex.PNG'))
+knitr::include_graphics(here('docs/articles', 'helpfileex.PNG'))
 ```
 
 In the above example, the `read_importwq()` functions accepts six arguments.  All but one argument have default values that change the behavior of the function. In most cases, the default values are appropriate.  The only required argument is `xlsx` that specifies a path where a local excel file is located.  The details of this function are described below. 
@@ -294,7 +294,7 @@ epcdata %>%
 The `show_thrplot()` function is useful to understand annual variation in chlorophyll and light attenuation relative to management thresholds and targets for each bay segment.  The information from these plots can provide an understanding of how the annual reporting outcomes are determined.  As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation.  These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in `show_thrplot()`) and duration of the exceedance for the years prior.  The following graphic describes this logic [@Janicki99]. 
 
 ```{r, echo = F, fig.cap = 'Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.', out.width = '80%'}
-knitr::include_graphics(here('vignettes', 'outints.PNG'))
+knitr::include_graphics(here('docs/articles', 'outints.PNG'))
 ```
 
 These outcomes are assigned for both chlorophyll and light attenuation. The duration criteria are determined based on whether the exceedance was observed for years prior to the current year. The exceedance criteria for chlorophyll and light-attenuation are specific to each segment.  The tbeptools package contains a `targets` data file that is a reference for determining annual outcomes.  This file is loaded automatically with the package and can be viewed from the command line.
@@ -314,7 +314,7 @@ The final plotting function is `show_matrix()`, which creates an annual reportin
 The management category or action is based on the combination of outcomes for chlorophyll and light attenuation [@Janicki99].
 
 ```{r, echo = F, fig.cap = 'Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes.', out.width = '80%'}
-knitr::include_graphics(here('vignettes', 'matrixcats.PNG'))
+knitr::include_graphics(here('docs/articles', 'matrixcats.PNG'))
 ```
 
 The results can be viewed with `show_matrix()`.
