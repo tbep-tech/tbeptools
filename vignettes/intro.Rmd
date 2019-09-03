@@ -60,9 +60,35 @@ Functions in tbeptools fall in three categories depending on mode of use.  Each 
 
 The following shows all functions provided in tbeptools, organized by prefix. 
 
-```{r, fig.cap = "Functions provided in tbeptools.", out.width = "70%", echo = F}
-knitr::include_graphics("allfuncs.png")
-```
+#### Read
+
+* `read_chkdate()`: Compare date of local xlsx file with the same file on the server
+
+* `read_dlcurrent()`: Download latest water quality file from epchc.org
+
+* `read_formwq()`: Format water quality data
+
+* `read_importwq()`: Load local water quality file
+
+#### Analyze
+
+* `anlz_attain()`: Get attainment categories
+
+* `anlz_attainsite()`: Get site attainments
+
+* `anlz_avedat()`: Estimate annual means
+
+* `anlz_avedatsite()`: Estimate annual means by site
+
+#### Show
+
+* `show_colorizefld()`: Colorize a field with gt
+
+* `show_colorizetbl()`: Colorize multiple fields with gt
+
+* `show_matrix()`: Create a colorized table for indicator reporting
+
+* `show_thrplot()`: Plot annual water quality values and thresholds for a segment
 
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
 
@@ -230,7 +256,7 @@ ggplot(toplo, aes(x = SampleTime, y = chla)) +
     y = 'Chlorophyll-a concentration (ug/L)', 
     x = NULL, 
     title = 'Chlorophyll trends',
-    subtitle = 'Hillsborugh Bay station 52, all dates'
+    subtitle = 'Hillsborough Bay station 52, all dates'
     ) + 
   theme_bw()
 ```
@@ -241,7 +267,7 @@ The `show_thrplot()` function provides a more descriptive assessment of annual t
 show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")
 ```
 
-We can show the same plot but for light attenuation by changing the `thr = "chla"` to `thr = "la".  Note the change in the horizontal reference lines for the light attenuation target.
+We can show the same plot but for light attenuation by changing the `thr = "chla"` to `thr = "la"`.  Note the change in the horizontal reference lines for the light attenuation target.
 
 ```{r, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "OTB", thr = "la")
@@ -305,7 +331,7 @@ show_matrix(epcdata, txtsz = NULL) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
 
-From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and earl 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
+From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
 
 # References
 

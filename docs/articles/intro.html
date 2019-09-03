@@ -80,7 +80,7 @@
       <h1>Intro to TBEP Tools</h1>
                         <h4 class="author">Marcus Beck, Ben Best</h4>
             
-            <h4 class="date">2019-09-01</h4>
+            <h4 class="date">2019-09-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tbep-tech/tbeptools/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -111,16 +111,41 @@ Locations of long-term monitoring stations in Tampa Bay. The Bay is separated in
 <li><p><code>show</code>: Create a plot of the analyzed data.</p></li>
 </ul>
 <p>The following shows all functions provided in tbeptools, organized by prefix.</p>
-<div class="figure" style="text-align: center">
-<img src="allfuncs.png" alt="Functions provided in tbeptools." width="70%"><p class="caption">
-Functions provided in tbeptools.
-</p>
+<div id="read" class="section level4">
+<h4 class="hasAnchor">
+<a href="#read" class="anchor"></a>Read</h4>
+<ul>
+<li><p><code><a href="../reference/read_chkdate.html">read_chkdate()</a></code>: Compare date of local xlsx file with the same file on the server</p></li>
+<li><p><code><a href="../reference/read_dlcurrent.html">read_dlcurrent()</a></code>: Download latest water quality file from epchc.org</p></li>
+<li><p><code><a href="../reference/read_formwq.html">read_formwq()</a></code>: Format water quality data</p></li>
+<li><p><code><a href="../reference/read_importwq.html">read_importwq()</a></code>: Load local water quality file</p></li>
+</ul>
 </div>
+<div id="analyze" class="section level4">
+<h4 class="hasAnchor">
+<a href="#analyze" class="anchor"></a>Analyze</h4>
+<ul>
+<li><p><code><a href="../reference/anlz_attain.html">anlz_attain()</a></code>: Get attainment categories</p></li>
+<li><p><code><a href="../reference/anlz_attainsite.html">anlz_attainsite()</a></code>: Get site attainments</p></li>
+<li><p><code><a href="../reference/anlz_avedat.html">anlz_avedat()</a></code>: Estimate annual means</p></li>
+<li><p><code><a href="../reference/anlz_avedatsite.html">anlz_avedatsite()</a></code>: Estimate annual means by site</p></li>
+</ul>
+</div>
+<div id="show" class="section level4">
+<h4 class="hasAnchor">
+<a href="#show" class="anchor"></a>Show</h4>
+<ul>
+<li><p><code><a href="../reference/show_colorizefld.html">show_colorizefld()</a></code>: Colorize a field with gt</p></li>
+<li><p><code><a href="../reference/show_colorizetbl.html">show_colorizetbl()</a></code>: Colorize multiple fields with gt</p></li>
+<li><p><code><a href="../reference/show_matrix.html">show_matrix()</a></code>: Create a colorized table for indicator reporting</p></li>
+<li><p><code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>: Plot annual water quality values and thresholds for a segment</p></li>
+</ul>
 <p>The functions can be easily found in RStudio after loading the package and typing the prefix at the command line. An autofill dialog box will pop up showing all functions that apply the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., <code>read</code>, <code>anlz</code>, or <code>show</code>). For example:</p>
 <div class="figure" style="text-align: center">
 <img src="readauto.png" alt="Searching for functions in tbeptools by typing in the prefix." width="80%"><p class="caption">
 Searching for functions in tbeptools by typing in the prefix.
 </p>
+</div>
 </div>
 </div>
 <div id="installing-tbeptools" class="section level2">
@@ -140,9 +165,9 @@ The help file for <code>read_importwq</code>.
 </div>
 <p>In the above example, the <code><a href="../reference/read_importwq.html">read_importwq()</a></code> functions accepts six arguments. All but one argument have default values that change the behavior of the function. In most cases, the default values are appropriate. The only required argument is <code>xlsx</code> that specifies a path where a local excel file is located. The details of this function are described below.</p>
 </div>
-<div id="read" class="section level2">
+<div id="read-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#read" class="anchor"></a>Read</h2>
+<a href="#read-1" class="anchor"></a>Read</h2>
 <p>There are 4 functions in tbeptools for reading or importing data from the main ftp website listed above:</p>
 <ul>
 <li><p><code><a href="../reference/read_chkdate.html">read_chkdate()</a></code>: Compare date of local xlsx file with the same file on the server</p></li>
@@ -189,9 +214,9 @@ The help file for <code>read_importwq</code>.
 <a class="sourceLine" id="cb10-16" title="16"><span class="co">#&gt; #   Total_Depth_m &lt;dbl&gt;, Sample_Depth_m &lt;dbl&gt;, sd_m &lt;dbl&gt;, chla &lt;dbl&gt;</span></a></code></pre></div>
 <p>These data include the bay segment name, station number, sample time, year, month, latitude, longitude, station depth, sample depth, secchi depth, and chlorophyll. Note that the monitoring data include additional parameters. Chlorophyll and secchi depth are currently the only parameters returned by <code><a href="../reference/read_importwq.html">read_importwq()</a></code> given the reporting indicators used below.</p>
 </div>
-<div id="analyze" class="section level2 tabset">
+<div id="analyze-1" class="section level2 tabset">
 <h2 class="hasAnchor">
-<a href="#analyze" class="anchor"></a>Analyze</h2>
+<a href="#analyze-1" class="anchor"></a>Analyze</h2>
 <p>The analyze functions are used primarily to summarize the data returned by <code><a href="../reference/read_importwq.html">read_importwq()</a></code>.</p>
 <ul>
 <li><p><code><a href="../reference/anlz_attain.html">anlz_attain()</a></code>: Get attainment categories</p></li>
@@ -268,9 +293,9 @@ The help file for <code>read_importwq</code>.
 <a class="sourceLine" id="cb13-15" title="15"><span class="co">#&gt; # ... with 2,060 more rows, and 1 more variable: trgtmet &lt;chr&gt;</span></a></code></pre></div>
 <p>As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.</p>
 </div>
-<div id="show" class="section level2">
+<div id="show-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#show" class="anchor"></a>Show</h2>
+<a href="#show-1" class="anchor"></a>Show</h2>
 <p>The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:</p>
 <ul>
 <li><p><code><a href="../reference/show_colorizefld.html">show_colorizefld()</a></code>: Colorize a field with gt</p></li>
@@ -291,19 +316,19 @@ The help file for <code>read_importwq</code>.
 <a class="sourceLine" id="cb14-9" title="9">    <span class="dt">y =</span> <span class="st">'Chlorophyll-a concentration (ug/L)'</span>, </a>
 <a class="sourceLine" id="cb14-10" title="10">    <span class="dt">x =</span> <span class="ot">NULL</span>, </a>
 <a class="sourceLine" id="cb14-11" title="11">    <span class="dt">title =</span> <span class="st">'Chlorophyll trends'</span>,</a>
-<a class="sourceLine" id="cb14-12" title="12">    <span class="dt">subtitle =</span> <span class="st">'Hillsborugh Bay station 52, all dates'</span></a>
+<a class="sourceLine" id="cb14-12" title="12">    <span class="dt">subtitle =</span> <span class="st">'Hillsborough Bay station 52, all dates'</span></a>
 <a class="sourceLine" id="cb14-13" title="13">    ) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb14-14" title="14"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-13-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-12-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>The <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code> function provides a more descriptive assessment of annual trends for a chosen bay segment relative to defined targets or thresholds. In this plot we show the annual averages across stations Old Tampa bay (<code>bay_segment = "OTB"</code>) for chlorophyll (<code>thr = "chla"</code>). The red line shows annual trends and the horizontal blue lines indicate the regulator threshold for chlorophyll-a that is specific to Old Tampa Bay. The dashed and dotted blue lines indicate +1 and +2 standard errors for the regulatory threshold. The threshold and standard errors are considered when identifying the annual segment outcome for chlorophyll.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"chla"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-14-1.png" width="768" style="display: block; margin: auto;"></p>
-<p>We can show the same plot but for light attenuation by changing the <code>thr = "chla"</code> to `thr = “la”. Note the change in the horizontal reference lines for the light attenuation target.</p>
+<p><img src="intro_files/figure-html/unnamed-chunk-13-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>We can show the same plot but for light attenuation by changing the <code>thr = "chla"</code> to <code>thr = "la"</code>. Note the change in the horizontal reference lines for the light attenuation target.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>)</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-15-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-14-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>The year range to plot can also be specified using the <code>yrrng</code> argument, where the default is <code>yrrng = c(1975, 2018)</code>.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw"><a href="../reference/show_thrplot.html">show_thrplot</a></span>(epcdata, <span class="dt">bay_segment =</span> <span class="st">"OTB"</span>, <span class="dt">thr =</span> <span class="st">"la"</span>, <span class="dt">yrrng =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2000</span>, <span class="dv">2018</span>))</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-16-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-15-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>The <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code> function uses results from the <code><a href="../reference/anlz_avedat.html">anlz_avedat()</a></code> function. For example, you can retrieve the values from the above plot as follows:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">epcdata <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span>anlz_avedat <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -363,14 +388,14 @@ Management action categories assigned to each bay segment and year based on chlo
 </div>
 <p>The results can be viewed with <code><a href="../reference/show_matrix.html">show_matrix()</a></code>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw"><a href="../reference/show_matrix.html">show_matrix</a></span>(epcdata)</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-21-1.png" width="288" style="display: block; margin: auto;"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-20-1.png" width="288" style="display: block; margin: auto;"></p>
 <p>The matrix is also a <code>ggplot</code> object and its layout can be changed using <code>ggplot</code> elements. Note the use of <code>txtsz = NULL</code> to remove the color labels.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw"><a href="../reference/show_matrix.html">show_matrix</a></span>(epcdata, <span class="dt">txtsz =</span> <span class="ot">NULL</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">breaks =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1975</span><span class="op">:</span><span class="dv">2018</span>)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb21-3" title="3"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-22-1.png" width="768" style="display: block; margin: auto;"></p>
-<p>From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay. Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay. Conditions began to improve by the late 1980s and earl 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from “stay the course” to “caution”.</p>
+<p><img src="intro_files/figure-html/unnamed-chunk-21-1.png" width="768" style="display: block; margin: auto;"></p>
+<p>From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay. Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay. Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from “stay the course” to “caution”.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
@@ -412,9 +437,9 @@ Management action categories assigned to each bay segment and year based on chlo
 <li><a href="#background">Background</a></li>
       <li><a href="#package-goal">Package goal</a></li>
       <li><a href="#installing-tbeptools">Installing tbeptools</a></li>
-      <li><a href="#read">Read</a></li>
-      <li><a href="#analyze">Analyze</a></li>
-      <li><a href="#show">Show</a></li>
+      <li><a href="#read-1">Read</a></li>
+      <li><a href="#analyze-1">Analyze</a></li>
+      <li><a href="#show-1">Show</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>
