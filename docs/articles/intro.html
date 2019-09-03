@@ -364,11 +364,6 @@ The help file for <code>read_importwq</code>.
 Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.
 </p>
 </div>
-<center>
-<img src="outints.PNG" alt="Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence." width="80%"><p class="caption">
-Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.
-</p>
-</center>
 <p>These outcomes are assigned for both chlorophyll and light attenuation. The duration criteria are determined based on whether the exceedance was observed for years prior to the current year. The exceedance criteria for chlorophyll and light-attenuation are specific to each segment. The tbeptools package contains a <code>targets</code> data file that is a reference for determining annual outcomes. This file is loaded automatically with the package and can be viewed from the command line.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">targets</a>
 <a class="sourceLine" id="cb19-2" title="2"><span class="co">#&gt;   bay_segment             name chla_target chla_smallex chla_thresh</span></a>
@@ -391,11 +386,6 @@ Outcomes for annual estimates of water quality are assigned an integer value fro
 Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes.
 </p>
 </div>
-<center>
-<img src="matrixcats.PNG" alt="Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes." width="80%"><p class="caption">
-Management action categories assigned to each bay segment and year based on chlorophyll and light attenuation outcomes.
-</p>
-</center>
 <p>The results can be viewed with <code><a href="../reference/show_matrix.html">show_matrix()</a></code>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw"><a href="../reference/show_matrix.html">show_matrix</a></span>(epcdata)</a></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-20-1.png" width="288" style="display: block; margin: auto;"></p>
