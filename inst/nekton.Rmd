@@ -1,0 +1,42 @@
+---
+title: "Nekton Index"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+## Fake data
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+d <- tibble(
+  date = seq(
+    as_date("1998-01-01"), 
+    as_date("2018-01-01"), by = "years"),
+  index = runif(21, 0, 100))
+
+DT::datatable(d)
+```
+
+## Time series plot
+
+- [dygraphs for R](https://rstudio.github.io/dygraphs/)
+
+```{r}
+library(dygraphs)
+library(xts)
+
+as.xts(d$index, order.by=d$date) %>% 
+  dygraph() %>%
+  dyRangeSelector()
+```
