@@ -60,7 +60,8 @@ anlz_attain <- function(avedat, magdurout = FALSE, trgs = NULL){
         durats == 4 & mags == 2 ~ 3L,
         T ~ mags
       )
-    )
+    ) %>%
+    ungroup
 
   if(magdurout)
     return(magdur)

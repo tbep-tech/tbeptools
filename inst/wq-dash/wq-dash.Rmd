@@ -21,6 +21,7 @@ library(shiny)
 library(sf)
 library(scales)
 library(shinyjs)
+library(RColorBrewer)
 
 prj <- '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
 
@@ -39,7 +40,12 @@ pthm <- theme(
 
 # locations
 locs <- epcdata %>% 
-  select(epchc_station, Longitude, Latitude)
+  select(epchc_station, Longitude, Latitude) %>% 
+  unique
+
+# color palette functions for map points
+yespal <- brewer.pal(4, 'Greens') %>% colorRampPalette()
+nopal <- brewer.pal(4, 'Reds') %>% colorRampPalette()
 ```
 
 
@@ -195,13 +201,17 @@ attmap <- reactive({
   # data to map
   toplo <- epcdata %>% 
     anlz_avedatsite %>% 
-    anlz_attainsite(thr = thrsel, trg = trginps, yrrng = yrsel) %>% 
+    anlz_attainsite(thr = thrsel, trg = trginps) %>% 
+    group_by(trgtmet) %>% 
     dplyr::mutate(
+      order = findInterval(val, sort(val)),
       cols = dplyr::case_when(
-        trgtmet == 'yes' ~ 'green', 
-        trgtmet == 'no' ~ 'red'
+        trgtmet == 'yes' ~ yespal(n())[order], 
+        trgtmet == 'no' ~ nopal(n())[order]
       )
     ) %>% 
+    ungroup %>% 
+    filter(yr %in% yrsel) %>% 
     left_join(locs, by = 'epchc_station') %>% 
     st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
 
@@ -222,7 +232,7 @@ attmap <- reactive({
       color = 'black',
       fill = TRUE,
       fillColor = ~cols,
-      radius=~rescale(val, from = scls, to = c(2, 15)),
+      radius=10, #~rescale(val, from = scls, to = c(2, 15)),
       weight = 1,
       fillOpacity = 1,
       label = ~paste0(epchc_station, ' (', trgtmet, ', ', round(val, 2), ')')
@@ -236,7 +246,7 @@ attmat <- reactive({
   
   # input
   trginps <- trginps()
-  
+
   req(trginps)
   
   out <- show_matrix(epcdata, trgs = trginps) + 
