@@ -53,7 +53,7 @@ anlz_attain <- function(avedat, magdurout = FALSE, trgs = NULL){
 
       })
     ) %>%
-    unnest %>%
+    unnest(cols = c(data)) %>%
     mutate(
       outcome = dplyr::case_when(
         is.na(durats) ~ mags,
