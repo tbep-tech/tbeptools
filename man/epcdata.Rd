@@ -3,8 +3,8 @@
 \docType{data}
 \name{epcdata}
 \alias{epcdata}
-\title{All bay data as of 08012019 (Aug 1 2019)}
-\format{A data frame with 25486 rows and 11 variables:
+\title{All bay data as of 11242019 (Nov 24 2019)}
+\format{A data frame with 25534 rows and 11 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{epchc_station}{num}
@@ -22,7 +22,7 @@
 epcdata
 }
 \description{
-All bay data as of 08012019 (Aug 1 2019) retrieved with \code{\link{read_importwq}}
+All bay data as of 11242019 (Nov 24 2019) retrieved with \code{\link{read_importwq}}
 }
 \seealso{
 Other utilities: \code{\link{stations}},
