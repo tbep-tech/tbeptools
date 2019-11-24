@@ -10,7 +10,7 @@
 #' @details used internally in \code{\link{show_matrix}}
 show_colorizetbl <- function(gtbl, exclude_cols="Year", pal=c("green", "yellow", "red")){
 
-  flds <- setdiff(names(gtbl), exclude_cols)
+  flds <- setdiff(names(gtbl$`_data`), exclude_cols)
 
   for (fld in flds){
     gtbl <- show_colorizefld(gtbl, fld, pal)
