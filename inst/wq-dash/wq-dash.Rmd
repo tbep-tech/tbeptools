@@ -25,11 +25,12 @@ library(RColorBrewer)
 
 prj <- '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
 
-# local file path
-xlsx <- here('data-raw', '2018_Results_Updated.xls')
-
-# import data
-epcdata <- read_importwq(xlsx, download_latest_epchc = F)
+# # local file path
+# xlsx <- here('data-raw', '2018_Results_Updated.xls')
+# 
+# # import data
+# epcdata <- read_importwq(xlsx, download_latest_epchc = F)
+load(here::here('data', 'epcdata.RData'))
 
 # minor theme tweaks
 pthm <- theme(
