@@ -3,4 +3,13 @@ pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   intro: intro.html
-
+reference:
+- title: Read
+  contents:
+  - has_concept("read")
+- title: Visualize
+  contents:
+  - has_concept("visualize")
+-title: Analyze
+  contents:
+  - has_concept("analyze")
