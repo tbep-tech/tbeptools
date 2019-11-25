@@ -1,0 +1,35 @@
+pandoc: 2.7.2
+pkgdown: 1.4.1.9000
+pkgdown_sha: af379b9bae1d14189ca260a69115ab3e66a6c5c5
+articles:
+  intro: intro.html
+pandoc: 2.7.2
+reference:
+  - title: Read
+    desc: Import data from EPCHC
+    contents:
+      - read_chkdate
+      - read_dlcurrent
+      - read_formwq
+      - read_importwq
+  - title: Visualize
+    desc: Visualize imported data
+    contents:
+      - show_chlmatrix
+      - show_colorizefld
+      - show_colorizetbl
+      - show_matrix
+      - show_thrplot
+  - title: Analyze
+    desc: Analyze data
+    contents:
+      - anlz_attain
+      - anlz_attainsite
+      - anlz_avedat
+      - anlz_avedatsite
+  - title: Utilities
+    desc: Utility functions
+    contents:
+      - epcdata
+      - stations
+      - targets
