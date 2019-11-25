@@ -22,7 +22,7 @@
 epcdata
 }
 \description{
-All bay data as of 11242019 (Nov 24 2019) retrieved with \code{\link{read_importwq}}
+All bay data as of 11242019 (Nov 24 2019)
 }
 \seealso{
 Other utilities: \code{\link{stations}},

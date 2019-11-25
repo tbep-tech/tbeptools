@@ -28,6 +28,7 @@ Plot annual water quality values and thresholds for a bay segment
 show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
 }
 \seealso{
-Other visualize: \code{\link{show_matrix}}
+Other visualize: \code{\link{show_chlmatrix}},
+  \code{\link{show_matrix}}
 }
 \concept{visualize}

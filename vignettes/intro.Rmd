@@ -332,6 +332,12 @@ show_matrix(epcdata, txtsz = NULL) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
 
+Bay segment exceedances can also be viewed in a matrix using `show_chlmatrix`.  The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).  
+
+```{r, fig.height = 8, fig.width = 3}
+show_chlmatrix(epcdata)
+```
+
 From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
 
 # References
