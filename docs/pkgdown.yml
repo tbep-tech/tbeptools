@@ -1,15 +1,28 @@
 pandoc: 2.7.2
-pkgdown: 1.4.1
-pkgdown_sha: ~
+pkgdown: 1.4.1.9000
+pkgdown_sha: af379b9bae1d14189ca260a69115ab3e66a6c5c5
 articles:
   intro: intro.html
+pandoc: 2.7.2
 reference:
-- title: Read
-  contents:
-  - has_concept("read")
-- title: Visualize
-  contents:
-  - has_concept("visualize")
--title: Analyze
-  contents:
-  - has_concept("analyze")
+  - title: "Read"
+    desc: "Import data from EPCHC"
+    contents:
+      - has_concept("read")
+  - title: "Visualize"
+    desc: "Visualize imported data"
+    contents:
+      - has_concept("visualize")
+  - title: "Analyze"
+    desc: "Analyze data"
+    contents:
+      - has_concept("analyze")
+  - title: "Utilities"
+    desc: "Utility functions"
+    contents:
+      - has_concept("utilities")
+
+
+
+
+

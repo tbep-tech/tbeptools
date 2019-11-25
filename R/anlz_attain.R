@@ -9,6 +9,8 @@
 #' @return A \code{data.frame} for each year and bay segment showing the attainment category
 #' @export
 #'
+#' @family analyze
+#'
 #' @examples
 #' avedat <- anlz_avedat(epcdata)
 #' anlz_attain(avedat)
