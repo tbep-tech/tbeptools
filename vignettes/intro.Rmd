@@ -356,7 +356,7 @@ show_matrix(epcdata, txtsz = NULL) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
 
-Attainment outcomes for a single year can be returned in tabular format with `anlz_yrattain()`.  This table also show segment averages for chlorophyll and light attenuation, including the associated target. 
+Attainment outcomes for a single year can be returned in tabular format with `anlz_yrattain()`.  This table also shows segment averages for chlorophyll and light attenuation, including the associated targets. 
 
 ```{r}
 anlz_yrattain(epcdata, yrsel = 2018)
