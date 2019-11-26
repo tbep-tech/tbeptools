@@ -4,10 +4,12 @@
 \name{stations}
 \alias{stations}
 \title{Bay stations by segment}
-\format{A data frame with 75 rows and 2 variables:
+\format{A data frame with 45 rows and 4 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{epchc_station}{num}
+  \item{Latitude}{num}
+  \item{Longitude}{num}
 }}
 \usage{
 stations

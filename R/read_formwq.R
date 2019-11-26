@@ -23,6 +23,9 @@
 #' }
 read_formwq <- function(datin){
 
+  stations <- stations %>%
+    dplyr::select(epchc_station, bay_segment)
+
   # format
   out <- datin %>%
     dplyr::mutate(
