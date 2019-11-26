@@ -4,18 +4,18 @@
 \alias{show_boxplot}
 \title{Plot monthly chlorophyll values and thresholds for a segment}
 \usage{
-show_boxplot(epcdata, yrcur = NULL, yrrng = c(1975, 2018),
+show_boxplot(epcdata, yrsel = NULL, yrrng = c(1975, 2018),
   ptsz = 0.5, bay_segment = c("OTB", "HB", "MTB", "LTB"),
   trgs = NULL)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
 
-\item{yrcur}{numeric for current year to emphasize, shown as separate red points on the plot}
+\item{yrsel}{numeric for year to emphasize, shown as separate red points on the plot}
 
 \item{yrrng}{numeric vector indicating min, max years to include}
 
-\item{ptsz}{numeric indicating point size of observations not in \code{yrcur}}
+\item{ptsz}{numeric indicating point size of observations not in \code{yrsel}}
 
 \item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"}
 
@@ -28,7 +28,7 @@ A \code{\link[ggplot2]{ggplot}} object
 Plot monthly chlorophyll values and thresholds for a bay segment
 }
 \details{
-Points not included in \code{yrcur} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
+Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
 }
 \examples{
 show_boxplot(epcdata, bay_segment = 'OTB')

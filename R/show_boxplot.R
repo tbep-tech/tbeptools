@@ -3,9 +3,9 @@
 #' @description Plot monthly chlorophyll values and thresholds for a bay segment
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
-#' @param yrcur numeric for current year to emphasize, shown as separate red points on the plot
+#' @param yrsel numeric for year to emphasize, shown as separate red points on the plot
 #' @param yrrng numeric vector indicating min, max years to include
-#' @param ptsz numeric indicating point size of observations not in \code{yrcur}
+#' @param ptsz numeric indicating point size of observations not in \code{yrsel}
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #'
@@ -14,7 +14,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #'
 #' @details
-#' Points not included in \code{yrcur} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
+#' Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
 #'
 #' @export
 #'
@@ -25,15 +25,15 @@
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
-show_boxplot <- function(epcdata, yrcur = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL){
+show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL){
 
   # default targets from data file
   if(is.null(trgs))
     trgs <- targets
 
   # select curyr as max of yrrng if null
-  if(is.null(yrcur))
-    yrcur <- max(yrrng)
+  if(is.null(yrsel))
+    yrsel <- max(yrrng)
 
   # segment
   bay_segment <- match.arg(bay_segment)
@@ -54,11 +54,13 @@ show_boxplot <- function(epcdata, yrcur = NULL, yrrng = c(1975, 2018), ptsz = 0.
 
   # yrrng not in epcdata
   if(any(!yrrng %in% aves$yr))
-    stop(paste('Check yrrng is within', paste(range(aves$yr), collapse = '-')))
+    stop(paste('Check yrrng is within', paste(range(aves$yr, na.rm = TRUE), collapse = '-')))
 
-  # yrcur not in epcdata
-  if(!yrcur %in% aves$yr)
-    stop(paste('Check yrcur is withing', paste(range(aves$yr), collapse = '-')))
+  # yrsel not in epcdata
+  if(!yrsel %in% epcdata$yr)
+    stop(paste('Check yrsel is within', paste(range(epcdata$yr, na.rm = TRUE), collapse = '-')))
+
+
 
   # axis label
   axlab <- expression("Mean Monthly Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")")
@@ -79,21 +81,21 @@ show_boxplot <- function(epcdata, yrcur = NULL, yrrng = c(1975, 2018), ptsz = 0.
   # toplo1 is all but current year
   toplo1 <- aves %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    dplyr::filter(!yr %in% yrcur)
+    dplyr::filter(!yr %in% yrsel)
 
   # toplo2 is current year
   toplo2 <- aves %>%
-    dplyr::filter(yr %in% yrcur)
+    dplyr::filter(yr %in% yrsel)
 
   # colors and legend names
   cols <- c("black", "red")
   names(cols)[1] <- case_when(
-    yrcur == yrrng[1] ~ paste(yrrng[1] + 1, yrrng[2], sep = '-'),
-    yrcur == yrrng[2] ~ paste(yrrng[1], yrrng[2] - 1, sep = '-'),
-    yrcur > yrrng[1] & yrcur < yrrng[2] ~ paste(paste(yrrng[1], yrcur - 1, sep = '-'), paste(yrcur + 1, yrrng[2], sep = '-'), sep = ', '),
+    yrsel == yrrng[1] ~ paste(yrrng[1] + 1, yrrng[2], sep = '-'),
+    yrsel == yrrng[2] ~ paste(yrrng[1], yrrng[2] - 1, sep = '-'),
+    yrsel > yrrng[1] & yrsel < yrrng[2] ~ paste(paste(yrrng[1], yrsel - 1, sep = '-'), paste(yrsel + 1, yrrng[2], sep = '-'), sep = ', '),
     T ~ paste(yrrng, collapse = '-')
   )
-  names(cols)[2] <- as.character(yrcur)
+  names(cols)[2] <- as.character(yrsel)
 
   p <- ggplot() +
     geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA) +

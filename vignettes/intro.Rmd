@@ -81,6 +81,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_yrattain()`: Get attainment categories for a selected year
+
 #### Show
 
 * `show_chlmatrix()`: Create a colorized table for chlorophyll annual exceedances by bay segment
@@ -210,6 +212,8 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_yrattain()`: Get attainment categories for a selected year
+
 The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
 
 Here we use `anlz_avedat()` to summarize the data by bay segment to estimate annual and monthly means for chlorophyll and light attenuation.  The output is a two-element list for the annual (`ann`) and monthly (`mos`) means by segment.
@@ -233,19 +237,23 @@ anlz_avedatsite(epcdata) %>% anlz_attainsite
 
 As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.
 
-## Visualize
+## Show
 
 The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
+
+* `show_chlmatrix()`: Create a colorized table for chlorophyll annual exceedances by bay segment
 
 * `show_colorizefld()`: Colorize a field with gt
 
 * `show_colorizetbl()`: Colorize multiple fields with gt
 
+* `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
+
 * `show_matrix()`: Create a colorized table for indicator reporting
 
 * `show_thrplot()`: Plot annual water quality values and thresholds for a segment
 
-The main functions are `show_matrix()` and `show_thrplot()`, the remainder are used internally in `show_matrix()`.
+The main functions are `show_boxplot()`, `show_chlmatrix()`, `show_matrix()`, and `show_thrplot()`. The remainder are used internally in `show_matrix()`.
 
 External package libraries in R can be used to plot the time series data.  Here's an example using the popular [ggplot2](https://ggplot2.tidyverse.org/) package.  Some data wrangling with the [dplyr](https://dplyr.tidyverse.org/) is done first to filter the data we want to plot.
 
@@ -301,10 +309,10 @@ Similarly, the `show_boxplot()` function provides an assessment of seasonal chan
 show_boxplot(epcdata, bay_segment = "OTB")
 ```
 
-A different subset of years and selected year of interest can also be viewed by changing the `yrrng` and `yrcur` arguments.  Here we show 1980 compared to monthly averages for the last ten years. 
+A different subset of years and selected year of interest can also be viewed by changing the `yrrng` and `yrsel` arguments.  Here we show 1980 compared to monthly averages for the last ten years. 
 
 ```{r, fig.height = 5, fig.width = 8}
-show_boxplot(epcdata, bay_segment = "OTB", yrrng = c(2008, 2018), yrcur = 1980)
+show_boxplot(epcdata, bay_segment = "OTB", yrrng = c(2008, 2018), yrsel = 1980)
 ```
 
 The `show_thrplot()` function is useful to understand annual variation in chlorophyll and light attenuation relative to management thresholds and targets for each bay segment.  The information from these plots can provide an understanding of how the annual reporting outcomes are determined.  As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation.  These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in `show_thrplot()`) and duration of the exceedance for the years prior.  The following graphic describes this logic [@Janicki99]. 
@@ -346,6 +354,12 @@ show_matrix(epcdata, txtsz = NULL) +
   scale_y_continuous(expand = c(0,0), breaks = c(1975:2018)) + 
   coord_flip() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
+```
+
+Attainment outcomes for a single year can be returned in tabular format with `anlz_yrattain()`.  This table also show segment averages for chlorophyll and light attenuation, including the associated target. 
+
+```{r}
+anlz_yrattain(epcdata, yrsel = 2018)
 ```
 
 Bay segment exceedances can also be viewed in a matrix using `show_chlmatrix`.  The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).  

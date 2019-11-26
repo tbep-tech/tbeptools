@@ -21,6 +21,7 @@ anlz_avedat(epcdata)
 }
 \seealso{
 Other analyze: \code{\link{anlz_attain}},
-  \code{\link{anlz_avedatsite}}
+  \code{\link{anlz_avedatsite}},
+  \code{\link{anlz_yrattain}}
 }
 \concept{analyze}
