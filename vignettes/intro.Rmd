@@ -83,9 +83,13 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 #### Show
 
+* `show_chlmatrix`: Create a colorized table for chlorophyll annual exceedances by bay segment
+
 * `show_colorizefld()`: Colorize a field with gt
 
 * `show_colorizetbl()`: Colorize multiple fields with gt
+
+* `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
