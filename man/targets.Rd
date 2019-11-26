@@ -23,7 +23,7 @@ Bay segment specific management targets including low and high magnitude exceeda
 }
 \seealso{
 Other utilities: \code{\link{epcdata}},
-  \code{\link{stations}}
+  \code{\link{stations}}, \code{\link{tbseg}}
 }
 \concept{utilities}
 \keyword{datasets}

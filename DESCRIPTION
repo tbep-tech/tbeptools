@@ -26,7 +26,7 @@ Imports:
   purrr,
   readxl,
   RCurl,
-  scales,
+  sf,
   tidyr,
   gt
 Remotes:
