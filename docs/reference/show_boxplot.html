@@ -126,8 +126,9 @@
     <p>Plot monthly chlorophyll values and thresholds for a bay segment</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_boxplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
-  <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>))</pre>
+    <pre class="usage"><span class='fu'>show_boxplot</span>(<span class='no'>epcdata</span>, <span class='kw'>yrcur</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>),
+  <span class='kw'>ptsz</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
+  <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,6 +138,18 @@
       <td><p>data frame of epc data returned by <code><a href='read_importwq.html'>read_importwq</a></code></p></td>
     </tr>
     <tr>
+      <th>yrcur</th>
+      <td><p>numeric for current year to emphasize, shown as separate red points on the plot</p></td>
+    </tr>
+    <tr>
+      <th>yrrng</th>
+      <td><p>numeric vector indicating min, max years to include</p></td>
+    </tr>
+    <tr>
+      <th>ptsz</th>
+      <td><p>numeric indicating point size of observations not in <code>yrcur</code></p></td>
+    </tr>
+    <tr>
       <th>bay_segment</th>
       <td><p>chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"</p></td>
     </tr>
@@ -144,32 +157,28 @@
       <th>trgs</th>
       <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code></p></td>
     </tr>
-    <tr>
-      <th>yrrng</th>
-      <td><p>numeric vector indicating min, max years to include</p></td>
-    </tr>
-    <tr>
-      <th>yrcur</th>
-      <td><p>numeric for current year to emphasize, shown as separate red points on the plot</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Points not included in <code>yrcur</code> are plotted over the box plots using <code>ggbeeswarm{geom_beeswarm}</code>. Use <code>ptsz = -1</code> to suppress.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: <code><a href='show_chlmatrix.html'>show_chlmatrix</a></code>,
   <code><a href='show_matrix.html'>show_matrix</a></code>, <code><a href='show_thrplot.html'>show_thrplot</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>show_boxplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='st'>'OTB'</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 12 rows containing missing values (geom_point).</span></div><div class='output co'>#&gt; <span class='error'>Error in `[[&lt;-.data.frame`(`*tmp*`, i, value = c(19, NA, NA, NA)): replacement has 4 rows, data has 2</span></div><div class='img'><img src='show_boxplot-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>show_boxplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='st'>'OTB'</span>)</div><div class='img'><img src='show_boxplot-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -4,40 +4,61 @@
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param yrcur numeric for current year to emphasize, shown as separate red points on the plot
+#' @param yrrng numeric vector indicating min, max years to include
+#' @param ptsz numeric indicating point size of observations not in \code{yrcur}
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
-#' @param yrrng numeric vector indicating min, max years to include
 #'
 #' @family visualize
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #'
+#' @details
+#' Points not included in \code{yrcur} are plotted over the box plots using \code{\link{ggbeeswarm}{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
+#'
 #' @export
 #'
 #' @import ggplot2
+#' @importFrom ggbeeswarm geom_beeswarm
 #' @importFrom lubridate month
 #' @importFrom magrittr "%>%"
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
-show_boxplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL, yrrng = c(1975, 2018)){
+show_boxplot <- function(epcdata, yrcur = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL){
 
   # default targets from data file
   if(is.null(trgs))
     trgs <- targets
 
-  # yrrng must be in ascending order
-  if(yrrng[1] >= yrrng[2])
-    stop('yrrng argument must be in ascending order, e.g., c(1975, 2018)')
+  # select curyr as max of yrrng if null
+  if(is.null(yrcur))
+    yrcur <- max(yrrng)
 
   # segment
   bay_segment <- match.arg(bay_segment)
 
-  # most recent year to emphasize
-  curyr <- max(yrrng)
-
   # monthly averages
-  aves <- anlz_avedat(epcdata)
+  aves <- anlz_avedat(epcdata) %>%
+    .$'mos' %>%
+    dplyr::filter(var %in% 'mean_chla') %>%
+    dplyr::filter(bay_segment == !!bay_segment) %>%
+    dplyr::mutate(
+      var = 'yval',
+      mo = month(mo, label = T)
+    )
+
+  # yrrng must be in ascending order
+  if(yrrng[1] >= yrrng[2])
+    stop('yrrng argument must be in ascending order, e.g., c(1975, 2018)')
+
+  # yrrng not in epcdata
+  if(any(!yrrng %in% aves$yr))
+    stop(paste('Check yrrng is within', paste(range(aves$yr), collapse = '-')))
+
+  # yrcur not in epcdata
+  if(!yrcur %in% aves$yr)
+    stop(paste('Check yrcur is withing', paste(range(aves$yr), collapse = '-')))
 
   # axis label
   axlab <- expression("Mean Monthly Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")")
@@ -50,40 +71,36 @@ show_boxplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), tr
   # threshold label
   trglab <- paste(thrnum, "~ mu * g%.%L^{-1}")
 
-
   # bay segment plot title
   ttl <- trgs %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::pull(name)
 
-  # get data to plot
-  toplo <- aves$mo %>%
-    dplyr::filter(var %in% 'mean_chla') %>%
-    dplyr::filter(bay_segment == !!bay_segment) %>%
-    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    dplyr::mutate(
-      var = 'yval',
-      mo = month(mo, label = T)
-    )
-
   # toplo1 is all but current year
-  toplo1 <- toplo %>%
-    dplyr::filter(!yr %in% curyr)
+  toplo1 <- aves %>%
+    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
+    dplyr::filter(!yr %in% yrcur)
 
   # toplo2 is current year
-  toplo2 <- toplo %>%
-    dplyr::filter(yr %in% curyr)
+  toplo2 <- aves %>%
+    dplyr::filter(yr %in% yrcur)
 
-  # colors
-  cols <- c("yrrng" = "black", "curyr" = "blue")
-  names(cols)[1] <- paste(yrrng, collapse = ', ')
-  names(cols)[2] <- as.character(curyr)
+  # colors and legend names
+  cols <- c("black", "red")
+  names(cols)[1] <- case_when(
+    yrcur == yrrng[1] ~ paste(yrrng[1] + 1, yrrng[2], sep = '-'),
+    yrcur == yrrng[2] ~ paste(yrrng[1], yrrng[2] - 1, sep = '-'),
+    yrcur > yrrng[1] & yrcur < yrrng[2] ~ paste(paste(yrrng[1], yrcur - 1, sep = '-'), paste(yrcur + 1, yrrng[2], sep = '-'), sep = ', '),
+    T ~ paste(yrrng, collapse = '-')
+  )
+  names(cols)[2] <- as.character(yrcur)
 
   p <- ggplot() +
-    geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = 'yrrng')) +
-    geom_point(data = toplo2, aes(x = mo, y = val, colour = 'curyr')) +
-    geom_hline(aes(yintercept = thrnum)) +
-    geom_text(aes(x = factor('Jan'), thrnum), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1) +
+    geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA) +
+    geom_beeswarm(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), size = ptsz) +
+    geom_point(data = toplo2, aes(x = mo, y = val, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
+    geom_hline(aes(yintercept = thrnum, linetype = '+2 se'), colour = 'blue') +
+    geom_text(aes(x = factor('Jan'), max(aves$val)), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue') +
     labs(y = axlab, title = ttl) +
     theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),
@@ -91,17 +108,12 @@ show_boxplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), tr
           legend.position = 'top',#c(0.85, 0.95),
           legend.background = element_rect(fill=NA),
           legend.title = element_blank(),
-          axis.text.x = element_text(angle = 45, size = 7, hjust = 1)
+          axis.text.x = element_text(angle = 45, size = 8, hjust = 1)
     ) +
-    scale_colour_manual(values = cols, labels = factor(names(cols), levels = names(cols))) +
-    guides(colour = guide_legend(
-      override.aes = list(
-        shape = c(19, NA, NA, NA),
-        colour = cols,
-        linetype = c('solid', 'solid', 'dashed', 'dotted'),
-        size = c(0.75, 0.5, 0.5, 0.5)
-      )
-    ))
+    scale_colour_manual(values = cols[1]) +
+    scale_fill_manual(values = cols[2]) +
+    scale_linetype_manual(values = 'dotted') +
+    guides(linetype = guide_legend(override.aes = list(colour = 'blue')))
 
   return(p)
 

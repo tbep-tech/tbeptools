@@ -19,6 +19,7 @@ Depends:
   methods
 Imports:
   dplyr,
+  ggbeeswarm,
   lubridate,
   magrittr,
   ggplot2,

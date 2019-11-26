@@ -26,7 +26,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     trgs <- targets
 
   # yrrng must be in ascending order
-  if(yrrng[1] >= yrng[2])
+  if(yrrng[1] >= yrrng[2])
     stop('yrrng argument must be in ascending order, e.g., c(1975, 2018)')
 
   # segment
