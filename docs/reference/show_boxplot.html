@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a colorized table for chlorophyll exceedances — show_chlmatrix • tbeptools</title>
+<title>Plot monthly chlorophyll values and thresholds for a segment — show_boxplot • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Create a colorized table for chlorophyll exceedances — show_chlmatrix" />
-<meta property="og:description" content="Create a colorized table for chlorophyll exceedances" />
+<meta property="og:title" content="Plot monthly chlorophyll values and thresholds for a segment — show_boxplot" />
+<meta property="og:description" content="Plot monthly chlorophyll values and thresholds for a bay segment" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,17 +117,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a colorized table for chlorophyll exceedances</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_chlmatrix.R'><code>R/show_chlmatrix.R</code></a></small>
-    <div class="hidden name"><code>show_chlmatrix.Rd</code></div>
+    <h1>Plot monthly chlorophyll values and thresholds for a segment</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_boxplot.R'><code>R/show_boxplot.R</code></a></small>
+    <div class="hidden name"><code>show_boxplot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a colorized table for chlorophyll exceedances</p>
+    <p>Plot monthly chlorophyll values and thresholds for a bay segment</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_chlmatrix</span>(<span class='no'>epcdata</span>, <span class='kw'>tab</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>txtsz</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>))</pre>
+    <pre class="usage"><span class='fu'>show_boxplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
+  <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,12 +137,8 @@
       <td><p>data frame of epc data returned by <code><a href='read_importwq.html'>read_importwq</a></code></p></td>
     </tr>
     <tr>
-      <th>tab</th>
-      <td><p>logical indicating if a <code>gt_tbl</code> object is returned</p></td>
-    </tr>
-    <tr>
-      <th>txtsz</th>
-      <td><p>numeric for size of text in the plot, applies only if <code>tab = FALSE</code></p></td>
+      <th>bay_segment</th>
+      <td><p>chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"</p></td>
     </tr>
     <tr>
       <th>trgs</th>
@@ -152,19 +148,22 @@
       <th>yrrng</th>
       <td><p>numeric vector indicating min, max years to include</p></td>
     </tr>
+    <tr>
+      <th>yrcur</th>
+      <td><p>numeric for current year to emphasize, shown as separate red points on the plot</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>gt_tbl</code> if <code>tab = TRUE</code>, otherwise a <code>ggplot</code> object is returned, both have similar appearances</p>
+    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></code>, <code><a href='show_matrix.html'>show_matrix</a></code></p>
-<p>Other visualize: <code><a href='show_boxplot.html'>show_boxplot</a></code>,
+    <div class='dont-index'><p>Other visualize: <code><a href='show_chlmatrix.html'>show_chlmatrix</a></code>,
   <code><a href='show_matrix.html'>show_matrix</a></code>, <code><a href='show_thrplot.html'>show_thrplot</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>show_chlmatrix</span>(<span class='no'>epcdata</span>)</div><div class='img'><img src='show_chlmatrix-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>show_boxplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='st'>'OTB'</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 12 rows containing missing values (geom_point).</span></div><div class='output co'>#&gt; <span class='error'>Error in `[[&lt;-.data.frame`(`*tmp*`, i, value = c(19, NA, NA, NA)): replacement has 4 rows, data has 2</span></div><div class='img'><img src='show_boxplot-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
