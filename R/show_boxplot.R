@@ -14,7 +14,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #'
 #' @details
-#' Points not included in \code{yrcur} are plotted over the box plots using \code{\link{ggbeeswarm}{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
+#' Points not included in \code{yrcur} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
 #'
 #' @export
 #'
