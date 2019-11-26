@@ -20,6 +20,7 @@ Estimate annual means for chlorophyll and secchi data
 anlz_avedat(epcdata)
 }
 \seealso{
-Other analyze: \code{\link{anlz_avedatsite}}
+Other analyze: \code{\link{anlz_attain}},
+  \code{\link{anlz_avedatsite}}
 }
 \concept{analyze}

@@ -23,3 +23,8 @@ Get attainment categories for each year and bay segment using chlorophyll and li
 avedat <- anlz_avedat(epcdata)
 anlz_attain(avedat)
 }
+\seealso{
+Other analyze: \code{\link{anlz_avedatsite}},
+  \code{\link{anlz_avedat}}
+}
+\concept{analyze}

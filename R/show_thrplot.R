@@ -4,7 +4,7 @@
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
-#' @param thr chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability
+#' @param thr chr string indicating which water quality value and appropriate threshold to plot, one of "chl" for chlorophyll and "la" for light availability
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
 #'
@@ -24,6 +24,10 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   # default targets from data file
   if(is.null(trgs))
     trgs <- targets
+
+  # yrrng must be in ascending order
+  if(yrrng[1] >= yrng[2])
+    stop('yrrng argument must be in ascending order, e.g., c(1975, 2018)')
 
   # segment
   bay_segment <- match.arg(bay_segment)

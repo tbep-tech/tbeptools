@@ -12,7 +12,7 @@ show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 
 \item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"}
 
-\item{thr}{chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability}
+\item{thr}{chr string indicating which water quality value and appropriate threshold to plot, one of "chl" for chlorophyll and "la" for light availability}
 
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
@@ -28,7 +28,7 @@ Plot annual water quality values and thresholds for a bay segment
 show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
 }
 \seealso{
-Other visualize: \code{\link{show_chlmatrix}},
-  \code{\link{show_matrix}}
+Other visualize: \code{\link{show_boxplot}},
+  \code{\link{show_chlmatrix}}, \code{\link{show_matrix}}
 }
 \concept{visualize}

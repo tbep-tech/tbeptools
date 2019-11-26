@@ -30,7 +30,7 @@ show_chlmatrix(epcdata)
 \seealso{
 \code{\link[gt]{gt}}, \code{\link{show_matrix}}
 
-Other visualize: \code{\link{show_matrix}},
-  \code{\link{show_thrplot}}
+Other visualize: \code{\link{show_boxplot}},
+  \code{\link{show_matrix}}, \code{\link{show_thrplot}}
 }
 \concept{visualize}
