@@ -3,16 +3,15 @@
 #' @description Create a colorized table for chlorophyll exceedances
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
-#' @param tab logical indicating if a \code{gt_tbl} object is returned
 #' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
 #'
 #' @family visualize
 #'
-#' @return An object of class \code{gt_tbl} if \code{tab = TRUE}, otherwise a \code{ggplot} object is returned, both have similar appearances
+#' @return A static \code{ggplot} object is returned
 #'
-#' @seealso \code{\link[gt]{gt}}, \code{\link{show_matrix}}
+#' @seealso \code{\link{show_matrix}}
 #' @export
 #'
 #' @importFrom magrittr "%>%"
@@ -21,7 +20,7 @@
 #'
 #' @examples
 #' show_chlmatrix(epcdata)
-show_chlmatrix <- function(epcdata, tab = FALSE, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018)){
+show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018)){
 
   # default targets from data file
   if(is.null(trgs))
@@ -42,21 +41,6 @@ show_chlmatrix <- function(epcdata, tab = FALSE, txtsz = 3, trgs = NULL, yrrng =
         val >= chla_thresh ~ 'red'
       )
     )
-
-  # gt table
-  if(tab){
-
-    # make the table
-    tab <- toplo %>%
-      dplyr::select(-var, -chla_thresh, -val) %>%
-      tidyr::spread(bay_segment, outcome) %>%
-      dplyr::rename(Year = yr) %>%
-      gt::gt() %>%
-      show_colorizetbl()
-
-    return(tab)
-
-  }
 
   # ggplot
   p <- ggplot(toplo, aes(x = bay_segment, y = yr)) +

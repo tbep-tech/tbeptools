@@ -87,10 +87,6 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_chlmatrix()`: Create a colorized table for chlorophyll annual exceedances by bay segment
 
-* `show_colorizefld()`: Colorize a field with gt
-
-* `show_colorizetbl()`: Colorize multiple fields with gt
-
 * `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
 
 * `show_matrix()`: Create a colorized table for indicator reporting
@@ -243,17 +239,11 @@ The plotting functions are used to view long-term trends for each bay segment an
 
 * `show_chlmatrix()`: Create a colorized table for chlorophyll annual exceedances by bay segment
 
-* `show_colorizefld()`: Colorize a field with gt
-
-* `show_colorizetbl()`: Colorize multiple fields with gt
-
 * `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
 * `show_thrplot()`: Plot annual water quality values and thresholds for a segment
-
-The main functions are `show_boxplot()`, `show_chlmatrix()`, `show_matrix()`, and `show_thrplot()`. The remainder are used internally in `show_matrix()`.
 
 External package libraries in R can be used to plot the time series data.  Here's an example using the popular [ggplot2](https://ggplot2.tidyverse.org/) package.  Some data wrangling with the [dplyr](https://dplyr.tidyverse.org/) is done first to filter the data we want to plot.
 

@@ -82,7 +82,7 @@
       <h1>Intro to TBEP Tools</h1>
                         <h4 class="author">Marcus Beck, Ben Best</h4>
             
-            <h4 class="date">2019-11-26</h4>
+            <h4 class="date">2019-11-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tbep-tech/tbeptools/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -139,8 +139,6 @@ Locations of long-term monitoring stations in Tampa Bay. The Bay is separated in
 <a href="#show" class="anchor"></a>Show</h4>
 <ul>
 <li><p><code><a href="../reference/show_chlmatrix.html">show_chlmatrix()</a></code>: Create a colorized table for chlorophyll annual exceedances by bay segment</p></li>
-<li><p><code><a href="../reference/show_colorizefld.html">show_colorizefld()</a></code>: Colorize a field with gt</p></li>
-<li><p><code><a href="../reference/show_colorizetbl.html">show_colorizetbl()</a></code>: Colorize multiple fields with gt</p></li>
 <li><p><code><a href="../reference/show_boxplot.html">show_boxplot()</a></code>: Plot monthly average chlorophyll data with FDEP criteria</p></li>
 <li><p><code><a href="../reference/show_matrix.html">show_matrix()</a></code>: Create a colorized table for indicator reporting</p></li>
 <li><p><code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>: Plot annual water quality values and thresholds for a segment</p></li>
@@ -305,13 +303,10 @@ The help file for <code>read_importwq</code>.
 <p>The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:</p>
 <ul>
 <li><p><code><a href="../reference/show_chlmatrix.html">show_chlmatrix()</a></code>: Create a colorized table for chlorophyll annual exceedances by bay segment</p></li>
-<li><p><code><a href="../reference/show_colorizefld.html">show_colorizefld()</a></code>: Colorize a field with gt</p></li>
-<li><p><code><a href="../reference/show_colorizetbl.html">show_colorizetbl()</a></code>: Colorize multiple fields with gt</p></li>
 <li><p><code><a href="../reference/show_boxplot.html">show_boxplot()</a></code>: Plot monthly average chlorophyll data with FDEP criteria</p></li>
 <li><p><code><a href="../reference/show_matrix.html">show_matrix()</a></code>: Create a colorized table for indicator reporting</p></li>
 <li><p><code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>: Plot annual water quality values and thresholds for a segment</p></li>
 </ul>
-<p>The main functions are <code><a href="../reference/show_boxplot.html">show_boxplot()</a></code>, <code><a href="../reference/show_chlmatrix.html">show_chlmatrix()</a></code>, <code><a href="../reference/show_matrix.html">show_matrix()</a></code>, and <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>. The remainder are used internally in <code><a href="../reference/show_matrix.html">show_matrix()</a></code>.</p>
 <p>External package libraries in R can be used to plot the time series data. Here’s an example using the popular <a href="https://ggplot2.tidyverse.org/">ggplot2</a> package. Some data wrangling with the <a href="https://dplyr.tidyverse.org/">dplyr</a> is done first to filter the data we want to plot.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">toplo &lt;-<span class="st"> </span>epcdata <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(epchc_station <span class="op">==</span><span class="st"> '52'</span>)</a>

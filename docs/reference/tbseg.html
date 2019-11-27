@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get site attainments — anlz_attainsite • tbeptools</title>
+<title>Spatial data object of Tampa Bay segments — tbseg • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Get site attainments — anlz_attainsite" />
-<meta property="og:description" content="Get site attainment categories for chlorophyll or light attenuation" />
+<meta property="og:title" content="Spatial data object of Tampa Bay segments — tbseg" />
+<meta property="og:description" content="Spatial data object of Tampa Bay segments" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,70 +117,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get site attainments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_attainsite.R'><code>R/anlz_attainsite.R</code></a></small>
-    <div class="hidden name"><code>anlz_attainsite.Rd</code></div>
+    <h1>Spatial data object of Tampa Bay segments</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/tbseg.R'><code>R/tbseg.R</code></a></small>
+    <div class="hidden name"><code>tbseg.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get site attainment categories for chlorophyll or light attenuation</p>
+    <p>Spatial data object of Tampa Bay segments</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_attainsite</span>(<span class='no'>avedatsite</span>, <span class='kw'>thr</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>), <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='no'>tbseg</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>avedatsite</th>
-      <td><p>result returned from <code><a href='anlz_avedatsite.html'>anlz_avedatsite</a></code></p></td>
-    </tr>
-    <tr>
-      <th>thr</th>
-      <td><p>chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability</p></td>
-    </tr>
-    <tr>
-      <th>trgs</th>
-      <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code></p></td>
-    </tr>
-    <tr>
-      <th>yrrng</th>
-      <td><p>optional numeric value for year to return, defaults to all</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>a <code>data.frame</code> for each year and site showing the attainment category</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (POLYGON) with 4 feaures and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p><dl class='dl-horizontal'>
+  <dt>long_name</dt><dd><p>chr</p></dd>
+  <dt>bay_segment</dt><dd><p>chr</p></dd>
 
-    <p>This function is a simplication of the attainment categories returned by <code><a href='anlz_attain.html'>anlz_attain</a></code>.  Sites are only compared to the targets/thresholds that apply separately for chlorophyll or light attenuation.</p>
+</dl>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>avedatsite</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_avedatsite.html'>anlz_avedatsite</a></span>(<span class='no'>epcdata</span>)
-<span class='fu'>anlz_attainsite</span>(<span class='no'>avedatsite</span>)</div><div class='output co'>#&gt; # A tibble: 2,070 x 9
-#&gt;    bay_segment epchc_station    yr var     val target smallex thresh trgtmet
-#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  
-#&gt;  1 HB                      6  1974 chla   25.6   13.2    14.1     15 no     
-#&gt;  2 HB                      6  1975 chla   24.8   13.2    14.1     15 no     
-#&gt;  3 HB                      6  1976 chla   33.0   13.2    14.1     15 no     
-#&gt;  4 HB                      6  1977 chla   43.9   13.2    14.1     15 no     
-#&gt;  5 HB                      6  1978 chla   28.5   13.2    14.1     15 no     
-#&gt;  6 HB                      6  1979 chla   27.2   13.2    14.1     15 no     
-#&gt;  7 HB                      6  1980 chla   23.8   13.2    14.1     15 no     
-#&gt;  8 HB                      6  1981 chla   41.0   13.2    14.1     15 no     
-#&gt;  9 HB                      6  1982 chla   25.4   13.2    14.1     15 no     
-#&gt; 10 HB                      6  1983 chla   25.9   13.2    14.1     15 no     
-#&gt; # ... with 2,060 more rows</div></pre>
+    <div class='dont-index'><p>Other utilities: <code><a href='epcdata.html'>epcdata</a></code>,
+  <code><a href='stations.html'>stations</a></code>, <code><a href='targets.html'>targets</a></code></p></div>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#format">Format</a></li>
+      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>

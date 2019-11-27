@@ -5,6 +5,10 @@ git:
   depth: false
 apt_packages:
   - libpoppler-cpp-dev
+  - libudunits2-dev
+  - libgdal-dev
+  - libgeos-dev
+  - libproj-dev
 notifications:
   email:
     recipients:

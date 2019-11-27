@@ -27,10 +27,8 @@ Imports:
   readxl,
   RCurl,
   sf,
-  tidyr,
-  gt
+  tidyr
 Remotes:
-  rstudio/gt,
   fawda123/Jabbrev
 Suggests: 
   bookdown,
