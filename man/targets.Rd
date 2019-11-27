@@ -22,8 +22,9 @@ targets
 Bay segment specific management targets including low and high magnitude exceedance thresholds
 }
 \seealso{
-Other utilities: \code{\link{epcdata}},
-  \code{\link{stations}}, \code{\link{tbseg}}
+Other utilities: \code{\link{bsmap}},
+  \code{\link{epcdata}}, \code{\link{stations}},
+  \code{\link{tbseg}}
 }
 \concept{utilities}
 \keyword{datasets}

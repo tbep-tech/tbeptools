@@ -28,6 +28,7 @@ show_matrix(epcdata)
 \code{\link{show_chlmatrix}}
 
 Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_chlmatrix}}, \code{\link{show_thrplot}}
+  \code{\link{show_chlmatrix}}, \code{\link{show_sitemap}},
+  \code{\link{show_thrplot}}
 }
 \concept{visualize}

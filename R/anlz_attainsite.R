@@ -50,6 +50,10 @@ anlz_attainsite <- function(avedatsite, thr = c('chla', 'la'), trgs = NULL, yrrn
     dplyr::filter(yr %in% yrrng) %>%
     dplyr::left_join(trgs, by = c('bay_segment', 'var'))
 
+  # sanity check
+  if(nrow(annavesite) == 0)
+    stop(paste(yrrng, "not in epcdata"))
+
   # is var above/below target
   out <- annavesite %>%
     dplyr::mutate(

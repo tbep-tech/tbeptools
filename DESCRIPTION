@@ -20,9 +20,12 @@ Depends:
 Imports:
   dplyr,
   ggbeeswarm,
+  ggmap,
+  ggplot2,
+  ggrepel,
+  ggsn,
   lubridate,
   magrittr,
-  ggplot2,
   purrr,
   readxl,
   RCurl,

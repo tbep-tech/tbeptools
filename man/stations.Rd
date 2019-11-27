@@ -18,8 +18,9 @@ stations
 Bay stations by segment
 }
 \seealso{
-Other utilities: \code{\link{epcdata}},
-  \code{\link{targets}}, \code{\link{tbseg}}
+Other utilities: \code{\link{bsmap}},
+  \code{\link{epcdata}}, \code{\link{targets}},
+  \code{\link{tbseg}}
 }
 \concept{utilities}
 \keyword{datasets}

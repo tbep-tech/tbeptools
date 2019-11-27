@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot annual water quality values and thresholds for a segment — show_thrplot • tbeptools</title>
+<title>Map site attainment categories for a selected year — show_sitemap • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Plot annual water quality values and thresholds for a segment — show_thrplot" />
-<meta property="og:description" content="Plot annual water quality values and thresholds for a bay segment" />
+<meta property="og:title" content="Map site attainment categories for a selected year — show_sitemap" />
+<meta property="og:description" content="Map site attainment categories for a selected year" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,17 +117,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot annual water quality values and thresholds for a segment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_thrplot.R'><code>R/show_thrplot.R</code></a></small>
-    <div class="hidden name"><code>show_thrplot.Rd</code></div>
+    <h1>Map site attainment categories for a selected year</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_sitemap.R'><code>R/show_sitemap.R</code></a></small>
+    <div class="hidden name"><code>show_sitemap.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot annual water quality values and thresholds for a bay segment</p>
+    <p>Map site attainment categories for a selected year</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_thrplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
-  <span class='kw'>thr</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>), <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>))</pre>
+    <pre class="usage"><span class='fu'>show_sitemap</span>(<span class='no'>epcdata</span>, <span class='no'>yrsel</span>, <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,34 +136,26 @@
       <td><p>data frame of epc data returned by <code><a href='read_importwq.html'>read_importwq</a></code></p></td>
     </tr>
     <tr>
-      <th>bay_segment</th>
-      <td><p>chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"</p></td>
-    </tr>
-    <tr>
-      <th>thr</th>
-      <td><p>chr string indicating which water quality value and appropriate threshold to plot, one of "chl" for chlorophyll and "la" for light availability</p></td>
+      <th>yrsel</th>
+      <td><p>numeric for year to plot</p></td>
     </tr>
     <tr>
       <th>trgs</th>
       <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code></p></td>
     </tr>
-    <tr>
-      <th>yrrng</th>
-      <td><p>numeric vector indicating min, max years to include</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object</p>
+    <p>A static <code>ggplot</code> object is returned</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: <code><a href='show_boxplot.html'>show_boxplot</a></code>,
   <code><a href='show_chlmatrix.html'>show_chlmatrix</a></code>, <code><a href='show_matrix.html'>show_matrix</a></code>,
-  <code><a href='show_sitemap.html'>show_sitemap</a></code></p></div>
+  <code><a href='show_thrplot.html'>show_thrplot</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>show_thrplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='st'>'OTB'</span>, <span class='kw'>thr</span> <span class='kw'>=</span> <span class='st'>'chl'</span>)</div><div class='img'><img src='show_thrplot-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>show_sitemap</span>(<span class='no'>epcdata</span>, <span class='kw'>yrsel</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</div><div class='img'><img src='show_sitemap-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
