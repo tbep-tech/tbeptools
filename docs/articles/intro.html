@@ -141,6 +141,7 @@ Locations of long-term monitoring stations in Tampa Bay. The Bay is separated in
 <li><p><code><a href="../reference/show_chlmatrix.html">show_chlmatrix()</a></code>: Create a colorized table for chlorophyll annual exceedances by bay segment</p></li>
 <li><p><code><a href="../reference/show_boxplot.html">show_boxplot()</a></code>: Plot monthly average chlorophyll data with FDEP criteria</p></li>
 <li><p><code><a href="../reference/show_matrix.html">show_matrix()</a></code>: Create a colorized table for indicator reporting</p></li>
+<li><p><code><a href="../reference/show_sitemap.html">show_sitemap()</a></code>: Plot a map of water quality stations for a selected year, with targets</p></li>
 <li><p><code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>: Plot annual water quality values and thresholds for a segment</p></li>
 </ul>
 <p>The functions can be easily found in RStudio after loading the package and typing the prefix at the command line. An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., <code>read</code>, <code>anlz</code>, or <code>show</code>). For example:</p>
@@ -305,6 +306,7 @@ The help file for <code>read_importwq</code>.
 <li><p><code><a href="../reference/show_chlmatrix.html">show_chlmatrix()</a></code>: Create a colorized table for chlorophyll annual exceedances by bay segment</p></li>
 <li><p><code><a href="../reference/show_boxplot.html">show_boxplot()</a></code>: Plot monthly average chlorophyll data with FDEP criteria</p></li>
 <li><p><code><a href="../reference/show_matrix.html">show_matrix()</a></code>: Create a colorized table for indicator reporting</p></li>
+<li><p><code><a href="../reference/show_sitemap.html">show_sitemap()</a></code>: Plot a map of water quality stations for a selected year, with targets</p></li>
 <li><p><code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>: Plot annual water quality values and thresholds for a segment</p></li>
 </ul>
 <p>External package libraries in R can be used to plot the time series data. Here’s an example using the popular <a href="https://ggplot2.tidyverse.org/">ggplot2</a> package. Some data wrangling with the <a href="https://dplyr.tidyverse.org/">dplyr</a> is done first to filter the data we want to plot.</p>
@@ -404,7 +406,7 @@ Management action categories assigned to each bay segment and year based on chlo
 <a class="sourceLine" id="cb23-3" title="3"><span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb23-4" title="4"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">7</span>))</a></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-23-1.png" width="768" style="display: block; margin: auto;"></p>
-<p>Attainment outcomes for a single year can be returned in tabular format with <code><a href="../reference/anlz_yrattain.html">anlz_yrattain()</a></code>. This table also shows segment averages for chlorophyll and light attenuation, including the associated targets.</p>
+<p>Results can also be obtained for a selected year. Outcomes can be returned in tabular format with <code><a href="../reference/anlz_yrattain.html">anlz_yrattain()</a></code>. This table also shows segment averages for chlorophyll and light attenuation, including the associated targets.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw"><a href="../reference/anlz_yrattain.html">anlz_yrattain</a></span>(epcdata, <span class="dt">yrsel =</span> <span class="dv">2018</span>)</a>
 <a class="sourceLine" id="cb24-2" title="2"><span class="co">#&gt; # A tibble: 4 x 6</span></a>
 <a class="sourceLine" id="cb24-3" title="3"><span class="co">#&gt;   bay_segment chla_val chla_target la_val la_target outcome</span></a>
@@ -413,9 +415,12 @@ Management action categories assigned to each bay segment and year based on chlo
 <a class="sourceLine" id="cb24-6" title="6"><span class="co">#&gt; 2 HB             13.9         13.2  1.09       1.58 green  </span></a>
 <a class="sourceLine" id="cb24-7" title="7"><span class="co">#&gt; 3 MTB             7.05         7.4  0.570      0.83 green  </span></a>
 <a class="sourceLine" id="cb24-8" title="8"><span class="co">#&gt; 4 LTB             4.65         4.6  0.593      0.63 green</span></a></code></pre></div>
+<p>A map showing if individual sites achieved chlorophyll targets can be obtained with <code><a href="../reference/show_sitemap.html">show_sitemap()</a></code>. The station averages for chlorophyll for the selected year are shown next to each point. Stations in red failed to meet the segment target.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw"><a href="../reference/show_sitemap.html">show_sitemap</a></span>(epcdata, <span class="dt">yrsel =</span> <span class="dv">2018</span>)</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-25-1.png" width="480" style="display: block; margin: auto;"></p>
 <p>Bay segment exceedances can also be viewed in a matrix using <code>show_chlmatrix</code>. The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw"><a href="../reference/show_chlmatrix.html">show_chlmatrix</a></span>(epcdata)</a></code></pre></div>
-<p><img src="intro_files/figure-html/unnamed-chunk-25-1.png" width="288" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw"><a href="../reference/show_chlmatrix.html">show_chlmatrix</a></span>(epcdata)</a></code></pre></div>
+<p><img src="intro_files/figure-html/unnamed-chunk-26-1.png" width="288" style="display: block; margin: auto;"></p>
 <p>From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay. Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay. Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from “stay the course” to “caution”.</p>
 </div>
 <div id="references" class="section level1 unnumbered">

@@ -356,10 +356,10 @@ Results can also be obtained for a selected year. Outcomes can be returned in ta
 anlz_yrattain(epcdata, yrsel = 2018)
 ```
 
-A map showing if individual sites achieved water quality targets can be obtained with `show_mapsite()`.  
+A map showing if individual sites achieved chlorophyll targets can be obtained with `show_sitemap()`.  The station averages for chlorophyll for the selected year are shown next to each point.  Stations in red failed to meet the segment target.    
 
-```{r}
-show_mapsite(epcdata, yrsel = 2018)
+```{r, fig.height = 7, fig.width = 5}
+show_sitemap(epcdata, yrsel = 2018)
 ```
 
 Bay segment exceedances can also be viewed in a matrix using `show_chlmatrix`.  The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).  
