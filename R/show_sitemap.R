@@ -54,8 +54,8 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL){
       ggrepel::geom_text_repel(data = tomap, aes(label = round(val, 1), geometry = geometry), stat = "sf_coordinates", size = 3, inherit.aes = F) +
       geom_sf(data = tomap, aes(colour = trgtmet, fill = trgtmet), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
       geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = "FFFFFF80") +
-      scale_fill_manual(leglab,  values = c('red', 'green'), drop = F) +
-      scale_colour_manual(leglab, values = c('red', 'green'), drop = F) +
+      scale_fill_manual(leglab,  values = c('green', 'red'), drop = F) +
+      scale_colour_manual(leglab, values = c('green', 'red'), drop = F) +
       theme(
         axis.title = element_blank(),
         axis.text = element_text(size = 7),
@@ -63,8 +63,8 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL){
         legend.background = element_blank()
       ) +
       guides(
-        colour = guide_legend(override.aes = list(colour = c('red', 'green'))),
-        fill = guide_legend(override.aes = list(colour = c('red', 'green')))
+        colour = guide_legend(override.aes = list(colour = c('green', 'red'))),
+        fill = guide_legend(override.aes = list(colour = c('green', 'red')))
       ) +
       ggsn::scalebar(tbseg, dist = 6, dist_unit = "km", st.size = 3,
                transform = TRUE, model = "WGS84", height = 0.015)
