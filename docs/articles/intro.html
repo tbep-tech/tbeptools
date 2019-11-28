@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Intro to TBEP Tools • tbeptools</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Intro to TBEP Tools">
 <meta property="og:description" content="">
@@ -202,20 +202,20 @@ The help file for <code>read_importwq</code>.
 <p>After the data are successfully imported, you can view them from the assigned object:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">epcdata</a>
 <a class="sourceLine" id="cb10-2" title="2"><span class="co">#&gt; # A tibble: 25,534 x 11</span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="co">#&gt;    bay_segment epchc_station SampleTime             yr    mo Latitude Longitude</span></a>
-<a class="sourceLine" id="cb10-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="co">#&gt;  1 HB                      6 2019-09-09 10:02:00  2019     9     27.9     -82.5</span></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="co">#&gt;  2 HB                      7 2019-09-09 10:16:00  2019     9     27.9     -82.5</span></a>
-<a class="sourceLine" id="cb10-7" title="7"><span class="co">#&gt;  3 HB                      8 2019-09-09 13:13:00  2019     9     27.9     -82.4</span></a>
-<a class="sourceLine" id="cb10-8" title="8"><span class="co">#&gt;  4 MTB                     9 2019-09-09 12:16:00  2019     9     27.8     -82.4</span></a>
-<a class="sourceLine" id="cb10-9" title="9"><span class="co">#&gt;  5 MTB                    11 2019-09-09 10:33:00  2019     9     27.8     -82.5</span></a>
-<a class="sourceLine" id="cb10-10" title="10"><span class="co">#&gt;  6 MTB                    13 2019-09-09 10:49:00  2019     9     27.8     -82.5</span></a>
-<a class="sourceLine" id="cb10-11" title="11"><span class="co">#&gt;  7 MTB                    14 2019-09-09 11:38:00  2019     9     27.8     -82.5</span></a>
-<a class="sourceLine" id="cb10-12" title="12"><span class="co">#&gt;  8 MTB                    16 2019-09-17 10:18:00  2019     9     27.7     -82.5</span></a>
-<a class="sourceLine" id="cb10-13" title="13"><span class="co">#&gt;  9 MTB                    19 2019-09-17 10:27:00  2019     9     27.7     -82.6</span></a>
-<a class="sourceLine" id="cb10-14" title="14"><span class="co">#&gt; 10 LTB                    23 2019-09-17 13:05:00  2019     9     27.7     -82.6</span></a>
-<a class="sourceLine" id="cb10-15" title="15"><span class="co">#&gt; # ... with 25,524 more rows, and 4 more variables: Total_Depth_m &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb10-16" title="16"><span class="co">#&gt; #   Sample_Depth_m &lt;dbl&gt;, sd_m &lt;dbl&gt;, chla &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-3" title="3"><span class="co">#&gt;    bay_segment epchc_station SampleTime             yr    mo Latitude</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="co">#&gt;  1 HB                      6 2019-09-09 10:02:00  2019     9     27.9</span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="co">#&gt;  2 HB                      7 2019-09-09 10:16:00  2019     9     27.9</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co">#&gt;  3 HB                      8 2019-09-09 13:13:00  2019     9     27.9</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="co">#&gt;  4 MTB                     9 2019-09-09 12:16:00  2019     9     27.8</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="co">#&gt;  5 MTB                    11 2019-09-09 10:33:00  2019     9     27.8</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="co">#&gt;  6 MTB                    13 2019-09-09 10:49:00  2019     9     27.8</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="co">#&gt;  7 MTB                    14 2019-09-09 11:38:00  2019     9     27.8</span></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="co">#&gt;  8 MTB                    16 2019-09-17 10:18:00  2019     9     27.7</span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="co">#&gt;  9 MTB                    19 2019-09-17 10:27:00  2019     9     27.7</span></a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="co">#&gt; 10 LTB                    23 2019-09-17 13:05:00  2019     9     27.7</span></a>
+<a class="sourceLine" id="cb10-15" title="15"><span class="co">#&gt; # ... with 25,524 more rows, and 5 more variables: Longitude &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb10-16" title="16"><span class="co">#&gt; #   Total_Depth_m &lt;dbl&gt;, Sample_Depth_m &lt;dbl&gt;, sd_m &lt;dbl&gt;, chla &lt;dbl&gt;</span></a></code></pre></div>
 <p>These data include the bay segment name, station number, sample time, year, month, latitude, longitude, station depth, sample depth, secchi depth, and chlorophyll. Note that the monitoring data include additional parameters. Chlorophyll and secchi depth are currently the only parameters returned by <code><a href="../reference/read_importwq.html">read_importwq()</a></code> given the reporting indicators used below.</p>
 </div>
 <div id="analyze-1" class="section level2 tabset">
@@ -283,19 +283,19 @@ The help file for <code>read_importwq</code>.
 <p>Similar information can be obtained for individual sites using <code><a href="../reference/anlz_avedatsite.html">anlz_avedatsite()</a></code> and <code><a href="../reference/anlz_attainsite.html">anlz_attainsite()</a></code>. The main difference is that a yes/no column <code>trgmet</code>is added that indicates only if the target was above or below the segment threshold for each site.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="../reference/anlz_avedatsite.html">anlz_avedatsite</a></span>(epcdata) <span class="op">%&gt;%</span><span class="st"> </span>anlz_attainsite</a>
 <a class="sourceLine" id="cb13-2" title="2"><span class="co">#&gt; # A tibble: 2,070 x 9</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="co">#&gt;    bay_segment epchc_station    yr var     val target smallex thresh trgtmet</span></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  </span></a>
-<a class="sourceLine" id="cb13-5" title="5"><span class="co">#&gt;  1 HB                      6  1974 chla   25.6   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-6" title="6"><span class="co">#&gt;  2 HB                      6  1975 chla   24.8   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-7" title="7"><span class="co">#&gt;  3 HB                      6  1976 chla   33.0   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-8" title="8"><span class="co">#&gt;  4 HB                      6  1977 chla   43.9   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-9" title="9"><span class="co">#&gt;  5 HB                      6  1978 chla   28.5   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-10" title="10"><span class="co">#&gt;  6 HB                      6  1979 chla   27.2   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-11" title="11"><span class="co">#&gt;  7 HB                      6  1980 chla   23.8   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-12" title="12"><span class="co">#&gt;  8 HB                      6  1981 chla   41.0   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-13" title="13"><span class="co">#&gt;  9 HB                      6  1982 chla   25.4   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-14" title="14"><span class="co">#&gt; 10 HB                      6  1983 chla   25.9   13.2    14.1     15 no     </span></a>
-<a class="sourceLine" id="cb13-15" title="15"><span class="co">#&gt; # ... with 2,060 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co">#&gt;    bay_segment epchc_station    yr var     val target smallex thresh</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="co">#&gt;  1 HB                      6  1974 chla   25.6   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="co">#&gt;  2 HB                      6  1975 chla   24.8   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="co">#&gt;  3 HB                      6  1976 chla   33.0   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-8" title="8"><span class="co">#&gt;  4 HB                      6  1977 chla   43.9   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="co">#&gt;  5 HB                      6  1978 chla   28.5   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-10" title="10"><span class="co">#&gt;  6 HB                      6  1979 chla   27.2   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-11" title="11"><span class="co">#&gt;  7 HB                      6  1980 chla   23.8   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-12" title="12"><span class="co">#&gt;  8 HB                      6  1981 chla   41.0   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-13" title="13"><span class="co">#&gt;  9 HB                      6  1982 chla   25.4   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-14" title="14"><span class="co">#&gt; 10 HB                      6  1983 chla   25.9   13.2    14.1     15</span></a>
+<a class="sourceLine" id="cb13-15" title="15"><span class="co">#&gt; # ... with 2,060 more rows, and 1 more variable: trgtmet &lt;chr&gt;</span></a></code></pre></div>
 <p>As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.</p>
 </div>
 <div id="show-1" class="section level2">
@@ -371,22 +371,22 @@ The help file for <code>read_importwq</code>.
 <p><img src="intro_files/figure-html/unnamed-chunk-18-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>The <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code> function is useful to understand annual variation in chlorophyll and light attenuation relative to management thresholds and targets for each bay segment. The information from these plots can provide an understanding of how the annual reporting outcomes are determined. As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation. These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in <code><a href="../reference/show_thrplot.html">show_thrplot()</a></code>) and duration of the exceedance for the years prior. The following graphic describes this logic <span class="citation">[8]</span>.</p>
 <div class="figure" style="text-align: center">
-<img src="outints.PNG" alt="Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence." width="80%"><p class="caption">
+<img src="outints.png" alt="Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence." width="80%"><p class="caption">
 Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.
 </p>
 </div>
 <p>These outcomes are assigned for both chlorophyll and light attenuation. The duration criteria are determined based on whether the exceedance was observed for years prior to the current year. The exceedance criteria for chlorophyll and light-attenuation are specific to each segment. The tbeptools package contains a <code>targets</code> data file that is a reference for determining annual outcomes. This file is loaded automatically with the package and can be viewed from the command line.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">targets</a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="co">#&gt;   bay_segment             name chla_target chla_smallex chla_thresh la_target</span></a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="co">#&gt; 1         OTB    Old Tampa Bay         8.5          8.9         9.3      0.83</span></a>
-<a class="sourceLine" id="cb21-4" title="4"><span class="co">#&gt; 2          HB Hillsborough Bay        13.2         14.1        15.0      1.58</span></a>
-<a class="sourceLine" id="cb21-5" title="5"><span class="co">#&gt; 3         MTB Middle Tampa Bay         7.4          7.9         8.5      0.83</span></a>
-<a class="sourceLine" id="cb21-6" title="6"><span class="co">#&gt; 4         LTB  Lower Tampa Bay         4.6          4.8         5.1      0.63</span></a>
-<a class="sourceLine" id="cb21-7" title="7"><span class="co">#&gt;   la_smallex la_thresh</span></a>
-<a class="sourceLine" id="cb21-8" title="8"><span class="co">#&gt; 1       0.86      0.88</span></a>
-<a class="sourceLine" id="cb21-9" title="9"><span class="co">#&gt; 2       1.63      1.67</span></a>
-<a class="sourceLine" id="cb21-10" title="10"><span class="co">#&gt; 3       0.87      0.91</span></a>
-<a class="sourceLine" id="cb21-11" title="11"><span class="co">#&gt; 4       0.66      0.68</span></a></code></pre></div>
+<a class="sourceLine" id="cb21-2" title="2"><span class="co">#&gt;   bay_segment             name chla_target chla_smallex chla_thresh</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="co">#&gt; 1         OTB    Old Tampa Bay         8.5          8.9         9.3</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="co">#&gt; 2          HB Hillsborough Bay        13.2         14.1        15.0</span></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="co">#&gt; 3         MTB Middle Tampa Bay         7.4          7.9         8.5</span></a>
+<a class="sourceLine" id="cb21-6" title="6"><span class="co">#&gt; 4         LTB  Lower Tampa Bay         4.6          4.8         5.1</span></a>
+<a class="sourceLine" id="cb21-7" title="7"><span class="co">#&gt;   la_target la_smallex la_thresh</span></a>
+<a class="sourceLine" id="cb21-8" title="8"><span class="co">#&gt; 1      0.83       0.86      0.88</span></a>
+<a class="sourceLine" id="cb21-9" title="9"><span class="co">#&gt; 2      1.58       1.63      1.67</span></a>
+<a class="sourceLine" id="cb21-10" title="10"><span class="co">#&gt; 3      0.83       0.87      0.91</span></a>
+<a class="sourceLine" id="cb21-11" title="11"><span class="co">#&gt; 4      0.63       0.66      0.68</span></a></code></pre></div>
 <p>The final plotting function is <code><a href="../reference/show_matrix.html">show_matrix()</a></code>, which creates an annual reporting matrix that reflects the combined outcomes for chlorophyll and light attenuation. Tracking the attainment of bay segment specific targets for these indicators provides the framework from which bay management actions are developed and initiated. For each year and segment, a color-coded management action is assigned:</p>
 <p><span style="color:#33FF3B"><strong>Stay the Course</strong></span>: Continue planned projects. Report data via annual progress reports and Baywide Environmental Monitoring Report.</p>
 <p><span style="color:#F9FF33"><strong>Caution</strong></span>: Review monitoring data and nitrogen loading estimates. Begin/continue TAC and Management Board development of specific management recommendations.</p>
@@ -455,7 +455,7 @@ Management action categories assigned to each bay segment and year based on chlo
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
         <div id="tocnav">
       <h2 class="hasAnchor">
@@ -481,7 +481,7 @@ Management action categories assigned to each bay segment and year based on chlo
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
