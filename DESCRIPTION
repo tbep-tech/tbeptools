@@ -27,6 +27,7 @@ Imports:
   lubridate,
   magrittr,
   purrr,
+  reactable,
   readxl,
   RCurl,
   sf,

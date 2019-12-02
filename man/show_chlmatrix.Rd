@@ -5,7 +5,7 @@
 \title{Create a colorized table for chlorophyll exceedances}
 \usage{
 show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
-  2018))
+  2018), asreact = FALSE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -15,9 +15,11 @@ show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
 \item{yrrng}{numeric vector indicating min, max years to include}
+
+\item{asreact}{logical indicating if a \code{\link[reactable]{reactable}} object is returned}
 }
 \value{
-A static \code{ggplot} object is returned
+A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned
 }
 \description{
 Create a colorized table for chlorophyll exceedances

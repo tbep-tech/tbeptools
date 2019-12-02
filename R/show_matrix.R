@@ -6,21 +6,23 @@
 #' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
+#' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
 #'
 #' @family visualize
 #'
-#' @return A static \code{ggplot} object is returned
+#' @return A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned
 #'
 #' @seealso \code{\link{show_chlmatrix}}
 #' @export
 #'
 #' @importFrom magrittr "%>%"
+#' @importFrom reactable colDef
 #'
 #' @import ggplot2
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018)){
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -33,6 +35,58 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018)){
       bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
     ) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2])
+
+  # reactable object
+  if(asreact){
+
+    totab <- toplo %>%
+      dplyr::select(-chl_la) %>%
+      tidyr::spread(bay_segment, outcome)
+
+    colfun <- function(x){
+
+      out <- dplyr::case_when(
+        x == 'red' ~ '#FF3333',
+        x == 'yellow' ~ '#F9FF33',
+        x == 'green' ~ '#33FF3B'
+      )
+
+      return(out)
+
+    }
+
+    tab <- reactable::reactable(totab,
+                     columns = list(
+                       yr = colDef(
+                         name = "Year"
+                       ),
+                       OTB = colDef(
+                         style = function(value){
+                           list(background = colfun(value))
+                         }
+                       ),
+                       HB = colDef(
+                         style = function(value){
+                           list(background = colfun(value))
+                         }
+                       ),
+                       MTB = colDef(
+                         style = function(value){
+                           list(background = colfun(value))
+                         }
+                       ),
+                       LTB = colDef(
+                         style = function(value){
+                           list(background = colfun(value))
+                         }
+                       )
+
+                     )
+    )
+
+    return(tab)
+
+  }
 
   # ggplot
   p <- ggplot(toplo, aes(x = bay_segment, y = yr)) +
