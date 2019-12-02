@@ -34,13 +34,15 @@ Imports:
 Remotes:
   fawda123/Jabbrev
 Suggests: 
-  bookdown,
-  english,
-  here,
-  Jabbrev,
-  knitr,
-  leaflet,
-  rmarkdown
+    bookdown,
+    english,
+    here,
+    Jabbrev,
+    knitr,
+    leaflet,
+    rmarkdown,
+    testthat (>= 2.1.0),
+    covr
 License: MIT + file LICENSE
 Encoding: UTF-8
 VignetteBuilder: knitr
