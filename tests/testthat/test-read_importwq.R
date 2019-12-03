@@ -1,5 +1,5 @@
 test_that("Checking read_importwq", {
-  xlsx <- here::here('vignettes/2018_Results_Updated.xls')
+  xlsx <- 'exdata.xls'
 
   # load and assign to object
   epcdata <- read_importwq(xlsx)

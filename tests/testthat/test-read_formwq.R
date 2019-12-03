@@ -1,5 +1,5 @@
 test_that("Checking read_formwq", {
-  xlsx <- here::here('vignettes/2018_Results_Updated.xls')
+  xlsx <- 'exdata.xls'
 
   # load
   rawdat <- readxl::read_xlsx(xlsx, sheet="RWMDataSpreadsheet",
