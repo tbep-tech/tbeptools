@@ -19,7 +19,7 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #' read_dlcurrent(xlsx)
 #' }
-read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE, connecttimeout = 60, tryurl = FALSE){
+read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE, connecttimeout = 20, tryurl = FALSE){
 
   epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
 

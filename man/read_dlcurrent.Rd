@@ -4,7 +4,7 @@
 \alias{read_dlcurrent}
 \title{Download latest water quality file from epchc.org}
 \usage{
-read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 60,
+read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 20,
   tryurl = FALSE)
 }
 \arguments{
