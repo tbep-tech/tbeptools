@@ -91,6 +91,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
+* `show_reactable()`: Create a reactable table for reporting matrices, used internally only
+
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
 
 * `show_thrplot()`: Plot annual water quality values and thresholds for a segment
@@ -245,6 +247,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
+* `show_reactable()`: Create a reactable table for reporting matrices, used internally only
+
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
 
 * `show_thrplot()`: Plot annual water quality values and thresholds for a segment
@@ -348,6 +352,18 @@ show_matrix(epcdata, txtsz = NULL) +
   scale_y_continuous(expand = c(0,0), breaks = c(1975:2018)) + 
   coord_flip() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
+```
+
+If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. 
+
+```{r}
+show_matrix(epcdata, asreact = TRUE)
+```
+
+Use a sufficiently large number to view the entire matrix.
+
+```{r}
+show_matrix(epcdata, asreact = TRUE, nrows = 200)
 ```
 
 Results can also be obtained for a selected year. Outcomes can be returned in tabular format with `anlz_yrattain()`.  This table also shows segment averages for chlorophyll and light attenuation, including the associated targets. 

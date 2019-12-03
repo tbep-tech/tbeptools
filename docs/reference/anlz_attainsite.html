@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -159,22 +159,22 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>avedatsite</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_avedatsite.html'>anlz_avedatsite</a></span>(<span class='no'>epcdata</span>)
-<span class='fu'>anlz_attainsite</span>(<span class='no'>avedatsite</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2,070 x 9</span><span>
+<span class='fu'>anlz_attainsite</span>(<span class='no'>avedatsite</span>)</div><div class='output co'>#&gt; # A tibble: 2,070 x 9
 #&gt;    bay_segment epchc_station    yr var     val target smallex thresh trgtmet
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
-#&gt; </span><span style='color: #555555;'> 1</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>974 chla   25.6   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 2</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>975 chla   24.8   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 3</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>976 chla   33.0   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 4</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>977 chla   43.9   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 5</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>978 chla   28.5   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 6</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>979 chla   27.2   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 7</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>980 chla   23.8   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 8</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>981 chla   41.0   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'> 9</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>982 chla   25.4   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'>10</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>983 chla   25.9   13.2    14.1     15 no     
-#&gt; </span><span style='color: #555555;'># ... with 2,060 more rows</span><span></div></span></pre>
+#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  
+#&gt;  1 HB                      6  1974 chla   25.6   13.2    14.1     15 no     
+#&gt;  2 HB                      6  1975 chla   24.8   13.2    14.1     15 no     
+#&gt;  3 HB                      6  1976 chla   33.0   13.2    14.1     15 no     
+#&gt;  4 HB                      6  1977 chla   43.9   13.2    14.1     15 no     
+#&gt;  5 HB                      6  1978 chla   28.5   13.2    14.1     15 no     
+#&gt;  6 HB                      6  1979 chla   27.2   13.2    14.1     15 no     
+#&gt;  7 HB                      6  1980 chla   23.8   13.2    14.1     15 no     
+#&gt;  8 HB                      6  1981 chla   41.0   13.2    14.1     15 no     
+#&gt;  9 HB                      6  1982 chla   25.4   13.2    14.1     15 no     
+#&gt; 10 HB                      6  1983 chla   25.9   13.2    14.1     15 no     
+#&gt; # ... with 2,060 more rows</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
@@ -193,7 +193,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
 
       </footer>

@@ -7,6 +7,7 @@
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
 #' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
+#' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
 #'
 #' @family visualize
 #'
@@ -16,13 +17,12 @@
 #' @export
 #'
 #' @importFrom magrittr "%>%"
-#' @importFrom reactable colDef
 #'
 #' @import ggplot2
 #'
 #' @examples
 #' show_chlmatrix(epcdata)
-show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE){
+show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10){
 
   # default targets from data file
   if(is.null(trgs))
@@ -62,36 +62,10 @@ show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018
 
     }
 
-    tab <- reactable::reactable(totab,
-                                columns = list(
-                                  yr = colDef(
-                                    name = "Year"
-                                  ),
-                                  OTB = colDef(
-                                    style = function(value){
-                                      list(background = colfun(value))
-                                    }
-                                  ),
-                                  HB = colDef(
-                                    style = function(value){
-                                      list(background = colfun(value))
-                                    }
-                                  ),
-                                  MTB = colDef(
-                                    style = function(value){
-                                      list(background = colfun(value))
-                                    }
-                                  ),
-                                  LTB = colDef(
-                                    style = function(value){
-                                      list(background = colfun(value))
-                                    }
-                                  )
+    # make reactable
+    out <- show_reactable(totab, colfun, nrows = nrows)
 
-                                )
-    )
-
-    return(tab)
+    return(out)
 
   }
 

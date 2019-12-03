@@ -5,7 +5,7 @@
 \title{Create a colorized table for chlorophyll exceedances}
 \usage{
 show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
-  2018), asreact = FALSE)
+  2018), asreact = FALSE, nrows = 10)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -17,6 +17,8 @@ show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
 \item{yrrng}{numeric vector indicating min, max years to include}
 
 \item{asreact}{logical indicating if a \code{\link[reactable]{reactable}} object is returned}
+
+\item{nrows}{if \code{asreact = TRUE}, a numeric specifying number of rows in the table}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned
@@ -31,7 +33,7 @@ show_chlmatrix(epcdata)
 \code{\link{show_matrix}}
 
 Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_matrix}}, \code{\link{show_sitemap}},
-  \code{\link{show_thrplot}}
+  \code{\link{show_matrix}}, \code{\link{show_reactable}},
+  \code{\link{show_sitemap}}, \code{\link{show_thrplot}}
 }
 \concept{visualize}

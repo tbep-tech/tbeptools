@@ -25,6 +25,6 @@ show_sitemap(epcdata, yrsel = 2018)
 \seealso{
 Other visualize: \code{\link{show_boxplot}},
   \code{\link{show_chlmatrix}}, \code{\link{show_matrix}},
-  \code{\link{show_thrplot}}
+  \code{\link{show_reactable}}, \code{\link{show_thrplot}}
 }
 \concept{visualize}

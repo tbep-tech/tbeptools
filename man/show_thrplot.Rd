@@ -30,6 +30,6 @@ show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
 \seealso{
 Other visualize: \code{\link{show_boxplot}},
   \code{\link{show_chlmatrix}}, \code{\link{show_matrix}},
-  \code{\link{show_sitemap}}
+  \code{\link{show_reactable}}, \code{\link{show_sitemap}}
 }
 \concept{visualize}
