@@ -81,6 +81,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_tdlcrk()`: Estimate tidal creek report card scores
+
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
 #### Show
@@ -94,6 +96,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 * `show_reactable()`: Create a reactable table for reporting matrices, used internally only
 
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
+
+* `show_tdlcrk()`: Make a map for tidal creek report card
 
 * `show_thrplot()`: Plot annual water quality values and thresholds for a segment
 
@@ -212,6 +216,8 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_tdlcrk()`: Estimate tidal creek report card scores
+
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
 The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
@@ -233,6 +239,14 @@ Similar information can be obtained for individual sites using `anlz_avedatsite(
 
 ```{r}
 anlz_avedatsite(epcdata) %>% anlz_attainsite
+```
+
+
+The condition of tidal creeks can be evaluated using the `anlz_tldcrk()` function.  This analysis uses an internal spatial data object (`tidalcreeks`) as the population of creeks to evaluate and raw water quality data from the Florida Department of Environmental Protection Impaired Waters Rule run 56.  The function evaluate different exceedances for total nitrogen in a given creek for the past ten years, with a lower score given to more frequent and severe exceedances. 
+
+```{r}
+tdlcrk <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
+tdlcrk
 ```
 
 As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.
@@ -385,6 +399,13 @@ show_chlmatrix(epcdata)
 ```
 
 From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
+
+The tidal creek report card can also be viewed using `show_tdlcrk()`.
+
+```{r}
+dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
+show_tdlcrk(dat)
+```
 
 # References
 

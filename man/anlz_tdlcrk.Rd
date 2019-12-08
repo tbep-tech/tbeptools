@@ -20,5 +20,11 @@ A \code{\link{data.frame}} with the report card scores for each creek, as red, o
 Estimate tidal creek report card scores
 }
 \examples{
-anlz_tdlcrk(tidalcreek, iwrraw, yr)
+anlz_tdlcrk(tidalcreeks, iwrraw, yr)
 }
+\seealso{
+Other analyze: \code{\link{anlz_attain}},
+  \code{\link{anlz_avedatsite}}, \code{\link{anlz_avedat}},
+  \code{\link{anlz_yrattain}}
+}
+\concept{analyze}

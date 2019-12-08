@@ -9,6 +9,8 @@
 #' @return A \code{\link{data.frame}} with the report card scores for each creek, as red, orange, yellow, green, or no data
 #' @export
 #'
+#' @family analyze
+#'
 #' @examples
 #' anlz_tdlcrk(tidalcreeks, iwrraw, yr)
 anlz_tdlcrk <- function(tidalcreeks, iwrraw, yr = 2018) {

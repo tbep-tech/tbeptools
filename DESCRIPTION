@@ -24,8 +24,10 @@ Imports:
   ggplot2,
   ggrepel,
   ggsn,
+  leaflet,
   lubridate,
   magrittr,
+  mapview,
   purrr,
   reactable,
   readxl,
@@ -40,7 +42,6 @@ Suggests:
     here,
     Jabbrev,
     knitr,
-    leaflet,
     rmarkdown,
     testthat (>= 2.1.0),
     covr

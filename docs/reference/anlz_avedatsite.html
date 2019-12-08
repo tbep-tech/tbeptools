@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -143,44 +143,45 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other analyze: <code><a href='anlz_attain.html'>anlz_attain</a></code>,
-  <code><a href='anlz_avedat.html'>anlz_avedat</a></code>, <code><a href='anlz_yrattain.html'>anlz_yrattain</a></code></p></div>
+  <code><a href='anlz_avedat.html'>anlz_avedat</a></code>, <code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a></code>,
+  <code><a href='anlz_yrattain.html'>anlz_yrattain</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># view average estimates</span>
 <span class='fu'>anlz_avedatsite</span>(<span class='no'>epcdata</span>)</div><div class='output co'>#&gt; $ann
-#&gt; # A tibble: 6,298 x 5
+#&gt; <span style='color: #555555;'># A tibble: 6,298 x 5</span><span>
 #&gt;    bay_segment epchc_station    yr var         val
-#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
-#&gt;  1 HB                      6  1974 mean_chla  25.6
-#&gt;  2 HB                      6  1975 mean_chla  24.8
-#&gt;  3 HB                      6  1976 mean_chla  33.0
-#&gt;  4 HB                      6  1977 mean_chla  43.9
-#&gt;  5 HB                      6  1978 mean_chla  28.5
-#&gt;  6 HB                      6  1979 mean_chla  27.2
-#&gt;  7 HB                      6  1980 mean_chla  23.8
-#&gt;  8 HB                      6  1981 mean_chla  41.0
-#&gt;  9 HB                      6  1982 mean_chla  25.4
-#&gt; 10 HB                      6  1983 mean_chla  25.9
-#&gt; # ... with 6,288 more rows
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>974 mean_chla  25.6
+#&gt; </span><span style='color: #555555;'> 2</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>975 mean_chla  24.8
+#&gt; </span><span style='color: #555555;'> 3</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>976 mean_chla  33.0
+#&gt; </span><span style='color: #555555;'> 4</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>977 mean_chla  43.9
+#&gt; </span><span style='color: #555555;'> 5</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>978 mean_chla  28.5
+#&gt; </span><span style='color: #555555;'> 6</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>979 mean_chla  27.2
+#&gt; </span><span style='color: #555555;'> 7</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>980 mean_chla  23.8
+#&gt; </span><span style='color: #555555;'> 8</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>981 mean_chla  41.0
+#&gt; </span><span style='color: #555555;'> 9</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>982 mean_chla  25.4
+#&gt; </span><span style='color: #555555;'>10</span><span> HB                      6  </span><span style='text-decoration: underline;'>1</span><span>983 mean_chla  25.9
+#&gt; </span><span style='color: #555555;'># ... with 6,288 more rows</span><span>
 #&gt; 
 #&gt; $mos
-#&gt; # A tibble: 89,680 x 6
+#&gt; </span><span style='color: #555555;'># A tibble: 89,680 x 6</span><span>
 #&gt;       yr    mo epchc_station bay_segment var         val
-#&gt;    &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;
-#&gt;  1  1974     1             6 HB          mean_chla  53  
-#&gt;  2  1974     1             7 HB          mean_chla  19  
-#&gt;  3  1974     1             8 HB          mean_chla  46  
-#&gt;  4  1974     1            24 LTB         mean_chla   3  
-#&gt;  5  1974     1            25 LTB         mean_chla   2  
-#&gt;  6  1974     1            36 OTB         mean_chla   4.5
-#&gt;  7  1974     1            38 OTB         mean_chla   6  
-#&gt;  8  1974     1            40 OTB         mean_chla   1  
-#&gt;  9  1974     1            41 OTB         mean_chla   3  
-#&gt; 10  1974     1            44 HB          mean_chla  24  
-#&gt; # ... with 89,670 more rows
-#&gt; </div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1             6 HB          mean_chla  53  
+#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1             7 HB          mean_chla  19  
+#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1             8 HB          mean_chla  46  
+#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1            24 LTB         mean_chla   3  
+#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1            25 LTB         mean_chla   2  
+#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1            36 OTB         mean_chla   4.5
+#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1            38 OTB         mean_chla   6  
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1            40 OTB         mean_chla   1  
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1            41 OTB         mean_chla   3  
+#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1            44 HB          mean_chla  24  
+#&gt; </span><span style='color: #555555;'># ... with 89,670 more rows</span><span>
+#&gt; </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
@@ -199,7 +200,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

@@ -24,6 +24,7 @@ anlz_yrattain(epcdata, yrsel = 2018)
 }
 \seealso{
 Other analyze: \code{\link{anlz_attain}},
-  \code{\link{anlz_avedatsite}}, \code{\link{anlz_avedat}}
+  \code{\link{anlz_avedatsite}}, \code{\link{anlz_avedat}},
+  \code{\link{anlz_tdlcrk}}
 }
 \concept{analyze}
