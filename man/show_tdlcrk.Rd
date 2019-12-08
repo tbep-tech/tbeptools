@@ -7,7 +7,7 @@
 show_tdlcrk(dat)
 }
 \arguments{
-\item{dat}{input score card data returned from \code{\link{anlz_tdlcrk()}}}
+\item{dat}{input score card data returned from \code{\link{anlz_tdlcrk}}}
 }
 \value{
 A \code{\link[leaflet]{leaflet}} object

@@ -3,7 +3,8 @@ globalVariables(c("Chlorophyll_a uncorr_ugL", "Latitude", "Longitude", "SampleTi
                   "epchc_station", "mo", "sd_m", "stations", "yr", "mean_chla", "mean_sdm", "sdm",
                   "sum_chla", "sum_sdm", "chla_thresh", "name", "targets", "val", "var", "yval", ".",
                   "chl_la", "data", "durats", "la", "na.omit", "outcome", "smallex", "target",
-                  "thresh", "trgtyp", "nums", "est", "bsmap", "geometry", "tbseg", "trgtmet"))
+                  "thresh", "trgtyp", "nums", "est", "bsmap", "geometry", "tbseg", "trgtmet",
+                  "<NA>", "JEI", "cnt", "grade", "masterCode", "result", "score", "tidalcreeks", "wbid", "year"))
 
 #' @importFrom utils download.file
 NULL

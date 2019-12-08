@@ -2,7 +2,7 @@
 #'
 #' Make a map for tidal creek report card
 #'
-#' @param dat input score card data returned from \code{\link{anlz_tdlcrk()}}
+#' @param dat input score card data returned from \code{\link{anlz_tdlcrk}}
 #'
 #' @return A \code{\link[leaflet]{leaflet}} object
 #'
