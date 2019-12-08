@@ -18,7 +18,7 @@ Spatial data object of Tampa Bay segments
 \seealso{
 Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{stations}},
-  \code{\link{targets}}
+  \code{\link{targets}}, \code{\link{tidalcreeks}}
 }
 \concept{utilities}
 \keyword{datasets}

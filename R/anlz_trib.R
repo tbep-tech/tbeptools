@@ -5,8 +5,11 @@ library(haven)
 
 prj <- 4326
 
-spat <- st_read(dsn = '../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp', drivers = 'ESRI Shapefile') %>%
-  st_transform(crs = prj)
+tidalcreeks <- st_read(dsn = '../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp', drivers = 'ESRI Shapefile') %>%
+  st_transform(crs = prj) %>%
+  select(wbid = WBID, JEI = CreekID, class) %>%
+  mutate_if(is.factor, as.character)
+
 crkraw <- read_sas('../../02_DOCUMENTS/tidal_creeks/creek_pop.sas7bdat')
 iwrraw <- read_sas('../../02_DOCUMENTS/tidal_creeks/iwr56_tidalcreeks.sas7bdat')
 
@@ -53,15 +56,15 @@ crkdat <- crkraw %>%
   select(wbid = WBID, class = CLASS, JEI, Creek_Length_m) %>%
   filter(!is.na(Creek_Length_m)) %>%
   unique
-
-if substr(jei,1,2) in ("PC","LC") then do; tn_threshold = 1.54; action=1.36;end;
-
-if class in ("3F","1") then do;
-  if TN > tn_threshold then grade=4;
-  else
-    if action<=tn<=tn_threshold then grade=3;
-    else grade=1;
-end;
+#
+# if substr(jei,1,2) in ("PC","LC") then do; tn_threshold = 1.54; action=1.36;end;
+#
+# if class in ("3F","1") then do;
+#   if TN > tn_threshold then grade=4;
+#   else
+#     if action<=tn<=tn_threshold then grade=3;
+#     else grade=1;
+# end;
 
 # left join creek data to iwrdat and add thresholds
 alldat <- iwrdat %>%
