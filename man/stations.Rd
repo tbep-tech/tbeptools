@@ -19,8 +19,9 @@ Bay stations by segment
 }
 \seealso{
 Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{targets}},
-  \code{\link{tbseg}}, \code{\link{tidalcreeks}}
+  \code{\link{epcdata}}, \code{\link{iwrraw}},
+  \code{\link{targets}}, \code{\link{tbseg}},
+  \code{\link{tidalcreeks}}
 }
 \concept{utilities}
 \keyword{datasets}

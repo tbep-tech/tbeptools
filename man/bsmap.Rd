@@ -13,8 +13,9 @@ Terrain basemap
 }
 \seealso{
 Other utilities: \code{\link{epcdata}},
-  \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbseg}}, \code{\link{tidalcreeks}}
+  \code{\link{iwrraw}}, \code{\link{stations}},
+  \code{\link{targets}}, \code{\link{tbseg}},
+  \code{\link{tidalcreeks}}
 }
 \concept{utilities}
 \keyword{datasets}

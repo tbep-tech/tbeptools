@@ -23,8 +23,9 @@ Bay segment specific management targets including low and high magnitude exceeda
 }
 \seealso{
 Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{stations}},
-  \code{\link{tbseg}}, \code{\link{tidalcreeks}}
+  \code{\link{epcdata}}, \code{\link{iwrraw}},
+  \code{\link{stations}}, \code{\link{tbseg}},
+  \code{\link{tidalcreeks}}
 }
 \concept{utilities}
 \keyword{datasets}

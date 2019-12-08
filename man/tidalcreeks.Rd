@@ -20,8 +20,9 @@ Spatial data object of tidal creeks
 }
 \seealso{
 Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbseg}}
+  \code{\link{epcdata}}, \code{\link{iwrraw}},
+  \code{\link{stations}}, \code{\link{targets}},
+  \code{\link{tbseg}}
 }
 \concept{utilities}
 \keyword{datasets}
