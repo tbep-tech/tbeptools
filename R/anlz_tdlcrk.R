@@ -12,7 +12,7 @@
 #' @family analyze
 #'
 #' @examples
-#' anlz_tdlcrk(tidalcreeks, iwrraw, yr)
+#' anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
 anlz_tdlcrk <- function(tidalcreeks, iwrraw, yr = 2018) {
 
   # mcodes <- c("CHLAC","CHLA_ ", "COLOR", "COND", "DO", "DOSAT", "DO_MG", "NO23_", "NO3O2", "ORGN", "SALIN", "TKN", "TKN_M", "TN", "TN_MG", "TP", "TPO4_",
@@ -64,9 +64,7 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, yr = 2018) {
       caution = dplyr::case_when(
         class %in% c('3M', '2') & tn_threshold == 1.65 ~ 1.46 - 0.0174*(23.78 - (Creek_Length_m/1000)),
         class %in% c('3M', '2') & tn_threshold == 1.54 ~ 1.36 - 0.0174*(23.78 - (Creek_Length_m/1000)),
-      )
-    )
-      ,
+      ),
       grade = dplyr::case_when(
         class %in% c('3F', '1') & TN > tn_threshold ~ 4,
         class %in% c('3F', '1') & TN <= tn_threshold & action <= TN ~ 3,
