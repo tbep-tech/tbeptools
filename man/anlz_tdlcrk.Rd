@@ -25,6 +25,6 @@ anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
 \seealso{
 Other analyze: \code{\link{anlz_attain}},
   \code{\link{anlz_avedatsite}}, \code{\link{anlz_avedat}},
-  \code{\link{anlz_yrattain}}
+  \code{\link{anlz_refs}}, \code{\link{anlz_yrattain}}
 }
 \concept{analyze}

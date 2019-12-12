@@ -81,6 +81,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_refs()`: Convert references csv to bib entries
+
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
 * `anlz_yrattain()`: Get attainment categories for a selected year
@@ -215,6 +217,8 @@ The analyze functions are used primarily to summarize the data returned by `read
 * `anlz_avedat()`: Estimate annual means
 
 * `anlz_avedatsite()`: Estimate annual means by site
+
+* `anlz_refs()`: Convert references csv to bib entries
 
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
