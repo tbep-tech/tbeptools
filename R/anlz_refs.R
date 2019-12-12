@@ -51,6 +51,10 @@ anlz_refs <- function(path) {
           ) %>%
           dplyr::select_at(c('index', 'tag', fldsel, 'brk')) %>%
           dplyr::mutate_at(fldsel, ~paste0('={', ., '},')) %>%
+          dplyr::mutate(
+            title = gsub('\\{', '{{', title),
+            title = gsub('\\}', '}}', title)
+          ) %>%
           tidyr::gather('var', 'val', -index) %>%
           dplyr::mutate(
             val = gsub('^\\=\\{NA\\},$', '={},', val),
@@ -73,6 +77,7 @@ anlz_refs <- function(path) {
     tidyr::unnest(data) %>%
     dplyr::ungroup() %>%
     dplyr::arrange(index, subindex) %>%
+    mutate(val= gsub('\\#', '', val)) %>%
     dplyr::pull(val)
 
   return(out)
