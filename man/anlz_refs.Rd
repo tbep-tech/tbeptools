@@ -7,7 +7,7 @@
 anlz_refs(path)
 }
 \arguments{
-\item{path}{chr string of path to reference csv file}
+\item{path}{chr string of path to reference csv file or data frame object}
 }
 \value{
 A data frame with references formatted as bib entries

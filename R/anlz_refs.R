@@ -2,7 +2,7 @@
 #'
 #' Convert references csv to bib
 #'
-#' @param path chr string of path to reference csv file
+#' @param path chr string of path to reference csv file or data frame object
 #'
 #' @return A data frame with references formatted as bib entries
 #'
@@ -23,7 +23,9 @@
 anlz_refs <- function(path) {
 
   # import
-  refs <- read.csv(path, stringsAsFactors = F)
+  refs <- path
+  if(!is.data.frame(refs))
+    refs <- read.csv(refs, stringsAsFactors = F)
 
   # specific fields for bib entry types
   flds <- list(
@@ -33,7 +35,7 @@ anlz_refs <- function(path) {
     proceedings = c('author', 'year', 'title', 'number', 'publisher', 'address', 'misc', 'url')
   )
 
-  # format refernce csv as bib
+  # format reference csv as bib
   out <- refs %>%
     dplyr::group_by(type) %>%
     tidyr::nest() %>%
