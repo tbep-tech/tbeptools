@@ -37,12 +37,12 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
 
   # color labels
   collab <- dplyr::case_when(
-    thr == 'chla' ~ 'Regulatory Threshold',
+    thr == 'chla' ~ 'Regulatory Target',
     thr == 'la' ~ 'Management Target'
   )
 
   # colors
-  cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Threshold"="blue", "+1 se"="blue", "+2 se"="blue")
+  cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Target"="blue", "+1 se"="blue", "+2 se"="blue")
   cols <- cols[c('Annual Mean', collab, '+1 se', '+2 se')]
 
   # averages
