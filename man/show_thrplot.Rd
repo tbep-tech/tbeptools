@@ -2,7 +2,7 @@
 % Please edit documentation in R/show_thrplot.R
 \name{show_thrplot}
 \alias{show_thrplot}
-\title{Plot annual water quality values and thresholds for a segment}
+\title{Plot annual water quality values, targets, and thresholds for a segment}
 \usage{
 show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
   thr = c("chla", "la"), trgs = NULL, yrrng = c(1975, 2018))
@@ -12,9 +12,9 @@ show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 
 \item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"}
 
-\item{thr}{chr string indicating which water quality value and appropriate threshold to plot, one of "chl" for chlorophyll and "la" for light availability}
+\item{thr}{chr string indicating which water quality value and appropriate target/threshold to plot, one of "chl" for chlorophyll and "la" for light availability}
 
-\item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
+\item{trgs}{optional \code{data.frame} for annual bay segment water quality targets/thresholds, defaults to \code{\link{targets}}}
 
 \item{yrrng}{numeric vector indicating min, max years to include}
 }
@@ -22,7 +22,7 @@ show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 A \code{\link[ggplot2]{ggplot}} object
 }
 \description{
-Plot annual water quality values and thresholds for a bay segment
+Plot annual water quality values, targets, and thresholds for a bay segment
 }
 \examples{
 show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')

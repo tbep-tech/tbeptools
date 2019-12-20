@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot annual water quality values and thresholds for a segment — show_thrplot • tbeptools</title>
+<title>Plot annual water quality values, targets, and thresholds for a segment — show_thrplot • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Plot annual water quality values and thresholds for a segment — show_thrplot" />
-<meta property="og:description" content="Plot annual water quality values and thresholds for a bay segment" />
+<meta property="og:title" content="Plot annual water quality values, targets, and thresholds for a segment — show_thrplot" />
+<meta property="og:description" content="Plot annual water quality values, targets, and thresholds for a bay segment" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,13 +117,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot annual water quality values and thresholds for a segment</h1>
+    <h1>Plot annual water quality values, targets, and thresholds for a segment</h1>
     <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_thrplot.R'><code>R/show_thrplot.R</code></a></small>
     <div class="hidden name"><code>show_thrplot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot annual water quality values and thresholds for a bay segment</p>
+    <p>Plot annual water quality values, targets, and thresholds for a bay segment</p>
     </div>
 
     <pre class="usage"><span class='fu'>show_thrplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
@@ -142,11 +142,11 @@
     </tr>
     <tr>
       <th>thr</th>
-      <td><p>chr string indicating which water quality value and appropriate threshold to plot, one of "chl" for chlorophyll and "la" for light availability</p></td>
+      <td><p>chr string indicating which water quality value and appropriate target/threshold to plot, one of "chl" for chlorophyll and "la" for light availability</p></td>
     </tr>
     <tr>
       <th>trgs</th>
-      <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code></p></td>
+      <td><p>optional <code>data.frame</code> for annual bay segment water quality targets/thresholds, defaults to <code><a href='targets.html'>targets</a></code></p></td>
     </tr>
     <tr>
       <th>yrrng</th>

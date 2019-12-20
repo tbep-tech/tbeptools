@@ -101,7 +101,7 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
 
-* `show_thrplot()`: Plot annual water quality values and thresholds for a segment
+* `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
 
@@ -269,7 +269,7 @@ The plotting functions are used to view long-term trends for each bay segment an
 
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
 
-* `show_thrplot()`: Plot annual water quality values and thresholds for a segment
+* `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
 External package libraries in R can be used to plot the time series data.  Here's an example using the popular [ggplot2](https://ggplot2.tidyverse.org/) package.  Some data wrangling with the [dplyr](https://dplyr.tidyverse.org/) is done first to filter the data we want to plot.
 
@@ -290,7 +290,7 @@ ggplot(toplo, aes(x = SampleTime, y = chla)) +
   theme_bw()
 ```
 
-The `show_thrplot()` function provides a more descriptive assessment of annual trends for a chosen bay segment relative to defined targets or thresholds. In this plot we show the annual averages across stations Old Tampa bay (`bay_segment = "OTB"`) for chlorophyll (`thr = "chla"`).  The red line shows annual trends and the horizontal blue lines indicate the regulator threshold for chlorophyll-a that is specific to Old Tampa Bay.  The dashed and dotted blue lines indicate +1 and +2 standard errors for the regulatory threshold.  The threshold and standard errors are considered when identifying the annual segment outcome for chlorophyll.
+The `show_thrplot()` function provides a more descriptive assessment of annual trends for a chosen bay segment relative to defined targets or thresholds. In this plot we show the annual averages across stations Old Tampa bay (`bay_segment = "OTB"`) for chlorophyll (`thr = "chla"`).  The red line shows annual trends and the horizontal blue lines indicate the thresholds and targets for chlorophyll-a that are specific to Old Tampa Bay.  The dashed and dotted blue lines indicate +1 and +2 standard errors for the management target shown by the filled line.  The target and standard errors are considered when identifying the annual segment outcome for chlorophyll.
 
 ```{r, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")

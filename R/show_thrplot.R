@@ -1,11 +1,11 @@
-#' @title Plot annual water quality values and thresholds for a segment
+#' @title Plot annual water quality values, targets, and thresholds for a segment
 #'
-#' @description Plot annual water quality values and thresholds for a bay segment
+#' @description Plot annual water quality values, targets, and thresholds for a bay segment
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
-#' @param thr chr string indicating which water quality value and appropriate threshold to plot, one of "chl" for chlorophyll and "la" for light availability
-#' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
+#' @param thr chr string indicating which water quality value and appropriate target/threshold to plot, one of "chl" for chlorophyll and "la" for light availability
+#' @param trgs optional \code{data.frame} for annual bay segment water quality targets/thresholds, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
 #'
 #' @family visualize
@@ -35,15 +35,8 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   # wq to plot
   thr <- match.arg(thr)
 
-  # color labels
-  collab <- dplyr::case_when(
-    thr == 'chla' ~ 'Regulatory Target',
-    thr == 'la' ~ 'Management Target'
-  )
-
   # colors
-  cols <- c("Annual Mean"="red", "Management Target"="blue", "Regulatory Target"="blue", "+1 se"="blue", "+2 se"="blue")
-  cols <- cols[c('Annual Mean', collab, '+1 se', '+2 se')]
+  cols <- c("Annual Mean"="red", "Management Target"="blue", "+1 se"="blue", "+2 se"="blue")
 
   # averages
   aves <- anlz_avedat(epcdata)
@@ -83,7 +76,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   p <- ggplot() +
     geom_point(data = toplo, aes(x = yr, y = yval, colour = "Annual Mean"), size = 3) +
     geom_line(data = toplo, aes(x = yr, y = yval, colour = "Annual Mean"), linetype = 'solid', size = 0.75) +
-    geom_hline(aes(yintercept = trgnum, colour = !!collab)) +
+    geom_hline(aes(yintercept = trgnum, colour = 'Management Target')) +
     geom_hline(aes(yintercept = smlnum, colour = '+1 se'), linetype = 'dashed') +
     geom_hline(aes(yintercept = thrnum, colour = '+2 se'), linetype = 'dotted') +
     geom_text(aes(yrrng[1], trgnum), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1) +
