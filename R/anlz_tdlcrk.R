@@ -68,7 +68,7 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, yr = 2018) {
       grade = dplyr::case_when(
         class %in% c('3F', '1') & TN > tn_threshold ~ 4,
         class %in% c('3F', '1') & TN <= tn_threshold & action <= TN ~ 3,
-        class %in% c('3F', '1') & TN < action ~ 1,
+        class %in% c('3F', '1') & (TN < action | is.na(TN)) ~ 1,
         class %in% c('3M', '2') & TN < caution ~ 1,
         class %in% c('3M', '2') & caution <= TN & TN <= action ~ 2,
         class %in% c('3M', '2') & action <= TN & TN <= tn_threshold ~ 3,
