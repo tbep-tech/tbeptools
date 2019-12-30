@@ -94,12 +94,18 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, yr = 2018) {
       score = dplyr::case_when(
         score == 'Red' & class %in% c('3F', '1') & `4` == 1 & `3` > 1 ~ 'Orange',
         score == 'Red' & class %in% c('3F', '1') & `4` == 1 & `1` > 3 ~ 'Green',
+        T ~ score
+      ),
+      score = dplyr::case_when(
         score == 'Orange' & class %in% c('3F', '1') & `3` == 1 & `1` > 3 ~ 'Green',
         T ~ score
       ),
       score = dplyr::case_when(
-        score == 'Red' & class %in% c('3M', '2') & `4` == 1 & sum(`1`, `2`, `3`, na.rm = T) > 2 ~ 'Orange',
-        score == 'Orange' & class %in% c('3M', '2') & `3` == 1 & sum(`1`, `2`, na.rm = T) > 1 ~ 'Yellow',
+        score == 'Red' & class %in% c('3M', '2') & (`4` == 1 & sum(`1`, `2`, `3`, na.rm = T) > 2) ~ 'Orange',
+        T ~ score
+      ),
+      score = dplyr::case_when(
+        score == 'Orange' & class %in% c('3M', '2') & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 1) ~ 'Yellow',
         T ~ score
       )
     ) %>%
