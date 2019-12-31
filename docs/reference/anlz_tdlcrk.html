@@ -129,7 +129,7 @@
     <p>Estimate tidal creek report card scores</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_tdlcrk</span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_tdlcrk</span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>tidtrgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,6 +141,10 @@
     <tr>
       <th>iwrraw</th>
       <td><p>FDEP impaired waters rule run 56 data base as <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code></p></td>
+    </tr>
+    <tr>
+      <th>tidtrgs</th>
+      <td><p>optional <code>data.frame</code> for tidal creek nitroge targets, defaults to <code><a href='tidaltargets.html'>tidaltargets</a></code></p></td>
     </tr>
     <tr>
       <th>yr</th>
@@ -159,18 +163,18 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>anlz_tdlcrk</span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 581 x 9</span><span>
-#&gt;       id wbid  class JEI     `1`   `2`   `3`   `4` score  
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1 2052  3M    CC01     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> No Data
-#&gt; </span><span style='color: #555555;'> 2</span><span>     2 1983B 2     CC01     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> No Data
-#&gt; </span><span style='color: #555555;'> 3</span><span>     3 1983B 2     CC02      1    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> Green  
-#&gt; </span><span style='color: #555555;'> 4</span><span>     4 2067  3M    CC02      1    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> Green  
-#&gt; </span><span style='color: #555555;'> 5</span><span>     5 1983B 2     CC03     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> No Data
-#&gt; </span><span style='color: #555555;'> 6</span><span>     6 2068  3M    CC03     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> No Data
-#&gt; </span><span style='color: #555555;'> 7</span><span>     7 2078A 2     CC04      2    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> Green  
-#&gt; </span><span style='color: #555555;'> 8</span><span>     8 2078B 2     CC05      2    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> Green  
-#&gt; </span><span style='color: #555555;'> 9</span><span>     9 2078A 2     CC05     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> No Data
-#&gt; </span><span style='color: #555555;'>10</span><span>    10 2065C 2     CC06     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> No Data
+#&gt;       id wbid  JEI   class target caution action threshold score  
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'> 1</span><span>     1 2052  CC01  3M        </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> No Data
+#&gt; </span><span style='color: #555555;'> 2</span><span>     2 1983B CC01  2         </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> No Data
+#&gt; </span><span style='color: #555555;'> 3</span><span>     3 1983B CC02  2          1      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> Green  
+#&gt; </span><span style='color: #555555;'> 4</span><span>     4 2067  CC02  3M         1      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> Green  
+#&gt; </span><span style='color: #555555;'> 5</span><span>     5 1983B CC03  2         </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> No Data
+#&gt; </span><span style='color: #555555;'> 6</span><span>     6 2068  CC03  3M        </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> No Data
+#&gt; </span><span style='color: #555555;'> 7</span><span>     7 2078A CC04  2          2      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> Green  
+#&gt; </span><span style='color: #555555;'> 8</span><span>     8 2078B CC05  2          2      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> Green  
+#&gt; </span><span style='color: #555555;'> 9</span><span>     9 2078A CC05  2         </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> No Data
+#&gt; </span><span style='color: #555555;'>10</span><span>    10 2065C CC06  2         </span><span style='color: #BB0000;'>NA</span><span>      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span> No Data
 #&gt; </span><span style='color: #555555;'># … with 571 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

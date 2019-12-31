@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terrain basemap — bsmap • tbeptools</title>
+<title>Tidal creek nitrogen targets — tidaltargets • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Terrain basemap — bsmap" />
-<meta property="og:description" content="Terrain basemap" />
+<meta property="og:title" content="Tidal creek nitrogen targets — tidaltargets" />
+<meta property="og:description" content="Tidal creek nitrogen targets" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,27 +120,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Terrain basemap</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/bsmap.R'><code>R/bsmap.R</code></a></small>
-    <div class="hidden name"><code>bsmap.Rd</code></div>
+    <h1>Tidal creek nitrogen targets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/tidaltargets.R'><code>R/tidaltargets.R</code></a></small>
+    <div class="hidden name"><code>tidaltargets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Terrain basemap</p>
+    <p>Tidal creek nitrogen targets</p>
     </div>
 
-    <pre class="usage"><span class='no'>bsmap</span></pre>
+    <pre class="usage"><span class='no'>tidaltargets</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A <code><a href='https://rdrr.io/pkg/ggmap/man/ggmap.html'>ggmap</a></code> object</p>
+    <p>A data frame with 2 rows and 4 variables:</p><dl class='dl-horizontal'>
+  <dt>region</dt><dd><p>chr</p></dd>
+  <dt>threshold</dt><dd><p>num</p></dd>
+  <dt>action</dt><dd><p>num</p></dd>
+  <dt>caution</dt><dd><p>num</p></dd>
+
+</dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other utilities: <code><a href='epcdata.html'>epcdata</a></code>,
-  <code><a href='iwrraw.html'>iwrraw</a></code>, <code><a href='stations.html'>stations</a></code>,
-  <code><a href='targets.html'>targets</a></code>, <code><a href='tbseg.html'>tbseg</a></code>,
-  <code><a href='tidalcreeks.html'>tidalcreeks</a></code>, <code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
+    <div class='dont-index'><p>Other utilities: <code><a href='bsmap.html'>bsmap</a></code>,
+  <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='iwrraw.html'>iwrraw</a></code>,
+  <code><a href='stations.html'>stations</a></code>, <code><a href='targets.html'>targets</a></code>,
+  <code><a href='tbseg.html'>tbseg</a></code>, <code><a href='tidalcreeks.html'>tidalcreeks</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -76,7 +76,7 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
   # grade is the count of the number of times in the past ten year period that TN exceeded one of these values
   alldat <- tidalcreeks %>%
     sf::st_set_geometry(NULL) %>%
-    dplyr::left_join(iwrdat, by = c('wbid', 'class', 'JEI')) %>%
+    dplyr::left_join(iwrdat, by = c('wbid', 'JEI', 'class')) %>%
     dplyr::mutate(
       tn_threshold = dplyr::case_when(
         !is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI) ~ wcthr,
@@ -134,7 +134,8 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
         T ~ score
       )
     ) %>%
-    tidyr::as_tibble()
+    tidyr::as_tibble() %>%
+    dplyr::select(id, wbid, JEI, class, target = `1`, caution = `2`, action = `3`, threshold = `4`, score)
 
   return(scrdat)
 

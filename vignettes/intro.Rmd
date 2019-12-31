@@ -122,7 +122,7 @@ install_github('tbeptools')
 library(tbeptools)
 ```
 
-After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required farguments that are needed to run the function.
+After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required arguments that are needed to run the function.
 
 ```{r, echo = F, out.width = '70%', fig.cap = "The help file for `read_importwq`."}
 knitr::include_graphics('helpfileex.png')
@@ -245,15 +245,7 @@ Similar information can be obtained for individual sites using `anlz_avedatsite(
 anlz_avedatsite(epcdata) %>% anlz_attainsite
 ```
 
-
-The condition of tidal creeks can be evaluated using the `anlz_tldcrk()` function.  This analysis uses an internal spatial data object (`tidalcreeks`) as the population of creeks to evaluate and raw water quality data from the Florida Department of Environmental Protection Impaired Waters Rule run 56.  The function evaluate different exceedances for total nitrogen in a given creek for the past ten years, with a lower score given to more frequent and severe exceedances. 
-
-```{r}
-tdlcrk <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
-tdlcrk
-```
-
-As mentioned above, the analyze functions are used primarily within the visualization functions. They are mentioned here to provide a brief explanation of how to obtain the underlying data used in the plots.
+The condition of tidal creeks can be evaluated using the `anlz_tldcrk()` function.  View the [Tidal Creek Assessment](https://tbep-tech.github.io/tbeptools/articles/tidalcreeks.html) vignette for additional information.
 
 ## Show
 
@@ -268,6 +260,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_reactable()`: Create a reactable table for reporting matrices, used internally only
 
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
+
+* `show_tdlcrk()`: Make a map for tidal creek report card
 
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
@@ -403,13 +397,6 @@ show_chlmatrix(epcdata)
 ```
 
 From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
-
-The tidal creek report card can also be viewed using `show_tdlcrk()`.
-
-```{r}
-dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
-show_tdlcrk(dat)
-```
 
 # References
 
