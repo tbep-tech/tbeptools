@@ -4,12 +4,14 @@
 \alias{anlz_tdlcrk}
 \title{Estimate tidal creek report card scores}
 \usage{
-anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
+anlz_tdlcrk(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018)
 }
 \arguments{
 \item{tidalcreeks}{\code{\link[sf]{sf}} object for population of tidal creeks}
 
 \item{iwrraw}{FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}}
+
+\item{tidtrgs}{optional \code{data.frame} for tidal creek nitroge targets, defaults to \code{\link{tidaltargets}}}
 
 \item{yr}{numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date}
 }

@@ -4,6 +4,7 @@
 #'
 #' @param tidalcreeks \code{\link[sf]{sf}} object for population of tidal creeks
 #' @param iwrraw FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}
+#' @param tidtrgs optional \code{data.frame} for tidal creek nitroge targets, defaults to \code{\link{tidaltargets}}
 #' @param yr numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date
 #'
 #' @return A \code{\link{data.frame}} with the report card scores for each creek, as red, orange, yellow, green, or no data
@@ -13,7 +14,31 @@
 #'
 #' @examples
 #' anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
-anlz_tdlcrk <- function(tidalcreeks, iwrraw, yr = 2018) {
+anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
+
+  # default targets from data file
+  if(is.null(tidtrgs))
+    tidtrgs <- tidaltargets
+
+  # get targets
+  wcthr <- tidtrgs %>%
+    dplyr::filter(region == 'West Central') %>%
+    dplyr::pull(threshold)
+  wcact <- tidtrgs %>%
+    dplyr::filter(region == 'West Central') %>%
+    dplyr::pull(action)
+  wccau <- tidtrgs %>%
+    dplyr::filter(region == 'West Central') %>%
+    dplyr::pull(caution)
+  pethr <- tidtrgs %>%
+    dplyr::filter(region == 'Peninsula') %>%
+    dplyr::pull(threshold)
+  peact <- tidtrgs %>%
+    dplyr::filter(region == 'Peninsula') %>%
+    dplyr::pull(action)
+  pecau <- tidtrgs %>%
+    dplyr::filter(region == 'Peninsula') %>%
+    dplyr::pull(caution)
 
   mcodes <- c("CHLAC","CHLA_ ", "COLOR", "COND", "DO", "DOSAT", "DO_MG", "NO23_", "NO3O2", "ORGN", "SALIN", "TKN", "TKN_M", "TN", "TN_MG", "TP", "TPO4_",
     "TP_MG", "TSS", "TSS_M", "TURB")
@@ -54,16 +79,16 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, yr = 2018) {
     dplyr::left_join(iwrdat, by = c('wbid', 'class', 'JEI')) %>%
     dplyr::mutate(
       tn_threshold = dplyr::case_when(
-        !is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI) ~ 1.65,
-        !is.na(Creek_Length_m) & grepl('^PC|^LC', JEI) ~ 1.54
+        !is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI) ~ wcthr,
+        !is.na(Creek_Length_m) & grepl('^PC|^LC', JEI) ~ pethr
       ),
       action = dplyr::case_when(
-        !is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI) ~ 1.46,
-        !is.na(Creek_Length_m) & grepl('^PC|^LC', JEI) ~ 1.36
+        !is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI) ~ wcact,
+        !is.na(Creek_Length_m) & grepl('^PC|^LC', JEI) ~ peact
       ),
       caution = dplyr::case_when(
-        class %in% c('3M', '2') & tn_threshold == 1.65 ~ 1.46 - 0.0174*(23.78 - (Creek_Length_m/1000)),
-        class %in% c('3M', '2') & tn_threshold == 1.54 ~ 1.36 - 0.0174*(23.78 - (Creek_Length_m/1000)),
+        class %in% c('3M', '2') & tn_threshold == wcthr ~ eval(parse(text = wccau)),
+        class %in% c('3M', '2') & tn_threshold == pethr ~ eval(parse(text = pecau))
       ),
       grade = dplyr::case_when(
         class %in% c('3F', '1') & TN > tn_threshold ~ 4,

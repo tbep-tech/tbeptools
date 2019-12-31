@@ -8,7 +8,7 @@ output:
   rmarkdown::html_vignette:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{Intro to TBEP Tools}
+  %\VignetteIndexEntry{Tidal Creek Assessment}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -40,7 +40,7 @@ bib_scrp(here('vignettes', 'tidalcreeks.Rmd'), bib_new = here('vignettes', 'tida
 
 ## Background
 
-Tidal creeks or tributaries represent important habitats in the Tampa Bay Estuary and serve as important focal points for monitoring and understanding watershed inputs that affect water quality.  A critical goal of the Tampa Bay Estuary Program is to develop effecive nurient management strategies to support the ecological funcion of tidal tributaries.  In partnership with Sarasota Bay NEP, Charlotte Harbor NEP, and local government and agency stakeholders, preliminary methods have been developed for assessing the health of tidal tributaries based on exceedences of nitrogen concentrations throughout a specified reporting period [@tbep0216;2019 draft report forthcoming].  This information can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.  
+Tidal creeks or tributaries represent important habitats in the Tampa Bay Estuary and serve as important focal points for monitoring and understanding watershed inputs that affect water quality.  A fundamental goal of the Tampa Bay Estuary Program is to develop effective nurient management strategies to support the ecological funcion of tidal tributaries.  In partnership with Sarasota Bay NEP, Charlotte Harbor NEP, and local government and agency stakeholders, preliminary methods have been developed for assessing the health of tidal tributaries based on exceedences of nitrogen concentrations throughout a specified reporting period [@tbep0216;2019 draft report forthcoming].  This information can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.  
 
 The tbeptools package includes a [simple features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data object of the population of tidal creeks in southwest Florida, called `tidalcreeks`. This includes `r nrow(tidalcreeks)` polyline features designated by a water body ID (`wbid`), creek id (`JEI`), and [FDEP class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria) (`class`, 1 for potable water, 2 for shellfish harvesting or propagation, and 3F/3M for freshwater/marine fish consumption, recreation, propagation and maintenance of a healthy, well-balanced population of fish and wildlife).
 
@@ -58,7 +58,7 @@ Similar to the water quality report card, tidal creeks are assigned to categorie
 
 <span style="color:#F9FF33">__Caution__</span>: A site-specific early warning concentration that an individual creek may be trending towards a eutrophic condition and can help prioritize where management actions should begin to identify actions to prevent a threshold exceedence.
 
-<span style="color:#FFA500">__Action_</span>: A concentration indicating a management action level that identifies a potential degradation point as an impetus to develop site-spefici management actions.
+<span style="color:#FFA500">__Action__</span>: A concentration indicating a management action level that identifies a potential degradation point as an impetus to develop site-spefici management actions.
 
 <span style="color:#FF3333">__Threshold__</span>: A concentration indicating that regulatory actions are needed to confirm the impairment and identify remediative actions for the creek watershed.
 

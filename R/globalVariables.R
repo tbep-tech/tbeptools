@@ -5,7 +5,8 @@ globalVariables(c("Chlorophyll_a uncorr_ugL", "Latitude", "Longitude", "SampleTi
                   "chl_la", "data", "durats", "la", "na.omit", "outcome", "smallex", "target",
                   "thresh", "trgtyp", "nums", "est", "bsmap", "geometry", "tbseg", "trgtmet",
                   "<NA>", "JEI", "cnt", "grade", "masterCode", "result", "score", "tidalcreeks", "wbid", "year",
-                  "title", "index", "subindex", "tag", "type"))
+                  "title", "index", "subindex", "tag", "type", "action", "caution", "region", "threshold",
+                  "tidaltargets"))
 
 #' @importFrom utils download.file
 NULL

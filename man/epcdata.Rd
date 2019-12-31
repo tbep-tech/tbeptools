@@ -27,7 +27,8 @@ All bay data as of 11242019 (Nov 24 2019)
 \seealso{
 Other utilities: \code{\link{bsmap}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbseg}}, \code{\link{tidalcreeks}}
+  \code{\link{tbseg}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}
