@@ -3,4 +3,5 @@ pkgdown: 1.4.1.9000
 pkgdown_sha: af379b9bae1d14189ca260a69115ab3e66a6c5c5
 articles:
   intro: ../../../../../../../T:/04_STAFF/MARCUS/03_GIT/tbeptools/vignettes/intro.html
+  tidalcreeks: ../../../../../../../T:/04_STAFF/MARCUS/03_GIT/tbeptools/vignettes/tidalcreeks.html
 
