@@ -27,3 +27,11 @@ The package can be installed from GitHub.
 install.packages('devtools')
 devtools::install_github('tbep-tech/tbeptools')
 ```
+
+# Issues and suggestions
+
+Please report any issues and suggestions on the [issues link](https://github.com/tbep-tech/tbeptools/issues) for the repository.  A guide to posting issues can be found [here](.github/ISSUE_TEMPLATE.md).
+
+# Contributing
+
+Please view our [contributing](.github/CONTRIBUTING.md) guidelines for any changes or pull requests.
