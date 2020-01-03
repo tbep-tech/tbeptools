@@ -107,8 +107,10 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
     theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),
           panel.grid.major=element_blank(),
+          panel.background = element_rect(fill = '#95898430'),
           legend.position = 'top',#c(0.85, 0.95),
           legend.background = element_rect(fill=NA),
+          legend.key = element_rect(fill = '#95898430'),
           legend.title = element_blank(),
           axis.text.x = element_text(angle = 45, size = 8, hjust = 1)
     ) +
