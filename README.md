@@ -9,7 +9,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/tbep-tech/tbeptools?b
 coverage](https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg)](https://codecov.io/gh/tbep-tech/tbeptools?branch=master)
 
 R package for Tampa Bay Estuary Program functions. Please see the
-[vignette](file:///T:/04_STAFF/MARCUS/03_GIT/tbeptools/docs/articles/intro.html)
+[vignette](https://tbep-tech.github.io/tbeptools/articles/intro.html)
 for a full description.
 
 <img src="man/figures/tbep_logo.png" align="left" width="400"/>
