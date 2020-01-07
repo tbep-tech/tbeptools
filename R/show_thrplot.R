@@ -85,10 +85,10 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),
           panel.grid.major=element_blank(),
-          panel.background = element_rect(fill = '#95898430'),
+          panel.background = element_rect(fill = '#ECECEC'),
           legend.position = 'top',#c(0.85, 0.95),
           legend.background = element_rect(fill=NA),
-          legend.key = element_rect(fill = '#95898430'),
+          legend.key = element_rect(fill = '#ECECEC'),
           legend.title = element_blank(),
           axis.text.x = element_text(angle = 45, size = 7, hjust = 1)
     ) +
