@@ -21,7 +21,8 @@ Tidal creek nitrogen targets
 Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbseg}}, \code{\link{tidalcreeks}}
+  \code{\link{tbseg}}, \code{\link{tbshed}},
+  \code{\link{tidalcreeks}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -4,7 +4,7 @@
 \name{tbseg}
 \alias{tbseg}
 \title{Spatial data object of Tampa Bay segments}
-\format{A simple features \code{\link[sf]{sf}} object (POLYGON) with 4 feaures and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+\format{A simple features \code{\link[sf]{sf}} object (POLYGON) with 4 features and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
   \item{long_name}{chr}
   \item{bay_segment}{chr}
@@ -15,11 +15,16 @@ tbseg
 \description{
 Spatial data object of Tampa Bay segments
 }
+\examples{
+library(sf)
+plot(st_geometry(tbseg))
+}
 \seealso{
 Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

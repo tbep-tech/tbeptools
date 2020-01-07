@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bay segment targets — targets • tbeptools</title>
+<title>Spatial data object of Tampa Bay watershed — tbshed • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Bay segment targets — targets" />
-<meta property="og:description" content="Bay segment specific management targets including low and high magnitude exceedance thresholds" />
+<meta property="og:title" content="Spatial data object of Tampa Bay watershed — tbshed" />
+<meta property="og:description" content="Spatial data object of Tampa Bay watershed, includes the bay proper" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,45 +120,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bay segment targets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/targets.R'><code>R/targets.R</code></a></small>
-    <div class="hidden name"><code>targets.Rd</code></div>
+    <h1>Spatial data object of Tampa Bay watershed</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/tbshed.R'><code>R/tbshed.R</code></a></small>
+    <div class="hidden name"><code>tbshed.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Bay segment specific management targets including low and high magnitude exceedance thresholds</p>
+    <p>Spatial data object of Tampa Bay watershed, includes the bay proper</p>
     </div>
 
-    <pre class="usage"><span class='no'>targets</span></pre>
+    <pre class="usage"><span class='no'>tbshed</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 4 rows and 8 variables:</p><dl class='dl-horizontal'>
-  <dt>bay_segment</dt><dd><p>chr</p></dd>
-  <dt>name</dt><dd><p>chr</p></dd>
-  <dt>chla_target</dt><dd><p>num</p></dd>
-  <dt>chla_smallex</dt><dd><p>num</p></dd>
-  <dt>chla_thresh</dt><dd><p>num</p></dd>
-  <dt>la_target</dt><dd><p>num</p></dd>
-  <dt>la_smallex</dt><dd><p>num</p></dd>
-  <dt>la_thresh</dt><dd><p>num</p></dd>
-
-</dl>
+    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (POLYGON) with 1 feature and 0 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utilities: <code><a href='bsmap.html'>bsmap</a></code>,
   <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='iwrraw.html'>iwrraw</a></code>,
-  <code><a href='stations.html'>stations</a></code>, <code><a href='tbseg.html'>tbseg</a></code>,
-  <code><a href='tbshed.html'>tbshed</a></code>, <code><a href='tidalcreeks.html'>tidalcreeks</a></code>,
+  <code><a href='stations.html'>stations</a></code>, <code><a href='targets.html'>targets</a></code>,
+  <code><a href='tbseg.html'>tbseg</a></code>, <code><a href='tidalcreeks.html'>tidalcreeks</a></code>,
   <code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/sf/man/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_geometry.html'>st_geometry</a></span>(<span class='no'>tbshed</span>))</div><div class='img'><img src='tbshed-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
