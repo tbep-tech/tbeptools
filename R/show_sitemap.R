@@ -46,14 +46,16 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL){
     ) %>%
     st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
 
+  transcol <- rgb(1, 1, 1, 0.5)
+
   # plot, this kills the message about coordinate systems
   suppressMessages({
 
     p <- ggmap::ggmap(bsmap) +
-      geom_sf(data = tbseg, fill = '#FFFFFF80', inherit.aes = F) +
+      geom_sf(data = tbseg, fill = transcol, inherit.aes = F) +
       ggrepel::geom_text_repel(data = tomap, aes(label = round(val, 1), geometry = geometry), stat = "sf_coordinates", size = 3, inherit.aes = F) +
       geom_sf(data = tomap, aes(colour = trgtmet, fill = trgtmet), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
-      geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = "FFFFFF80") +
+      geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = transcol) +
       scale_fill_manual(leglab,  values = c('green', 'red'), drop = F) +
       scale_colour_manual(leglab, values = c('green', 'red'), drop = F) +
       theme(
