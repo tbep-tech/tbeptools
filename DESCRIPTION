@@ -39,7 +39,7 @@ Remotes:
 Suggests: 
   bookdown,
   english,
-  fontextra,
+  extrafont,
   here,
   Jabbrev,
   knitr,
