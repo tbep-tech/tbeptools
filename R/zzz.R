@@ -5,8 +5,7 @@
   #   system('fc-cache -f ~/.fonts')
   # }
   if (Sys.info()[1] == "Windows") {
-    windowsFonts()
-    suppressMessages(extrafont::font_import(path = "inst/extdata/fonts/", pattern = "Lato-Light", prompt = FALSE))
+    suppressMessages(extrafont::font_import(path = system.file('extdata/fonts', package = 'tbeptools'), pattern = "Lato-Light", prompt = FALSE))
     extrafont::loadfonts(device = "win", quiet = TRUE)
     extrafont::loadfonts(device = 'pdf', quiet = TRUE)
     windowsFonts()
