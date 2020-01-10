@@ -19,6 +19,7 @@ Depends:
   methods
 Imports:
   dplyr,
+  extrafont,
   ggbeeswarm,
   ggmap,
   ggplot2,
@@ -39,7 +40,6 @@ Remotes:
 Suggests: 
   bookdown,
   english,
-  extrafont,
   here,
   Jabbrev,
   knitr,

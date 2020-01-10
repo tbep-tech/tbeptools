@@ -69,10 +69,9 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
     geom_tile(colour = 'black', fill = toplo$outcome) +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
-    theme_bw(base_family = 'serif') +
+    theme_bw() +
     theme(
-      axis.title = element_blank(),
-      text = element_text(family = 'serif')
+      axis.title = element_blank()
     )
 
   if(!is.null(txtsz))
