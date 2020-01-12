@@ -23,7 +23,7 @@ show_tdlcrk <- function(dat) {
 
   # join data to tidalcreeks sf
   tomap <- tidalcreeks %>%
-    dplyr::left_join(dat, by = c('id', 'wbid', 'JEI', 'class')) %>%
+    dplyr::left_join(dat, ., by = c('id', 'wbid', 'JEI', 'class')) %>%
     dplyr::mutate(
       score = factor(score, levels = c('No Data', 'Green', 'Yellow', 'Orange', 'Red'))
     )
