@@ -43,9 +43,9 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
     toplo <- toplo %>%
       dplyr::mutate(
         outcometxt = dplyr::case_when(
-          outcome == 'red' ~ 'r',
-          outcome == 'yellow' ~ 'y',
-          outcome == 'green' ~ 'g'
+          outcome == 'red' ~ 'R',
+          outcome == 'yellow' ~ 'Y',
+          outcome == 'green' ~ 'G'
         )
       )
   if(!abbrev)
@@ -64,9 +64,9 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
     colfun <- function(x){
 
       out <- dplyr::case_when(
-        x %in% c('r', 'red') ~ '#FF3333',
-        x %in% c('y', 'yellow') ~ '#F9FF33',
-        x %in% c('g', 'green') ~ '#33FF3B'
+        x %in% c('R', 'red') ~ '#FF3333',
+        x %in% c('Y', 'yellow') ~ '#F9FF33',
+        x %in% c('G', 'green') ~ '#33FF3B'
       )
 
       return(out)
