@@ -9,6 +9,7 @@
 #' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
+#' @param family optional chr string indicating font family for text labels
 #'
 #' @family visualize
 #'
@@ -24,7 +25,7 @@
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10, abbrev = FALSE){
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
 
   # default targets from data file
   if(is.null(trgs))
@@ -93,7 +94,7 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
 
   if(!is.null(txtsz))
     p <- p +
-      geom_text(aes(label = outcometxt), size = txtsz)
+      geom_text(aes(label = outcometxt), size = txtsz, family = family)
 
   return(p)
 

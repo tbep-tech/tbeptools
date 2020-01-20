@@ -5,7 +5,7 @@
 \title{Create a colorized table for indicator reporting}
 \usage{
 show_matrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018),
-  asreact = FALSE, nrows = 10, abbrev = FALSE)
+  asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -21,6 +21,8 @@ show_matrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018),
 \item{nrows}{if \code{asreact = TRUE}, a numeric specifying number of rows in the table}
 
 \item{abbrev}{logical indicating if text labels in the plot are abbreviated as the first letter}
+
+\item{family}{optional chr string indicating font family for text labels}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned
