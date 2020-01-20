@@ -8,6 +8,7 @@
 #' @param yrrng numeric vector indicating min, max years to include
 #' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
+#' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #'
 #' @family visualize
 #'
@@ -23,7 +24,7 @@
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10){
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10, abbrev = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -37,19 +38,35 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
     ) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2])
 
+  # add abbreviations if true
+  if(abbrev)
+    toplo <- toplo %>%
+      dplyr::mutate(
+        outcometxt = dplyr::case_when(
+          outcome == 'red' ~ 'r',
+          outcome == 'yellow' ~ 'y',
+          outcome == 'green' ~ 'g'
+        )
+      )
+  if(!abbrev)
+    toplo <- toplo %>%
+      dplyr::mutate(
+        outcometxt = outcome
+      )
+
   # reactable object
   if(asreact){
 
     totab <- toplo %>%
-      dplyr::select(-chl_la) %>%
-      tidyr::spread(bay_segment, outcome)
+      dplyr::select(bay_segment, yr, outcometxt) %>%
+      tidyr::spread(bay_segment, outcometxt)
 
     colfun <- function(x){
 
       out <- dplyr::case_when(
-        x == 'red' ~ '#FF3333',
-        x == 'yellow' ~ '#F9FF33',
-        x == 'green' ~ '#33FF3B'
+        x %in% c('r', 'red') ~ '#FF3333',
+        x %in% c('y', 'yellow') ~ '#F9FF33',
+        x %in% c('g', 'green') ~ '#33FF3B'
       )
 
       return(out)
@@ -76,7 +93,7 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
 
   if(!is.null(txtsz))
     p <- p +
-      geom_text(aes(label = outcome), size = txtsz)
+      geom_text(aes(label = outcometxt), size = txtsz)
 
   return(p)
 

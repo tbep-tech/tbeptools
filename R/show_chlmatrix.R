@@ -8,6 +8,7 @@
 #' @param yrrng numeric vector indicating min, max years to include
 #' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
+#' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #'
 #' @family visualize
 #'
@@ -22,7 +23,7 @@
 #'
 #' @examples
 #' show_chlmatrix(epcdata)
-show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10){
+show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10, abbrev = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -44,18 +45,33 @@ show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018
       )
     )
 
+  if(abbrev)
+    toplo <- toplo %>%
+      dplyr::mutate(
+        outcometxt = dplyr::case_when(
+          outcome == 'red' ~ 'r',
+          outcome == 'green' ~ 'g'
+        )
+      )
+  if(!abbrev)
+    toplo <- toplo %>%
+      dplyr::mutate(
+        outcometxt = outcome
+      )
+
+
   # reactable object
   if(asreact){
 
     totab <- toplo %>%
-      dplyr::select(bay_segment, yr, outcome) %>%
-      tidyr::spread(bay_segment, outcome)
+      dplyr::select(bay_segment, yr, outcometxt) %>%
+      tidyr::spread(bay_segment, outcometxt)
 
     colfun <- function(x){
 
       out <- dplyr::case_when(
-        x == 'red' ~ '#FF3333',
-        x == 'green' ~ '#33FF3B'
+        x %in% c('r', 'red') ~ '#FF3333',
+        x %in% c('g', 'green') ~ '#33FF3B'
       )
 
       return(out)
@@ -81,7 +97,7 @@ show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018
 
   if(!is.null(txtsz))
     p <- p +
-      geom_text(aes(label = outcome), size = txtsz)
+      geom_text(aes(label = outcometxt), size = txtsz)
 
   return(p)
 

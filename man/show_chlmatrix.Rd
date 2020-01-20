@@ -5,7 +5,7 @@
 \title{Create a colorized table for chlorophyll exceedances}
 \usage{
 show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
-  2018), asreact = FALSE, nrows = 10)
+  2018), asreact = FALSE, nrows = 10, abbrev = FALSE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -19,6 +19,8 @@ show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
 \item{asreact}{logical indicating if a \code{\link[reactable]{reactable}} object is returned}
 
 \item{nrows}{if \code{asreact = TRUE}, a numeric specifying number of rows in the table}
+
+\item{abbrev}{logical indicating if text labels in the plot are abbreviated as the first letter}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned
