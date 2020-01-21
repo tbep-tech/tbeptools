@@ -55,33 +55,17 @@
 show_reactable <- function(totab, colfun, nrows = 10) {
 
   out <- reactable::reactable(totab,
-                       defaultPageSize = nrows,
-                       columns = list(
-                         yr = colDef(
-                           name = "Year"
-                         ),
-                         OTB = colDef(
-                           style = function(value){
-                             list(background = colfun(value))
-                           }
-                         ),
-                         HB = colDef(
-                           style = function(value){
-                             list(background = colfun(value))
-                           }
-                         ),
-                         MTB = colDef(
-                           style = function(value){
-                             list(background = colfun(value))
-                           }
-                         ),
-                         LTB = colDef(
-                           style = function(value){
-                             list(background = colfun(value))
-                           }
-                         )
-
-                       )
+    defaultPageSize = nrows,
+    columns = list(
+     yr = colDef(
+       name = "Year"
+     )
+    ),
+    defaultColDef = colDef(
+     style = function(value){
+       list(background = colfun(value))
+       }
+    )
   )
 
   return(out)

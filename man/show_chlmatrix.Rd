@@ -5,7 +5,8 @@
 \title{Create a colorized table for chlorophyll exceedances}
 \usage{
 show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
-  2018), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA)
+  2018), bay_segment = c("OTB", "HB", "MTB", "LTB"), asreact = FALSE,
+  nrows = 10, abbrev = FALSE, family = NA)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -15,6 +16,8 @@ show_chlmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
 \item{yrrng}{numeric vector indicating min, max years to include}
+
+\item{bay_segment}{chr string for bay segments to include, one to all of "OTB", "HB", "MTB", "LTB"}
 
 \item{asreact}{logical indicating if a \code{\link[reactable]{reactable}} object is returned}
 

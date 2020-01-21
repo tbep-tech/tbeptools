@@ -6,6 +6,7 @@
 #' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
+#' @param bay_segment chr string for bay segments to include, one to all of "OTB", "HB", "MTB", "LTB"
 #' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
@@ -25,7 +26,7 @@
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
 
   # default targets from data file
   if(is.null(trgs))
@@ -34,10 +35,11 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
   # process data to plot
   avedat <- anlz_avedat(epcdata)
   toplo <- anlz_attain(avedat, trgs = trgs) %>%
+    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
+    dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::mutate(
       bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
-    ) %>%
-    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2])
+    )
 
   # add abbreviations if true
   if(abbrev)
