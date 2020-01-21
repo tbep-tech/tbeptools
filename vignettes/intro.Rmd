@@ -339,11 +339,11 @@ targets
 
 The final plotting function is `show_matrix()`, which creates an annual reporting matrix that reflects the combined outcomes for chlorophyll and light attenuation. Tracking the attainment of bay segment specific targets for these indicators provides the framework from which bay management actions are developed and initiated.  For each year and segment, a color-coded management action is assigned:
 
-<span style="color:#33FF3B">__Stay the Course__</span>: Continue planned projects. Report data via annual progress reports and Baywide Environmental Monitoring Report. 
+<span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Stay the Course__</span>: Continue planned projects. Report data via annual progress reports and Baywide Environmental Monitoring Report. 
 
-<span style="color:#F9FF33">__Caution__</span>: Review monitoring data and nitrogen loading estimates. Begin/continue TAC and Management Board development of specific management recommendations.
+<span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>: Review monitoring data and nitrogen loading estimates. Begin/continue TAC and Management Board development of specific management recommendations.
 
-<span style="color:#FF3333">__On Alert__</span>: Finalize development and implement appropriate management actions to get back on track.
+<span style="color:#FF3333; text-shadow: 0 0 3px #333;">__On Alert__</span>: Finalize development and implement appropriate management actions to get back on track.
 
 The management category or action is based on the combination of outcomes for chlorophyll and light attenuation [@Janicki99].
 

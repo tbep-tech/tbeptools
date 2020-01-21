@@ -130,7 +130,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>show_matrix</span>(<span class='no'>epcdata</span>, <span class='kw'>txtsz</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>),
-  <span class='kw'>asreact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>abbrev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+  <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>), <span class='kw'>asreact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>abbrev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +151,10 @@
     <tr>
       <th>yrrng</th>
       <td><p>numeric vector indicating min, max years to include</p></td>
+    </tr>
+    <tr>
+      <th>bay_segment</th>
+      <td><p>chr string for bay segments to include, one to all of "OTB", "HB", "MTB", "LTB"</p></td>
     </tr>
     <tr>
       <th>asreact</th>

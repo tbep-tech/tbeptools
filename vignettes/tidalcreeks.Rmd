@@ -51,13 +51,13 @@ The tidal creek assessments use data from the FDEP [Impaired Waters Rule](https:
 
 Similar to the water quality report card, tidal creeks are assigned to categories within a management framework intended to serve as both a mechanism for evaluating data relative to the need for regulatory action, and to identify stewardship actions that, if properly pursued, preclude the need for any regulatory actions.  Within this framework, tidal creeks are assigned to one of four categories: 
 
-<span style="color:#33FF3B">__Target__</span>: At or below nitrogen concentrations that protect individual creek types within the larger population of creeks.
+<span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Target__</span>: At or below nitrogen concentrations that protect individual creek types within the larger population of creeks.
 
-<span style="color:#F9FF33">__Caution__</span>: A site-specific early warning concentration that an individual creek may be trending towards a eutrophic condition and can help prioritize where management actions should begin to identify actions to prevent a threshold exceedance.
+<span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>: A site-specific early warning concentration that an individual creek may be trending towards a eutrophic condition and can help prioritize where management actions should begin to identify actions to prevent a threshold exceedance.
 
-<span style="color:#FFA500">__Action__</span>: A concentration indicating a management action level that identifies a potential degradation point as an impetus to develop site-specific management actions.
+<span style="color:#FFA500; text-shadow: 0 0 3px #333;">__Action__</span>: A concentration indicating a management action level that identifies a potential degradation point as an impetus to develop site-specific management actions.
 
-<span style="color:#FF3333">__Threshold__</span>: A concentration indicating that regulatory actions are needed to confirm the impairment and identify remediative actions for the creek watershed.
+<span style="color:#FF3333; text-shadow: 0 0 3px #333;">__Threshold__</span>: A concentration indicating that regulatory actions are needed to confirm the impairment and identify remediative actions for the creek watershed.
 
 Conceptually, these thresholds appear in the figure below.
 
