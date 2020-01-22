@@ -7,6 +7,7 @@
 #' @param thr chr string indicating which water quality value and appropriate target/threshold to plot, one of "chl" for chlorophyll and "la" for light availability
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets/thresholds, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
+#' @param family optional chr string indicating font family for text labels
 #'
 #' @family visualize
 #'
@@ -19,7 +20,7 @@
 #'
 #' @examples
 #' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
-show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2018)){
+show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2018), family = NA){
 
   # default targets from data file
   if(is.null(trgs))
@@ -79,7 +80,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     geom_hline(aes(yintercept = trgnum, colour = 'Management Target')) +
     geom_hline(aes(yintercept = smlnum, colour = '+1 se'), linetype = 'dashed') +
     geom_hline(aes(yintercept = thrnum, colour = '+2 se'), linetype = 'dotted') +
-    geom_text(aes(yrrng[1], trgnum), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1) +
+    geom_text(aes(yrrng[1], trgnum), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, family = family) +
     labs(y = axlab, title = ttl) +
     scale_x_continuous(breaks = seq(yrrng[1], yrrng[2], by = 1)) +
     theme(axis.title.x = element_blank(),

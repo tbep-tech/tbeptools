@@ -6,7 +6,7 @@
 \usage{
 show_boxplot(epcdata, yrsel = NULL, yrrng = c(1975, 2018),
   ptsz = 0.5, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  trgs = NULL)
+  trgs = NULL, family = NA)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -20,6 +20,8 @@ show_boxplot(epcdata, yrsel = NULL, yrrng = c(1975, 2018),
 \item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"}
 
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
+
+\item{family}{optional chr string indicating font family for text labels}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object

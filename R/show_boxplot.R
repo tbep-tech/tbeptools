@@ -8,6 +8,7 @@
 #' @param ptsz numeric indicating point size of observations not in \code{yrsel}
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
+#' @param family optional chr string indicating font family for text labels
 #'
 #' @family visualize
 #'
@@ -25,7 +26,7 @@
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
-show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL){
+show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL, family = NA){
 
   # default targets from data file
   if(is.null(trgs))
@@ -102,7 +103,7 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
     geom_beeswarm(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), size = ptsz) +
     geom_point(data = toplo2, aes(x = mo, y = val, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
     geom_hline(aes(yintercept = thrnum, linetype = '+2 se'), colour = 'blue') +
-    geom_text(aes(x = factor('Jan'), max(aves$val)), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue') +
+    geom_text(aes(x = factor('Jan'), max(aves$val)), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue', family = family) +
     labs(y = axlab, title = ttl) +
     theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),

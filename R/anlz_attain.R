@@ -58,9 +58,14 @@ anlz_attain <- function(avedat, magdurout = FALSE, trgs = NULL){
     unnest(cols = c(data)) %>%
     mutate(
       outcome = dplyr::case_when(
-        is.na(durats) ~ mags,
-        durats == 4 & mags == 2 ~ 3L,
-        T ~ mags
+        is.na(durats) & mags == 2 ~ 3L,
+        is.na(durats) & mags == 1 ~ 2L,
+        is.na(durats) & mags == 0 ~ 0L,
+        mags == 2 & durats == 4 ~ 3L,
+        mags == 2 & durats < 4 ~ 2L,
+        mags == 1 & durats == 4 ~ 2L,
+        mags == 1 & durats < 4 ~ 1L,
+        mags == 0 ~ 0L
       )
     ) %>%
     ungroup
