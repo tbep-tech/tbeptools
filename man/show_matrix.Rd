@@ -6,7 +6,7 @@
 \usage{
 show_matrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018),
   bay_segment = c("OTB", "HB", "MTB", "LTB"), asreact = FALSE,
-  nrows = 10, abbrev = FALSE, family = NA)
+  nrows = 10, abbrev = FALSE, family = NA, historic = FALSE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -26,6 +26,8 @@ show_matrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018),
 \item{abbrev}{logical indicating if text labels in the plot are abbreviated as the first letter}
 
 \item{family}{optional chr string indicating font family for text labels}
+
+\item{historic}{logical if historic data are used from 2005 and earlier}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned

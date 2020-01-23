@@ -11,6 +11,7 @@
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #' @param family optional chr string indicating font family for text labels
+#' @param historic logical if historic data are used from 2005 and earlier
 #'
 #' @family visualize
 #'
@@ -26,7 +27,7 @@
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, historic = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -40,6 +41,39 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
     dplyr::mutate(
       bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
     )
+
+  # replace calculated with historic
+  if(historic){
+
+    # 2006 to present is correct
+    mans <- dplyr::tibble(
+        yr = seq(1975, 2005),
+        HB = c('r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'y', 'g', 'r', 'y', 'y', 'g', 'y', 'g', 'y', 'g', 'g', 'y', 'y', 'g', 'g', 'r', 'g', 'g', 'g', 'g', 'y', 'g', 'g'),
+        LTB = c('g', 'y', 'r', 'y', 'r', 'r', 'r', 'r', 'r', 'y', 'y', 'g', 'g', 'g', 'y', 'y', 'y', 'y', 'y', 'r', 'y', 'g', 'y', 'r', 'y', 'y', 'y', 'g', 'y', 'y', 'y'),
+        MTB = c('r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'y', 'r', 'r', 'y', 'y', 'y', 'r', 'r', 'y', 'r', 'r', 'y', 'y', 'y', 'g', 'g', 'g', 'y'),
+        OTB = c('r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'y', 'r', 'r', 'g', 'y', 'y', 'y', 'r', 'y', 'y', 'r', 'y', 'g', 'y', 'y', 'r', 'r', 'g')
+      ) %>%
+      tidyr::gather('bay_segment', 'outcome', -yr) %>%
+      dplyr::mutate(
+        outcome = dplyr::case_when(
+          outcome == 'g' ~ 'green',
+          outcome == 'r' ~ 'red',
+          outcome == 'y' ~ 'yellow'
+        ),
+        bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
+      )
+
+    toplo <- toplo %>%
+      dplyr::left_join(mans, by = c('bay_segment', 'yr')) %>%
+      dplyr::mutate(
+        outcome.x = dplyr::case_when(
+          yr <= 2005 ~ outcome.y,
+          T ~ outcome.x
+        )
+      ) %>%
+      dplyr::select(bay_segment, yr, chl_la, outcome = outcome.x)
+
+  }
 
   # add abbreviations if true
   if(abbrev)
