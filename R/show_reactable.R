@@ -8,7 +8,7 @@
 #'
 #' @importFrom reactable colDef
 #'
-#' @details This function is used internally within \code{\link{show_matrix}} and \code{\link{show_chlmatrix}}
+#' @details This function is used internally within \code{\link{show_matrix}} and \code{\link{show_wqmatrix}}
 #'
 #' @family visualize
 #'

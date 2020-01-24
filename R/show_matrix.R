@@ -17,7 +17,7 @@
 #'
 #' @return A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned
 #'
-#' @seealso \code{\link{show_chlmatrix}}
+#' @seealso \code{\link{show_wqmatrix}}
 #' @export
 #'
 #' @importFrom magrittr "%>%"

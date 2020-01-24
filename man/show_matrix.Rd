@@ -39,11 +39,11 @@ Create a colorized table for indicator reporting
 show_matrix(epcdata)
 }
 \seealso{
-\code{\link{show_chlmatrix}}
+\code{\link{show_wqmatrix}}
 
 Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_chlmatrix}},
   \code{\link{show_reactable}}, \code{\link{show_sitemap}},
-  \code{\link{show_tdlcrk}}, \code{\link{show_thrplot}}
+  \code{\link{show_tdlcrk}}, \code{\link{show_thrplot}},
+  \code{\link{show_wqmatrix}}
 }
 \concept{visualize}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a colorized table for chlorophyll exceedances — show_chlmatrix • tbeptools</title>
+<title>Create a colorized table for chlorophyll or light attenuation exceedances — show_wqmatrix • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Create a colorized table for chlorophyll exceedances — show_chlmatrix" />
-<meta property="og:description" content="Create a colorized table for chlorophyll exceedances" />
+<meta property="og:title" content="Create a colorized table for chlorophyll or light attenuation exceedances — show_wqmatrix" />
+<meta property="og:description" content="Create a colorized table for chlorophyll or light attenuation exceedances" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,18 +120,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a colorized table for chlorophyll exceedances</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_chlmatrix.R'><code>R/show_chlmatrix.R</code></a></small>
-    <div class="hidden name"><code>show_chlmatrix.Rd</code></div>
+    <h1>Create a colorized table for chlorophyll or light attenuation exceedances</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_wqmatrix.R'><code>R/show_wqmatrix.R</code></a></small>
+    <div class="hidden name"><code>show_wqmatrix.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a colorized table for chlorophyll exceedances</p>
+    <p>Create a colorized table for chlorophyll or light attenuation exceedances</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_chlmatrix</span>(<span class='no'>epcdata</span>, <span class='kw'>txtsz</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>,
-  <span class='fl'>2018</span>), <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>), <span class='kw'>asreact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>abbrev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+    <pre class="usage"><span class='fu'>show_wqmatrix</span>(<span class='no'>epcdata</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>), <span class='kw'>txtsz</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>), <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>,
+  <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>), <span class='kw'>asreact</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>abbrev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,6 +140,10 @@
     <tr>
       <th>epcdata</th>
       <td><p>data frame of epc data returned by <code><a href='read_importwq.html'>read_importwq</a></code></p></td>
+    </tr>
+    <tr>
+      <th>param</th>
+      <td><p>chr string for which parameter to plot, one of <code>"chla"</code> for chlorophyll or <code>"la"</code> for light attenuation</p></td>
     </tr>
     <tr>
       <th>txtsz</th>
@@ -186,7 +191,7 @@
   <code><a href='show_thrplot.html'>show_thrplot</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>show_chlmatrix</span>(<span class='no'>epcdata</span>)</div><div class='img'><img src='show_chlmatrix-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>show_wqmatrix</span>(<span class='no'>epcdata</span>)</div><div class='img'><img src='show_wqmatrix-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

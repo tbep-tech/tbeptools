@@ -89,7 +89,7 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 #### Show
 
-* `show_chlmatrix()`: Create a colorized table for chlorophyll annual exceedances by bay segment
+* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation annual exceedances by bay segment
 
 * `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
 
@@ -251,7 +251,7 @@ The condition of tidal creeks can be evaluated using the `anlz_tldcrk()` functio
 
 The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
 
-* `show_chlmatrix()`: Create a colorized table for chlorophyll annual exceedances by bay segment
+* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation annual exceedances by bay segment
 
 * `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
 
@@ -390,10 +390,16 @@ A map showing if individual sites achieved chlorophyll targets can be obtained w
 show_sitemap(epcdata, yrsel = 2018)
 ```
 
-Bay segment exceedances can also be viewed in a matrix using `show_chlmatrix`.  The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).  
+Bay segment exceedances can also be viewed in a matrix using `show_wqmatrix()`.  The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).  
 
 ```{r, fig.height = 8, fig.width = 3}
-show_chlmatrix(epcdata)
+show_wqmatrix(epcdata)
+```
+
+By default, the `show_wqmatrix()` function returns chlorophyll exceedances by segment.  Light attenuation exceedances can be viewed by changing the `param` argument.  
+
+```{r, fig.height = 8, fig.width = 3}
+show_wqmatrix(epcdata, param = 'la')
 ```
 
 From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  

@@ -20,7 +20,7 @@ A \code{\link[reactable]{reactable}} table
 Create reactable table from matrix data
 }
 \details{
-This function is used internally within \code{\link{show_matrix}} and \code{\link{show_chlmatrix}}
+This function is used internally within \code{\link{show_matrix}} and \code{\link{show_wqmatrix}}
 }
 \examples{
 data(targets)
@@ -61,8 +61,8 @@ show_reactable(totab, colfun)
 }
 \seealso{
 Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_chlmatrix}}, \code{\link{show_matrix}},
-  \code{\link{show_sitemap}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}
+  \code{\link{show_matrix}}, \code{\link{show_sitemap}},
+  \code{\link{show_tdlcrk}}, \code{\link{show_thrplot}},
+  \code{\link{show_wqmatrix}}
 }
 \concept{visualize}

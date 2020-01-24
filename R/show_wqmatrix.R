@@ -1,8 +1,9 @@
-#' @title Create a colorized table for chlorophyll exceedances
+#' @title Create a colorized table for chlorophyll or light attenuation exceedances
 #'
-#' @description Create a colorized table for chlorophyll exceedances
+#' @description Create a colorized table for chlorophyll or light attenuation exceedances
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
+#' @param param chr string for which parameter to plot, one of \code{"chla"} for chlorophyll or \code{"la"} for light attenuation
 #' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
@@ -24,8 +25,11 @@
 #' @import ggplot2
 #'
 #' @examples
-#' show_chlmatrix(epcdata)
-show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
+#' show_wqmatrix(epcdata)
+show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
+
+  # sanity checks
+  param <- match.arg(param)
 
   # default targets from data file
   if(is.null(trgs))
@@ -37,14 +41,14 @@ show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018
   toplo <- avedat %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
-    dplyr::filter(var %in% 'mean_chla') %>%
+    dplyr::filter(var %in% !!paste0('mean_', param)) %>%
     dplyr::left_join(trgs, by = 'bay_segment') %>%
-    dplyr::select(bay_segment, yr, var, val, chla_thresh) %>%
+    dplyr::select(bay_segment, yr, var, val, thresh = !!paste0(param, '_thresh')) %>%
     dplyr::mutate(
       bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB')),
       outcome = dplyr::case_when(
-        val < chla_thresh ~ 'green',
-        val >= chla_thresh ~ 'red'
+        val < thresh ~ 'green',
+        val >= thresh ~ 'red'
       )
     )
 
@@ -88,7 +92,7 @@ show_chlmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018
 
   }
 
-  # ggplot
+  # ggplotde
   p <- ggplot(toplo, aes(x = bay_segment, y = yr)) +
     geom_tile(colour = 'black', fill = toplo$outcome) +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +

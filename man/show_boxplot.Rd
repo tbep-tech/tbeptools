@@ -36,9 +36,9 @@ Points not included in \code{yrsel} are plotted over the box plots using \code{\
 show_boxplot(epcdata, bay_segment = 'OTB')
 }
 \seealso{
-Other visualize: \code{\link{show_chlmatrix}},
-  \code{\link{show_matrix}}, \code{\link{show_reactable}},
-  \code{\link{show_sitemap}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}
+Other visualize: \code{\link{show_matrix}},
+  \code{\link{show_reactable}}, \code{\link{show_sitemap}},
+  \code{\link{show_tdlcrk}}, \code{\link{show_thrplot}},
+  \code{\link{show_wqmatrix}}
 }
 \concept{visualize}
