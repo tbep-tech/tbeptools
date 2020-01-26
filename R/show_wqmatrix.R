@@ -92,8 +92,29 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
 
   }
 
+  # add descriptive labels, Result
+  lbs <- dplyr::tibble(
+    outcome = c('red', 'green'),
+    Result = c('Above', 'Below')
+  )
+  if(param == 'chla')
+    rndval <- 1
+  if(param == 'la')
+    rndval <- 2
+  toplo <- toplo %>%
+    dplyr::left_join(lbs, by = 'outcome') %>%
+    dplyr::mutate(
+      val = paste0('Average: ', round(val, rndval)),
+      thresh = paste0('Threshold: ', round(thresh, rndval))
+    ) %>%
+    tidyr::unite(segval, c('val', 'thresh'), sep = ', ') %>%
+    dplyr::mutate(
+      segval = paste0('(', segval, ')')
+    ) %>%
+    unite(Result, c('Result', 'segval'), sep = ' ')
+
   # ggplot
-  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome)) +
+  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome, z = Result)) +
     geom_tile(colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
