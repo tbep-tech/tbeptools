@@ -8,6 +8,8 @@
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets/thresholds, defaults to \code{\link{targets}}
 #' @param yrrng numeric vector indicating min, max years to include
 #' @param family optional chr string indicating font family for text labels
+#' @param labelexp logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}
+#' @param txtlab logical indicating if a text label for the target value is shown in the plot
 #'
 #' @family visualize
 #'
@@ -20,7 +22,7 @@
 #'
 #' @examples
 #' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
-show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2018), family = NA){
+show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2018), family = NA, labelexp = TRUE, txtlab = TRUE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -43,10 +45,16 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   aves <- anlz_avedat(epcdata)
 
   # axis label
-  axlab <- dplyr::case_when(
-    thr == 'chla' ~ expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")"),
-    thr == 'la' ~ expression("Mean Annual Light Attenuation (m  " ^-1 *")")
-  )
+  if(labelexp)
+    axlab <- dplyr::case_when(
+      thr == 'chla' ~ expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")"),
+      thr == 'la' ~ expression("Mean Annual Light Attenuation (m  " ^-1 *")")
+    )
+  if(!labelexp)
+    axlab <- dplyr::case_when(
+      thr == 'chla' ~ "Mean Annual Chlorophyll-a (ug/L)",
+      thr == 'la' ~ "Mean Annual Light Attenuation (m-1)"
+    )
 
   # get lines to plot
   toln <- trgs %>%
@@ -56,10 +64,16 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   thrnum <- toln %>% dplyr::pull(!!paste0(thr, '_thresh'))
 
   # threshold label
-  trglab <- dplyr::case_when(
-    thr == 'chla' ~ paste(trgnum, "~ mu * g%.%L^{-1}"),
-    thr == 'la' ~ paste(trgnum, "~m","^{-1}")
-  )
+  if(labelexp)
+    trglab <- dplyr::case_when(
+      thr == 'chla' ~ paste(trgnum, "~ mu * g%.%L^{-1}"),
+      thr == 'la' ~ paste(trgnum, "~m","^{-1}")
+    )
+  if(!labelexp)
+    trglab <- dplyr::case_when(
+      thr == 'chla' ~ paste(trgnum, "ug/L"),
+      thr == 'la' ~ paste(trgnum, "m-1")
+    )
 
   # bay segment plot title
   ttl <- trgs %>%
@@ -80,7 +94,6 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     geom_hline(aes(yintercept = trgnum, colour = 'Management Target')) +
     geom_hline(aes(yintercept = smlnum, colour = '+1 se'), linetype = 'dashed') +
     geom_hline(aes(yintercept = thrnum, colour = '+2 se'), linetype = 'dotted') +
-    geom_text(aes(yrrng[1], trgnum), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, family = family) +
     labs(y = axlab, title = ttl) +
     scale_x_continuous(breaks = seq(yrrng[1], yrrng[2], by = 1)) +
     theme(axis.title.x = element_blank(),
@@ -102,6 +115,10 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
         size = c(0.75, 0.5, 0.5, 0.5)
         )
       ))
+
+  if(txtlab)
+    p <- p +
+      geom_text(aes(yrrng[1], trgnum, label = trglab), parse = labelexp, hjust = 0.2, vjust = 1, family = family)
 
   return(p)
 

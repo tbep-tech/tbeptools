@@ -6,7 +6,7 @@
 \usage{
 show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
   thr = c("chla", "la"), trgs = NULL, yrrng = c(1975, 2018),
-  family = NA)
+  family = NA, labelexp = TRUE, txtlab = TRUE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -20,6 +20,10 @@ show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 \item{yrrng}{numeric vector indicating min, max years to include}
 
 \item{family}{optional chr string indicating font family for text labels}
+
+\item{labelexp}{logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}}
+
+\item{txtlab}{logical indicating if a text label for the target value is shown in the plot}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object
