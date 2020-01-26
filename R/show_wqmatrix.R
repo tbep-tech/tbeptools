@@ -92,14 +92,16 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
 
   }
 
-  # ggplotde
-  p <- ggplot(toplo, aes(x = bay_segment, y = yr)) +
-    geom_tile(colour = 'black', fill = toplo$outcome) +
+  # ggplot
+  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome)) +
+    geom_tile(colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
+    scale_fill_manual(values = c(red = 'red', green = 'green')) +
     theme_bw() +
     theme(
-      axis.title = element_blank()
+      axis.title = element_blank(),
+      legend.position = 'none'
     )
 
   if(!is.null(txtsz))
