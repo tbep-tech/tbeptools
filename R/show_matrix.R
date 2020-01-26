@@ -118,8 +118,16 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
 
   }
 
+  # add descriptive labels
+  lbs <- dplyr::tibble(
+    outcome = c('red', 'yellow', 'green'),
+    lbs = c('On Alert', 'Caution', 'Stay the Course')
+  )
+  toplo <- toplo %>%
+    dplyr::left_join(lbs, by = 'outcome')
+
   # ggplot
-  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome)) +
+  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome, z = lbs)) +
     geom_tile(colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
