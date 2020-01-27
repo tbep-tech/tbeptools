@@ -131,7 +131,7 @@
 
     <pre class="usage"><span class='fu'>show_thrplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
   <span class='kw'>thr</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>), <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2018</span>),
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>labelexp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>txtlab</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,6 +160,14 @@
       <th>family</th>
       <td><p>optional chr string indicating font family for text labels</p></td>
     </tr>
+    <tr>
+      <th>labelexp</th>
+      <td><p>logical indicating if y axis and target labels are plotted as expressions, default <code>TRUE</code></p></td>
+    </tr>
+    <tr>
+      <th>txtlab</th>
+      <td><p>logical indicating if a text label for the target value is shown in the plot</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -169,8 +177,8 @@
 
     <div class='dont-index'><p>Other visualize: <code><a href='show_boxplot.html'>show_boxplot</a></code>,
   <code><a href='show_matrix.html'>show_matrix</a></code>, <code><a href='show_reactable.html'>show_reactable</a></code>,
-  <code><a href='show_sitemap.html'>show_sitemap</a></code>, <code><a href='show_tdlcrk.html'>show_tdlcrk</a></code>,
-  <code><a href='show_wqmatrix.html'>show_wqmatrix</a></code></p></div>
+  <code><a href='show_segmatrix.html'>show_segmatrix</a></code>, <code><a href='show_sitemap.html'>show_sitemap</a></code>,
+  <code><a href='show_tdlcrk.html'>show_tdlcrk</a></code>, <code><a href='show_wqmatrix.html'>show_wqmatrix</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>show_thrplot</span>(<span class='no'>epcdata</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='st'>'OTB'</span>, <span class='kw'>thr</span> <span class='kw'>=</span> <span class='st'>'chl'</span>)</div><div class='img'><img src='show_thrplot-1.png' alt='' width='700' height='433' /></div></pre>

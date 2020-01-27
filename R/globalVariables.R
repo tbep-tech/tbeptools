@@ -6,7 +6,8 @@ globalVariables(c("Chlorophyll_a uncorr_ugL", "Latitude", "Longitude", "SampleTi
                   "thresh", "trgtyp", "nums", "est", "bsmap", "geometry", "tbseg", "trgtmet",
                   "<NA>", "JEI", "cnt", "grade", "masterCode", "result", "score", "tidalcreeks", "wbid", "year",
                   "title", "index", "subindex", "tag", "type", "action", "caution", "region", "threshold",
-                  "tidaltargets", "1", "2", "3", "4", "outcometxt"))
+                  "tidaltargets", "1", "2", "3", "4", "outcometxt", "Action", "Result", "chl", "mags",
+                  "outcome.x", "segval"))
 
 
 #' @importFrom grDevices rgb

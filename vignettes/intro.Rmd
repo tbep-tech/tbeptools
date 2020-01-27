@@ -89,19 +89,21 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 #### Show
 
-* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation annual exceedances by bay segment
-
 * `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
 * `show_reactable()`: Create a reactable table for reporting matrices, used internally only
 
+* `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
+
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
 
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
+
+* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
 
@@ -251,19 +253,21 @@ The condition of tidal creeks can be evaluated using the `anlz_tldcrk()` functio
 
 The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
 
-* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation annual exceedances by bay segment
-
 * `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
 * `show_reactable()`: Create a reactable table for reporting matrices, used internally only
 
+* `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
+
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
 
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
+
+* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 
 External package libraries in R can be used to plot the time series data.  Here's an example using the popular [ggplot2](https://ggplot2.tidyverse.org/) package.  Some data wrangling with the [dplyr](https://dplyr.tidyverse.org/) is done first to filter the data we want to plot.
 
@@ -400,6 +404,12 @@ By default, the `show_wqmatrix()` function returns chlorophyll exceedances by se
 
 ```{r, fig.height = 8, fig.width = 3}
 show_wqmatrix(epcdata, param = 'la')
+```
+
+Finally, the results from `show_matrix()` and `show_wqmatrix()` can be combined for an individual segment using the `show_segmatrix()` function.  This is useful to understand which water quality parameter is driving the management outcome for a given year. The plot shows the light attenuation and chlorophyll outcomes from `show_wqmatrix()` next to the segment management outcomes from `show_matrix()`.  Only one segment can be plotted for each function call. 
+
+```{r, fig.height = 8, fig.width = 2.5}
+show_segmatrix(epcdata, bay_segment = 'OTB')
 ```
 
 From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  

@@ -40,11 +40,11 @@ Create a colorized table for chlorophyll or light attenuation exceedances
 show_wqmatrix(epcdata)
 }
 \seealso{
-\code{\link{show_matrix}}
+\code{\link{show_matrix}}, \code{\link{show_segmatrix}}
 
 Other visualize: \code{\link{show_boxplot}},
   \code{\link{show_matrix}}, \code{\link{show_reactable}},
-  \code{\link{show_sitemap}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}
+  \code{\link{show_segmatrix}}, \code{\link{show_sitemap}},
+  \code{\link{show_tdlcrk}}, \code{\link{show_thrplot}}
 }
 \concept{visualize}
