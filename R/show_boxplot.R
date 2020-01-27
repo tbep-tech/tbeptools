@@ -9,6 +9,8 @@
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param family optional chr string indicating font family for text labels
+#' @param labelexp logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}
+#' @param txtlab logical indicating if a text label for the target value is shown in the plot
 #'
 #' @family visualize
 #'
@@ -26,7 +28,7 @@
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
-show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL, family = NA){
+show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -61,18 +63,22 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
   if(!yrsel %in% epcdata$yr)
     stop(paste('Check yrsel is within', paste(range(epcdata$yr, na.rm = TRUE), collapse = '-')))
 
-
-
-  # axis label
-  axlab <- expression("Mean Monthly Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")")
-
   # get lines to plot
   thrnum <- trgs %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::pull(chla_thresh)
 
+  # axis label
+  if(labelexp)
+    axlab <- expression("Mean Monthly Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")")
+  if(!labelexp)
+    axlab <- "Mean Monthly Chlorophyll-a (ug/L)"
+
   # threshold label
-  trglab <- paste(thrnum, "~ mu * g%.%L^{-1}")
+  if(labelexp)
+    trglab <- paste(thrnum, "~ mu * g%.%L^{-1}")
+  if(!labelexp)
+    trglab <-  paste(thrnum, "ug/L")
 
   # bay segment plot title
   ttl <- trgs %>%
@@ -103,7 +109,6 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
     geom_beeswarm(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), size = ptsz) +
     geom_point(data = toplo2, aes(x = mo, y = val, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
     geom_hline(aes(yintercept = thrnum, linetype = '+2 se (large exceedance)'), colour = 'blue') +
-    geom_text(aes(x = factor('Jan'), max(aves$val)), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue', family = family) +
     labs(y = axlab, title = ttl) +
     theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),
@@ -119,6 +124,10 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
     scale_fill_manual(values = cols[2]) +
     scale_linetype_manual(values = 'dotted') +
     guides(linetype = guide_legend(override.aes = list(colour = 'blue')))
+
+  if(txtlab)
+    p <- p +
+      geom_text(aes(x = factor('Jan'), max(aves$val)), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue', family = family)
 
   return(p)
 
