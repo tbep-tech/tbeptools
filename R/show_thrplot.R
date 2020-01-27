@@ -39,7 +39,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   thr <- match.arg(thr)
 
   # colors
-  cols <- c("Annual Mean"="red", "Management Target"="blue", "+1 se"="blue", "+2 se"="blue")
+  cols <- c("Annual Mean"="red", "Management Target"="blue", "+1 se (small exceedance)"="blue", "+2 se (large exceedance)"="blue")
 
   # averages
   aves <- anlz_avedat(epcdata)
@@ -92,8 +92,8 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     geom_point(data = toplo, aes(x = yr, y = yval, colour = "Annual Mean"), size = 3) +
     geom_line(data = toplo, aes(x = yr, y = yval, colour = "Annual Mean"), linetype = 'solid', size = 0.75) +
     geom_hline(aes(yintercept = trgnum, colour = 'Management Target')) +
-    geom_hline(aes(yintercept = smlnum, colour = '+1 se'), linetype = 'dashed') +
-    geom_hline(aes(yintercept = thrnum, colour = '+2 se'), linetype = 'dotted') +
+    geom_hline(aes(yintercept = smlnum, colour = '+1 se (small exceedance)'), linetype = 'dashed') +
+    geom_hline(aes(yintercept = thrnum, colour = '+2 se (large exceedance)'), linetype = 'dotted') +
     labs(y = axlab, title = ttl) +
     scale_x_continuous(breaks = seq(yrrng[1], yrrng[2], by = 1)) +
     theme(axis.title.x = element_blank(),

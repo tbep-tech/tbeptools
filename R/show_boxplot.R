@@ -102,7 +102,7 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
     geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA) +
     geom_beeswarm(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), size = ptsz) +
     geom_point(data = toplo2, aes(x = mo, y = val, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
-    geom_hline(aes(yintercept = thrnum, linetype = '+2 se'), colour = 'blue') +
+    geom_hline(aes(yintercept = thrnum, linetype = '+2 se (large exceedance)'), colour = 'blue') +
     geom_text(aes(x = factor('Jan'), max(aves$val)), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue', family = family) +
     labs(y = axlab, title = ttl) +
     theme(axis.title.x = element_blank(),
