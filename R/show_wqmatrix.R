@@ -114,8 +114,8 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
     unite(Result, c('Result', 'segval'), sep = ' ')
 
   # ggplot
-  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome, z = Result)) +
-    geom_tile(colour = 'black') +
+  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome)) +
+    geom_tile(aes(group = Result), colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
     scale_fill_manual(values = c(red = 'red', green = 'green')) +

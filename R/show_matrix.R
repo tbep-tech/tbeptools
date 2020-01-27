@@ -137,8 +137,8 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), 
     unite(Action, c('Action', 'chl_la'), sep = ' ')
 
   # ggplot
-  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome, z = Action)) +
-    geom_tile(colour = 'black') +
+  p <- ggplot(toplo, aes(x = bay_segment, y = yr, fill = outcome)) +
+    geom_tile(aes(group = Action), colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
     scale_fill_manual(values = c(red = 'red', yellow = 'yellow', green = 'green')) +
