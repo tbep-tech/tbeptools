@@ -89,7 +89,7 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 #### Show
 
-* `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
+* `show_boxplot()`: Plot monthly chlorophyll or light attenuation values for a bay segment
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
@@ -253,7 +253,7 @@ The condition of tidal creeks can be evaluated using the `anlz_tldcrk()` functio
 
 The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
 
-* `show_boxplot()`: Plot monthly average chlorophyll data with FDEP criteria
+* `show_boxplot()`: Plot monthly chlorophyll or light attenuation values for a bay segment
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
@@ -317,19 +317,20 @@ epcdata %>%
   filter(yr >= 2000 & yr <= 2018)
 ```
 
-Similarly, the `show_boxplot()` function provides an assessment of seasonal changes in chlorophyll by bay segment.  The most recent year is highlighted in red by default. This allows a simple evaluation of how the most recent year compared to historical averages.  The FDEP criteria for the segment is shown in blue text and as the dotted line.  This corresponds to a "large" magnitude change of +2 standard errors above the bay segment threshold and is the same dotted line shown in `show_thrplot()`.    
+Similarly, the `show_boxplot()` function provides an assessment of seasonal changes in chlorophyll or light attenuation values by bay segment.  The most recent year is highlighted in red by default. This allows a simple evaluation of how the most recent year compared to historical averages.  The large exceedance value is shown in blue text and as the dotted line.  This corresponds to a "large" magnitude change of +2 standard errors above the bay segment threshold and is the same dotted line shown in `show_thrplot()`.    
 
 ```{r, fig.height = 5, fig.width = 8}
-show_boxplot(epcdata, bay_segment = "OTB")
+show_boxplot(epcdata, param = 'chla', bay_segment = "OTB")
+show_boxplot(epcdata, param = 'la', bay_segment = "HB")
 ```
 
 A different subset of years and selected year of interest can also be viewed by changing the `yrrng` and `yrsel` arguments.  Here we show 1980 compared to monthly averages for the last ten years. 
 
 ```{r, fig.height = 5, fig.width = 8}
-show_boxplot(epcdata, bay_segment = "OTB", yrrng = c(2008, 2018), yrsel = 1980)
+show_boxplot(epcdata, param = 'chla', bay_segment = "OTB", yrrng = c(2008, 2018), yrsel = 1980)
 ```
 
-The `show_thrplot()` function is useful to understand annual variation in chlorophyll and light attenuation relative to management thresholds and targets for each bay segment.  The information from these plots can provide an understanding of how the annual reporting outcomes are determined.  As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation.  These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in `show_thrplot()`) and duration of the exceedance for the years prior.  The following graphic describes this logic [@Janicki99]. 
+The `show_thrplot()` function is useful to understand annual variation in chlorophyll and light attenuation relative to management targets for each bay segment.  The information from these plots can provide an understanding of how the annual reporting outcomes are determined.  As noted above, an outcome integer from zero to three is assigned to each bay segment for each annual estimate of chlorophyll and light attenuation.  These outcomes are based on both the exceedance of the annual estimate above the threshold or target (blue lines in `show_thrplot()`) and duration of the exceedance for the years prior.  The following graphic describes this logic [@Janicki99]. 
 
 ```{r, echo = F, fig.cap = 'Outcomes for annual estimates of water quality are assigned an integer value from zero to three depending on both magnitude and duration of the exceedence.', out.width = '80%'}
 knitr::include_graphics('outints.PNG')

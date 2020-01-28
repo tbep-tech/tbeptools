@@ -1,8 +1,9 @@
-#' @title Plot monthly chlorophyll values and thresholds for a segment
+#' @title Plot monthly chlorophyll or light attenuation values for a segment
 #'
-#' @description Plot monthly chlorophyll values and thresholds for a bay segment
+#' @description Plot monthly chlorophyll or light attenuation values for a bay segment
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
+#' @param param chr string for which parameter to plot, one of \code{"chla"} for chlorophyll or \code{"la"} for light attenuation
 #' @param yrsel numeric for year to emphasize, shown as separate red points on the plot
 #' @param yrrng numeric vector indicating min, max years to include
 #' @param ptsz numeric indicating point size of observations not in \code{yrsel}
@@ -17,7 +18,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #'
 #' @details
-#' Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
+#' Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.  The dotted line in the plot shows the large exceedance value.
 #'
 #' @export
 #'
@@ -28,7 +29,13 @@
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
-show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE){
+show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE){
+
+  # parameter
+  param <- match.arg(param)
+
+  # segment
+  bay_segment <- match.arg(bay_segment)
 
   # default targets from data file
   if(is.null(trgs))
@@ -38,13 +45,10 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
   if(is.null(yrsel))
     yrsel <- max(yrrng)
 
-  # segment
-  bay_segment <- match.arg(bay_segment)
-
   # monthly averages
   aves <- anlz_avedat(epcdata) %>%
     .$'mos' %>%
-    dplyr::filter(var %in% 'mean_chla') %>%
+    dplyr::filter(var %in% !!paste0('mean_', param)) %>%
     dplyr::filter(bay_segment == !!bay_segment) %>%
     dplyr::mutate(
       var = 'yval',
@@ -66,19 +70,31 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
   # get lines to plot
   thrnum <- trgs %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
-    dplyr::pull(chla_thresh)
+    dplyr::pull(!!paste0(param, '_thresh'))
 
   # axis label
   if(labelexp)
-    axlab <- expression("Mean Monthly Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")")
+    axlab <- dplyr::case_when(
+      param == 'chla' ~ expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")"),
+      param == 'la' ~ expression("Mean Annual Light Attenuation (m  " ^-1 *")")
+    )
   if(!labelexp)
-    axlab <- "Mean Monthly Chlorophyll-a (ug/L)"
+    axlab <- dplyr::case_when(
+      param == 'chla' ~ "Mean Annual Chlorophyll-a (ug/L)",
+      param == 'la' ~ "Mean Annual Light Attenuation (m-1)"
+    )
 
-  # threshold label
+  # parameshold label
   if(labelexp)
-    trglab <- paste(thrnum, "~ mu * g%.%L^{-1}")
+    trglab <- dplyr::case_when(
+      param == 'chla' ~ paste(thrnum, "~ mu * g%.%L^{-1}"),
+      param == 'la' ~ paste(thrnum, "~m","^{-1}")
+    )
   if(!labelexp)
-    trglab <-  paste(thrnum, "ug/L")
+    trglab <- dplyr::case_when(
+      param == 'chla' ~ paste(thrnum, "ug/L"),
+      param == 'la' ~ paste(thrnum, "m-1")
+    )
 
   # bay segment plot title
   ttl <- trgs %>%
@@ -127,7 +143,7 @@ show_boxplot <- function(epcdata, yrsel = NULL, yrrng = c(1975, 2018), ptsz = 0.
 
   if(txtlab)
     p <- p +
-      geom_text(aes(x = factor('Jan'), max(aves$val)), parse = TRUE, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue', family = family)
+      geom_text(aes(x = factor('Jan'), max(aves$val)), parse = labelexp, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue', family = family)
 
   return(p)
 

@@ -138,9 +138,19 @@ anlz_avedat <- function(epcdata){
 
   # combine mtb ests with others, monthly
   chlamodata <- bind_rows(tbmonchla, mtbmoyrchla) %>%
-    gather('var', 'val', -yr, -mo, -bay_segment)
+    gather('var', 'val', -yr, -mo, -bay_segment) %>%
+    dplyr::filter(!var %in% 'sum_chla')
   sdmmodata <- bind_rows(tbmonsdm, mtbmoyrsdm) %>%
-    gather('var', 'val', -yr, -mo, -bay_segment)
+    dplyr::mutate(
+      mean_la = case_when(
+        bay_segment %in% "OTB" ~ 1.49 / mean_sdm,
+        bay_segment %in% "HB" ~ 1.61 / mean_sdm,
+        bay_segment %in% "MTB" ~ 1.49 / mean_sdm,
+        bay_segment %in% "LTB" ~ 1.84 / mean_sdm
+      )
+    ) %>%
+    gather('var', 'val', -yr, -mo, -bay_segment) %>%
+    dplyr::filter(!var %in% c('mean_sdm', 'sum_sdm'))
   moout <- bind_rows(chlamodata, sdmmodata)
 
   # combine mtb ests with others, annual

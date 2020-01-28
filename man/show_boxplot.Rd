@@ -2,14 +2,17 @@
 % Please edit documentation in R/show_boxplot.R
 \name{show_boxplot}
 \alias{show_boxplot}
-\title{Plot monthly chlorophyll values and thresholds for a segment}
+\title{Plot monthly chlorophyll or light attenuation values for a segment}
 \usage{
-show_boxplot(epcdata, yrsel = NULL, yrrng = c(1975, 2018),
-  ptsz = 0.5, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE)
+show_boxplot(epcdata, param = c("chla", "la"), yrsel = NULL,
+  yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c("OTB", "HB",
+  "MTB", "LTB"), trgs = NULL, family = NA, labelexp = TRUE,
+  txtlab = TRUE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
+
+\item{param}{chr string for which parameter to plot, one of \code{"chla"} for chlorophyll or \code{"la"} for light attenuation}
 
 \item{yrsel}{numeric for year to emphasize, shown as separate red points on the plot}
 
@@ -31,10 +34,10 @@ show_boxplot(epcdata, yrsel = NULL, yrrng = c(1975, 2018),
 A \code{\link[ggplot2]{ggplot}} object
 }
 \description{
-Plot monthly chlorophyll values and thresholds for a bay segment
+Plot monthly chlorophyll or light attenuation values for a bay segment
 }
 \details{
-Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.
+Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggbeeswarm]{geom_beeswarm}}. Use \code{ptsz = -1} to suppress.  The dotted line in the plot shows the large exceedance value.
 }
 \examples{
 show_boxplot(epcdata, bay_segment = 'OTB')
