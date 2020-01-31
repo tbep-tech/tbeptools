@@ -1,8 +1,8 @@
-#' All bay data as of 11242019 (Nov 24 2019)
+#' All bay data as of 01302020 (Jan 30 2020)
 #'
-#' All bay data as of 11242019 (Nov 24 2019)
+#' All bay data as of 01302020 (Jan 30 2020)
 #'
-#' @format A data frame with 25534 rows and 11 variables:
+#' @format A data frame with 25624 rows and 14 variables:
 #' \describe{
 #'   \item{bay_segment}{chr}
 #'   \item{epchc_station}{num}
@@ -15,6 +15,10 @@
 #'   \item{Sample_Depth_m}{num}
 #'   \item{sd_m}{num}
 #'   \item{chla}{num}
-#' }
+#'   \item{Sal_Top_ppth}{num}
+#'   \item{Sal_Mid_ppth}{num}
+#'   \item{Sal_Bottom_ppth}{num}
+#'   }
+#'
 #' @family utilities
 "epcdata"

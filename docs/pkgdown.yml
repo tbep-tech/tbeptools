@@ -2,6 +2,6 @@ pandoc: 2.7.2
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  intro: ../../../../../../../T:/04_STAFF/MARCUS/03_GIT/tbeptools/vignettes/intro.html
-  tidalcreeks: ../../../../../../../T:/04_STAFF/MARCUS/03_GIT/tbeptools/vignettes/tidalcreeks.html
+  intro: intro.html
+  tidalcreeks: tidalcreeks.html
 

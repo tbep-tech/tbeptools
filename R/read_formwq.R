@@ -43,7 +43,8 @@ read_formwq <- function(datin){
       ) %>%
     dplyr::inner_join(stations, by = 'epchc_station') %>%
     dplyr::select(bay_segment, epchc_station, SampleTime, yr, mo, Latitude, Longitude, SampleTime,
-                  Total_Depth_m, Sample_Depth_m, sd_m, chla
+                  Total_Depth_m, Sample_Depth_m, sd_m, chla, Sal_Top_ppth, Sal_Mid_ppth,
+                  Sal_Bottom_ppth
     )
 
   return(out)
