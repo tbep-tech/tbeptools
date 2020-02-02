@@ -122,8 +122,8 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
 
   p <- ggplot() +
     geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA) +
-    geom_beeswarm(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), size = ptsz) +
-    geom_point(data = toplo2, aes(x = mo, y = val, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
+    geom_beeswarm(data = toplo1, aes(x = mo, y = val, group = yr, colour = names(cols)[1]), size = ptsz) +
+    geom_point(data = toplo2, aes(x = mo, y = val, group = yr, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
     geom_hline(aes(yintercept = thrnum, linetype = '+2 se (large exceedance)'), colour = 'blue') +
     labs(y = axlab, title = ttl) +
     theme(axis.title.x = element_blank(),
