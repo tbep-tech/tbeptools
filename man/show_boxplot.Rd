@@ -37,7 +37,7 @@ A \code{\link[ggplot2]{ggplot}} object
 Plot monthly chlorophyll or light attenuation values for a bay segment
 }
 \details{
-Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggplot2]{position_jitter()}}. Use \code{ptsz = -1} to suppress.  The dotted line in the plot shows the large exceedance value.
+Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggplot2]{position_jitter}}. Use \code{ptsz = -1} to suppress.  The dotted line in the plot shows the large exceedance value.
 }
 \examples{
 show_boxplot(epcdata, bay_segment = 'OTB')

@@ -18,7 +18,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #'
 #' @details
-#' Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggplot2]{position_jitter()}}. Use \code{ptsz = -1} to suppress.  The dotted line in the plot shows the large exceedance value.
+#' Points not included in \code{yrsel} are plotted over the box plots using \code{\link[ggplot2]{position_jitter}}. Use \code{ptsz = -1} to suppress.  The dotted line in the plot shows the large exceedance value.
 #'
 #' @export
 #'
@@ -121,7 +121,7 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
 
   p <- ggplot() +
     geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA) +
-    geom_point(data = toplo1, aes(x = mo, y = val, group = yr, colour = names(cols)[1]), position = position_jitter(width = 0.1), size = ptsz) +
+    geom_point(data = toplo1, aes(x = mo, y = val, group = yr, colour = names(cols)[1]), position = position_jitter(width = 0.2), size = ptsz) +
     geom_point(data = toplo2, aes(x = mo, y = val, group = yr, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
     geom_hline(aes(yintercept = thrnum, linetype = '+2 se (large exceedance)'), colour = 'blue') +
     labs(y = axlab, title = ttl) +
