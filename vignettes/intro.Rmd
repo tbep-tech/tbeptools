@@ -197,7 +197,7 @@ After the data are successfully imported, you can view them from the assigned ob
 
 ```{r epchc_import, echo = F, message = F, include = F}
 # local file path
-xlsx <- here('vignettes', '2018_Results_Updated.xls')
+xlsx <- here('vignettes', 'current_results.xls')
 
 # load data and some light formatting
 epcdata <- read_importwq(xlsx, download_latest_epchc = T, tryurl = T)
