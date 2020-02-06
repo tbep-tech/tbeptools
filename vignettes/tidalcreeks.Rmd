@@ -55,9 +55,9 @@ Similar to the water quality report card, tidal creeks are assigned to categorie
 
 <span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>: A site-specific early warning concentration that an individual creek may be trending towards a eutrophic condition and can help prioritize where management actions should begin to identify actions to prevent a threshold exceedance.
 
-<span style="color:#FFA500; text-shadow: 0 0 3px #333;">__Action__</span>: A concentration indicating a management action level that identifies a potential degradation point as an impetus to develop site-specific management actions.
+<span style="color:#FFA500; text-shadow: 0 0 3px #333;">__Investigate__</span>: A concentration indicating a management action level that identifies a potential degradation point as an impetus to develop site-specific management actions.
 
-<span style="color:#FF3333; text-shadow: 0 0 3px #333;">__Threshold__</span>: A concentration indicating that regulatory actions are needed to confirm the impairment and identify remediative actions for the creek watershed.
+<span style="color:#FF7F50; text-shadow: 0 0 3px #333;">__Act__</span>: A concentration indicating that regulatory actions may be needed to confirm the impairment and identify remediative actions for the creek watershed.
 
 Conceptually, these thresholds appear in the figure below.
 

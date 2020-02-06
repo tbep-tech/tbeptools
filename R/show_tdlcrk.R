@@ -17,15 +17,15 @@ show_tdlcrk <- function(dat) {
 
   # color palette
   pal_exp <- leaflet::colorFactor(
-    palette = c('lightblue', 'green', 'yellow', 'orange', 'red'),
-    levels = c('No Data', 'Green', 'Yellow', 'Orange', 'Red')
+    palette = c('lightblue', 'green', 'yellow', 'orange', 'coral'),
+    levels = c('No Data', 'Target', 'Caution', 'Investigate', 'Act')
   )
 
   # join data to tidalcreeks sf
   tomap <- tidalcreeks %>%
     dplyr::inner_join(dat, by = c('id', 'wbid', 'JEI', 'class')) %>%
     dplyr::mutate(
-      score = factor(score, levels = c('No Data', 'Green', 'Yellow', 'Orange', 'Red'))
+      score = factor(score, levels = c('No Data', 'Target', 'Caution', 'Investigate', 'Act'))
     )
 
   out <- mapview::mapview(tomap, homebutton = F) %>%
@@ -37,7 +37,7 @@ show_tdlcrk <- function(dat) {
               title = "Creek scores",
               opacity = 1
     ) %>%
-    leaflet::addPolylines(data = tomap, opacity = 1, weight = 1, color = ~pal_exp(score),
+    leaflet::addPolylines(data = tomap, opacity = 1, weight = 1.5, color = ~pal_exp(score),
                  label = ~paste0("WBID: ", wbid, ", JEI:", JEI, ', Creek score:', score)
     )
 

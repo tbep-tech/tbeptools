@@ -110,27 +110,27 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
     dplyr::rowwise() %>%
     dplyr::mutate(
       score = dplyr::case_when(
-        !is.na(`4`) & `4` > 0 ~ 'Red',
-        !is.na(`3`) & `3` > 0 ~ 'Orange',
-        !is.na(`2`) & `2` > 2 ~ 'Yellow',
+        !is.na(`4`) & `4` > 0 ~ 'Act',
+        !is.na(`3`) & `3` > 0 ~ 'Investigate',
+        !is.na(`2`) & `2` > 2 ~ 'Caution',
         is.na(`1`) & is.na(`2`) & is.na(`3`) & is.na(`4`) ~ 'No Data',
-        T ~ 'Green'
+        T ~ 'Target'
       ),
       score = dplyr::case_when(
-        score == 'Red' & class %in% c('3F', '1') & `4` == 1 & `3` > 1 ~ 'Orange',
-        score == 'Red' & class %in% c('3F', '1') & `4` == 1 & `1` > 3 ~ 'Green',
+        score == 'Act' & class %in% c('3F', '1') & `4` == 1 & `3` > 1 ~ 'Investigate',
+        score == 'Act' & class %in% c('3F', '1') & `4` == 1 & `1` > 3 ~ 'Target',
         T ~ score
       ),
       score = dplyr::case_when(
-        score == 'Orange' & class %in% c('3F', '1') & `3` == 1 & `1` > 3 ~ 'Green',
+        score == 'Investigate' & class %in% c('3F', '1') & `3` == 1 & `1` > 3 ~ 'Target',
         T ~ score
       ),
       score = dplyr::case_when(
-        score == 'Red' & class %in% c('3M', '2') & (`4` == 1 & sum(`1`, `2`, `3`, na.rm = T) > 2) ~ 'Orange',
+        score == 'Act' & class %in% c('3M', '2') & (`4` == 1 & sum(`1`, `2`, `3`, na.rm = T) > 2) ~ 'Investigate',
         T ~ score
       ),
       score = dplyr::case_when(
-        score == 'Orange' & class %in% c('3M', '2') & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 1) ~ 'Yellow',
+        score == 'Investigate' & class %in% c('3M', '2') & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 1) ~ 'Caution',
         T ~ score
       )
     ) %>%
