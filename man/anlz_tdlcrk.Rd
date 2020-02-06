@@ -16,7 +16,7 @@ anlz_tdlcrk(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018)
 \item{yr}{numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date}
 }
 \value{
-A \code{\link{data.frame}} with the report card scores for each creek, as red, orange, yellow, green, or no data
+A \code{\link{data.frame}} with the report card scores for each creek, as act, investigate, caution, target, or no data
 }
 \description{
 Estimate tidal creek report card scores
@@ -27,6 +27,7 @@ anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
 \seealso{
 Other analyze: \code{\link{anlz_attain}},
   \code{\link{anlz_avedatsite}}, \code{\link{anlz_avedat}},
-  \code{\link{anlz_refs}}, \code{\link{anlz_yrattain}}
+  \code{\link{anlz_refs}}, \code{\link{anlz_tdlcrkindic}},
+  \code{\link{anlz_yrattain}}
 }
 \concept{analyze}
