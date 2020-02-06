@@ -81,9 +81,13 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_iwrraw()`: Format raw IWR data
+
 * `anlz_refs()`: Convert references csv to bib entries
 
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
+
+* `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
 
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
@@ -220,9 +224,13 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_iwrraw()`: Format raw IWR data
+
 * `anlz_refs()`: Convert references csv to bib entries
 
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
+
+* `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
 
 * `anlz_yrattain()`: Get attainment categories for a selected year
 

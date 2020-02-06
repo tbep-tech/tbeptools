@@ -21,13 +21,13 @@ anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2018) {
               "TP_MG", "TSS", "TSS_M", "TURB")
 
   # format iwr data
-  # filter out some data, recode masterCode
   out <- iwrraw %>%
-    dplyr::select(wbid, class, JEI, year, masterCode, result) %>%
     dplyr::filter(wbid %in% unique(tidalcreeks$wbid) & JEI %in% unique(tidalcreeks$JEI)) %>%
     dplyr::filter(year > yr - 11) %>%
     dplyr::filter(masterCode %in% mcodes) %>%
     dplyr::filter(!is.na(result) & result > 0) %>%
+    tidyr::unite('date', month, day, year, remove = F, sep = '-') %>%
+    dplyr::select(wbid, class, JEI, year, date, masterCode, result) %>%
     dplyr::mutate(
       masterCode = dplyr::case_when(
         masterCode %in% 'CHLA_' ~ 'CHLAC',
@@ -38,7 +38,8 @@ anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2018) {
         masterCode %in% 'TSS_M' ~ 'TSS',
         T ~ masterCode
       ),
-      result = log(result)
+      result = log(result),
+      date = as.Date(date, format = '%m-%d-%Y')
     )
 
   return(out)

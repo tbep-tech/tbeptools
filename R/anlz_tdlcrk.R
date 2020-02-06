@@ -40,30 +40,8 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
     dplyr::filter(region == 'Peninsula') %>%
     dplyr::pull(caution)
 
-  mcodes <- c("CHLAC","CHLA_ ", "COLOR", "COND", "DO", "DOSAT", "DO_MG", "NO23_", "NO3O2", "ORGN", "SALIN", "TKN", "TKN_M", "TN", "TN_MG", "TP", "TPO4_",
-    "TP_MG", "TSS", "TSS_M", "TURB")
-  # mcodes <- c("TN", "TN_MG")
-
-  # format iwr data
-  # filter out some data, recode masterCode, take averages by year
-  # spread by masterCode
-  iwrdat <- iwrraw %>%
-    dplyr::select(wbid, class, JEI, year, masterCode, result) %>%
-    dplyr::filter(wbid %in% unique(tidalcreeks$wbid) & JEI %in% unique(tidalcreeks$JEI)) %>%
-    dplyr::filter(year > yr - 11) %>%
-    dplyr::filter(masterCode %in% mcodes) %>%
-    dplyr::filter(!is.na(result) & result > 0) %>%
-    dplyr::mutate(
-      masterCode = dplyr::case_when(
-        masterCode %in% c('NO23_', 'NO3O2') ~ 'NO23',
-        masterCode %in% 'TKN_M' ~ 'TKN',
-        masterCode %in% 'TN_MG' ~ 'TN',
-        masterCode %in% c('TPO4_', 'TP_MG') ~ 'TP',
-        masterCode %in% 'TSS_M' ~ 'TSS',
-        T ~ masterCode
-      ),
-      result = log(result)
-    ) %>%
+  # format IWR data
+  iwrdat <- anlz_iwrraw(iwrraw, tidalcreeks, yr = yr) %>%
     dplyr::group_by(wbid, class, JEI, year, masterCode) %>%
     dplyr::summarise(
       result = mean(result, na.rm = T)
