@@ -5,9 +5,10 @@ globalVariables(c("Chlorophyll_a uncorr_ugL", "Latitude", "Longitude", "SampleTi
                   "chl_la", "data", "durats", "la", "na.omit", "outcome", "smallex", "target",
                   "thresh", "trgtyp", "nums", "est", "bsmap", "geometry", "tbseg", "trgtmet",
                   "<NA>", "JEI", "cnt", "grade", "masterCode", "result", "score", "tidalcreeks", "wbid", "year",
-                  "title", "index", "subindex", "tag", "type", "action", "caution", "region", "threshold",
-                  "tidaltargets", "1", "2", "3", "4", "outcometxt", "Action", "Result", "chl", "mags",
-                  "outcome.x", "segval", "Sal_Bottom_ppth", "Sal_Mid_ppth", "Sal_Top_ppth"))
+                  "title", "index", "subindex", "tag", "type", "act", "caution", "region", "investigate",
+                  "tidaltargets", "1", "2", "3", "4", "outcometxt", "Act", "Result", "chl", "mags",
+                  "outcome.x", "segval", "Sal_Bottom_ppth", "Sal_Mid_ppth", "Sal_Top_ppth", "Action",
+                  "CHLAC", "Creek_Length_m", "TN", "TP", "chla_tsi", "day", "nut_tsi"))
 
 
 #' @importFrom grDevices rgb

@@ -7,8 +7,8 @@
 \format{A data frame with 2 rows and 4 variables:
 \describe{
   \item{region}{chr}
-  \item{threshold}{num}
-  \item{action}{num}
+  \item{act}{num}
+  \item{investigate}{num}
   \item{caution}{num}
 }}
 \usage{
