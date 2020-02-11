@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate annual means — anlz_avedat • tbeptools</title>
+<title>Format raw IWR data — anlz_iwrraw • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Estimate annual means — anlz_avedat" />
-<meta property="og:description" content="Estimate annual means for chlorophyll and secchi data" />
+<meta property="og:title" content="Format raw IWR data — anlz_iwrraw" />
+<meta property="og:description" content="Format raw IWR data" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,76 +120,69 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate annual means</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_avedat.R'><code>R/anlz_avedat.R</code></a></small>
-    <div class="hidden name"><code>anlz_avedat.Rd</code></div>
+    <h1>Format raw IWR data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_iwrraw.R'><code>R/anlz_iwrraw.R</code></a></small>
+    <div class="hidden name"><code>anlz_iwrraw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate annual means for chlorophyll and secchi data</p>
+    <p>Format raw IWR data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_avedat</span>(<span class='no'>epcdata</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_iwrraw</span>(<span class='no'>iwrraw</span>, <span class='no'>tidalcreeks</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>epcdata</th>
-      <td><p><code>data.frame</code> formatted from <code>read_importwq</code></p></td>
+      <th>iwrraw</th>
+      <td><p>FDEP impaired waters rule run 56 data base as <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code></p></td>
+    </tr>
+    <tr>
+      <th>tidalcreeks</th>
+      <td><p><code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object for population of tidal creeks</p></td>
+    </tr>
+    <tr>
+      <th>yr</th>
+      <td><p>numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Mean estimates for chlorophyll and secchi</p>
+    <p>A <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code> with the formatted data</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The function subsets the raw IWR data for the selected value in <code>yr</code> and the ten years prior to <code>yr</code> and subsets by the creek population in <code><a href='tidalcreeks.html'>tidalcreeks</a></code>. Select water quality parameters in <code>masterCode</code> are filtered and some of the names are combined for continuity.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other analyze: <code><a href='anlz_attain.html'>anlz_attain</a></code>,
-  <code><a href='anlz_avedatsite.html'>anlz_avedatsite</a></code>, <code><a href='anlz_iwrraw.html'>anlz_iwrraw</a></code>,
+  <code><a href='anlz_avedatsite.html'>anlz_avedatsite</a></code>, <code><a href='anlz_avedat.html'>anlz_avedat</a></code>,
   <code><a href='anlz_refs.html'>anlz_refs</a></code>, <code><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></code>,
   <code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a></code>, <code><a href='anlz_yrattain.html'>anlz_yrattain</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># view average estimates</span>
-<span class='fu'>anlz_avedat</span>(<span class='no'>epcdata</span>)</div><div class='output co'>#&gt; $ann
-#&gt; <span style='color: #555555;'># A tibble: 560 x 4</span><span>
-#&gt;    bay_segment    yr var         val
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>974 mean_chla  22.4
-#&gt; </span><span style='color: #555555;'> 2</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>975 mean_chla  27.9
-#&gt; </span><span style='color: #555555;'> 3</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>976 mean_chla  29.5
-#&gt; </span><span style='color: #555555;'> 4</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>977 mean_chla  32.5
-#&gt; </span><span style='color: #555555;'> 5</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>978 mean_chla  22.0
-#&gt; </span><span style='color: #555555;'> 6</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>979 mean_chla  29.7
-#&gt; </span><span style='color: #555555;'> 7</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>980 mean_chla  22.6
-#&gt; </span><span style='color: #555555;'> 8</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>981 mean_chla  31.1
-#&gt; </span><span style='color: #555555;'> 9</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>982 mean_chla  36.1
-#&gt; </span><span style='color: #555555;'>10</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>983 mean_chla  25.9
-#&gt; </span><span style='color: #555555;'># ... with 550 more rows</span><span>
-#&gt; 
-#&gt; $mos
-#&gt; </span><span style='color: #555555;'># A tibble: 4,357 x 5</span><span>
-#&gt;       yr    mo bay_segment var         val
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1 HB          mean_chla 36.2 
-#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1 LTB         mean_chla  1.75
-#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1 OTB         mean_chla  4.4 
-#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     2 HB          mean_chla 42.4 
-#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     2 LTB         mean_chla  5.5 
-#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     2 OTB         mean_chla  4.07
-#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     3 HB          mean_chla 14.9 
-#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     3 LTB         mean_chla  5.88
-#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     4 HB          mean_chla 14.6 
-#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     4 LTB         mean_chla  1.75
-#&gt; </span><span style='color: #555555;'># ... with 4,347 more rows</span><span>
-#&gt; </div></span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>anlz_iwrraw</span>(<span class='no'>iwrraw</span>, <span class='no'>tidalcreeks</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 168,949 x 7</span><span>
+#&gt;    wbid  class JEI    year date       masterCode result
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-01-07 COND        7.56 
+#&gt; </span><span style='color: #555555;'> 2</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-01-07 SALIN       0.148
+#&gt; </span><span style='color: #555555;'> 3</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-01-07 COND        7.55 
+#&gt; </span><span style='color: #555555;'> 4</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-01-07 SALIN       0.140
+#&gt; </span><span style='color: #555555;'> 5</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-02-05 COND        7.22 
+#&gt; </span><span style='color: #555555;'> 6</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-02-05 SALIN      -</span><span style='color: #BB0000;'>0.342</span><span>
+#&gt; </span><span style='color: #555555;'> 7</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-02-05 COND        7.23 
+#&gt; </span><span style='color: #555555;'> 8</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-02-05 SALIN      -</span><span style='color: #BB0000;'>0.329</span><span>
+#&gt; </span><span style='color: #555555;'> 9</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-03-19 COND        7.31 
+#&gt; </span><span style='color: #555555;'>10</span><span> 1623A 3F    DC03   </span><span style='text-decoration: underline;'>2</span><span>008 2008-03-19 SALIN      -</span><span style='color: #BB0000;'>0.274</span><span>
+#&gt; </span><span style='color: #555555;'># ... with 168,939 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -92,4 +92,12 @@ The `show_tdlcrk()` function can be used with the output of `anlz_tdlcrk()` to v
 show_tdlcrk(results)
 ```
 
+Several years of data included in the IWR database are used to estimate the assessment categories.  Additional water quality parameters in this database can provide context for interpreting the outcomes, e.g., chlorophyll, nitrogen, dissolved oxygen, etc. The `anlz_tdlcrkindic()` function can be used to summarize the raw data in the IWR database and returns annual geometric means of additional water quality measurements for the ten years of data that were used to define the score categories.  Averages for each year of available data at each `wbid`/`JEI` combination are returned for chlorophyll, dissolved oxygen, total nitrogen, total phosphorus, trophic state index, and several other parameters.
+
+```{r}
+results <- anlz_tdlcrkindic(tidalcreeks, iwrraw)
+head(results)
+```
+
+
 # References
