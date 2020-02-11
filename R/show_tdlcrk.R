@@ -38,7 +38,7 @@ show_tdlcrk <- function(dat) {
               opacity = 1
     ) %>%
     leaflet::addPolylines(data = tomap, opacity = 1, weight = 1.5, color = ~pal_exp(score),
-                 label = ~paste0("WBID: ", wbid, ", JEI:", JEI, ', Creek score:', score)
+              layerId = ~id, label = ~paste0("WBID: ", wbid, ", JEI:", JEI, ', Creek score:', score)
     )
 
   return(out)
