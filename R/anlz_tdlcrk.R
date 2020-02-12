@@ -78,7 +78,7 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
         class %in% c('3M', '2') & TN > tn_act ~ 4
       )
     ) %>%
-    dplyr::group_by(id, wbid, class, JEI, grade) %>%
+    dplyr::group_by(id, wbid, JEI, name, class, grade) %>%
     dplyr::summarise(cnt = n()) %>%
     tidyr::spread(grade, cnt) %>%
     dplyr::select(-`<NA>`)
@@ -113,7 +113,7 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
       )
     ) %>%
     tidyr::as_tibble() %>%
-    dplyr::select(id, wbid, JEI, class, target = `1`, caution = `2`, investigate = `3`, act = `4`, score)
+    dplyr::select(id, wbid, JEI, name, class, target = `1`, caution = `2`, investigate = `3`, act = `4`, score)
 
   return(scrdat)
 

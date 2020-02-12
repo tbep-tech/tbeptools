@@ -14,7 +14,8 @@
 #' @family analyze
 #'
 #' @examples
-#' anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
+#' dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
+#' head(dat)
 anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018) {
 
   # format iwr data

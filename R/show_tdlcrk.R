@@ -23,7 +23,7 @@ show_tdlcrk <- function(dat) {
 
   # join data to tidalcreeks sf
   tomap <- tidalcreeks %>%
-    dplyr::inner_join(dat, by = c('id', 'wbid', 'JEI', 'class')) %>%
+    dplyr::inner_join(dat, by = c('id', 'wbid', 'JEI', 'class', 'name')) %>%
     dplyr::mutate(
       score = factor(score, levels = c('No Data', 'Target', 'Caution', 'Investigate', 'Act'))
     )
@@ -38,7 +38,7 @@ show_tdlcrk <- function(dat) {
               opacity = 1
     ) %>%
     leaflet::addPolylines(data = tomap, opacity = 1, weight = 1.5, color = ~pal_exp(score),
-              layerId = ~id, label = ~paste0("WBID: ", wbid, ", JEI:", JEI, ', Creek score:', score)
+              layerId = ~id, label = ~paste0("WBID: ", wbid, ", JEI: ", JEI, ', Name: ', name, ', Creek score: ', score)
     )
 
   return(out)
