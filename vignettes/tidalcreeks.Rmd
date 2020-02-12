@@ -37,7 +37,9 @@ bib_scrp(here('vignettes', 'tidalcreeks.Rmd'), bib_new = here('vignettes', 'tida
 
 ## Background
 
-Tidal creeks or tributaries are essential habitats in the Tampa Bay Estuary and serve as important focal points for understanding watershed inputs that affect water quality.  A fundamental goal of the Tampa Bay Estuary Program is to develop effective nutrient management strategies to support the ecological function of tidal tributaries.  In partnership with Sarasota Bay NEP, Charlotte Harbor NEP, and local government and agency stakeholders, preliminary methods have been developed for assessing the health of tidal tributaries based on exceedances of nitrogen concentrations [@tbep0216;2019 draft report forthcoming].  These assessments can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.  
+Dashboard: https://shiny.tbeptech.org/tidalcreek-dash/
+
+Tidal creeks or tributaries are essential habitats in the Tampa Bay Estuary and serve as important focal points for understanding watershed inputs that affect water quality. A fundamental goal of the Tampa Bay Estuary Program is to develop effective nutrient management strategies to support the ecological function of tidal tributaries. In partnership with Sarasota Bay NEP, Coastal & Heartland NEP, and local government and agency stakeholders, preliminary methods have been developed for assessing the health of tidal tributaries for fisheries based on exceedances of nitrogen concentrations [@tbep0216;2019 report forthcoming]. These assessments can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.
 
 The tbeptools package includes a [simple features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data object of the population of tidal creeks in southwest Florida, called `tidalcreeks()`. This includes `r nrow(tidalcreeks)` polyline features designated by a water body ID (`wbid`), creek id (`JEI`), and [FDEP class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria) (`class`, 1 for potable water, 2 for shellfish harvesting or propagation, and 3F/3M for freshwater/marine fish consumption, recreation, propagation and maintenance of a healthy, well-balanced population of fish and wildlife).
 
@@ -49,15 +51,15 @@ The tidal creek assessments use data from the FDEP [Impaired Waters Rule](https:
 
 ## Assessment
 
-Similar to the water quality report card, tidal creeks are assigned to categories within a management framework intended to serve as both a mechanism for evaluating data relative to the need for regulatory action, and to identify stewardship actions that, if properly pursued, preclude the need for any regulatory actions.  Within this framework, tidal creeks are assigned to one of four categories: 
+Similar to the [water quality report card](https://shiny.tbeptech.org/wq-dash/), tidal creeks are assigned to categories within a management framework intended to serve as both a mechanism for evaluating data relative to the need for regulatory action, and to identify stewardship goals that, if properly pursued, preclude the need for any regulatory actions.  These categories were based on fish as a biological response indicator.  Additional indicators that may be more sensitive to elevated nutrient concentrations have not yet been identified and are an area of current research.  Tidal creeks are assigned to one of four categories:
 
-<span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Target__</span>: At or below nitrogen concentrations that protect individual creek types within the larger population of creeks.
+<span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Target__</span>: Creek is at or below nitrogen concentrations that protect individual creek types within the larger population of creeks.
 
-<span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>: A site-specific early warning concentration that an individual creek may be trending towards a eutrophic condition and can help prioritize where management actions should begin to identify actions to prevent a threshold exceedance.
+<span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>: Creek nutrients showing signs of eleveted nutrient concentrations that may increase risk of eutrophic condition.
 
-<span style="color:#FFA500; text-shadow: 0 0 3px #333;">__Investigate__</span>: A concentration indicating a management action level that identifies a potential degradation point as an impetus to develop site-specific management actions.
+<span style="color:#FFA500; text-shadow: 0 0 3px #333;">__Investigate__</span>: Creek nutrient concentrations above margin of safety to protect creek from potential impairment.
 
-<span style="color:#FF7F50; text-shadow: 0 0 3px #333;">__Act__</span>: A concentration indicating that regulatory actions may be needed to confirm the impairment and identify remediative actions for the creek watershed.
+<span style="color:#FF7F50; text-shadow: 0 0 3px #333;">__Act__</span>: Creek nutrient concentrations have exceeded regulatory standard for associated freshwater portion of tributary indicating that actions are needed to identify remediative measures to reduce nutrients to the creek.
 
 Conceptually, these thresholds appear in the figure below.
 
@@ -65,15 +67,15 @@ Conceptually, these thresholds appear in the figure below.
 knitr::include_graphics('tidalcreekreport.PNG')
 ```
 
-The histogram in the above figure represents a range of nitrogen concentrations for tidal creeks in the West Central region of Florida that were simulated using the observed standard deviation of values and centered around the freshwater stream threshold of 1.65 mg/L [@tbep0216].  Assignment of a creek into one of the four categories depends a margin of safety from the threshold, a caution value that is tailored to each creek based on stream length, and a target as values below the caution level.  
+The Act category was defined based on Florida's freshwater stream numeric nutrient criteria (NNC).Two different freshwater stream NNC are applicable to our region; the West Central NNC of 1.65 mg/l and  Peninsular region NNC of 1.54 mg/l. The histograms in the above figure represent a range of annual geometric mean (AGM) nitrogen concentrations associated with the Act and Investigate categories which are based on the NNC. In the example above, the maximum expected distribution of AGMs not to exceed of 1.65 mg/l with a 1:3 exceedence probability (as defined in F.A.C. 62-303) was generated using monte carlo simulation and the highest observed standard deviation from data collected during the first creeks study. The Investigate category was then defined as an explicit margin of safety by adjusting the distribution to find the grand geometric average that would result in a 1:20 chance of exceeding 1.65 mg/l. Assignment of a creek into the Caution category depended on a creek length adjustment as described below to protect smaller creeks from elevated nutrient concentrations. 
 
-Two different nutrient thresholds were used for assessment, the first being the freshwater creek threshold for the West Central region of Florida (shown above) and the second being the freshwater creek threshold for the peninsular region of Florida.  The `tidaltargets()` data object included in tbeptools includes these thresholds.  Note that the "Caution" category is a function of creek length. 
+The `tidaltargets()` data object included in tbeptools includes these thresholds.  Note that the "Caution" category is a function of creek length. 
 
 ```{r}
 tidaltargets
 ```
 
-A temporal component is also included in the assessment, whereby the overall score considers the individual categories that were observed in the previous ten years for the period of record.  For this analysis, the tidal creek assessments include data from 2008 to 2018 coinciding with the ten years prior from the most current year in the IWR period of record.  Each year of data in which nitrogen was measured at a site is compared to the appropriate thresholds and the overall score is based on the summation of categories across the years.  The overall scores are typically assigned conservatively, such that the overall score is based on the highest category that is exceeded.  For example, a creek is assigned to a "threshold" (red) category if only two of ten years exceeds the threshold, even if the remaining years are at target.  
+A temporal component is also included in the assessment, whereby the overall score considers the individual categories that were observed in the previous ten years for the period of record.  For this analysis, the tidal creek assessments include data from 2008 to 2018 coinciding with the ten years prior from the most current year in the IWR period of record.  Each year of data in which nitrogen was measured at a site is given a score based on the categories defined above and an overall score is based on a frequency count for each category over the 10 year period.  The overall scores are typically assigned conservatively, such that the overall score is based on the highest category that is exceeded.  For example, a creek is assigned to the "Act" (red) category if only two of ten years exceeds the Act threshold, even if the remaining years are at target concentrations. Therefore, the framework can be considered a risk characterization representing the risk of the creek exceeding a particular threshold level.
 
 ## Functions
 
