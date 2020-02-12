@@ -83,7 +83,7 @@ test_that("Checking anlz_tldcrk", {
                          "Target", "No Data", "Target", "Target", "Target", "No Data",
                          "Target", "No Data", "Investigate", "No Data", "No Data", "No Data",
                          "No Data", "Target", "Target", "Caution", "No Data", "Investigate",
-                         "No Data", "Act", "No Data", "No Data", "Target", "Target", "Target",
+                         "No Data", "No Data", "No Data", "Target", "Target", "Target",
                          "Target", "Target", "No Data", "No Data", "No Data", "Target",
                          "Target", "No Data", "Target", "Target", "Target", "Target",
                          "No Data", "Target", "No Data", "Target", "No Data", "No Data",
