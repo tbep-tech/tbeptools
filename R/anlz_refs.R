@@ -27,6 +27,13 @@ anlz_refs <- function(path) {
   if(!is.data.frame(refs))
     refs <- read.csv(refs, stringsAsFactors = F)
 
+  # fixed authors not to edit, values correspond to index
+  authfix <- c('266', '253', '249', '243', '239', '227', '222', '211', '207',
+               '203', '194', '181', '180', '179', '178', '174', '173', '172',
+               '163', '157', '156', '155', '149', '141', '136', '131', '129',
+               '125', '123', '122', '120', '114', '107', '93', '84', '73', '61',
+               '60', '52', '44', '43', '40', '34', '23', '20')
+
   # specific fields for bib entry types
   flds <- list(
     article = c('author', 'year', 'title', 'journal', 'volume', 'number', 'pages', 'doi', 'misc', 'url'),
@@ -49,7 +56,11 @@ anlz_refs <- function(path) {
         tmp <- data %>%
           dplyr::mutate(
             tag = paste0('@', type, '{', tag, ','),
-            brk = '}\n'
+            brk = '}\n',
+            author = dplyr::case_when(
+              index %in% authfix ~ paste0('{', author, '}'),
+              T ~ gsub(', ', ' and ', author)
+            )
           ) %>%
           dplyr::select_at(c('index', 'tag', fldsel, 'brk')) %>%
           dplyr::mutate_at(fldsel, ~paste0('={', ., '},')) %>%
@@ -78,7 +89,7 @@ anlz_refs <- function(path) {
     ) %>%
     tidyr::unnest(data) %>%
     dplyr::ungroup() %>%
-    dplyr::arrange(index, subindex) %>%
+    dplyr::arrange(-index, subindex) %>%
     mutate(val= gsub('\\#', '', val)) %>%
     dplyr::pull(val)
 
