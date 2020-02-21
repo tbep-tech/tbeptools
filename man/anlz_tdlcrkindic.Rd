@@ -23,7 +23,8 @@ Estimate tidal creek water quality indicators to suppport report card scores
 Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.
 }
 \examples{
-anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
+dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
+head(dat)
 }
 \seealso{
 Other analyze: \code{\link{anlz_attain}},
