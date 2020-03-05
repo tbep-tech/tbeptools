@@ -28,6 +28,7 @@ Imports:
   lubridate,
   magrittr,
   mapview,
+  plotly,
   purrr,
   reactable,
   readxl,
