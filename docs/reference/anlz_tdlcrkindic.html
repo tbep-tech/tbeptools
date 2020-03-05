@@ -153,7 +153,7 @@
     <p>A <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code> with the indicator values for each tidal creek</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.</p>
+    <p>Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.  Nitrogen ratios are estimated for JEIs that cover source (upstream, freshwater) and tidal (downstream) WBIDs, defined as the ratio of concentrations between the two (i.e., ratios &gt; 1 mean source has higher concentrations).  Nitrogen ratios for a given year reflect the median of all daily ratios when concentrations were measured in both a source and tidal segment during the same day.  Note that a ratio of one can be obtained if both the source and tidal segments are at minimum detection.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other analyze: <code><a href='anlz_attain.html'>anlz_attain</a></code>,
@@ -177,13 +177,13 @@
 #&gt; 4   NA   NA 34.87518  NA NA NA  NA   NA            NA          NA       NA
 #&gt; 5   NA   NA 30.56035  NA NA NA  NA   NA            NA          NA       NA
 #&gt; 6   NA   NA 34.35481  NA NA NA  NA   NA            NA          NA       NA
-#&gt;   tn_tsi tn2_tsi tp_tsi tp2_tsi nut_tsi tsi
-#&gt; 1     NA      NA     NA      NA     NaN  NA
-#&gt; 2     NA      NA     NA      NA     NaN NaN
-#&gt; 3     NA      NA     NA      NA     NaN NaN
-#&gt; 4     NA      NA     NA      NA     NaN NaN
-#&gt; 5     NA      NA     NA      NA     NaN NaN
-#&gt; 6     NA      NA     NA      NA     NaN NaN</div></pre>
+#&gt;   tn_tsi tn2_tsi tp_tsi tp2_tsi nut_tsi tsi no23_ratio
+#&gt; 1     NA      NA     NA      NA     NaN  NA         NA
+#&gt; 2     NA      NA     NA      NA     NaN NaN         NA
+#&gt; 3     NA      NA     NA      NA     NaN NaN         NA
+#&gt; 4     NA      NA     NA      NA     NaN NaN         NA
+#&gt; 5     NA      NA     NA      NA     NaN NaN         NA
+#&gt; 6     NA      NA     NA      NA     NaN NaN         NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
