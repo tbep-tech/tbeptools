@@ -2,14 +2,14 @@
 #'
 #' Plotly empirical CDF plots of tidal creek context indicators
 #'
-#' @param selcrk numeric indicating the \code{id} number of the tidal creek to plot
+#' @param id numeric indicating the \code{id} number of the tidal creek to plot
 #' @param cntdat output from \code{\link{anlz_tdlcrkindic}}
 #' @param yr numeric indicating reference year, almost always 2018
 #' @param thrsel logical if threshold lines and annotations are shown on the plots
 #'
 #' @importFrom plotly add_trace layout plot_ly subplot
 #'
-#' @details This function returns several empirical cumulative distribution plots for the tidal creek context indicators.  Points on the plot indicate the observed values and percentiles for the creek specified by \code{selcrk}. The percentiles and CDF values are defined by the "population" of creeks in \code{cntdat}.  Points in the plots are color-coded by sample year to evaluate temporal trends, if any.
+#' @details This function returns several empirical cumulative distribution plots for the tidal creek context indicators.  Points on the plot indicate the observed values and percentiles for the creek specified by \code{id}. The percentiles and CDF values are defined by the "population" of creeks in \code{cntdat}.  Points in the plots are color-coded by sample year to evaluate temporal trends, if any.
 #'
 #' @return A plotly object
 #' @export
@@ -17,7 +17,7 @@
 #' @examples
 #' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
 #' show_tdlcrkindiccdf(495, cntdat, thrsel = TRUE)
-show_tdlcrkindiccdf <- function(selcrk, cntdat, yr = 2018, thrsel = FALSE){
+show_tdlcrkindiccdf <- function(id, cntdat, yr = 2018, thrsel = FALSE){
 
   # variables to plot
   labs <- c('Chla (ug/L)', 'TN (mg/L)', 'Chla:TN', 'DO (mg/L)', 'Florida TSI', 'Nitrate ratio')
@@ -25,7 +25,7 @@ show_tdlcrkindiccdf <- function(selcrk, cntdat, yr = 2018, thrsel = FALSE){
 
   # data to plot
   seldat <- cntdat %>%
-    dplyr::filter(id %in% selcrk) %>%
+    dplyr::filter(id %in% !!id) %>%
     dplyr::mutate(year = factor(year, levels = seq(yr - 10, yr - 1))) %>%
     tidyr::complete(id, wbid, JEI, class, year)
 

@@ -4,10 +4,10 @@
 \alias{show_tdlcrkindic}
 \title{Plotly barplots of tidal creek context indicators}
 \usage{
-show_tdlcrkindic(selcrk, cntdat, yr = 2018, thrsel = FALSE)
+show_tdlcrkindic(id, cntdat, yr = 2018, thrsel = FALSE)
 }
 \arguments{
-\item{selcrk}{numeric indicating the \code{id} number of the tidal creek to plot}
+\item{id}{numeric indicating the \code{id} number of the tidal creek to plot}
 
 \item{cntdat}{output from \code{\link{anlz_tdlcrkindic}}}
 

@@ -4,10 +4,10 @@
 \alias{show_tdlcrkindiccdf}
 \title{Plotly empirical CDF plots of tidal creek context indicators}
 \usage{
-show_tdlcrkindiccdf(selcrk, cntdat, yr = 2018, thrsel = FALSE)
+show_tdlcrkindiccdf(id, cntdat, yr = 2018, thrsel = FALSE)
 }
 \arguments{
-\item{selcrk}{numeric indicating the \code{id} number of the tidal creek to plot}
+\item{id}{numeric indicating the \code{id} number of the tidal creek to plot}
 
 \item{cntdat}{output from \code{\link{anlz_tdlcrkindic}}}
 
@@ -22,7 +22,7 @@ A plotly object
 Plotly empirical CDF plots of tidal creek context indicators
 }
 \details{
-This function returns several empirical cumulative distribution plots for the tidal creek context indicators.  Points on the plot indicate the observed values and percentiles for the creek specified by \code{selcrk}. The percentiles and CDF values are defined by the "population" of creeks in \code{cntdat}.  Points in the plots are color-coded by sample year to evaluate temporal trends, if any.
+This function returns several empirical cumulative distribution plots for the tidal creek context indicators.  Points on the plot indicate the observed values and percentiles for the creek specified by \code{id}. The percentiles and CDF values are defined by the "population" of creeks in \code{cntdat}.  Points in the plots are color-coded by sample year to evaluate temporal trends, if any.
 }
 \examples{
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)

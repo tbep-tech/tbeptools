@@ -2,7 +2,7 @@
 #'
 #' Plotly barplots of tidal creek context indicators
 #'
-#' @param selcrk numeric indicating the \code{id} number of the tidal creek to plot
+#' @param id numeric indicating the \code{id} number of the tidal creek to plot
 #' @param cntdat output from \code{\link{anlz_tdlcrkindic}}
 #' @param yr numeric indicating reference year, almost always 2018
 #' @param thrsel logical if threshold lines and annotations are shown on the plots
@@ -15,7 +15,7 @@
 #' @examples
 #' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
 #' show_tdlcrkindic(495, cntdat, thrsel = TRUE)
-show_tdlcrkindic <- function(selcrk, cntdat, yr = 2018, thrsel = FALSE){
+show_tdlcrkindic <- function(id, cntdat, yr = 2018, thrsel = FALSE){
 
   labs <- c('Chla (ug/L)', 'TN (mg/L)', 'Chla:TN', 'DO (mg/L)', 'Florida TSI', 'Nitrate ratio')
   names(labs) <- c('CHLAC', 'TN', 'chla_tn_ratio', 'DO', 'tsi', 'no23_ratio')
@@ -28,7 +28,7 @@ show_tdlcrkindic <- function(selcrk, cntdat, yr = 2018, thrsel = FALSE){
 
   # data to plot
   toplo <- cntdat %>%
-    dplyr::filter(id %in% selcrk) %>%
+    dplyr::filter(id %in% !!id) %>%
     dplyr::mutate(year = factor(year, levels = seq(yr - 10, yr - 1))) %>%
     tidyr::complete(id, wbid, JEI, class, year, fill = list(CHLAC = 0, DO = 0, TN = 0, chla_tn_ratio = 0, tsi = 0, no23_ratio = 0)) %>%
     dplyr::mutate(color = pal_yrs(year))
