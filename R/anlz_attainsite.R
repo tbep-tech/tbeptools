@@ -31,10 +31,6 @@ anlz_attainsite <- function(avedatsite, thr = c('chla', 'la'), trgs = NULL, yrrn
       unique %>%
       sort
 
-  # default targets from data file
-  if(is.null(trgs))
-    trgs <- targets
-
   # format targets
   trgs <- trgs %>%
     tidyr::gather('var', 'val', -bay_segment, -name) %>%
