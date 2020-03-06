@@ -155,7 +155,8 @@
     <pre class="examples"><div class='input'>
 <span class='co'># input and format</span>
 <span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='st'>'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/tbep-refs.csv'</span>
-<span class='no'>bibs</span> <span class='kw'>&lt;-</span> <span class='fu'>anlz_refs</span>(<span class='no'>path</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open URL 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/tbep-refs.csv': HTTP status was '404 Not Found'</span></div><div class='output co'>#&gt; <span class='error'>Error in file(file, "rt"): cannot open the connection</span></div><div class='input'>
+<span class='no'>bibs</span> <span class='kw'>&lt;-</span> <span class='fu'>anlz_refs</span>(<span class='no'>path</span>)
+
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># save output</span>
  <span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='no'>bibs</span>, <span class='st'>'formatted.bib'</span>)
