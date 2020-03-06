@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spatial data object of Tampa Bay segments — tbseg • tbeptools</title>
+<title>Add a line or annotation to a plotly graph — show_tdlcrkline • tbeptools</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Spatial data object of Tampa Bay segments — tbseg" />
-<meta property="og:description" content="Spatial data object of Tampa Bay segments" />
+<meta property="og:title" content="Add a line or annotation to a plotly graph — show_tdlcrkline" />
+<meta property="og:description" content="Add a line or annotation to a plotly graph for the tidal creek indicators" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,41 +120,83 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Spatial data object of Tampa Bay segments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/tbseg.R'><code>R/tbseg.R</code></a></small>
-    <div class="hidden name"><code>tbseg.Rd</code></div>
+    <h1>Add a line or annotation to a plotly graph</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_tdlcrkline.R'><code>R/show_tdlcrkline.R</code></a></small>
+    <div class="hidden name"><code>show_tdlcrkline.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Spatial data object of Tampa Bay segments</p>
+    <p>Add a line or annotation to a plotly graph for the tidal creek indicators</p>
     </div>
 
-    <pre class="usage"><span class='no'>tbseg</span></pre>
+    <pre class="usage"><span class='fu'>show_tdlcrkline</span>(<span class='kw'>varin</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"CHLAC"</span>, <span class='st'>"TN"</span>, <span class='st'>"chla_tn_ratio"</span>, <span class='st'>"DO"</span>, <span class='st'>"tsi"</span>,
+  <span class='st'>"no23_ratio"</span>), <span class='kw'>thrsel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>horiz</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>annotate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>varin</th>
+      <td><p>chr string for the indicator</p></td>
+    </tr>
+    <tr>
+      <th>thrsel</th>
+      <td><p>logical if something is returned, otherwise NULL, this is a hack for working with the plotly output</p></td>
+    </tr>
+    <tr>
+      <th>horiz</th>
+      <td><p>logical indicating if output is horizontal or vertical</p></td>
+    </tr>
+    <tr>
+      <th>annotate</th>
+      <td><p>logical indicating if output is line or annotation text</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (POLYGON) with 4 features and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p><dl class='dl-horizontal'>
-  <dt>long_name</dt><dd><p>chr</p></dd>
-  <dt>bay_segment</dt><dd><p>chr</p></dd>
+    <p>A list object passed to the layout argument of plotly, either shapes or annotate depending on user input</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-</dl>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other utilities: <code><a href='bsmap.html'>bsmap</a></code>,
-  <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='iwrraw.html'>iwrraw</a></code>,
-  <code><a href='stations.html'>stations</a></code>, <code><a href='targets.html'>targets</a></code>,
-  <code><a href='tbshed.html'>tbshed</a></code>, <code><a href='tidalcreeks.html'>tidalcreeks</a></code>,
-  <code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
+    <p>This function is used internally within <code><a href='show_tdlcrkindic.html'>show_tdlcrkindic</a></code> and <code><a href='show_tdlcrkindiccdf.html'>show_tdlcrkindiccdf</a></code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package 'sf' was built under R version 3.6.2</span></div><div class='output co'>#&gt; <span class='message'>Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/pkg/sf/man/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_geometry.html'>st_geometry</a></span>(<span class='no'>tbseg</span>))</div><div class='img'><img src='tbseg-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'># code for vertical line output, chloropyll</span>
+<span class='fu'>show_tdlcrkline</span>(<span class='st'>'CHLAC'</span>, <span class='kw'>thrsel</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; [[1]]$type
+#&gt; [1] "line"
+#&gt; 
+#&gt; [[1]]$x0
+#&gt; [1] 0
+#&gt; 
+#&gt; [[1]]$x1
+#&gt; [1] 1
+#&gt; 
+#&gt; [[1]]$xref
+#&gt; [1] "paper"
+#&gt; 
+#&gt; [[1]]$y0
+#&gt; [1] 11
+#&gt; 
+#&gt; [[1]]$y1
+#&gt; [1] 11
+#&gt; 
+#&gt; [[1]]$line
+#&gt; [[1]]$line$color
+#&gt; [1] "red"
+#&gt; 
+#&gt; [[1]]$line$dash
+#&gt; [1] 10
+#&gt; 
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -23,5 +23,5 @@ Plotly barplots of tidal creek context indicators
 }
 \examples{
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
-show_tdlcrkindic(197, cntdat, thrsel = T)
+show_tdlcrkindic(495, cntdat, thrsel = TRUE)
 }

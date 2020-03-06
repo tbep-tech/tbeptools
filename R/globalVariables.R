@@ -8,7 +8,8 @@ globalVariables(c("Chlorophyll_a uncorr_ugL", "Latitude", "Longitude", "SampleTi
                   "title", "index", "subindex", "tag", "type", "act", "caution", "region", "investigate",
                   "tidaltargets", "1", "2", "3", "4", "outcometxt", "Act", "Result", "chl", "mags",
                   "outcome.x", "segval", "Sal_Bottom_ppth", "Sal_Mid_ppth", "Sal_Top_ppth", "Action",
-                  "CHLAC", "Creek_Length_m", "TN", "TP", "chla_tsi", "day", "nut_tsi"))
+                  "CHLAC", "Creek_Length_m", "TN", "TP", "chla_tsi", "day", "nut_tsi", "Source", "Tidal",
+                  "median", "no23_ratio", "color"))
 
 
 #' @importFrom grDevices rgb
@@ -23,7 +24,7 @@ NULL
 #' @importFrom methods .S4methods new
 NULL
 
-#' @importFrom stats na.omit
+#' @importFrom stats ecdf median na.omit
 NULL
 
 #' @importFrom utils read.csv

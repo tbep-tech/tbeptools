@@ -107,6 +107,12 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
 
+* `show_tdlcrkindic()`: Plotly barplots of tidal creek context indicators
+
+* `show_tdlcrkindiccdf()`: Plotly empirical CDF plots of tidal creek context indicators
+
+* `show_tdlcrkline()`: Add a line or annotation to a plotly graph for the tidal creek indicators
+
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
 * `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
@@ -274,6 +280,12 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
+
+* `show_tdlcrkindic()`: Plotly barplots of tidal creek context indicators
+
+* `show_tdlcrkindiccdf()`: Plotly empirical CDF plots of tidal creek context indicators
+
+* `show_tdlcrkline()`: Add a line or annotation to a plotly graph for the tidal creek indicators
 
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 

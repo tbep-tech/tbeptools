@@ -1,21 +1,21 @@
-#' Add a line or annotation to a plotly bar graph
+#' Add a line or annotation to a plotly graph
 #'
-#' Add a line or annotation to a plotly bar graph for the tidal creek indicators
+#' Add a line or annotation to a plotly graph for the tidal creek indicators
 #'
 #' @param varin chr string for the indicator
 #' @param thrsel logical if something is returned, otherwise NULL, this is a hack for working with the plotly output
 #' @param horiz logical indicating if output is horizontal or vertical
 #' @param annotate logical indicating if output is line or annotation text
 #'
-#' @details This function is used internally within \code{\link{show_tdlcrkindic}} and \code{\link{show_tldcrkindiccdf}}
+#' @details This function is used internally within \code{\link{show_tdlcrkindic}} and \code{\link{show_tdlcrkindiccdf}}
 #'
 #' @return A list object passed to the layout argument of plotly, either shapes or annotate depending on user input
 #' @export
 #'
 #' @examples
 #' # code for vertical line output, chloropyll
-#' addline('CHLAC', thrsel = TRUE)
-addline <- function(varin = c('CHLAC', 'TN', 'chla_tn_ratio', 'DO', 'tsi', 'no23_ratio'), thrsel = FALSE, horiz = TRUE, annotate = FALSE) {
+#' show_tdlcrkline('CHLAC', thrsel = TRUE)
+show_tdlcrkline <- function(varin = c('CHLAC', 'TN', 'chla_tn_ratio', 'DO', 'tsi', 'no23_ratio'), thrsel = FALSE, horiz = TRUE, annotate = FALSE) {
 
   # sanity checks
   varin <- match.arg(varin)
