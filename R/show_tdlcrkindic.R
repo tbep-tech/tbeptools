@@ -75,7 +75,7 @@ show_tdlcrkindic <- function(id, cntdat, yr = 2018, thrsel = FALSE){
   p5 <- plos$plo[[5]]
   p6 <- plos$plo[[6]]
 
-  out <- subplot(p1, p2, p3, p4, p5, p6, shareX = TRUE, titleY = TRUE, nrows = 3)
+  out <- subplot(p1, p2, p3, p4, p5, p6, shareX = TRUE, titleY = TRUE, nrows = 3, margin = 0.04)
 
   return(out)
 
