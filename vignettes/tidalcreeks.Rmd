@@ -111,7 +111,7 @@ cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
 show_tdlcrkindic(id = 495, cntdat = cntdat, thrsel = TRUE)
 ```
 
-The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative distribution functions (CDF) are plotted as guides relative to the selected creek. This information can be used to compare the water quality conditions at the selected creek to the "population" in southwest Florida. Annual averages for each indicator and each year for the selected creek are plotted on the CDF curves.  Location of the points indicate both a comparison to the population and the trajectory of of indicators over time (i.e., brown are older observations and blue are more recent).  Holding the mouse cursor over a point shows the year and over the line shows the percentile value from the CDF. 
+The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative distribution functions (CDF) are plotted as guides relative to the selected creek. This information can be used to compare the water quality conditions at the selected creek to the "population" in southwest Florida. Annual averages for each indicator and each year for the selected creek are plotted on the CDF curves.  Location of the points indicate both a comparison to the population and the trajectory of indicators over time (i.e., brown are older observations and blue are more recent).  Holding the mouse cursor over a point shows the year and holding the cursor over the line shows the percentile value from the CDF. 
 
 ```{r}
 show_tdlcrkindiccdf(id = 495, cntdat = cntdat, thrsel = TRUE)
