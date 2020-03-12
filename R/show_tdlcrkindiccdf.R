@@ -6,6 +6,7 @@
 #' @param cntdat output from \code{\link{anlz_tdlcrkindic}}
 #' @param yr numeric indicating reference year, almost always 2018
 #' @param thrsel logical if threshold lines and annotations are shown on the plots
+#' @param pal vector of colors for the palette
 #'
 #' @importFrom plotly add_trace layout plot_ly subplot
 #'
@@ -17,7 +18,7 @@
 #' @examples
 #' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
 #' show_tdlcrkindiccdf(495, cntdat, thrsel = TRUE)
-show_tdlcrkindiccdf <- function(id, cntdat, yr = 2018, thrsel = FALSE){
+show_tdlcrkindiccdf <- function(id, cntdat, yr = 2018, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
 
   # variables to plot
   labs <- c('Chla (ug/L)', 'TN (mg/L)', 'Chla:TN', 'DO (mg/L)', 'Florida TSI', 'Nitrate ratio')
@@ -47,7 +48,7 @@ show_tdlcrkindiccdf <- function(id, cntdat, yr = 2018, thrsel = FALSE){
         var <- as.character(var)
 
         pal_yrs <- leaflet::colorFactor(
-          palette = c('#5C4A42', '#427355', '#004F7E'), #RColorBrewer::brewer.pal(8,  'Blues'),#c('#004F7E', '#00806E', '#427355', '#5C4A42', '#958984'),
+          palette = pal,
           na.color = 'yellow',
           levels = as.character(seq(2008, 2017))
         )

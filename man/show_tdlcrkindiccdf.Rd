@@ -4,7 +4,8 @@
 \alias{show_tdlcrkindiccdf}
 \title{Plotly empirical CDF plots of tidal creek context indicators}
 \usage{
-show_tdlcrkindiccdf(id, cntdat, yr = 2018, thrsel = FALSE)
+show_tdlcrkindiccdf(id, cntdat, yr = 2018, thrsel = FALSE,
+  pal = c("#5C4A42", "#427355", "#004F7E"))
 }
 \arguments{
 \item{id}{numeric indicating the \code{id} number of the tidal creek to plot}
@@ -14,6 +15,8 @@ show_tdlcrkindiccdf(id, cntdat, yr = 2018, thrsel = FALSE)
 \item{yr}{numeric indicating reference year, almost always 2018}
 
 \item{thrsel}{logical if threshold lines and annotations are shown on the plots}
+
+\item{pal}{vector of colors for the palette}
 }
 \value{
 A plotly object
