@@ -83,6 +83,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_avedatsite()`: Estimate annual means by site
 
+* `anlz_hydroload()`: Estimate hydrological estimates and adjustment factors for bay segments
+
 * `anlz_iwrraw()`: Format raw IWR data
 
 * `anlz_refs()`: Convert references csv to bib entries
@@ -231,6 +233,8 @@ The analyze functions are used primarily to summarize the data returned by `read
 * `anlz_avedat()`: Estimate annual means
 
 * `anlz_avedatsite()`: Estimate annual means by site
+
+* `anlz_hydroload()`: Estimate hydrological estimates and adjustment factors for bay segments
 
 * `anlz_iwrraw()`: Format raw IWR data
 

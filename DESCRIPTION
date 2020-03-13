@@ -18,6 +18,7 @@ Depends:
   R (>= 3.5),
   methods
 Imports:
+  dataRetrieval,
   dplyr,
   extrafont,
   ggmap,
@@ -32,8 +33,10 @@ Imports:
   purrr,
   reactable,
   readxl,
+  rnoaa,
   RCurl,
   sf,
+  tibble,
   tidyr
 Remotes:
   fawda123/Jabbrev

@@ -9,7 +9,7 @@ globalVariables(c("Chlorophyll_a uncorr_ugL", "Latitude", "Longitude", "SampleTi
                   "tidaltargets", "1", "2", "3", "4", "outcometxt", "Act", "Result", "chl", "mags",
                   "outcome.x", "segval", "Sal_Bottom_ppth", "Sal_Mid_ppth", "Sal_Top_ppth", "Action",
                   "CHLAC", "Creek_Length_m", "TN", "TP", "chla_tsi", "day", "nut_tsi", "Source", "Tidal",
-                  "median", "no23_ratio", "color"))
+                  "median", "no23_ratio", "color", "Flow", "adj", "bs", "compload", "ests", "value"))
 
 
 #' @importFrom grDevices rgb
