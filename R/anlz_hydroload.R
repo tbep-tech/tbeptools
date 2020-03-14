@@ -7,9 +7,9 @@
 #' @param trace logical indicating if function progress is printed in the consol
 #'
 #' @details
-#' This function uses rainfall and streamflow data from NOAA and USGS and requires an API key.  See the "Authentication" section under the help file for \code{\link[rnoaa]{ncdc}}.  This key can be added to the R environment file and called for later use, see the exampes.
+#' This function uses rainfall and streamflow data from NOAA and USGS and requires an API key.  See the "Authentication" section under the help file for \code{\link[rnoaa]{ncdc}}.  This key can be added to the R environment file and called for later use, see the examples.
 #'
-#' These estimates are used in annual compliance assessment reports produced by the Tampa Bay Nitrogen Management Consortium. Load estimates and adjust facors are based on regression models in https://tbeptech.org/TBEP_TECH_PUBS/2016/TBEP_03_16_TBNMC_Tech_Memo_Update_LTB_Hyd_Tool.pdf
+#' These estimates are used in annual compliance assessment reports produced by the Tampa Bay Nitrogen Management Consortium. Load estimates and adjustment factors are based on regression models in https://tbeptech.org/TBEP_TECH_PUBS/2016/TBEP_03_16_TBNMC_Tech_Memo_Update_LTB_Hyd_Tool.pdf
 #'
 #' @return A data frame with hydrological load estimates by bay segments for the requested years
 #' @export

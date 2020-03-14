@@ -3,6 +3,11 @@ test_that("Checking show_thrplot class", {
   expect_is(result, 'ggplot')
 })
 
+test_that("Checking show_thrplot class, thrs = T", {
+  result <- show_thrplot(epcdata, thrs = T)
+  expect_is(result, 'ggplot')
+})
+
 test_that("Checking show_thrplot error", {
   expect_error(show_thrplot(epcdata, yrrng = c(2008, 2007)))
 })

@@ -6,7 +6,7 @@
 \usage{
 show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
   thr = c("chla", "la"), trgs = NULL, yrrng = c(1975, 2018),
-  family = NA, labelexp = TRUE, txtlab = TRUE)
+  family = NA, labelexp = TRUE, txtlab = TRUE, thrs = FALSE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -24,6 +24,8 @@ show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 \item{labelexp}{logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}}
 
 \item{txtlab}{logical indicating if a text label for the target value is shown in the plot}
+
+\item{thrs}{logical indicating if reference lines are shown only for the regulatory threshold}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object
