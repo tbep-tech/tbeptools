@@ -5,6 +5,7 @@
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param yrsel numeric for year to plot
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
+#' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite()}}
 #'
 #' @family visualize
 #'
@@ -16,7 +17,7 @@
 #'
 #' @examples
 #' show_sitemap(epcdata, yrsel = 2018)
-show_sitemap <- function(epcdata, yrsel, trgs = NULL){
+show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE){
 
   # sanity check
   # default targets from data file
@@ -28,10 +29,10 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL){
   # get site averages for selected year
   tomap <- epcdata %>%
     anlz_avedatsite() %>%
-    anlz_attainsite(yrrng = yrsel, thr = 'chla', trgs = trgs) %>%
+    anlz_attainsite(yrrng = yrsel, thr = 'chla', trgs = trgs, thrs = thrs) %>%
     dplyr::left_join(stations, by = c('epchc_station', 'bay_segment')) %>%
     dplyr::mutate(
-      trgtmet = factor(trgtmet, levels = c('yes', 'no'), labels = c('yes', 'no'))
+      met = factor(met, levels = c('yes', 'no'), labels = c('yes', 'no'))
     ) %>%
     st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
 
@@ -54,7 +55,7 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL){
     p <- ggmap::ggmap(bsmap) +
       geom_sf(data = tbseg, fill = transcol, inherit.aes = F) +
       ggrepel::geom_text_repel(data = tomap, aes(label = round(val, 1), geometry = geometry), stat = "sf_coordinates", size = 3, inherit.aes = F) +
-      geom_sf(data = tomap, aes(colour = trgtmet, fill = trgtmet), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
+      geom_sf(data = tomap, aes(colour = met, fill = met), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
       geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = transcol) +
       scale_fill_manual(leglab,  values = c('green', 'red'), drop = F) +
       scale_colour_manual(leglab, values = c('green', 'red'), drop = F) +

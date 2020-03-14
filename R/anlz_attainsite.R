@@ -6,6 +6,7 @@
 #' @param thr chr string indicating with water quality value and appropriate threshold to to plot, one of "chl" for chlorophyll and "la" for light availability
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param yrrng optional numeric value for year to return, defaults to all
+#' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds
 #'
 #' @return a \code{data.frame} for each year and site showing the attainment category
 #'
@@ -16,7 +17,7 @@
 #' @examples
 #' avedatsite <- anlz_avedatsite(epcdata)
 #' anlz_attainsite(avedatsite)
-anlz_attainsite <- function(avedatsite, thr = c('chla', 'la'), trgs = NULL, yrrng = NULL){
+anlz_attainsite <- function(avedatsite, thr = c('chla', 'la'), trgs = NULL, yrrng = NULL, thrs = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -50,11 +51,17 @@ anlz_attainsite <- function(avedatsite, thr = c('chla', 'la'), trgs = NULL, yrrn
   if(nrow(annavesite) == 0)
     stop(paste(yrrng, "not in epcdata"))
 
-  # is var above/below target
-  out <- annavesite %>%
-    dplyr::mutate(
-      trgtmet = ifelse(val < target, 'yes', 'no')
-    )
+  # is val above/below
+  if(!thrs)
+    out <- annavesite %>%
+      dplyr::mutate(
+        met = ifelse(val < target, 'yes', 'no')
+      )
+  if(thrs)
+    out <- annavesite %>%
+      dplyr::mutate(
+        met = ifelse(val < thresh, 'yes', 'no')
+      )
 
   return(out)
 
