@@ -129,7 +129,7 @@
     <p>Map site attainment categories for a selected year</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_sitemap</span>(<span class='no'>epcdata</span>, <span class='no'>yrsel</span>, <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>show_sitemap</span>(<span class='no'>epcdata</span>, <span class='no'>yrsel</span>, <span class='kw'>trgs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>thrs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,6 +145,10 @@
     <tr>
       <th>trgs</th>
       <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code></p></td>
+    </tr>
+    <tr>
+      <th>thrs</th>
+      <td><p>logical indicating if attainment category is relative to targets (default) or thresholds, passed to <code><a href='anlz_attainsite.html'>anlz_attainsite()</a></code></p></td>
     </tr>
     </table>
 

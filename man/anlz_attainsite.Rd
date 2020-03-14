@@ -5,7 +5,7 @@
 \title{Get site attainments}
 \usage{
 anlz_attainsite(avedatsite, thr = c("chla", "la"), trgs = NULL,
-  yrrng = NULL)
+  yrrng = NULL, thrs = FALSE)
 }
 \arguments{
 \item{avedatsite}{result returned from \code{\link{anlz_avedatsite}}}
@@ -15,6 +15,8 @@ anlz_attainsite(avedatsite, thr = c("chla", "la"), trgs = NULL,
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
 \item{yrrng}{optional numeric value for year to return, defaults to all}
+
+\item{thrs}{logical indicating if attainment category is relative to targets (default) or thresholds}
 }
 \value{
 a \code{data.frame} for each year and site showing the attainment category
