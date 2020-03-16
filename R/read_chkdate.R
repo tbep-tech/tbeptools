@@ -51,7 +51,7 @@ read_chkdate <- function(epchc_url, xlsx, connecttimeout = 20, tryurl = FALSE) {
   # get date of local file
   lcdate <- file.info(xlsx)$mtime
 
-  # check if serer date is less than or equal to local file date
+  # check if server date is less than or equal to local file date
   is_latest <- srdate <= lcdate
 
   return(is_latest)

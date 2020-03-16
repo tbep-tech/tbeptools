@@ -5,7 +5,7 @@
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param yrsel numeric for year to plot
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
-#' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite()}}
+#' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}
 #'
 #' @family visualize
 #'

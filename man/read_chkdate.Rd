@@ -30,6 +30,8 @@ read_chkdate(epchc_url, xlsx)
 }
 \seealso{
 Other read: \code{\link{read_dlcurrent}},
-  \code{\link{read_formwq}}, \code{\link{read_importwq}}
+  \code{\link{read_formphyto}}, \code{\link{read_formwq}},
+  \code{\link{read_importphyto}},
+  \code{\link{read_importwq}}
 }
 \concept{read}

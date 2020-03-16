@@ -13,7 +13,7 @@ show_sitemap(epcdata, yrsel, trgs = NULL, thrs = FALSE)
 
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
-\item{thrs}{logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite()}}}
+\item{thrs}{logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}}
 }
 \value{
 A static \code{ggplot} object is returned

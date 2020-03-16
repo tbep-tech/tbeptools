@@ -14,7 +14,7 @@
 #'
 #' @family read
 #'
-#' @seealso \code{\link{read_formwq}}
+#' @seealso \code{\link{read_formwq}}, \code{\link{read_importphyto}}
 #'
 #' @examples
 #' \dontrun{
@@ -27,7 +27,7 @@
 read_importwq <- function(xlsx, na = '', download_latest_epchc = FALSE, connecttimeout = 10, tryurl = FALSE, ...){
 
   # download latest and compare with current if exists
-  read_dlcurrent(xlsx, download_latest_epchc, connecttimeout = connecttimeout, tryurl = tryurl)
+  read_dlcurrent(xlsx, download_latest_epchc, connecttimeout = connecttimeout, tryurl = tryurl, phyto = FALSE)
 
   # sanity checks
   if(!download_latest_epchc)
@@ -64,7 +64,7 @@ read_importwq <- function(xlsx, na = '', download_latest_epchc = FALSE, connectt
                                      "text", "text", "text", "text", "text", "text",
                                      "text", "text", "text", "text", "text", "text",
                                      "text", "text", "text"),
-                       na = '')
+                       na = na)
 
   # format names
   names(rawdat) <- gsub('\\r\\n', '_', names(rawdat))
