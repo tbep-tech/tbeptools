@@ -67,9 +67,13 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `read_chkdate()`: Compare date of local xlsx file with the same file on the server
 
-* `read_dlcurrent()`: Download latest water quality file from epchc.org
+* `read_dlcurrent()`: Download latest file from epchc.org
+
+* `read_formphyto()`: Format phytoplankton data
 
 * `read_formwq()`: Format water quality data
+
+* `read_importphyto()`: Load local phytoplankton cell count file
 
 * `read_importwq()`: Load local water quality file
 
@@ -152,13 +156,17 @@ There are `r lsf.str("package:tbeptools") %>% as.character %>% grepl('^read', .)
 
 * `read_chkdate()`: Compare date of local xlsx file with the same file on the server
 
-* `read_dlcurrent()`: Download latest water quality file from epchc.org
+* `read_dlcurrent()`: Download latest file from epchc.org
+
+* `read_formphyto()`: Format phytoplankton data
 
 * `read_formwq()`: Format water quality data
 
+* `read_importphyto()`: Load local phytoplankton cell count file
+
 * `read_importwq()`: Load local water quality file
 
-The main function is `read_importwq()` - the remainder are all used within `read_importwq()` to accomplish different tasks when importing the data.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.
+The main function for importing water quality data is `read_importwq()`.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.
 
 First, create a character path for the location of the file.  If one does not exist, specify a desired location and name for the downloaded file.  Here, we want to put the file in the vignettes folder and name is 2018_Results_updated.xls.  Note that this file path is relative to the root working directly for the current R session.  You can view the working directory with `getwd()`.
 
@@ -222,6 +230,34 @@ epcdata
 
 These data include the bay segment name, station number, sample time, year, month, latitude, longitude, station depth, sample depth, secchi depth, and chlorophyll.  Note that the monitoring data include additional parameters.  Chlorophyll and secchi depth are currently the only parameters returned by `read_importwq()` given the reporting indicators used below. 
 
+An import function is also available to download and format phytoplankton cell count data.  The `read_importphyto()` function works similarly as the import function for the water quality data.  Start by specifying a path where the data should be downloaded and set `download_latest_epchc` to `TRUE`.  This function will download and summarize data from the file `PlanktonDataList_ThroughCurrentReportMonth.xlsx` on the EPC website.
+
+```{r eval = F}
+xlsx <- 'vignettes/phyto_data.xlsx'
+phytodata <- read_importphyto(xlsx, download_latest_epchc = T)
+```
+```
+#> File vignettes/phyto_data.xlsx does not exist, replacing with downloaded file...
+
+#> trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/PlanktonDataList_ThroughCurrentReportMonth.xlsx'
+ length 12319508 bytes (11.7 MB)
+```
+
+After the phytoplankton data are successfully imported, you can view them from the assigned object: 
+
+```{r phyto_import, echo = F, message = F, include = F}
+# local file path
+xlsx <- here('vignettes', 'phyto_data.xlsx')
+
+# load data and some light formatting
+phytodata <- read_importphyto(xlsx, download_latest_epchc = T, tryurl = T)
+```
+```{r}
+phytodata
+```
+
+These data are highly summarized from the raw data file available online.  Cell counts (as number of cells per 0.1mL) for selected taxa are summed for each station by quarters (i.e., Jan/Feb/Mar, Apr/May/Jun, etc.).  The quarter is indicated in the `yrqrt` column specified by the starting date of each quarter (e.g., `1975-07-01` is the quarter Jul/Aug/Sep for 1975).  These data are primarily used to support analyses in the water quality dashboard: <https://shiny.tbeptech.org/wq-dash/>
+
 ## Analyze {.tabset}
 
 The analyze functions are used primarily to summarize the data returned by `read_importwq()`. 
@@ -261,7 +297,7 @@ This output can then be further analyzed with `anlz_attain()` to determine if th
 anlz_attain(avedat)
 ```
 
-Similar information can be obtained for individual sites using `anlz_avedatsite()` and `anlz_attainsite()`.  The main difference is that a yes/no column `trgmet`is added that indicates only if the target was above or below the segment threshold for each site.
+Similar information can be obtained for individual sites using `anlz_avedatsite()` and `anlz_attainsite()`.  The main difference is that a yes/no column `met`is added that indicates only if the target was above or below the segment threshold for each site.
 
 ```{r}
 anlz_avedatsite(epcdata) %>% anlz_attainsite

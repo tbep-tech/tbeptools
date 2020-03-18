@@ -130,7 +130,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>read_dlcurrent</span>(<span class='no'>xlsx</span>, <span class='kw'>download_latest_epchc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>connecttimeout</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>tryurl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>tryurl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>phyto</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,6 +151,10 @@
       <th>tryurl</th>
       <td><p>logical indicating if <code><a href='https://rdrr.io/pkg/RCurl/man/getURL.html'>getURL</a></code> is repeatedly called in a <code>while</code> loop if first connection is unsuccessful</p></td>
     </tr>
+    <tr>
+      <th>phyto</th>
+      <td><p>logical indicating if water quality data (default) or phytoplankton cell count data are downloaded</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -158,11 +162,13 @@
     <p>The local copy specified in the path by <code>xlsx</code> is overwritten by the new file is not current or <code>download_latest_epchc = TRUE</code>.  The function does nothing if <code>download_latest_epchc = FALSE</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The local copy is checked against a temporary file downloade from <a href='ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'>ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx</a>.  The local file is replaced with the downloaded file if the MD5 hashes are different.</p>
+    <p>The local copy is checked against a temporary file downloaded from <a href='ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'>ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx</a>.  The local file is replaced with the downloaded file if the MD5 hashes are different.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other read: <code><a href='read_chkdate.html'>read_chkdate</a></code>,
-  <code><a href='read_formwq.html'>read_formwq</a></code>, <code><a href='read_importwq.html'>read_importwq</a></code></p></div>
+  <code><a href='read_formphyto.html'>read_formphyto</a></code>, <code><a href='read_formwq.html'>read_formwq</a></code>,
+  <code><a href='read_importphyto.html'>read_importphyto</a></code>,
+  <code><a href='read_importwq.html'>read_importwq</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {

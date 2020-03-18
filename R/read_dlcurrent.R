@@ -1,4 +1,4 @@
-#' Download latest water quality file from epchc.org
+#' Download latest file from epchc.org
 #'
 #' @param xlsx chr string path for local excel file, to overwrite it not current
 #' @param download_latest_epchc logical to download latest file regardless of local copy
@@ -14,7 +14,7 @@
 #'
 #' @family read
 #'
-#' @details The local copy is checked against a temporary file downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
+#' @details The local copy is checked against a temporary file downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 #' @examples
 #' \dontrun{
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
