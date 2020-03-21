@@ -38,6 +38,8 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE){
 
   # legend label
   leglab <- paste0('Target met\nin ', yrsel, '?')
+  if(thrs)
+    leglab <- paste0('Below\nthreshold\nin ', yrsel, '?')
 
   # segment labels
   seglabs <- data.frame(
