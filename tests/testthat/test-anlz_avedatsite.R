@@ -3,7 +3,7 @@ test_that("Checking anlz_avedatsite months", {
     .[['mos']] %>%
     pull(val) %>%
     .[1:4]
-  expect_equal(c(53, 19, 46, 3), result)
+  expect_equal(c(53, 19, 46, 10), result)
 })
 test_that("Checking anlz_avedatsite years", {
   result <- anlz_avedatsite(epcdata) %>%
