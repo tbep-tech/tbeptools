@@ -30,8 +30,9 @@ All bay data as of 02042020
 \seealso{
 Other utilities: \code{\link{bsmap}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -18,6 +18,15 @@ Format phytoplankton data
 \details{
 Only seven taxonomic groups are summarized. Pyrodinium bahamense, Karenia brevis, Tripos hircus, Pseudo-nitzschia sp., and Pseudo-nitzschia pungens are retained at the species level.  Bacillariophyta and Cyanobacteria are retained at the phylum level.  All other taxa are grouped into an "other" category.
 }
+\examples{
+\dontrun{
+# file path
+xlsx <- 'C:/Users/Owner/Desktop/phyto_data.xlsx'
+
+# load and assign to object
+phytodata <- read_importphyto(xlsx)
+}
+}
 \seealso{
 \code{\link{read_importphyto}}
 

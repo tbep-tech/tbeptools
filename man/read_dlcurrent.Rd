@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_dlcurrent.R
 \name{read_dlcurrent}
 \alias{read_dlcurrent}
-\title{Download latest water quality file from epchc.org}
+\title{Download latest file from epchc.org}
 \usage{
 read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 20,
   tryurl = FALSE, phyto = FALSE)
@@ -22,10 +22,10 @@ read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 20,
 The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}.  The function does nothing if \code{download_latest_epchc = FALSE}.
 }
 \description{
-Download latest water quality file from epchc.org
+Download latest file from epchc.org
 }
 \details{
-The local copy is checked against a temporary file downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
+The local copy is checked against a temporary file downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 }
 \examples{
 \dontrun{

@@ -55,7 +55,7 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE){
   suppressMessages({
 
     p <- ggmap::ggmap(bsmap) +
-      geom_sf(data = tbseg, fill = transcol, inherit.aes = F) +
+      geom_sf(data = tbseglines, colour = 'black', inherit.aes = F, size = 1) +
       ggrepel::geom_text_repel(data = tomap, aes(label = round(val, 1), geometry = geometry), stat = "sf_coordinates", size = 3, inherit.aes = F) +
       geom_sf(data = tomap, aes(colour = met, fill = met), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
       geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = transcol) +

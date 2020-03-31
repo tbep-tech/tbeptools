@@ -19,8 +19,8 @@ plot(st_geometry(tbshed))
 Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbseg}}, \code{\link{tidalcreeks}},
-  \code{\link{tidaltargets}}
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}
