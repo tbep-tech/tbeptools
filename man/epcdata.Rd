@@ -3,8 +3,8 @@
 \docType{data}
 \name{epcdata}
 \alias{epcdata}
-\title{All bay data as of 02042020}
-\format{A data frame with 25669 rows and 14 variables:
+\title{All bay data as of 04012020}
+\format{A data frame with 25669 rows and 15 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{epchc_station}{num}
@@ -16,6 +16,7 @@
   \item{Total_Depth_m}{num}
   \item{Sample_Depth_m}{num}
   \item{sd_m}{num}
+  \item{sd_raw_m}{num}
   \item{chla}{num}
   \item{Sal_Top_ppth}{num}
   \item{Sal_Mid_ppth}{num}
@@ -25,7 +26,7 @@
 epcdata
 }
 \description{
-All bay data as of 02042020
+All bay data as of 04012020
 }
 \seealso{
 Other utilities: \code{\link{bsmap}}, \code{\link{iwrraw}},

@@ -133,7 +133,7 @@ knitr::include_graphics('readauto.png')
 
 Begin by installing the package from GitHub.  The source code is available on the tbep-tech GitHub group web page: <https://github.com/tbep-tech/tbeptools>.  
 
-First, install the devtools package, load devtools, then install and load tbeptools.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(devtools)`).
+First, install the devtools package, load devtools, then install and load tbeptools.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(tbeptools)`).
 
 ```{r, eval = F}
 install.packages('devtools')
