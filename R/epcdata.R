@@ -15,7 +15,7 @@
 #'   \item{Sample_Depth_m}{num}
 #'   \item{sd_m}{num}
 #'   \item{sd_raw_m}{num}
-#'   \item{sq_q}{chr}
+#'   \item{sd_q}{chr}
 #'   \item{chla}{num}
 #'   \item{chla_q}{chr}
 #'   \item{Sal_Top_ppth}{num}
