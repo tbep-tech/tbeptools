@@ -1,6 +1,6 @@
 #' Compare date of local xlsx file with the same file on the server
 #'
-#' @param epchc_url chr string of full path to file on the server
+#' @param urlin chr string of full path to file on the server
 #' @param xlsx chr string of full path to local file
 #' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
 #' @param tryurl logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful
@@ -17,14 +17,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
+#' urlin <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-#' read_chkdate(epchc_url, xlsx)
+#' read_chkdate(urlin, xlsx)
 #' }
-read_chkdate <- function(epchc_url, xlsx, connecttimeout = 20, tryurl = FALSE) {
+read_chkdate <- function(urlin, xlsx, connecttimeout = 20, tryurl = FALSE) {
 
   # URL on server to check
-  con <- epchc_url %>%
+  con <- urlin %>%
     dirname %>%
     paste0(., '/')
 
@@ -44,7 +44,7 @@ read_chkdate <- function(epchc_url, xlsx, connecttimeout = 20, tryurl = FALSE) {
   srdate <- dat %>%
     strsplit('\\n') %>%
     .[[1]] %>%
-    grep(basename(epchc_url), ., value = TRUE) %>%
+    grep(basename(urlin), ., value = TRUE) %>%
     gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
     lubridate::mdy_hm(.)
 
