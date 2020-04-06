@@ -4,10 +4,10 @@
 \alias{read_chkdate}
 \title{Compare date of local xlsx file with the same file on the server}
 \usage{
-read_chkdate(epchc_url, xlsx, connecttimeout = 20, tryurl = FALSE)
+read_chkdate(urlin, xlsx, connecttimeout = 20, tryurl = FALSE)
 }
 \arguments{
-\item{epchc_url}{chr string of full path to file on the server}
+\item{urlin}{chr string of full path to file on the server}
 
 \item{xlsx}{chr string of full path to local file}
 
@@ -23,9 +23,9 @@ Compare date of local xlsx file with the same file on the server
 }
 \examples{
 \dontrun{
-epchc_url <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
+urlin <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
 xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-read_chkdate(epchc_url, xlsx)
+read_chkdate(urlin, xlsx)
 }
 }
 \seealso{

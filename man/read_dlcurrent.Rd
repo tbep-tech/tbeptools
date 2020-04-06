@@ -5,7 +5,7 @@
 \title{Download latest file from epchc.org}
 \usage{
 read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 20,
-  tryurl = FALSE, phyto = FALSE)
+  tryurl = FALSE, urlin = NULL, phyto = FALSE)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}
@@ -15,6 +15,8 @@ read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 20,
 \item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
 
 \item{tryurl}{logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful}
+
+\item{urlin}{optional url for file location, see details for default}
 
 \item{phyto}{logical indicating if water quality data (default) or phytoplankton cell count data are downloaded}
 }
