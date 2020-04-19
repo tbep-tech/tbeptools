@@ -20,7 +20,7 @@ Get attainment categories for a chosen year
 \examples{
 
 # defaults to current year
-anlz_yrattain(epcdata, yrsel = 2018)
+anlz_yrattain(epcdata, yrsel = 2019)
 }
 \seealso{
 Other analyze: \code{\link{anlz_attain}},

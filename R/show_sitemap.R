@@ -16,7 +16,7 @@
 #' @import ggplot2 sf
 #'
 #' @examples
-#' show_sitemap(epcdata, yrsel = 2018)
+#' show_sitemap(epcdata, yrsel = 2019)
 show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE){
 
   # sanity check

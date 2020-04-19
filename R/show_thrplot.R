@@ -23,7 +23,7 @@
 #'
 #' @examples
 #' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
-show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2018), family = NA, labelexp = TRUE, txtlab = TRUE, thrs = FALSE){
+show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2019), family = NA, labelexp = TRUE, txtlab = TRUE, thrs = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -31,7 +31,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
 
   # yrrng must be in ascending order
   if(yrrng[1] >= yrrng[2])
-    stop('yrrng argument must be in ascending order, e.g., c(1975, 2018)')
+    stop('yrrng argument must be in ascending order, e.g., c(1975, 2019)')
 
   # segment
   bay_segment <- match.arg(bay_segment)

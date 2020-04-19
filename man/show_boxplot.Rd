@@ -5,7 +5,7 @@
 \title{Plot monthly chlorophyll or light attenuation values for a segment}
 \usage{
 show_boxplot(epcdata, param = c("chla", "la"), yrsel = NULL,
-  yrrng = c(1975, 2018), ptsz = 0.5, bay_segment = c("OTB", "HB",
+  yrrng = c(1975, 2019), ptsz = 0.5, bay_segment = c("OTB", "HB",
   "MTB", "LTB"), trgs = NULL, family = NA, labelexp = TRUE,
   txtlab = TRUE)
 }

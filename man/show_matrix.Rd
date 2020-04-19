@@ -4,7 +4,7 @@
 \alias{show_matrix}
 \title{Create a colorized table for indicator reporting}
 \usage{
-show_matrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2018),
+show_matrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019),
   bay_segment = c("OTB", "HB", "MTB", "LTB"), asreact = FALSE,
   nrows = 10, abbrev = FALSE, family = NA, historic = FALSE)
 }

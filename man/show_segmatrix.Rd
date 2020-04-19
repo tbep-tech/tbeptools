@@ -5,7 +5,7 @@
 \title{Create a colorized table for water quality outcomes and exceedances by segment}
 \usage{
 show_segmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
-  2018), bay_segment = c("OTB", "HB", "MTB", "LTB"), abbrev = FALSE,
+  2019), bay_segment = c("OTB", "HB", "MTB", "LTB"), abbrev = FALSE,
   family = NA, historic = FALSE)
 }
 \arguments{

@@ -5,7 +5,7 @@
 \title{Plot annual water quality values, targets, and thresholds for a segment}
 \usage{
 show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  thr = c("chla", "la"), trgs = NULL, yrrng = c(1975, 2018),
+  thr = c("chla", "la"), trgs = NULL, yrrng = c(1975, 2019),
   family = NA, labelexp = TRUE, txtlab = TRUE, thrs = FALSE)
 }
 \arguments{
