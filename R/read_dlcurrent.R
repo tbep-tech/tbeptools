@@ -1,13 +1,13 @@
 #' Download latest file from epchc.org
 #'
 #' @param xlsx chr string path for local excel file, to overwrite it not current
-#' @param download_latest_epchc logical to download latest file regardless of local copy
+#' @param download_latest logical to download latest file regardless of local copy
 #' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
 #' @param tryurl logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful
 #' @param urlin optional url for file location, see details for default
 #' @param phyto logical indicating if water quality data (default) or phytoplankton cell count data are downloaded
 #'
-#' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}.  The function does nothing if \code{download_latest_epchc = FALSE}.
+#' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
 #'
 #' @importFrom magrittr %>%
 #'
@@ -21,7 +21,7 @@
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
 #' read_dlcurrent(xlsx)
 #' }
-read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE, connecttimeout = 20, tryurl = FALSE, urlin = NULL, phyto = FALSE){
+read_dlcurrent <- function(xlsx, download_latest = TRUE, connecttimeout = 20, tryurl = FALSE, urlin = NULL, phyto = FALSE){
 
   # get url location for file if not provided
   if(is.null(urlin)){
@@ -32,7 +32,7 @@ read_dlcurrent <- function(xlsx, download_latest_epchc = TRUE, connecttimeout = 
   }
 
   # exit the function if no download
-  if(!download_latest_epchc) return()
+  if(!download_latest) return()
 
   # if the file exists, compare with the file on server
   if (file.exists(xlsx)){

@@ -4,13 +4,13 @@
 \alias{read_dlcurrent}
 \title{Download latest file from epchc.org}
 \usage{
-read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 20,
+read_dlcurrent(xlsx, download_latest = TRUE, connecttimeout = 20,
   tryurl = FALSE, urlin = NULL, phyto = FALSE)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}
 
-\item{download_latest_epchc}{logical to download latest file regardless of local copy}
+\item{download_latest}{logical to download latest file regardless of local copy}
 
 \item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
 
@@ -21,7 +21,7 @@ read_dlcurrent(xlsx, download_latest_epchc = TRUE, connecttimeout = 20,
 \item{phyto}{logical indicating if water quality data (default) or phytoplankton cell count data are downloaded}
 }
 \value{
-The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest_epchc = TRUE}.  The function does nothing if \code{download_latest_epchc = FALSE}.
+The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
 }
 \description{
 Download latest file from epchc.org

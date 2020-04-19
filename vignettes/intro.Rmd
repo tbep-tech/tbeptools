@@ -183,10 +183,10 @@ ecpdata <- read_importwq(xlsx)
 #> Error in read_importwq("empty") : file.exists(xlsx) is not TRUE
 ```
 
-We get an error message from the function indicating that the file is not found. This makes sense because the file doesn't exist yet, so we need to tell the function to download the latest file.  This is done by changing the `download_latest_file` argument to `TRUE` (the default is `FALSE`). 
+We get an error message from the function indicating that the file is not found. This makes sense because the file doesn't exist yet, so we need to tell the function to download the latest file.  This is done by changing the `download_latest` argument to `TRUE` (the default is `FALSE`). 
 
 ```{r, eval = F}
-ecpdata <- read_importwq(xlsx, download_latest_epchc = TRUE)
+ecpdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 ```
 #> File vignettes/2018_Results_updated.xls does not exist, replacing with downloaded file...
@@ -199,13 +199,13 @@ Now we get the same message, but with an indication that file on the server is b
 If we try to run the function again after downloading the data from the server, we get the following message.  This check is done to make sure that the data are not unnecessarily downloaded if the current matches the file on the server.
 
 ```{r, eval = F}
-ecpdata <- read_importwq(xlsx, download_latest_epchc = TRUE)
+ecpdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 ```
 #> File is current...
 ```
 
-Every time that tbeptools is used to work with the monitoring data, `read_importwq()` should be used to import the data. You will always receive the message `File is current...` if your local file matches the one on the server.  However, new data are regularly collected and posted on the server.  If `download_latest_file = TRUE` and your local file is out of date, you will receive the following message:
+Every time that tbeptools is used to work with the monitoring data, `read_importwq()` should be used to import the data. You will always receive the message `File is current...` if your local file matches the one on the server.  However, new data are regularly collected and posted on the server.  If `download_latest = TRUE` and your local file is out of date, you will receive the following message:
 
 ```
 #> Replacing local file with current...
@@ -222,7 +222,7 @@ After the data are successfully imported, you can view them from the assigned ob
 xlsx <- here('vignettes', 'current_results.xls')
 
 # load data and some light formatting
-epcdata <- read_importwq(xlsx, download_latest_epchc = T, tryurl = T)
+epcdata <- read_importwq(xlsx, download_latest = T, tryurl = T)
 ```
 ```{r}
 epcdata
@@ -230,11 +230,11 @@ epcdata
 
 These data include the bay segment name, station number, sample time, year, month, latitude, longitude, station depth, sample depth, secchi depth, and chlorophyll.  Note that the monitoring data include additional parameters.  Chlorophyll and secchi depth are currently the only parameters returned by `read_importwq()` given the reporting indicators used below. 
 
-An import function is also available to download and format phytoplankton cell count data.  The `read_importphyto()` function works similarly as the import function for the water quality data.  Start by specifying a path where the data should be downloaded and set `download_latest_epchc` to `TRUE`.  This function will download and summarize data from the file `PlanktonDataList_ThroughCurrentReportMonth.xlsx` on the EPC website.
+An import function is also available to download and format phytoplankton cell count data.  The `read_importphyto()` function works similarly as the import function for the water quality data.  Start by specifying a path where the data should be downloaded and set `download_latest` to `TRUE`.  This function will download and summarize data from the file `PlanktonDataList_ThroughCurrentReportMonth.xlsx` on the EPC website.
 
 ```{r eval = F}
 xlsx <- 'vignettes/phyto_data.xlsx'
-phytodata <- read_importphyto(xlsx, download_latest_epchc = T)
+phytodata <- read_importphyto(xlsx, download_latest = T)
 ```
 ```
 #> File vignettes/phyto_data.xlsx does not exist, replacing with downloaded file...
@@ -250,7 +250,7 @@ After the phytoplankton data are successfully imported, you can view them from t
 xlsx <- here('vignettes', 'phyto_data.xlsx')
 
 # load data and some light formatting
-phytodata <- read_importphyto(xlsx, download_latest_epchc = T, tryurl = T)
+phytodata <- read_importphyto(xlsx, download_latest = T, tryurl = T)
 ```
 ```{r}
 phytodata

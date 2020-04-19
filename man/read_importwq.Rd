@@ -4,7 +4,7 @@
 \alias{read_importwq}
 \title{Load local water quality file}
 \usage{
-read_importwq(xlsx, na = "", download_latest_epchc = FALSE,
+read_importwq(xlsx, na = "", download_latest = FALSE,
   connecttimeout = 10, tryurl = FALSE, ...)
 }
 \arguments{
@@ -12,7 +12,7 @@ read_importwq(xlsx, na = "", download_latest_epchc = FALSE,
 
 \item{na}{chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}}
 
-\item{download_latest_epchc}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available}
+\item{download_latest}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available}
 
 \item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
 
