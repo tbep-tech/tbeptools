@@ -165,7 +165,8 @@
   <code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a></code>, <code><a href='anlz_yrattain.html'>anlz_yrattain</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'>anlz_tdlcrkindic</span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Column `wbid` has different attributes on LHS and RHS of join</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Column `class` has different attributes on LHS and RHS of join</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>dat</span>)</div><div class='output co'>#&gt;   id  wbid  JEI         name class year CHLAC COLOR     COND       DO     DOSAT
+    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'>anlz_tdlcrkindic</span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>dat</span>)</div><div class='output co'>#&gt;   id  wbid  JEI         name class year CHLAC COLOR     COND       DO     DOSAT
 #&gt; 1  1  2052 CC01   Rock Creek    3M 2009    NA    NA 50923.64 5.998273  75.00467
 #&gt; 2  1  2052 CC01   Rock Creek    3M 2010    NA    NA 46485.21 8.849809 110.65252
 #&gt; 3  3 1983B CC02 Oyster Creek     2 2009    NA    NA 52161.41 7.239759  90.53120
@@ -180,7 +181,7 @@
 #&gt; 5   NA   NA 30.56035  NA NA NA  NA   NA            NA          NA       NA
 #&gt; 6   NA   NA 34.35481  NA NA NA  NA   NA            NA          NA       NA
 #&gt;   tn_tsi tn2_tsi tp_tsi tp2_tsi nut_tsi tsi no23_ratio
-#&gt; 1     NA      NA     NA      NA     NaN NaN         NA
+#&gt; 1     NA      NA     NA      NA     NaN  NA         NA
 #&gt; 2     NA      NA     NA      NA     NaN NaN         NA
 #&gt; 3     NA      NA     NA      NA     NaN NaN         NA
 #&gt; 4     NA      NA     NA      NA     NaN NaN         NA
@@ -201,7 +202,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

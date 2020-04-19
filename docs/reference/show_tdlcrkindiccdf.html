@@ -168,7 +168,8 @@
     <p>This function returns several empirical cumulative distribution plots for the tidal creek context indicators.  Points on the plot indicate the observed values and percentiles for the creek specified by <code>id</code>. The percentiles and CDF values are defined by the "population" of creeks in <code>cntdat</code>.  Points in the plots are color-coded by sample year to evaluate temporal trends, if any.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>cntdat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Column `wbid` has different attributes on LHS and RHS of join</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Column `class` has different attributes on LHS and RHS of join</span></div><div class='input'><span class='fu'>show_tdlcrkindiccdf</span>(<span class='fl'>495</span>, <span class='no'>cntdat</span>, <span class='kw'>thrsel</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>cntdat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
+<span class='fu'>show_tdlcrkindiccdf</span>(<span class='fl'>495</span>, <span class='no'>cntdat</span>, <span class='kw'>thrsel</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -184,7 +185,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

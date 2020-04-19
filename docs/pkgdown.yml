@@ -1,8 +1,8 @@
 pandoc: 2.7.2
-pkgdown: 1.5.0
+pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   intro: intro.html
   tidalcreeks: tidalcreeks.html
-last_built: 2020-04-02T21:46Z
+last_built: 2020-04-19T14:00Z
 

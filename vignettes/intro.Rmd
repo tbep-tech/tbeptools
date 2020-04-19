@@ -469,10 +469,16 @@ By default, the `show_wqmatrix()` function returns chlorophyll exceedances by se
 show_wqmatrix(epcdata, param = 'la')
 ```
 
-Finally, the results from `show_matrix()` and `show_wqmatrix()` can be combined for an individual segment using the `show_segmatrix()` function.  This is useful to understand which water quality parameter is driving the management outcome for a given year. The plot shows the light attenuation and chlorophyll outcomes from `show_wqmatrix()` next to the segment management outcomes from `show_matrix()`.  Only one segment can be plotted for each function call. 
+The results from `show_matrix()` and `show_wqmatrix()` can be combined for an individual segment using the `show_segmatrix()` function.  This is useful to understand which water quality parameter is driving the management outcome for a given year. The plot shows the light attenuation and chlorophyll outcomes from `show_wqmatrix()` next to the segment management outcomes from `show_matrix()`.  Only one segment can be plotted for each function call. 
 
 ```{r, fig.height = 8, fig.width = 2.5}
 show_segmatrix(epcdata, bay_segment = 'OTB')
+```
+
+Finally, all segment plots can be shown together using the `show_segplotly()` function that combines chlorophyll and secchi data for a given segment.  This function combines outputs from `show_thrplot()` and `show_segmatrix()`. The final plot is interactive and can be zoomed by dragging the mouse pointer over a section of the plot. Information about each cell or value can be seen by hovering over a location in the plot.  Please note that the scaling here is horrible, but this can be changed when creating the plot on your own. 
+
+```{r}
+show_segplotly(epcdata)
 ```
 
 From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
