@@ -45,7 +45,8 @@ show_boxplot(epcdata, bay_segment = 'OTB')
 \seealso{
 Other visualize: \code{\link{show_matrix}},
   \code{\link{show_reactable}},
-  \code{\link{show_segmatrix}}, \code{\link{show_sitemap}},
+  \code{\link{show_segmatrix}},
+  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
   \code{\link{show_tdlcrk}}, \code{\link{show_thrplot}},
   \code{\link{show_wqmatrix}}
 }

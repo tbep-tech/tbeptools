@@ -26,7 +26,7 @@
 #'
 #' @examples
 #' show_wqmatrix(epcdata)
-show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2018), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
+show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
 
   # sanity checks
   param <- match.arg(param)
