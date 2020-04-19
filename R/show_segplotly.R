@@ -19,21 +19,25 @@ show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), 
 
   bay_segment <- match.arg(bay_segment)
 
-  p1 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "chla", yrrng = yrrng, family = family, txtlab = F, labelexp = F) +
-    ggtitle(NULL) +
-    scale_x_continuous(expand = c(0.01, 0.01), breaks = seq(yrrng[1], yrrng[2]))
-  p2 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "la", yrrng = yrrng, family = family, txtlab = F, labelexp = F) +
-    ggtitle(NULL) +
-    scale_x_continuous(expand = c(0.01, 0.01), breaks = seq(yrrng[1], yrrng[2]))
+  suppressMessages({
 
-  p3 <- show_segmatrix(epcdata, bay_segment = bay_segment, yrrng = yrrng, txtsz = NULL) +
-    scale_y_continuous(expand = c(0,0), breaks = c(yrrng[1]:yrrng[2])) +
-    coord_flip() +
-    theme(
-      axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
-      axis.text = element_text(size = 12),
-      text = element_text(family = family)
-    )
+    p1 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "chla", yrrng = yrrng, family = family, txtlab = F, labelexp = F) +
+      ggtitle(NULL) +
+      scale_x_continuous(expand = c(0.01, 0.01), breaks = seq(yrrng[1], yrrng[2]))
+    p2 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "la", yrrng = yrrng, family = family, txtlab = F, labelexp = F) +
+      ggtitle(NULL) +
+      scale_x_continuous(expand = c(0.01, 0.01), breaks = seq(yrrng[1], yrrng[2]))
+
+    p3 <- show_segmatrix(epcdata, bay_segment = bay_segment, yrrng = yrrng, txtsz = NULL) +
+      scale_y_continuous(expand = c(0,0), breaks = c(yrrng[1]:yrrng[2])) +
+      coord_flip() +
+      theme(
+        axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
+        axis.text = element_text(size = 12),
+        text = element_text(family = family)
+      )
+
+  })
 
   p3 <- plotly::ggplotly(p3, tooltip = 'Result')
   for(i in 1:length(p3$x$data)) p3$x$data[[i]]$showlegend <- FALSE
