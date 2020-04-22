@@ -2,8 +2,6 @@
 #'
 #' @param csv chr string path for local csv file, to overwrite if not current
 #' @param download_latest logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{csv} if available
-#' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
-#' @param tryurl logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful
 #'
 #' @return A \code{data.frame} of formatted FIM data.
 #'
@@ -22,11 +20,11 @@
 #' # load and assign to object
 #' fimdata <- read_importfim(csv)
 #' }
-read_importfim <- function(csv, download_latest = FALSE, connecttimeout = 10, tryurl = FALSE){
+read_importfim <- function(csv, download_latest = FALSE){
 
   # download latest and compare with current if exists
   urlin <- 'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData_20200406.csv'
-  read_dlcurrent(csv, download_latest, connecttimeout = connecttimeout, tryurl = tryurl, urlin = urlin)
+  read_dlcurrent(csv, download_latest, urlin = urlin)
 
   # sanity checks
   if(!download_latest)
@@ -36,7 +34,7 @@ read_importfim <- function(csv, download_latest = FALSE, connecttimeout = 10, tr
   rawdat <- read.csv(csv, stringsAsFactors = F)
 
   # format
-  # out <- read_formwq(rawdat)
+  # out <- read_formfim(rawdat)
   out <- rawdat
 
   return(out)

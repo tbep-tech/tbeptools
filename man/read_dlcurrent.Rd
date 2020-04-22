@@ -4,17 +4,12 @@
 \alias{read_dlcurrent}
 \title{Download latest file from epchc.org}
 \usage{
-read_dlcurrent(xlsx, download_latest = TRUE, connecttimeout = 20,
-  tryurl = FALSE, urlin)
+read_dlcurrent(xlsx, download_latest = TRUE, urlin)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}
 
 \item{download_latest}{logical to download latest file regardless of local copy}
-
-\item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
-
-\item{tryurl}{logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful}
 
 \item{urlin}{url for file location}
 }

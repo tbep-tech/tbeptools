@@ -211,8 +211,6 @@ Every time that tbeptools is used to work with the monitoring data, `read_import
 #> Replacing local file with current...
 ```
 
-The additional arguments in `read_importwq()` can be used to troubleshoot the download if the connection to the server is unsuccessful.  Specifically, `connecttimeout` specifies the maximum number of seconds to wait before a timeout error occurs.  You can try increasing this number from the default of 10 seconds if the connection is unsuccessful, although the connection typically takes only a few seconds if successful.  The `tryurl` argument indicates if the data are requested again from the server if the first attempt is unsuccessful.  This is repeated if `tryurl = TRUE` until a successful connection is made.  
-
 The final argument `na` indicates which fields in the downloaded spreadsheet are treated as blank values and assigned to `NA`. Any number of strings can be added to this function to replace fields with `NA` values.  
 
 After the data are successfully imported, you can view them from the assigned object: 

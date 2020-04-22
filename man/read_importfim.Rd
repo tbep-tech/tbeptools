@@ -4,17 +4,12 @@
 \alias{read_importfim}
 \title{Load local FIM data for the Tampa Bay Nekton Index}
 \usage{
-read_importfim(csv, download_latest = FALSE, connecttimeout = 10,
-  tryurl = FALSE)
+read_importfim(csv, download_latest = FALSE)
 }
 \arguments{
 \item{csv}{chr string path for local csv file, to overwrite if not current}
 
 \item{download_latest}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{csv} if available}
-
-\item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
-
-\item{tryurl}{logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful}
 }
 \value{
 A \code{data.frame} of formatted FIM data.

@@ -4,21 +4,14 @@
 \alias{read_importphyto}
 \title{Load local phytoplankton cell count file}
 \usage{
-read_importphyto(xlsx, na = "", download_latest = FALSE,
-  connecttimeout = 10, tryurl = FALSE, ...)
+read_importphyto(xlsx, download_latest = FALSE, na = "")
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite if not current}
 
-\item{na}{chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}}
-
 \item{download_latest}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available}
 
-\item{connecttimeout}{numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}}
-
-\item{tryurl}{logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful}
-
-\item{...}{additional arguments passed to \code{\link[readxl]{read_xlsx}}}
+\item{na}{chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}}
 }
 \value{
 A \code{data.frame} of formatted water quality data.
