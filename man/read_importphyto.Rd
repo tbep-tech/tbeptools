@@ -8,7 +8,7 @@ read_importphyto(xlsx, na = "", download_latest = FALSE,
   connecttimeout = 10, tryurl = FALSE, ...)
 }
 \arguments{
-\item{xlsx}{chr string path for local excel file, to overwrite it not current}
+\item{xlsx}{chr string path for local excel file, to overwrite if not current}
 
 \item{na}{chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}}
 
@@ -44,6 +44,6 @@ phytodata <- read_importphyto(xlsx)
 Other read: \code{\link{read_chkdate}},
   \code{\link{read_dlcurrent}},
   \code{\link{read_formphyto}}, \code{\link{read_formwq}},
-  \code{\link{read_importwq}}
+  \code{\link{read_importfim}}, \code{\link{read_importwq}}
 }
 \concept{read}

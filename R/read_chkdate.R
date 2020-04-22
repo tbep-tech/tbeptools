@@ -40,13 +40,41 @@ read_chkdate <- function(urlin, xlsx, connecttimeout = 20, tryurl = FALSE) {
     dat <- try({getURL(con, ssl.verifypeer = FALSE, .opts = opts)})
   }
 
-  # parse date of file
+  # parse date of file, do seprately for epc or fwri
   srdate <- dat %>%
     strsplit('\\n') %>%
     .[[1]] %>%
-    grep(basename(urlin), ., value = TRUE) %>%
-    gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
-    lubridate::mdy_hm(.)
+    grep(basename(urlin), ., value = TRUE)
+
+  # fwri date parse
+  if(grepl('floridamarine', con)){
+
+    srdate <- srdate %>%
+      gsub(paste0(basename(urlin), '\\r'), '', .) %>%
+      gsub('^.*ftp\\s+', '', .) %>%
+      gsub('^[0-9]+', '', .)
+
+    # this tries to convert to date, year may be missing if uploaded in last six months
+    tmp <- suppressWarnings(lubridate::ymd_hm(srdate))
+
+    # if fails, assumes that year was missing because file was recent
+    if(is.na(tmp))
+      tmp <- srdate %>%
+        paste(lubridate::year(Sys.Date()), .) %>%
+        lubridate::ymd_hm(.)
+
+    srdate <- tmp
+
+  }
+
+  # epc date parse
+  if(grepl('epchc', con)){
+
+    srdate <- srdate %>%
+      gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
+      lubridate::mdy_hm(.)
+
+  }
 
   # get date of local file
   lcdate <- file.info(xlsx)$mtime

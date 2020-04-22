@@ -5,7 +5,7 @@
 \title{Download latest file from epchc.org}
 \usage{
 read_dlcurrent(xlsx, download_latest = TRUE, connecttimeout = 20,
-  tryurl = FALSE, urlin = NULL, phyto = FALSE)
+  tryurl = FALSE, urlin)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite it not current}
@@ -16,9 +16,7 @@ read_dlcurrent(xlsx, download_latest = TRUE, connecttimeout = 20,
 
 \item{tryurl}{logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful}
 
-\item{urlin}{optional url for file location, see details for default}
-
-\item{phyto}{logical indicating if water quality data (default) or phytoplankton cell count data are downloaded}
+\item{urlin}{url for file location}
 }
 \value{
 The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
@@ -27,17 +25,19 @@ The local copy specified in the path by \code{xlsx} is overwritten by the new fi
 Download latest file from epchc.org
 }
 \details{
-The local copy is checked against a temporary file downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
+The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 }
 \examples{
 \dontrun{
 xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-read_dlcurrent(xlsx)
+urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+read_dlcurrent(xlsx, urlin = urlin)
 }
 }
 \seealso{
 Other read: \code{\link{read_chkdate}},
   \code{\link{read_formphyto}}, \code{\link{read_formwq}},
+  \code{\link{read_importfim}},
   \code{\link{read_importphyto}},
   \code{\link{read_importwq}}
 }

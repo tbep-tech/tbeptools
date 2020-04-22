@@ -4,8 +4,7 @@
 #' @param download_latest logical to download latest file regardless of local copy
 #' @param connecttimeout numeric for maximum number of seconds to wait until connection timeout for \code{\link[RCurl]{getURL}}
 #' @param tryurl logical indicating if \code{\link[RCurl]{getURL}} is repeatedly called in a \code{while} loop if first connection is unsuccessful
-#' @param urlin optional url for file location, see details for default
-#' @param phyto logical indicating if water quality data (default) or phytoplankton cell count data are downloaded
+#' @param urlin url for file location
 #'
 #' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
 #'
@@ -15,21 +14,14 @@
 #'
 #' @family read
 #'
-#' @details The local copy is checked against a temporary file downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
+#' @details The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 #' @examples
 #' \dontrun{
 #' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
-#' read_dlcurrent(xlsx)
+#' urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+#' read_dlcurrent(xlsx, urlin = urlin)
 #' }
-read_dlcurrent <- function(xlsx, download_latest = TRUE, connecttimeout = 20, tryurl = FALSE, urlin = NULL, phyto = FALSE){
-
-  # get url location for file if not provided
-  if(is.null(urlin)){
-    # file url, wq or phyto
-    urlin <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
-    if(phyto)
-      urlin <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/PlanktonDataList_ThroughCurrentReportMonth.xlsx"
-  }
+read_dlcurrent <- function(xlsx, download_latest = TRUE, connecttimeout = 20, tryurl = FALSE, urlin){
 
   # exit the function if no download
   if(!download_latest) return()
@@ -60,7 +52,7 @@ read_dlcurrent <- function(xlsx, download_latest = TRUE, connecttimeout = 20, tr
     message('File ', xlsx, ' does not exist, replacing with downloaded file...\n')
 
     # download data from EPCHC's ftp site
-    tmp_xlsx <- tempfile(fileext = "xlsx")
+    tmp_xlsx <- tempfile(fileext = tools::file_ext(xlsx))
     download.file(url = urlin, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
 
     file.copy(tmp_xlsx, xlsx)

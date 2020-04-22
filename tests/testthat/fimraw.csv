@@ -1,0 +1,501 @@
+Reference,Project_1,Project_2,Project_3,Sampling_Date,Latitude,Longitude,Zone,Grid,Stratum,effort,Species_record_id,NODCCODE,Scientificname,Commonname,Splittype,Splitlevel,Cells,Number
+TBM1998010906,AM,. ,. ,1/9/1998,27.950333,-82.720833,A,31,B,1.4,1,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,3
+TBM1998010906,AM,. ,. ,1/9/1998,27.950333,-82.720833,A,31,B,1.4,2,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,12
+TBM1998010906,AM,. ,. ,1/9/1998,27.950333,-82.720833,A,31,B,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,2
+TBM1998010910,AM,. ,. ,1/9/1998,27.922167,-82.684,A,62,B,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,1
+TBM1998010912,AM,. ,. ,1/9/1998,27.917,-82.673667,A,63,B,1.4,1,9998000000,No fish,.,., .,NA,0
+TBM1998010914,AM,. ,. ,1/9/1998,27.921167,-82.6405,A,65,B,1.4,1,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998010914,AM,. ,. ,1/9/1998,27.921167,-82.6405,A,65,B,1.4,2,8826020104,Prionotus tribulus,Bighead Searobin,., .,NA,1
+TBM1998010915,AM,. ,. ,1/9/1998,27.819167,-82.4885,C,162,B,1.4,1,8804040101,Cyprinodon variegatus,Sheepshead Minnow,., .,NA,1
+TBM1998010915,AM,. ,. ,1/9/1998,27.819167,-82.4885,C,162,B,1.4,2,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,5
+TBM1998010915,AM,. ,. ,1/9/1998,27.819167,-82.4885,C,162,B,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998010915,AM,. ,. ,1/9/1998,27.819167,-82.4885,C,162,B,1.4,4,8835440401,Leiostomus xanthurus,Spot,., .,NA,4
+TBM1998010917,AM,. ,. ,1/9/1998,27.824167,-82.488333,C,162,S,1.4,1,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,1
+TBM1998010917,AM,. ,. ,1/9/1998,27.824167,-82.488333,C,162,S,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,4
+TBM1998010920,AM,. ,. ,1/9/1998,27.786333,-82.4255,C,203,S,1.4,1,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,2
+TBM1998010920,AM,. ,. ,1/9/1998,27.786333,-82.4255,C,203,S,1.4,2,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,1
+TBM1998010920,AM,. ,. ,1/9/1998,27.786333,-82.4255,C,203,S,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998010920,AM,. ,. ,1/9/1998,27.786333,-82.4255,C,203,S,1.4,4,8835440401,Leiostomus xanthurus,Spot,., .,NA,20
+TBM1998010920,AM,. ,. ,1/9/1998,27.786333,-82.4255,C,203,S,1.4,5,8835440401,Leiostomus xanthurus,Spot,., .,NA,30
+TBM1998010920,AM,. ,. ,1/9/1998,27.786333,-82.4255,C,203,S,1.4,6,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998010922,AM,. ,. ,1/9/1998,27.972167,-82.5985,A,28,S,1.4,1,9998000000,No fish,.,., .,NA,0
+TBM1998010926,AM,. ,. ,1/9/1998,27.862333,-82.405333,C,135,B,1.4,1,8747010803,Harengula jaguana,Scaled Sardine,., .,NA,3
+TBM1998010926,AM,. ,. ,1/9/1998,27.862333,-82.405333,C,135,B,1.4,2,8747010803,Harengula jaguana,Scaled Sardine,., .,NA,7
+TBM1998010926,AM,. ,. ,1/9/1998,27.862333,-82.405333,C,135,B,1.4,3,8777180202,Ariopsis felis,Hardhead Catfish,., .,NA,1
+TBM1998010926,AM,. ,. ,1/9/1998,27.862333,-82.405333,C,135,B,1.4,4,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998010926,AM,. ,. ,1/9/1998,27.862333,-82.405333,C,135,B,1.4,5,8858030101,Trinectes maculatus,Hogchoker,., .,NA,1
+TBM1998010928,AM,. ,. ,1/9/1998,27.875667,-82.424667,C,121,B,1.4,1,8713070301,Rhinoptera bonasus,Cownose Ray,., .,NA,1
+TBM1998010929,AM,. ,. ,1/9/1998,27.8315,-82.400833,C,167,B,1.4,1,9998000000,No fish,.,., .,NA,0
+TBM1998011202,AM,. ,. ,1/12/1998,27.848333,-82.618833,B,137,B,1.4,1,9998000000,No fish,.,., .,NA,0
+TBM1998011502,AM,. ,. ,1/15/1998,27.548,-82.636167,E,413,A,1.4,1,8820020102,Syngnathus floridae,Dusky Pipefish,., .,NA,1
+TBM1998011502,AM,. ,. ,1/15/1998,27.548,-82.636167,E,413,A,1.4,2,8840130204,Dactyloscopus moorei,Speckled Stargazer,., .,NA,1
+TBM1998011502,AM,. ,. ,1/15/1998,27.548,-82.636167,E,413,A,1.4,3,8860020703,Stephanolepis hispidus,Planehead Filefish,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,3
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,2,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,7
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,3,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,4,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,5,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,6,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,3
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,7,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,6
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,8,8805020300,Menidia spp.,Menidia Silversides,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,9,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,3
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,10,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,3
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,11,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,12,8835430201,Lagodon rhomboides,Pinfish,., .,NA,78
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,13,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,14,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,15,8847010603,Gobiosoma robustum,Code Goby,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,16,8847010701,Microgobius gulosus,Clown Goby,., .,NA,1
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,17,8847010701,Microgobius gulosus,Clown Goby,., .,NA,3
+TBM1998011503,AM,. ,. ,1/15/1998,27.551333,-82.616,E,405,S,1.4,18,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998011505,AM,. ,. ,1/15/1998,27.567833,-82.567,E,395,B,1.4,1,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,51
+TBM1998011505,AM,. ,. ,1/15/1998,27.567833,-82.567,E,395,B,1.4,2,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998011506,AM,. ,. ,1/15/1998,27.568833,-82.574167,E,395,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,4
+TBM1998011506,AM,. ,. ,1/15/1998,27.568833,-82.574167,E,395,A,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,46
+TBM1998011506,AM,. ,. ,1/15/1998,27.568833,-82.574167,E,395,A,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998011506,AM,. ,. ,1/15/1998,27.568833,-82.574167,E,395,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,5
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,8
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,2,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,3,8803020202,Strongylura notata,Redfin Needlefish,., .,NA,2
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,4,8805020300,Menidia spp.,Menidia Silversides,., .,NA,90
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,5,8820020102,Syngnathus floridae,Dusky Pipefish,., .,NA,1
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,6,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,2
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,7,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,3
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,8,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,5
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,9,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,10,8835430201,Lagodon rhomboides,Pinfish,., .,NA,111
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,11,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998011507,AM,. ,. ,1/15/1998,27.5385,-82.59,E,416,A,1.4,12,8835440401,Leiostomus xanthurus,Spot,., .,NA,6
+TBM1998012107,AM,. ,. ,1/21/1998,27.829167,-82.581333,B,157,A,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,1
+TBM1998012107,AM,. ,. ,1/21/1998,27.829167,-82.581333,B,157,A,1.4,2,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,3
+TBM1998012115,AM,. ,. ,1/21/1998,27.7795,-82.622167,B,208,A,1.4,1,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,38
+TBM1998012115,AM,. ,. ,1/21/1998,27.7795,-82.622167,B,208,A,1.4,2,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998012115,AM,. ,. ,1/21/1998,27.7795,-82.622167,B,208,A,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,65
+TBM1998012115,AM,. ,. ,1/21/1998,27.7795,-82.622167,B,208,A,1.4,4,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998012115,AM,. ,. ,1/21/1998,27.7795,-82.622167,B,208,A,1.4,5,8835440401,Leiostomus xanthurus,Spot,., .,NA,18
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,4
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,2,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,47
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,4,8805020300,Menidia spp.,Menidia Silversides,., .,NA,39
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,5,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,2
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,6,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,7,8835430201,Lagodon rhomboides,Pinfish,., .,NA,821
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,8,8835440401,Leiostomus xanthurus,Spot,., .,NA,2
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,9,8847010603,Gobiosoma robustum,Code Goby,., .,NA,2
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,10,8847010701,Microgobius gulosus,Clown Goby,., .,NA,1
+TBM1998012201,AM,. ,. ,1/22/1998,27.640833,-82.726,D,340,A,1.4,11,8861010211,Sphoeroides spengleri,Bandtail Puffer,., .,NA,1
+TBM1998012202,AM,. ,. ,1/22/1998,27.648333,-82.735667,D,339,B,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,23
+TBM1998012202,AM,. ,. ,1/22/1998,27.648333,-82.735667,D,339,B,1.4,2,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998012202,AM,. ,. ,1/22/1998,27.648333,-82.735667,D,339,B,1.4,3,8747020201,Anchoa hepsetus,Striped Anchovy,., .,NA,3
+TBM1998012202,AM,. ,. ,1/22/1998,27.648333,-82.735667,D,339,B,1.4,4,8820020205,Hippocampus zosterae,Dwarf Seahorse,., .,NA,1
+TBM1998012202,AM,. ,. ,1/22/1998,27.648333,-82.735667,D,339,B,1.4,5,8835430201,Lagodon rhomboides,Pinfish,., .,NA,34
+TBM1998012202,AM,. ,. ,1/22/1998,27.648333,-82.735667,D,339,B,1.4,6,8847010701,Microgobius gulosus,Clown Goby,., .,NA,1
+TBM1998012205,AM,. ,. ,1/22/1998,27.647833,-82.711167,D,341,B,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,97
+TBM1998012205,AM,. ,. ,1/22/1998,27.647833,-82.711167,D,341,B,1.4,2,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,2
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,2,8804040301,Lucania parva,Rainwater Killifish,., .,NA,3
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,3,8804040301,Lucania parva,Rainwater Killifish,., .,NA,12
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,4,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,3
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,5,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,11
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,6,8805020300,Menidia spp.,Menidia Silversides,., .,NA,21
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,7,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,4
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,8,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,3
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,9,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,47
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,10,8835430201,Lagodon rhomboides,Pinfish,., .,NA,4
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,11,8835430201,Lagodon rhomboides,Pinfish,., .,NA,759
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,12,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,13,8847010603,Gobiosoma robustum,Code Goby,., .,NA,7
+TBM1998012207,AM,. ,. ,1/22/1998,27.6625,-82.691667,D,329,S,1.4,14,8847010701,Microgobius gulosus,Clown Goby,., .,NA,5
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,1,8804040301,Lucania parva,Rainwater Killifish,., .,NA,2
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,9
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,3,8820020102,Syngnathus floridae,Dusky Pipefish,., .,NA,1
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,4,8820020104,Syngnathus louisianae,Chain Pipefish,., .,NA,1
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,5,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,3
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,6,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,16
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,7,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,3
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,8,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,28
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,9,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,10,8835430201,Lagodon rhomboides,Pinfish,., .,NA,123
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,11,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998012208,AM,. ,. ,1/22/1998,27.6875,-82.675833,D,295,A,1.4,12,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998012603,AM,. ,. ,1/26/1998,27.638833,-82.5635,E,350,B,1.4,1,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998012603,AM,. ,. ,1/26/1998,27.638833,-82.5635,E,350,B,1.4,2,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998021003,AM,. ,. ,2/10/1998,27.937,-82.464167,C,56,B,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,3
+TBM1998021003,AM,. ,. ,2/10/1998,27.937,-82.464167,C,56,B,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,137
+TBM1998021003,AM,. ,. ,2/10/1998,27.937,-82.464167,C,56,B,1.4,3,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998021005,AM,. ,. ,2/10/1998,27.8635,-82.435833,C,133,S,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,1
+TBM1998021005,AM,. ,. ,2/10/1998,27.8635,-82.435833,C,133,S,1.4,2,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,2
+TBM1998021005,AM,. ,. ,2/10/1998,27.8635,-82.435833,C,133,S,1.4,3,8836010101,Mugil cephalus,Striped Mullet,., .,NA,11
+TBM1998021005,AM,. ,. ,2/10/1998,27.8635,-82.435833,C,133,S,1.4,4,8836010101,Mugil cephalus,Striped Mullet,., .,NA,11
+TBM1998021104,AM,. ,. ,2/11/1998,27.631167,-82.564667,E,362,B,1.4,1,8835430201,Lagodon rhomboides,Pinfish,., .,NA,6
+TBM1998021104,AM,. ,. ,2/11/1998,27.631167,-82.564667,E,362,B,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,4
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,2
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,2,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,2
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,5,8835430201,Lagodon rhomboides,Pinfish,., .,NA,5
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,6,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,7,8847010600,Gobiosoma spp.,Gobiosoma Gobies,., .,NA,1
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,8,8847010701,Microgobius gulosus,Clown Goby,., .,NA,2
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,9,8847010701,Microgobius gulosus,Clown Goby,., .,NA,13
+TBM1998021201,AM,. ,. ,2/12/1998,27.847167,-82.620667,B,137,A,1.4,10,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,1
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,2,8820020102,Syngnathus floridae,Dusky Pipefish,., .,NA,2
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,3,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,5
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,5,8835440401,Leiostomus xanthurus,Spot,., .,NA,208
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,6,8847010701,Microgobius gulosus,Clown Goby,., .,NA,1
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,7,8860030201,Acanthostracion quadricornis,Scrawled Cowfish,., .,NA,5
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,8,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998021202,AM,. ,. ,2/12/1998,27.859667,-82.591833,B,126,A,1.4,9,8861030101,Chilomycterus schoepfii,Striped Burrfish,., .,NA,1
+TBM1998021203,AM,. ,. ,2/12/1998,28.029667,-82.685833,A,4,B,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,2
+TBM1998021203,AM,. ,. ,2/12/1998,28.029667,-82.685833,A,4,B,1.4,2,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,6
+TBM1998021203,AM,. ,. ,2/12/1998,28.029667,-82.685833,A,4,B,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,29
+TBM1998021203,AM,. ,. ,2/12/1998,28.029667,-82.685833,A,4,B,1.4,4,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998021203,AM,. ,. ,2/12/1998,28.029667,-82.685833,A,4,B,1.4,5,8835440901,Sciaenops ocellatus,Red Drum,., .,NA,1
+TBM1998021203,AM,. ,. ,2/12/1998,28.029667,-82.685833,A,4,B,1.4,6,8847010701,Microgobius gulosus,Clown Goby,., .,NA,2
+TBM1998021204,AM,. ,. ,2/12/1998,28.0175,-82.668333,A,5,B,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,1
+TBM1998021204,AM,. ,. ,2/12/1998,28.0175,-82.668333,A,5,B,1.4,2,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998021204,AM,. ,. ,2/12/1998,28.0175,-82.668333,A,5,B,1.4,3,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,1
+TBM1998021204,AM,. ,. ,2/12/1998,28.0175,-82.668333,A,5,B,1.4,4,8803020202,Strongylura notata,Redfin Needlefish,., .,NA,6
+TBM1998021204,AM,. ,. ,2/12/1998,28.0175,-82.668333,A,5,B,1.4,5,8805020300,Menidia spp.,Menidia Silversides,., .,NA,11
+TBM1998021204,AM,. ,. ,2/12/1998,28.0175,-82.668333,A,5,B,1.4,6,8847010701,Microgobius gulosus,Clown Goby,., .,NA,1
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,1
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,2,6189010301,Callinectes sapidus,Blue Crab,., .,NA,2
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,3,6189010301,Callinectes sapidus,Blue Crab,., .,NA,4
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,4,6189010301,Callinectes sapidus,Blue Crab,., .,NA,7
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,5,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,3
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,6,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,4
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,7,8805020300,Menidia spp.,Menidia Silversides,., .,NA,9
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,8,8835430201,Lagodon rhomboides,Pinfish,., .,NA,2
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,9,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,10,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,2
+TBM1998021205,AM,. ,. ,2/12/1998,27.917,-82.681833,A,63,A,1.4,11,8858030202,Achirus lineatus,Lined Sole,., .,NA,1
+TBM1998021206,AM,. ,. ,2/12/1998,27.937833,-82.7215,A,43,A,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998021206,AM,. ,. ,2/12/1998,27.937833,-82.7215,A,43,A,1.4,2,8804040101,Cyprinodon variegatus,Sheepshead Minnow,., .,NA,1
+TBM1998021206,AM,. ,. ,2/12/1998,27.937833,-82.7215,A,43,A,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,1
+TBM1998021206,AM,. ,. ,2/12/1998,27.937833,-82.7215,A,43,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998021206,AM,. ,. ,2/12/1998,27.937833,-82.7215,A,43,A,1.4,5,8835440401,Leiostomus xanthurus,Spot,., .,NA,2
+TBM1998021206,AM,. ,. ,2/12/1998,27.937833,-82.7215,A,43,A,1.4,6,8836010101,Mugil cephalus,Striped Mullet,., .,NA,7
+TBM1998021206,AM,. ,. ,2/12/1998,27.937833,-82.7215,A,43,A,1.4,7,8836010102,Mugil curema,White Mullet,., .,NA,1
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,2
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,2
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,4,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,5,8820020205,Hippocampus zosterae,Dwarf Seahorse,., .,NA,1
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,6,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,1
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,7,8835430201,Lagodon rhomboides,Pinfish,., .,NA,2
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,8,8847010701,Microgobius gulosus,Clown Goby,., .,NA,2
+TBM1998021301,AM,. ,. ,2/13/1998,27.568667,-82.576167,E,395,A,1.4,9,8847010701,Microgobius gulosus,Clown Goby,., .,NA,3
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,3
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,2,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,8
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,3,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,4,8820020205,Hippocampus zosterae,Dwarf Seahorse,., .,NA,2
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,5,8835430201,Lagodon rhomboides,Pinfish,., .,NA,44
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,6,8835440401,Leiostomus xanthurus,Spot,., .,NA,2
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,7,8836010105,Mugil trichodon,Fantail Mullet,., .,NA,1
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,8,8847010701,Microgobius gulosus,Clown Goby,., .,NA,2
+TBM1998021302,AM,. ,. ,2/13/1998,27.548167,-82.582,E,417,A,1.4,9,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,2
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,2,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,2
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,3,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,4,8820020205,Hippocampus zosterae,Dwarf Seahorse,., .,NA,1
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,5,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,17
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,6,8835440401,Leiostomus xanthurus,Spot,., .,NA,44
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,7,8836010101,Mugil cephalus,Striped Mullet,., .,NA,2
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,8,8847010701,Microgobius gulosus,Clown Goby,., .,NA,4
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,9,8861030101,Chilomycterus schoepfii,Striped Burrfish,., .,NA,1
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,10,8835390100,Eucinostomus spp.,Eucinostomus,2,2,1,18
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,11,8835400201,Orthopristis chrysoptera,Pigfish,2,2,1,36
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,12,8835430201,Lagodon rhomboides,Pinfish,2,2,1,201
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,13,8835440401,Leiostomus xanthurus,Spot,2,2,1,4
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,14,8847010603,Gobiosoma robustum,Code Goby,2,2,1,2
+TBM1998021303,AM,. ,. ,2/13/1998,27.509,-82.709833,E,439,A,1.4,15,8847010701,Microgobius gulosus,Clown Goby,2,2,1,1
+TBM1998021304,AM,. ,. ,2/13/1998,27.5135,-82.686667,E,440,A,1.4,1,8835430201,Lagodon rhomboides,Pinfish,2,2,1,335
+TBM1998021304,AM,. ,. ,2/13/1998,27.5135,-82.686667,E,440,A,1.4,2,8835440401,Leiostomus xanthurus,Spot,2,2,1,3
+TBM1998021304,AM,. ,. ,2/13/1998,27.5135,-82.686667,E,440,A,1.4,3,8847010701,Microgobius gulosus,Clown Goby,2,2,1,1
+TBM1998021305,AM,. ,. ,2/13/1998,27.517333,-82.678833,E,421,S,1.4,1,8835430201,Lagodon rhomboides,Pinfish,., .,NA,2
+TBM1998021305,AM,. ,. ,2/13/1998,27.517333,-82.678833,E,421,S,1.4,2,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998021305,AM,. ,. ,2/13/1998,27.517333,-82.678833,E,421,S,1.4,3,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,3
+TBM1998021305,AM,. ,. ,2/13/1998,27.517333,-82.678833,E,421,S,1.4,4,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,3
+TBM1998021703,AM,. ,. ,2/17/1998,27.708333,-82.6205,B,279,B,1.4,1,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998021703,AM,. ,. ,2/17/1998,27.708333,-82.6205,B,279,B,1.4,2,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,1
+TBM1998021704,AM,. ,. ,2/17/1998,27.6485,-82.6735,D,343,A,1.4,1,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,1
+TBM1998021704,AM,. ,. ,2/17/1998,27.6485,-82.6735,D,343,A,1.4,2,8835430201,Lagodon rhomboides,Pinfish,., .,NA,11
+TBM1998021704,AM,. ,. ,2/17/1998,27.6485,-82.6735,D,343,A,1.4,3,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998021705,AM,. ,. ,2/17/1998,27.632667,-82.695333,D,354,B,1.4,1,9998000000,No fish,.,., .,NA,0
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,2,8804040101,Cyprinodon variegatus,Sheepshead Minnow,., .,NA,3
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,3,8804040101,Cyprinodon variegatus,Sheepshead Minnow,., .,NA,13
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,4,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,3
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,5,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,3
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,6,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,7,8826020103,Prionotus scitulus,Leopard Searobin,., .,NA,1
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,8,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,9,8835430201,Lagodon rhomboides,Pinfish,., .,NA,8
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,10,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,11,8835440401,Leiostomus xanthurus,Spot,., .,NA,16
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,12,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,1
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,13,8847010701,Microgobius gulosus,Clown Goby,., .,NA,1
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,14,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,3
+TBM1998021903,AM,. ,. ,2/19/1998,27.8475,-82.553167,B,141,S,1.4,15,8858020101,Symphurus plagiusa,Blackcheek Tonguefish,., .,NA,1
+TBM1998021904,AM,. ,. ,2/19/1998,27.885667,-82.532333,A,103,S,1.4,1,8804040101,Cyprinodon variegatus,Sheepshead Minnow,., .,NA,3
+TBM1998021904,AM,. ,. ,2/19/1998,27.885667,-82.532333,A,103,S,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,2
+TBM1998021904,AM,. ,. ,2/19/1998,27.885667,-82.532333,A,103,S,1.4,3,8835440401,Leiostomus xanthurus,Spot,., .,NA,20
+TBM1998021904,AM,. ,. ,2/19/1998,27.885667,-82.532333,A,103,S,1.4,4,8835440401,Leiostomus xanthurus,Spot,., .,NA,112
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,1,8747010400,Brevoortia spp.,Menhadens,., .,NA,5
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,2,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,891
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,8
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,4,8826020103,Prionotus scitulus,Leopard Searobin,., .,NA,1
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,5,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,6,8835440401,Leiostomus xanthurus,Spot,., .,NA,9
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,7,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,2
+TBM1998022015,AM,. ,. ,2/20/1998,27.729667,-82.477167,C,269,B,1.4,8,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,4
+TBM1998022303,AM,. ,. ,2/23/1998,27.736667,-82.71,D,241,A,1.4,1,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,2
+TBM1998022303,AM,. ,. ,2/23/1998,27.736667,-82.71,D,241,A,1.4,2,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,5
+TBM1998022303,AM,. ,. ,2/23/1998,27.736667,-82.71,D,241,A,1.4,3,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,21
+TBM1998022303,AM,. ,. ,2/23/1998,27.736667,-82.71,D,241,A,1.4,4,8835390111,Eucinostomus harengulus,Tidewater Mojarra,., .,NA,4
+TBM1998022303,AM,. ,. ,2/23/1998,27.736667,-82.71,D,241,A,1.4,5,8835430201,Lagodon rhomboides,Pinfish,., .,NA,42
+TBM1998022303,AM,. ,. ,2/23/1998,27.736667,-82.71,D,241,A,1.4,6,8835440301,Bairdiella chrysoura,Silver Perch,., .,NA,1
+TBM1998022501,AM,. ,. ,2/25/1998,27.787667,-82.4245,C,203,B,1.4,1,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998022501,AM,. ,. ,2/25/1998,27.787667,-82.4245,C,203,B,1.4,2,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998022501,AM,. ,. ,2/25/1998,27.787667,-82.4245,C,203,B,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998022501,AM,. ,. ,2/25/1998,27.787667,-82.4245,C,203,B,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998022501,AM,. ,. ,2/25/1998,27.787667,-82.4245,C,203,B,1.4,5,8835440601,Menticirrhus americanus,Southern Kingfish,., .,NA,1
+TBM1998022501,AM,. ,. ,2/25/1998,27.787667,-82.4245,C,203,B,1.4,6,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,2
+TBM1998022501,AM,. ,. ,2/25/1998,27.787667,-82.4245,C,203,B,1.4,7,8858030202,Achirus lineatus,Lined Sole,., .,NA,1
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,1,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,2
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,4,8805020300,Menidia spp.,Menidia Silversides,., .,NA,27
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,5,8805020300,Menidia spp.,Menidia Silversides,., .,NA,65
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,6,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,7,8835430201,Lagodon rhomboides,Pinfish,., .,NA,145
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,8,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,9,8835440401,Leiostomus xanthurus,Spot,., .,NA,52
+TBM1998022503,AM,. ,. ,2/25/1998,27.763333,-82.443167,C,236,B,1.4,10,8835440401,Leiostomus xanthurus,Spot,., .,NA,66
+TBM1998022605,AM,. ,. ,2/26/1998,27.645333,-82.743,D,339,S,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,8
+TBM1998022605,AM,. ,. ,2/26/1998,27.645333,-82.743,D,339,S,1.4,2,8835430201,Lagodon rhomboides,Pinfish,., .,NA,2
+TBM1998022605,AM,. ,. ,2/26/1998,27.645333,-82.743,D,339,S,1.4,3,8835440401,Leiostomus xanthurus,Spot,., .,NA,5
+TBM1998022607,AM,. ,. ,2/26/1998,27.664333,-82.741167,D,326,B,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,2
+TBM1998022607,AM,. ,. ,2/26/1998,27.664333,-82.741167,D,326,B,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998022607,AM,. ,. ,2/26/1998,27.664333,-82.741167,D,326,B,1.4,3,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,2,8747010400,Brevoortia spp.,Menhadens,., .,NA,1
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,3,8804040213,Fundulus similis,Longnose Killifish,., .,NA,1
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,4,8804040301,Lucania parva,Rainwater Killifish,., .,NA,1
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,5,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,6,8835430201,Lagodon rhomboides,Pinfish,., .,NA,48
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,7,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,8,8835440401,Leiostomus xanthurus,Spot,., .,NA,37
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,9,8835440901,Sciaenops ocellatus,Red Drum,., .,NA,1
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,10,8836010101,Mugil cephalus,Striped Mullet,., .,NA,5
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,11,8836010101,Mugil cephalus,Striped Mullet,., .,NA,24
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,12,8836010101,Mugil cephalus,Striped Mullet,., .,NA,810
+TBM1998031003,AM,. ,. ,3/10/1998,27.877333,-82.4835,C,117,S,1.4,13,8847010701,Microgobius gulosus,Clown Goby,., .,NA,3
+TBM1998031005,AM,. ,. ,3/10/1998,27.891,-82.419333,C,108,B,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,1
+TBM1998031005,AM,. ,. ,3/10/1998,27.891,-82.419333,C,108,B,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,7
+TBM1998031005,AM,. ,. ,3/10/1998,27.891,-82.419333,C,108,B,1.4,3,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998031008,AM,. ,. ,3/10/1998,27.893667,-82.413833,C,109,B,1.4,1,8835430201,Lagodon rhomboides,Pinfish,., .,NA,2
+TBM1998031008,AM,. ,. ,3/10/1998,27.893667,-82.413833,C,109,B,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,2
+TBM1998031008,AM,. ,. ,3/10/1998,27.893667,-82.413833,C,109,B,1.4,3,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,1,8820020102,Syngnathus floridae,Dusky Pipefish,., .,NA,3
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,2,8820020102,Syngnathus floridae,Dusky Pipefish,., .,NA,8
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,3,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,2
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,4,8820020205,Hippocampus zosterae,Dwarf Seahorse,., .,NA,4
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,5,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,2
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,6,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,3
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,7,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,3
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,8,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,7
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,9,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,10,8835440401,Leiostomus xanthurus,Spot,., .,NA,20
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,11,8835440401,Leiostomus xanthurus,Spot,., .,NA,50
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,12,8836010102,Mugil curema,White Mullet,., .,NA,10
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,13,8836010102,Mugil curema,White Mullet,., .,NA,20
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,14,8860030201,Acanthostracion quadricornis,Scrawled Cowfish,., .,NA,1
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,15,8861030101,Chilomycterus schoepfii,Striped Burrfish,., .,NA,6
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,16,8835400201,Orthopristis chrysoptera,Pigfish,2,5,1,3
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,17,8835430201,Lagodon rhomboides,Pinfish,2,5,1,293
+TBM1998031304,AM,. ,. ,3/13/1998,27.8565,-82.552667,B,128,A,1.4,18,8835440401,Leiostomus xanthurus,Spot,2,5,1,17
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,1,8804040301,Lucania parva,Rainwater Killifish,., .,NA,1
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,2,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,3
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,4,8805020300,Menidia spp.,Menidia Silversides,., .,NA,57
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,5,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,6,8835430201,Lagodon rhomboides,Pinfish,., .,NA,123
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,7,8835440401,Leiostomus xanthurus,Spot,., .,NA,16
+TBM1998031306,AM,. ,. ,3/13/1998,27.893833,-82.638167,A,96,A,1.4,8,8847010600,Gobiosoma spp.,Gobiosoma Gobies,., .,NA,2
+TBM1998031307,AM,. ,. ,3/13/1998,27.521167,-82.701,E,419,A,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998031307,AM,. ,. ,3/13/1998,27.521167,-82.701,E,419,A,1.4,2,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998031307,AM,. ,. ,3/13/1998,27.521167,-82.701,E,419,A,1.4,3,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998031307,AM,. ,. ,3/13/1998,27.521167,-82.701,E,419,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998031307,AM,. ,. ,3/13/1998,27.521167,-82.701,E,419,A,1.4,5,8835430201,Lagodon rhomboides,Pinfish,., .,NA,30
+TBM1998031307,AM,. ,. ,3/13/1998,27.521167,-82.701,E,419,A,1.4,6,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998031307,AM,. ,. ,3/13/1998,27.521167,-82.701,E,419,A,1.4,7,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998031308,AM,. ,. ,3/13/1998,27.516333,-82.691833,E,440,B,1.4,1,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,2
+TBM1998031308,AM,. ,. ,3/13/1998,27.516333,-82.691833,E,440,B,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998031308,AM,. ,. ,3/13/1998,27.516333,-82.691833,E,440,B,1.4,3,8836010101,Mugil cephalus,Striped Mullet,., .,NA,1
+TBM1998031309,AM,. ,. ,3/13/1998,27.527833,-82.694,E,420,B,1.4,1,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998031309,AM,. ,. ,3/13/1998,27.527833,-82.694,E,420,B,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,1
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,2,8820020205,Hippocampus zosterae,Dwarf Seahorse,., .,NA,1
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,3,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,1
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,4,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,3
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,5,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,29
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,6,8835430201,Lagodon rhomboides,Pinfish,., .,NA,4
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,7,8835430201,Lagodon rhomboides,Pinfish,., .,NA,637
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,8,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,9,8835440401,Leiostomus xanthurus,Spot,., .,NA,40
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,10,8847010603,Gobiosoma robustum,Code Goby,., .,NA,2
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,11,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,12,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998031602,AM,. ,. ,3/16/1998,27.548333,-82.583167,E,417,A,1.4,13,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998031603,AM,. ,. ,3/16/1998,27.585,-82.617333,E,381,S,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998031603,AM,. ,. ,3/16/1998,27.585,-82.617333,E,381,S,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,10
+TBM1998031603,AM,. ,. ,3/16/1998,27.585,-82.617333,E,381,S,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,2
+TBM1998031603,AM,. ,. ,3/16/1998,27.585,-82.617333,E,381,S,1.4,4,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,1
+TBM1998031603,AM,. ,. ,3/16/1998,27.585,-82.617333,E,381,S,1.4,5,8836010101,Mugil cephalus,Striped Mullet,., .,NA,10
+TBM1998031603,AM,. ,. ,3/16/1998,27.585,-82.617333,E,381,S,1.4,6,8836010101,Mugil cephalus,Striped Mullet,., .,NA,208
+TBM1998031603,AM,. ,. ,3/16/1998,27.585,-82.617333,E,381,S,1.4,7,8840130000,Dactyloscopidae spp.,.,., .,NA,1
+TBM1998031604,AM,. ,. ,3/16/1998,27.618667,-82.572833,E,361,A,1.4,1,8860030201,Acanthostracion quadricornis,Scrawled Cowfish,., .,NA,3
+TBM1998031705,AM,. ,. ,3/17/1998,27.791667,-82.4215,C,203,B,1.4,1,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998031705,AM,. ,. ,3/17/1998,27.791667,-82.4215,C,203,B,1.4,2,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,6
+TBM1998031705,AM,. ,. ,3/17/1998,27.791667,-82.4215,C,203,B,1.4,3,8858030202,Achirus lineatus,Lined Sole,., .,NA,3
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,1,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,2
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,3,8826020104,Prionotus tribulus,Bighead Searobin,., .,NA,1
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,4,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,1
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,5,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,3
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,6,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,7,8835430201,Lagodon rhomboides,Pinfish,., .,NA,10
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,8,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,9,8835440401,Leiostomus xanthurus,Spot,., .,NA,6
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,10,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,2
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,11,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,2
+TBM1998031803,AM,. ,. ,3/18/1998,27.734,-82.623333,B,244,B,1.4,12,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,2
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,1,8803020203,Strongylura timucu,Timucu,., .,NA,1
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,3,8805020300,Menidia spp.,Menidia Silversides,., .,NA,10
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,4,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,28
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,5,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,3
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,6,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,27
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,7,8835390111,Eucinostomus harengulus,Tidewater Mojarra,., .,NA,2
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,8,8835430201,Lagodon rhomboides,Pinfish,., .,NA,16
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,9,8835440401,Leiostomus xanthurus,Spot,., .,NA,20
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,10,8835440401,Leiostomus xanthurus,Spot,., .,NA,54
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,11,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998031805,AM,. ,. ,3/18/1998,27.742,-82.633,B,244,S,1.4,12,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,2
+TBM1998031808,AM,. ,. ,3/18/1998,27.749333,-82.626167,B,244,A,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998031808,AM,. ,. ,3/18/1998,27.749333,-82.626167,B,244,A,1.4,2,8826020103,Prionotus scitulus,Leopard Searobin,., .,NA,1
+TBM1998031808,AM,. ,. ,3/18/1998,27.749333,-82.626167,B,244,A,1.4,3,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,1
+TBM1998031808,AM,. ,. ,3/18/1998,27.749333,-82.626167,B,244,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,45
+TBM1998031808,AM,. ,. ,3/18/1998,27.749333,-82.626167,B,244,A,1.4,5,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,1
+TBM1998031808,AM,. ,. ,3/18/1998,27.749333,-82.626167,B,244,A,1.4,6,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,9
+TBM1998031808,AM,. ,. ,3/18/1998,27.749333,-82.626167,B,244,A,1.4,7,8858020101,Symphurus plagiusa,Blackcheek Tonguefish,., .,NA,1
+TBM1998032301,AM,. ,. ,3/23/1998,27.718333,-82.501667,C,267,B,1.4,1,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,3
+TBM1998032301,AM,. ,. ,3/23/1998,27.718333,-82.501667,C,267,B,1.4,2,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,9
+TBM1998032301,AM,. ,. ,3/23/1998,27.718333,-82.501667,C,267,B,1.4,3,8805020201,Membras martinica,Rough Silverside,., .,NA,1
+TBM1998032301,AM,. ,. ,3/23/1998,27.718333,-82.501667,C,267,B,1.4,4,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,2
+TBM1998032301,AM,. ,. ,3/23/1998,27.718333,-82.501667,C,267,B,1.4,5,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998032402,AM,. ,. ,3/24/1998,27.988,-82.6215,A,18,B,1.4,1,8805020300,Menidia spp.,Menidia Silversides,., .,NA,1
+TBM1998032402,AM,. ,. ,3/24/1998,27.988,-82.6215,A,18,B,1.4,2,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998032403,AM,. ,. ,3/24/1998,27.998333,-82.654667,A,16,B,1.4,1,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998032403,AM,. ,. ,3/24/1998,27.998333,-82.654667,A,16,B,1.4,2,8835440401,Leiostomus xanthurus,Spot,., .,NA,2
+TBM1998032403,AM,. ,. ,3/24/1998,27.998333,-82.654667,A,16,B,1.4,3,8861010208,Sphoeroides nephelus,Southern Puffer,., .,NA,1
+TBM1998032404,AM,. ,. ,3/24/1998,28.003333,-82.653667,A,10,A,1.4,1,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998032404,AM,. ,. ,3/24/1998,28.003333,-82.653667,A,10,A,1.4,2,8835430201,Lagodon rhomboides,Pinfish,., .,NA,10
+TBM1998032404,AM,. ,. ,3/24/1998,28.003333,-82.653667,A,10,A,1.4,3,8847010600,Gobiosoma spp.,Gobiosoma Gobies,., .,NA,3
+TBM1998032404,AM,. ,. ,3/24/1998,28.003333,-82.653667,A,10,A,1.4,4,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,1,8804040101,Cyprinodon variegatus,Sheepshead Minnow,., .,NA,3
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,2,8804040101,Cyprinodon variegatus,Sheepshead Minnow,., .,NA,6
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,3,8804040207,Fundulus grandis,Gulf Killifish,., .,NA,3
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,4,8804040207,Fundulus grandis,Gulf Killifish,., .,NA,5
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,5,8804040401,Adinia xenica,Diamond Killifish,., .,NA,1
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,6,8804040401,Adinia xenica,Diamond Killifish,., .,NA,3
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,7,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,3
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,8,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,19
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,9,8835430201,Lagodon rhomboides,Pinfish,., .,NA,2
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,10,8835440401,Leiostomus xanthurus,Spot,., .,NA,1
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,11,8836010101,Mugil cephalus,Striped Mullet,., .,NA,10
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,12,8836010101,Mugil cephalus,Striped Mullet,., .,NA,20
+TBM1998032405,AM,. ,. ,3/24/1998,28.029333,-82.690667,A,4,S,1.4,13,8836010101,Mugil cephalus,Striped Mullet,., .,NA,94
+TBM1998032501,AM,. ,. ,3/25/1998,27.7115,-82.7085,D,274,A,1.4,1,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,1
+TBM1998032501,AM,. ,. ,3/25/1998,27.7115,-82.7085,D,274,A,1.4,2,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,1
+TBM1998032501,AM,. ,. ,3/25/1998,27.7115,-82.7085,D,274,A,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,2,8747020201,Anchoa hepsetus,Striped Anchovy,., .,NA,3
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,3,8747020201,Anchoa hepsetus,Striped Anchovy,., .,NA,7
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,4,8805020300,Menidia spp.,Menidia Silversides,., .,NA,1
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,5,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,3
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,6,8835390102,Eucinostomus gula,Silver Jenny,., .,NA,3
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,7,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,1
+TBM1998032502,AM,. ,. ,3/25/1998,27.695833,-82.715667,D,293,B,1.4,8,8835430201,Lagodon rhomboides,Pinfish,., .,NA,11
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,1,6177010102,Farfantepenaeus duorarum,Pink Shrimp,., .,NA,1
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,2,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,3,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,1
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,4,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,2
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,5,8835360102,Lutjanus griseus,Gray Snapper,., .,NA,1
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,6,8835390100,Eucinostomus spp.,Eucinostomus,., .,NA,1
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,7,8835430201,Lagodon rhomboides,Pinfish,., .,NA,17
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,8,8835440401,Leiostomus xanthurus,Spot,., .,NA,20
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,9,8835440401,Leiostomus xanthurus,Spot,., .,NA,151
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,10,8842010302,Chasmodes saburrae,Florida Blenny,., .,NA,1
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,11,8835390100,Eucinostomus spp.,Eucinostomus,2,3,1,8
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,12,8835390102,Eucinostomus gula,Silver Jenny,2,3,1,1
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,13,8835430201,Lagodon rhomboides,Pinfish,2,3,1,189
+TBM1998032503,AM,. ,. ,3/25/1998,27.703667,-82.7215,D,273,S,1.4,14,8835440401,Leiostomus xanthurus,Spot,2,3,1,6
+TBM1998032504,AM,. ,. ,3/25/1998,27.7435,-82.7305,D,240,B,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998032504,AM,. ,. ,3/25/1998,27.7435,-82.7305,D,240,B,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,31
+TBM1998032504,AM,. ,. ,3/25/1998,27.7435,-82.7305,D,240,B,1.4,3,8847010603,Gobiosoma robustum,Code Goby,., .,NA,1
+TBM1998032504,AM,. ,. ,3/25/1998,27.7435,-82.7305,D,240,B,1.4,4,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,1,8747010400,Brevoortia spp.,Menhadens,., .,NA,4
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,2,8805020300,Menidia spp.,Menidia Silversides,., .,NA,30
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,10
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,407
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,5,8835440401,Leiostomus xanthurus,Spot,., .,NA,19
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,6,8835440401,Leiostomus xanthurus,Spot,., .,NA,20
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,7,8835440401,Leiostomus xanthurus,Spot,., .,NA,345
+TBM1998032505,AM,. ,. ,3/25/1998,27.673,-82.737333,D,308,A,1.4,8,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,1,8747010400,Brevoortia spp.,Menhadens,., .,NA,4
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,2,8804040213,Fundulus similis,Longnose Killifish,., .,NA,1
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,3,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,4
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,4,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,5,8805020300,Menidia spp.,Menidia Silversides,., .,NA,3
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,6,8805020300,Menidia spp.,Menidia Silversides,., .,NA,14
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,7,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,8,8835430201,Lagodon rhomboides,Pinfish,., .,NA,4
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,9,8835440401,Leiostomus xanthurus,Spot,., .,NA,3
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,10,8835440401,Leiostomus xanthurus,Spot,., .,NA,20
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,11,8835440401,Leiostomus xanthurus,Spot,., .,NA,24
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,12,8835440801,Pogonias cromis,Black Drum,., .,NA,4
+TBM1998040901,AM,. ,. ,4/9/1998,27.938333,-82.433333,C,57,B,1.4,13,8836010101,Mugil cephalus,Striped Mullet,., .,NA,3
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,2,8713050105,Dasyatis sabina,Atlantic Stingray,., .,NA,1
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,3,8747010400,Brevoortia spp.,Menhadens,., .,NA,84
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,4,8747020202,Anchoa mitchilli,Bay Anchovy,., .,NA,95
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,5,8762020101,Synodus foetens,Inshore Lizardfish,., .,NA,2
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,6,8826020103,Prionotus scitulus,Leopard Searobin,., .,NA,1
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,7,8826020103,Prionotus scitulus,Leopard Searobin,., .,NA,3
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,8,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,1
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,9,8835430201,Lagodon rhomboides,Pinfish,., .,NA,1
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,10,8835440401,Leiostomus xanthurus,Spot,., .,NA,19
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,11,8835440601,Menticirrhus americanus,Southern Kingfish,., .,NA,2
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,12,8835440601,Menticirrhus americanus,Southern Kingfish,., .,NA,4
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,13,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,2
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,14,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,4
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,15,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,16,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,1
+TBM1998040904,AM,. ,. ,4/9/1998,27.8455,-82.419167,C,147,B,1.4,17,8857030302,Paralichthys albigutta,Gulf Flounder,., .,NA,2
+TBM1998041302,AM,. ,. ,4/13/1998,27.724333,-82.481833,C,269,B,1.4,1,6189010301,Callinectes sapidus,Blue Crab,., .,NA,1
+TBM1998041302,AM,. ,. ,4/13/1998,27.724333,-82.481833,C,269,B,1.4,2,8826020103,Prionotus scitulus,Leopard Searobin,., .,NA,2
+TBM1998041302,AM,. ,. ,4/13/1998,27.724333,-82.481833,C,269,B,1.4,3,8826020103,Prionotus scitulus,Leopard Searobin,., .,NA,3
+TBM1998041302,AM,. ,. ,4/13/1998,27.724333,-82.481833,C,269,B,1.4,4,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,3
+TBM1998041302,AM,. ,. ,4/13/1998,27.724333,-82.481833,C,269,B,1.4,5,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,1
+TBM1998041304,AM,. ,. ,4/13/1998,27.759333,-82.45,C,235,A,1.4,1,8820020113,Syngnathus scovelli,Gulf Pipefish,., .,NA,1
+TBM1998041304,AM,. ,. ,4/13/1998,27.759333,-82.45,C,235,A,1.4,2,8835400201,Orthopristis chrysoptera,Pigfish,., .,NA,105
+TBM1998041304,AM,. ,. ,4/13/1998,27.759333,-82.45,C,235,A,1.4,3,8835430201,Lagodon rhomboides,Pinfish,., .,NA,3
+TBM1998041304,AM,. ,. ,4/13/1998,27.759333,-82.45,C,235,A,1.4,4,8835430201,Lagodon rhomboides,Pinfish,., .,NA,188
+TBM1998041304,AM,. ,. ,4/13/1998,27.759333,-82.45,C,235,A,1.4,5,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,1
+TBM1998041304,AM,. ,. ,4/13/1998,27.759333,-82.45,C,235,A,1.4,6,8835440603,Menticirrhus saxatilis,Northern Kingfish,., .,NA,2
+TBM1998041306,AM,. ,. ,4/13/1998,27.7745,-82.434167,C,219,S,1.4,1,8803020202,Strongylura notata,Redfin Needlefish,., .,NA,2
+TBM1998041306,AM,. ,. ,4/13/1998,27.7745,-82.434167,C,219,S,1.4,2,8804040501,Floridichthys carpio,Goldspotted Killifish,., .,NA,1
