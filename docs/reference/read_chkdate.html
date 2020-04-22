@@ -132,7 +132,7 @@
     <p>Compare date of local xlsx file with the same file on the server</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_chkdate</span>(<span class='no'>urlin</span>, <span class='no'>xlsx</span>, <span class='kw'>connecttimeout</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>tryurl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>read_chkdate</span>(<span class='no'>urlin</span>, <span class='no'>xlsx</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,14 +145,6 @@
       <th>xlsx</th>
       <td><p>chr string of full path to local file</p></td>
     </tr>
-    <tr>
-      <th>connecttimeout</th>
-      <td><p>numeric for maximum number of seconds to wait until connection timeout for <code><a href='https://rdrr.io/pkg/RCurl/man/getURL.html'>getURL</a></code></p></td>
-    </tr>
-    <tr>
-      <th>tryurl</th>
-      <td><p>logical indicating if <code><a href='https://rdrr.io/pkg/RCurl/man/getURL.html'>getURL</a></code> is repeatedly called in a <code>while</code> loop if first connection is unsuccessful</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -162,6 +154,7 @@
 
     <div class='dont-index'><p>Other read: <code><a href='read_dlcurrent.html'>read_dlcurrent</a></code>,
   <code><a href='read_formphyto.html'>read_formphyto</a></code>, <code><a href='read_formwq.html'>read_formwq</a></code>,
+  <code><a href='read_importfim.html'>read_importfim</a></code>,
   <code><a href='read_importphyto.html'>read_importphyto</a></code>,
   <code><a href='read_importwq.html'>read_importwq</a></code></p></div>
 

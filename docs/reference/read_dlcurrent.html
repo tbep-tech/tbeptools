@@ -132,8 +132,7 @@
     <p>Download latest file from epchc.org</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_dlcurrent</span>(<span class='no'>xlsx</span>, <span class='kw'>download_latest_epchc</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>connecttimeout</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>tryurl</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>urlin</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>phyto</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>read_dlcurrent</span>(<span class='no'>xlsx</span>, <span class='kw'>download_latest</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>urlin</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,44 +142,34 @@
       <td><p>chr string path for local excel file, to overwrite it not current</p></td>
     </tr>
     <tr>
-      <th>download_latest_epchc</th>
+      <th>download_latest</th>
       <td><p>logical to download latest file regardless of local copy</p></td>
     </tr>
     <tr>
-      <th>connecttimeout</th>
-      <td><p>numeric for maximum number of seconds to wait until connection timeout for <code><a href='https://rdrr.io/pkg/RCurl/man/getURL.html'>getURL</a></code></p></td>
-    </tr>
-    <tr>
-      <th>tryurl</th>
-      <td><p>logical indicating if <code><a href='https://rdrr.io/pkg/RCurl/man/getURL.html'>getURL</a></code> is repeatedly called in a <code>while</code> loop if first connection is unsuccessful</p></td>
-    </tr>
-    <tr>
       <th>urlin</th>
-      <td><p>optional url for file location, see details for default</p></td>
-    </tr>
-    <tr>
-      <th>phyto</th>
-      <td><p>logical indicating if water quality data (default) or phytoplankton cell count data are downloaded</p></td>
+      <td><p>url for file location</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The local copy specified in the path by <code>xlsx</code> is overwritten by the new file is not current or <code>download_latest_epchc = TRUE</code>.  The function does nothing if <code>download_latest_epchc = FALSE</code>.</p>
+    <p>The local copy specified in the path by <code>xlsx</code> is overwritten by the new file is not current or <code>download_latest = TRUE</code>.  The function does nothing if <code>download_latest = FALSE</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The local copy is checked against a temporary file downloaded from <a href='ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/'>ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/</a>.  The local file is replaced with the downloaded file if the MD5 hashes are different.</p>
+    <p>The local copy is checked against a temporary file downloaded from the location specified by <code>urlin</code>.  The local file is replaced with the downloaded file if the MD5 hashes are different.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other read: <code><a href='read_chkdate.html'>read_chkdate</a></code>,
   <code><a href='read_formphyto.html'>read_formphyto</a></code>, <code><a href='read_formwq.html'>read_formwq</a></code>,
+  <code><a href='read_importfim.html'>read_importfim</a></code>,
   <code><a href='read_importphyto.html'>read_importphyto</a></code>,
   <code><a href='read_importwq.html'>read_importwq</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>xlsx</span> <span class='kw'>&lt;-</span> <span class='st'>'C:/Users/Owner/Desktop/2018_Results_Updated.xls'</span>
-<span class='fu'>read_dlcurrent</span>(<span class='no'>xlsx</span>)
+<span class='no'>urlin</span> <span class='kw'>&lt;-</span> <span class='st'>'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'</span>
+<span class='fu'>read_dlcurrent</span>(<span class='no'>xlsx</span>, <span class='kw'>urlin</span> <span class='kw'>=</span> <span class='no'>urlin</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

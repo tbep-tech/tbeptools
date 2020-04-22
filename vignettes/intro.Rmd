@@ -220,7 +220,7 @@ After the data are successfully imported, you can view them from the assigned ob
 xlsx <- here('vignettes', 'current_results.xls')
 
 # load data and some light formatting
-epcdata <- read_importwq(xlsx, download_latest = T, tryurl = T)
+epcdata <- read_importwq(xlsx, download_latest = T)
 ```
 ```{r}
 epcdata
@@ -248,7 +248,7 @@ After the phytoplankton data are successfully imported, you can view them from t
 xlsx <- here('vignettes', 'phyto_data.xlsx')
 
 # load data and some light formatting
-phytodata <- read_importphyto(xlsx, download_latest = T, tryurl = T)
+phytodata <- read_importphyto(xlsx, download_latest = T)
 ```
 ```{r}
 phytodata
