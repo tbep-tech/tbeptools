@@ -7,14 +7,14 @@ test_that("Checking read_chkdate, EPC data", {
 
 })
 
-test_that("Checking read_chkdate, FIM data", {
-  urlin <- "ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv"
-  xlsx <- 'fimraw.csv'
-
-  result <- read_chkdate(urlin, xlsx)
-  expect_is(result, 'logical')
-
-})
+# test_that("Checking read_chkdate, FIM data", {
+#   urlin <- "ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv"
+#   xlsx <- 'fimraw.csv'
+#
+#   result <- read_chkdate(urlin, xlsx)
+#   expect_is(result, 'logical')
+#
+# })
 
 test_that("Checking read_chkdate, no connection", {
   urlin <- "floridamarine/file"
