@@ -66,13 +66,16 @@ read_chkdate <- function(urlin, xlsx) {
   file.remove(tmp)
 
   # date of online file
-  srdate <- html %>%
+  dttxt <- html %>%
     xml2::xml_text() %>%
     strsplit(., "[\n\r]+") %>%
     .[[1]] %>%
     grep(basename(urlin), ., value = TRUE) %>%
-    gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
-    lubridate::mdy_hm(.)
+    gsub('^(.*:\\d{2}).*$', '\\1', .)
+
+  srdate<- suppressWarnings(lubridate::mdy_hm(dttxt))
+  if(is.na(srdate))
+    srdate <- lubridate::ymd_hm(dttxt)
 
   # get date of local file
   lcdate <- file.info(xlsx)$mtime
