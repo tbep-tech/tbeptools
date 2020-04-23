@@ -33,7 +33,8 @@ read_chkdate <- function(urlin, xlsx) {
       download.file(con, tmp, quiet = TRUE)
       res <- TRUE
     },
-    error = function(e) return(FALSE)
+    error = function(e) return(FALSE),
+    warning = function(w) return(FALSE)
   )
 
   # retry connect no more than twenty times
@@ -46,7 +47,8 @@ read_chkdate <- function(urlin, xlsx) {
       download.file(con, tmp, quiet = TRUE)
       res <- TRUE
     },
-    error = function(e) return(FALSE)
+    error = function(e) return(FALSE),
+    warning = function(w) return(FALSE)
     )
 
   }
