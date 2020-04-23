@@ -57,13 +57,14 @@ read_chkdate <- function(urlin, xlsx) {
     stop("Couldn't connect to FTP site, sad face...")
 
   # fim download does not work as below on linux os
-  if(Sys.info()['sysname'] == 'Linux' & grep('floridamarine', con)){
+  if(Sys.info()['sysname'] == 'Linux' & grepl('floridamarine', con)){
 
-    srdate <- dat %>%
+    srdate <- tmp %>%
+      readChar(1e6) %>%
       strsplit('\\n') %>%
       .[[1]] %>%
       grep(basename(urlin), ., value = TRUE) %>%
-      gsub(paste0(basename(urlin), '\\r'), '', .) %>%
+      gsub(basename(urlin), '', .) %>%
       gsub('^.*ftp\\s+', '', .) %>%
       gsub('^[0-9]+', '', .)
 
@@ -73,15 +74,15 @@ read_chkdate <- function(urlin, xlsx) {
     # if fails, assumes that year was missing because file was recent
     if(is.na(tmp))
       tmp <- srdate %>%
-      paste(lubridate::year(Sys.Date()), .) %>%
-      lubridate::ymd_hm(.)
+        paste(lubridate::year(Sys.Date()), .) %>%
+        lubridate::ymd_hm(.)
 
     srdate <- tmp
 
   }
 
   # windows proc
-  if(!(Sys.info()['sysname'] == 'Linux' & grep('floridamarine', con))){
+  if(!(Sys.info()['sysname'] == 'Linux' & grepl('floridamarine', con))){
 
     # read file after success
     html <- xml2::read_html(readChar(tmp, 1e6))
