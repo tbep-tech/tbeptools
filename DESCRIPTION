@@ -35,6 +35,7 @@ Imports:
   readxl,
   rnoaa,
   sf,
+  RCurl,
   tibble,
   tidyr,
   xml2

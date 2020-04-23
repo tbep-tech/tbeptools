@@ -17,7 +17,7 @@ test_that("Checking read_chkdate, FIM data", {
 })
 
 test_that("Checking read_chkdate, no connection", {
-  urlin <- "asdf"
+  urlin <- "floridamarine/file"
   xlsx <- 'fimraw.csv'
 
   expect_error(read_chkdate(urlin, xlsx), "Couldn't connect to FTP site, sad face...")
