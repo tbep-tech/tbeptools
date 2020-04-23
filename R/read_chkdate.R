@@ -26,7 +26,35 @@ read_chkdate <- function(urlin, xlsx) {
 
   # download html from ftp to tmp, otherwise dates might be read incorrectly
   tmp <- tempfile()
-  download.file(con, tmp, quiet = TRUE)
+  brk <- 0
+
+  # attempt first connection
+  dlres <- tryCatch({
+      download.file(con, tmp, quiet = TRUE)
+      res <- TRUE
+    },
+    error = function(e) return(FALSE)
+  )
+
+  # retry connect no more than twenty times
+  while(!dlres & brk < 20) {
+
+    cat('trying connection again...\n')
+    brk <- brk + 1
+
+    dlres <- tryCatch({
+      download.file(con, tmp, quiet = TRUE)
+      res <- TRUE
+    },
+    error = function(e) return(FALSE)
+    )
+
+  }
+
+  if(brk == 20)
+    stop("Couldn't connect to FTP site, sad face...")
+
+  # read file after success
   html <- xml2::read_html(readChar(tmp, 1e6))
   file.remove(tmp)
 
