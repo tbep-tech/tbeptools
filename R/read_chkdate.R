@@ -28,9 +28,14 @@ read_chkdate <- function(urlin, xlsx) {
   tmp <- tempfile()
   brk <- 0
 
+  # change download method type if linux
+  meth <- 'auto'
+  if(Sys.info()['sysname'] == 'Linux')
+    meth <- 'wget'
+
   # attempt first connection
   dlres <- tryCatch({
-      download.file(con, tmp, quiet = TRUE)
+      download.file(con, tmp, quiet = TRUE, method = meth)
       res <- TRUE
     },
     error = function(e) return(FALSE),
@@ -44,7 +49,7 @@ read_chkdate <- function(urlin, xlsx) {
     brk <- brk + 1
 
     dlres <- tryCatch({
-      download.file(con, tmp, quiet = TRUE)
+      download.file(con, tmp, quiet = TRUE, method = 'wget')
       res <- TRUE
     },
     error = function(e) return(FALSE),
@@ -56,48 +61,18 @@ read_chkdate <- function(urlin, xlsx) {
   if(brk == 20)
     stop("Couldn't connect to FTP site, sad face...")
 
-  # fim download does not work as below on linux os
-  if(Sys.info()['sysname'] == 'Linux' & grepl('floridamarine', con)){
+  # read file after success
+  html <- xml2::read_html(readChar(tmp, 1e6))
+  file.remove(tmp)
 
-    srdate <- tmp %>%
-      readChar(1e6) %>%
-      strsplit('\\n') %>%
-      .[[1]] %>%
-      grep(basename(urlin), ., value = TRUE) %>%
-      gsub(basename(urlin), '', .) %>%
-      gsub('^.*ftp\\s+', '', .) %>%
-      gsub('^[0-9]+', '', .)
-
-    # this tries to convert to date, year may be missing if uploaded in last six months
-    tmp <- suppressWarnings(lubridate::ymd_hm(srdate))
-
-    # if fails, assumes that year was missing because file was recent
-    if(is.na(tmp))
-      tmp <- srdate %>%
-        paste(lubridate::year(Sys.Date()), .) %>%
-        lubridate::ymd_hm(.)
-
-    srdate <- tmp
-
-  }
-
-  # windows proc
-  if(!(Sys.info()['sysname'] == 'Linux' & grepl('floridamarine', con))){
-
-    # read file after success
-    html <- xml2::read_html(readChar(tmp, 1e6))
-    file.remove(tmp)
-
-    # date of online file
-    srdate <- html %>%
-      xml2::xml_text() %>%
-      strsplit(., "[\n\r]+") %>%
-      .[[1]] %>%
-      grep(basename(urlin), ., value = TRUE) %>%
-      gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
-      lubridate::mdy_hm(.)
-
-  }
+  # date of online file
+  srdate <- html %>%
+    xml2::xml_text() %>%
+    strsplit(., "[\n\r]+") %>%
+    .[[1]] %>%
+    grep(basename(urlin), ., value = TRUE) %>%
+    gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
+    lubridate::mdy_hm(.)
 
   # get date of local file
   lcdate <- file.info(xlsx)$mtime
