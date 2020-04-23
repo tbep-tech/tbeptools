@@ -8,7 +8,7 @@ test_that("Checking read_chkdate, EPC data", {
 })
 
 test_that("Checking read_chkdate, FIM data", {
-  urlin <- "ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData_20200406.csv"
+  urlin <- "ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv"
   xlsx <- 'fimraw.csv'
 
   result <- read_chkdate(urlin, xlsx)

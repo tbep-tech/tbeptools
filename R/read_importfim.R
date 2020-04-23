@@ -23,7 +23,7 @@
 read_importfim <- function(csv, download_latest = FALSE){
 
   # download latest and compare with current if exists
-  urlin <- 'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData_20200406.csv'
+  urlin <- 'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv'
   read_dlcurrent(csv, download_latest, urlin = urlin)
 
   # sanity checks

@@ -65,7 +65,6 @@ read_chkdate <- function(urlin, xlsx) {
     xml2::xml_text() %>%
     strsplit(., "[\n\r]+") %>%
     .[[1]] %>%
-    grep("(\\d{2}/){2}\\d{4}", ., value = TRUE) %>%
     grep(basename(urlin), ., value = TRUE) %>%
     gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
     lubridate::mdy_hm(.)
