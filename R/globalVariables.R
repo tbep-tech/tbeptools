@@ -10,8 +10,11 @@ globalVariables(c("Chlorophyll_a uncorr_ugL", "Latitude", "Longitude", "SampleTi
                   "outcome.x", "segval", "Sal_Bottom_ppth", "Sal_Mid_ppth", "Sal_Top_ppth", "Action",
                   "CHLAC", "Creek_Length_m", "TN", "TP", "chla_tsi", "day", "nut_tsi", "Source", "Tidal",
                   "median", "no23_ratio", "color", "Flow", "adj", "bs", "compload", "ests", "value",
-                  "COUNT", "Date", "NAME", "PHYLUM", "StationNumber", "Units", "tbseglines", "Chlorophyll-a uncorr_Q",
-                  "Secchi_Q"))
+                  "COUNT", "Date", "NAME", "PHYLUM", "StationNumber", "Units", "tbseglines", "Chlorophyll-a",
+                  "uncorr_Q", "Secchi_Q", "Cells", "Commonname", "Count", "Include_TB_Index",
+                  "NODCCODE", "Number", "Reference", "Sampling_Date", "Scientificname",
+                  "Species_record_id", "Splitlevel", "Splittype", "Stratum", "effort", "fimstations",
+                  "tbnispp"))
 
 
 #' @importFrom grDevices rgb

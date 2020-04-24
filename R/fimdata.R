@@ -24,14 +24,14 @@
 #'   }
 #'
 #' @family utilities
-#'
 #' @examples
 #' \dontrun{
 #' csv <- '~/Desktop/fimdata.csv'
 #'
-#' load and assign to object
+#' # load and assign to object
 #' fimdata <- read_importfim(csv, download_latest = T)
 #'
 #' save(fimdata, file = 'data/fimdata.RData')
+#'
 #' }
 "fimdata"

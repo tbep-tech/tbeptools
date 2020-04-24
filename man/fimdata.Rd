@@ -34,10 +34,11 @@ FIM data for Tampa Bay Nekton Index current as of 04242020
 \dontrun{
 csv <- '~/Desktop/fimdata.csv'
 
-load and assign to object
+# load and assign to object
 fimdata <- read_importfim(csv, download_latest = T)
 
 save(fimdata, file = 'data/fimdata.RData')
+
 }
 }
 \seealso{
