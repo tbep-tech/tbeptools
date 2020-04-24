@@ -28,10 +28,10 @@ save(iwrraw, file = here('data', 'iwrraw.RData'), compress = 'xz')
 Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{fimdata}},
   \code{\link{fimstations}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbnispp}},
-  \code{\link{tbseglines}}, \code{\link{tbseg}},
-  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
-  \code{\link{tidaltargets}}
+  \code{\link{targets}}, \code{\link{tbniref}},
+  \code{\link{tbnispp}}, \code{\link{tbseglines}},
+  \code{\link{tbseg}}, \code{\link{tbshed}},
+  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}
