@@ -16,7 +16,7 @@
 #' @examples
 #' \dontrun{
 #' # file path
-#' xlsx <- 'C:/Users/Owner/Desktop/phyto_data.xlsx'
+#' xlsx <- '~/Desktop/phyto_data.xlsx'
 #'
 #' # load and assign to object
 #' phytodata <- read_importphyto(xlsx)

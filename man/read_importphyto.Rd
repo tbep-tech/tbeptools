@@ -25,7 +25,7 @@ Pytoplankton cell count data downloaded from ftp://ftp.epchc.org/EPC_ERM_FTP/WQM
 \examples{
 \dontrun{
 # file path
-xlsx <- 'C:/Users/Owner/Desktop/phyto_data.xlsx'
+xlsx <- '~/Desktop/phyto_data.xlsx'
 
 # load and assign to object
 phytodata <- read_importphyto(xlsx)

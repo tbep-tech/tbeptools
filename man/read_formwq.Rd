@@ -21,7 +21,7 @@ Secchi data VOB depths or secchis < 0.5 ft from bottom are assigned \code{NA}, f
 \examples{
 \dontrun{
 # file path
-xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
+xlsx <- '~/Desktop/2018_Results_Updated.xls'
 
 # load and assign to object
 epcdata <- read_importwq(xlsx)

@@ -23,7 +23,7 @@ Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonInde
 \examples{
 \dontrun{
 # file path
-csv <- 'C:/Users/Owner/Desktop/fimraw.csv'
+csv <- '~/Desktop/fimraw.csv'
 
 # load and assign to object
 fimdata <- read_importfim(csv)

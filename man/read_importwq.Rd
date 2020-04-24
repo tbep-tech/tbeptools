@@ -25,7 +25,7 @@ Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  
 \examples{
 \dontrun{
 # file path
-xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
+xlsx <- '~/Desktop/2018_Results_Updated.xls'
 
 # load and assign to object
 epcdata <- read_importwq(xlsx)

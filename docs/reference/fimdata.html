@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spatial data object of lines defining major Tampa Bay segments — tbseglines • tbeptools</title>
+<title>FIM data for Tampa Bay Nekton Index current as of 04242020 — fimdata • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Spatial data object of lines defining major Tampa Bay segments — tbseglines" />
-<meta property="og:description" content="Spatial data object of lines defining major Tampa Bay segments" />
+<meta property="og:title" content="FIM data for Tampa Bay Nekton Index current as of 04242020 — fimdata" />
+<meta property="og:description" content="FIM data for Tampa Bay Nekton Index current as of 04242020" />
 
 
 
@@ -123,33 +123,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Spatial data object of lines defining major Tampa Bay segments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/tbseglines.R'><code>R/tbseglines.R</code></a></small>
-    <div class="hidden name"><code>tbseglines.Rd</code></div>
+    <h1>FIM data for Tampa Bay Nekton Index current as of 04242020</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/fimdata.R'><code>R/fimdata.R</code></a></small>
+    <div class="hidden name"><code>fimdata.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Spatial data object of lines defining major Tampa Bay segments</p>
+    <p>FIM data for Tampa Bay Nekton Index current as of 04242020</p>
     </div>
 
-    <pre class="usage"><span class='no'>tbseglines</span></pre>
+    <pre class="usage"><span class='no'>fimdata</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (LINESTRING) with 3 features and 1 field, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p>
+    <p>A data frame with 41653 rows and 17 variables:</p><dl'>
+  <dt>Reference</dt><dd><p>chr</p></dd>
+  <dt>Sampling_Date</dt><dd><p>Date</p></dd>
+  <dt>Zone</dt><dd><p>chr</p></dd>
+  <dt>Grid</dt><dd><p>int</p></dd>
+  <dt>NODCCode</dt><dd><p>chr</p></dd>
+  <dt>bay_segment</dt><dd><p>chr</p></dd>
+  <dt>Year</dt><dd><p>num</p></dd>
+  <dt>Month</dt><dd><p>num</p></dd>
+  <dt>Total_N</dt><dd><p>num</p></dd>
+  <dt>ScientificName</dt><dd><p>chr</p></dd>
+  <dt>Include_TB_Index</dt><dd><p>chr</p></dd>
+  <dt>Hab_Cat</dt><dd><p>chr</p></dd>
+  <dt>Est_Cat</dt><dd><p>chr</p></dd>
+  <dt>Est_Use</dt><dd><p>chr</p></dd>
+  <dt>Feeding_Cat</dt><dd><p>chr</p></dd>
+  <dt>Feeding_Guild</dt><dd><p>chr</p></dd>
+  <dt>Selected_Taxa</dt><dd><p>chr</p></dd>
+  
+</dl>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utilities: <code><a href='bsmap.html'>bsmap</a></code>,
-  <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='fimdata.html'>fimdata</a></code>,
-  <code><a href='fimstations.html'>fimstations</a></code>, <code><a href='iwrraw.html'>iwrraw</a></code>,
-  <code><a href='stations.html'>stations</a></code>, <code><a href='targets.html'>targets</a></code>,
+  <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='fimstations.html'>fimstations</a></code>,
+  <code><a href='iwrraw.html'>iwrraw</a></code>, <code><a href='stations.html'>stations</a></code>,
+  <code><a href='targets.html'>targets</a></code>, <code><a href='tbseglines.html'>tbseglines</a></code>,
   <code><a href='tbseg.html'>tbseg</a></code>, <code><a href='tbshed.html'>tbshed</a></code>,
   <code><a href='tidalcreeks.html'>tidalcreeks</a></code>, <code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sf/man/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_geometry.html'>st_geometry</a></span>(<span class='no'>tbseglines</span>))</div><div class='img'><img src='tbseglines-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

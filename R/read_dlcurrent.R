@@ -15,7 +15,7 @@
 #' @details The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 #' @examples
 #' \dontrun{
-#' xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
+#' xlsx <- '~/Desktop/2018_Results_Updated.xls'
 #' urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
 #' read_dlcurrent(xlsx, urlin = urlin)
 #' }

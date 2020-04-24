@@ -16,7 +16,7 @@
 #' @examples
 #' \dontrun{
 #' # file path
-#' csv <- 'C:/Users/Owner/Desktop/fimraw.csv'
+#' csv <- '~/Desktop/fimraw.csv'
 #'
 #' # load and assign to object
 #' fimdata <- read_importfim(csv)

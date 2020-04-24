@@ -20,7 +20,7 @@ Compare date of local xlsx file with the same file on the server
 \examples{
 \dontrun{
 urlin <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx"
-xlsx <- 'C:/Users/Owner/Desktop/2018_Results_Updated.xls'
+xlsx <- '~/Desktop/2018_Results_Updated.xls'
 read_chkdate(urlin, xlsx)
 }
 }
