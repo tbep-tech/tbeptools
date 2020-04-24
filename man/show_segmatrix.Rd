@@ -43,6 +43,7 @@ show_segmatrix(epcdata, bay_segment = 'OTB')
 Other visualize: \code{\link{show_boxplot}},
   \code{\link{show_matrix}}, \code{\link{show_reactable}},
   \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
+  \code{\link{show_tbnimatrix}},
   \code{\link{show_tbniscr}}, \code{\link{show_tdlcrk}},
   \code{\link{show_thrplot}}, \code{\link{show_wqmatrix}}
 }
