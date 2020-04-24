@@ -16,7 +16,8 @@
 #' @examples
 #' \dontrun{
 #' xlsx <- '~/Desktop/2018_Results_Updated.xls'
-#' urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+#' urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/'
+#' urlin <- paste0(urlin, 'RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx')
 #' read_dlcurrent(xlsx, urlin = urlin)
 #' }
 read_dlcurrent <- function(xlsx, download_latest = TRUE, urlin){

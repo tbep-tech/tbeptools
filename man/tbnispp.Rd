@@ -22,12 +22,13 @@ tbnispp
 \description{
 Reference table for Tampa Bay Nekton Index species classifications
 }
-\concept{utilities
+\examples{
 \dontrun{
 library(dplyr)
 
 # import and clean
-tbnispp <- read.csv('../tbni-proc/data/TBIndex_spp_codes.csv', header = TRUE, stringsAsFactors = FALSE) %>%
+tbnispp <- read.csv('../tbni-proc/data/TBIndex_spp_codes.csv',
+    header = TRUE, stringsAsFactors = FALSE) \%>\%
   mutate(
     NODCCODE = as.character(NODCCODE),
     NODCCODE = case_when(NODCCODE == "9.998e+09" ~ "9998000000",
@@ -35,5 +36,16 @@ tbnispp <- read.csv('../tbni-proc/data/TBIndex_spp_codes.csv', header = TRUE, st
   )
 
 save(tbnispp, file = 'data/tbnispp.RData', compress = 'xz')
-}}
+}
+}
+\seealso{
+Other utilities: \code{\link{bsmap}},
+  \code{\link{epcdata}}, \code{\link{fimdata}},
+  \code{\link{fimstations}}, \code{\link{iwrraw}},
+  \code{\link{stations}}, \code{\link{targets}},
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
+}
+\concept{utilities}
 \keyword{datasets}

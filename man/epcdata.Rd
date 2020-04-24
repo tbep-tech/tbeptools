@@ -34,9 +34,10 @@ All bay data as of 04012020
 Other utilities: \code{\link{bsmap}},
   \code{\link{fimdata}}, \code{\link{fimstations}},
   \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+  \code{\link{targets}}, \code{\link{tbnispp}},
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

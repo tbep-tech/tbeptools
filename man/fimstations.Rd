@@ -68,9 +68,10 @@ save(fimstations, file = 'data/fimstations.RData', compress = 'xz')
 Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{fimdata}},
   \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+  \code{\link{targets}}, \code{\link{tbnispp}},
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

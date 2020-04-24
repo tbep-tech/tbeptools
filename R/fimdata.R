@@ -8,7 +8,7 @@
 #'   \item{Sampling_Date}{Date}
 #'   \item{Zone}{chr}
 #'   \item{Grid}{int}
-#'   \item{NODCCode}{chr}
+#'   \item{NODCCODE}{chr}
 #'   \item{bay_segment}{chr}
 #'   \item{Year}{num}
 #'   \item{Month}{num}
@@ -24,4 +24,14 @@
 #'   }
 #'
 #' @family utilities
+#'
+#' @examples
+#' \dontrun{
+#' csv <- '~/Desktop/fimdata.csv'
+#'
+#' fimdata <- read_importfim(csv, download_latest = TRUE)
+#'
+#' save(fimdata, file = 'data/fimdata.RData', compress = 'xz')
+#'
+#' }
 "fimdata"

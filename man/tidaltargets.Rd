@@ -22,8 +22,9 @@ Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{fimdata}},
   \code{\link{fimstations}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbseglines}}, \code{\link{tbseg}},
-  \code{\link{tbshed}}, \code{\link{tidalcreeks}}
+  \code{\link{tbnispp}}, \code{\link{tbseglines}},
+  \code{\link{tbseg}}, \code{\link{tbshed}},
+  \code{\link{tidalcreeks}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -10,7 +10,7 @@
   \item{Sampling_Date}{Date}
   \item{Zone}{chr}
   \item{Grid}{int}
-  \item{NODCCode}{chr}
+  \item{NODCCODE}{chr}
   \item{bay_segment}{chr}
   \item{Year}{num}
   \item{Month}{num}
@@ -30,13 +30,24 @@ fimdata
 \description{
 FIM data for Tampa Bay Nekton Index current as of 04242020
 }
+\examples{
+\dontrun{
+csv <- '~/Desktop/fimdata.csv'
+
+fimdata <- read_importfim(csv, download_latest = TRUE)
+
+save(fimdata, file = 'data/fimdata.RData', compress = 'xz')
+
+}
+}
 \seealso{
 Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{fimstations}},
   \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+  \code{\link{targets}}, \code{\link{tbnispp}},
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

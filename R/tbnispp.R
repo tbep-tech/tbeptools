@@ -15,11 +15,14 @@
 #'   \item{Selected_Taxa}{chr}
 #' }
 #' @family utilities
+#'
+#' @examples
 #' \dontrun{
 #' library(dplyr)
 #'
 #' # import and clean
-#' tbnispp <- read.csv('../tbni-proc/data/TBIndex_spp_codes.csv', header = TRUE, stringsAsFactors = FALSE) %>%
+#' tbnispp <- read.csv('../tbni-proc/data/TBIndex_spp_codes.csv',
+#'     header = TRUE, stringsAsFactors = FALSE) %>%
 #'   mutate(
 #'     NODCCODE = as.character(NODCCODE),
 #'     NODCCODE = case_when(NODCCODE == "9.998e+09" ~ "9998000000",

@@ -27,7 +27,10 @@
 #'   na.omit()
 #'
 #' # create sf object of creek population, join with creek length data
-#' tidalcreeks <- st_read(dsn = '../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp', drivers = 'ESRI Shapefile') %>%
+#' tidalcreeks <- st_read(
+#'      dsn = '../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp',
+#'      drivers = 'ESRI Shapefile'
+#'      ) %>%
 #'   st_transform(crs = prj) %>%
 #'   select(wbid = WBID, JEI = CreekID, class) %>%
 #'   mutate_if(is.factor, as.character) %>%

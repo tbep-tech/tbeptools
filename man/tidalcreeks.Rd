@@ -34,7 +34,10 @@ crkraw <- read_sas('../../02_DOCUMENTS/tidal_creeks/creek_pop.sas7bdat') \%>\%
   na.omit()
 
 # create sf object of creek population, join with creek length data
-tidalcreeks <- st_read(dsn = '../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp', drivers = 'ESRI Shapefile') \%>\%
+tidalcreeks <- st_read(
+     dsn = '../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp',
+     drivers = 'ESRI Shapefile'
+     ) \%>\%
   st_transform(crs = prj) \%>\%
   select(wbid = WBID, JEI = CreekID, class) \%>\%
   mutate_if(is.factor, as.character) \%>\%
@@ -53,8 +56,9 @@ Other utilities: \code{\link{bsmap}},
   \code{\link{epcdata}}, \code{\link{fimdata}},
   \code{\link{fimstations}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbseglines}}, \code{\link{tbseg}},
-  \code{\link{tbshed}}, \code{\link{tidaltargets}}
+  \code{\link{tbnispp}}, \code{\link{tbseglines}},
+  \code{\link{tbseg}}, \code{\link{tbshed}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}
