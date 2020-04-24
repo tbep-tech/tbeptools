@@ -17,11 +17,11 @@ plot(st_geometry(tbshed))
 }
 \seealso{
 Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimstations}},
-  \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tidalcreeks}},
-  \code{\link{tidaltargets}}
+  \code{\link{epcdata}}, \code{\link{fimdata}},
+  \code{\link{fimstations}}, \code{\link{iwrraw}},
+  \code{\link{stations}}, \code{\link{targets}},
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

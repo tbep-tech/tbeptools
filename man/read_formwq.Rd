@@ -31,7 +31,7 @@ epcdata <- read_importwq(xlsx)
 \code{\link{read_importwq}}
 
 Other read: \code{\link{read_chkdate}},
-  \code{\link{read_dlcurrent}},
+  \code{\link{read_dlcurrent}}, \code{\link{read_formfim}},
   \code{\link{read_formphyto}},
   \code{\link{read_importfim}},
   \code{\link{read_importphyto}},

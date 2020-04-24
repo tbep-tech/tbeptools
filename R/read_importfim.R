@@ -34,8 +34,7 @@ read_importfim <- function(csv, download_latest = FALSE){
   rawdat <- read.csv(csv, stringsAsFactors = F)
 
   # format
-  # out <- read_formfim(rawdat)
-  out <- rawdat
+  out <- read_formfim(rawdat)
 
   return(out)
 

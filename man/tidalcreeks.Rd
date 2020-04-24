@@ -50,11 +50,11 @@ save(tidalcreeks, file = here::here('data', 'tidalcreeks.RData'), compress = 'xz
 }
 \seealso{
 Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimstations}},
-  \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidaltargets}}
+  \code{\link{epcdata}}, \code{\link{fimdata}},
+  \code{\link{fimstations}}, \code{\link{iwrraw}},
+  \code{\link{stations}}, \code{\link{targets}},
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tbshed}}, \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}
