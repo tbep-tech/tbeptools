@@ -41,6 +41,7 @@ Other visualize: \code{\link{show_boxplot}},
   \code{\link{show_matrix}}, \code{\link{show_reactable}},
   \code{\link{show_segmatrix}},
   \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tdlcrk}}, \code{\link{show_wqmatrix}}
+  \code{\link{show_tbniscr}}, \code{\link{show_tdlcrk}},
+  \code{\link{show_wqmatrix}}
 }
 \concept{visualize}
