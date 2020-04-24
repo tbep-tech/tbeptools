@@ -23,4 +23,7 @@ All raw metrics are returned in addition to those required for the TBNI.  Each r
 \examples{
 anlz_tbnimet(fimdata)
 }
+\seealso{
+Other anlz: \code{\link{anlz_tbniscr}}
+}
 \concept{anlz}
