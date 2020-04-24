@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Analyze tidal creek water quality indicators — anlz_tdlcrkindic • tbeptools</title>
+<title>Get all raw metrics for Tampa Bay Benthic Index — anlz_tbnimet • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Analyze tidal creek water quality indicators — anlz_tdlcrkindic" />
-<meta property="og:description" content="Estimate tidal creek water quality indicators to suppport report card scores" />
+<meta property="og:title" content="Get all raw metrics for Tampa Bay Benthic Index — anlz_tbnimet" />
+<meta property="og:description" content="Get all raw metrics for Tampa Bay Benthic Index" />
 
 
 
@@ -126,70 +126,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Analyze tidal creek water quality indicators</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_tdlcrkindic.R'><code>R/anlz_tdlcrkindic.R</code></a></small>
-    <div class="hidden name"><code>anlz_tdlcrkindic.Rd</code></div>
+    <h1>Get all raw metrics for Tampa Bay Benthic Index</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_tbnimet.R'><code>R/anlz_tbnimet.R</code></a></small>
+    <div class="hidden name"><code>anlz_tbnimet.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate tidal creek water quality indicators to suppport report card scores</p>
+    <p>Get all raw metrics for Tampa Bay Benthic Index</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_tdlcrkindic</span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_tbnimet</span>(<span class='no'>fimdata</span>, <span class='kw'>all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tidalcreeks</th>
-      <td><p><code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object for population of tidal creeks</p></td>
+      <th>fimdata</th>
+      <td><p><code>data.frame</code> formatted from <code>read_importfim</code></p></td>
     </tr>
     <tr>
-      <th>iwrraw</th>
-      <td><p>FDEP impaired waters rule run 56 data base as <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code></p></td>
-    </tr>
-    <tr>
-      <th>yr</th>
-      <td><p>numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date</p></td>
+      <th>all</th>
+      <td><p>logical indicating if only TBNI metrics are returned (default), otherwise all are calcualted</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code> with the indicator values for each tidal creek</p>
+    <p>A data frame of raw metrics in wide fomat.  If <code>all = TRUE</code>, all metrics are returned, otherwise only <code>NumTaxa</code>, <code>BenthicTaxa</code>, <code>TaxaSelect</code>, <code>NumGuilds</code>, and <code>Shannon</code> are returned.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.  Nitrogen ratios are estimated for JEIs that cover source (upstream, freshwater) and tidal (downstream) WBIDs, defined as the ratio of concentrations between the two (i.e., ratios &gt; 1 mean source has higher concentrations).  Nitrogen ratios for a given year reflect the median of all daily ratios when concentrations were measured in both a source and tidal segment during the same day.  Note that a ratio of one can be obtained if both the source and tidal segments are at minimum detection.</p>
+    <p>All raw metrics are returned in addition to those required for the TBNI.  Each row shows metric values for a station, year, and month where fish catch data were available.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other analyze: <code><a href='anlz_attain.html'>anlz_attain</a></code>,
-  <code><a href='anlz_avedatsite.html'>anlz_avedatsite</a></code>, <code><a href='anlz_avedat.html'>anlz_avedat</a></code>,
-  <code><a href='anlz_iwrraw.html'>anlz_iwrraw</a></code>, <code><a href='anlz_refs.html'>anlz_refs</a></code>,
-  <code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a></code>, <code><a href='anlz_yrattain.html'>anlz_yrattain</a></code></p></div>
+    <div class='dont-index'><p>Other anlz: <code>anlz_tbniave</code>,
+  <code>anlz_tbniscr</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'>anlz_tdlcrkindic</span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>dat</span>)</div><div class='output co'>#&gt;   id  wbid  JEI         name class year CHLAC COLOR     COND       DO     DOSAT
-#&gt; 1  1  2052 CC01   Rock Creek    3M 2009    NA    NA 50923.64 5.998273  75.00467
-#&gt; 2  1  2052 CC01   Rock Creek    3M 2010    NA    NA 46485.21 8.849809 110.65252
-#&gt; 3  3 1983B CC02 Oyster Creek     2 2009    NA    NA 52161.41 7.239759  90.53120
-#&gt; 4  4  2067 CC02 Oyster Creek    3M 2009    NA    NA 52903.40 5.623669  70.32127
-#&gt; 5  4  2067 CC02 Oyster Creek    3M 2010    NA    NA 46910.30 7.339483  91.77824
-#&gt; 6  5 1983B CC03   Buck Creek     2 2009    NA    NA 52291.87 5.697907  71.23831
-#&gt;   NO23 ORGN    SALIN TKN TN TP TSS TURB chla_tn_ratio tn_tp_ratio chla_tsi
-#&gt; 1   NA   NA 33.25918  NA NA NA  NA   NA            NA          NA       NA
-#&gt; 2   NA   NA 30.20121  NA NA NA  NA   NA            NA          NA       NA
-#&gt; 3   NA   NA 34.20891  NA NA NA  NA   NA            NA          NA       NA
-#&gt; 4   NA   NA 34.87518  NA NA NA  NA   NA            NA          NA       NA
-#&gt; 5   NA   NA 30.56035  NA NA NA  NA   NA            NA          NA       NA
-#&gt; 6   NA   NA 34.35481  NA NA NA  NA   NA            NA          NA       NA
-#&gt;   tn_tsi tn2_tsi tp_tsi tp2_tsi nut_tsi tsi no23_ratio
-#&gt; 1     NA      NA     NA      NA     NaN NaN         NA
-#&gt; 2     NA      NA     NA      NA     NaN NaN         NA
-#&gt; 3     NA      NA     NA      NA     NaN NaN         NA
-#&gt; 4     NA      NA     NA      NA     NaN NaN         NA
-#&gt; 5     NA      NA     NA      NA     NaN NaN         NA
-#&gt; 6     NA      NA     NA      NA     NaN NaN         NA</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>anlz_tbnimet</span>(<span class='no'>fimdata</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6,182 x 10</span><span>
+#&gt;    Reference  Year Month Season bay_segment NumTaxa Shannon TaxaSelect NumGuilds
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter OTB               2   0.362          0         2
+#&gt; </span><span style='color: #555555;'> 2</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter OTB               1   0              1         1
+#&gt; </span><span style='color: #555555;'> 3</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter OTB               0   0              0         0
+#&gt; </span><span style='color: #555555;'> 4</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter OTB               2   0.693          0         1
+#&gt; </span><span style='color: #555555;'> 5</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter MTB               4   1.16           1         2
+#&gt; </span><span style='color: #555555;'> 6</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter MTB               2   0.500          1         1
+#&gt; </span><span style='color: #555555;'> 7</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter MTB               5   0.426          2         3
+#&gt; </span><span style='color: #555555;'> 8</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter OTB               0   0              0         0
+#&gt; </span><span style='color: #555555;'> 9</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter HB                4   0.794          1         4
+#&gt; </span><span style='color: #555555;'>10</span><span> TBM19980~  </span><span style='text-decoration: underline;'>1</span><span>998     1 Winter HB                1   0              0         1
+#&gt; </span><span style='color: #555555;'># ... with 6,172 more rows, and 1 more variable: BenthicTaxa </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

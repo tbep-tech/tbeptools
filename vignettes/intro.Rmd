@@ -69,9 +69,13 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `read_dlcurrent()`: Download latest file from epchc.org
 
+* `read_formfim()`: Format FIM data for the Tampa Bay Nekton Index
+
 * `read_formphyto()`: Format phytoplankton data
 
 * `read_formwq()`: Format water quality data
+
+* `read_importfim()`: Load local FIM data for the Tampa Bay Nekton Index
 
 * `read_importphyto()`: Load local phytoplankton cell count file
 
@@ -93,6 +97,12 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_refs()`: Convert references csv to bib entries
 
+* `anlz_tbniave()`: Get annual averages of Tampa Bay Nekton Index scores by bay segment 
+
+* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Benthic Index
+
+* `anlz_tbniscr()`: Get Tampa Bay Benthic Index scores
+
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
@@ -109,7 +119,13 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
 
+* `show_segplotly()`: Plot chlorophyll and secchi data together with matrix outcomes 
+
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
+
+* `show_tbnimatrix()`: Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
+
+* `show_tbniscr()`: Plot Tampa Bay Nekton Index scores over time by bay segment
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
 
@@ -158,9 +174,13 @@ There are `r lsf.str("package:tbeptools") %>% as.character %>% grepl('^read', .)
 
 * `read_dlcurrent()`: Download latest file from epchc.org
 
+* `read_formfim()`: Format FIM data for the Tampa Bay Nekton Index
+
 * `read_formphyto()`: Format phytoplankton data
 
 * `read_formwq()`: Format water quality data
+
+* `read_importfim()`: Load local FIM data for the Tampa Bay Nekton Index
 
 * `read_importphyto()`: Load local phytoplankton cell count file
 
@@ -274,6 +294,12 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_refs()`: Convert references csv to bib entries
 
+* `anlz_tbniave()`: Get annual averages of Tampa Bay Nekton Index scores by bay segment 
+
+* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Benthic Index
+
+* `anlz_tbniscr()`: Get Tampa Bay Benthic Index scores
+
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
@@ -315,7 +341,13 @@ The plotting functions are used to view long-term trends for each bay segment an
 
 * `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
 
+* `show_segplotly()`: Plot chlorophyll and secchi data together with matrix outcomes 
+
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
+
+* `show_tbnimatrix()`: Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
+
+* `show_tbniscr()`: Plot Tampa Bay Nekton Index scores over time by bay segment
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
 

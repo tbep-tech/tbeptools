@@ -1,0 +1,39 @@
+---
+title: "Tampa Bay Nekton Index"
+csl: stylefile.csl
+# bibliography: tidalrefs.bib
+author: "Marcus Beck"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Tidal Creek Assessment}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = F, warning = F, 
+  fig.align = 'center'
+)
+
+# libraries
+library(tbeptools) 
+library(here)
+library(Jabbrev)
+library(bookdown)
+library(magrittr)
+library(knitr)
+
+# bib_scrp(here('vignettes', 'tbni.Rmd'), bib_new = here('vignettes', 'tbnirefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
+
+# spelling::spell_check_files(here("vignettes", "tidalcreeks.Rmd"))
+```
+
+## Background
+
+Placeholder

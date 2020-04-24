@@ -8,6 +8,14 @@ show_tbnimatrix(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
   perc = c(32, 46), alph = 0.3, txtsz = 3, family = NA)
 }
 \arguments{
+\item{tbniscr}{input dat frame as returned by \code{\link{anlz_tbniscr}}}
+
+\item{bay_segment}{chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"}
+
+\item{perc}{numeric values indicating break points for score categories}
+
+\item{alph}{numeric indicating alpha value for score category colors}
+
 \item{txtsz}{numeric for size of text in the plot}
 
 \item{family}{optional chr string indicating font family for text labels}

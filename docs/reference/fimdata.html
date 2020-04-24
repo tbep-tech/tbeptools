@@ -98,6 +98,9 @@
       <a href="../articles/intro.html">Intro to TBEP Tools</a>
     </li>
     <li>
+      <a href="../articles/tbni.html">Tampa Bay Nekton Index</a>
+    </li>
+    <li>
       <a href="../articles/tidalcreeks.html">Tidal Creek Assessment</a>
     </li>
   </ul>
@@ -142,7 +145,7 @@
   <dt>Sampling_Date</dt><dd><p>Date</p></dd>
   <dt>Zone</dt><dd><p>chr</p></dd>
   <dt>Grid</dt><dd><p>int</p></dd>
-  <dt>NODCCode</dt><dd><p>chr</p></dd>
+  <dt>NODCCODE</dt><dd><p>chr</p></dd>
   <dt>bay_segment</dt><dd><p>chr</p></dd>
   <dt>Year</dt><dd><p>num</p></dd>
   <dt>Month</dt><dd><p>num</p></dd>
@@ -162,12 +165,20 @@
     <div class='dont-index'><p>Other utilities: <code><a href='bsmap.html'>bsmap</a></code>,
   <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='fimstations.html'>fimstations</a></code>,
   <code><a href='iwrraw.html'>iwrraw</a></code>, <code><a href='stations.html'>stations</a></code>,
-  <code><a href='targets.html'>targets</a></code>, <code><a href='tbseglines.html'>tbseglines</a></code>,
+  <code><a href='targets.html'>targets</a></code>, <code>tbniref</code>,
+  <code><a href='tbnispp.html'>tbnispp</a></code>, <code><a href='tbseglines.html'>tbseglines</a></code>,
   <code><a href='tbseg.html'>tbseg</a></code>, <code><a href='tbshed.html'>tbshed</a></code>,
   <code><a href='tidalcreeks.html'>tidalcreeks</a></code>, <code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>csv</span> <span class='kw'>&lt;-</span> <span class='st'>'~/Desktop/fimdata.csv'</span>
+
+<span class='no'>fimdata</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='read_importfim.html'>read_importfim</a></span>(<span class='no'>csv</span>, <span class='kw'>download_latest</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='no'>fimdata</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>'data/fimdata.RData'</span>, <span class='kw'>compress</span> <span class='kw'>=</span> <span class='st'>'xz'</span>)
+
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

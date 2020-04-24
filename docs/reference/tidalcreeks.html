@@ -98,6 +98,9 @@
       <a href="../articles/intro.html">Intro to TBEP Tools</a>
     </li>
     <li>
+      <a href="../articles/tbni.html">Tampa Bay Nekton Index</a>
+    </li>
+    <li>
       <a href="../articles/tidalcreeks.html">Tidal Creek Assessment</a>
     </li>
   </ul>
@@ -152,6 +155,7 @@
   <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='fimdata.html'>fimdata</a></code>,
   <code><a href='fimstations.html'>fimstations</a></code>, <code><a href='iwrraw.html'>iwrraw</a></code>,
   <code><a href='stations.html'>stations</a></code>, <code><a href='targets.html'>targets</a></code>,
+  <code>tbniref</code>, <code><a href='tbnispp.html'>tbnispp</a></code>,
   <code><a href='tbseglines.html'>tbseglines</a></code>, <code><a href='tbseg.html'>tbseg</a></code>,
   <code><a href='tbshed.html'>tbshed</a></code>, <code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
 
@@ -170,7 +174,10 @@
   <span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span>()
 
 <span class='co'># create sf object of creek population, join with creek length data</span>
-<span class='no'>tidalcreeks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_read.html'>st_read</a></span>(<span class='kw'>dsn</span> <span class='kw'>=</span> <span class='st'>'../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp'</span>, <span class='kw'>drivers</span> <span class='kw'>=</span> <span class='st'>'ESRI Shapefile'</span>) <span class='kw'>%&gt;%</span>
+<span class='no'>tidalcreeks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_read.html'>st_read</a></span>(
+     <span class='kw'>dsn</span> <span class='kw'>=</span> <span class='st'>'../../02_DOCUMENTS/tidal_creeks/Creek_ReportCard_revised.shp'</span>,
+     <span class='kw'>drivers</span> <span class='kw'>=</span> <span class='st'>'ESRI Shapefile'</span>
+     ) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_transform.html'>st_transform</a></span>(<span class='kw'>crs</span> <span class='kw'>=</span> <span class='no'>prj</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>select</span>(<span class='kw'>wbid</span> <span class='kw'>=</span> <span class='no'>WBID</span>, <span class='kw'>JEI</span> <span class='kw'>=</span> <span class='no'>CreekID</span>, <span class='no'>class</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>mutate_if</span>(<span class='no'>is.factor</span>, <span class='no'>as.character</span>) <span class='kw'>%&gt;%</span>

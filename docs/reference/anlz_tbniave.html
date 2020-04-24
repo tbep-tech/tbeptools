@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • tbeptools</title>
+<title>Get annual averages of Tampa Bay Nekton Index scores by bay segment — anlz_tbniave • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Get annual averages of Tampa Bay Nekton Index scores by bay segment — anlz_tbniave" />
+<meta property="og:description" content="Get annual averages of Tampa Bay Nekton Index scores by bay segment" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -125,22 +126,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Get annual averages of Tampa Bay Nekton Index scores by bay segment</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_tbniave.R'><code>R/anlz_tbniave.R</code></a></small>
+    <div class="hidden name"><code>anlz_tbniave.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="intro.html">Intro to TBEP Tools</a></dt>
-        <dd></dt>
-        <dt><a href="tbni.html">Tampa Bay Nekton Index</a></dt>
-        <dd></dt>
-        <dt><a href="tidalcreeks.html">Tidal Creek Assessment</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>Get annual averages of Tampa Bay Nekton Index scores by bay segment</p>
     </div>
+
+    <pre class="usage"><span class='fu'>anlz_tbniave</span>(<span class='no'>tbniscr</span>, <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>))</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>tbniscr</th>
+      <td><p>input dat frame as returned by <code>anlz_tbniscr</code></p></td>
+    </tr>
+    <tr>
+      <th>bay_segment</th>
+      <td><p>chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame of annual averages by bay segment</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other anlz: <code>anlz_tbnimet</code>,
+  <code>anlz_tbniscr</code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>tbniscr</span> <span class='kw'>&lt;-</span> <span class='fu'>anlz_tbniscr</span>(<span class='no'>fimdata</span>)
+<span class='fu'>anlz_tbniave</span>(<span class='no'>tbniscr</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 84 x 3</span><span>
+#&gt;    bay_segment  Year Segment_TBNI
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>998           47
+#&gt; </span><span style='color: #555555;'> 2</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>999           47
+#&gt; </span><span style='color: #555555;'> 3</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>000           44
+#&gt; </span><span style='color: #555555;'> 4</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>001           44
+#&gt; </span><span style='color: #555555;'> 5</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>002           39
+#&gt; </span><span style='color: #555555;'> 6</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>003           41
+#&gt; </span><span style='color: #555555;'> 7</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>004           41
+#&gt; </span><span style='color: #555555;'> 8</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>005           32
+#&gt; </span><span style='color: #555555;'> 9</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>006           41
+#&gt; </span><span style='color: #555555;'>10</span><span> HB           </span><span style='text-decoration: underline;'>2</span><span>007           42
+#&gt; </span><span style='color: #555555;'># ... with 74 more rows</span><span></div></span></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
