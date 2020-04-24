@@ -17,7 +17,7 @@ show_tbniscr(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 \item{alph}{numeric indicating alpha value for score category colors}
 }
 \value{
-A \code{\link[ggplo2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
+A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
 }
 \description{
 Plot Tampa Bay Nekton Index scores over time by bay segment

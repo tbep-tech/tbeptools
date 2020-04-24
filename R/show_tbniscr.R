@@ -7,7 +7,7 @@
 #' @param perc numeric values indicating break points for score categories
 #' @param alph numeric indicating alpha value for score category colors
 #'
-#' @return A \code{\link[ggplo2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
+#' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
 #' @export
 #'
 #' @family visualize
@@ -28,15 +28,8 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
   # bay segment factor levels
   levs <- c("OTB", "HB", "MTB", "LTB")
 
-  # annual averages by segment
-  toplo <- tbniscr %>%
-    dplyr::group_by(bay_segment, Year) %>%
-    dplyr::summarize(Segment_TBNI = round(mean(TBNI_Score),0)) %>%
-    dplyr::ungroup() %>%
-    dplyr::mutate(
-      bay_segment = factor(bay_segment, levels = levs)
-    ) %>%
-    dplyr::filter(bay_segment %in% !!bay_segment)
+  # annual average by segment
+  toplo <- anlz_tbniave(tbniscr, bay_segment)
 
   # plot
   p1 <- ggplot2::ggplot(toplo) +
@@ -53,7 +46,7 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
                        labels = levs,
                        values = c("black", "black", "gray40", "gray40")) +
     ggplot2::scale_y_continuous(name = "TBNI score", limits = c(22, 58), breaks = seq(22, 58, 4), expand = c(0,0)) +
-    ggplot2::scale_x_continuous(limits = c(1998, max(TBNI_Seg_Scores$Year)), breaks = seq(1998,max(TBNI_Seg_Scores$Year), 1), expand = c(0,0)) +
+    ggplot2::scale_x_continuous(limits = c(1998, max(toplo$Year)), breaks = seq(1998,max(toplo$Year), 1), expand = c(0,0)) +
     ggplot2::geom_line(aes(x = Year, y = perc[1]), color = "black", linetype = "dotted") +
     ggplot2::geom_line(aes(x = Year, y = perc[2]), color = "black", linetype = "dotted") +
     ggplot2::theme(
