@@ -1,6 +1,6 @@
 test_that("Checking anlz_tbniscr", {
 
-  tbniscr <- anlz_tbniscr(fimdat)
+  tbniscr <- anlz_tbniscr(fimdata)
 
   result <- tbniscr[nrow(tbniscr), ]
   expect_equal(result, structure(list(Reference = "TBM2018121305", Year = 2018, Month = 12,
@@ -14,7 +14,7 @@ test_that("Checking anlz_tbniscr", {
 
 test_that("Checking anlz_tbniscr, raw = F", {
 
-  tbniscr <- anlz_tbniscr(fimdat, raw = F)
+  tbniscr <- anlz_tbniscr(fimdata, raw = F)
 
   result <- tbniscr[nrow(tbniscr), ]
   expect_equal(result, structure(list(Reference = "TBM2018121305", Year = 2018, Month = 12,

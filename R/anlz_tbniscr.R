@@ -2,7 +2,7 @@
 #'
 #' Get Tampa Bay Benthic Index scores
 #'
-#' @param fimdata \code{data.frame} formatted from \code{read_importfim}
+#' @param fimdata \code{data.frame} formatted from \code{\link{read_importfim}}
 #' @param raw logical indicating if raw metric values are also returned
 #'
 #' @details This function calculates raw and scored metrics for the TBNI, including \code{NumTaxa}, \code{BenthicTaxa}, \code{TaxaSelect}, \code{NumGuilds}, and \code{Shannon}.  The total TBNI score is returned as \code{TBNI_Score}.
@@ -18,10 +18,10 @@
 #'
 #' @examples
 #' anlz_tbniscr(fimdata)
-anlz_tbniscr <- function(fimdat, raw = TRUE){
+anlz_tbniscr <- function(fimdata, raw = TRUE){
 
   # raw metrics
-  tbnimet <- anlz_tbnimet(fimdat)
+  tbnimet <- anlz_tbnimet(fimdata)
 
   # scored metrics and TBNI
   out <- tbnimet %>%

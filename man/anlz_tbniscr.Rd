@@ -4,12 +4,12 @@
 \alias{anlz_tbniscr}
 \title{Get Tampa Bay Benthic Index scores}
 \usage{
-anlz_tbniscr(fimdat, raw = TRUE)
+anlz_tbniscr(fimdata, raw = TRUE)
 }
 \arguments{
-\item{raw}{logical indicating if raw metric values are also returned}
+\item{fimdata}{\code{data.frame} formatted from \code{\link{read_importfim}}}
 
-\item{fimdata}{\code{data.frame} formatted from \code{read_importfim}}
+\item{raw}{logical indicating if raw metric values are also returned}
 }
 \value{
 A data frame of metrics and TBNI scores in wide fomat.
