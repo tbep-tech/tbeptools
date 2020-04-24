@@ -4,12 +4,12 @@
 \alias{anlz_tbnimet}
 \title{Get all raw metrics for Tampa Bay Benthic Index}
 \usage{
-anlz_tbnimet(fimdata, all = TRUE)
+anlz_tbnimet(fimdata, all = FALSE)
 }
 \arguments{
 \item{fimdata}{\code{data.frame} formatted from \code{read_importfim}}
 
-\item{all}{logical indicating if only TBNI metrics are returned, otherwise all are calcualted}
+\item{all}{logical indicating if only TBNI metrics are returned (default), otherwise all are calcualted}
 }
 \value{
 A data frame of raw metrics in wide fomat.  If \code{all = TRUE}, all metrics are returned, otherwise only \code{NumTaxa}, \code{BenthicTaxa}, \code{TaxaSelect}, \code{NumGuilds}, and \code{Shannon} are returned.
