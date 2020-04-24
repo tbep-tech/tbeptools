@@ -13,10 +13,11 @@ Terrain basemap
 }
 \seealso{
 Other utilities: \code{\link{epcdata}},
-  \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+  \code{\link{fimstations}}, \code{\link{iwrraw}},
+  \code{\link{stations}}, \code{\link{targets}},
+  \code{\link{tbseglines}}, \code{\link{tbseg}},
+  \code{\link{tbshed}}, \code{\link{tidalcreeks}},
+  \code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -31,7 +31,8 @@ epcdata
 All bay data as of 04012020
 }
 \seealso{
-Other utilities: \code{\link{bsmap}}, \code{\link{iwrraw}},
+Other utilities: \code{\link{bsmap}},
+  \code{\link{fimstations}}, \code{\link{iwrraw}},
   \code{\link{stations}}, \code{\link{targets}},
   \code{\link{tbseglines}}, \code{\link{tbseg}},
   \code{\link{tbshed}}, \code{\link{tidalcreeks}},
