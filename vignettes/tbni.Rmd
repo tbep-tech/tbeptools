@@ -1,14 +1,14 @@
 ---
 title: "Tampa Bay Nekton Index"
 csl: stylefile.csl
-# bibliography: tidalrefs.bib
+# bibliography: tbnirefs.bib
 author: "Marcus Beck"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{Tidal Creek Assessment}
+  %\VignetteIndexEntry{Tampa Bay Nekton Index}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
