@@ -37,3 +37,10 @@ library(knitr)
 ## Background
 
 Placeholder
+
+## Report card
+
+```{r}
+
+```
+

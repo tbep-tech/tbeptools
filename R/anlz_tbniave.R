@@ -2,6 +2,7 @@
 #'
 #' @param tbniscr input dat frame as returned by \code{\link{anlz_tbniscr}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"
+#' @param rev logical if factor levels for bay segments are reversed
 #'
 #' @return A data frame of annual averages by bay segment
 #' @export
@@ -13,10 +14,12 @@
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' anlz_tbniave(tbniscr)
-anlz_tbniave <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB')) {
+anlz_tbniave <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), rev = FALSE) {
 
   # bay segment factor levels
   levs <- c("OTB", "HB", "MTB", "LTB")
+  if(rev)
+    levs <- rev(levs)
 
   # annual averages by segment
   out <- tbniscr %>%

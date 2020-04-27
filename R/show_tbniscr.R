@@ -6,6 +6,7 @@
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"
 #' @param perc numeric values indicating break points for score categories
 #' @param alph numeric indicating alpha value for score category colors
+#' @param rev logical if factor levels for bay segments are reversed
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
 #' @export
@@ -17,7 +18,7 @@
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbniscr(tbniscr)
-show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3){
+show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3, rev = FALSE){
 
   # sanity checks
   stopifnot(length(perc) == 2)
@@ -29,14 +30,15 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
   levs <- c("OTB", "HB", "MTB", "LTB")
 
   # annual average by segment
-  toplo <- anlz_tbniave(tbniscr, bay_segment)
-
+  toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev)
+# browser()
   # plot
   p1 <- ggplot2::ggplot(toplo) +
-    ggplot2::geom_ribbon(aes(x = Year, ymin = 22, ymax = perc[1]), fill = "red", alpha = alph) +
-    ggplot2::geom_ribbon(aes(x = Year, ymin = perc[1], ymax = perc[2]), fill = "yellow", alpha = alph) +
-    ggplot2::geom_ribbon(aes(x = Year, ymax = 58, ymin = perc[2]), fill = "green", alpha = alph) +
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = 'red') +
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = 'yellow') +
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = 'green') +
     ggplot2::geom_line(aes(x = Year, y = Segment_TBNI, linetype = bay_segment, color = bay_segment), size = 1.25) +
+    # stat_summary(fun.y=sum, geom="line") +
     ggplot2::scale_linetype_manual(name = "",
                           breaks = levs,
                           labels = levs,
@@ -45,10 +47,10 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
                        breaks = levs,
                        labels = levs,
                        values = c("black", "black", "gray40", "gray40")) +
-    ggplot2::scale_y_continuous(name = "TBNI score", limits = c(22, 58), breaks = seq(22, 58, 4), expand = c(0,0)) +
-    ggplot2::scale_x_continuous(limits = c(1998, max(toplo$Year)), breaks = seq(1998,max(toplo$Year), 1), expand = c(0,0)) +
-    ggplot2::geom_line(aes(x = Year, y = perc[1]), color = "black", linetype = "dotted") +
-    ggplot2::geom_line(aes(x = Year, y = perc[2]), color = "black", linetype = "dotted") +
+    ggplot2::scale_y_continuous(name = "TBNI score", limits = c(22, 58), breaks = seq(22, 58, 4)) +
+    ggplot2::scale_x_continuous(breaks = seq(1998,max(toplo$Year), 1), expand = c(0.025, 0.025)) +
+    ggplot2::geom_hline(aes(yintercept = perc[1]), color = "black", linetype = "dotted") +
+    ggplot2::geom_hline(aes(yintercept = perc[2]), color = "black", linetype = "dotted") +
     ggplot2::theme(
       axis.title.x = ggplot2::element_blank(),
       axis.text.y = ggplot2::element_text(size = 12),

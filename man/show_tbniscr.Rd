@@ -5,7 +5,7 @@
 \title{Plot Tampa Bay Nekton Index scores over time by bay segment}
 \usage{
 show_tbniscr(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  perc = c(32, 46), alph = 0.3)
+  perc = c(32, 46), alph = 0.3, rev = FALSE)
 }
 \arguments{
 \item{tbniscr}{input dat frame as returned by \code{\link{anlz_tbniscr}}}
@@ -15,6 +15,8 @@ show_tbniscr(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 \item{perc}{numeric values indicating break points for score categories}
 
 \item{alph}{numeric indicating alpha value for score category colors}
+
+\item{rev}{logical if factor levels for bay segments are reversed}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment

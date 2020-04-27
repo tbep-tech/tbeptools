@@ -5,7 +5,8 @@
 \title{Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment}
 \usage{
 show_tbnimatrix(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  perc = c(32, 46), alph = 0.3, txtsz = 3, family = NA)
+  perc = c(32, 46), alph = 0.3, txtsz = 3, family = NA,
+  rev = FALSE, position = "top")
 }
 \arguments{
 \item{tbniscr}{input dat frame as returned by \code{\link{anlz_tbniscr}}}
@@ -19,6 +20,10 @@ show_tbnimatrix(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
 \item{txtsz}{numeric for size of text in the plot}
 
 \item{family}{optional chr string indicating font family for text labels}
+
+\item{rev}{logical if factor levels for bay segments are reversed}
+
+\item{position}{chr string of location for bay segment labels, default on top, passed to \code{\link[ggplot2]{scale_x_discrete}}}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
