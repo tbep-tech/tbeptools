@@ -170,7 +170,7 @@
 
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>tbeptools</span>)
 
-<span class='no'>tbniref</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/tbeptools/man/anlz_tbnimet.html'>anlz_tbnimet</a></span>(<span class='no'>fimdata</span>) <span class='kw'>%&gt;%</span>
+<span class='no'>tbniref</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_tbnimet.html'>anlz_tbnimet</a></span>(<span class='no'>fimdata</span>) <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='fu'>between</span>(<span class='no'>Year</span>, <span class='fl'>1998</span>, <span class='fl'>2015</span>)) <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>Season</span>, <span class='no'>bay_segment</span>, <span class='no'>NumTaxa</span>, <span class='no'>BenthicTaxa</span>, <span class='no'>TaxaSelect</span>, <span class='no'>NumGuilds</span>, <span class='no'>Shannon</span>) <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>bay_segment</span>, <span class='no'>Season</span>) <span class='kw'>%&gt;%</span>

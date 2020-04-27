@@ -1,8 +1,7 @@
 ---
 title: "Tampa Bay Nekton Index"
 csl: stylefile.csl
-# bibliography: tbnirefs.bib
-author: "Marcus Beck"
+bibliography: tbnirefs.bib
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
@@ -26,21 +25,145 @@ library(tbeptools)
 library(here)
 library(Jabbrev)
 library(bookdown)
+library(patchwork)
 library(magrittr)
 library(knitr)
+library(mapview)
+library(ggplot2)
 
-# bib_scrp(here('vignettes', 'tbni.Rmd'), bib_new = here('vignettes', 'tbnirefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
+bib_scrp(here('vignettes', 'tbni.Rmd'), bib_new = here('vignettes', 'tbnirefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
 
 # spelling::spell_check_files(here("vignettes", "tidalcreeks.Rmd"))
 ```
 
 ## Background
 
-Placeholder
+The Tampa Bay Nekton Index (TBNI) [@tbep0418;@tbep1219]) is a multimetric assessment method that quantifies the ecological health of the nekton community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for Tampa Bay (e.g., water quality report card, Benthic index, etc.). The tbeptools package includes several functions described below to import data required for the index, analyze the data to calculate metrics and index scores, and plot the results to view trends over time.  Each of the functions are described in detail below. 
 
-## Report card
+The TBNI uses catch data from the Florida Fish and Wildlife Conservation Commission (FWC) Fish and Wildlife Research Institute’s (FWRI) [Fisheries-Independent Monitoring (FIM) program](https://geodata.myfwc.com/datasets/68fb6774b58a40a08a6f87959aaa53c4_26).  Catch results from a center-bag haul seine have the longest and most consistent record in the FIM database and were used to develop the TBNI.  These include counts and taxa identification for individuals caught in near shore areas, generally as early recruits, juveniles, and smaller-bodied nekton. All fish and selected invertebrates are identified to the lowest possible taxon (usually species), counted, and a subset are measured. Current protocols were established in 1998 and TBNI estimates are unavailable prior to this date.  
 
-```{r}
+## Data import and included datasets
 
+Data required for calculating TBNI scores can be imported into the current R session using the `read_importfim()` function.  This function downloads the latest FIM file from an FTP site if the data have not already been downloaded to the location specified by the input arguments.
+
+To download the data, first create a character path for the location of the file. If one does not exist, specify a desired location and name for the downloaded file. Here, we want to put the file on the desktop in our home directory and name it `fimdata.csv`. 
+
+```{r, eval = F}
+csv <- '~/Desktop/fimdata.csv'
+fimdata <- read_importfim(csv)
 ```
 
+Running the above code will return the following error: 
+
+```{r, eval = F}
+#> Error in read_importfim(csv) : file.exists(csv) is not TRUE
+```
+
+We get an error message from the function indicating that the file is not found. This makes sense because the file doesn’t exist yet, so we need to tell the function to download the latest file. This is done by changing the `download_latest` argument to `TRUE` (the default is `FALSE`).
+
+```{r, eval = F}
+fimdata <- read_importfim(csv, download_latest = T)
+```
+```{r, eval = F}
+#> File ~/Desktop/fimdata.csv does not exist, replacing with downloaded file...
+
+#> trying URL 'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv' length 11083878 bytes (10.6 MB)
+```
+
+Now we get an indication that the file on the server is being downloaded. When the download is complete, we’ll have the data downloaded and saved to the `fimdata` object in the current R session.
+
+If we try to run the function again after downloading the data from the server, we get the following message. This check is done to make sure that the data are not unnecessarily downloaded if the current matches the file on the server.
+
+```{r, eval = F}
+fimdata <- read_importfim(csv, download_latest = T)
+```
+```{r, eval = F}
+#> File is current..
+```
+
+Every time that tbeptools is used to work with the FIM data, `read_importfim()` should be used to import the data. You will always receive the message `File is current...` if your local file matches the one on the server. However, new data are regularly collected and posted on the server. If `download_latest = TRUE` and your local file is out of date, you will receive the following message:
+
+```{r, eval = F}
+#> Replacing local file with current...
+```
+
+After the data are successfully imported, you can view them from the assigned object:
+
+```{r}
+head(fimdata)
+```
+
+The imported data are formatted for calculating the TBNI.  The columns include a `Reference` for the FIM sampling site, the sampling date, sampling `Zone`, sampling `Grid`, `NODCCODE` as a unique identifier for species, sample year, sample month, total catch as `Total_N`, scientific name, a column indicating if the species is included in the index, and several columns indicating species-specific information required for the metrics. For the final columns, a separate lookup table is provided in the package that is merged with the imported FIM data.  This file, `tbnispp`, can be viewed anytime the package is loaded: 
+
+```{r}
+head(tbnispp)
+```
+
+The `read_importfim()` function also matches the catch data with FIM sampling stations by appropriate bay segments.  This is done with an additional lookup table included in the package.  The `fimstations` table is a simple features object with georeferenced spatial coordinates.    
+
+```{r}
+mapview(fimstations, zcol = 'bay_segment')
+```
+
+The `read_importfim()` function processes the observed data as needed for the TBNI, including merging the rows with the `tbnispp` and `fimstations` data. Once imported, the metrics and scores can be calculated.  
+
+## Calculating metrics and TBNI scores
+
+Metrics and scores for the Tampa Bay Nekton Index can be calculated using two functions.  The `anlz_tbnimet()` function calculates all raw metrics and the `anlz_tbniscr()` function calculates scored metrics and the final TBNI score.  Both functions use the imported and formatted FIM data as input.  
+
+The TBNI includes five metrics that were sensitive to stressor gradients and provide unique information about Nekton community response to environmental conditions.  The metrics include: 
+
+* `NumTaxa`: Species richness
+
+* `BenthicTaxa`: Species richness for benthic taxa
+
+* `TaxaSelect`: Number of "selected" species
+
+* `NumGuilds`: Number of trophic guilds
+
+* `Shannon`: Shannon Diversity (H)
+
+Raw metrics are first calculated from the observed data and then scaled to a standard score from 0 - 10 by accounting for expected relationships to environmental gradients and 5th/95th percentiles of the distributions.  The final TBNI score is the summed average of the scores ranging from 0 - 100.  
+
+The raw metrics, scored metrics, and final TBNI score is returned with the `anlz_tbniscr()` function. 
+
+```{r}
+tbniscr <- anlz_tbniscr(fimdata)
+head(tbniscr)
+```
+
+The five metrics chosen for the TBNI were appropriate for the Tampa Bay dataset and were selected from a larger pool of candidate metrics.  All potential metrics can be calculated using the `anlz_tbnimet()` function.  These metrics can be used in standalone assessments or for developing a Nekton index outside of Tampa Bay.  The argument `all = TRUE` must be used to return all metrics, otherwise only the selected five for the TBNI are returned.
+
+```{r}
+tbnimet <- anlz_tbnimet(fimdata, all = T)
+head(tbnimet)
+```
+
+## Plotting results
+
+The TBNI scores can be viewed as segment averages using the `show_tbniscr()` and `show_tbnimatrix()` functions.  Both plot the annual results averaged for each major bay segment in Tampa Bay, where `show_tbniscr()` creates a line graph of values over time and the `show_tbnimatrix()` plots the results as categorical values in a conventional "stoplight" graphic.  The input to each function is the output from the `anlz_tbniscr()` function.  
+
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscr(tbniscr)
+```
+
+```{r, fig.height = 7, fig.width = 3}
+show_tbnimatrix(tbniscr)
+```
+
+The breakpoints for the categorical outcomes of the TBNI scores shown by the colors in each graph are based on the 33rd and 50th percentiles of the distribution of all TBNI scores calculated for Tampa Bay.  This plotting option is provided for consistency with existing TBEP reporting tools, e.g., the [water quality report card](https://tbeptech.org/TBEP_TECH_PUBS/2020/TBEP_01_20_2019_Decision_Matrix_Update.pdf) returned by `show_matrix()`.  The categorical outcomes serve as management guidelines each year for activities to support environmental resources of the Bay: <span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Stay the Course__</span>, <span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>, and <span style="color:#FF3333; text-shadow: 0 0 3px #333;">__On Alert__</span> [@tbep0105].  
+
+The graphs returned by the plotting functions are `ggplot` objects that can be further modified.  They can be combined below using [patchwork](https://patchwork.data-imaginist.com/) in a single graphic showing the trends over time as both categorical outcomes in the matrix and continuous scores in the bottom plot. 
+
+```{r, fig.height = 7, fig.width = 7}
+p1 <- show_tbnimatrix(tbniscr, txtsz = NULL, rev = TRUE, position = 'bottom') +
+  scale_y_continuous(expand = c(0,0), breaks = c(1998:2018)) +
+  coord_flip() +
+  theme(axis.text.x = element_blank())
+
+p2 <- show_tbniscr(tbniscr)
+
+p1 + p2 + plot_layout(ncol = 1, heights = c(0.3, 1))
+```
+
+# References

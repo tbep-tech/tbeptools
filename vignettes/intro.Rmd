@@ -2,7 +2,6 @@
 title: "Intro to TBEP Tools"
 csl: stylefile.csl
 bibliography: refs.bib
-author: "Marcus Beck, Ben Best"
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
