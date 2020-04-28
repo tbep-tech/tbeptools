@@ -40,7 +40,7 @@ bib_scrp(here('vignettes', 'tbni.Rmd'), bib_new = here('vignettes', 'tbnirefs.bi
 
 The Tampa Bay Nekton Index (TBNI) [@tbep0418;@tbep1219]) is a multimetric assessment method that quantifies the ecological health of the nekton community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for Tampa Bay (e.g., water quality report card, Benthic index, etc.). The tbeptools package includes several functions described below to import data required for the index, analyze the data to calculate metrics and index scores, and plot the results to view trends over time.  Each of the functions are described in detail below. 
 
-The TBNI uses catch data from the Florida Fish and Wildlife Conservation Commission (FWC) Fish and Wildlife Research Institute’s (FWRI) [Fisheries-Independent Monitoring (FIM) program](https://geodata.myfwc.com/datasets/68fb6774b58a40a08a6f87959aaa53c4_26).  Catch results from a center-bag haul seine have the longest and most consistent record in the FIM database and were used to develop the TBNI.  These include counts and taxa identification for individuals caught in near shore areas, generally as early recruits, juveniles, and smaller-bodied nekton. All fish and selected invertebrates are identified to the lowest possible taxon (usually species), counted, and a subset are measured. Current protocols were established in 1998 and TBNI estimates are unavailable prior to this date.  
+The TBNI uses catch data from the Florida Fish and Wildlife Conservation Commission (FWC) Fish and Wildlife Research Institute’s (FWRI) [Fisheries-Independent Monitoring (FIM) program](https://myfwc.com/research/saltwater/reef-fish/monitoring/fim-stratified-random-sampling/).  Catch results from a center-bag seine have the longest and most consistent record in the FIM database and were used to develop the TBNI.  These include counts and taxa identification for individuals caught in near shore areas, generally as early recruits, juveniles, and smaller-bodied nekton. All fish and selected invertebrates are identified to the lowest possible taxon (usually species), counted, and a subset are measured. Current protocols were established in 1998 and TBNI estimates are unavailable prior to this date.  
 
 ## Data import and included datasets
 
@@ -117,7 +117,7 @@ The TBNI includes five metrics that were sensitive to stressor gradients and pro
 
 * `BenthicTaxa`: Species richness for benthic taxa
 
-* `TaxaSelect`: Number of "selected" species
+* `TaxaSelect`: Number of "selected" species (i.e., commercially and/or recreationally important)
 
 * `NumGuilds`: Number of trophic guilds
 
