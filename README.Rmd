@@ -10,7 +10,7 @@ output: github_document
 
 R package for Tampa Bay Estuary Program functions. Please see the [vignette](https://tbep-tech.github.io/tbeptools/articles/intro.html) for a full description.
 
-<img src="man/figures/tbep_logo.png" align="left" width="400"/>
+<img src="man/figures/tbeptoolshex.png" align="left" width="125"/>
 <br></br>
 <br></br>
 <br></br>
