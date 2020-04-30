@@ -1,11 +1,27 @@
 Package: tbeptools
 Title: Utility functions for processing data from TBEP
 Version: 0.0.1
+Date: 2020-04-30
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
       role = c("aut", "cre"),
-      email = "marcusb@sccwrp.org"
+      email = "mbeck@tbep.org"
+    ),
+    person(given = "Meagan",
+      family = "Schrandt",
+      role = c("aut"),
+      email = "Meagan.Schrandt@myfwc.com"
+    ),
+    person(given = "Mike",
+      family = "Wessel",
+      role = c("aut"),
+      email = "mwessel@janickienvironmental.com"
+    ),
+    person(given = "Ed",
+      family = "Sherwood",
+      role = c("aut"),
+      email = "esherwood@tbep.org"
     ),
     person(given = "Ben",
       family = "Best",
