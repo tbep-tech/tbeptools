@@ -29,7 +29,7 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018) {
       n = n()
     ) %>%
     dplyr::ungroup() %>%
-    dplyr::filter(n >= 4) %>%
+    dplyr::filter(n >= 1) %>%
     dplyr::select(-n) %>%
     dplyr::mutate(result = exp(result)) %>%
     spread(masterCode, result)
