@@ -20,12 +20,16 @@ dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
 show_tdlcrk(dat)
 }
 \seealso{
-Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_matrix}}, \code{\link{show_reactable}},
-  \code{\link{show_segmatrix}},
-  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tbnimatrix}},
-  \code{\link{show_tbniscr}}, \code{\link{show_thrplot}},
-  \code{\link{show_wqmatrix}}
+Other visualize: 
+\code{\link{show_boxplot}()},
+\code{\link{show_matrix}()},
+\code{\link{show_reactable}()},
+\code{\link{show_segmatrix}()},
+\code{\link{show_segplotly}()},
+\code{\link{show_sitemap}()},
+\code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscr}()},
+\code{\link{show_thrplot}()},
+\code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

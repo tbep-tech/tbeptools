@@ -34,10 +34,13 @@ epcdata <- read_importwq(xlsx)
 \seealso{
 \code{\link{read_formwq}}, \code{\link{read_importphyto}}
 
-Other read: \code{\link{read_chkdate}},
-  \code{\link{read_dlcurrent}}, \code{\link{read_formfim}},
-  \code{\link{read_formphyto}}, \code{\link{read_formwq}},
-  \code{\link{read_importfim}},
-  \code{\link{read_importphyto}}
+Other read: 
+\code{\link{read_chkdate}()},
+\code{\link{read_dlcurrent}()},
+\code{\link{read_formfim}()},
+\code{\link{read_formphyto}()},
+\code{\link{read_formwq}()},
+\code{\link{read_importfim}()},
+\code{\link{read_importphyto}()}
 }
 \concept{read}

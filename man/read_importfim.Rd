@@ -32,10 +32,13 @@ fimdata <- read_importfim(csv)
 \seealso{
 \code{\link{read_formwq}}, \code{\link{read_importphyto}}
 
-Other read: \code{\link{read_chkdate}},
-  \code{\link{read_dlcurrent}}, \code{\link{read_formfim}},
-  \code{\link{read_formphyto}}, \code{\link{read_formwq}},
-  \code{\link{read_importphyto}},
-  \code{\link{read_importwq}}
+Other read: 
+\code{\link{read_chkdate}()},
+\code{\link{read_dlcurrent}()},
+\code{\link{read_formfim}()},
+\code{\link{read_formphyto}()},
+\code{\link{read_formwq}()},
+\code{\link{read_importphyto}()},
+\code{\link{read_importwq}()}
 }
 \concept{read}

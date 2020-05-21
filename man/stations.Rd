@@ -4,13 +4,15 @@
 \name{stations}
 \alias{stations}
 \title{Bay stations by segment}
-\format{A data frame with 45 rows and 4 variables:
+\format{
+A data frame with 45 rows and 4 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{epchc_station}{num}
   \item{Latitude}{num}
   \item{Longitude}{num}
-}}
+}
+}
 \usage{
 stations
 }
@@ -18,13 +20,20 @@ stations
 Bay stations by segment
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{fimstations}}, \code{\link{iwrraw}},
-  \code{\link{targets}}, \code{\link{tbniref}},
-  \code{\link{tbnispp}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -4,7 +4,8 @@
 \name{tbniref}
 \alias{tbniref}
 \title{Reference conditions for Tampa Bay Nekton Index metrics}
-\format{A data frame with 16 rows and 12 variables:
+\format{
+A data frame with 16 rows and 12 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{Season}{chr}
@@ -18,7 +19,8 @@
   \item{NumGuilds_P95}{num}
   \item{Shannon_P5}{num}
   \item{Shannon_P95}{num}
-}}
+}
+}
 \usage{
 tbniref
 }
@@ -50,13 +52,20 @@ save(tbniref, file = 'data/tbniref.RData', compress = 'xz')
 }
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{fimstations}}, \code{\link{iwrraw}},
-  \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbnispp}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

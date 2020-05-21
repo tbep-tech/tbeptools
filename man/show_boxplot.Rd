@@ -4,10 +4,18 @@
 \alias{show_boxplot}
 \title{Plot monthly chlorophyll or light attenuation values for a segment}
 \usage{
-show_boxplot(epcdata, param = c("chla", "la"), yrsel = NULL,
-  yrrng = c(1975, 2019), ptsz = 0.5, bay_segment = c("OTB", "HB",
-  "MTB", "LTB"), trgs = NULL, family = NA, labelexp = TRUE,
-  txtlab = TRUE)
+show_boxplot(
+  epcdata,
+  param = c("chla", "la"),
+  yrsel = NULL,
+  yrrng = c(1975, 2019),
+  ptsz = 0.5,
+  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  trgs = NULL,
+  family = NA,
+  labelexp = TRUE,
+  txtlab = TRUE
+)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -43,12 +51,16 @@ Points not included in \code{yrsel} are plotted over the box plots using \code{\
 show_boxplot(epcdata, bay_segment = 'OTB')
 }
 \seealso{
-Other visualize: \code{\link{show_matrix}},
-  \code{\link{show_reactable}},
-  \code{\link{show_segmatrix}},
-  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tbnimatrix}},
-  \code{\link{show_tbniscr}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}, \code{\link{show_wqmatrix}}
+Other visualize: 
+\code{\link{show_matrix}()},
+\code{\link{show_reactable}()},
+\code{\link{show_segmatrix}()},
+\code{\link{show_segplotly}()},
+\code{\link{show_sitemap}()},
+\code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscr}()},
+\code{\link{show_tdlcrk}()},
+\code{\link{show_thrplot}()},
+\code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

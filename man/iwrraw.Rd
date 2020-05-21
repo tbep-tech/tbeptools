@@ -4,7 +4,9 @@
 \name{iwrraw}
 \alias{iwrraw}
 \title{FDEP IWR run 56}
-\format{A data frame 1224558 rows and 52 variables}
+\format{
+A data frame 1224558 rows and 52 variables
+}
 \usage{
 iwrraw
 }
@@ -25,13 +27,20 @@ save(iwrraw, file = here('data', 'iwrraw.RData'), compress = 'xz')
 }
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{fimstations}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbniref}},
-  \code{\link{tbnispp}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

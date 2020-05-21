@@ -4,9 +4,16 @@
 \alias{show_segmatrix}
 \title{Create a colorized table for water quality outcomes and exceedances by segment}
 \usage{
-show_segmatrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975,
-  2019), bay_segment = c("OTB", "HB", "MTB", "LTB"), abbrev = FALSE,
-  family = NA, historic = FALSE)
+show_segmatrix(
+  epcdata,
+  txtsz = 3,
+  trgs = NULL,
+  yrrng = c(1975, 2019),
+  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  abbrev = FALSE,
+  family = NA,
+  historic = FALSE
+)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -40,11 +47,16 @@ show_segmatrix(epcdata, bay_segment = 'OTB')
 \seealso{
 \code{\link{show_wqmatrix}}, \code{\link{show_matrix}}
 
-Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_matrix}}, \code{\link{show_reactable}},
-  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tbnimatrix}},
-  \code{\link{show_tbniscr}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}, \code{\link{show_wqmatrix}}
+Other visualize: 
+\code{\link{show_boxplot}()},
+\code{\link{show_matrix}()},
+\code{\link{show_reactable}()},
+\code{\link{show_segplotly}()},
+\code{\link{show_sitemap}()},
+\code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscr}()},
+\code{\link{show_tdlcrk}()},
+\code{\link{show_thrplot}()},
+\code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

@@ -4,9 +4,18 @@
 \alias{show_matrix}
 \title{Create a colorized table for indicator reporting}
 \usage{
-show_matrix(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019),
-  bay_segment = c("OTB", "HB", "MTB", "LTB"), asreact = FALSE,
-  nrows = 10, abbrev = FALSE, family = NA, historic = FALSE)
+show_matrix(
+  epcdata,
+  txtsz = 3,
+  trgs = NULL,
+  yrrng = c(1975, 2019),
+  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  asreact = FALSE,
+  nrows = 10,
+  abbrev = FALSE,
+  family = NA,
+  historic = FALSE
+)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -41,12 +50,16 @@ show_matrix(epcdata)
 \seealso{
 \code{\link{show_wqmatrix}}, \code{\link{show_segmatrix}}
 
-Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_reactable}},
-  \code{\link{show_segmatrix}},
-  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tbnimatrix}},
-  \code{\link{show_tbniscr}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}, \code{\link{show_wqmatrix}}
+Other visualize: 
+\code{\link{show_boxplot}()},
+\code{\link{show_reactable}()},
+\code{\link{show_segmatrix}()},
+\code{\link{show_segplotly}()},
+\code{\link{show_sitemap}()},
+\code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscr}()},
+\code{\link{show_tdlcrk}()},
+\code{\link{show_thrplot}()},
+\code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

@@ -4,8 +4,13 @@
 \alias{show_tdlcrkindic}
 \title{Plotly barplots of tidal creek context indicators}
 \usage{
-show_tdlcrkindic(id, cntdat, yr = 2018, thrsel = FALSE,
-  pal = c("#5C4A42", "#427355", "#004F7E"))
+show_tdlcrkindic(
+  id,
+  cntdat,
+  yr = 2018,
+  thrsel = FALSE,
+  pal = c("#5C4A42", "#427355", "#004F7E")
+)
 }
 \arguments{
 \item{id}{numeric indicating the \code{id} number of the tidal creek to plot}

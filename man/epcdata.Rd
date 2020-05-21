@@ -4,7 +4,8 @@
 \name{epcdata}
 \alias{epcdata}
 \title{All bay data as of 04012020}
-\format{A data frame with 25669 rows and 17 variables:
+\format{
+A data frame with 25669 rows and 17 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{epchc_station}{num}
@@ -23,7 +24,8 @@
   \item{Sal_Top_ppth}{num}
   \item{Sal_Mid_ppth}{num}
   \item{Sal_Bottom_ppth}{num}
-  }}
+  }
+}
 \usage{
 epcdata
 }
@@ -31,13 +33,20 @@ epcdata
 All bay data as of 04012020
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{fimdata}}, \code{\link{fimstations}},
-  \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbniref}},
-  \code{\link{tbnispp}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -4,8 +4,13 @@
 \alias{show_tbniscr}
 \title{Plot Tampa Bay Nekton Index scores over time by bay segment}
 \usage{
-show_tbniscr(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  perc = c(32, 46), alph = 0.3, rev = FALSE)
+show_tbniscr(
+  tbniscr,
+  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  perc = c(32, 46),
+  alph = 0.3,
+  rev = FALSE
+)
 }
 \arguments{
 \item{tbniscr}{input dat frame as returned by \code{\link{anlz_tbniscr}}}
@@ -29,11 +34,16 @@ tbniscr <- anlz_tbniscr(fimdata)
 show_tbniscr(tbniscr)
 }
 \seealso{
-Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_matrix}}, \code{\link{show_reactable}},
-  \code{\link{show_segmatrix}},
-  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tbnimatrix}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}, \code{\link{show_wqmatrix}}
+Other visualize: 
+\code{\link{show_boxplot}()},
+\code{\link{show_matrix}()},
+\code{\link{show_reactable}()},
+\code{\link{show_segmatrix}()},
+\code{\link{show_segplotly}()},
+\code{\link{show_sitemap}()},
+\code{\link{show_tbnimatrix}()},
+\code{\link{show_tdlcrk}()},
+\code{\link{show_thrplot}()},
+\code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

@@ -4,7 +4,8 @@
 \name{fimdata}
 \alias{fimdata}
 \title{FIM data for Tampa Bay Nekton Index current as of 04242020}
-\format{A data frame with 41653 rows and 17 variables:
+\format{
+A data frame with 41653 rows and 17 variables:
 \describe{
   \item{Reference}{chr}
   \item{Sampling_Date}{Date}
@@ -23,7 +24,8 @@
   \item{Feeding_Cat}{chr}
   \item{Feeding_Guild}{chr}
   \item{Selected_Taxa}{chr}
-  }}
+  }
+}
 \usage{
 fimdata
 }
@@ -41,13 +43,20 @@ save(fimdata, file = 'data/fimdata.RData', compress = 'xz')
 }
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimstations}},
-  \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbniref}},
-  \code{\link{tbnispp}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

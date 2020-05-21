@@ -4,7 +4,8 @@
 \name{tbnispp}
 \alias{tbnispp}
 \title{Reference table for Tampa Bay Nekton Index species classifications}
-\format{A data frame with 196 rows and 9 variables:
+\format{
+A data frame with 196 rows and 9 variables:
 \describe{
   \item{NODCCODE}{chr}
   \item{ScientificName}{chr}
@@ -15,7 +16,8 @@
   \item{Feeding_Cat}{chr}
   \item{Feeding_Guild}{chr}
   \item{Selected_Taxa}{chr}
-}}
+}
+}
 \usage{
 tbnispp
 }
@@ -39,13 +41,20 @@ save(tbnispp, file = 'data/tbnispp.RData', compress = 'xz')
 }
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{fimstations}}, \code{\link{iwrraw}},
-  \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbniref}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

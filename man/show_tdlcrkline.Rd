@@ -4,8 +4,12 @@
 \alias{show_tdlcrkline}
 \title{Add a line or annotation to a plotly graph}
 \usage{
-show_tdlcrkline(varin = c("CHLAC", "TN", "chla_tn_ratio", "DO", "tsi",
-  "no23_ratio"), thrsel = FALSE, horiz = TRUE, annotate = FALSE)
+show_tdlcrkline(
+  varin = c("CHLAC", "TN", "chla_tn_ratio", "DO", "tsi", "no23_ratio"),
+  thrsel = FALSE,
+  horiz = TRUE,
+  annotate = FALSE
+)
 }
 \arguments{
 \item{varin}{chr string for the indicator}

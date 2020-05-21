@@ -26,7 +26,8 @@ anlz_tbniscr(fimdata)
 \seealso{
 \code{\link{anlz_tbnimet}}
 
-Other anlz: \code{\link{anlz_tbniave}},
-  \code{\link{anlz_tbnimet}}
+Other anlz: 
+\code{\link{anlz_tbniave}()},
+\code{\link{anlz_tbnimet}()}
 }
 \concept{anlz}

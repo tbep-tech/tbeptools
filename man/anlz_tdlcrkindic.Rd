@@ -27,9 +27,13 @@ dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
 head(dat)
 }
 \seealso{
-Other analyze: \code{\link{anlz_attain}},
-  \code{\link{anlz_avedatsite}}, \code{\link{anlz_avedat}},
-  \code{\link{anlz_iwrraw}}, \code{\link{anlz_refs}},
-  \code{\link{anlz_tdlcrk}}, \code{\link{anlz_yrattain}}
+Other analyze: 
+\code{\link{anlz_attain}()},
+\code{\link{anlz_avedatsite}()},
+\code{\link{anlz_avedat}()},
+\code{\link{anlz_iwrraw}()},
+\code{\link{anlz_refs}()},
+\code{\link{anlz_tdlcrk}()},
+\code{\link{anlz_yrattain}()}
 }
 \concept{analyze}

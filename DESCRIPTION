@@ -71,6 +71,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 URL: https://github.com/tbep-tech/tbeptools
 BugReports: https://github.com/tbep-tech/tbeptools/issues

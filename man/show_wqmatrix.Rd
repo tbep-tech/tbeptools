@@ -4,10 +4,18 @@
 \alias{show_wqmatrix}
 \title{Create a colorized table for chlorophyll or light attenuation exceedances}
 \usage{
-show_wqmatrix(epcdata, param = c("chla", "la"), txtsz = 3,
-  trgs = NULL, yrrng = c(1975, 2019), bay_segment = c("OTB", "HB",
-  "MTB", "LTB"), asreact = FALSE, nrows = 10, abbrev = FALSE,
-  family = NA)
+show_wqmatrix(
+  epcdata,
+  param = c("chla", "la"),
+  txtsz = 3,
+  trgs = NULL,
+  yrrng = c(1975, 2019),
+  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  asreact = FALSE,
+  nrows = 10,
+  abbrev = FALSE,
+  family = NA
+)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -42,12 +50,16 @@ show_wqmatrix(epcdata)
 \seealso{
 \code{\link{show_matrix}}, \code{\link{show_segmatrix}}
 
-Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_matrix}}, \code{\link{show_reactable}},
-  \code{\link{show_segmatrix}},
-  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tbnimatrix}},
-  \code{\link{show_tbniscr}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_thrplot}}
+Other visualize: 
+\code{\link{show_boxplot}()},
+\code{\link{show_matrix}()},
+\code{\link{show_reactable}()},
+\code{\link{show_segmatrix}()},
+\code{\link{show_segplotly}()},
+\code{\link{show_sitemap}()},
+\code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscr}()},
+\code{\link{show_tdlcrk}()},
+\code{\link{show_thrplot}()}
 }
 \concept{visualize}

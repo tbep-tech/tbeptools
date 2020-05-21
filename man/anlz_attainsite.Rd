@@ -4,8 +4,13 @@
 \alias{anlz_attainsite}
 \title{Get site attainments}
 \usage{
-anlz_attainsite(avedatsite, thr = c("chla", "la"), trgs = NULL,
-  yrrng = NULL, thrs = FALSE)
+anlz_attainsite(
+  avedatsite,
+  thr = c("chla", "la"),
+  trgs = NULL,
+  yrrng = NULL,
+  thrs = FALSE
+)
 }
 \arguments{
 \item{avedatsite}{result returned from \code{\link{anlz_avedatsite}}}

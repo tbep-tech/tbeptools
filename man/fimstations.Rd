@@ -4,13 +4,15 @@
 \name{fimstations}
 \alias{fimstations}
 \title{Spatial data object of FIM stations including Tampa Bay segments}
-\format{A simple features \code{\link[sf]{sf}} object (POINT) with 6186 features and 4 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+\format{
+A simple features \code{\link[sf]{sf}} object (POINT) with 6186 features and 4 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
   \item{Reference}{num}
   \item{Zone}{chr}
   \item{Grid}{chr}
   \item{bay_segment}{chr}
-}}
+}
+}
 \usage{
 fimstations
 }
@@ -65,13 +67,20 @@ save(fimstations, file = 'data/fimstations.RData', compress = 'xz')
 }
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{iwrraw}}, \code{\link{stations}},
-  \code{\link{targets}}, \code{\link{tbniref}},
-  \code{\link{tbnispp}}, \code{\link{tbseglines}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

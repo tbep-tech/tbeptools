@@ -4,7 +4,8 @@
 \name{tidalcreeks}
 \alias{tidalcreeks}
 \title{Spatial data object of tidal creeks}
-\format{A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 580 features and 6 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+\format{
+A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 580 features and 6 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
   \item{id}{num}
   \item{wbid}{chr}
@@ -12,7 +13,8 @@
   \item{class}{chr}
   \item{name}{chr}
   \item{Creek_Length_m}{num}
-}}
+}
+}
 \usage{
 tidalcreeks
 }
@@ -52,13 +54,20 @@ save(tidalcreeks, file = here::here('data', 'tidalcreeks.RData'), compress = 'xz
 }
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{fimstations}}, \code{\link{iwrraw}},
-  \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbniref}}, \code{\link{tbnispp}},
-  \code{\link{tbseglines}}, \code{\link{tbseg}},
-  \code{\link{tbshed}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -4,8 +4,7 @@
 \alias{anlz_tbniave}
 \title{Get annual averages of Tampa Bay Nekton Index scores by bay segment}
 \usage{
-anlz_tbniave(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  rev = FALSE)
+anlz_tbniave(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"), rev = FALSE)
 }
 \arguments{
 \item{tbniscr}{input dat frame as returned by \code{\link{anlz_tbniscr}}}
@@ -25,7 +24,8 @@ tbniscr <- anlz_tbniscr(fimdata)
 anlz_tbniave(tbniscr)
 }
 \seealso{
-Other anlz: \code{\link{anlz_tbnimet}},
-  \code{\link{anlz_tbniscr}}
+Other anlz: 
+\code{\link{anlz_tbnimet}()},
+\code{\link{anlz_tbniscr}()}
 }
 \concept{anlz}

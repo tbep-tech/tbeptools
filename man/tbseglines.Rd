@@ -4,7 +4,9 @@
 \name{tbseglines}
 \alias{tbseglines}
 \title{Spatial data object of lines defining major Tampa Bay segments}
-\format{A simple features \code{\link[sf]{sf}} object (LINESTRING) with 3 features and 1 field, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs}
+\format{
+A simple features \code{\link[sf]{sf}} object (LINESTRING) with 3 features and 1 field, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+}
 \usage{
 tbseglines
 }
@@ -16,13 +18,20 @@ library(sf)
 plot(st_geometry(tbseglines))
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{fimstations}}, \code{\link{iwrraw}},
-  \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbniref}}, \code{\link{tbnispp}},
-  \code{\link{tbseg}}, \code{\link{tbshed}},
-  \code{\link{tidalcreeks}}, \code{\link{tidaltargets}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}},
+\code{\link{tidaltargets}}
 }
 \concept{utilities}
 \keyword{datasets}

@@ -29,7 +29,7 @@ These estimates are used in annual compliance assessment reports produced by the
 # this function requires an API key
 # save it to the R environment file (only once)
 # save the key, do only once
-cat("NOAA_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\\n",
+cat("NOAA_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n",
    file=file.path(normalizePath("~/"), ".Renviron"),
    append=TRUE)
 

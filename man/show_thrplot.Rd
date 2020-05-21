@@ -4,9 +4,17 @@
 \alias{show_thrplot}
 \title{Plot annual water quality values, targets, and thresholds for a segment}
 \usage{
-show_thrplot(epcdata, bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  thr = c("chla", "la"), trgs = NULL, yrrng = c(1975, 2019),
-  family = NA, labelexp = TRUE, txtlab = TRUE, thrs = FALSE)
+show_thrplot(
+  epcdata,
+  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  thr = c("chla", "la"),
+  trgs = NULL,
+  yrrng = c(1975, 2019),
+  family = NA,
+  labelexp = TRUE,
+  txtlab = TRUE,
+  thrs = FALSE
+)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -37,12 +45,16 @@ Plot annual water quality values, targets, and thresholds for a bay segment
 show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
 }
 \seealso{
-Other visualize: \code{\link{show_boxplot}},
-  \code{\link{show_matrix}}, \code{\link{show_reactable}},
-  \code{\link{show_segmatrix}},
-  \code{\link{show_segplotly}}, \code{\link{show_sitemap}},
-  \code{\link{show_tbnimatrix}},
-  \code{\link{show_tbniscr}}, \code{\link{show_tdlcrk}},
-  \code{\link{show_wqmatrix}}
+Other visualize: 
+\code{\link{show_boxplot}()},
+\code{\link{show_matrix}()},
+\code{\link{show_reactable}()},
+\code{\link{show_segmatrix}()},
+\code{\link{show_segplotly}()},
+\code{\link{show_sitemap}()},
+\code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscr}()},
+\code{\link{show_tdlcrk}()},
+\code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

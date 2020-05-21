@@ -4,13 +4,15 @@
 \name{tidaltargets}
 \alias{tidaltargets}
 \title{Tidal creek nitrogen targets}
-\format{A data frame with 2 rows and 4 variables:
+\format{
+A data frame with 2 rows and 4 variables:
 \describe{
   \item{region}{chr}
   \item{act}{num}
   \item{investigate}{num}
   \item{caution}{num}
-}}
+}
+}
 \usage{
 tidaltargets
 }
@@ -18,13 +20,20 @@ tidaltargets
 Tidal creek nitrogen targets
 }
 \seealso{
-Other utilities: \code{\link{bsmap}},
-  \code{\link{epcdata}}, \code{\link{fimdata}},
-  \code{\link{fimstations}}, \code{\link{iwrraw}},
-  \code{\link{stations}}, \code{\link{targets}},
-  \code{\link{tbniref}}, \code{\link{tbnispp}},
-  \code{\link{tbseglines}}, \code{\link{tbseg}},
-  \code{\link{tbshed}}, \code{\link{tidalcreeks}}
+Other utilities: 
+\code{\link{bsmap}},
+\code{\link{epcdata}},
+\code{\link{fimdata}},
+\code{\link{fimstations}},
+\code{\link{iwrraw}},
+\code{\link{stations}},
+\code{\link{targets}},
+\code{\link{tbniref}},
+\code{\link{tbnispp}},
+\code{\link{tbseglines}},
+\code{\link{tbseg}},
+\code{\link{tbshed}},
+\code{\link{tidalcreeks}}
 }
 \concept{utilities}
 \keyword{datasets}
