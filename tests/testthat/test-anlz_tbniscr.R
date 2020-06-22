@@ -3,12 +3,13 @@ test_that("Checking anlz_tbniscr", {
   tbniscr <- anlz_tbniscr(fimdata)
 
   result <- tbniscr[nrow(tbniscr), ]
-  expect_equal(result, structure(list(Reference = "TBM2018121305", Year = 2018, Month = 12,
-                                      Season = "Winter", bay_segment = "LTB", TBNI_Score = 14,
-                                      NumTaxa = 1, ScoreNumTaxa = 1, BenthicTaxa = 1, ScoreBenthicTaxa = 1,
-                                      TaxaSelect = 1, ScoreTaxaSelect = 3, NumGuilds = 1, ScoreNumGuilds = 2,
-                                      Shannon = 0, ScoreShannon = 0), row.names = c(NA, -1L), class = c("tbl_df",
-                                                                                                        "tbl", "data.frame")))
+  expect_equal(result, structure(list(Reference = "TBM2019121309", Year = 2019, Month = 12,
+                                      Season = "Winter", bay_segment = "MTB", TBNI_Score = 38,
+                                      NumTaxa = 5, ScoreNumTaxa = 5, BenthicTaxa = 5, ScoreBenthicTaxa = 5,
+                                      TaxaSelect = 0, ScoreTaxaSelect = 0, NumGuilds = 2, ScoreNumGuilds = 5,
+                                      Shannon = 0.727591345714938, ScoreShannon = 4), row.names = c(NA,
+                                                                                                    -1L), class = c("tbl_df", "tbl", "data.frame"))
+  )
 
 })
 
@@ -17,11 +18,12 @@ test_that("Checking anlz_tbniscr, raw = F", {
   tbniscr <- anlz_tbniscr(fimdata, raw = F)
 
   result <- tbniscr[nrow(tbniscr), ]
-  expect_equal(result, structure(list(Reference = "TBM2018121305", Year = 2018, Month = 12,
-                                      Season = "Winter", bay_segment = "LTB", TBNI_Score = 14,
-                                      ScoreNumTaxa = 1, ScoreBenthicTaxa = 1, ScoreTaxaSelect = 3,
-                                      ScoreNumGuilds = 2, ScoreShannon = 0), row.names = c(NA,
-                                                                                           -1L), class = c("tbl_df", "tbl", "data.frame")))
+  expect_equal(result, structure(list(Reference = "TBM2019121309", Year = 2019, Month = 12,
+                                      Season = "Winter", bay_segment = "MTB", TBNI_Score = 38,
+                                      ScoreNumTaxa = 5, ScoreBenthicTaxa = 5, ScoreTaxaSelect = 0,
+                                      ScoreNumGuilds = 5, ScoreShannon = 4), row.names = c(NA,
+                                                                                           -1L), class = c("tbl_df", "tbl", "data.frame"))
+  )
 
 })
 

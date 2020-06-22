@@ -5,10 +5,11 @@ test_that("Checking anlz_tbnimet, tbni metrics only", {
 
   # get last row of data
   result <- dat[nrow(dat), ]
-  expect_equal(result, structure(list(Reference = "TBM2018121305", Year = 2018, Month = 12,
-                                      Season = "Winter", bay_segment = "LTB", NumTaxa = 1, Shannon = 0,
-                                      TaxaSelect = 1, NumGuilds = 1, BenthicTaxa = 1), row.names = c(NA,
-                                                                                                     -1L), class = c("tbl_df", "tbl", "data.frame")))
+  expect_equal(result, structure(list(Reference = "TBM2019121309", Year = 2019, Month = 12,
+                                      Season = "Winter", bay_segment = "MTB", NumTaxa = 5, Shannon = 0.727591345714938,
+                                      TaxaSelect = 0, NumGuilds = 2, BenthicTaxa = 5), row.names = c(NA,
+                                                                                                     -1L), class = c("tbl_df", "tbl", "data.frame"))
+  )
 
 })
 
@@ -19,16 +20,19 @@ test_that("Checking anlz_tbnimet, all metrics", {
 
   # get last row of data
   result <- dat[nrow(dat), ]
-  expect_equal(result, structure(list(Reference = "TBM2018121305", Year = 2018, Month = 12,
-                                      Season = "Winter", bay_segment = "LTB", NumTaxa = 1, NumIndiv = 8,
-                                      Shannon = 0, Simpson = 1, Pielou = NaN, TaxaSelect = 1, NumGuilds = 1,
-                                      TSTaxa = 1, TGTaxa = 0, BenthicTaxa = 1, PelagicTaxa = 0,
-                                      OblTaxa = 0, MSTaxa = 1, ESTaxa = 0, SelectIndiv = 8, Taxa90 = 1,
-                                      TSAbund = 8, TGAbund = 0, BenthicAbund = 8, PelagicAbund = 0,
-                                      OblAbund = 0, ESAbund = 0, MSAbund = 8, Num_LR = 0, PropTG = 0,
-                                      PropTS = 1, PropBenthic = 1, PropPelagic = 0, PropObl = 0,
-                                      PropMS = 1, PropES = 0, PropSelect = 1), row.names = c(NA,
-                                                                                             -1L), class = c("tbl_df", "tbl", "data.frame")))
+  expect_equal(result, structure(list(Reference = "TBM2019121309", Year = 2019, Month = 12,
+                                      Season = "Winter", bay_segment = "MTB", NumTaxa = 5, NumIndiv = 76,
+                                      Shannon = 0.727591345714938, Simpson = 1.61974200785193,
+                                      Pielou = 0.452077921175931, TaxaSelect = 0, NumGuilds = 2,
+                                      TSTaxa = 5, TGTaxa = 0, BenthicTaxa = 5, PelagicTaxa = 0,
+                                      OblTaxa = 5, MSTaxa = 2, ESTaxa = 3, SelectIndiv = 0, Taxa90 = 2,
+                                      TSAbund = 76, TGAbund = 0, BenthicAbund = 76, PelagicAbund = 0,
+                                      OblAbund = 76, ESAbund = 73, MSAbund = 3, Num_LR = 0, PropTG = 0,
+                                      PropTS = 1, PropBenthic = 1, PropPelagic = 0, PropObl = 1,
+                                      PropMS = 0.0394736842105263, PropES = 0.960526315789474,
+                                      PropSelect = 0), row.names = c(NA, -1L), class = c("tbl_df",
+                                                                                         "tbl", "data.frame"))
+  )
 
 })
 

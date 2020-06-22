@@ -140,22 +140,30 @@
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (POINT) with 6186 features and 4 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p><dl>
+    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (POINT) with 6186 features and 4 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p><dl'>
   <dt>Reference</dt><dd><p>num</p></dd>
   <dt>Zone</dt><dd><p>chr</p></dd>
   <dt>Grid</dt><dd><p>chr</p></dd>
   <dt>bay_segment</dt><dd><p>chr</p></dd>
 
 </dl>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other utilities: <code><a href='bsmap.html'>bsmap</a></code>,
-  <code><a href='epcdata.html'>epcdata</a></code>, <code><a href='fimdata.html'>fimdata</a></code>,
-  <code><a href='iwrraw.html'>iwrraw</a></code>, <code><a href='stations.html'>stations</a></code>,
-  <code><a href='targets.html'>targets</a></code>, <code><a href='tbniref.html'>tbniref</a></code>,
-  <code><a href='tbnispp.html'>tbnispp</a></code>, <code><a href='tbseglines.html'>tbseglines</a></code>,
-  <code><a href='tbseg.html'>tbseg</a></code>, <code><a href='tbshed.html'>tbshed</a></code>,
-  <code><a href='tidalcreeks.html'>tidalcreeks</a></code>, <code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
+    <div class='dont-index'><p>Other utilities: 
+<code><a href='bsmap.html'>bsmap</a></code>,
+<code><a href='epcdata.html'>epcdata</a></code>,
+<code><a href='fimdata.html'>fimdata</a></code>,
+<code><a href='iwrraw.html'>iwrraw</a></code>,
+<code><a href='stations.html'>stations</a></code>,
+<code><a href='targets.html'>targets</a></code>,
+<code><a href='tbniref.html'>tbniref</a></code>,
+<code><a href='tbnispp.html'>tbnispp</a></code>,
+<code><a href='tbseglines.html'>tbseglines</a></code>,
+<code><a href='tbseg.html'>tbseg</a></code>,
+<code><a href='tbshed.html'>tbshed</a></code>,
+<code><a href='tidalcreeks.html'>tidalcreeks</a></code>,
+<code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -163,7 +171,7 @@
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)
 
 <span class='co'># Specify input catch file from the script "1_Query_FIM_Database"</span>
-<span class='no'>catch</span> <span class='kw'>&lt;-</span> <span class='st'>"../tbni-proc/data/TampaBay_NektonIndexData_20200406.csv"</span>
+<span class='no'>catch</span> <span class='kw'>&lt;-</span> <span class='st'>"../tbni-proc/data/fimdata_through_2019.csv"</span>
 
 <span class='co'># Read in catch dataset and get list of FIM sites</span>
 <span class='no'>FIMsites</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(<span class='no'>catch</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) <span class='kw'>%&gt;%</span>
@@ -218,7 +226,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
