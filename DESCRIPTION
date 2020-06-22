@@ -1,7 +1,7 @@
 Package: tbeptools
 Title: Utility functions for processing data from TBEP
 Version: 0.0.1
-Date: 2020-04-30
+Date: 2020-06-22
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",

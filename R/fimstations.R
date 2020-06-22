@@ -16,7 +16,7 @@
 #' library(sf)
 #'
 #' # Specify input catch file from the script "1_Query_FIM_Database"
-#' catch <- "../tbni-proc/data/TampaBay_NektonIndexData_20200406.csv"
+#' catch <- "../tbni-proc/data/fimdata_through_2019.csv"
 #'
 #' # Read in catch dataset and get list of FIM sites
 #' FIMsites <- read.csv(catch, header = TRUE, stringsAsFactors = FALSE) %>%
