@@ -4,7 +4,12 @@
 \alias{anlz_tbniave}
 \title{Get annual averages of Tampa Bay Nekton Index scores by bay segment}
 \usage{
-anlz_tbniave(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"), rev = FALSE)
+anlz_tbniave(
+  tbniscr,
+  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  rev = FALSE,
+  perc = c(32, 46)
+)
 }
 \arguments{
 \item{tbniscr}{input dat frame as returned by \code{\link{anlz_tbniscr}}}
@@ -12,6 +17,8 @@ anlz_tbniave(tbniscr, bay_segment = c("OTB", "HB", "MTB", "LTB"), rev = FALSE)
 \item{bay_segment}{chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"}
 
 \item{rev}{logical if factor levels for bay segments are reversed}
+
+\item{perc}{numeric values indicating break points for score categories}
 }
 \value{
 A data frame of annual averages by bay segment

@@ -23,19 +23,8 @@
 #' show_tbnimatrix(tbniscr)
 show_tbnimatrix <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3, txtsz = 3, family = NA, rev = FALSE, position = 'top'){
 
-  # sanity checks
-  stopifnot(length(perc) == 2)
-  stopifnot(perc[1] < perc[2])
-  stopifnot(perc[1] > 22)
-  stopifnot(perc[2] < 58)
-
   # annual average by segment
-  toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev) %>%
-    dplyr::mutate(
-      segment_col = findInterval(Segment_TBNI, perc),
-      segment_col = factor(segment_col, levels = c('0', '1', '2'), labels = c('red', 'yellow', 'green')),
-      segment_col = as.character(segment_col)
-    )
+  toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev, perc = perc)
 
   p <- ggplot2::ggplot(toplo, aes(x = bay_segment, y = Year, fill = segment_col)) +
     ggplot2::geom_tile(colour = 'black', alpha = alph) +
