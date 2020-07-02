@@ -30,7 +30,7 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
   levs <- c("OTB", "HB", "MTB", "LTB")
 
   # annual average by segment
-  toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev)
+  toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev, perc = perc)
 # browser()
   # plot
   p1 <- ggplot2::ggplot(toplo) +

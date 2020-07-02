@@ -20,8 +20,7 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   "Selected_Taxa", "Shannon", "Simpson", "TGAbund", "TGTaxa", "TSAbund", "TSTaxa", "Taxa",
                   "Total_N", "Year", "lnpi", "pi2", "pilnpi", "sumpi2", "sumpilnpi", "Chlorophyll_a uncorr_ugL",
                   "NumGuilds", "NumTaxa", "ScoreBenthicTaxa", "ScoreNumGuilds", "ScoreNumTaxa", "ScoreShannon",
-                  "ScoreTaxaSelect", "TBNI_Score", "TaxaSelect", "fimdat", "tbniref", "Segment_TBNI",
-                  "segment_col"))
+                  "ScoreTaxaSelect", "TBNI_Score", "TaxaSelect", "fimdat", "tbniref", "Segment_TBNI"))
 
 #' @importFrom grDevices rgb
 NULL
