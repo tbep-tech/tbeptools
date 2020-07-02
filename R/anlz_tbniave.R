@@ -40,7 +40,7 @@ anlz_tbniave <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), re
     dplyr::mutate(
       action = findInterval(Segment_TBNI, perc),
       segment_col = factor(action, levels = c('0', '1', '2'), labels = c('red', 'yellow', 'green')),
-      segment_col = as.character(action),
+      segment_col = as.character(segment_col),
       action = factor(action, levels = c('0', '1', '2'), labels = c('On Alert', 'Caution', 'Stay the Course'))
     )
 
