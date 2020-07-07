@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment — show_tbnimatrix • tbeptools</title>
+<title>Creates a plotly matrix from any matrix function intput — show_matrixplotly • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment — show_tbnimatrix" />
-<meta property="og:description" content="Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment" />
+<meta property="og:title" content="Creates a plotly matrix from any matrix function intput — show_matrixplotly" />
+<meta property="og:description" content="Creates a plotly matrix from any matrix function intput" />
 
 
 
@@ -126,89 +126,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_tbnimatrix.R'><code>R/show_tbnimatrix.R</code></a></small>
-    <div class="hidden name"><code>show_tbnimatrix.Rd</code></div>
+    <h1>Creates a plotly matrix from any matrix function intput</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_matrixplotly.R'><code>R/show_matrixplotly.R</code></a></small>
+    <div class="hidden name"><code>show_matrixplotly.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment</p>
+    <p>Creates a plotly matrix from any matrix function intput</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_tbnimatrix</span>(
-  <span class='no'>tbniscr</span>,
-  <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
-  <span class='kw'>perc</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>46</span>),
-  <span class='kw'>alph</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
-  <span class='kw'>txtsz</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>rev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"top"</span>,
-  <span class='kw'>plotly</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>show_matrixplotly</span>(<span class='no'>mat</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>tooltip</span> <span class='kw'>=</span> <span class='st'>"Result"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tbniscr</th>
-      <td><p>input dat frame as returned by <code><a href='anlz_tbniscr.html'>anlz_tbniscr</a></code></p></td>
-    </tr>
-    <tr>
-      <th>bay_segment</th>
-      <td><p>chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"</p></td>
-    </tr>
-    <tr>
-      <th>perc</th>
-      <td><p>numeric values indicating break points for score categories</p></td>
-    </tr>
-    <tr>
-      <th>alph</th>
-      <td><p>numeric indicating alpha value for score category colors</p></td>
-    </tr>
-    <tr>
-      <th>txtsz</th>
-      <td><p>numeric for size of text in the plot</p></td>
+      <th>mat</th>
+      <td><p>input matrix as output from <code><a href='show_matrix.html'>show_matrix</a></code>, <code><a href='show_segmatrix.html'>show_segmatrix</a></code>, <code><a href='show_wqmatrix.html'>show_wqmatrix</a></code>, or <code><a href='show_tbnimatrix.html'>show_tbnimatrix</a></code></p></td>
     </tr>
     <tr>
       <th>family</th>
       <td><p>optional chr string indicating font family for text labels</p></td>
     </tr>
     <tr>
-      <th>rev</th>
-      <td><p>logical if factor levels for bay segments are reversed</p></td>
-    </tr>
-    <tr>
-      <th>position</th>
-      <td><p>chr string of location for bay segment labels, default on top, passed to <code><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></code></p></td>
-    </tr>
-    <tr>
-      <th>plotly</th>
-      <td><p>logical if matrix is created using plotly</p></td>
+      <th>tooltip</th>
+      <td><p>chr string indicating the column name for tooltip</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object showing trends over time in TBNI scores for each bay segment</p>
+    <p>A plotly data object</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: 
 <code><a href='show_boxplot.html'>show_boxplot</a>()</code>,
-<code><a href='show_matrixplotly.html'>show_matrixplotly</a>()</code>,
 <code><a href='show_matrix.html'>show_matrix</a>()</code>,
 <code><a href='show_reactable.html'>show_reactable</a>()</code>,
 <code><a href='show_segmatrix.html'>show_segmatrix</a>()</code>,
 <code><a href='show_segplotly.html'>show_segplotly</a>()</code>,
 <code><a href='show_sitemap.html'>show_sitemap</a>()</code>,
+<code><a href='show_tbnimatrix.html'>show_tbnimatrix</a>()</code>,
 <code><a href='show_tbniscr.html'>show_tbniscr</a>()</code>,
 <code><a href='show_tdlcrk.html'>show_tdlcrk</a>()</code>,
 <code><a href='show_thrplot.html'>show_thrplot</a>()</code>,
 <code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>tbniscr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_tbniscr.html'>anlz_tbniscr</a></span>(<span class='no'>fimdata</span>)
-<span class='fu'>show_tbnimatrix</span>(<span class='no'>tbniscr</span>)</div><div class='img'><img src='show_tbnimatrix-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='show_wqmatrix.html'>show_wqmatrix</a></span>(<span class='no'>epcdata</span>)
+<span class='fu'>show_matrixplotly</span>(<span class='no'>mat</span>)</div><div class='output co'>#&gt; <span class='error'>Error in show_matrixplotly(mat): could not find function "show_matrixplotly"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

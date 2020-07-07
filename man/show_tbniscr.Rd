@@ -36,6 +36,7 @@ show_tbniscr(tbniscr)
 \seealso{
 Other visualize: 
 \code{\link{show_boxplot}()},
+\code{\link{show_matrixplotly}()},
 \code{\link{show_matrix}()},
 \code{\link{show_reactable}()},
 \code{\link{show_segmatrix}()},

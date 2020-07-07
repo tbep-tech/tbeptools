@@ -12,6 +12,7 @@
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #' @param family optional chr string indicating font family for text labels
 #' @param historic logical if historic data are used from 2005 and earlier
+#' @param plotly logical if matrix is created using plotly
 #'
 #' @family visualize
 #'
@@ -27,7 +28,7 @@
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, historic = FALSE){
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -151,6 +152,9 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), 
   if(!is.null(txtsz))
     p <- p +
       geom_text(aes(label = outcometxt), size = txtsz, family = family)
+
+  if(plotly)
+    p <- show_matrixplotly(p, family = family, tooltip = 'Action')
 
   return(p)
 

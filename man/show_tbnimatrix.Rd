@@ -12,7 +12,8 @@ show_tbnimatrix(
   txtsz = 3,
   family = NA,
   rev = FALSE,
-  position = "top"
+  position = "top",
+  plotly = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ show_tbnimatrix(
 \item{rev}{logical if factor levels for bay segments are reversed}
 
 \item{position}{chr string of location for bay segment labels, default on top, passed to \code{\link[ggplot2]{scale_x_discrete}}}
+
+\item{plotly}{logical if matrix is created using plotly}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
@@ -45,6 +48,7 @@ show_tbnimatrix(tbniscr)
 \seealso{
 Other visualize: 
 \code{\link{show_boxplot}()},
+\code{\link{show_matrixplotly}()},
 \code{\link{show_matrix}()},
 \code{\link{show_reactable}()},
 \code{\link{show_segmatrix}()},

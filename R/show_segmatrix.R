@@ -10,6 +10,7 @@
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #' @param family optional chr string indicating font family for text labels
 #' @param historic logical if historic data are used from 2005 and earlier
+#' @param plotly logical if matrix is created using plotly
 #'
 #' @return A static \code{\link[ggplot2]{ggplot}} object is returned
 #'
@@ -27,7 +28,7 @@
 #'
 #' @examples
 #' show_segmatrix(epcdata, bay_segment = 'OTB')
-show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), abbrev = FALSE, family = NA, historic = FALSE) {
+show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE) {
 
   bay_segment <- match.arg(bay_segment)
 
@@ -38,7 +39,7 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
       var = 'outcome',
       bay_segment = as.character(bay_segment)
       ) %>%
-    dplyr::select(bay_segment, yr, var, Result = Action, outcome, outcometxt)
+    dplyr::select(bay_segment, yr, var, Action, outcome, outcometxt)
 
   # chloropyll and la data
   chldat <- show_wqmatrix(epcdata, param = 'chl', bay_segment = bay_segment, trgs = trgs, txtsz = NULL, yrrng = yrrng, abbrev = abbrev)
@@ -46,7 +47,8 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
   ladat <- show_wqmatrix(epcdata, param = 'la', bay_segment = bay_segment, trgs = trgs, txtsz = NULL, yrrng = yrrng, abbrev = abbrev)
   ladat <- ladat$data
   wqdat <- dplyr::bind_rows(chldat, ladat) %>%
-    dplyr::select(-Result) %>%
+    dplyr::rename(Action = Result) %>%
+    dplyr::select(-Action) %>%
     dplyr::mutate(
       var = gsub('^mean\\_', '', var),
       bay_segment = as.character(bay_segment)
@@ -70,7 +72,7 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
       outcome = paste0('Outcome: ', outcome)
     ) %>%
     dplyr::select(-val, -target, -smallex, -thresh) %>%
-    tidyr::unite(Result, c('outcome', 'mags', 'durats'), sep = ', ')
+    tidyr::unite(Action, c('outcome', 'mags', 'durats'), sep = ', ')
 
   # combine wqdat with outcome results and outcome data
   toplo <- wqdat %>%
@@ -80,9 +82,9 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
       var = factor(var, levels = c('la', 'outcome', 'chla'), labels = c('Light attenuation', 'Management outcome', 'Chlorophyll-a'))
     )
 
-  # crate plot
+  # create plot
   p <- ggplot(toplo, aes(x = var, y = yr, fill = outcome)) +
-    geom_tile(aes(group = Result), colour = 'black') +
+    geom_tile(aes(group = Action), colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
     scale_fill_manual(values = c(red = 'red', yellow = 'yellow', green = 'green')) +
@@ -96,6 +98,9 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
   if(!is.null(txtsz))
     p <- p +
       geom_text(aes(label = outcometxt), size = txtsz, family = family)
+
+  if(plotly)
+   p <- show_matrixplotly(p, family = family, tooltip = 'Action')
 
   return(p)
 

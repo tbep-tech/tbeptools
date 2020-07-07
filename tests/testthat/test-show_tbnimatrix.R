@@ -14,3 +14,9 @@ test_that("Checking show_tbnimatrix sanity checks", {
   expect_error(show_tbnimatrix(NULL, perc = c(44, 34)))
 
 })
+
+test_that("Checking show_tbnimatrix plotly class", {
+  tbniscr <- anlz_tbniscr(fimdata)
+  result <- show_tbnimatrix(tbniscr, plotly = T)
+  expect_is(result, 'plotly')
+})

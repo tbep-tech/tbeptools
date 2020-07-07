@@ -38,10 +38,10 @@ anlz_tbniave <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), re
     ) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::mutate(
-      action = findInterval(Segment_TBNI, perc),
-      outcome = factor(action, levels = c('0', '1', '2'), labels = c('red', 'yellow', 'green')),
+      Action = findInterval(Segment_TBNI, perc),
+      outcome = factor(Action, levels = c('0', '1', '2'), labels = c('red', 'yellow', 'green')),
       outcome = as.character(outcome),
-      action = factor(action, levels = c('0', '1', '2'), labels = c('On Alert', 'Caution', 'Stay the Course'))
+      Action = factor(Action, levels = c('0', '1', '2'), labels = c('On Alert', 'Caution', 'Stay the Course'))
     )
 
   return(out)

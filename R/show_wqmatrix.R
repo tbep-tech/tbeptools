@@ -12,6 +12,7 @@
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #' @param family optional chr string indicating font family for text labels
+#' @param plotly logical if matrix is created using plotly
 #'
 #' @family visualize
 #'
@@ -26,7 +27,7 @@
 #'
 #' @examples
 #' show_wqmatrix(epcdata)
-show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA){
+show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, plotly = FALSE){
 
   # sanity checks
   param <- match.arg(param)
@@ -128,6 +129,9 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
   if(!is.null(txtsz))
     p <- p +
       geom_text(aes(label = outcometxt), size = txtsz, family = family)
+
+  if(plotly)
+    p <- show_matrixplotly(p, family = family, tooltip = 'Result')
 
   return(p)
 

@@ -114,6 +114,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
+* `show_matrixplotly()`: Creates a plotly matrix from any matrix function input
+
 * `show_reactable()`: Create a reactable table for reporting matrices, used internally only
 
 * `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
@@ -336,6 +338,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
+* `show_matrixplotly()`: Creates a plotly matrix from any matrix function input
+
 * `show_reactable()`: Create a reactable table for reporting matrices, used internally only
 
 * `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
@@ -472,6 +476,12 @@ Use a sufficiently large number to view the entire matrix.
 
 ```{r}
 show_matrix(epcdata, asreact = TRUE, nrows = 200)
+```
+
+A plotly (interactive, dynamic plot) can be returned by setting the `plotly` argument to `TRUE`. 
+
+```{r, fig.height = 8, fig.width = 3}
+show_matrix(epcdata, plotly = TRUE)
 ```
 
 Results can also be obtained for a selected year. Outcomes can be returned in tabular format with `anlz_yrattain()`.  This table also shows segment averages for chlorophyll and light attenuation, including the associated targets. 

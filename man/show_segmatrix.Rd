@@ -12,7 +12,8 @@ show_segmatrix(
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   abbrev = FALSE,
   family = NA,
-  historic = FALSE
+  historic = FALSE,
+  plotly = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ show_segmatrix(
 \item{family}{optional chr string indicating font family for text labels}
 
 \item{historic}{logical if historic data are used from 2005 and earlier}
+
+\item{plotly}{logical if matrix is created using plotly}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned
@@ -49,6 +52,7 @@ show_segmatrix(epcdata, bay_segment = 'OTB')
 
 Other visualize: 
 \code{\link{show_boxplot}()},
+\code{\link{show_matrixplotly}()},
 \code{\link{show_matrix}()},
 \code{\link{show_reactable}()},
 \code{\link{show_segplotly}()},
