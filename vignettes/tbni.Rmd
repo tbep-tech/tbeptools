@@ -30,6 +30,7 @@ library(magrittr)
 library(knitr)
 library(mapview)
 library(ggplot2)
+library(sf)
 
 st_crs(fimstations) <- 4326
 
