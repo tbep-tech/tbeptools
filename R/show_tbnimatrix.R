@@ -28,7 +28,7 @@ show_tbnimatrix <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
   toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev, perc = perc)
 
   p <- ggplot2::ggplot(toplo, aes(x = bay_segment, y = Year, fill = outcome)) +
-    ggplot2::geom_tile(colour = 'black', alpha = alph) +
+    ggplot2::geom_tile(aes(group = Action), colour = 'black', alpha = alph) +
     ggplot2::scale_y_reverse(expand = c(0, 0), breaks = toplo$Year) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = position) +
     ggplot2::scale_fill_manual(values = c(red = 'red', yellow = 'yellow', green = 'green')) +
