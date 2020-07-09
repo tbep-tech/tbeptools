@@ -33,6 +33,8 @@ Other visualize:
 \code{\link{show_segmatrix}()},
 \code{\link{show_segplotly}()},
 \code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscrall}()},
+\code{\link{show_tbniscrplotly}()},
 \code{\link{show_tbniscr}()},
 \code{\link{show_tdlcrk}()},
 \code{\link{show_thrplot}()},

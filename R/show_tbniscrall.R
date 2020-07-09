@@ -1,9 +1,8 @@
-#' Plot Tampa Bay Nekton Index scores over time by bay segment
+#' Plot Tampa Bay Nekton Index scores over time as average across bay segments
 #'
-#' Plot Tampa Bay Nekton Index scores over time by bay segment
+#' Plot Tampa Bay Nekton Index scores over time as average across bay segments
 #'
 #' @param tbniscr input dat frame as returned by \code{\link{anlz_tbniscr}}
-#' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"
 #' @param perc numeric values indicating break points for score categories
 #' @param alph numeric indicating alpha value for score category colors
 #' @param ylim numeric for y axis limits
@@ -19,8 +18,8 @@
 #'
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
-#' show_tbniscr(tbniscr)
-show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3, ylim = c(22 ,58), rev = FALSE, plotly = FALSE){
+#' show_tbniscrall(tbniscr)
+show_tbniscrall <- function(tbniscr, perc = c(32, 46), alph = 0.3, ylim = c(22 ,58), rev = FALSE, plotly = FALSE){
 
   # sanity checks
   stopifnot(length(perc) == 2)
@@ -28,27 +27,27 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
   stopifnot(perc[1] > 22)
   stopifnot(perc[2] < 58)
 
-  # bay segment factor levels
-  levs <- c("OTB", "HB", "MTB", "LTB")
-
   # annual average by segment
-  toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev, perc = perc)
+  toplo <- tbniscr %>%
+    dplyr::group_by(Year) %>%
+    dplyr::summarize(
+      TBNI_Scoreall = round(mean(TBNI_Score), 0),
+      seval = sd(TBNI_Score) / sqrt(n())
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::rename(TBNI_Score = TBNI_Scoreall)
+
+  secol <- 'grey88'
+  if(plotly)
+    secol <- 'grey60'
 
   # plot
   out <- ggplot2::ggplot(toplo) +
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = 'red') +
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = 'yellow') +
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = 'green') +
-    ggplot2::geom_line(aes(x = Year, y = Segment_TBNI, linetype = bay_segment, color = bay_segment), size = 1.25) +
-    # stat_summary(fun.y=sum, geom="line") +
-    ggplot2::scale_linetype_manual(name = "",
-                          breaks = levs,
-                          labels = levs,
-                          values = c("dashed", "dotdash", "dotted", "solid")) +
-    ggplot2::scale_color_manual(name = "",
-                       breaks = levs,
-                       labels = levs,
-                       values = c("black", "black", "gray40", "gray40")) +
+    geom_ribbon(aes(x = Year, ymin = TBNI_Score - seval, ymax = TBNI_Score + seval), fill = secol) +
+    ggplot2::geom_line(aes(x = Year, y = TBNI_Score), size = 1.25) +
     ggplot2::scale_y_continuous(name = "TBNI score", limits = ylim, breaks = seq(ylim[1], ylim[2], 4)) +
     ggplot2::scale_x_continuous(breaks = seq(1998,max(toplo$Year), 1), expand = c(0.025, 0.025)) +
     ggplot2::geom_hline(aes(yintercept = perc[1]), color = "black", linetype = "dotted") +

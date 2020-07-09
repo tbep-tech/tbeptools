@@ -14,7 +14,7 @@ show_matrixplotly(mat, family = NA, tooltip = "Result")
 \item{tooltip}{chr string indicating the column name for tooltip}
 }
 \value{
-A plotly data object
+A \code{\link[plotly]{plotly}} data object
 }
 \description{
 Creates a plotly matrix from any matrix function input
@@ -32,6 +32,8 @@ Other visualize:
 \code{\link{show_segplotly}()},
 \code{\link{show_sitemap}()},
 \code{\link{show_tbnimatrix}()},
+\code{\link{show_tbniscrall}()},
+\code{\link{show_tbniscrplotly}()},
 \code{\link{show_tbniscr}()},
 \code{\link{show_tdlcrk}()},
 \code{\link{show_thrplot}()},

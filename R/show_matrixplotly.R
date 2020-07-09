@@ -4,7 +4,7 @@
 #' @param family optional chr string indicating font family for text labels
 #' @param tooltip chr string indicating the column name for tooltip
 #'
-#' @return A plotly data object
+#' @return A \code{\link[plotly]{plotly}} data object
 #' @export
 #'
 #' @importFrom magrittr "%>%"
