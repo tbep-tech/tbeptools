@@ -6,7 +6,9 @@
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"
 #' @param perc numeric values indicating break points for score categories
 #' @param alph numeric indicating alpha value for score category colors
+#' @param ylim numeric for y axis limits
 #' @param rev logical if factor levels for bay segments are reversed
+#' @param plotly logical if matrix is created using plotly
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
 #' @export
@@ -18,7 +20,7 @@
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbniscr(tbniscr)
-show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3, rev = FALSE){
+show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3, ylim = c(22 ,58), rev = FALSE, plotly = FALSE){
 
   # sanity checks
   stopifnot(length(perc) == 2)
@@ -31,9 +33,9 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
 
   # annual average by segment
   toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev, perc = perc)
-# browser()
+
   # plot
-  p1 <- ggplot2::ggplot(toplo) +
+  out <- ggplot2::ggplot(toplo) +
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = 'red') +
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = 'yellow') +
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = 'green') +
@@ -47,7 +49,7 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
                        breaks = levs,
                        labels = levs,
                        values = c("black", "black", "gray40", "gray40")) +
-    ggplot2::scale_y_continuous(name = "TBNI score", limits = c(22, 58), breaks = seq(22, 58, 4)) +
+    ggplot2::scale_y_continuous(name = "TBNI score", limits = ylim, breaks = seq(ylim[1], ylim[2], 4)) +
     ggplot2::scale_x_continuous(breaks = seq(1998,max(toplo$Year), 1), expand = c(0.025, 0.025)) +
     ggplot2::geom_hline(aes(yintercept = perc[1]), color = "black", linetype = "dotted") +
     ggplot2::geom_hline(aes(yintercept = perc[2]), color = "black", linetype = "dotted") +
@@ -66,6 +68,29 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
       panel.grid.minor = ggplot2::element_blank()
     )
 
-  return(p1)
+  if(plotly){
+
+    out <- plotly::ggplotly(out)
+
+    xmax <- max(toplo$Year) + 0.55
+
+    shp1 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(255,0,0,", alph, ")"),
+                 x0 = 1997.45, x1 = xmax, y0 = 0, y1 = perc[1])
+
+    shp2 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(255,255,0,", alph, ")"),
+                 x0 = 1997.45, x1 = xmax, y0 = perc[1], y1 = perc[2])
+
+    shp3 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(0,255,0,", alph, ")"),
+                 x0 = 1997.45, x1 = xmax, y0 = perc[2], y1 = 100)
+
+    shapes <- list(shp1, shp2, shp3)
+
+    out[['x']][['layout']][['shapes']] <- c()
+
+    out <- plotly::layout(out, shapes = shapes)
+
+  }
+
+  return(out)
 
 }

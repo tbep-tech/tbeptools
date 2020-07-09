@@ -9,7 +9,8 @@ show_tbniscr(
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   perc = c(32, 46),
   alph = 0.3,
-  rev = FALSE
+  rev = FALSE,
+  plotly = FALSE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ show_tbniscr(
 \item{alph}{numeric indicating alpha value for score category colors}
 
 \item{rev}{logical if factor levels for bay segments are reversed}
+
+\item{plotly}{logical if matrix is created using plotly}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment

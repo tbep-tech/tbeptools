@@ -2,7 +2,7 @@
 % Please edit documentation in R/show_matrixplotly.R
 \name{show_matrixplotly}
 \alias{show_matrixplotly}
-\title{Creates a plotly matrix from any matrix function intput}
+\title{Creates a plotly matrix from any matrix function input}
 \usage{
 show_matrixplotly(mat, family = NA, tooltip = "Result")
 }
@@ -17,7 +17,7 @@ show_matrixplotly(mat, family = NA, tooltip = "Result")
 A plotly data object
 }
 \description{
-Creates a plotly matrix from any matrix function intput
+Creates a plotly matrix from any matrix function input
 }
 \examples{
 mat <- show_wqmatrix(epcdata)

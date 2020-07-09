@@ -6,6 +6,14 @@ test_that("Checking show_tbniscr class", {
 
 })
 
+test_that("Checking show_tbniscr plotly class", {
+
+  tbniscr <- anlz_tbniscr(fimdata)
+  result <- show_tbniscr(tbniscr, plotly = TRUE)
+  expect_is(result, 'plotly')
+
+})
+
 test_that("Checking show_tbniscr sanity checks", {
 
   expect_error(show_tbniscr(NULL, perc = c(20, 54)))
