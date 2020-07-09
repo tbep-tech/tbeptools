@@ -49,7 +49,7 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
                        breaks = levs,
                        labels = levs,
                        values = c("black", "black", "gray40", "gray40")) +
-    ggplot2::scale_y_continuous(name = "TBNI score", limits = ylim, breaks = seq(ylim[1], ylim[2], 4)) +
+    ggplot2::scale_y_continuous(name = "TBNI by bay segment", limits = ylim, breaks = seq(ylim[1], ylim[2], 4)) +
     ggplot2::scale_x_continuous(breaks = seq(1998,max(toplo$Year), 1), expand = c(0.025, 0.025)) +
     ggplot2::geom_hline(aes(yintercept = perc[1]), color = "black", linetype = "dotted") +
     ggplot2::geom_hline(aes(yintercept = perc[2]), color = "black", linetype = "dotted") +
