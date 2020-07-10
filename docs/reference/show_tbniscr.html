@@ -140,7 +140,9 @@
   <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
   <span class='kw'>perc</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>46</span>),
   <span class='kw'>alph</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
-  <span class='kw'>rev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>22</span>, <span class='fl'>58</span>),
+  <span class='kw'>rev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>plotly</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -163,14 +165,22 @@
       <td><p>numeric indicating alpha value for score category colors</p></td>
     </tr>
     <tr>
+      <th>ylim</th>
+      <td><p>numeric for y axis limits</p></td>
+    </tr>
+    <tr>
       <th>rev</th>
       <td><p>logical if factor levels for bay segments are reversed</p></td>
+    </tr>
+    <tr>
+      <th>plotly</th>
+      <td><p>logical if matrix is created using plotly</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object showing trends over time in TBNI scores for each bay segment</p>
+    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object showing trends over time in TBNI scores for each bay segment or a <code><a href='https://rdrr.io/pkg/plotly/man/plotly.html'>plotly</a></code> object if <code>plotly = TRUE</code></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: 
@@ -182,6 +192,8 @@
 <code><a href='show_segplotly.html'>show_segplotly</a>()</code>,
 <code><a href='show_sitemap.html'>show_sitemap</a>()</code>,
 <code><a href='show_tbnimatrix.html'>show_tbnimatrix</a>()</code>,
+<code><a href='show_tbniscrall.html'>show_tbniscrall</a>()</code>,
+<code><a href='show_tbniscrplotly.html'>show_tbniscrplotly</a>()</code>,
 <code><a href='show_tdlcrk.html'>show_tdlcrk</a>()</code>,
 <code><a href='show_thrplot.html'>show_thrplot</a>()</code>,
 <code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>

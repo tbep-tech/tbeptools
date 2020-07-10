@@ -144,14 +144,32 @@ head(tbnimet)
 
 ## Plotting results
 
-The TBNI scores can be viewed as segment averages using the `show_tbniscr()` and `show_tbnimatrix()` functions.  Both plot the annual results averaged for each major bay segment in Tampa Bay, where `show_tbniscr()` creates a line graph of values over time and the `show_tbnimatrix()` plots the results as categorical values in a conventional "stoplight" graphic.  The input to each function is the output from the `anlz_tbniscr()` function.  
+The TBNI scores can be viewed as annual averages using the `show_tbniscr()`, `show_tbniscrall()` and `show_tbnimatrix()` functions.  The `show_tbniscr()` creates a line graph of values over time for each bay segment, whereas the `show_tbniscrall()` function plots an overall average across bay segments over time.  The `show_tbnimatrix()` plots the annual bay segment averages as categorical values in a conventional "stoplight" graphic.  The input to each function is the output from the `anlz_tbniscr()` function.  
 
 ```{r, fig.height = 5, fig.width = 7}
 show_tbniscr(tbniscr)
 ```
 
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscrall(tbniscr)
+```
+
 ```{r, fig.height = 7, fig.width = 3}
 show_tbnimatrix(tbniscr)
+```
+
+Each of the plots can also be produced as [plotly](https://plotly.com/r/) interactive plots by setting `plotly = TRUE` inside ach function. 
+
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscr(tbniscr, plotly = T)
+```
+
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscrall(tbniscr, plotly = T)
+```
+
+```{r, fig.height = 7, fig.width = 3}
+show_tbnimatrix(tbniscr, plotly = T)
 ```
 
 The breakpoints for the categorical outcomes of the TBNI scores shown by the colors in each graph are based on the 33rd and 50th percentiles of the distribution of all TBNI scores calculated for Tampa Bay.  This plotting option is provided for consistency with existing TBEP reporting tools, e.g., the [water quality report card](https://tbeptech.org/TBEP_TECH_PUBS/2020/TBEP_01_20_2019_Decision_Matrix_Update.pdf) returned by `show_matrix()`.  The categorical outcomes serve as management guidelines each year for activities to support environmental resources of the Bay: <span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Stay the Course__</span>, <span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>, and <span style="color:#FF3333; text-shadow: 0 0 3px #333;">__On Alert__</span> [@tbep0105].  

@@ -128,6 +128,10 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_tbniscr()`: Plot Tampa Bay Nekton Index scores over time by bay segment
 
+* `show_tbniscrall()`: Plot Tampa Bay Nekton Index scores over time as average across bay segments
+
+* `show_tbniscrplotly():` Creates a plotly obect for TBNI score plots
+
 * `show_tdlcrk()`: Make a map for tidal creek report card
 
 * `show_tdlcrkindic()`: Plotly barplots of tidal creek context indicators
@@ -351,6 +355,10 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_tbnimatrix()`: Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
 
 * `show_tbniscr()`: Plot Tampa Bay Nekton Index scores over time by bay segment
+
+* `show_tbniscrall()`: Plot Tampa Bay Nekton Index scores over time as average across bay segments
+
+* `show_tbniscrplotly():` Creates a plotly obect for TBNI score plots
 
 * `show_tdlcrk()`: Make a map for tidal creek report card
 
