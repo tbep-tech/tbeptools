@@ -18,14 +18,14 @@ show_tdlcrk <- function(dat) {
   # color palette
   pal_exp <- leaflet::colorFactor(
     palette = c('lightblue', 'green', 'yellow', 'orange', 'coral'),
-    levels = c('No Data', 'Target', 'Caution', 'Investigate', 'Act')
+    levels = c('No Data', 'Monitor', 'Caution', 'Investigate', 'Prioritize')
   )
 
   # join data to tidalcreeks sf
   tomap <- tidalcreeks %>%
     dplyr::inner_join(dat, by = c('id', 'wbid', 'JEI', 'class', 'name')) %>%
     dplyr::mutate(
-      score = factor(score, levels = c('No Data', 'Target', 'Caution', 'Investigate', 'Act'))
+      score = factor(score, levels = c('No Data', 'Monitor', 'Caution', 'Investigate', 'Prioritize'))
     )
 
   out <- mapview::mapview(tomap, homebutton = F) %>%
