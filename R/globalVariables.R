@@ -20,7 +20,8 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   "Selected_Taxa", "Shannon", "Simpson", "TGAbund", "TGTaxa", "TSAbund", "TSTaxa", "Taxa",
                   "Total_N", "Year", "lnpi", "pi2", "pilnpi", "sumpi2", "sumpilnpi", "Chlorophyll_a uncorr_ugL",
                   "NumGuilds", "NumTaxa", "ScoreBenthicTaxa", "ScoreNumGuilds", "ScoreNumTaxa", "ScoreShannon",
-                  "ScoreTaxaSelect", "TBNI_Score", "TaxaSelect", "fimdat", "tbniref", "Segment_TBNI"))
+                  "ScoreTaxaSelect", "TBNI_Score", "TaxaSelect", "fimdat", "tbniref", "Segment_TBNI",
+                  "prioritize", "seval", "TBNI_Scoreall"))
 
 #' @importFrom grDevices rgb
 NULL
@@ -34,7 +35,7 @@ NULL
 #' @importFrom methods .S4methods new
 NULL
 
-#' @importFrom stats ecdf median na.omit
+#' @importFrom stats ecdf median na.omit sd
 NULL
 
 #' @importFrom utils read.csv
