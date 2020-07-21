@@ -28,6 +28,7 @@ Other utilities:
 \code{\link{targets}},
 \code{\link{tbniref}},
 \code{\link{tbnispp}},
+\code{\link{tbsegshed}},
 \code{\link{tbseg}},
 \code{\link{tbshed}},
 \code{\link{tidalcreeks}},

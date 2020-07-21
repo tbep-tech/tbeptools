@@ -51,6 +51,7 @@ Other utilities:
 \code{\link{targets}},
 \code{\link{tbniref}},
 \code{\link{tbseglines}},
+\code{\link{tbsegshed}},
 \code{\link{tbseg}},
 \code{\link{tbshed}},
 \code{\link{tidalcreeks}},

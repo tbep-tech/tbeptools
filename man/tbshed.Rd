@@ -29,6 +29,7 @@ Other utilities:
 \code{\link{tbniref}},
 \code{\link{tbnispp}},
 \code{\link{tbseglines}},
+\code{\link{tbsegshed}},
 \code{\link{tbseg}},
 \code{\link{tidalcreeks}},
 \code{\link{tidaltargets}}
