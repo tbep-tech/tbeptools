@@ -80,6 +80,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `read_importwq()`: Load local water quality file
 
+* `read_trnjsn()`: Import JSON transect data from Water Atlas
+
 #### Analyze
 
 * `anlz_attain()`: Get attainment categories
@@ -106,11 +108,15 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
 
+* `anlz_trnjsn()`: Format transect data from Water Atlas
+
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
 #### Show
 
 * `show_boxplot()`: Plot monthly chlorophyll or light attenuation values for a bay segment
+
+* `show_compplot()`: Make a bar plot for transect training group comparisons
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 
@@ -190,6 +196,8 @@ There are `r lsf.str("package:tbeptools") %>% as.character %>% grepl('^read', .)
 * `read_importphyto()`: Load local phytoplankton cell count file
 
 * `read_importwq()`: Load local water quality file
+
+* `read_trnjsn()`: Import JSON transect data from Water Atlas
 
 The main function for importing water quality data is `read_importwq()`.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.
 
@@ -309,6 +317,8 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
 
+* `anlz_trnjsn()`: Format transect data from Water Atlas
+
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
 The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
@@ -339,6 +349,8 @@ The condition of tidal creeks can be evaluated using the `anlz_tldcrk()` functio
 The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
 
 * `show_boxplot()`: Plot monthly chlorophyll or light attenuation values for a bay segment
+
+* `show_compplot()`: Make a bar plot for transect training group comparisons
 
 * `show_matrix()`: Create a colorized table for indicator reporting
 

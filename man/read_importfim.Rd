@@ -26,7 +26,7 @@ Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonInde
 csv <- '~/Desktop/fimraw.csv'
 
 # load and assign to object
-fimdata <- read_importfim(csv)
+fimdata <- read_importfim(csv, download_latest = TRUE)
 }
 }
 \seealso{

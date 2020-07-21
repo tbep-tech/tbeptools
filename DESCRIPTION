@@ -41,6 +41,7 @@ Imports:
   ggplot2,
   ggrepel,
   ggsn,
+  jsonlite,
   leaflet,
   lubridate,
   magrittr,
@@ -52,6 +53,7 @@ Imports:
   rnoaa,
   sf,
   RCurl,
+  stringr,
   tibble,
   tidyr,
   xml2

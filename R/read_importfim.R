@@ -18,7 +18,7 @@
 #' csv <- '~/Desktop/fimraw.csv'
 #'
 #' # load and assign to object
-#' fimdata <- read_importfim(csv)
+#' fimdata <- read_importfim(csv, download_latest = TRUE)
 #' }
 read_importfim <- function(csv, download_latest = FALSE){
 

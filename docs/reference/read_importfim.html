@@ -98,6 +98,9 @@
       <a href="../articles/intro.html">Intro to TBEP Tools</a>
     </li>
     <li>
+      <a href="../articles/seagrasstransect.html">Seagrass Transect Data</a>
+    </li>
+    <li>
       <a href="../articles/tbni.html">Tampa Bay Nekton Index</a>
     </li>
     <li>
@@ -174,7 +177,7 @@
 <span class='no'>csv</span> <span class='kw'>&lt;-</span> <span class='st'>'~/Desktop/fimraw.csv'</span>
 
 <span class='co'># load and assign to object</span>
-<span class='no'>fimdata</span> <span class='kw'>&lt;-</span> <span class='fu'>read_importfim</span>(<span class='no'>csv</span>)
+<span class='no'>fimdata</span> <span class='kw'>&lt;-</span> <span class='fu'>read_importfim</span>(<span class='no'>csv</span>, <span class='kw'>download_latest</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

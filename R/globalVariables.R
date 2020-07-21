@@ -21,7 +21,10 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   "Total_N", "Year", "lnpi", "pi2", "pilnpi", "sumpi2", "sumpilnpi", "Chlorophyll_a uncorr_ugL",
                   "NumGuilds", "NumTaxa", "ScoreBenthicTaxa", "ScoreNumGuilds", "ScoreNumTaxa", "ScoreShannon",
                   "ScoreTaxaSelect", "TBNI_Score", "TaxaSelect", "fimdat", "tbniref", "Segment_TBNI",
-                  "prioritize", "seval", "TBNI_Scoreall"))
+                  "prioritize", "seval", "TBNI_Scoreall", 'Abundance', 'Agency', 'Savspecies', 'Site', 'aveval',
+                  'matches', 'var', 'sdval', 'val', 'BladeLength_Avg', 'BladeLength_StdDev', 'Crew', 'ID',
+                  'ShootDensity_Avg','ShootDensity_StdDev', 'Species', 'SpeciesAbundance', 'Transect', 'Average',
+                  'Median', 'MonitoringAgency', 'grp', 'sumval', 'sumvar', 'ObservationDate'))
 
 #' @importFrom grDevices rgb
 NULL

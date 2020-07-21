@@ -1,0 +1,45 @@
+---
+title: "Seagrass Transect Data"
+csl: stylefile.csl
+# bibliography: seagrasstransect.bib
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Seagrass Transect Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = F, warning = F, 
+  fig.align = 'center'
+)
+```
+
+```{r setup}
+library(tbeptools)
+
+# bib_scrp(here('vignettes', 'seagrasstransect.Rmd'), bib_new = here('vignettes', 'seagrasstransect.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
+
+# spelling::spell_check_files(here("vignettes", "tidalcreeks.Rmd"))
+```
+
+Use the functions to import data from the API and create a summary plot. 
+
+```{r, fig.height = 7, fig.width = 9}
+# import JSON
+trndat <- read_trnjsn(training = TRUE)
+
+# format JSON data for plotting
+trndat <- anlz_trnjsn(trndat, training = TRUE)
+
+# plot
+show_compplot(trndat, site = '1', species = 'Halodule', varplo = 'Abundance',
+              base_size = 12)
+```
+
