@@ -18,7 +18,7 @@ anlz_trnjsn <- function(trnjsn, training = FALSE){
       tibble::as_tibble() %>%
       dplyr::rename(IDall = ID) %>%
       tidyr::unnest('Observation') %>%
-      dplyr::select(Crew, MonitoringAgency, Site, Savspecies = Species, Abundance = SpeciesAbundance,
+      dplyr::select(Crew, MonitoringAgency, Site, Depth, Savspecies = Species, Abundance = SpeciesAbundance,
                     matches('BladeLength_|ShootDensity_')) %>%
       dplyr::select(-BladeLength_Avg, -BladeLength_StdDev, -ShootDensity_Avg, -ShootDensity_StdDev) %>%
       dplyr::mutate(
@@ -29,7 +29,7 @@ anlz_trnjsn <- function(trnjsn, training = FALSE){
         ),
         Abundance = as.numeric(Abundance)
       ) %>%
-      tidyr::gather('var', 'val', -Crew, -MonitoringAgency, -Site, -Savspecies) %>%
+      tidyr::gather('var', 'val', -Crew, -MonitoringAgency, -Site, -Depth, -Savspecies) %>%
       dplyr::mutate(
         rep = gsub('.*([0-9])$', '\\1', var),
         rep = gsub('^Abundance$', '1', rep),
@@ -43,7 +43,7 @@ anlz_trnjsn <- function(trnjsn, training = FALSE){
         val = as.numeric(val),
         Site = as.character(Site)
       ) %>%
-      dplyr::group_by(Crew, MonitoringAgency, Site, Savspecies, var) %>%
+      dplyr::group_by(Crew, MonitoringAgency, Site, Depth, Savspecies, var) %>%
       dplyr::summarise(
         aveval = mean(val, na.rm = T),
         sdval = sd(val, na.rm = T)
@@ -56,7 +56,7 @@ anlz_trnjsn <- function(trnjsn, training = FALSE){
       tibble::as_tibble() %>%
       dplyr::rename(IDall = ID) %>%
       tidyr::unnest('Observation') %>%
-      dplyr::select(Crew, MonitoringAgency, Date = ObservationDate, Transect, Site, Savspecies = Species, Abundance = SpeciesAbundance,
+      dplyr::select(Crew, MonitoringAgency, Date = ObservationDate, Transect, Site, Depth, Savspecies = Species, Abundance = SpeciesAbundance,
                     matches('BladeLength_|ShootDensity_')) %>%
       dplyr::select(-BladeLength_Avg, -BladeLength_StdDev, -ShootDensity_Avg, -ShootDensity_StdDev) %>%
       dplyr::mutate(
@@ -70,7 +70,7 @@ anlz_trnjsn <- function(trnjsn, training = FALSE){
         Date = lubridate::ymd_hms(Date),
         Date = lubridate::date(Date)
       ) %>%
-      tidyr::gather('var', 'val', -Crew, -Date, -MonitoringAgency, -Transect, -Site, -Savspecies) %>%
+      tidyr::gather('var', 'val', -Crew, -Date, -MonitoringAgency, -Transect, -Site, -Depth, -Savspecies) %>%
       dplyr::mutate(
         rep = gsub('.*([0-9])$', '\\1', var),
         rep = gsub('^Abundance$', '1', rep),
@@ -84,7 +84,7 @@ anlz_trnjsn <- function(trnjsn, training = FALSE){
         val = as.numeric(val),
         Site = as.character(Site)
       ) %>%
-      dplyr::group_by(Crew, MonitoringAgency, Date, Transect, Site, Savspecies, var) %>%
+      dplyr::group_by(Crew, MonitoringAgency, Date, Transect, Site, Depth, Savspecies, var) %>%
       dplyr::summarise(
         aveval = mean(val, na.rm = T),
         sdval = sd(val, na.rm = T)
