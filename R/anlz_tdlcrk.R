@@ -108,7 +108,7 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
         T ~ score
       ),
       score = dplyr::case_when(
-        score == 'Investigate' & class %in% c('3M', '2') & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 1) ~ 'Caution',
+        score == 'Investigate' & class %in% c('3M', '2') & `4` < 1 & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 1) ~ 'Caution',
         T ~ score
       )
     ) %>%
