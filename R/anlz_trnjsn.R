@@ -12,7 +12,7 @@
 #' trnjsn <- read_trnjsn(training = TRUE)
 #' anlz_trnjsn(trnjsn, training = TRUE)
 anlz_trnjsn <- function(trnjsn, training = FALSE){
-browser()
+
   if(training)
     out <- trnjsn %>%
       tibble::as_tibble() %>%
