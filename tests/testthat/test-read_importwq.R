@@ -6,6 +6,6 @@ test_that("Checking read_importwq", {
 
   # check if number of columns is equal to 11
   result <- ncol(epcdata)
-  expect_equal(result, 17)
+  expect_equal(result, 19)
 
 })
