@@ -24,7 +24,7 @@ Secchi data VOB depths or secchis < 0.5 ft from bottom are assigned \code{NA}, f
 xlsx <- '~/Desktop/2018_Results_Updated.xls'
 
 # load and assign to object
-epcdata <- read_importwq(xlsx)
+epcdata <- read_importwq(xlsx, download_latest = T)
 }
 }
 \seealso{

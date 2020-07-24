@@ -19,7 +19,7 @@
 #' xlsx <- '~/Desktop/2018_Results_Updated.xls'
 #'
 #' # load and assign to object
-#' epcdata <- read_importwq(xlsx)
+#' epcdata <- read_importwq(xlsx, download_latest = T)
 #' }
 read_formwq <- function(datin){
 
@@ -38,12 +38,13 @@ read_formwq <- function(datin){
         T ~ sd_m
         ),
       chla = suppressWarnings(as.numeric(`Chlorophyll_a uncorr_ugL`)),
+      tn = suppressWarnings(as.numeric(`Total_Nitrogen_mgL`)),
       yr = lubridate::year(SampleTime),
       mo = lubridate::month(SampleTime)
       ) %>%
     dplyr::inner_join(stations, by = 'epchc_station') %>%
     dplyr::select(bay_segment, epchc_station, SampleTime, yr, mo, Latitude, Longitude, SampleTime,
-                  Total_Depth_m, Sample_Depth_m, sd_m, sd_raw_m = Secchi_Depth_m, sd_q = Secchi_Q, chla, chla_q = `Chlorophyll_a uncorr_Q`, Sal_Top_ppth, Sal_Mid_ppth,
+                  Total_Depth_m, Sample_Depth_m, tn, tn_q = `Total_Nitrogen_Q`, sd_m, sd_raw_m = Secchi_Depth_m, sd_q = Secchi_Q, chla, chla_q = `Chlorophyll_a uncorr_Q`, Sal_Top_ppth, Sal_Mid_ppth,
                   Sal_Bottom_ppth
     )
 
