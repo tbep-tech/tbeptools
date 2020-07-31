@@ -1,8 +1,8 @@
-#' All bay data as of 07242020
+#' All bay data as of 07312020
 #'
-#' All bay data as of 07242020
+#' All bay data as of 07312020
 #'
-#' @format A data frame with 25804 rows and 19 variables:
+#' @format A data frame with 25804 rows and 22 variables:
 #' \describe{
 #'   \item{bay_segment}{chr}
 #'   \item{epchc_station}{num}
@@ -23,6 +23,9 @@
 #'   \item{Sal_Top_ppth}{num}
 #'   \item{Sal_Mid_ppth}{num}
 #'   \item{Sal_Bottom_ppth}{num}
+#'   \item{Temp_Water_Top_degC}{num}
+#'   \item{Temp_Water_Mid_degC}{num}
+#'   \item{Temp_Water_Bottom_degC}{num}
 #'   }
 #'
 #' @family utilities
