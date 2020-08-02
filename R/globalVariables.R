@@ -24,7 +24,9 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   "prioritize", "seval", "TBNI_Scoreall", 'Abundance', 'Agency', 'Savspecies', 'Site', 'aveval',
                   'matches', 'var', 'sdval', 'val', 'BladeLength_Avg', 'BladeLength_StdDev', 'Crew', 'ID',
                   'ShootDensity_Avg','ShootDensity_StdDev', 'Species', 'SpeciesAbundance', 'Transect', 'Average',
-                  'Median', 'MonitoringAgency', 'grp', 'sumval', 'sumvar', 'ObservationDate'))
+                  'Median', 'MonitoringAgency', 'grp', 'sumval', 'sumvar', 'ObservationDate', 'Depth',
+                  'SeagrassEdge', 'Temp_Water_Bottom_degC', 'Temp_Water_Mid_degC', 'Temp_Water_Top_degC',
+                  'Total_Nitrogen_Q', 'Total_Nitrogen_mgL', 'tn'))
 
 #' @importFrom grDevices rgb
 NULL
