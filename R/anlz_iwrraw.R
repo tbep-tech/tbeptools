@@ -24,6 +24,7 @@ anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2018) {
   out <- iwrraw %>%
     dplyr::filter(wbid %in% unique(tidalcreeks$wbid) & JEI %in% unique(tidalcreeks$JEI)) %>%
     dplyr::filter(year > yr - 11) %>%
+    dplyr::filter(year < yr) %>%
     dplyr::filter(masterCode %in% mcodes) %>%
     dplyr::filter(!is.na(result) & result > 0) %>%
     tidyr::unite('date', month, day, year, remove = F, sep = '-') %>%
