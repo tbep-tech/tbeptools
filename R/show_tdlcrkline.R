@@ -31,7 +31,7 @@ show_tdlcrkline <- function(varin = c('CHLAC', 'TN', 'chla_tn_ratio', 'DO', 'tsi
       TN = 1.1,
       chla_tn_ratio = 15,
       DO = 2,
-      tsi = c(50, 60), # lake, estuary
+      tsi = c(50, 60), # estuary, lake
       no23_ratio = 1
     )
 
@@ -41,7 +41,7 @@ show_tdlcrkline <- function(varin = c('CHLAC', 'TN', 'chla_tn_ratio', 'DO', 'tsi
       TN = '',
       chla_tn_ratio = '',
       DO = '',
-      tsi = c('lake', 'estuary'), # lake, estuary
+      tsi = c('estuary', 'lake'), # estuary, lake
       no23_ratio = ''
     )
 
