@@ -18,9 +18,9 @@ Seagrass transect locations
 library(sf)
 libryar(dplyr)
 
-trnlns <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/transect_routes.shp') \%>\% 
-   st_transform(crs = 4326) \%>\% 
-   dplyr::filter(!as.character(Site) \%in\% c('S8T1', 'S8T2', 'S8T3'))
+trnlns <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/transect_routes.shp') \%>\%
+   st_transform(crs = 4326) \%>\%
+   dplyr::filter(!as.character(Site) \%in\% c('S8T1', 'S8T2', 'S8T3', 'S3T2', 'S4T12'))
 
 save(trnlns, file = 'data/trnlns.RData', compress = 'xz')
 }
