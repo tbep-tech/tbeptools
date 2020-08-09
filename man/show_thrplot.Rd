@@ -13,7 +13,8 @@ show_thrplot(
   family = NA,
   labelexp = TRUE,
   txtlab = TRUE,
-  thrs = FALSE
+  thrs = FALSE,
+  partialyr = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ show_thrplot(
 \item{txtlab}{logical indicating if a text label for the target value is shown in the plot}
 
 \item{thrs}{logical indicating if reference lines are shown only for the regulatory threshold}
+
+\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object

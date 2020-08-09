@@ -15,7 +15,8 @@ show_matrix(
   abbrev = FALSE,
   family = NA,
   historic = FALSE,
-  plotly = FALSE
+  plotly = FALSE,
+  partialyr = FALSE
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ show_matrix(
 \item{historic}{logical if historic data are used from 2005 and earlier}
 
 \item{plotly}{logical if matrix is created using plotly}
+
+\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned

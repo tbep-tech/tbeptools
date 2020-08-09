@@ -13,6 +13,7 @@
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
+#' @param logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
 #' @family visualize
 #'
@@ -27,7 +28,8 @@
 #'
 #' @examples
 #' show_wqmatrix(epcdata)
-show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, plotly = FALSE){
+show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
+                          asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, plotly = FALSE, partialyr = FALSE){
 
   # sanity checks
   param <- match.arg(param)
@@ -37,7 +39,7 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
     trgs <- targets
 
   # process data to plot
-  avedat <- anlz_avedat(epcdata) %>%
+  avedat <- anlz_avedat(epcdata, partialyr = partialyr) %>%
     .$ann
   toplo <- avedat %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%

@@ -4,12 +4,14 @@
 \alias{anlz_yrattain}
 \title{Get attainment categories for a chosen year}
 \usage{
-anlz_yrattain(epcdata, yrsel)
+anlz_yrattain(epcdata, yrsel, partialyr = FALSE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
 
 \item{yrsel}{numeric indicating chosen year}
+
+\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 }
 \value{
 A \code{data.frame} for the chosen year and all bay segments showing the bay segment averages for chloropyll concentration, light attenuations, segment targets, and attainment categories.

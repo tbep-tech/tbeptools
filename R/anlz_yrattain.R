@@ -4,6 +4,8 @@
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param yrsel numeric indicating chosen year
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#'
 #'
 #' @return A \code{data.frame} for the chosen year and all bay segments showing the bay segment averages for chloropyll concentration, light attenuations, segment targets, and attainment categories.
 #'
@@ -15,11 +17,11 @@
 #'
 #' # defaults to current year
 #' anlz_yrattain(epcdata, yrsel = 2019)
-anlz_yrattain <- function(epcdata, yrsel){
+anlz_yrattain <- function(epcdata, yrsel, partialyr = FALSE){
 
   # segment averages
   segave <- epcdata %>%
-    anlz_avedat
+    anlz_avedat(partialyr = partialyr)
 
   # sanity check
   if(!yrsel %in% epcdata$yr)

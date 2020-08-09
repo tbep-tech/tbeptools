@@ -14,7 +14,8 @@ show_boxplot(
   trgs = NULL,
   family = NA,
   labelexp = TRUE,
-  txtlab = TRUE
+  txtlab = TRUE,
+  partialyr = FALSE
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ show_boxplot(
 \item{labelexp}{logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}}
 
 \item{txtlab}{logical indicating if a text label for the target value is shown in the plot}
+
+\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object

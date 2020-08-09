@@ -12,6 +12,7 @@
 #' @param family optional chr string indicating font family for text labels
 #' @param labelexp logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}
 #' @param txtlab logical indicating if a text label for the target value is shown in the plot
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
 #' @family visualize
 #'
@@ -28,7 +29,8 @@
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
-show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng = c(1975, 2019), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE){
+show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng = c(1975, 2019), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
+                         trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE, partialyr = FALSE){
 
   # parameter
   param <- match.arg(param)
@@ -45,7 +47,7 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
     yrsel <- max(yrrng)
 
   # monthly averages
-  aves <- anlz_avedat(epcdata) %>%
+  aves <- anlz_avedat(epcdata, partialyr = partialyr) %>%
     .$'mos' %>%
     dplyr::filter(var %in% !!paste0('mean_', param)) %>%
     dplyr::filter(bay_segment == !!bay_segment) %>%

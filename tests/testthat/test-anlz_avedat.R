@@ -1,5 +1,5 @@
 test_that("Checking anlz_avedat months", {
-  result <- anlz_avedat(epcdata) %>%
+  result <- anlz_avedat(epcdata, yrrng = c(1974, 2019), partialyr = FALSE) %>%
     .[['mos']] %>%
     pull(val) %>%
     .[(length(.) - 4):length(.)]
@@ -7,7 +7,7 @@ test_that("Checking anlz_avedat months", {
                  0.691785714285714), result)
 })
 test_that("Checking anlz_avedat years", {
-  result <- anlz_avedat(epcdata) %>%
+  result <- anlz_avedat(epcdata, yrrng = c(1974, 2019), partialyr = FALSE) %>%
     .[['ann']] %>%
     pull(val) %>%
     .[(length(.) - 4):length(.)]

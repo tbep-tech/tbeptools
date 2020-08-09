@@ -3,9 +3,7 @@
 #' Estimate annual means for chlorophyll and secchi data
 #'
 #' @param epcdata \code{data.frame} formatted from \code{read_importwq}
-#' @param yrrng numeric vector indicating min, max years to include
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
-#'
 #'
 #' @return Mean estimates for chlorophyll and secchi
 #'
@@ -19,7 +17,7 @@
 #' @examples
 #' # view average estimates
 #' anlz_avedat(epcdata)
-anlz_avedat <- function(epcdata, yrrng, partialyr){
+anlz_avedat <- function(epcdata, partialyr = FALSE){
 
   # year month averages
   # long format, separate bay_segment for MTB into sub segs
@@ -27,6 +25,7 @@ anlz_avedat <- function(epcdata, yrrng, partialyr){
   moout <- epcdata %>%
     dplyr::select(yr, mo, bay_segment, epchc_station, chla, sd_m) %>%
     tidyr::gather('var', 'val', chla, sd_m) %>%
+    tidyr::drop_na() %>%
     dplyr::mutate(
       bay_segment = dplyr::case_when(
         epchc_station %in% c(9, 11, 81, 84) ~ "MT1",
@@ -36,8 +35,9 @@ anlz_avedat <- function(epcdata, yrrng, partialyr){
       )
     ) %>%
     dplyr::group_by(bay_segment, yr, mo, var) %>%
-    dplyr::summarise(val = mean(val, na.rm = TRUE)) %>%
+    dplyr::summarise(val = mean(val)) %>%
     dplyr::ungroup() %>%
+    drop_na() %>%
     dplyr::mutate(
       val = dplyr::case_when(
         bay_segment %in% "MT1" ~ val * 2108.7,
@@ -52,14 +52,78 @@ anlz_avedat <- function(epcdata, yrrng, partialyr){
     ) %>%
     dplyr::group_by(bay_segment, yr, mo, var) %>%
     dplyr::summarise(
-      val = sum(val, na.rm = T)
+      val = sum(val)
     ) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(
       val = dplyr::case_when(
         bay_segment %in% 'MTB' ~ val / 4125.2,
         TRUE ~ val
-      ),
+      )
+    ) %>%
+    dplyr::filter(!is.na(val)) %>%
+    dplyr::filter(!is.infinite(val)) %>%
+    dplyr::arrange(var, yr, mo, bay_segment)
+
+  # add partial year
+  if(partialyr){
+
+    # years to averge, last five complete
+    maxyr <- max(moout$yr)
+    yrfl <- c(maxyr - 5, maxyr - 1)
+
+    # months to fill
+    mofl <- moout %>%
+      dplyr::filter(yr %in% maxyr) %>%
+      dplyr::pull(mo) %>%
+      unique %>%
+      setdiff(1:12, .)
+
+    # month averages
+    moave <- moout %>%
+      dplyr::filter(yr >= yrfl[1] & yr <= yrfl[2]) %>%
+      dplyr::group_by(bay_segment, mo, var) %>%
+      summarise(val = mean(val, na.rm = TRUE)) %>%
+      dplyr::filter(mo %in% mofl) %>%
+      dplyr::mutate(yr = maxyr)
+
+    # join missing months to
+    moout <- moout %>%
+      dplyr::bind_rows(moave) %>%
+      dplyr::arrange(var, yr, mo, bay_segment)
+
+  }
+
+  # annual data
+  anout <- moout %>%
+    dplyr::group_by(yr, bay_segment, var) %>%
+    dplyr::summarise(val = mean(val)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(
+      var = dplyr::case_when(
+        var == 'chla' ~ 'mean_chla',
+        TRUE ~ var
+      )
+    ) %>%
+    tidyr::spread('var', 'val') %>%
+    dplyr::mutate(
+      mean_sdm = sd_m,
+      mean_la = dplyr::case_when(
+        bay_segment %in% "OTB" ~ 1.49 / mean_sdm,
+        bay_segment %in% "HB" ~ 1.61 / mean_sdm,
+        bay_segment %in% "MTB" ~ 1.49 / mean_sdm,
+        bay_segment %in% "LTB" ~ 1.84 / mean_sdm,
+        TRUE ~ mean_sdm
+      )
+    ) %>%
+    tidyr::gather('var', 'val', mean_chla, mean_la, mean_sdm) %>%
+    dplyr::filter(!is.na(val)) %>%
+    dplyr::filter(!is.infinite(val)) %>%
+    dplyr::arrange(var, yr, bay_segment)
+
+  # mo dat to light attenuation
+  moout <- moout %>%
+    dplyr::mutate(
       var = dplyr::case_when(
         var == 'chla' ~ 'mean_chla',
         var == 'sd_m' ~ 'mean_la'
@@ -71,19 +135,7 @@ anlz_avedat <- function(epcdata, yrrng, partialyr){
         bay_segment %in% "LTB" & var == 'mean_la' ~ 1.84 / val,
         TRUE ~ val
       )
-    ) %>%
-    dplyr::filter(!is.na(val)) %>%
-    dplyr::filter(!is.infinite(val)) %>%
-    dplyr::arrange(var, yr, mo, bay_segment)
-
-  # annual data
-  anout <- moout %>%
-    dplyr::group_by(yr, bay_segment, var) %>%
-    dplyr::summarise(val = mean(val, na.rm = TRUE)) %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(!is.na(val)) %>%
-    dplyr::filter(!is.infinite(val)) %>%
-    dplyr::arrange(var, yr, bay_segment)
+  )
 
   # combine all
   out <- list(

@@ -13,6 +13,7 @@
 #' @param family optional chr string indicating font family for text labels
 #' @param historic logical if historic data are used from 2005 and earlier
 #' @param plotly logical if matrix is created using plotly
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
 #' @family visualize
 #'
@@ -28,14 +29,15 @@
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE){
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE,
+                        nrows = 10, abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
     trgs <- targets
 
   # process data to plot
-  avedat <- anlz_avedat(epcdata)
+  avedat <- anlz_avedat(epcdata, partialyr = partialyr)
   toplo <- anlz_attain(avedat, trgs = trgs) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%

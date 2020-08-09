@@ -11,6 +11,7 @@
 #' @param labelexp logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}
 #' @param txtlab logical indicating if a text label for the target value is shown in the plot
 #' @param thrs logical indicating if reference lines are shown only for the regulatory threshold
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
 #' @family visualize
 #'
@@ -23,7 +24,8 @@
 #'
 #' @examples
 #' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
-show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2019), family = NA, labelexp = TRUE, txtlab = TRUE, thrs = FALSE){
+show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2019),
+                         family = NA, labelexp = TRUE, txtlab = TRUE, thrs = FALSE, partialyr = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
@@ -43,7 +45,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   cols <- c("Annual Mean"="red", "Management Target"="blue", "+1 se (small exceedance)"="blue", "+2 se (large exceedance)"="blue")
 
   # averages
-  aves <- anlz_avedat(epcdata)
+  aves <- anlz_avedat(epcdata, partialyr = partialyr)
 
   # axis label
   if(labelexp)

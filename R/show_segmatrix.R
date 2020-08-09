@@ -11,6 +11,8 @@
 #' @param family optional chr string indicating font family for text labels
 #' @param historic logical if historic data are used from 2005 and earlier
 #' @param plotly logical if matrix is created using plotly
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#'
 #'
 #' @return A static \code{\link[ggplot2]{ggplot}} object is returned
 #'
@@ -28,7 +30,8 @@
 #'
 #' @examples
 #' show_segmatrix(epcdata, bay_segment = 'OTB')
-show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE) {
+show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
+                           abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE) {
 
   bay_segment <- match.arg(bay_segment)
 
@@ -55,7 +58,7 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
     )
 
   # outcome results for chlorophyll and la, e.g., large/small, short/long exceedances
-  vals <- anlz_avedat(epcdata) %>%
+  vals <- anlz_avedat(epcdata, partialyr = partialyr) %>%
     anlz_attain(magdurout = T) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
