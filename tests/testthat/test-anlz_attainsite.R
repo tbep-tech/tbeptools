@@ -3,7 +3,7 @@ test_that("Checking anlz_attainsite", {
     anlz_attainsite %>%
     pull(met) %>%
     .[c(1, 11)]
-  expect_equal(c('no', 'yes'), result)
+  expect_equal(c('no', 'no'), result)
 })
 
 test_that("Checking anlz_attainsite, thrs = T", {
@@ -11,6 +11,7 @@ test_that("Checking anlz_attainsite, thrs = T", {
     anlz_attainsite(thrs = T) %>%
     pull(met) %>%
     .[c(1, 11)]
-  expect_equal(c('no', 'yes'), result)
+  expect_equal(c('no', 'no'), result)
 })
+
 
