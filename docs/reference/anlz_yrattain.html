@@ -138,7 +138,7 @@
     <p>Get attainment categories for a chosen year</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_yrattain</span>(<span class='no'>epcdata</span>, <span class='no'>yrsel</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_yrattain</span>(<span class='no'>epcdata</span>, <span class='no'>yrsel</span>, <span class='kw'>partialyr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +150,10 @@
     <tr>
       <th>yrsel</th>
       <td><p>numeric indicating chosen year</p></td>
+    </tr>
+    <tr>
+      <th>partialyr</th>
+      <td><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter</p></td>
     </tr>
     </table>
 

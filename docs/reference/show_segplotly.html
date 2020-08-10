@@ -142,7 +142,8 @@
   <span class='no'>epcdata</span>,
   <span class='kw'>bay_segment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
   <span class='kw'>yrrng</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2019</span>),
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>partialyr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -163,6 +164,10 @@
     <tr>
       <th>family</th>
       <td><p>optional chr string indicating font family for text labels</p></td>
+    </tr>
+    <tr>
+      <th>partialyr</th>
+      <td><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter</p></td>
     </tr>
     </table>
 

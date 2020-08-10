@@ -138,7 +138,7 @@
     <p>Estimate annual means for chlorophyll and secchi data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_avedat</span>(<span class='no'>epcdata</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_avedat</span>(<span class='no'>epcdata</span>, <span class='kw'>partialyr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +146,10 @@
     <tr>
       <th>epcdata</th>
       <td><p><code>data.frame</code> formatted from <code>read_importwq</code></p></td>
+    </tr>
+    <tr>
+      <th>partialyr</th>
+      <td><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter</p></td>
     </tr>
     </table>
 
@@ -166,7 +170,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># view average estimates</span>
 <span class='fu'>anlz_avedat</span>(<span class='no'>epcdata</span>)</div><div class='output co'>#&gt; $ann
-#&gt; <span style='color: #555555;'># A tibble: 560 x 4</span><span>
+#&gt; <span style='color: #555555;'># A tibble: 572 x 4</span><span>
 #&gt;    bay_segment    yr var         val
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>974 mean_chla  22.4
@@ -179,10 +183,10 @@
 #&gt; </span><span style='color: #555555;'> 8</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>981 mean_chla  31.1
 #&gt; </span><span style='color: #555555;'> 9</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>982 mean_chla  36.1
 #&gt; </span><span style='color: #555555;'>10</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>983 mean_chla  25.9
-#&gt; </span><span style='color: #555555;'># ... with 550 more rows</span><span>
+#&gt; </span><span style='color: #555555;'># ... with 562 more rows</span><span>
 #&gt; 
 #&gt; $mos
-#&gt; </span><span style='color: #555555;'># A tibble: 4,357 x 5</span><span>
+#&gt; </span><span style='color: #555555;'># A tibble: 4,381 x 5</span><span>
 #&gt;       yr    mo bay_segment var         val
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     1 HB          mean_chla 36.2 
@@ -195,7 +199,7 @@
 #&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     3 LTB         mean_chla  5.88
 #&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     4 HB          mean_chla 14.6 
 #&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974     4 LTB         mean_chla  1.75
-#&gt; </span><span style='color: #555555;'># ... with 4,347 more rows</span><span>
+#&gt; </span><span style='color: #555555;'># ... with 4,371 more rows</span><span>
 #&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
