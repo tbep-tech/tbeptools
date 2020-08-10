@@ -4,7 +4,7 @@
 \alias{show_sitemap}
 \title{Map site attainment categories for a selected year}
 \usage{
-show_sitemap(epcdata, yrsel, trgs = NULL, thrs = FALSE)
+show_sitemap(epcdata, yrsel, trgs = NULL, thrs = FALSE, partialyr = FALSE)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -14,6 +14,8 @@ show_sitemap(epcdata, yrsel, trgs = NULL, thrs = FALSE)
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
 \item{thrs}{logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}}
+
+\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 }
 \value{
 A static \code{ggplot} object is returned

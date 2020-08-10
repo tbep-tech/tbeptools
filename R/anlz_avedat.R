@@ -106,8 +106,10 @@ anlz_avedat <- function(epcdata, partialyr = FALSE){
       )
     ) %>%
     tidyr::spread('var', 'val') %>%
+    dplyr::rename(
+      mean_sdm = sd_m
+    ) %>%
     dplyr::mutate(
-      mean_sdm = sd_m,
       mean_la = dplyr::case_when(
         bay_segment %in% "OTB" ~ 1.49 / mean_sdm,
         bay_segment %in% "HB" ~ 1.61 / mean_sdm,

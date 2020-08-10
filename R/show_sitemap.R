@@ -6,6 +6,7 @@
 #' @param yrsel numeric for year to plot
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
 #' @family visualize
 #'
@@ -17,7 +18,7 @@
 #'
 #' @examples
 #' show_sitemap(epcdata, yrsel = 2019)
-show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE){
+show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE, partialyr = FALSE){
 
   # sanity check
   # default targets from data file
@@ -28,7 +29,7 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE){
 
   # get site averages for selected year
   tomap <- epcdata %>%
-    anlz_avedatsite() %>%
+    anlz_avedatsite(partialyr = partialyr) %>%
     anlz_attainsite(yrrng = yrsel, thr = 'chla', trgs = trgs, thrs = thrs) %>%
     dplyr::left_join(stations, by = c('epchc_station', 'bay_segment')) %>%
     dplyr::mutate(
