@@ -1,5 +1,5 @@
 test_that("Checking anlz_avedat months", {
-  result <- anlz_avedat(epcdata, yrrng = c(1974, 2019), partialyr = FALSE) %>%
+  result <- anlz_avedat(epcdata, partialyr = FALSE) %>%
     .[['mos']] %>%
     pull(val) %>%
     .[(length(.) - 4):length(.)]
@@ -7,10 +7,17 @@ test_that("Checking anlz_avedat months", {
                  0.691785714285714), result)
 })
 test_that("Checking anlz_avedat years", {
-  result <- anlz_avedat(epcdata, yrrng = c(1974, 2019), partialyr = FALSE) %>%
+  result <- anlz_avedat(epcdata, partialyr = FALSE) %>%
     .[['ann']] %>%
     pull(val) %>%
     .[(length(.) - 4):length(.)]
-  expect_equal(c(0.78363096716534, 0.878181818181818, 0.659083139083139, 0.482318533979087,
-                 0.588208009979948), result)
+  expect_equal(c(2.01458902208902, 1.84, 2.95, 3.14323965437366, 2.58461538461538), result)
+})
+test_that("Checking anlz_avedat years, partial year", {
+  result <- anlz_avedat(epcdata, partialyr = T) %>%
+    .[['ann']] %>%
+    pull(val) %>%
+    .[(length(.) - 4):length(.)]
+  expect_equal(c(2.01458902208902, 1.67064285714286, 3.2107123015873, 2.8045515638299,
+                 2.19498231398231), result)
 })

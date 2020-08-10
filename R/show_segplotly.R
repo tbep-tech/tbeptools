@@ -4,6 +4,7 @@
 #' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
 #' @param yrrng numeric for year range to plot
 #' @param family optional chr string indicating font family for text labels
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
 #' @details This function combines outputs from \code{\link{show_thrplot}} and \code{\link{show_segmatrix}} for a selected bay segment. The plot is interactive and can be zoomed by dragging the mouse pointer over a section of the plot. Information about each cell or value can be seen by hovering over a location in the plot.
 #'
@@ -15,20 +16,20 @@
 #'
 #' @examples
 #' show_segplotly(epcdata)
-show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), yrrng = c(1975, 2019), family = NULL){
+show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), yrrng = c(1975, 2019), family = NULL, partialyr = FALSE){
 
   bay_segment <- match.arg(bay_segment)
 
   suppressMessages({
 
-    p1 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "chla", yrrng = yrrng, family = family, txtlab = F, labelexp = F) +
+    p1 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "chla", yrrng = yrrng, family = family, txtlab = F, labelexp = F, partialyr = partialyr) +
       ggtitle(NULL) +
       scale_x_continuous(expand = c(0.01, 0.01), breaks = seq(yrrng[1], yrrng[2]))
-    p2 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "la", yrrng = yrrng, family = family, txtlab = F, labelexp = F) +
+    p2 <- show_thrplot(epcdata, bay_segment = bay_segment, thr = "la", yrrng = yrrng, family = family, txtlab = F, labelexp = F, partialyr = partialyr) +
       ggtitle(NULL) +
       scale_x_continuous(expand = c(0.01, 0.01), breaks = seq(yrrng[1], yrrng[2]))
 
-    p3 <- show_segmatrix(epcdata, bay_segment = bay_segment, yrrng = yrrng, txtsz = NULL) +
+    p3 <- show_segmatrix(epcdata, bay_segment = bay_segment, yrrng = yrrng, txtsz = NULL, partialyr = partialyr) +
       scale_y_continuous(expand = c(0,0), breaks = c(yrrng[1]:yrrng[2])) +
       coord_flip() +
       theme(
@@ -39,7 +40,7 @@ show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), 
 
   })
 
-  p3 <- plotly::ggplotly(p3, tooltip = 'Result')
+  p3 <- plotly::ggplotly(p3, tooltip = 'Action')
   for(i in 1:length(p3$x$data)) p3$x$data[[i]]$showlegend <- FALSE
 
   p1 <- plotly::ggplotly(p1)

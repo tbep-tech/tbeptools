@@ -103,7 +103,7 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
       geom_text(aes(label = outcometxt), size = txtsz, family = family)
 
   if(plotly)
-   p <- show_matrixplotly(p, family = family, tooltip = 'Action')
+    p <- show_matrixplotly(p, family = family, tooltip = 'Action')
 
   return(p)
 

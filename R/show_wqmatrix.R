@@ -13,7 +13,7 @@
 #' @param abbrev logical indicating if text labels in the plot are abbreviated as the first letter
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
-#' @param logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
 #' @family visualize
 #'
