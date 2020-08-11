@@ -138,7 +138,7 @@
     <p>Make a map for tidal creek report card</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_tdlcrk</span>(<span class='no'>dat</span>)</pre>
+    <pre class="usage"><span class='fu'>show_tdlcrk</span>(<span class='no'>dat</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='fl'>1.5</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +146,10 @@
     <tr>
       <th>dat</th>
       <td><p>input score card data returned from <code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a></code></p></td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td><p>numeric for weight of polylines, passed to <code><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addPolylines</a></code></p></td>
     </tr>
     </table>
 

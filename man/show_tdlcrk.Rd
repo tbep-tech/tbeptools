@@ -4,10 +4,12 @@
 \alias{show_tdlcrk}
 \title{Make a map for tidal creek report card}
 \usage{
-show_tdlcrk(dat)
+show_tdlcrk(dat, weight = 1.5)
 }
 \arguments{
 \item{dat}{input score card data returned from \code{\link{anlz_tdlcrk}}}
+
+\item{weight}{numeric for weight of polylines, passed to \code{\link[leaflet]{addPolylines}}}
 }
 \value{
 A \code{\link[leaflet]{leaflet}} object
