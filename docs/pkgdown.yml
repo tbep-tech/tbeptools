@@ -1,4 +1,4 @@
-pandoc: 2.7.2
+pandoc: 2.7.3
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
@@ -6,5 +6,5 @@ articles:
   seagrasstransect: seagrasstransect.html
   tbni: tbni.html
   tidalcreeks: tidalcreeks.html
-last_built: 2020-08-12T12:01Z
+last_built: 2020-08-12T13:27Z
 

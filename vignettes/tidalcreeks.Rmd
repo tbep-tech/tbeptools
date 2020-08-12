@@ -17,7 +17,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   message = F, warning = F, 
-  fig.align = 'center'
+  fig.align = 'center', 
+  cache = F
 )
 
 # libraries
@@ -43,7 +44,7 @@ Tidal creeks or tributaries are essential habitats in the Tampa Bay Estuary and 
 
 The tbeptools package includes a [simple features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data object of the population of tidal creeks in southwest Florida, called `tidalcreeks()`. This includes `r nrow(tidalcreeks)` polyline features designated by a water body ID (`wbid`), creek id (`JEI`), and [FDEP class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria) (`class`, 1 for potable water, 2 for shellfish harvesting or propagation, and 3F/3M for freshwater/marine fish consumption, recreation, propagation and maintenance of a healthy, well-balanced population of fish and wildlife).
 
-```{r}
+```{r, eval = T, cache = F}
 mapview(tidalcreeks, homebutton = F, legend = F)
 ```
 
@@ -90,7 +91,7 @@ The results include a unique creek identifier (`id`, based on the `wbid` and `JE
 
 The `show_tdlcrk()` function can be used with the output of `anlz_tdlcrk()` to view an interactive map of the results. Creeks are color-coded by the exceedance categories, with "No Data" creeks shown in light blue.  
 
-```{r}
+```{r, eval = T, cache = F}
 show_tdlcrk(results)
 ```
 
