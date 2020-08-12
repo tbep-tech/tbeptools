@@ -55,7 +55,7 @@ Similar to the [water quality report card](https://shiny.tbeptech.org/wq-dash/),
 
 <span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Monitor__</span>: Creek is at or below nitrogen concentrations that protect individual creek types within the larger population of creeks.
 
-<span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>: Creek nutrients showing signs of eleveted nutrient concentrations that may increase risk of eutrophic condition.
+<span style="color:#F9FF33; text-shadow: 0 0 3px #333;">__Caution__</span>: Creek nutrients showing signs of elevated nutrient concentrations that may increase risk of eutrophic condition.
 
 <span style="color:#FFA500; text-shadow: 0 0 3px #333;">__Investigate__</span>: Creek nutrient concentrations above margin of safety to protect creek from potential impairment.
 
@@ -94,7 +94,13 @@ The `show_tdlcrk()` function can be used with the output of `anlz_tdlcrk()` to v
 show_tdlcrk(results)
 ```
 
-Several years of data included in the IWR database are used to estimate the assessment categories.  Additional water quality parameters in this database can provide context for interpreting the outcomes, e.g., chlorophyll, nitrogen, dissolved oxygen, etc. The `anlz_tdlcrkindic()` function can be used to summarize the raw data in the IWR database and returns annual geometric means of additional water quality measurements for the ten years of data that were used to define the score categories.  Averages for each year of available data at each `wbid`/`JEI` combination are returned for chlorophyll, dissolved oxygen, total nitrogen, total phosphorus, trophic state index, and several other parameters.
+Several years of data included in the IWR database are used to estimate the assessment categories. A report card style matrix can be plotted using the `show_tdlcrkmatrix()` function that shows the overall creek score and the number of years of data that were used to estimate the overall score. The plot shows a matrix with rows for individual creeks and columns for overall creek score.  The columns show an overall creek score and the number of years in the prior ten years that nitrogen values at a creek were assigned to each of the four score categories.  Number of years is mapped to cell transparency.  By default, the plot shows creeks with a marine WBID (water body identifier) designation as `3M` or `2`.  This can be changed with the `class` argument (i.e., `class c('3M', '2', '3F', '1')` for marine and freshwater WBIDs). 
+
+```{r, fig.height = 10, fig.width = 6}
+show_tdlcrkmatrix(results)
+```
+
+Additional water quality parameters in the IWR database can provide context for interpreting the outcomes, e.g., chlorophyll, nitrogen, dissolved oxygen, etc. The `anlz_tdlcrkindic()` function can be used to summarize the raw data in the IWR database and returns annual geometric means of additional water quality measurements for the ten years of data that were used to define the score categories.  Averages for each year of available data at each `wbid`/`JEI` combination are returned for chlorophyll, dissolved oxygen, total nitrogen, total phosphorus, trophic state index, and several other parameters.
 
 ```{r}
 results <- anlz_tdlcrkindic(tidalcreeks, iwrraw)

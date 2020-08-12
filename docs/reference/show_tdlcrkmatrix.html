@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plotly empirical CDF plots of tidal creek context indicators — show_tdlcrkindiccdf • tbeptools</title>
+<title>Plot the tidal creek report card matrix — show_tdlcrkmatrix • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plotly empirical CDF plots of tidal creek context indicators — show_tdlcrkindiccdf" />
-<meta property="og:description" content="Plotly empirical CDF plots of tidal creek context indicators" />
+<meta property="og:title" content="Plot the tidal creek report card matrix — show_tdlcrkmatrix" />
+<meta property="og:description" content="Plot the tidal creek report card matrix" />
 
 
 
@@ -129,59 +129,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plotly empirical CDF plots of tidal creek context indicators</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_tdlcrkindiccdf.R'><code>R/show_tdlcrkindiccdf.R</code></a></small>
-    <div class="hidden name"><code>show_tdlcrkindiccdf.Rd</code></div>
+    <h1>Plot the tidal creek report card matrix</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_tdlcrkmatrix.R'><code>R/show_tdlcrkmatrix.R</code></a></small>
+    <div class="hidden name"><code>show_tdlcrkmatrix.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plotly empirical CDF plots of tidal creek context indicators</p>
+    <p>Plot the tidal creek report card matrix</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_tdlcrkindiccdf</span>(
-  <span class='no'>id</span>,
-  <span class='no'>cntdat</span>,
-  <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>,
-  <span class='kw'>thrsel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>pal</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#5C4A42"</span>, <span class='st'>"#427355"</span>, <span class='st'>"#004F7E"</span>)
+    <pre class="usage"><span class='fu'>show_tdlcrkmatrix</span>(
+  <span class='no'>dat</span>,
+  <span class='kw'>class</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"3M"</span>, <span class='st'>"2"</span>),
+  <span class='kw'>score</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Prioritize"</span>, <span class='st'>"Investigate"</span>, <span class='st'>"Caution"</span>, <span class='st'>"Monitor"</span>),
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='fl'>NA</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>id</th>
-      <td><p>numeric indicating the <code>id</code> number of the tidal creek to plot</p></td>
+      <th>dat</th>
+      <td><p>input creek score data returned from <code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a></code></p></td>
     </tr>
     <tr>
-      <th>cntdat</th>
-      <td><p>output from <code><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></code></p></td>
+      <th>class</th>
+      <td><p>character vector indicating which creek classes to show, one to many of <code>'3M'</code>, <code>'2'</code>, <code>'3F'</code>, and <code>'1'</code>.  Defaults to marine only (<code>'3M', '2'</code>).</p></td>
     </tr>
     <tr>
-      <th>yr</th>
-      <td><p>numeric indicating reference year, almost always 2018</p></td>
+      <th>score</th>
+      <td><p>character vector of score categories to include, one to many of <code>'Prioritize'</code>, <code>'Investigate'</code>, <code>'Caution'</code>, and <code>'Monitor'</code>. Defaults to all.</p></td>
     </tr>
     <tr>
-      <th>thrsel</th>
-      <td><p>logical if threshold lines and annotations are shown on the plots</p></td>
-    </tr>
-    <tr>
-      <th>pal</th>
-      <td><p>vector of colors for the palette</p></td>
+      <th>family</th>
+      <td></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A plotly object</p>
+    <p>A static <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object is returned.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function returns several empirical cumulative distribution plots for the tidal creek context indicators.  Points on the plot indicate the observed values and percentiles for the creek specified by <code>id</code>. The percentiles and CDF values are defined by the "population" of creeks in <code>cntdat</code>.  Points in the plots are color-coded by sample year to evaluate temporal trends, if any.</p>
+    <p>The plot shows a matrix with rows for individual creeks and columns for overall creek score.  The columns show an overall creek score and the number of years in the prior ten years that nitrogen values at a creek were assigned to each of the four score categories.  Number of years is mapped to cell transparency.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>cntdat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
-<span class='fu'>show_tdlcrkindiccdf</span>(<span class='fl'>495</span>, <span class='no'>cntdat</span>, <span class='kw'>thrsel</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: attributes are not identical across measure variables;</span>
-#&gt; <span class='warning'>they will be dropped</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a></span>(<span class='no'>tidalcreeks</span>, <span class='no'>iwrraw</span>, <span class='kw'>yr</span> <span class='kw'>=</span> <span class='fl'>2018</span>)
+<span class='fu'>show_tdlcrkmatrix</span>(<span class='no'>dat</span>)</div><div class='img'><img src='show_tdlcrkmatrix-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
