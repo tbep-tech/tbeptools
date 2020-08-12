@@ -2,7 +2,7 @@
 #'
 #' Make a map for tidal creek report card
 #'
-#' @param dat input score card data returned from \code{\link{anlz_tdlcrk}}
+#' @param dat input creek score data returned from \code{\link{anlz_tdlcrk}}
 #' @param weight numeric for weight of polylines, passed to \code{\link[leaflet]{addPolylines}}
 #'
 #' @return A \code{\link[leaflet]{leaflet}} object

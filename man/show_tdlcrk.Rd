@@ -7,7 +7,7 @@
 show_tdlcrk(dat, weight = 1.5)
 }
 \arguments{
-\item{dat}{input score card data returned from \code{\link{anlz_tdlcrk}}}
+\item{dat}{input creek score data returned from \code{\link{anlz_tdlcrk}}}
 
 \item{weight}{numeric for weight of polylines, passed to \code{\link[leaflet]{addPolylines}}}
 }
