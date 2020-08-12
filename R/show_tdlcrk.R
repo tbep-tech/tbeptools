@@ -27,8 +27,9 @@ show_tdlcrk <- function(dat, weight = 1.5) {
     dplyr::inner_join(dat, by = c('id', 'wbid', 'JEI', 'class', 'name')) %>%
     dplyr::mutate(
       score = factor(score, levels = c('No Data', 'Monitor', 'Caution', 'Investigate', 'Prioritize'))
-    ) %>%
-    sf::st_crs(4326)
+    )
+
+  sf::st_crs(tomap) <- 4326
 
   out <- mapview::mapview(tomap, homebutton = F) %>%
     .@map %>%
