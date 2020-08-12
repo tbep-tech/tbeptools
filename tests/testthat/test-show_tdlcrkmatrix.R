@@ -4,7 +4,7 @@ test_that("Checking show_tdlcrkmatrix class", {
   expect_is(result, 'ggplot')
 })
 test_that("Checking show_tdlcrkmatrix class argument", {
-  expect_w(show_tdlcrkmatrix(dat, class = 'asdf'))
+  expect_error(show_tdlcrkmatrix(dat, class = 'asdf'))
 })
 test_that("Checking show_tdlcrkmatrix score argument", {
   expect_error(show_tdlcrkmatrix(dat, score = 'asdf'))

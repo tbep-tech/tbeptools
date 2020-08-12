@@ -18,7 +18,7 @@ show_tdlcrkmatrix(
 
 \item{score}{character vector of score categories to include, one to many of \code{'Prioritize'}, \code{'Investigate'}, \code{'Caution'}, and \code{'Monitor'}. Defaults to all.}
 
-\item{family}{}
+\item{family}{optional chr string indicating font family for text labels}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned.

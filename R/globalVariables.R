@@ -26,7 +26,7 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   'ShootDensity_Avg','ShootDensity_StdDev', 'Species', 'SpeciesAbundance', 'Transect', 'Average',
                   'Median', 'MonitoringAgency', 'grp', 'sumval', 'sumvar', 'ObservationDate', 'Depth',
                   'SeagrassEdge', 'Temp_Water_Bottom_degC', 'Temp_Water_Mid_degC', 'Temp_Water_Top_degC',
-                  'Total_Nitrogen_Q', 'Total_Nitrogen_mgL', 'tn'))
+                  'Total_Nitrogen_Q', 'Total_Nitrogen_mgL', 'tn', 'indyr', 'monitor'))
 
 #' @importFrom grDevices rgb
 NULL

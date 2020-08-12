@@ -5,7 +5,7 @@
 #' @param dat input creek score data returned from \code{\link{anlz_tdlcrk}}
 #' @param class character vector indicating which creek classes to show, one to many of \code{'3M'}, \code{'2'}, \code{'3F'}, and \code{'1'}.  Defaults to marine only (\code{'3M', '2'}).
 #' @param score character vector of score categories to include, one to many of \code{'Prioritize'}, \code{'Investigate'}, \code{'Caution'}, and \code{'Monitor'}. Defaults to all.
-#' @param family
+#' @param family optional chr string indicating font family for text labels
 #'
 #' @details The plot shows a matrix with rows for individual creeks and columns for overall creek score.  The columns show an overall creek score and the number of years in the prior ten years that nitrogen values at a creek were assigned to each of the four score categories.  Number of years is mapped to cell transparency.
 #'
