@@ -134,7 +134,7 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
 
   if(partialyr)
     p <- p +
-      labs(caption = paste0('*Incomplete data for ', max(yrrng), ' estimated by five year average'))
+      labs(caption = paste0('*Incomplete data for ', max(yrrng), ' estimated\nby five year average'))
 
   if(plotly)
     p <- show_matrixplotly(p, family = family, tooltip = 'Result')
