@@ -42,6 +42,9 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE, partialyr = 
   if(thrs)
     leglab <- paste0('Below\nthreshold\nin ', yrsel, '?')
 
+  if(partialyr)
+    leglab <- paste0(leglab, '*')
+
   # segment labels
   seglabs <- data.frame(
     Longitude = c(-82.6, -82.64, -82.58, -82.42),
@@ -74,6 +77,10 @@ show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE, partialyr = 
       ) +
       ggsn::scalebar(tbseg, dist = 6, dist_unit = "km", st.size = 3,
                transform = TRUE, model = "WGS84", height = 0.015)
+
+    if(partialyr)
+      p <- p +
+        labs(caption = paste0('*Incomplete data for ', yrsel, ' estimated by five year average'))
 
   })
 

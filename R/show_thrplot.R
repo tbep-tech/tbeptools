@@ -90,6 +90,9 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::pull(name)
 
+  if(partialyr)
+    ttl <- paste0(ttl, '*')
+
   # get data to plo
   toplo <- aves$ann %>%
     dplyr::filter(grepl(paste0('_', thr, '$'), var)) %>%
@@ -151,6 +154,11 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   if(txtlab & thrs)
     p <- p +
       geom_text(aes(yrrng[1], max(toplo$yval), label = trglab), parse = labelexp, hjust = 0.2, vjust = 1, family = family, colour = 'blue')
+
+
+  if(partialyr)
+    p <- p +
+      labs(caption = paste0('*Incomplete data for ', max(yrrng), ' estimated by five year average'))
 
   return(p)
 

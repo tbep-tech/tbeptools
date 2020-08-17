@@ -56,6 +56,18 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
       mo = month(mo, label = T)
     )
 
+  # create month labels for x axis, asterisks if partialyr is true
+  if(partialyr){
+    mismo <- epcdata %>%
+      dplyr::select(yr, mo) %>%
+      unique() %>%
+      dplyr::filter(yr == !!yrsel) %>%
+      pull(mo) %>%
+      setdiff(1:12, .)
+    molab <- levels(aves$mo)
+    molab[mismo] <- paste0(molab[mismo], '*')
+  }
+
   # yrrng must be in ascending order
   if(yrrng[1] >= yrrng[2])
     stop('yrrng argument must be in ascending order, e.g., c(1975, 2018)')
@@ -145,6 +157,11 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
   if(txtlab)
     p <- p +
       geom_text(aes(x = factor('Jan'), max(aves$val)), parse = labelexp, label = trglab, hjust = 0.2, vjust = 1, colour = 'blue', family = family)
+
+  if(partialyr)
+    p <- p +
+      scale_x_discrete(labels = molab) +
+      labs(caption = paste0('*Missing data estimated by five year average from ', yrsel))
 
   return(p)
 

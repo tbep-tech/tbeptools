@@ -132,6 +132,10 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
     p <- p +
       geom_text(aes(label = outcometxt), size = txtsz, family = family)
 
+  if(partialyr)
+    p <- p +
+      labs(caption = paste0('*Incomplete data for ', max(yrrng), ' estimated by five year average'))
+
   if(plotly)
     p <- show_matrixplotly(p, family = family, tooltip = 'Result')
 
