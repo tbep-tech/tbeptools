@@ -19,7 +19,7 @@
 #' xlsx <- '~/Desktop/2018_Results_Updated.xls'
 #'
 #' # load and assign to object
-#' epcdata <- read_importwq(xlsx)
+#' epcdata <- read_importwq(xlsx, download_latest = T)
 #' }
 read_importwq <- function(xlsx, download_latest = FALSE, na = ''){
 

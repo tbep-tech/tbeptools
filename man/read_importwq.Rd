@@ -28,7 +28,7 @@ Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  
 xlsx <- '~/Desktop/2018_Results_Updated.xls'
 
 # load and assign to object
-epcdata <- read_importwq(xlsx)
+epcdata <- read_importwq(xlsx, download_latest = T)
 }
 }
 \seealso{

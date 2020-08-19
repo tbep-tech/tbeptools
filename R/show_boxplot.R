@@ -58,14 +58,19 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
 
   # create month labels for x axis, asterisks if partialyr is true
   if(partialyr){
+browser()
+    # missing months of selected year
     mismo <- epcdata %>%
-      dplyr::select(yr, mo) %>%
+      filter(yr == !!yrsel) %>%
+      anlz_avedat(partialyr = FALSE) %>%
+      .[['mos']] %>%
+      dplyr::select(mo) %>%
       unique() %>%
-      dplyr::filter(yr == !!yrsel) %>%
       pull(mo) %>%
       setdiff(1:12, .)
     molab <- levels(aves$mo)
     molab[mismo] <- paste0(molab[mismo], '*')
+
   }
 
   # yrrng must be in ascending order

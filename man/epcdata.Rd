@@ -3,9 +3,9 @@
 \docType{data}
 \name{epcdata}
 \alias{epcdata}
-\title{All bay data as of 07312020}
+\title{All bay data as of 08192020}
 \format{
-A data frame with 25804 rows and 22 variables:
+A data frame with 25939 rows and 22 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{epchc_station}{num}
@@ -35,7 +35,7 @@ A data frame with 25804 rows and 22 variables:
 epcdata
 }
 \description{
-All bay data as of 07312020
+All bay data as of 08192020
 }
 \seealso{
 Other utilities: 
