@@ -1,7 +1,7 @@
 Package: tbeptools
-Title: Utility functions for processing data from TBEP
+Title: Data and Indicators for the Tampa Bay Estuary Program
 Version: 0.0.1
-Date: 2020-08-10
+Date: 2020-08-21
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
@@ -29,9 +29,13 @@ Authors@R: c(
       email = "ben@ecoquants.com"
     )
   )
-Description: Utility functions for processing data from TBEP.
+Description: Several functions are provided for Working with Tampa Bay Estuary 
+  Program data and indicators, including the water quality report card, tidal creek
+  assessments, Tampa Bay Nekton Index, and the Tampa Bay Benthic Index. Additional
+  functions are provided for miscellaneous tasks, such as reference library curation
+  and assessing seagrass data.
 Depends: 
-  R (>= 3.5),
+  R (>= 3.6),
   methods
 Imports:
   dataRetrieval,

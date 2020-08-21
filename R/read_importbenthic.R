@@ -50,7 +50,7 @@ read_importbenthic <- function(path, download_latest = FALSE, remove = TRUE){
 
   # check if driver installed
   if(!drvr %in% RODBC::odbcDataSources())
-    stop('Cannot find Microsoft Access Driver. If you are using 64-bit R on Windows, download the driver here:\n\n https://www.microsoft.com/en-us/download/details.aspx?id=54920 \n\n')
+    stop('Cannot find Microsoft Access driver. If you are using 64-bit R on Windows, download the driver here:\n\n https://www.microsoft.com/en-us/download/details.aspx?id=54920 \n\n')
 
   ##
   # download
@@ -63,8 +63,10 @@ read_importbenthic <- function(path, download_latest = FALSE, remove = TRUE){
     zipdest <- gsub('\\.zip$', '', path)
     utils::unzip(path, exdir = zipdest)
 
-    if(remove)
+    if(remove){
+      unlink(path, recursive = TRUE)
       file.remove(path)
+    }
 
     path <- list.files(zipdest, '\\.mdb', full.names = TRUE)
 

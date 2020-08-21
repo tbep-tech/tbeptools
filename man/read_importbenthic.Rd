@@ -23,6 +23,8 @@ Download and import benthic data for Tampa Bay
 This function downloads and unzips a Microsoft Access Database from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip}.  The database tables are accessed using a connection through the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at <https://www.microsoft.com/en-us/download/details.aspx?id=54920>.  The function has not been tested for 32-bit versions of R or outside of Windows.
 
 For the \code{path} argument, you must specify the full path and not the home expansion, i.e., \code{'C:/Users/yourname/Desktop/benthic.zip'} and not \code{'~/Desktop/benthic.zip'}.  If the zipped file has previously been downloaded and extracted, the direct path to the .mdb file can be uased for \code{path}.
+
+The .mdb database in the unzipped folder is large and a temporary file can be created to preserve file space, e.g., using \code{\link{tempfile(fileext = '.zip')}} for the \code{path} argument. See the examples.
 }
 \examples{
 \dontrun{
@@ -35,6 +37,10 @@ benthicdata <- read_importbenthic(path, download_latest = TRUE)
 # or use existing mdb
 path <- 'C:/path/to/benthic/EPC DataSubmittals.mdb'
 benthicdata <- read_importbenthic(path, download_latest = FALSE)
+
+# use a temporary zip file
+path <- tempfile(fileext = '.zip')
+benthicdata <- read_importbenthic(path, download_latest = TRUE)
 }
 }
 \seealso{

@@ -101,6 +101,9 @@
       <a href="../articles/seagrasstransect.html">Seagrass Transect Data</a>
     </li>
     <li>
+      <a href="../articles/tbbi.html">Tampa Bay Benthic Index</a>
+    </li>
+    <li>
       <a href="../articles/tbni.html">Tampa Bay Nekton Index</a>
     </li>
     <li>
@@ -169,9 +172,11 @@
 <p>Other read: 
 <code><a href='read_chkdate.html'>read_chkdate</a>()</code>,
 <code><a href='read_dlcurrent.html'>read_dlcurrent</a>()</code>,
+<code><a href='read_formbenthic.html'>read_formbenthic</a>()</code>,
 <code><a href='read_formfim.html'>read_formfim</a>()</code>,
 <code><a href='read_formphyto.html'>read_formphyto</a>()</code>,
 <code><a href='read_formwq.html'>read_formwq</a>()</code>,
+<code><a href='read_importbenthic.html'>read_importbenthic</a>()</code>,
 <code><a href='read_importfim.html'>read_importfim</a>()</code>,
 <code><a href='read_importphyto.html'>read_importphyto</a>()</code></p></div>
 
@@ -181,7 +186,7 @@
 <span class='no'>xlsx</span> <span class='kw'>&lt;-</span> <span class='st'>'~/Desktop/2018_Results_Updated.xls'</span>
 
 <span class='co'># load and assign to object</span>
-<span class='no'>epcdata</span> <span class='kw'>&lt;-</span> <span class='fu'>read_importwq</span>(<span class='no'>xlsx</span>)
+<span class='no'>epcdata</span> <span class='kw'>&lt;-</span> <span class='fu'>read_importwq</span>(<span class='no'>xlsx</span>, <span class='kw'>download_latest</span> <span class='kw'>=</span> <span class='no'>T</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
