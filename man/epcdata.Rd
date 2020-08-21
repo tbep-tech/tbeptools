@@ -3,7 +3,7 @@
 \docType{data}
 \name{epcdata}
 \alias{epcdata}
-\title{All bay data as of 08192020}
+\title{All bay data as of 08212020}
 \format{
 A data frame with 25939 rows and 22 variables:
 \describe{
@@ -35,7 +35,7 @@ A data frame with 25939 rows and 22 variables:
 epcdata
 }
 \description{
-All bay data as of 08192020
+All bay data as of 08212020
 }
 \seealso{
 Other utilities: 

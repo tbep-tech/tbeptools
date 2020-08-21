@@ -33,6 +33,7 @@ phytodata <- read_importphyto(xlsx)
 Other read: 
 \code{\link{read_chkdate}()},
 \code{\link{read_dlcurrent}()},
+\code{\link{read_formbenthic}()},
 \code{\link{read_formfim}()},
 \code{\link{read_formwq}()},
 \code{\link{read_importbenthic}()},

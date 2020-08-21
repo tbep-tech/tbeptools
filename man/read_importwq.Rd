@@ -37,6 +37,7 @@ epcdata <- read_importwq(xlsx, download_latest = T)
 Other read: 
 \code{\link{read_chkdate}()},
 \code{\link{read_dlcurrent}()},
+\code{\link{read_formbenthic}()},
 \code{\link{read_formfim}()},
 \code{\link{read_formphyto}()},
 \code{\link{read_formwq}()},

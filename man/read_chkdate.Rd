@@ -28,6 +28,7 @@ read_chkdate(urlin, xlsx)
 \seealso{
 Other read: 
 \code{\link{read_dlcurrent}()},
+\code{\link{read_formbenthic}()},
 \code{\link{read_formfim}()},
 \code{\link{read_formphyto}()},
 \code{\link{read_formwq}()},

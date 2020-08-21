@@ -20,13 +20,9 @@ A \code{data.frame} of formatted benthic data.
 Download and import benthic data for Tampa Bay
 }
 \details{
-This function downloads and unzips a Microsoft Access Database from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/}.  The download location is temporary unless specified with the \code{path} argument.
+This function downloads and unzips a Microsoft Access Database from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip}.  The database tables are accessed using a connection through the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at <https://www.microsoft.com/en-us/download/details.aspx?id=54920>.  The function has not been tested for 32-bit versions of R or outside of Windows.
 
-The database tables are accessed using a connection through ODBC with the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at <https://www.microsoft.com/en-us/download/details.aspx?id=54920>.  The function has not been tested for 32-bit versions of R or outside of Windows.
-
-For the \code{path} argument, you must specify the full path and not the home expansion, i.e., \code{'C:/Users/yourname/Desktop/benthic.zip'} and not \code{'~/Desktop/benthic.zip'}.
-
-i
+For the \code{path} argument, you must specify the full path and not the home expansion, i.e., \code{'C:/Users/yourname/Desktop/benthic.zip'} and not \code{'~/Desktop/benthic.zip'}.  If the zipped file has previously been downloaded and extracted, the direct path to the .mdb file can be uased for \code{path}.
 }
 \examples{
 \dontrun{
@@ -45,6 +41,7 @@ benthicdata <- read_importbenthic(path, download_latest = FALSE)
 Other read: 
 \code{\link{read_chkdate}()},
 \code{\link{read_dlcurrent}()},
+\code{\link{read_formbenthic}()},
 \code{\link{read_formfim}()},
 \code{\link{read_formphyto}()},
 \code{\link{read_formwq}()},
