@@ -40,6 +40,7 @@ Other read:
 \code{\link{read_formfim}()},
 \code{\link{read_formphyto}()},
 \code{\link{read_formwq}()},
+\code{\link{read_importbenthic}()},
 \code{\link{read_importfim}()},
 \code{\link{read_importwq}()}
 }

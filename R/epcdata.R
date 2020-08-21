@@ -1,6 +1,6 @@
-#' All bay data as of 08192020
+#' All bay data as of 08212020
 #'
-#' All bay data as of 08192020
+#' All bay data as of 08212020
 #'
 #' @format A data frame with 25939 rows and 22 variables:
 #' \describe{
