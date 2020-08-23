@@ -63,10 +63,8 @@ read_importbenthic <- function(path, download_latest = FALSE, remove = TRUE){
     zipdest <- gsub('\\.zip$', '', path)
     utils::unzip(path, exdir = zipdest)
 
-    if(remove){
-      unlink(path, recursive = TRUE)
+    if(remove)
       file.remove(path)
-    }
 
     path <- list.files(zipdest, '\\.mdb', full.names = TRUE)
 
