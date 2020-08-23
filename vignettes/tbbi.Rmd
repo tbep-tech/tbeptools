@@ -34,7 +34,7 @@ library(sf)
 
 bib_scrp(here('vignettes', 'tbbi.Rmd'), bib_new = here('vignettes', 'tbbirefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
 
-# spelling::spell_check_files(here("vignettes", "tbbi.Rmd"))
+# spelling::spell_check_files(here::here("vignettes", "tbbi.Rmd"))
 ```
 
 ## Background
@@ -88,7 +88,7 @@ Every time that tbeptools is used to work with the benthic data, `read_importben
 #> Replacing local file with current...
 ```
 
-Because the downloaded data are a zipped file of an Access database, a few extra steps are needed to process the data.  These are all handled automatically by the functions, but it does slightly affect how you might want to use the data import function. The function automatically downloads the zipped file, unzips it, and establishes a connection to the Access database.  If you have already downloaded the zip file and extracted the .mdb file, you can connect to the latter directly by changing the \code{path} argument wiht the appropriate file extension. 
+Because the downloaded data are a zipped file of an Access database, a few extra steps are needed to process the data.  These are all handled automatically by the functions, but it does slightly affect how you might want to use the data import function. The function automatically downloads the zipped file, unzips it, and establishes a connection to the Access database.  If you have already downloaded the zip file and extracted the .mdb file, you can connect to the latter directly by changing the \code{path} argument with the appropriate file extension. 
 
 ```{r, eval = F}
 benthicdata <- read_importbenthic('C:/path/to/benthic.mdb')

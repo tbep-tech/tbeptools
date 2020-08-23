@@ -19,27 +19,66 @@ knitr::opts_chunk$set(
   message = F, warning = F, 
   fig.align = 'center'
 )
-```
 
-```{r setup}
 library(tbeptools)
+library(mapview)
 
 # bib_scrp(here('vignettes', 'seagrasstransect.Rmd'), bib_new = here('vignettes', 'seagrasstransect.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
 
-# spelling::spell_check_files(here("vignettes", "tidalcreeks.Rmd"))
+# spelling::spell_check_files(here::here("vignettes", "seagrasstransect.Rmd"))
 ```
 
-Use the functions to import data from the API and create a summary plot. 
+Each year, TBEP partners collect seagrass transect data at fixed locations in Tampa Bay.  Data have been collected since the mid 1990s and are hosted online at the [Tampa Bay Water Atlas](https://www.tampabay.wateratlas.usf.edu/) by the University of South Florida Water Institute.  A limited set of functions are available in tbeptools for downloading and analyzing these data. 
 
-```{r, fig.height = 7, fig.width = 9}
+## Transect locations
+
+There are two datasets included in tbeptools that show the transect locations that are actively monitored in Tampa Bay.  The `trnpts` dataset is a point object for the starting location of each transect and the `trnlns` dataset is a line object showing the approximate direction and length of each transect beginning at each point.  Each dataset also includes the `MonAgency` column that indicates with monitoring agency collects the data at each transect. 
+
+```{r}
+trnpts
+trnlns
+```
+
+The two datasets are `sf()` (simple features) object and are easily mapped with `mapview()` to view their locations.
+
+```{r}
+mapview(trnpts, label = trnpts$lab, zcol = 'MonAgency', lwd = 0, legend = F, homebutton = F) + 
+  mapview(trnlns, zcol = 'MonAgency', homebutton = F, layer.name = 'Monitoring Agency', lwd = 4)
+```
+
+## Accessing the transect data
+
+The transect data can be downloaded from the Water Atlas using the `read_trnjsn()` function.  The only required argument for this function is `training` which indicates if you want to download training data or the complete dataset.  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily to assess precision among different training crews. The data are downloaded as a JSON object, which can then be passed to the `anlz_trnsz()` function for formatting. 
+
+```{r}
 # import JSON
 trndat <- read_trnjsn(training = TRUE)
 
 # format JSON data for plotting
 trndat <- anlz_trnjsn(trndat, training = TRUE)
 
-# plot
-show_compplot(trndat, site = '1', species = 'Halodule', varplo = 'Abundance',
-              base_size = 12)
+# view the data
+trndat
 ```
 
+The `show_compplot()` function is used to compare training data between crews for a selected species (`species` argument) and variable (`varplo` argument). 
+
+```{r, fig.height = 5, fig.width = 7}
+# plot
+show_compplot(trndat, site = '1', species = 'Halodule', varplo = 'Abundance')
+```
+
+Change the `training` argument to `FALSE` to download the entire transect database.  This may take a few seconds.  As before, the `anlz_trnjsn()` functions formats the JSON object that is returned by `read_trnjsn()`.
+
+```{r}
+# import entire transct dataset as JSON
+trndat <- read_trnjsn(training = FALSE)
+
+# format entire transect dataset
+trndat <- anlz_trnjsn(trndat, training = FALSE)
+
+# view the data
+trndat
+```
+
+The columns in the transect database describe the crew (`Crew`), the monitoring agency (`MonitoringAgency`), sample date (`Date`), transect name (`Transect`), the meter location along the transect (`Site`, m), depth at the site (`Depth`, cm), Seagrass species (`Savspecies`), distance of the seagrass edge on the transect (`SeagrassEdge`, m), the seagrass variable (`var`), average value of the variable (`aveval`), and standard deviation of the variable if appropriate (`sdval`).  
