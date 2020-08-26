@@ -17,6 +17,9 @@ data frame in long format
 \description{
 Format transect data from Water Atlas
 }
+\details{
+Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data.  Shoot density and blade height are based on averages across random observations at each transect point that are entered separately in the data form.
+}
 \examples{
 trnjsn <- read_trnjsn(training = TRUE)
 anlz_trnjsn(trnjsn, training = TRUE)
