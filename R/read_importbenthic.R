@@ -33,7 +33,7 @@
 #' path <- tempfile(fileext = '.zip')
 #' benthicdata <- read_importbenthic(path, download_latest = TRUE)
 #' }
-read_importbenthic <- function(path, download_latest = FALSE, remove = TRUE){
+read_importbenthic <- function(path, download_latest = FALSE, remove = FALSE){
 
   # function globals
   drvr <- 'Microsoft Access Driver (*.mdb, *.accdb)'

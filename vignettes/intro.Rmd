@@ -38,7 +38,7 @@ bib_scrp(here('vignettes', 'intro.Rmd'), bib_new = here('vignettes', 'refs.bib')
 
 ## Background
 
-Dashboard: https://shiny.tbeptech.org/wq-dash
+Dashboard: https://shiny.tbep.org/wq-dash
 
 The environmental recovery of Tampa Bay is an exceptional success story for coastal water quality management. Nitrogen loads in the mid 1970s have been estimated at $8.2 \times 10^6$ kg yr$^{-1}$, with approximately $5.5 \times 10^6$ kg yr$^{-1}$ entering the upper Bay alone [@Poe05,@Greening06].  Reduced water clarity associated with phytoplankton biomass contributed to a dramatic reduction in the areal coverage of seagrass [@Tomasko05] and development of hypoxic events, causing a decline in benthic faunal production [@Santos80].  Extensive efforts to reduce nutrient loads to the Bay occurred by the late 1970s, with the most notable being improvements in infrastructure for wastewater treatment in 1979.  Improvements in water clarity and decreases in chlorophyll concentrations were observed Bay-wide in the 1980s, with conditions generally remaining constant to present day [@Beck15].
 
@@ -297,7 +297,7 @@ phytodata <- read_importphyto(xlsx, download_latest = T)
 phytodata
 ```
 
-These data are highly summarized from the raw data file available online.  Cell counts (as number of cells per 0.1mL) for selected taxa are summed for each station by quarters (i.e., Jan/Feb/Mar, Apr/May/Jun, etc.).  The quarter is indicated in the `yrqrt` column specified by the starting date of each quarter (e.g., `1975-07-01` is the quarter Jul/Aug/Sep for 1975).  These data are primarily used to support analyses in the water quality dashboard: <https://shiny.tbeptech.org/wq-dash/>
+These data are highly summarized from the raw data file available online.  Cell counts (as number of cells per 0.1mL) for selected taxa are summed for each station by quarters (i.e., Jan/Feb/Mar, Apr/May/Jun, etc.).  The quarter is indicated in the `yrqrt` column specified by the starting date of each quarter (e.g., `1975-07-01` is the quarter Jul/Aug/Sep for 1975).  These data are primarily used to support analyses in the water quality dashboard: <https://shiny.tbep.org/wq-dash/>
 
 ## Analyze {.tabset}
 
