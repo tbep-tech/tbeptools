@@ -39,13 +39,13 @@ bib_scrp(here('vignettes', 'tbbi.Rmd'), bib_new = here('vignettes', 'tbbirefs.bi
 
 ## Background
 
-The Tampa Bay Benthic Index (TBNI) [@tbep0620;@tbep0106]) is an assessment method that quantifies the ecological health of the benthic community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for Tampa Bay (e.g., water quality report card, Nekton index, etc.). The tbeptools package includes several functions described below to import data required for the index and plot the results to view trends over time.  Each of the functions are described in detail below. 
+The Tampa Bay Benthic Index (TBNI) [@tbep0620;@tbep0106]) is an assessment method that quantifies the ecological health of the benthic community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for Tampa Bay (e.g., water quality report card, nekton index, etc.). The tbeptools package includes several functions described below to import data required for the index and plot the results to view trends over time.  Each of the functions are described in detail below. 
 
-The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Hillsborough Country Environmental Protection Commission (EPC).  The data are updated once year on a FTP site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](doc/intro.html).  The required data for the TBBI are more extensive than the water quality report card, so the data are made available as a Microsoft Access Database.  The process for downloading and processing the data are similar as for the other functions in tbeptools, except a few additional steps to connect and extract tables from the Access database are required.  Because of this, __the data import functions have only been tested on Windows using 64-bit R.__ You will need to download and install a [Microsoft Access driver](https://www.microsoft.com/en-us/download/details.aspx?id=54920) to import the data.
+The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Hillsborough Country Environmental Protection Commission (EPC).  The data are updated annually on a FTP site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](https://tbep-tech.github.io/tbeptools/articles/intro.html).  The required data for the TBBI are more extensive than the water quality report card, so the data are made available as a Microsoft Access Database.  The process for downloading and processing the data are similar as for the other functions in tbeptools, except a few additional steps to connect and extract tables from the Access database are required.  Because of this, __the data import functions have only been tested on Windows using 64-bit R.__ You will need to download and install a [Microsoft Access driver](https://www.microsoft.com/en-us/download/details.aspx?id=54920) to import the data.
 
 ## Data import and included datasets
 
-Data required for calculating TBBI scores can be imported into the current R session using the `read_importbenthic()` function.  This function downloads the latest Access database from the EPC FTP site if the data have not already been downloaded to the location specified by the input arguments.  
+After installing a [Microsoft Access driver](https://www.microsoft.com/en-us/download/details.aspx?id=54920), data for calculating TBBI scores can be imported into the current R session using the `read_importbenthic()` function.  This function downloads the latest Access database from the EPC FTP site if the data have not already been downloaded to the location specified by the input arguments.  
 
 The Access database is hosted on the FTP site as a zipped file.  First create a character path for the location where you want to download the zipped file. If one does not exist, specify a desired location and name for the downloaded file. Make sure you do not use the '~' path expansion because this will confuse the database connection in a later step.  Here, we want to put the file `benthic.zip` at the location `C:/path/to/` (a made up place just for this example).
 
@@ -60,7 +60,7 @@ Running the above code will return the following error:
 #> Error in read_importbenthic() : File at path does not exist, use download_test = TRUE
 ```
 
-We get an error message from the function indicating that the file is not found. This makes sense because the file doesn’t exist yet, so we need to tell the function to download the latest file. This is done by changing the `download_latest` argument to `TRUE` (the default is `FALSE`).
+We get an error message from the function indicating that the file is not found. This makes sense because the file does not exist yet, so we need to tell the function to download the latest file. This is done by changing the `download_latest` argument to `TRUE` (the default is `FALSE`).
 
 ```{r, eval = F}
 benthicdata <- read_importbenthic(path, download_latest = T)
@@ -71,9 +71,9 @@ benthicdata <- read_importbenthic(path, download_latest = T)
 #> trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip' length 37122877 bytes (35.4 MB)
 ```
 
-Now we get an indication that the file on the server is being downloaded. When the download is complete, we’ll have the data downloaded and saved to the `benthicdat` object in the current R session.
+Now we get an indication that the file on the server is being downloaded. When the download is complete, we’ll have the data downloaded and saved to the `benthicdata` object in the current R session.
 
-If we try to run the function again after downloading the data from the server, we get the following message. This check is done to make sure that the data are not unnecessarily downloaded if the current matches the file on the server.
+If we try to run the function again after downloading the data from the server, we get the following message. This check is done to make sure that the data are not unnecessarily downloaded if the current file matches the file on the server.
 
 ```{r, eval = F}
 benthicdata <- read_importbenthic(path, download_latest = T)
@@ -88,7 +88,7 @@ Every time that tbeptools is used to work with the benthic data, `read_importben
 #> Replacing local file with current...
 ```
 
-Because the downloaded data are a zipped file of an Access database, a few extra steps are needed to process the data.  These are all handled automatically by the functions, but it does slightly affect how you might want to use the data import function. The function automatically downloads the zipped file, unzips it, and establishes a connection to the Access database.  If you have already downloaded the zip file and extracted the .mdb file, you can connect to the latter directly by changing the \code{path} argument with the appropriate file extension. 
+Because the downloaded data are a zipped file of an Access database, a few extra steps are needed to process the data.  These are all handled automatically by the functions, but it does affect how you might use the data import function. The function automatically downloads the zipped file, unzips it, and establishes a connection to the Access database.  If you have already downloaded the zip file and extracted the .mdb file, you can connect to the latter directly by changing the \code{path} argument with the appropriate file extension. 
 
 ```{r, eval = F}
 benthicdata <- read_importbenthic('C:/path/to/benthic.mdb')

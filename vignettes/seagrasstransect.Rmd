@@ -32,14 +32,14 @@ Each year, TBEP partners collect seagrass transect data at fixed locations in Ta
 
 ## Transect locations
 
-There are two datasets included in tbeptools that show the transect locations that are actively monitored in Tampa Bay.  The `trnpts` dataset is a point object for the starting location of each transect and the `trnlns` dataset is a line object showing the approximate direction and length of each transect beginning at each point.  Each dataset also includes the `MonAgency` column that indicates with monitoring agency collects the data at each transect. 
+There are two datasets included in tbeptools that show the transect locations that are actively monitored in Tampa Bay.  The `trnpts` dataset is a point object for the starting location of each transect and the `trnlns` dataset is a line object showing the approximate direction and length of each transect beginning at each point in `trnpts`.  Each dataset also includes the `MonAgency` column that indicates which monitoring agency collects the data at each transect. 
 
 ```{r}
 trnpts
 trnlns
 ```
 
-The two datasets are `sf()` (simple features) object and are easily mapped with `mapview()` to view their locations.
+The two datasets are `sf()` (simple features) objects and are easily mapped with `mapview()` to view their locations.
 
 ```{r}
 mapview(trnpts, label = trnpts$lab, zcol = 'MonAgency', lwd = 0, legend = F, homebutton = F) + 
@@ -48,7 +48,7 @@ mapview(trnpts, label = trnpts$lab, zcol = 'MonAgency', lwd = 0, legend = F, hom
 
 ## Accessing the transect data
 
-The transect data can be downloaded from the Water Atlas using the `read_trnjsn()` function.  The only required argument for this function is `training` which indicates if you want to download training data or the complete dataset.  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily to assess precision among different training crews. The data are downloaded as a JSON object, which can then be passed to the `anlz_trnsz()` function for formatting. 
+The transect data can be downloaded from the Water Atlas using the `read_trnjsn()` function.  The only required argument for this function is `training` which indicates if you want to download training data or the complete dataset.  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily to assess precision among different training crews. The data are downloaded as a JSON object, which can then be passed to the `anlz_trnjsn()` function for formatting. 
 
 ```{r}
 # import JSON
