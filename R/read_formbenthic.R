@@ -68,9 +68,10 @@ read_formbenthic <- function(channel){
     filter(IsComplete == 1) %>%
     mutate(
       SampleTime = force_tz(SampleTime, tz = tzone),
-      date = as.Date(SampleTime)
+      date = as.Date(SampleTime),
+      yr = year(date)
     ) %>%
-    select(StationID, ProgramID, ProgramName, Latitude, Longitude, date)
+    select(StationID, ProgramID, ProgramName, Latitude, Longitude, date, yr)
 
   # field samples -----------------------------------------------------------
 
@@ -91,7 +92,8 @@ read_formbenthic <- function(channel){
     ) %>%
     filter(Stratum %in% 'B') %>%
     group_by(StationID, date, Stratum) %>%
-    summarise(Salinity = mean(Salinity, na.rm = T), .groups = 'drop')
+    summarise(Salinity = mean(Salinity, na.rm = T), .groups = 'drop') %>%
+    select(-Stratum)
 
   # taxa counts -------------------------------------------------------------
 
@@ -121,8 +123,7 @@ read_formbenthic <- function(channel){
         T ~ COUNT * StandardizingConstant
       )
     ) %>%
-    select(StationID, TaxaCountID, TaxaListID, FAMILY, NAME, TaxaCount = COUNT, AdjCount
-    )
+    select(StationID, TaxaCountID, TaxaListID, FAMILY, NAME, TaxaCount = COUNT, AdjCount)
 
   # TaxaSums ----------------------------------------------------------------
 
@@ -177,8 +178,7 @@ read_formbenthic <- function(channel){
       SpionidAbundance = ifelse(is.na(SpionidAbundance), 0, SpionidAbundance),
       CapitellidAbundance = ifelse(is.na(CapitellidAbundance), 0, CapitellidAbundance)
     ) %>%
-    select(StationID, SpeciesRichness, RawCountAbundance, TotalAbundance, SpionidAbundance, CapitellidAbundance,
-           `Sal-B` = Salinity, StandPropLnSpecies)
+    select(StationID, SpeciesRichness, RawCountAbundance, TotalAbundance, SpionidAbundance, CapitellidAbundance, StandPropLnSpecies)
 
   # BioStatsTBBI ------------------------------------------------------------
 
@@ -189,7 +189,6 @@ read_formbenthic <- function(channel){
           (((-0.11407) + (StandPropLnSpecies * 0.32583 ) +
               (((asin(SpionidAbundance / TotalAbundance) - 0.11646 ) / (0.18554)) *
                  (-0.1502)) + ((-0.51401) * (-0.60943))) - (-3.3252118)) / (0.7578544 + 3.3252118),
-
 
         CapitellidAbundance != 0 & SpionidAbundance == 0 ~
           (((-0.11407) + (StandPropLnSpecies * 0.32583) + ((-0.62768) * (-0.1502)) +
@@ -208,10 +207,32 @@ read_formbenthic <- function(channel){
       ),
       TBBI = round(100 * TBBI, 2)
     ) %>%
-    select(StationID, TotalAbundance, SpeciesRichness, TBBI, `Sal-B`)
+    select(StationID, TotalAbundance, SpeciesRichness, TBBI) %>%
+    filter(!is.na(StationID))
 
+  # empty samples -----------------------------------------------------------
 
-  out <- biostatstbbi
+  empts <- TaxaCount %>%
+    filter(Grab == 1) %>%
+    filter(TaxaListId %in% 1942) %>%
+    mutate(TotalAbundance = 0, SpeciesRichness = 0, TBBI = 0) %>%
+    select(StationID, TotalAbundance, SpeciesRichness, TBBI)
+
+  # final output ------------------------------------------------------------
+
+  out <- biostatstbbi %>%
+    bind_rows(empts) %>%
+    mutate(
+      TBBICat = case_when(
+        TBBI == 0 ~ 'Empty Sample',
+        TBBI < 73 ~ 'Degraded',
+        TBBI >= 73 & TBBI < 87 ~ 'Intermediate',
+        TBBI >= 87 ~ 'Healthy',
+        T ~ NA_character_
+      )
+    ) %>%
+    full_join(fieldsamples, by = 'StationID') %>%
+    left_join(stations, ., by = c('StationID', 'date'))
 
   return(out)
 
