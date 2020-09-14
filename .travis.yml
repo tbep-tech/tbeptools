@@ -15,6 +15,7 @@ script:
   - R -e 'devtools::install_version("mapview", version = "2.7.8")'
   - R CMD build .
   - R CMD check *tar.gz
+warnings_are_errors: true
 notifications:
   email:
     recipients:

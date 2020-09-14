@@ -11,7 +11,7 @@
 #'
 #' For the \code{path} argument, you must specify the full path and not the home expansion, i.e., \code{'C:/Users/yourname/Desktop/benthic.zip'} and not \code{'~/Desktop/benthic.zip'}.  If the zipped file has previously been downloaded and extracted, the direct path to the .mdb file can be uased for \code{path}.
 #'
-#' The .mdb database in the unzipped folder is large and a temporary file can be created to preserve file space, e.g., using \code{\link{tempfile(fileext = '.zip')}} for the \code{path} argument. See the examples.
+#' The .mdb database in the unzipped folder is large and a temporary file can be created to preserve file space, e.g., using \code{tempfile(fileext = '.zip')} for the \code{path} argument. See the examples.
 #'
 #' @export
 #'

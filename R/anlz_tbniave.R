@@ -1,6 +1,6 @@
 #' Get annual averages of Tampa Bay Nekton Index scores by bay segment
 #'
-#' @param tbniscr input dat frame as returned by \code{\link{anlz_tbniscr}}
+#' @param tbniscr input data frame as returned by \code{\link{anlz_tbniscr}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"
 #' @param rev logical if factor levels for bay segments are reversed
 #' @param perc numeric values indicating break points for score categories

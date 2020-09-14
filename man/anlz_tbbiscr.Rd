@@ -8,8 +8,6 @@ anlz_tbbiscr(benthicdata)
 }
 \arguments{
 \item{benthicdata}{nested \code{\link[tibble]{tibble}} formatted from \code{\link{read_importbenthic}}}
-
-\item{raw}{logical indicating if raw metric values are also returned}
 }
 \value{
 A single data frame of TBBI scores for each site.
@@ -25,6 +23,7 @@ anlz_tbbiscr(benthicdata)
 }
 \seealso{
 Other anlz: 
+\code{\link{anlz_tbbimed}()},
 \code{\link{anlz_tbniave}()},
 \code{\link{anlz_tbnimet}()},
 \code{\link{anlz_tbniscr}()}

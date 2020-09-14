@@ -25,6 +25,7 @@ anlz_tbnimet(fimdata)
 }
 \seealso{
 Other anlz: 
+\code{\link{anlz_tbbimed}()},
 \code{\link{anlz_tbbiscr}()},
 \code{\link{anlz_tbniave}()},
 \code{\link{anlz_tbniscr}()}

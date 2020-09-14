@@ -12,7 +12,7 @@ anlz_tbniave(
 )
 }
 \arguments{
-\item{tbniscr}{input dat frame as returned by \code{\link{anlz_tbniscr}}}
+\item{tbniscr}{input data frame as returned by \code{\link{anlz_tbniscr}}}
 
 \item{bay_segment}{chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"}
 
@@ -32,6 +32,7 @@ anlz_tbniave(tbniscr)
 }
 \seealso{
 Other anlz: 
+\code{\link{anlz_tbbimed}()},
 \code{\link{anlz_tbbiscr}()},
 \code{\link{anlz_tbnimet}()},
 \code{\link{anlz_tbniscr}()}

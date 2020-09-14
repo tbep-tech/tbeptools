@@ -2,7 +2,7 @@
 #'
 #' Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
 #'
-#' @param tbniscr input dat frame as returned by \code{\link{anlz_tbniscr}}
+#' @param tbniscr input data frame as returned by \code{\link{anlz_tbniscr}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"
 #' @param perc numeric values indicating break points for score categories
 #' @param alph numeric indicating alpha value for score category colors
