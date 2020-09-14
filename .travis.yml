@@ -5,7 +5,7 @@ git:
   depth: false
 before_install:
   - sudo apt-get install r-cran-devtools
-  - Rscript -e 'devtools::install_version("mapview", version = "2.7.8")''
+  - Rscript -e 'devtools::install_version("mapview", version = "2.7.8")'
 apt_packages:
   - libpoppler-cpp-dev
   - libudunits2-dev
