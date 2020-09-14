@@ -1,13 +1,13 @@
-#' Get Tampa Bay Benthic Index scores
+#' Get Tampa Bay Nekton Index scores
 #'
-#' Get Tampa Bay Benthic Index scores
+#' Get Tampa Bay Nekton Index scores
 #'
 #' @param fimdata \code{data.frame} formatted from \code{\link{read_importfim}}
 #' @param raw logical indicating if raw metric values are also returned
 #'
 #' @details This function calculates raw and scored metrics for the TBNI, including \code{NumTaxa}, \code{BenthicTaxa}, \code{TaxaSelect}, \code{NumGuilds}, and \code{Shannon}.  The total TBNI score is returned as \code{TBNI_Score}.
 #'
-#' @return A data frame of metrics and TBNI scores in wide fomat.
+#' @return A data frame of metrics and TBNI scores in wide format.
 #' @export
 #'
 #' @family anlz

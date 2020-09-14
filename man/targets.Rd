@@ -25,6 +25,7 @@ Bay segment specific management targets including low and high magnitude exceeda
 }
 \seealso{
 Other utilities: 
+\code{\link{benthicdata}},
 \code{\link{bsmap}},
 \code{\link{epcdata}},
 \code{\link{fimdata}},

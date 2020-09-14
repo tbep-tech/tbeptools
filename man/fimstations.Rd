@@ -68,6 +68,7 @@ save(fimstations, file = 'data/fimstations.RData', compress = 'xz')
 }
 \seealso{
 Other utilities: 
+\code{\link{benthicdata}},
 \code{\link{bsmap}},
 \code{\link{epcdata}},
 \code{\link{fimdata}},

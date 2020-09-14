@@ -4,7 +4,7 @@
 \alias{read_importbenthic}
 \title{Download and import benthic data for Tampa Bay}
 \usage{
-read_importbenthic(path, download_latest = FALSE, remove = TRUE)
+read_importbenthic(path, download_latest = FALSE, remove = FALSE)
 }
 \arguments{
 \item{path}{chr string for local path where the mdb database is located or where it will be downloaded, must include file extension either \code{.mdb} for former or \code{.zip} for latter}
@@ -14,7 +14,7 @@ read_importbenthic(path, download_latest = FALSE, remove = TRUE)
 \item{remove}{logical if the downloaded zip file is removed after unzipping}
 }
 \value{
-A \code{data.frame} of formatted benthic data.
+A nested \code{tibble} of station, taxa, and field sample data
 }
 \description{
 Download and import benthic data for Tampa Bay

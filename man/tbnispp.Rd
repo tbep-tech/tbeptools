@@ -42,6 +42,7 @@ save(tbnispp, file = 'data/tbnispp.RData', compress = 'xz')
 }
 \seealso{
 Other utilities: 
+\code{\link{benthicdata}},
 \code{\link{bsmap}},
 \code{\link{epcdata}},
 \code{\link{fimdata}},

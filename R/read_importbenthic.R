@@ -4,7 +4,7 @@
 #' @param download_latest logical to download latest if a more recent dataset is available
 #' @param remove logical if the downloaded zip file is removed after unzipping
 #'
-#' @return A \code{data.frame} of formatted benthic data.
+#' @return A nested \code{tibble} of station, taxa, and field sample data
 #'
 #' @details
 #' This function downloads and unzips a Microsoft Access Database from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip}.  The database tables are accessed using a connection through the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at <https://www.microsoft.com/en-us/download/details.aspx?id=54920>.  The function has not been tested for 32-bit versions of R or outside of Windows.
@@ -54,7 +54,7 @@ read_importbenthic <- function(path, download_latest = FALSE, remove = FALSE){
 
   ##
   # download
-  urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip'
+  urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals_08262020.zip'
   read_dlcurrent(path, download_latest, urlin = urlin)
 
   # unzip, find mdb

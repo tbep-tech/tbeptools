@@ -2,7 +2,7 @@
 % Please edit documentation in R/anlz_tbnimet.R
 \name{anlz_tbnimet}
 \alias{anlz_tbnimet}
-\title{Get all raw metrics for Tampa Bay Benthic Index}
+\title{Get all raw metrics for Tampa Bay Nekton Index}
 \usage{
 anlz_tbnimet(fimdata, all = FALSE)
 }
@@ -15,7 +15,7 @@ anlz_tbnimet(fimdata, all = FALSE)
 A data frame of raw metrics in wide fomat.  If \code{all = TRUE}, all metrics are returned, otherwise only \code{NumTaxa}, \code{BenthicTaxa}, \code{TaxaSelect}, \code{NumGuilds}, and \code{Shannon} are returned.
 }
 \description{
-Get all raw metrics for Tampa Bay Benthic Index
+Get all raw metrics for Tampa Bay Nekton Index
 }
 \details{
 All raw metrics are returned in addition to those required for the TBNI.  Each row shows metric values for a station, year, and month where fish catch data were available.
@@ -25,6 +25,7 @@ anlz_tbnimet(fimdata)
 }
 \seealso{
 Other anlz: 
+\code{\link{anlz_tbbiscr}()},
 \code{\link{anlz_tbniave}()},
 \code{\link{anlz_tbniscr}()}
 }

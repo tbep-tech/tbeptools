@@ -15,6 +15,7 @@ Terrain basemap
 }
 \seealso{
 Other utilities: 
+\code{\link{benthicdata}},
 \code{\link{epcdata}},
 \code{\link{fimdata}},
 \code{\link{fimstations}},

@@ -39,6 +39,7 @@ All bay data as of 08212020
 }
 \seealso{
 Other utilities: 
+\code{\link{benthicdata}},
 \code{\link{bsmap}},
 \code{\link{fimdata}},
 \code{\link{fimstations}},

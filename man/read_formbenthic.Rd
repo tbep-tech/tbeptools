@@ -4,13 +4,13 @@
 \alias{read_formbenthic}
 \title{Format benthic data for the Tampa Bay Benthic Index}
 \usage{
-read_formbenthic(channel)
+read_formbenthic(channel, raw = FALSE)
 }
 \arguments{
 \item{channel}{A \code{\link[RODBC]{RODBC}} class connection object to the .mdb benthic database}
 }
 \value{
-A formatted \code{data.frame} of benthic and supporting data for the TBBI
+A nested \code{tibble} of station, taxa, and field sample data
 }
 \description{
 Format benthic data for the Tampa Bay Benthic Index
@@ -30,6 +30,9 @@ odbccall <- paste0(drvr, 'DBQ=', path)
 # create channel and pass to read_formbenthic
 channel <- RODBC::odbcDriverConnect(odbccall)
 read_formbenthic(channel)
+
+# close connection
+odbcClose(channel)
 }
 }
 \seealso{

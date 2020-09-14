@@ -2,7 +2,7 @@
 % Please edit documentation in R/anlz_tbniscr.R
 \name{anlz_tbniscr}
 \alias{anlz_tbniscr}
-\title{Get Tampa Bay Benthic Index scores}
+\title{Get Tampa Bay Nekton Index scores}
 \usage{
 anlz_tbniscr(fimdata, raw = TRUE)
 }
@@ -12,10 +12,10 @@ anlz_tbniscr(fimdata, raw = TRUE)
 \item{raw}{logical indicating if raw metric values are also returned}
 }
 \value{
-A data frame of metrics and TBNI scores in wide fomat.
+A data frame of metrics and TBNI scores in wide format.
 }
 \description{
-Get Tampa Bay Benthic Index scores
+Get Tampa Bay Nekton Index scores
 }
 \details{
 This function calculates raw and scored metrics for the TBNI, including \code{NumTaxa}, \code{BenthicTaxa}, \code{TaxaSelect}, \code{NumGuilds}, and \code{Shannon}.  The total TBNI score is returned as \code{TBNI_Score}.
@@ -27,6 +27,7 @@ anlz_tbniscr(fimdata)
 \code{\link{anlz_tbnimet}}
 
 Other anlz: 
+\code{\link{anlz_tbbiscr}()},
 \code{\link{anlz_tbniave}()},
 \code{\link{anlz_tbnimet}()}
 }

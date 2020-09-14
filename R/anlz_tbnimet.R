@@ -1,6 +1,6 @@
-#' Get all raw metrics for Tampa Bay Benthic Index
+#' Get all raw metrics for Tampa Bay Nekton Index
 #'
-#' Get all raw metrics for Tampa Bay Benthic Index
+#' Get all raw metrics for Tampa Bay Nekton Index
 #'
 #' @param fimdata \code{data.frame} formatted from \code{read_importfim}
 #' @param all logical indicating if only TBNI metrics are returned (default), otherwise all are calcualted

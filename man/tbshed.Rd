@@ -19,6 +19,7 @@ plot(st_geometry(tbshed))
 }
 \seealso{
 Other utilities: 
+\code{\link{benthicdata}},
 \code{\link{bsmap}},
 \code{\link{epcdata}},
 \code{\link{fimdata}},
