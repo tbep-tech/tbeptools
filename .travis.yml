@@ -3,15 +3,15 @@ sudo: false
 cache: packages
 git:
   depth: false
-before_install:
-  - sudo apt-get install r-cran-devtools
-  - Rscript -e 'devtools::install_version("mapview", version = "2.7.8")'
 apt_packages:
   - libpoppler-cpp-dev
   - libudunits2-dev
   - libgdal-dev
   - libgeos-dev
   - libproj-dev
+script:
+  - sudo apt-get install r-cran-devtools
+  - Rscript -e 'devtools::install_version("mapview", version = "2.7.8")'
 notifications:
   email:
     recipients:

@@ -101,6 +101,8 @@ The Access database also is quite large and you can use a temporary file path fo
 benthicdata <- read_importbenthic(tempfile(fileext = '.zip'), download_latest = T)
 ```
 
+## Calculating TBBI scores
+
 After the data are successfully imported, you can view them from the assigned object.  The data are provided as a nested tibble that includes three different datasets: station information, field sample data (salinity), and detailed taxa information.  
 
 ```{r}
