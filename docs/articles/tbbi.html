@@ -93,7 +93,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Tampa Bay Benthic Index</h1>
             
-            <h4 class="date">2020-09-09</h4>
+            <h4 class="date">2020-09-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tbep-tech/tbeptools/blob/master/vignettes/tbbi.Rmd"><code>vignettes/tbbi.Rmd</code></a></small>
       <div class="hidden name"><code>tbbi.Rmd</code></div>
@@ -132,11 +132,99 @@
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">benthicdata</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/read_importbenthic.html">read_importbenthic</a></span>(<span class="st">'C:/path/to/benthic.mdb'</span>)</pre></body></html></div>
 <p>The Access database also is quite large and you can use a temporary file path for the download and unzipping location. You can use the <code><a href="https://rdrr.io/r/base/tempfile.html">tempfile()</a></code> function with the .zip file extension for the <code>path</code> argument. Because a temporary file is used, you must always include <code>download_latest = TRUE</code>, i.e., there is no previously existing file.</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">benthicdata</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/read_importbenthic.html">read_importbenthic</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span>(<span class="kw">fileext</span> <span class="kw">=</span> <span class="st">'.zip'</span>), <span class="kw">download_latest</span> <span class="kw">=</span> <span class="no">T</span>)</pre></body></html></div>
-<!-- After the data are successfully imported, you can view them from the assigned object: -->
-<!-- ```{r} -->
-<!-- head(benthicdata) -->
-<!-- ``` -->
-<!-- The imported data are formatted for calculating the TBBI.  -->
+<p>After the data are successfully imported, you can view them from the assigned object. The data are provided as a nested tibble that includes three different datasets: station information, field sample data (salinity), and detailed taxa information.</p>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">benthicdata</span>
+<span class="co">#&gt; # A tibble: 3 x 2</span>
+<span class="co">#&gt;   name         value                 </span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;list&gt;                </span>
+<span class="co">#&gt; 1 stations     &lt;tibble [4,516 x 7]&gt;  </span>
+<span class="co">#&gt; 2 fieldsamples &lt;tibble [4,998 x 3]&gt;  </span>
+<span class="co">#&gt; 3 taxacounts   &lt;tibble [135,328 x 7]&gt;</span></pre></body></html></div>
+<p>The individual datasets can be viewed by extracting them from the parent object using the <code>deframe()</code> function from the tibble package.</p>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="co"># see all</span>
+<span class="fu">deframe</span>(<span class="no">benthicdata</span>)
+<span class="co">#&gt; $stations</span>
+<span class="co">#&gt; # A tibble: 4,516 x 7</span>
+<span class="co">#&gt;    StationID ProgramID ProgramName        Latitude Longitude date          yr</span>
+<span class="co">#&gt;        &lt;int&gt;     &lt;int&gt; &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1       448         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  2       449         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt;  3       450         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  4       451         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  5       452         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt;  6       453         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  7       454         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  8       455         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  9       456         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt; 10       457         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt; # ... with 4,506 more rows</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $fieldsamples</span>
+<span class="co">#&gt; # A tibble: 4,998 x 3</span>
+<span class="co">#&gt;    StationID date       Salinity</span>
+<span class="co">#&gt;        &lt;int&gt; &lt;date&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt;  1       448 2002-05-21     30.5</span>
+<span class="co">#&gt;  2       449 2002-05-20     30.8</span>
+<span class="co">#&gt;  3       450 2002-05-21     30.5</span>
+<span class="co">#&gt;  4       451 2002-05-21     30.6</span>
+<span class="co">#&gt;  5       452 2002-05-20     30  </span>
+<span class="co">#&gt;  6       453 2002-05-21     30.6</span>
+<span class="co">#&gt;  7       454 2002-05-21     30.5</span>
+<span class="co">#&gt;  8       455 2002-05-21     30.3</span>
+<span class="co">#&gt;  9       456 2002-05-20     30.0</span>
+<span class="co">#&gt; 10       457 2002-05-20     29.9</span>
+<span class="co">#&gt; # ... with 4,988 more rows</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $taxacounts</span>
+<span class="co">#&gt; # A tibble: 135,328 x 7</span>
+<span class="co">#&gt;    StationID TaxaCountID TaxaListID FAMILY      NAME          TaxaCount AdjCount</span>
+<span class="co">#&gt;        &lt;int&gt;       &lt;int&gt;      &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     11321      152055       1198 Anomiidae   Anomia simpl~         1       25</span>
+<span class="co">#&gt;  2     11321      152056       1224 Carditidae  Carditamera ~         1       25</span>
+<span class="co">#&gt;  3       584      233277        624 Cirratulid~ Chaetozone s~         1       25</span>
+<span class="co">#&gt;  4     11321      152057       1306 Veneridae   Chione eleva~         3       75</span>
+<span class="co">#&gt;  5      3132      239443        352 Pilargidae  Sigambra bas~        14      350</span>
+<span class="co">#&gt;  6     11321      152058       1088 Pyramidell~ Turbonilla c~         6      150</span>
+<span class="co">#&gt;  7      2541      140530        258 &lt;NA&gt;        NEMERTEA              8      200</span>
+<span class="co">#&gt;  8      2542      140531        258 &lt;NA&gt;        NEMERTEA              2       50</span>
+<span class="co">#&gt;  9      2992      140631        262 &lt;NA&gt;        Palaeonemert~         4      100</span>
+<span class="co">#&gt; 10      3003      140635        285 Tetrastemm~ Tetrastemma ~         2       50</span>
+<span class="co">#&gt; # ... with 135,318 more rows</span>
+
+<span class="co"># get only station dat</span>
+<span class="fu">deframe</span>(<span class="no">benthicdata</span>)<span class="kw">[[</span><span class="st">'stations'</span>]]
+<span class="co">#&gt; # A tibble: 4,516 x 7</span>
+<span class="co">#&gt;    StationID ProgramID ProgramName        Latitude Longitude date          yr</span>
+<span class="co">#&gt;        &lt;int&gt;     &lt;int&gt; &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1       448         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  2       449         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt;  3       450         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  4       451         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  5       452         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt;  6       453         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  7       454         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  8       455         4 Benthic Monitoring     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  9       456         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt; 10       457         4 Benthic Monitoring     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt; # ... with 4,506 more rows</span></pre></body></html></div>
+<p>The <code><a href="../reference/anlz_tbbiscr.html">anlz_tbbiscr()</a></code> function uses the nested <code>benthicdata</code> to estimate the TBBI scores at each site. The TBBI scores typically range from 0 to 100 and are grouped into categories that describe the general condition of the benthic community. Scores less than 73 are considered “degraded”, scores between 73 and 87 are “intermediate”, and scores greater than 87 are “healthy”. Locations that were sampled but no organisms were found are assigned a score of zero and a category of “empty sample”. The total abundance (<code>TotalAbundance</code>, ind/m2), species richness (<code>SpeciesRichness</code>) and bottom salinity (<code>Salinity</code>, psu). Some metrics for the TBBI are corrected for salinity and bottom measurements taken at the time of sampling are required for accurate calculation of the TBBI.</p>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">tbbiscr</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/anlz_tbbiscr.html">anlz_tbbiscr</a></span>(<span class="no">benthicdata</span>)
+<span class="no">tbbiscr</span>
+<span class="co">#&gt; # A tibble: 4,516 x 12</span>
+<span class="co">#&gt;    StationID ProgramID ProgramName Latitude Longitude date          yr</span>
+<span class="co">#&gt;        &lt;int&gt;     &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1       448         4 Benthic Mo~     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  2       449         4 Benthic Mo~     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt;  3       450         4 Benthic Mo~     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  4       451         4 Benthic Mo~     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  5       452         4 Benthic Mo~     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt;  6       453         4 Benthic Mo~     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  7       454         4 Benthic Mo~     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  8       455         4 Benthic Mo~     27.8     -82.4 2002-05-21  2002</span>
+<span class="co">#&gt;  9       456         4 Benthic Mo~     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt; 10       457         4 Benthic Mo~     27.8     -82.4 2002-05-20  2002</span>
+<span class="co">#&gt; # ... with 4,506 more rows, and 5 more variables: TotalAbundance &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   SpeciesRichness &lt;dbl&gt;, TBBI &lt;dbl&gt;, TBBICat &lt;chr&gt;, Salinity &lt;dbl&gt;</span></pre></body></html></div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">

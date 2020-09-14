@@ -141,7 +141,7 @@
     <p>Download and import benthic data for Tampa Bay</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_importbenthic</span>(<span class='no'>path</span>, <span class='kw'>download_latest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>read_importbenthic</span>(<span class='no'>path</span>, <span class='kw'>download_latest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,7 +162,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> of formatted benthic data.</p>
+    <p>A nested <code>tibble</code> of station, taxa, and field sample data</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function downloads and unzips a Microsoft Access Database from <a href='ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip'>ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip</a>.  The database tables are accessed using a connection through the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at &lt;https://www.microsoft.com/en-us/download/details.aspx?id=54920&gt;.  The function has not been tested for 32-bit versions of R or outside of Windows.</p>

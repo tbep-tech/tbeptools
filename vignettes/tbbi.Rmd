@@ -31,6 +31,7 @@ library(knitr)
 library(mapview)
 library(ggplot2)
 library(sf)
+library(tibble)
 
 bib_scrp(here('vignettes', 'tbbi.Rmd'), bib_new = here('vignettes', 'tbbirefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
 
@@ -100,12 +101,27 @@ The Access database also is quite large and you can use a temporary file path fo
 benthicdata <- read_importbenthic(tempfile(fileext = '.zip'), download_latest = T)
 ```
 
-<!-- After the data are successfully imported, you can view them from the assigned object: -->
+After the data are successfully imported, you can view them from the assigned object.  The data are provided as a nested tibble that includes three different datasets: station information, field sample data (salinity), and detailed taxa information.  
 
-<!-- ```{r} -->
-<!-- head(benthicdata) -->
-<!-- ``` -->
+```{r}
+benthicdata
+```
 
-<!-- The imported data are formatted for calculating the TBBI.  -->
+The individual datasets can be viewed by extracting them from the parent object using the `deframe()` function from the tibble package. 
+
+```{r}
+# see all
+deframe(benthicdata)
+
+# get only station dat
+deframe(benthicdata)[['stations']]
+```
+
+The `anlz_tbbiscr()` function uses the nested `benthicdata` to estimate the TBBI scores at each site. The TBBI scores typically range from 0 to 100 and are grouped into categories that describe the general condition of the benthic community.  Scores less than 73 are considered "degraded", scores between 73 and 87 are "intermediate", and scores greater than 87 are "healthy".  Locations that were sampled but no organisms were found are assigned a score of zero and a category of "empty sample".  The total abundance (`TotalAbundance`, ind/m2), species richness (`SpeciesRichness`) and bottom salinity (`Salinity`, psu).  Some metrics for the TBBI are corrected for salinity and bottom measurements taken at the time of sampling are required for accurate calculation of the TBBI.
+
+```{r}
+tbbiscr <- anlz_tbbiscr(benthicdata)
+tbbiscr
+```
 
 # References

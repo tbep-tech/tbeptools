@@ -141,7 +141,7 @@
     <p>Format benthic data for the Tampa Bay Benthic Index</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_formbenthic</span>(<span class='no'>channel</span>)</pre>
+    <pre class="usage"><span class='fu'>read_formbenthic</span>(<span class='no'>channel</span>, <span class='kw'>raw</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,7 +154,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A formatted <code>data.frame</code> of benthic and supporting data for the TBBI</p>
+    <p>A nested <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code> of station, field sample, and taxa data</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Function is used internally within <code><a href='read_importbenthic.html'>read_importbenthic</a></code>, see the help file for limitations on using the function outside of Windows.</p>
@@ -183,6 +183,9 @@
 <span class='co'># create channel and pass to read_formbenthic</span>
 <span class='no'>channel</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RODBC</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RODBC/man/odbcConnect.html'>odbcDriverConnect</a></span>(<span class='no'>odbccall</span>)
 <span class='fu'>read_formbenthic</span>(<span class='no'>channel</span>)
+
+<span class='co'># close connection</span>
+<span class='fu'><a href='https://rdrr.io/pkg/RODBC/man/odbcClose.html'>odbcClose</a></span>(<span class='no'>channel</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
