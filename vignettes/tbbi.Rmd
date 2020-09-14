@@ -126,4 +126,18 @@ tbbiscr <- anlz_tbbiscr(benthicdata)
 tbbiscr
 ```
 
+## Plotting results
+
+The TBBI scores can be viewed as annual averages for each bay segment using the `show_tbbimatrix()` function.  The `show_tbbimatrix()` plots the annual bay segment averages as categorical values in a conventional "stoplight" graphic.  The input to `show_tbbimatrix()` function is the output from the `anlz_tbbiscr()` function.  
+
+```{r, fig.height = 7, fig.width = 3}
+show_tbbimatrix(tbbiscr)
+```
+
+The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
+
+```{r, fig.height = 7, fig.width = 3}
+show_tbbimatrix(tbbiscr, plotly = T)
+```
+
 # References

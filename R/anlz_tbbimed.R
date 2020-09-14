@@ -26,6 +26,8 @@ anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TC
   if(rev)
     levs <- rev(levs)
 
+  st_crs(tbsegshed) <- 4326
+
   out <- tbbiscr %>%
     sf::st_as_sf(
       coords = c("Longitude", "Latitude"),

@@ -28,7 +28,7 @@
 #' # close connection
 #' odbcClose(channel)
 #' }
-read_formbenthic <- function(channel, raw = FALSE){
+read_formbenthic <- function(channel){
 
   tzone <- 'America/Jamaica'
 

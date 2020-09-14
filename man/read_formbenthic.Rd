@@ -4,7 +4,7 @@
 \alias{read_formbenthic}
 \title{Format benthic data for the Tampa Bay Benthic Index}
 \usage{
-read_formbenthic(channel, raw = FALSE)
+read_formbenthic(channel)
 }
 \arguments{
 \item{channel}{A \code{\link[RODBC]{RODBC}} class connection object to the .mdb benthic database}

@@ -26,7 +26,13 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   'ShootDensity_Avg','ShootDensity_StdDev', 'Species', 'SpeciesAbundance', 'Transect', 'Average',
                   'Median', 'MonitoringAgency', 'grp', 'sumval', 'sumvar', 'ObservationDate', 'Depth',
                   'SeagrassEdge', 'Temp_Water_Bottom_degC', 'Temp_Water_Mid_degC', 'Temp_Water_Top_degC',
-                  'Total_Nitrogen_Q', 'Total_Nitrogen_mgL', 'tn', 'indyr', 'monitor', 'author'))
+                  'Total_Nitrogen_Q', 'Total_Nitrogen_mgL', 'tn', 'indyr', 'monitor', 'author', 'AdjCount',
+                  'AdjCountAbundance', 'ArrivalTime', 'CapitellidAbundance', 'COLONIAL/PLANKTONIC?', 'FAMILY',
+                  'Grab', 'IsComplete', 'ProgramID', 'ProgramName', 'RawCountAbundance', 'Salinity',
+                  'SpeciesRichness', 'SpionidAbundance', 'StandardizingConstant', 'StandPropLnSpecies',
+                  'StationID', 'StratumID', 'SumofAdjCount', 'SumofCount', 'TAXA_GROUP', 'TAXA_ID', 'TaxaCount',
+                  'TaxaCountID', 'TaxaID', 'TaxaListId', 'TaxaListID', 'TBBI', 'TBBICat', 'tbsegshed',
+                  'TotalAbundance'))
 
 #' @importFrom grDevices rgb
 NULL

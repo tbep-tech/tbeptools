@@ -158,7 +158,7 @@ show_tbniscrall(tbniscr)
 show_tbnimatrix(tbniscr)
 ```
 
-Each of the plots can also be produced as [plotly](https://plotly.com/r/) interactive plots by setting `plotly = TRUE` inside ach function. 
+Each of the plots can also be produced as [plotly](https://plotly.com/r/) interactive plots by setting `plotly = TRUE` inside each function. 
 
 ```{r, fig.height = 5, fig.width = 7}
 show_tbniscr(tbniscr, plotly = T)

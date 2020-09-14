@@ -102,11 +102,15 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_refs()`: Convert references csv to bib entries
 
+* `anlz_tbbimed()`: Get annual medians of Tampa Bay Benthic Index scores by bay segment
+
+* `anlz_tbbiscr()`: Get Tampa Bay Benthic Index scores
+
 * `anlz_tbniave()`: Get annual averages of Tampa Bay Nekton Index scores by bay segment 
 
-* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Benthic Index
+* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Nekton Index
 
-* `anlz_tbniscr()`: Get Tampa Bay Benthic Index scores
+* `anlz_tbniscr()`: Get Tampa Bay Nekton Index scores
 
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
@@ -133,6 +137,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 * `show_segplotly()`: Plot chlorophyll and secchi data together with matrix outcomes 
 
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
+
+* `show_tbbimatrix()`: Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
 
 * `show_tbnimatrix()`: Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
 
@@ -317,11 +323,15 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_refs()`: Convert references csv to bib entries
 
+* `anlz_tbbimed()`: Get annual medians of Tampa Bay Benthic Index scores by bay segment
+
+* `anlz_tbbiscr()`: Get Tampa Bay Benthic Index scores
+
 * `anlz_tbniave()`: Get annual averages of Tampa Bay Nekton Index scores by bay segment 
 
-* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Benthic Index
+* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Nekton Index
 
-* `anlz_tbniscr()`: Get Tampa Bay Benthic Index scores
+* `anlz_tbniscr()`: Get Tampa Bay Nekton Index scores
 
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
@@ -371,6 +381,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_segplotly()`: Plot chlorophyll and secchi data together with matrix outcomes 
 
 * `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
+
+* `show_tbbimatrix()`: Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
 
 * `show_tbnimatrix()`: Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
 
