@@ -10,6 +10,7 @@ apt_packages:
   - libgeos-dev
   - libproj-dev
 install:
+  - sudo apt-get install r-cran-devtools
   - R -e 'devtools::install_deps(dep = T)'
 script:
   - Rscript -e 'devtools::install_version("mapview", version = "2.7.8")'
