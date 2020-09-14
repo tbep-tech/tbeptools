@@ -2,7 +2,7 @@
 #'
 #' @param channel A \code{\link[RODBC]{RODBC}} class connection object to the .mdb benthic database
 #'
-#' @return A nested \code{tibble} of station, taxa, and field sample data
+#' @return A nested \code{\link[tibble]{tibble}} of station, field sample, and taxa data
 #'
 #' @details Function is used internally within \code{\link{read_importbenthic}}, see the help file for limitations on using the function outside of Windows.
 #'

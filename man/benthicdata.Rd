@@ -3,29 +3,19 @@
 \docType{data}
 \name{benthicdata}
 \alias{benthicdata}
-\title{Benthic data for the Tampa Bay Benthic Index current as of 09132020}
+\title{Benthic data for the Tampa Bay Benthic Index current as of 09142020}
 \format{
-A data frame with 4516 rows and 12 variables:
+A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 \describe{
-  \item{StationID}{int}
-  \item{ProgramID}{int}
-  \item{ProgramName}{chr}
-  \item{Latitude}{num}
-  \item{Longitude}{num}
-  \item{date}{Date}
-  \item{yr}{num}
-  \item{TotalAbundance}{num}
-  \item{SpecesRichness}{num}
-  \item{TBBI}{num}
-  \item{TBBICat}{chr}
-  \item{Salinity}{num}
+  \item{name}{chr}
+  \item{value}{list}
   }
 }
 \usage{
 benthicdata
 }
 \description{
-Benthic data for the Tampa Bay Benthic Index current as of 09132020
+Benthic data for the Tampa Bay Benthic Index current as of 09142020
 }
 \examples{
 \dontrun{

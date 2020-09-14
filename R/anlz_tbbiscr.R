@@ -2,7 +2,7 @@
 #'
 #' Get Tampa Bay Benthic Index scores
 #'
-#' @param benthicdata nested \code{tibble} formatted from \code{\link{read_importbenthic}}
+#' @param benthicdata nested \code{\link[tibble]{tibble}} formatted from \code{\link{read_importbenthic}}
 #' @param raw logical indicating if raw metric values are also returned
 #'
 #' @details This function calculates scores for the TBBI based on station, taxa, and field sample data.  The total TBBI scores are returned as \code{TBBI} and \code{TBBICat}, where the latter is a categorical description of the scores.

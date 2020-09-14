@@ -7,7 +7,7 @@
 anlz_tbbiscr(benthicdata)
 }
 \arguments{
-\item{benthicdata}{nested \code{tibble} formatted from \code{\link{read_importbenthic}}}
+\item{benthicdata}{nested \code{\link[tibble]{tibble}} formatted from \code{\link{read_importbenthic}}}
 
 \item{raw}{logical indicating if raw metric values are also returned}
 }

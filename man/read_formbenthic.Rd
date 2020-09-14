@@ -10,7 +10,7 @@ read_formbenthic(channel, raw = FALSE)
 \item{channel}{A \code{\link[RODBC]{RODBC}} class connection object to the .mdb benthic database}
 }
 \value{
-A nested \code{tibble} of station, taxa, and field sample data
+A nested \code{\link[tibble]{tibble}} of station, field sample, and taxa data
 }
 \description{
 Format benthic data for the Tampa Bay Benthic Index
