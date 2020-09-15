@@ -121,7 +121,7 @@ read_formbenthic <- function(channel){
     dplyr::filter(Grab == 1) %>%
     dplyr::mutate(
       AdjCount = dplyr::case_when(
-        `COLONIAL/PLANKTONIC?` == 'COLONIAL' ~ 1,
+        `COLONIAL/PLANKTONIC?` == 'Colonial' ~ 1,
         T ~ COUNT * StandardizingConstant
       )
     ) %>%
