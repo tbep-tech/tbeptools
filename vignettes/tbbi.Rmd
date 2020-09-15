@@ -40,15 +40,15 @@ bib_scrp(here('vignettes', 'tbbi.Rmd'), bib_new = here('vignettes', 'tbbirefs.bi
 
 ## Background
 
-The Tampa Bay Benthic Index (TBNI) [@tbep0620;@tbep0106]) is an assessment method that quantifies the ecological health of the benthic community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for Tampa Bay (e.g., water quality report card, nekton index, etc.). The tbeptools package includes several functions described below to import data required for the index and plot the results to view trends over time.  Each of the functions are described in detail below. 
+The Tampa Bay Benthic Index (TBBI) [@tbep0620;@tbep0106]) is an assessment method that quantifies the ecological health of the benthic community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for the region (e.g., water quality report card, nekton index, etc.). The tbeptools package includes several functions described below to import data required for the index and plot the results to view trends over time.  Each of the functions are described in detail below. 
 
-The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Hillsborough Country Environmental Protection Commission (EPC).  The data are updated annually on a FTP site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](https://tbep-tech.github.io/tbeptools/articles/intro.html).  The required data for the TBBI are more extensive than the water quality report card, so the data are made available as a Microsoft Access Database.  The process for downloading and processing the data are similar as for the other functions in tbeptools, except a few additional steps to connect and extract tables from the Access database are required.  Because of this, __the data import functions have only been tested on Windows using 64-bit R.__ You will need to download and install a [Microsoft Access driver](https://www.microsoft.com/en-us/download/details.aspx?id=54920) to import the data.
+The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Hillsborough Country Environmental Protection Commission (EPC).  The data are updated annually on a FTP site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](https://tbep-tech.github.io/tbeptools/articles/intro.html).  The required data for the TBBI are more extensive than the water quality report card and the data are made available as a zipped Microsoft Access Database.  The process for downloading and working with the data are similar as for the other functions in tbeptools, except a few additional steps to connect and extract tables from the Access database are required.  Because of this, __the data import functions have only been tested on Windows using 64-bit R.__ You will need to download and install a [Microsoft Access driver](https://www.microsoft.com/en-us/download/details.aspx?id=54920) to import the data.
 
 ## Data import and included datasets
 
 After installing a [Microsoft Access driver](https://www.microsoft.com/en-us/download/details.aspx?id=54920), data for calculating TBBI scores can be imported into the current R session using the `read_importbenthic()` function.  This function downloads the latest Access database from the EPC FTP site if the data have not already been downloaded to the location specified by the input arguments.  
 
-The Access database is hosted on the FTP site as a zipped file.  First create a character path for the location where you want to download the zipped file. If one does not exist, specify a desired location and name for the downloaded file. Make sure you do not use the '~' path expansion because this will confuse the database connection in a later step.  Here, we want to put the file `benthic.zip` at the location `C:/path/to/` (a made up place just for this example).
+The Access database is hosted on the FTP site as a zipped file.  First create a character path for the location where you want to download the zipped file. If one does not exist, specify a location and name for the downloaded file. Make sure you do not use the '~' path expansion because this will confuse the database connection in a later step.  Here, we want to put the file `benthic.zip` at the location `C:/path/to/` (a made up place for this example).
 
 ```{r, eval = F}
 path <- 'C:/path/to/benthic.zip'
@@ -74,7 +74,7 @@ benthicdata <- read_importbenthic(path, download_latest = T)
 
 Now we get an indication that the file on the server is being downloaded. When the download is complete, we’ll have the data downloaded and saved to the `benthicdata` object in the current R session.
 
-If we try to run the function again after downloading the data from the server, we get the following message. This check is done to make sure that the data are not unnecessarily downloaded if the current file matches the file on the server.
+If we try to run the function again after downloading the data, we get the following message. This check is done to make sure that the data are not unnecessarily downloaded if the current file matches the file on the server.
 
 ```{r, eval = F}
 benthicdata <- read_importbenthic(path, download_latest = T)
@@ -103,7 +103,7 @@ benthicdata <- read_importbenthic(tempfile(fileext = '.zip'), download_latest = 
 
 ## Calculating TBBI scores
 
-After the data are successfully imported, you can view them from the assigned object.  The data are provided as a nested tibble that includes three different datasets: station information, field sample data (salinity), and detailed taxa information.  
+After the data are imported, you can view them from the assigned object.  The data are provided as a nested tibble that includes three different datasets: station information, field sample data (salinity), and detailed taxa information.  
 
 ```{r}
 benthicdata
@@ -119,7 +119,7 @@ deframe(benthicdata)
 deframe(benthicdata)[['stations']]
 ```
 
-The `anlz_tbbiscr()` function uses the nested `benthicdata` to estimate the TBBI scores at each site. The TBBI scores typically range from 0 to 100 and are grouped into categories that describe the general condition of the benthic community.  Scores less than 73 are considered "degraded", scores between 73 and 87 are "intermediate", and scores greater than 87 are "healthy".  Locations that were sampled but no organisms were found are assigned a score of zero and a category of "empty sample".  The total abundance (`TotalAbundance`, ind/m2), species richness (`SpeciesRichness`) and bottom salinity (`Salinity`, psu).  Some metrics for the TBBI are corrected for salinity and bottom measurements taken at the time of sampling are required for accurate calculation of the TBBI.
+The `anlz_tbbiscr()` function uses the nested `benthicdata` to estimate the TBBI scores at each site. The TBBI scores typically range from 0 to 100 and are grouped into categories that describe the general condition of the benthic community.  Scores less than 73 are considered "degraded", scores between 73 and 87 are "intermediate", and scores greater than 87 are "healthy".  Locations that were sampled but no organisms were found are assigned a score of zero and a category of "empty sample".  The total abundance (`TotalAbundance`, organisms/m2), species richness (`SpeciesRichness`) and bottom salinity (`Salinity`, psu) are also provided.  Some metrics for the TBBI are corrected for salinity and bottom measurements taken at the time of sampling are required for accurate calculation of the TBBI.
 
 ```{r}
 tbbiscr <- anlz_tbbiscr(benthicdata)
@@ -136,7 +136,7 @@ show_tbbimatrix(tbbiscr)
 
 The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
 
-```{r, fig.height = 7, fig.width = 3}
+```{r, fig.height = 7, fig.width = 4}
 show_tbbimatrix(tbbiscr, plotly = T)
 ```
 

@@ -48,7 +48,7 @@ mapview(trnpts, label = trnpts$lab, zcol = 'MonAgency', lwd = 0, legend = F, hom
 
 ## Accessing the transect data
 
-The transect data can be downloaded from the Water Atlas using the `read_trnjsn()` function.  The only required argument for this function is `training` which indicates if you want to download training data or the complete dataset.  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily to assess precision among different training crews. The data are downloaded as a JSON object, which can then be passed to the `anlz_trnjsn()` function for formatting. 
+The transect data can be downloaded from the Water Atlas using the `read_trnjsn()` function.  The only required argument for this function is `training`, which indicates if you want to download training data or the complete dataset, i.e., `training = TRUE` or `training = FALSE` (default).  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily to assess precision among different training crews. The data are downloaded as a JSON object, which can then be passed to the `anlz_trnjsn()` function for formatting. 
 
 ```{r}
 # import JSON
