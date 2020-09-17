@@ -50,13 +50,13 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   # axis label
   if(labelexp)
     axlab <- dplyr::case_when(
-      thr == 'chla' ~ expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")"),
-      thr == 'la' ~ expression("Mean Annual Light Attenuation (m  " ^-1 *")")
+      thr == 'chla' ~ expression("Mean Ann. Chl-a ("~ mu * "g\u00B7L"^-1 *")"),
+      thr == 'la' ~ expression("Mean Ann. Light Att. (m  " ^-1 *")")
     )
   if(!labelexp)
     axlab <- dplyr::case_when(
-      thr == 'chla' ~ "Mean Annual Chlorophyll-a (ug/L)",
-      thr == 'la' ~ "Mean Annual Light Attenuation (m-1)"
+      thr == 'chla' ~ "Mean Ann. Chl-a (ug/L)",
+      thr == 'la' ~ "Mean Ann. Light Atten. (m-1)"
     )
 
   # get lines to plot
