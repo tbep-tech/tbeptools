@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Format transect data from Water Atlas — anlz_trnjsn • tbeptools</title>
+<title>Import JSON seagrass transect data from Water Atlas — read_transect • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Format transect data from Water Atlas — anlz_trnjsn" />
-<meta property="og:description" content="Format transect data from Water Atlas" />
+<meta property="og:title" content="Import JSON seagrass transect data from Water Atlas — read_transect" />
+<meta property="og:description" content="Import JSON seagrass transect data from Water Atlas" />
 
 
 
@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -132,54 +126,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Format transect data from Water Atlas</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_trnjsn.R'><code>R/anlz_trnjsn.R</code></a></small>
-    <div class="hidden name"><code>anlz_trnjsn.Rd</code></div>
+    <h1>Import JSON seagrass transect data from Water Atlas</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/read_transect.R'><code>R/read_transect.R</code></a></small>
+    <div class="hidden name"><code>read_transect.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Format transect data from Water Atlas</p>
+    <p>Import JSON seagrass transect data from Water Atlas</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_trnjsn</span>(<span class='kw'>trnjsn</span>, training = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>read_transect</span>(training = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>trnjsn</th>
-      <td><p>output from <code><a href='read_trnjsn.html'>read_trnjsn</a></code></p></td>
-    </tr>
-    <tr>
       <th>training</th>
-      <td><p>logical if input are transect training data or complete database</p></td>
+      <td><p>logical if training data are imported or the complete database</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data frame in long format</p>
+    <p>data frame</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data.  Shoot density and blade height are based on averages across random observations at each transect point that are entered separately in the data form.</p>
+    <p>The function imports a JSON file from the USF Water Atlas.  If <code>training = TRUE</code>, a dataset from the TBEP training survey is imported from <a href='http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'>http://dev.seagrass.wateratlas.usf.edu/api/assessments/training</a>.  If <code>training = FALSE</code>, the entire transect survey database is imported from <a href='http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'>http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>trnjsn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_trnjsn.html'>read_trnjsn</a></span>(training = <span class='fl'>TRUE</span>)
-<span class='fu'>anlz_trnjsn</span>(<span class='kw'>trnjsn</span>, training = <span class='fl'>TRUE</span>)
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 153 x 8</span><span>
-#&gt;    Crew       MonitoringAgency Site  Depth Savspecies  var          aveval sdval
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> CA BH LH … SWFWMD           1       -</span><span style='color: #BB0000;'>46</span><span> Halodule    Abundance       3   </span><span style='color: #BB0000;'>NA</span><span>   
-#&gt; </span><span style='color: #555555;'> 2</span><span> CA BH LH … SWFWMD           1       -</span><span style='color: #BB0000;'>46</span><span> Halodule    Blade Length    0    0   
-#&gt; </span><span style='color: #555555;'> 3</span><span> CA BH LH … SWFWMD           1       -</span><span style='color: #BB0000;'>46</span><span> Halodule    Short Shoot…    0    0   
-#&gt; </span><span style='color: #555555;'> 4</span><span> CA BH LH … SWFWMD           3       -</span><span style='color: #BB0000;'>57</span><span> Halodule    Abundance       5   </span><span style='color: #BB0000;'>NA</span><span>   
-#&gt; </span><span style='color: #555555;'> 5</span><span> CA BH LH … SWFWMD           3       -</span><span style='color: #BB0000;'>57</span><span> Halodule    Blade Length   22    7.35
-#&gt; </span><span style='color: #555555;'> 6</span><span> CA BH LH … SWFWMD           3       -</span><span style='color: #BB0000;'>57</span><span> Halodule    Short Shoot…   68   20.3 
-#&gt; </span><span style='color: #555555;'> 7</span><span> CA BH LH … SWFWMD           3       -</span><span style='color: #BB0000;'>54</span><span> Thalassia   Abundance       1   </span><span style='color: #BB0000;'>NA</span><span>   
-#&gt; </span><span style='color: #555555;'> 8</span><span> CA BH LH … SWFWMD           3       -</span><span style='color: #BB0000;'>54</span><span> Thalassia   Blade Length   38.8 10.1 
-#&gt; </span><span style='color: #555555;'> 9</span><span> CA BH LH … SWFWMD           3       -</span><span style='color: #BB0000;'>54</span><span> Thalassia   Short Shoot…    2    3.46
-#&gt; </span><span style='color: #555555;'>10</span><span> CA BH LH … SWFWMD           5       -</span><span style='color: #BB0000;'>87</span><span> Syringodium Abundance       4   </span><span style='color: #BB0000;'>NA</span><span>   
-#&gt; </span><span style='color: #555555;'># … with 143 more rows</span><span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># get training data</span>
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'>read_transect</span>(training = <span class='fl'>TRUE</span>)
+
+<span class='co'># import all transect data</span>
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'>read_transect</span>()
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

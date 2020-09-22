@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -142,7 +136,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>show_compplot</span>(
-  <span class='kw'>dat</span>,
+  <span class='kw'>transect</span>,
   <span class='kw'>site</span>,
   species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Halophila"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>),
   varplo = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Abundance"</span>, <span class='st'>"Blade Length"</span>, <span class='st'>"Short Shoot Density"</span>),
@@ -155,8 +149,8 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dat</th>
-      <td><p>data frame returned by <code><a href='anlz_trnjsn.html'>anlz_trnjsn</a></code></p></td>
+      <th>transect</th>
+      <td><p>data frame returned by <code><a href='read_transect.html'>read_transect</a></code></p></td>
     </tr>
     <tr>
       <th>site</th>
@@ -189,9 +183,8 @@
     <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>trnjsn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_trnjsn.html'>read_trnjsn</a></span>(training = <span class='fl'>TRUE</span>)
-<span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_trnjsn.html'>anlz_trnjsn</a></span>(<span class='kw'>trnjsn</span>, training = <span class='fl'>TRUE</span>)
-<span class='fu'>show_compplot</span>(<span class='kw'>dat</span>, site = <span class='st'>'1'</span>, species = <span class='st'>'Halodule'</span>, varplo = <span class='st'>'Abundance'</span>)
+    <pre class="examples"><div class='input'><span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>(training = <span class='fl'>TRUE</span>)
+<span class='fu'>show_compplot</span>(<span class='kw'>transect</span>, site = <span class='st'>'1'</span>, species = <span class='st'>'Halodule'</span>, varplo = <span class='st'>'Abundance'</span>)
 </div><div class='img'><img src='show_compplot-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

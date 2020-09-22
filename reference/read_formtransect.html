@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import JSON transect data from Water Atlas — read_trnjsn • tbeptools</title>
+<title>Format seagrass transect data from Water Atlas — read_formtransect • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Import JSON transect data from Water Atlas — read_trnjsn" />
-<meta property="og:description" content="Import JSON transect data from Water Atlas" />
+<meta property="og:title" content="Format seagrass transect data from Water Atlas — read_formtransect" />
+<meta property="og:description" content="Format seagrass transect data from Water Atlas" />
 
 
 
@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -132,41 +126,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import JSON transect data from Water Atlas</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/read_trnjsn.R'><code>R/read_trnjsn.R</code></a></small>
-    <div class="hidden name"><code>read_trnjsn.Rd</code></div>
+    <h1>Format seagrass transect data from Water Atlas</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/read_formtransect.R'><code>R/read_formtransect.R</code></a></small>
+    <div class="hidden name"><code>read_formtransect.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Import JSON transect data from Water Atlas</p>
+    <p>Format seagrass transect data from Water Atlas</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_trnjsn</span>(training = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>read_formtransect</span>(<span class='kw'>jsn</span>, training = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>jsn</th>
+      <td><p>A data frame returned from <code><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></code></p></td>
+    </tr>
+    <tr>
       <th>training</th>
-      <td><p>logical if training data are imported or the complete database</p></td>
+      <td><p>logical if input are transect training data or complete database</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data frame</p>
+    <p>data frame in long format</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function imports a JSON file from the USF Water Atlas.  If <code>training = TRUE</code>, a dataset from the TBEP training survey is imported from <a href='http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'>http://dev.seagrass.wateratlas.usf.edu/api/assessments/training</a>.  If <code>training = FALSE</code>, the entire transect survey database is imported from <a href='http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'>http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care</a>.</p>
+    <p>Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data.  Shoot density and blade height are based on averages across random observations at each transect point that are entered separately in the data form.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># get training data</span>
-<span class='kw'>trnjsn</span> <span class='op'>&lt;-</span> <span class='fu'>read_trnjsn</span>(training = <span class='fl'>TRUE</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://arxiv.org/abs/1403.2805'>jsonlite</a></span>)
 
-<span class='co'># import all transect data</span>
-<span class='kw'>trnjsn</span> <span class='op'>&lt;-</span> <span class='fu'>read_trnjsn</span>()
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># all transect data</span>
+<span class='kw'>url</span> <span class='op'>&lt;-</span> <span class='st'>'http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'</span>
+<span class='kw'>jsn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span>(<span class='kw'>url</span>)
+<span class='kw'>trndat</span> <span class='op'>&lt;-</span> <span class='fu'>read_formtransect</span>(<span class='kw'>jsn</span>)
 }
+
+<span class='co'># training transect data</span>
+<span class='kw'>url</span> <span class='op'>&lt;-</span> <span class='st'>'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'</span>
+<span class='kw'>jsn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span>(<span class='kw'>url</span>)
+<span class='kw'>trndat</span> <span class='op'>&lt;-</span> <span class='fu'>read_formtransect</span>(<span class='kw'>jsn</span>, training = <span class='fl'>TRUE</span>)
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
