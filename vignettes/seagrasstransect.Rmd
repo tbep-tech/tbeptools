@@ -48,14 +48,11 @@ mapview(trnpts, label = trnpts$lab, zcol = 'MonAgency', lwd = 0, legend = F, hom
 
 ## Accessing the transect data
 
-The transect data can be downloaded from the Water Atlas using the `read_trnjsn()` function.  The only required argument for this function is `training`, which indicates if you want to download training data or the complete dataset, i.e., `training = TRUE` or `training = FALSE` (default).  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily to assess precision among different training crews. The data are downloaded as a JSON object, which can then be passed to the `anlz_trnjsn()` function for formatting. 
+The transect data can be downloaded from the Water Atlas using the `read_transect()` function.  The only required argument for this function is `training`, which indicates if you want to download training data or the complete dataset, i.e., `training = TRUE` or `training = FALSE` (default).  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily to assess precision among different training crews. The data are downloaded as a JSON object and formatted internally using the `read_formtransect()` function. 
 
 ```{r}
 # import JSON
-trndat <- read_trnjsn(training = TRUE)
-
-# format JSON data for plotting
-trndat <- anlz_trnjsn(trndat, training = TRUE)
+trndat <- read_transect(training = TRUE)
 
 # view the data
 trndat
@@ -68,14 +65,11 @@ The `show_compplot()` function is used to compare training data between crews fo
 show_compplot(trndat, site = '1', species = 'Halodule', varplo = 'Abundance')
 ```
 
-Change the `training` argument to `FALSE` to download the entire transect database.  This may take a few seconds.  As before, the `anlz_trnjsn()` functions formats the JSON object that is returned by `read_trnjsn()`.
+Change the `training` argument to `FALSE` to download the entire transect database.  This may take a few seconds.
 
 ```{r}
 # import entire transct dataset as JSON
-trndat <- read_trnjsn(training = FALSE)
-
-# format entire transect dataset
-trndat <- anlz_trnjsn(trndat, training = FALSE)
+trndat <- read_transect(training = FALSE)
 
 # view the data
 trndat

@@ -1,4 +1,4 @@
-#' Import JSON transect data from Water Atlas
+#' Import JSON seagrass transect data from Water Atlas
 #'
 #' @param training logical if training data are imported or the complete database
 #'
@@ -12,12 +12,12 @@
 #' @examples
 #' \dontrun{
 #' # get training data
-#' trnjsn <- read_trnjsn(training = TRUE)
+#' transect <- read_transect(training = TRUE)
 #'
 #' # import all transect data
-#' trnjsn <- read_trnjsn()
+#' transect <- read_transect()
 #' }
-read_trnjsn <- function(training = FALSE){
+read_transect <- function(training = FALSE){
 
   url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'
   if(training)
@@ -25,6 +25,9 @@ read_trnjsn <- function(training = FALSE){
 
   dat <- jsonlite::fromJSON(url)
 
-  return(dat)
+  # format
+  out <- read_formtransect(dat, training = training)
+
+  return(out)
 
 }

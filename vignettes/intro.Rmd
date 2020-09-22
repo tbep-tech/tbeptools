@@ -74,6 +74,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `read_formphyto()`: Format phytoplankton data
 
+* `read_formtransect()`: Format seagrass transect data from Water Atlas
+
 * `read_formwq()`: Format water quality data
 
 * `read_importbenthic()`: Download and import benthic data for Tampa Bay
@@ -84,7 +86,7 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `read_importwq()`: Load local water quality file
 
-* `read_trnjsn()`: Import JSON transect data from Water Atlas
+* `read_transect()`: Import JSON seagrass transect data from Water Atlas
 
 #### Analyze
 
@@ -115,8 +117,6 @@ The following shows all functions provided in tbeptools, organized by prefix.
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
-
-* `anlz_trnjsn()`: Format transect data from Water Atlas
 
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
@@ -203,6 +203,8 @@ There are `r lsf.str("package:tbeptools") %>% as.character %>% grepl('^read', .)
 
 * `read_formphyto()`: Format phytoplankton data
 
+* `read_formtransect()`: Format seagrass transect data from Water Atlas
+
 * `read_formwq()`: Format water quality data
 
 * `read_importbenthic()`: Download and import benthic data for Tampa Bay
@@ -213,7 +215,7 @@ There are `r lsf.str("package:tbeptools") %>% as.character %>% grepl('^read', .)
 
 * `read_importwq()`: Load local water quality file
 
-* `read_trnjsn()`: Import JSON transect data from Water Atlas
+* `read_transect()`: Import JSON seagrass transect data from Water Atlas
 
 The main function for importing water quality data is `read_importwq()`.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.
 
@@ -336,8 +338,6 @@ The analyze functions are used primarily to summarize the data returned by `read
 * `anlz_tdlcrk()`: Estimate tidal creek report card scores
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
-
-* `anlz_trnjsn()`: Format transect data from Water Atlas
 
 * `anlz_yrattain()`: Get attainment categories for a selected year
 

@@ -1,6 +1,6 @@
-#' Format transect data from Water Atlas
+#' Format seagrass transect data from Water Atlas
 #'
-#' @param trnjsn output from \code{\link{read_trnjsn}}
+#' @param jsn A data frame returned from \code{\link[jsonlite]{fromJSON}}
 #' @param training logical if input are transect training data or complete database
 #'
 #' @return data frame in long format
@@ -11,12 +11,23 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
-#' trnjsn <- read_trnjsn(training = TRUE)
-#' anlz_trnjsn(trnjsn, training = TRUE)
-anlz_trnjsn <- function(trnjsn, training = FALSE){
+#' library(jsonlite)
+#'
+#' \dontrun{
+#' # all transect data
+#' url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'
+#' jsn <- fromJSON(url)
+#' trndat <- read_formtransect(jsn)
+#' }
+#'
+#' # training transect data
+#' url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'
+#' jsn <- fromJSON(url)
+#' trndat <- read_formtransect(jsn, training = TRUE)
+read_formtransect <- function(jsn, training = FALSE){
 
   if(training)
-    out <- trnjsn %>%
+    out <- jsn %>%
       tibble::as_tibble() %>%
       dplyr::rename(IDall = ID) %>%
       tidyr::unnest('Observation') %>%
@@ -54,7 +65,7 @@ anlz_trnjsn <- function(trnjsn, training = FALSE){
       dplyr::filter(Savspecies %in% c('Halodule', 'Halophila', 'Ruppia', 'Syringodium', 'Thalassia'))
 
   if(!training)
-    out <- trnjsn %>%
+    out <- jsn %>%
       tibble::as_tibble() %>%
       dplyr::rename(IDall = ID) %>%
       tidyr::unnest('Observation') %>%
