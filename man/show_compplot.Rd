@@ -5,7 +5,7 @@
 \title{Make a bar plot for transect training group comparisons}
 \usage{
 show_compplot(
-  dat,
+  transect,
   site,
   species = c("Halodule", "Halophila", "Ruppia", "Syringodium", "Thalassia"),
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
@@ -15,7 +15,7 @@ show_compplot(
 )
 }
 \arguments{
-\item{dat}{data frame returned by \code{\link{anlz_trnjsn}}}
+\item{transect}{data frame returned by \code{\link{read_transect}}}
 
 \item{site}{chr string indicating site results to plot}
 
@@ -36,7 +36,6 @@ A \code{\link[ggplot2]{ggplot}} object
 Make a bar plot for transect training group comparisons
 }
 \examples{
-trnjsn <- read_trnjsn(training = TRUE)
-dat <- anlz_trnjsn(trnjsn, training = TRUE)
-show_compplot(dat, site = '1', species = 'Halodule', varplo = 'Abundance')
+transect <- read_transect(training = TRUE)
+show_compplot(transect, site = '1', species = 'Halodule', varplo = 'Abundance')
 }

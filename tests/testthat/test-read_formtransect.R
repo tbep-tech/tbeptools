@@ -1,4 +1,4 @@
-test_that("Checking read_formtransct", {
+test_that("Checking read_formtransect", {
 
   # actual transect data
   url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'
@@ -8,7 +8,7 @@ test_that("Checking read_formtransct", {
 
   # training transect data
   url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'
-  jsn <- fromJSON(url)
+  jsn <- jsonlite::fromJSON(url)
   result <- read_formtransect(jsn, training = TRUE)
   expect_is(result, 'tbl_df')
 

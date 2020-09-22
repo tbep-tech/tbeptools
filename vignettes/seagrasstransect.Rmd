@@ -52,27 +52,27 @@ The transect data can be downloaded from the Water Atlas using the `read_transec
 
 ```{r}
 # import JSON
-trndat <- read_transect(training = TRUE)
+transect <- read_transect(training = TRUE)
 
 # view the data
-trndat
+transect
 ```
 
 The `show_compplot()` function is used to compare training data between crews for a selected species (`species` argument) and variable (`varplo` argument). 
 
 ```{r, fig.height = 5, fig.width = 7}
 # plot
-show_compplot(trndat, site = '1', species = 'Halodule', varplo = 'Abundance')
+show_compplot(transect, site = '1', species = 'Halodule', varplo = 'Abundance')
 ```
 
 Change the `training` argument to `FALSE` to download the entire transect database.  This may take a few seconds.
 
 ```{r}
 # import entire transct dataset as JSON
-trndat <- read_transect(training = FALSE)
+transect <- read_transect(training = FALSE)
 
 # view the data
-trndat
+transect
 ```
 
 The columns in the transect database describe the crew (`Crew`), the monitoring agency (`MonitoringAgency`), sample date (`Date`), transect name (`Transect`), the meter location along the transect (`Site`, m), depth at the site (`Depth`, cm), Seagrass species (`Savspecies`), distance of the seagrass edge on the transect (`SeagrassEdge`, m), the seagrass variable (`var`), average value of the variable (`aveval`), and standard deviation of the variable if appropriate (`sdval`).  

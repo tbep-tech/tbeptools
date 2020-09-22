@@ -1,6 +1,6 @@
 #' Make a bar plot for transect training group comparisons
 #'
-#' @param dat data frame returned by \code{\link{anlz_trnjsn}}
+#' @param transect data frame returned by \code{\link{read_transect}}
 #' @param site chr string indicating site results to plot
 #' @param species chr string indicating which species to plot
 #' @param varplo chr string indicating which variable to plot
@@ -12,10 +12,9 @@
 #' @export
 #'
 #' @examples
-#' trnjsn <- read_trnjsn(training = TRUE)
-#' dat <- anlz_trnjsn(trnjsn, training = TRUE)
-#' show_compplot(dat, site = '1', species = 'Halodule', varplo = 'Abundance')
-show_compplot <- function(dat, site, species = c('Halodule', 'Halophila', 'Ruppia', 'Syringodium', 'Thalassia'),
+#' transect <- read_transect(training = TRUE)
+#' show_compplot(transect, site = '1', species = 'Halodule', varplo = 'Abundance')
+show_compplot <- function(transect, site, species = c('Halodule', 'Halophila', 'Ruppia', 'Syringodium', 'Thalassia'),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 18, xtxt = 10, size = 1){
 
   # arguments
@@ -32,7 +31,7 @@ show_compplot <- function(dat, site, species = c('Halodule', 'Halophila', 'Ruppi
   subttl <- sublbs[[species]]
 
   # data to plot
-  toplo <- dat %>%
+  toplo <- transect %>%
     dplyr::filter(Site %in% site) %>%
     dplyr::filter(Savspecies %in% species) %>%
     dplyr::filter(var %in% varplo) %>%

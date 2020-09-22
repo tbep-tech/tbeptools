@@ -1,7 +1,7 @@
 test_that("Checking show_compplot", {
 
-  trnjsn <- read_trnjsn(training = T)
-  dat<- anlz_trnjsn(trnjsn, training = T)
+  transect <- read_transect(training = T)
+  dat<- anlz_transect(transect, training = T)
 
   result <- show_compplot(dat, site = '1')
 
