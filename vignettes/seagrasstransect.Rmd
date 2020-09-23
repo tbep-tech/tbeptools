@@ -76,3 +76,9 @@ transect
 ```
 
 The columns in the transect database describe the crew (`Crew`), the monitoring agency (`MonitoringAgency`), sample date (`Date`), transect name (`Transect`), the meter location along the transect (`Site`, m), depth at the site (`Depth`, cm), Seagrass species (`Savspecies`), distance of the seagrass edge on the transect (`SeagrassEdge`, m), the seagrass variable (`var`), average value of the variable (`aveval`), and standard deviation of the variable if appropriate (`sdval`).  
+
+Data for an individual transect can be viewed with the `show_transect()` function by entering the transect (site) number, species, and variable to plot.  The plot shows relative values for the selected species and variable by distance along the transect (x-axis) and time of sampling (y-axis).  The plots provide an overall summary of temporal and spatial changes in seagrass metrics for an individual location.  
+
+```{r, fig.height = 8, fig.width = 9}
+show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
+```

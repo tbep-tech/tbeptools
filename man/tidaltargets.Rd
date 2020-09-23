@@ -35,7 +35,8 @@ Other utilities:
 \code{\link{tbsegshed}},
 \code{\link{tbseg}},
 \code{\link{tbshed}},
-\code{\link{tidalcreeks}}
+\code{\link{tidalcreeks}},
+\code{\link{transect}}
 }
 \concept{utilities}
 \keyword{datasets}

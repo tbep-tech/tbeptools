@@ -58,7 +58,7 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
 
   # create month labels for x axis, asterisks if partialyr is true
   if(partialyr){
-browser()
+
     # missing months of selected year
     mismo <- epcdata %>%
       filter(yr == !!yrsel) %>%

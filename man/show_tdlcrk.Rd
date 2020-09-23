@@ -24,6 +24,7 @@ show_tdlcrk(dat)
 \seealso{
 Other visualize: 
 \code{\link{show_boxplot}()},
+\code{\link{show_compplot}()},
 \code{\link{show_matrixplotly}()},
 \code{\link{show_matrix}()},
 \code{\link{show_reactable}()},
@@ -36,6 +37,7 @@ Other visualize:
 \code{\link{show_tbniscrplotly}()},
 \code{\link{show_tbniscr}()},
 \code{\link{show_thrplot}()},
+\code{\link{show_transect}()},
 \code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

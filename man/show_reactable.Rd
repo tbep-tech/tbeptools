@@ -62,6 +62,7 @@ show_reactable(totab, colfun)
 \seealso{
 Other visualize: 
 \code{\link{show_boxplot}()},
+\code{\link{show_compplot}()},
 \code{\link{show_matrixplotly}()},
 \code{\link{show_matrix}()},
 \code{\link{show_segmatrix}()},
@@ -74,6 +75,7 @@ Other visualize:
 \code{\link{show_tbniscr}()},
 \code{\link{show_tdlcrk}()},
 \code{\link{show_thrplot}()},
+\code{\link{show_transect}()},
 \code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

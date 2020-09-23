@@ -58,7 +58,8 @@ Other utilities:
 \code{\link{tbseg}},
 \code{\link{tbshed}},
 \code{\link{tidalcreeks}},
-\code{\link{tidaltargets}}
+\code{\link{tidaltargets}},
+\code{\link{transect}}
 }
 \concept{utilities}
 \keyword{datasets}

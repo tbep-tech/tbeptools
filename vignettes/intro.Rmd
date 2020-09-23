@@ -160,6 +160,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
+* `show_transect()`: Plot results for a seagrass transect by time and location
+
 * `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
@@ -403,6 +405,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_tdlcrkmatrix()`: Plot the tidal creek report card matrix
 
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
+
+* `show_transect()`: Plot results for a seagrass transect by time and location
 
 * `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 

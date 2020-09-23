@@ -8,6 +8,8 @@
 #' @param xtxt numeric indicating text size for x-axis labels
 #' @param size numeric indicating line size
 #'
+#' @family visualize
+#'
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
 #'
@@ -22,7 +24,9 @@ show_compplot <- function(transect, site, species = c('Halodule', 'Halophila', '
   varplo <- match.arg(varplo)
 
   # labels
-  lbs <- c('Braun-Blanquet Score', 'Canopy Height (+/- 1 sd)', 'Short Shoot Counts (+/- 1 sd)')
+
+  # legend labels
+  lbs <- c('Abundance (BB)', 'Blade length (cm, +/- 1 sd)', expression(paste('Shoot density (', m^-2, ', +/- 1 sd)')))
   names(lbs) <- c('Abundance', 'Blade Length', 'Short Shoot Density')
   xlb <- lbs[[varplo]]
   ttl <- paste('Site', site)
