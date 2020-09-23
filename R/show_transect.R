@@ -32,7 +32,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
     dplyr::filter(Savspecies %in% !!species) %>%
     dplyr::filter(var %in% !!varplo) %>%
     dplyr::mutate(
-      Year = year(Date),
+      Year = lubridate::year(Date),
       Site = as.numeric(Site)
     ) %>%
     dplyr::select(Year, Site, aveval) %>%
