@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spatial data object of lines defining major Tampa Bay segments — tbseglines • tbeptools</title>
+<title>Seagrass transect data for Tampa Bay current as of 09232020 — transect • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Spatial data object of lines defining major Tampa Bay segments — tbseglines" />
-<meta property="og:description" content="Spatial data object of lines defining major Tampa Bay segments" />
+<meta property="og:title" content="Seagrass transect data for Tampa Bay current as of 09232020 — transect" />
+<meta property="og:description" content="Seagrass transect data for Tampa Bay current as of 09232020" />
 
 
 
@@ -126,21 +126,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Spatial data object of lines defining major Tampa Bay segments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/tbseglines.R'><code>R/tbseglines.R</code></a></small>
-    <div class="hidden name"><code>tbseglines.Rd</code></div>
+    <h1>Seagrass transect data for Tampa Bay current as of 09232020</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/transect.R'><code>R/transect.R</code></a></small>
+    <div class="hidden name"><code>transect.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Spatial data object of lines defining major Tampa Bay segments</p>
+    <p>Seagrass transect data for Tampa Bay current as of 09232020</p>
     </div>
 
-    <pre class="usage"><span class='kw'>tbseglines</span></pre>
+    <pre class="usage"><span class='kw'>transect</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (LINESTRING) with 3 features and 1 field, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p>
+    <p>A data frame with 128916 rows and 11 variables:</p><dl>
+  <dt>Crew</dt><dd><p>chr</p></dd>
+  <dt>MonitoringAgency</dt><dd><p>chr</p></dd>
+  <dt>Date</dt><dd><p>Date</p></dd>
+  <dt>Transect</dt><dd><p>chr</p></dd>
+  <dt>Site</dt><dd><p>chr</p></dd>
+  <dt>Depth</dt><dd><p>int</p></dd>
+  <dt>Savspecies</dt><dd><p>chr</p></dd>
+  <dt>SeagrassEdge</dt><dd><p>num</p></dd>
+  <dt>var</dt><dd><p>chr</p></dd>
+  <dt>aveval</dt><dd><p>num</p></dd>
+  <dt>sdval</dt><dd><p>num</p></dd>
+  
+</dl>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utilities: 
@@ -154,17 +168,22 @@
 <code><a href='targets.html'>targets</a></code>,
 <code><a href='tbniref.html'>tbniref</a></code>,
 <code><a href='tbnispp.html'>tbnispp</a></code>,
+<code><a href='tbseglines.html'>tbseglines</a></code>,
 <code><a href='tbsegshed.html'>tbsegshed</a></code>,
 <code><a href='tbseg.html'>tbseg</a></code>,
 <code><a href='tbshed.html'>tbshed</a></code>,
 <code><a href='tidalcreeks.html'>tidalcreeks</a></code>,
-<code><a href='tidaltargets.html'>tidaltargets</a></code>,
-<code><a href='transect.html'>transect</a></code></p></div>
+<code><a href='tidaltargets.html'>tidaltargets</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://r-spatial.github.io/sf'>sf</a></span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sf/man/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_geometry.html'>st_geometry</a></span>(<span class='kw'>tbseglines</span>))
-</div><div class='img'><img src='tbseglines-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
+
+<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='kw'>transect</span>, file = <span class='st'>'data/transect.RData'</span>, compress = <span class='st'>'xz'</span>)
+
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

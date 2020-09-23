@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Spatial data object of lines defining major Tampa Bay segments — tbseglines • tbeptools</title>
+<title>Plot results for a seagrass transect by time and location — show_transect • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Spatial data object of lines defining major Tampa Bay segments — tbseglines" />
-<meta property="og:description" content="Spatial data object of lines defining major Tampa Bay segments" />
+<meta property="og:title" content="Plot results for a seagrass transect by time and location — show_transect" />
+<meta property="og:description" content="Plot results for a seagrass transect by time and location" />
 
 
 
@@ -126,45 +126,77 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Spatial data object of lines defining major Tampa Bay segments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/tbseglines.R'><code>R/tbseglines.R</code></a></small>
-    <div class="hidden name"><code>tbseglines.Rd</code></div>
+    <h1>Plot results for a seagrass transect by time and location</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_transect.R'><code>R/show_transect.R</code></a></small>
+    <div class="hidden name"><code>show_transect.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Spatial data object of lines defining major Tampa Bay segments</p>
+    <p>Plot results for a seagrass transect by time and location</p>
     </div>
 
-    <pre class="usage"><span class='kw'>tbseglines</span></pre>
+    <pre class="usage"><span class='fu'>show_transect</span>(
+  <span class='kw'>transect</span>,
+  <span class='kw'>site</span>,
+  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Halophila"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>),
+  varplo = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Abundance"</span>, <span class='st'>"Blade Length"</span>, <span class='st'>"Short Shoot Density"</span>),
+  base_size = <span class='fl'>12</span>
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>transect</th>
+      <td><p>data frame returned by <code><a href='read_transect.html'>read_transect</a></code></p></td>
+    </tr>
+    <tr>
+      <th>site</th>
+      <td><p>chr string indicating site results to plot</p></td>
+    </tr>
+    <tr>
+      <th>species</th>
+      <td><p>chr string indicating which species to plot</p></td>
+    </tr>
+    <tr>
+      <th>varplo</th>
+      <td><p>chr string indicating which variable to plot</p></td>
+    </tr>
+    <tr>
+      <th>base_size</th>
+      <td><p>numeric indicating text scaling size for plot</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A simple features <code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object (LINESTRING) with 3 features and 1 field, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p>
+    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other utilities: 
-<code><a href='benthicdata.html'>benthicdata</a></code>,
-<code><a href='bsmap.html'>bsmap</a></code>,
-<code><a href='epcdata.html'>epcdata</a></code>,
-<code><a href='fimdata.html'>fimdata</a></code>,
-<code><a href='fimstations.html'>fimstations</a></code>,
-<code><a href='iwrraw.html'>iwrraw</a></code>,
-<code><a href='stations.html'>stations</a></code>,
-<code><a href='targets.html'>targets</a></code>,
-<code><a href='tbniref.html'>tbniref</a></code>,
-<code><a href='tbnispp.html'>tbnispp</a></code>,
-<code><a href='tbsegshed.html'>tbsegshed</a></code>,
-<code><a href='tbseg.html'>tbseg</a></code>,
-<code><a href='tbshed.html'>tbshed</a></code>,
-<code><a href='tidalcreeks.html'>tidalcreeks</a></code>,
-<code><a href='tidaltargets.html'>tidaltargets</a></code>,
-<code><a href='transect.html'>transect</a></code></p></div>
+    <div class='dont-index'><p>Other visualize: 
+<code><a href='show_boxplot.html'>show_boxplot</a>()</code>,
+<code><a href='show_compplot.html'>show_compplot</a>()</code>,
+<code><a href='show_matrixplotly.html'>show_matrixplotly</a>()</code>,
+<code><a href='show_matrix.html'>show_matrix</a>()</code>,
+<code><a href='show_reactable.html'>show_reactable</a>()</code>,
+<code><a href='show_segmatrix.html'>show_segmatrix</a>()</code>,
+<code><a href='show_segplotly.html'>show_segplotly</a>()</code>,
+<code><a href='show_sitemap.html'>show_sitemap</a>()</code>,
+<code><a href='show_tbbimatrix.html'>show_tbbimatrix</a>()</code>,
+<code><a href='show_tbnimatrix.html'>show_tbnimatrix</a>()</code>,
+<code><a href='show_tbniscrall.html'>show_tbniscrall</a>()</code>,
+<code><a href='show_tbniscrplotly.html'>show_tbniscrplotly</a>()</code>,
+<code><a href='show_tbniscr.html'>show_tbniscr</a>()</code>,
+<code><a href='show_tdlcrk.html'>show_tdlcrk</a>()</code>,
+<code><a href='show_thrplot.html'>show_thrplot</a>()</code>,
+<code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://r-spatial.github.io/sf'>sf</a></span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sf/man/plot.html'>plot</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_geometry.html'>st_geometry</a></span>(<span class='kw'>tbseglines</span>))
-</div><div class='img'><img src='tbseglines-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
+}
+<span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>, species = <span class='st'>'Halodule'</span>, varplo = <span class='st'>'Abundance'</span>)
+</div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
