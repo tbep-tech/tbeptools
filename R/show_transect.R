@@ -9,6 +9,8 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
 #'
+#' @importFrom magrittr %>%
+#'
 #' @family visualize
 #'
 #' @examples
