@@ -10,13 +10,13 @@ anlz_transectocc(transect)
 \item{transect}{data frame returned by \code{\link{read_transect}}}
 }
 \value{
-A data frame with abundance and frequency occurrence estimates aggregated by species, transect, and date
+A data frame with abundance and frequency occurrence estimates aggregated by species, transect, and date.  The nsites column is the total number of placements that were sampled along a transect for a particular date.
 }
 \description{
 Get seagrass average abundance and occurrence across transects
 }
 \details{
-Abundance and frequency occurrence are estimated as in methods described in Sherwood et al. 2017, equations 1 and 2. In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  All attached and drift algae species are aggregated, except Caulerpa spp. which are grouped separately.
+Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2. In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  All attached and drift algae species are aggregated, except Caulerpa spp. which are grouped separately.
 }
 \examples{
 #' \dontrun{
@@ -27,3 +27,15 @@ anlz_transectocc(transect)
 \references{
 Sherwood, E.T., Greening, H.S., Johansson, J.O.R., Kaufman, K., Raulerson, G.E. 2017. Tampa Bay (Florida, USA): Documenting seagrass recovery since the 1980's and reviewing the benefits. Southeastern Geographer. 57(3):294-319.
 }
+\seealso{
+Other analyze: 
+\code{\link{anlz_attain}()},
+\code{\link{anlz_avedatsite}()},
+\code{\link{anlz_avedat}()},
+\code{\link{anlz_iwrraw}()},
+\code{\link{anlz_refs}()},
+\code{\link{anlz_tdlcrkindic}()},
+\code{\link{anlz_tdlcrk}()},
+\code{\link{anlz_yrattain}()}
+}
+\concept{analyze}
