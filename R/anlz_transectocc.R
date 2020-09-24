@@ -15,7 +15,7 @@
 #' Sherwood, E.T., Greening, H.S., Johansson, J.O.R., Kaufman, K., Raulerson, G.E. 2017. Tampa Bay (Florida, USA): Documenting seagrass recovery since the 1980's and reviewing the benefits. Southeastern Geographer. 57(3):294-319.
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' transect <- read_transect()
 #' }
 #' anlz_transectocc(transect)
