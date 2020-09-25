@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot results for a seagrass transect by time and location — show_transect • tbeptools</title>
+<title>Get seagrass average abundance and occurrence across transects — anlz_transectocc • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plot results for a seagrass transect by time and location — show_transect" />
-<meta property="og:description" content="Plot results for a seagrass transect by time and location" />
+<meta property="og:title" content="Get seagrass average abundance and occurrence across transects — anlz_transectocc" />
+<meta property="og:description" content="Get seagrass average abundance and occurrence across transects" />
 
 
 
@@ -126,22 +126,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot results for a seagrass transect by time and location</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_transect.R'><code>R/show_transect.R</code></a></small>
-    <div class="hidden name"><code>show_transect.Rd</code></div>
+    <h1>Get seagrass average abundance and occurrence across transects</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_transectocc.R'><code>R/anlz_transectocc.R</code></a></small>
+    <div class="hidden name"><code>anlz_transectocc.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot results for a seagrass transect by time and location</p>
+    <p>Get seagrass average abundance and occurrence across transects</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_transect</span>(
-  <span class='kw'>transect</span>,
-  <span class='kw'>site</span>,
-  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Halophila"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>),
-  varplo = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Abundance"</span>, <span class='st'>"Blade Length"</span>, <span class='st'>"Short Shoot Density"</span>),
-  base_size = <span class='fl'>12</span>
-)</pre>
+    <pre class="usage"><span class='fu'>anlz_transectocc</span>(<span class='kw'>transect</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,56 +144,48 @@
       <th>transect</th>
       <td><p>data frame returned by <code><a href='read_transect.html'>read_transect</a></code></p></td>
     </tr>
-    <tr>
-      <th>site</th>
-      <td><p>chr string indicating site results to plot</p></td>
-    </tr>
-    <tr>
-      <th>species</th>
-      <td><p>chr string indicating which species to plot</p></td>
-    </tr>
-    <tr>
-      <th>varplo</th>
-      <td><p>chr string indicating which variable to plot</p></td>
-    </tr>
-    <tr>
-      <th>base_size</th>
-      <td><p>numeric indicating text scaling size for plot</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object</p>
+    <p>A data frame with abundance and frequency occurrence estimates aggregated by species, transect, and date.  The nsites column is the total number of placements that were sampled along a transect for a particular date.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>All sites along at transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.</p>
+    <p>Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2. In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  All attached and drift algae species are aggregated, except Caulerpa spp. which are grouped separately.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Sherwood, E.T., Greening, H.S., Johansson, J.O.R., Kaufman, K., Raulerson, G.E. 2017. Tampa Bay (Florida, USA): Documenting seagrass recovery since the 1980's and reviewing the benefits. Southeastern Geographer. 57(3):294-319.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other visualize: 
-<code><a href='show_boxplot.html'>show_boxplot</a>()</code>,
-<code><a href='show_compplot.html'>show_compplot</a>()</code>,
-<code><a href='show_matrixplotly.html'>show_matrixplotly</a>()</code>,
-<code><a href='show_matrix.html'>show_matrix</a>()</code>,
-<code><a href='show_reactable.html'>show_reactable</a>()</code>,
-<code><a href='show_segmatrix.html'>show_segmatrix</a>()</code>,
-<code><a href='show_segplotly.html'>show_segplotly</a>()</code>,
-<code><a href='show_sitemap.html'>show_sitemap</a>()</code>,
-<code><a href='show_tbbimatrix.html'>show_tbbimatrix</a>()</code>,
-<code><a href='show_tbnimatrix.html'>show_tbnimatrix</a>()</code>,
-<code><a href='show_tbniscrall.html'>show_tbniscrall</a>()</code>,
-<code><a href='show_tbniscrplotly.html'>show_tbniscrplotly</a>()</code>,
-<code><a href='show_tbniscr.html'>show_tbniscr</a>()</code>,
-<code><a href='show_tdlcrk.html'>show_tdlcrk</a>()</code>,
-<code><a href='show_thrplot.html'>show_thrplot</a>()</code>,
-<code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
+    <div class='dont-index'><p>Other analyze: 
+<code><a href='anlz_attain.html'>anlz_attain</a>()</code>,
+<code><a href='anlz_avedatsite.html'>anlz_avedatsite</a>()</code>,
+<code><a href='anlz_avedat.html'>anlz_avedat</a>()</code>,
+<code><a href='anlz_iwrraw.html'>anlz_iwrraw</a>()</code>,
+<code><a href='anlz_refs.html'>anlz_refs</a>()</code>,
+<code><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a>()</code>,
+<code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a>()</code>,
+<code><a href='anlz_yrattain.html'>anlz_yrattain</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
 }
-<span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>, species = <span class='st'>'Halodule'</span>, varplo = <span class='st'>'Abundance'</span>)
-</div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>anlz_transectocc</span>(<span class='kw'>transect</span>)
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 10,120 x 6</span><span>
+#&gt;    Savspecies Date       Transect foest bbest nsites
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> AA         1997-10-11 S2T3         0     0     41
+#&gt; </span><span style='color: #555555;'> 2</span><span> AA         1997-10-11 S2T5         0     0     34
+#&gt; </span><span style='color: #555555;'> 3</span><span> AA         1997-10-12 S2T2         0     0     71
+#&gt; </span><span style='color: #555555;'> 4</span><span> AA         1997-10-24 S2T4         0     0     33
+#&gt; </span><span style='color: #555555;'> 5</span><span> AA         1997-10-24 S2T6         0     0     12
+#&gt; </span><span style='color: #555555;'> 6</span><span> AA         1997-10-25 S2T10        0     0     18
+#&gt; </span><span style='color: #555555;'> 7</span><span> AA         1997-10-25 S2T8         0     0     14
+#&gt; </span><span style='color: #555555;'> 8</span><span> AA         1997-10-25 S2T9         0     0     19
+#&gt; </span><span style='color: #555555;'> 9</span><span> AA         1997-10-26 S2T111       0     0     29
+#&gt; </span><span style='color: #555555;'>10</span><span> AA         1997-10-26 S2T112       0     0     29
+#&gt; </span><span style='color: #555555;'># … with 10,110 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
