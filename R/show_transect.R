@@ -36,15 +36,18 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
     dplyr::select(-sdval) %>%
     dplyr::filter(var %in% !!varplo) %>%
     tidyr::spread(Savspecies, aveval, fill = 0) %>%
-    dplyr::select(Date, Site, val = dplyr::matches(paste0('^', species))) %>%
+    dplyr::select(Date, Site, val = dplyr::matches(paste0('^', species)))
+
+  # stop if no data for the species, transect
+  if(ncol(dat) == 2)
+    stop(paste('No data for', species, 'at transect', site))
+
+  dat <- dat %>%
     dplyr::mutate(
       Year = lubridate::year(Date),
       Site = as.numeric(Site),
       pa = ifelse(val == 0, 0, 1)
     )
-
-  if(nrow(dat) == 0)
-    stop(paste('No data for', species, 'at transect', site))
 
   # legend labels
   leglab <- c('Abundance (BB)', 'Blade length (cm)', expression(paste('Shoot density (', m^-2, ')')))
