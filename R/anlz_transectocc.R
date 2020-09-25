@@ -21,7 +21,8 @@
 #' anlz_transectocc(transect)
 anlz_transectocc <- function(transect){
 
-  out <- transect %>%
+  # get complete data, fill all species not found with zero
+  datcmp <- transect %>%
     dplyr::filter(var %in% 'Abundance') %>%
     dplyr::mutate(
       Savspecies = dplyr::case_when(
@@ -35,26 +36,37 @@ anlz_transectocc <- function(transect){
     dplyr::group_by(Date, Transect, Site, Savspecies) %>%
     dplyr::summarise(bb = mean(bb, na.rm = T), .groups = 'drop') %>%
     dplyr::ungroup() %>%
-    tidyr::complete(Savspecies, tidyr::nesting(Date, Transect, Site), fill = list(bb = 0)) %>%
-    dplyr::group_by(Date, Transect, Savspecies) %>%
-    tidyr::nest() %>%
+    tidyr::complete(Savspecies, tidyr::nesting(Date, Transect, Site), fill = list(bb = 0))
+
+  # make no cover a five for bb if nothing else found
+  datcmp <- datcmp %>%
+    dplyr::group_by(Transect, Date, Site) %>%
     dplyr::mutate(
-      est = purrr::map(data, function(data){
+      bb = dplyr::case_when(
+        Savspecies == 'No Cover' ~ 0,
+        T ~ bb
+      ),
+      bb = dplyr::case_when(
+        sum(bb[!Savspecies %in% 'No Cover']) == 0 & Savspecies == 'No Cover' ~ 5,
+        T ~ bb
+      )
+    )
 
-        nsites <- nrow(data)
-        foest <- sum(data$bb > 0, na.rm = T) / nsites
-        bbest <- sum(data$bb, na.rm = T) / nsites
+  # get avg placements across dates by transect
+  plcmnt <- datcmp %>%
+    dplyr::group_by(Date, Transect) %>%
+    dplyr::summarize(cnts = length(unique(Site)), .groups = 'drop') %>%
+    dplyr::group_by(Transect) %>%
+    dplyr::summarize(plcmnt = mean(cnts, na.rm = T), .groups = 'drop')
 
-        out <- tibble::tibble(foest = foest, bbest = bbest, nsites = nsites)
-
-        return(out)
-
-      })
-    ) %>%
-    dplyr::select(-data) %>%
-    tidyr::unnest(est) %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(Savspecies != 'No Cover')
+  out <- datcmp %>%
+    left_join(plcmnt, by = 'Transect') %>%
+    dplyr::group_by(Date, Transect, Savspecies) %>%
+    dplyr::summarize(
+      foest = sum(bb > 0, na.rm = T) / unique(plcmnt),
+      bbest = sum(bb, na.rm = T) / unique(plcmnt ),
+      .groups = 'drop'
+    )
 
   return(out)
 
