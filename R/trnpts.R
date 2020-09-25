@@ -14,7 +14,7 @@
 #'    dplyr::rename(MonAgency = 'MON_AGENCY') %>%
 #'    dplyr::filter(!as.character(TRAN_ID) %in% c('S8T1', 'S8T2', 'S8T3', 'S3T2', 'S4T12')) %>%
 #'    sf::st_intersection(sf::st_make_valid(tbsegshed)) %>%
-#'    dplyr::selet(-long_name)
+#'    dplyr::select(-long_name)
 #'
 #' save(trnpts, file = 'data/trnpts.RData', compress = 'xz')
 #' }
