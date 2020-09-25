@@ -29,6 +29,9 @@ A \code{\link[ggplot2]{ggplot}} object
 \description{
 Plot results for a seagrass transect by time and location
 }
+\details{
+All sites along at transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.
+}
 \examples{
 \dontrun{
 transect <- read_transect()

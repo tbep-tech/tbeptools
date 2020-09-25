@@ -9,6 +9,8 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
 #'
+#' @details All sites along at transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.
+#'
 #' @importFrom magrittr %>%
 #'
 #' @family visualize
@@ -29,18 +31,19 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
   varplo <- match.arg(varplo)
 
   # prep plot data
-  toplo <- transect %>%
+  dat <- transect %>%
     dplyr::filter(Transect %in% !!site) %>%
-    dplyr::filter(Savspecies %in% !!species) %>%
+    dplyr::select(-sdval) %>%
     dplyr::filter(var %in% !!varplo) %>%
+    tidyr::spread(Savspecies, aveval, fill = 0) %>%
+    dplyr::select(Date, Site, val = dplyr::matches(paste0('^', species))) %>%
     dplyr::mutate(
       Year = lubridate::year(Date),
-      Site = as.numeric(Site)
-    ) %>%
-    dplyr::select(Year, Site, aveval) %>%
-    na.omit
+      Site = as.numeric(Site),
+      pa = ifelse(val == 0, 0, 1)
+    )
 
-  if(nrow(toplo) == 0)
+  if(nrow(dat) == 0)
     stop(paste('No data for', species, 'at transect', site))
 
   # legend labels
@@ -48,9 +51,18 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
   names(leglab) <- c('Abundance', 'Blade Length', 'Short Shoot Density')
   leglab <- leglab[varplo]
 
+  # data with species
+  toplo1 <- dat %>%
+    filter(pa == 1)
+
+  # data without species
+  toplo2 <- dat %>%
+    filter(pa == 0)
+
   # plot
-  p <- ggplot2::ggplot(toplo, ggplot2::aes(y = Year, x = Site, size = aveval)) +
-    ggplot2::geom_point(alpha = 0.6) +
+  p <- ggplot2::ggplot(toplo1, ggplot2::aes(y = Year, x = Site)) +
+    ggplot2::geom_point(data = toplo2, alpha = 0.6, colour = 'tomato1', size = 1) +
+    ggplot2::geom_point(aes(size = val), alpha = 0.6) +
     ggplot2::scale_size(leglab) +
     ggplot2::theme_minimal(base_size = base_size) +
     ggplot2::theme(
@@ -58,7 +70,9 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
       panel.grid.minor.y = ggplot2::element_blank()
     ) +
     ggplot2::labs(
-      x = 'Transect distance (m)'
+      x = 'Transect distance (m)',
+      title = site,
+      subtitle = bquote(italic(.(species)))
     )
 
   return(p)
