@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates a plotly matrix from any matrix function input — show_matrixplotly • tbeptools</title>
+<title>Show annual averages of seagrass frequency occurrence by bay segments, year, and species — show_transectavespp • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Creates a plotly matrix from any matrix function input — show_matrixplotly" />
-<meta property="og:description" content="Creates a plotly matrix from any matrix function input" />
+<meta property="og:title" content="Show annual averages of seagrass frequency occurrence by bay segments, year, and species — show_transectavespp" />
+<meta property="og:description" content="Show annual averages of seagrass frequency occurrence by bay segments, year, and species" />
 
 
 
@@ -126,42 +126,71 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates a plotly matrix from any matrix function input</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_matrixplotly.R'><code>R/show_matrixplotly.R</code></a></small>
-    <div class="hidden name"><code>show_matrixplotly.Rd</code></div>
+    <h1>Show annual averages of seagrass frequency occurrence by bay segments, year, and species</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_transectavespp.R'><code>R/show_transectavespp.R</code></a></small>
+    <div class="hidden name"><code>show_transectavespp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Creates a plotly matrix from any matrix function input</p>
+    <p>Show annual averages of seagrass frequency occurrence by bay segments, year, and species</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_matrixplotly</span>(<span class='kw'>mat</span>, family = <span class='fl'>NA</span>, tooltip = <span class='st'>"Result"</span>)</pre>
+    <pre class="usage"><span class='fu'>show_transectavespp</span>(
+  <span class='kw'>transectocc</span>,
+  bay_segment = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>, <span class='st'>"BCB"</span>),
+  yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1998</span>, <span class='fl'>2019</span>),
+  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Halophila spp."</span>,
+    <span class='st'>"Caulerpa spp."</span>),
+  alph = <span class='fl'>1</span>,
+  family = <span class='fl'>NA</span>,
+  plotly = <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>mat</th>
-      <td><p>input matrix as output from <code><a href='show_matrix.html'>show_matrix</a></code>, <code><a href='show_segmatrix.html'>show_segmatrix</a></code>, <code><a href='show_wqmatrix.html'>show_wqmatrix</a></code>, or <code><a href='show_tbnimatrix.html'>show_tbnimatrix</a></code></p></td>
+      <th>transectocc</th>
+      <td><p>data frame returned by <code><a href='anlz_transectocc.html'>anlz_transectocc</a></code></p></td>
+    </tr>
+    <tr>
+      <th>bay_segment</th>
+      <td><p>chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"</p></td>
+    </tr>
+    <tr>
+      <th>yrrng</th>
+      <td><p>numeric indicating year ranges to evaluate</p></td>
+    </tr>
+    <tr>
+      <th>species</th>
+      <td><p>chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."</p></td>
+    </tr>
+    <tr>
+      <th>alph</th>
+      <td><p>numeric indicating alpha value for score category colors</p></td>
     </tr>
     <tr>
       <th>family</th>
       <td><p>optional chr string indicating font family for text labels</p></td>
     </tr>
     <tr>
-      <th>tooltip</th>
-      <td><p>chr string indicating the column name for tooltip</p></td>
+      <th>plotly</th>
+      <td><p>logical if matrix is created using plotly</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://rdrr.io/pkg/plotly/man/plotly.html'>plotly</a></code> data object</p>
+    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object showing trends over time by speies for selected bay segments if <code>plotly = FALSE</code>, otherwise a <code><a href='https://rdrr.io/pkg/plotly/man/plotly.html'>plotly</a></code> object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Results are based on averages across species by date and transect in each bay segment</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: 
 <code><a href='show_boxplot.html'>show_boxplot</a>()</code>,
 <code><a href='show_compplot.html'>show_compplot</a>()</code>,
+<code><a href='show_matrixplotly.html'>show_matrixplotly</a>()</code>,
 <code><a href='show_matrix.html'>show_matrix</a>()</code>,
 <code><a href='show_reactable.html'>show_reactable</a>()</code>,
 <code><a href='show_segmatrix.html'>show_segmatrix</a>()</code>,
@@ -174,23 +203,17 @@
 <code><a href='show_tbniscr.html'>show_tbniscr</a>()</code>,
 <code><a href='show_tdlcrk.html'>show_tdlcrk</a>()</code>,
 <code><a href='show_thrplot.html'>show_thrplot</a>()</code>,
-<code><a href='show_transectavespp.html'>show_transectavespp</a>()</code>,
 <code><a href='show_transectmatrix.html'>show_transectmatrix</a>()</code>,
 <code><a href='show_transect.html'>show_transect</a>()</code>,
 <code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='show_wqmatrix.html'>show_wqmatrix</a></span>(<span class='kw'>epcdata</span>)
-<span class='fu'>show_matrixplotly</span>(<span class='kw'>mat</span>)
-</div><div class='output co'>#&gt; <span class='warning'>Warning: `group_by_()` is deprecated as of dplyr 0.7.0.</span>
-#&gt; <span class='warning'>Please use `group_by()` instead.</span>
-#&gt; <span class='warning'>See vignette('programming') for more help</span>
-#&gt; <span class='warning'><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='output co'>#&gt; <span class='warning'>Warning: `arrange_()` is deprecated as of dplyr 0.7.0.</span>
-#&gt; <span class='warning'>Please use `arrange()` instead.</span>
-#&gt; <span class='warning'>See vignette('programming') for more help</span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
+}
+<span class='kw'>transectocc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_transectocc.html'>anlz_transectocc</a></span>(<span class='kw'>transect</span>)
+<span class='fu'>show_transectavespp</span>(<span class='kw'>transectocc</span>)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='img'><img src='show_transectavespp-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

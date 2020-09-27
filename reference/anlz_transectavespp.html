@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate annual means — anlz_avedat • tbeptools</title>
+<title>Get annual averages of seagrass frequency occurrence by bay segments, year, and species — anlz_transectavespp • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Estimate annual means — anlz_avedat" />
-<meta property="og:description" content="Estimate annual means for chlorophyll and secchi data" />
+<meta property="og:title" content="Get annual averages of seagrass frequency occurrence by bay segments, year, and species — anlz_transectavespp" />
+<meta property="og:description" content="Get annual averages of seagrass frequency occurrence by bay segments, year, and species" />
 
 
 
@@ -126,83 +126,85 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate annual means</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_avedat.R'><code>R/anlz_avedat.R</code></a></small>
-    <div class="hidden name"><code>anlz_avedat.Rd</code></div>
+    <h1>Get annual averages of seagrass frequency occurrence by bay segments, year, and species</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_transectavespp.R'><code>R/anlz_transectavespp.R</code></a></small>
+    <div class="hidden name"><code>anlz_transectavespp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate annual means for chlorophyll and secchi data</p>
+    <p>Get annual averages of seagrass frequency occurrence by bay segments, year, and species</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_avedat</span>(<span class='kw'>epcdata</span>, partialyr = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_transectavespp</span>(
+  <span class='kw'>transectocc</span>,
+  bay_segment = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>, <span class='st'>"BCB"</span>),
+  yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1998</span>, <span class='fl'>2019</span>),
+  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Halophila spp."</span>,
+    <span class='st'>"Caulerpa spp."</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>epcdata</th>
-      <td><p><code>data.frame</code> formatted from <code>read_importwq</code></p></td>
+      <th>transectocc</th>
+      <td><p>data frame returned by <code><a href='anlz_transectocc.html'>anlz_transectocc</a></code></p></td>
     </tr>
     <tr>
-      <th>partialyr</th>
-      <td><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter</p></td>
+      <th>bay_segment</th>
+      <td><p>chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"</p></td>
+    </tr>
+    <tr>
+      <th>yrrng</th>
+      <td><p>numeric indicating year ranges to evaluate</p></td>
+    </tr>
+    <tr>
+      <th>species</th>
+      <td><p>chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Mean estimates for chlorophyll and secchi</p>
+    <p>A data frame of annual averages by bay segment</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Frequency occurrence estimates are averaged across segments in bay_segment, i.e., separate results by location are not returned.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other analyze: 
 <code><a href='anlz_attain.html'>anlz_attain</a>()</code>,
 <code><a href='anlz_avedatsite.html'>anlz_avedatsite</a>()</code>,
+<code><a href='anlz_avedat.html'>anlz_avedat</a>()</code>,
 <code><a href='anlz_iwrraw.html'>anlz_iwrraw</a>()</code>,
 <code><a href='anlz_refs.html'>anlz_refs</a>()</code>,
 <code><a href='anlz_tbbimed.html'>anlz_tbbimed</a>()</code>,
 <code><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a>()</code>,
 <code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a>()</code>,
-<code><a href='anlz_transectavespp.html'>anlz_transectavespp</a>()</code>,
 <code><a href='anlz_transectave.html'>anlz_transectave</a>()</code>,
 <code><a href='anlz_transectocc.html'>anlz_transectocc</a>()</code>,
 <code><a href='anlz_yrattain.html'>anlz_yrattain</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># view average estimates</span>
-<span class='fu'>anlz_avedat</span>(<span class='kw'>epcdata</span>)
-</div><div class='output co'>#&gt; $ann
-#&gt; <span style='color: #555555;'># A tibble: 572 x 4</span><span>
-#&gt;       yr bay_segment var         val
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974 HB          mean_chla 22.4 
-#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974 LTB         mean_chla  4.24
-#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974 MTB         mean_chla  9.66
-#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>974 OTB         mean_chla 10.2 
-#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>975 HB          mean_chla 27.9 
-#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>975 LTB         mean_chla  4.93
-#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>975 MTB         mean_chla 11.4 
-#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>975 OTB         mean_chla 13.2 
-#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>976 HB          mean_chla 29.5 
-#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>976 LTB         mean_chla  5.08
-#&gt; </span><span style='color: #555555;'># … with 562 more rows</span><span>
-#&gt; 
-#&gt; $mos
-#&gt; </span><span style='color: #555555;'># A tibble: 4,388 x 5</span><span>
-#&gt;    bay_segment    yr    mo var         val
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>974     1 mean_chla 36.2 
-#&gt; </span><span style='color: #555555;'> 2</span><span> LTB          </span><span style='text-decoration: underline;'>1</span><span>974     1 mean_chla  1.75
-#&gt; </span><span style='color: #555555;'> 3</span><span> MTB          </span><span style='text-decoration: underline;'>1</span><span>974     1 mean_chla 11.5 
-#&gt; </span><span style='color: #555555;'> 4</span><span> OTB          </span><span style='text-decoration: underline;'>1</span><span>974     1 mean_chla  4.4 
-#&gt; </span><span style='color: #555555;'> 5</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>974     2 mean_chla 42.4 
-#&gt; </span><span style='color: #555555;'> 6</span><span> LTB          </span><span style='text-decoration: underline;'>1</span><span>974     2 mean_chla  5.5 
-#&gt; </span><span style='color: #555555;'> 7</span><span> MTB          </span><span style='text-decoration: underline;'>1</span><span>974     2 mean_chla  9.35
-#&gt; </span><span style='color: #555555;'> 8</span><span> OTB          </span><span style='text-decoration: underline;'>1</span><span>974     2 mean_chla  4.07
-#&gt; </span><span style='color: #555555;'> 9</span><span> HB           </span><span style='text-decoration: underline;'>1</span><span>974     3 mean_chla 14.9 
-#&gt; </span><span style='color: #555555;'>10</span><span> LTB          </span><span style='text-decoration: underline;'>1</span><span>974     3 mean_chla  5.88
-#&gt; </span><span style='color: #555555;'># … with 4,378 more rows</span><span>
-#&gt; </div></span></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
+}
+<span class='kw'>transectocc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_transectocc.html'>anlz_transectocc</a></span>(<span class='kw'>transect</span>)
+<span class='fu'>anlz_transectavespp</span>(<span class='kw'>transectocc</span>)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 132 x 3</span><span>
+#&gt;       yr Savspecies        foest
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Caulerpa spp.  0.017</span><span style='text-decoration: underline;'>4</span><span>  
+#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Halodule       0.358   
+#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Halophila spp. 0       
+#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Ruppia         0.011</span><span style='text-decoration: underline;'>8</span><span>  
+#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Syringodium    0.040</span><span style='text-decoration: underline;'>6</span><span>  
+#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Thalassia      0.241   
+#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Caulerpa spp.  0.029</span><span style='text-decoration: underline;'>6</span><span>  
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Halodule       0.313   
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Halophila spp. 0.001</span><span style='text-decoration: underline;'>26</span><span> 
+#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Ruppia         0.000</span><span style='text-decoration: underline;'>733</span><span>
+#&gt; </span><span style='color: #555555;'># … with 122 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
