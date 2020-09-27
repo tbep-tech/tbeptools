@@ -20,7 +20,7 @@
 #' @importFrom magrittr "%>%"
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' transect <- read_transect()
 #' }
 #' transectocc <- anlz_transectocc(transect)

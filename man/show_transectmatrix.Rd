@@ -45,7 +45,7 @@ Show matrix of seagrass frequency occurrence by bay segments and year
 Results are based on averages across species by date and transect in each bay segment
 }
 \examples{
-#' \dontrun{
+\dontrun{
 transect <- read_transect()
 }
 transectocc <- anlz_transectocc(transect)

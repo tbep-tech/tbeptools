@@ -13,7 +13,7 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' transect <- read_transect()
 #' }
 #' transectocc <- anlz_transectocc(transect)
@@ -28,6 +28,8 @@ anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'L
   levs <- c('OTB', 'HB', 'MTB', 'LTB', 'BCB')
   if(rev)
     levs <- rev(levs)
+
+  sf::st_crs(trnpts) <- 4326
 
   # pts by segment
   trnptsshed <- trnpts %>%

@@ -118,6 +118,10 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
 
+* `anlz_transectave()`: Get annual averages of seagrass frequency occurrence by bay segments and year
+
+* `anlz_transectocc()`: Get seagrass average abundance and occurrence across transects
+
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
 #### Show
@@ -161,6 +165,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
 * `show_transect()`: Plot results for a seagrass transect by time and location
+
+* `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
 
 * `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 
@@ -341,6 +347,10 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
 
+* `anlz_transectave()`: Get annual averages of seagrass frequency occurrence by bay segments and year
+
+* `anlz_transectocc()`: Get seagrass average abundance and occurrence across transects
+
 * `anlz_yrattain()`: Get attainment categories for a selected year
 
 The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
@@ -407,6 +417,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
 * `show_transect()`: Plot results for a seagrass transect by time and location
+
+* `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
 
 * `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 

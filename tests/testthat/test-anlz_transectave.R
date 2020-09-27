@@ -1,6 +1,7 @@
+transectocc <- anlz_transectocc(transect)
+
 test_that("Checking results for anlz_transectave", {
 
-  transectocc <- anlz_transectocc(transect)
   results <- anlz_transectave(transectocc)
   results <- results[1, ]
   expect_equal(results, structure(list(yr = 1998, bay_segment = structure(5L, .Label = c("OTB",

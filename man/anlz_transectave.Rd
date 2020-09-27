@@ -27,7 +27,7 @@ A data frame of annual averages by bay segment
 Get annual averages of seagrass frequency occurrence by bay segments and year
 }
 \examples{
-#' \dontrun{
+\dontrun{
 transect <- read_transect()
 }
 transectocc <- anlz_transectocc(transect)
