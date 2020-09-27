@@ -1,6 +1,6 @@
+transectocc <- anlz_transectocc(transect)
 test_that("Checking show_transectmatrix class", {
 
-  transectocc <- anlz_transectocc(transect)
   result <- show_transectmatrix(transectocc)
   expect_is(result, 'ggplot')
 
@@ -15,7 +15,6 @@ test_that("Checking show_transectmatrix sanity checks", {
 
 test_that("Checking show_transectmatrix plotly class", {
 
-  transectocc <- anlz_transectocc(transect)
   result <- show_transectmatrix(transectocc, plotly = T)
   expect_is(result, 'plotly')
 

@@ -37,6 +37,7 @@ Other analyze:
 \code{\link{anlz_tbbimed}()},
 \code{\link{anlz_tdlcrkindic}()},
 \code{\link{anlz_tdlcrk}()},
+\code{\link{anlz_transectavespp}()},
 \code{\link{anlz_transectave}()},
 \code{\link{anlz_yrattain}()}
 }
