@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot Tampa Bay Nekton Index scores over time as average across bay segments — show_tbniscrall • tbeptools</title>
+<title>Get annual averages of seagrass frequency occurrence by bay segments and year — anlz_transectave • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plot Tampa Bay Nekton Index scores over time as average across bay segments — show_tbniscrall" />
-<meta property="og:description" content="Plot Tampa Bay Nekton Index scores over time as average across bay segments" />
+<meta property="og:title" content="Get annual averages of seagrass frequency occurrence by bay segments and year — anlz_transectave" />
+<meta property="og:description" content="Get annual averages of seagrass frequency occurrence by bay segments and year" />
 
 
 
@@ -126,81 +126,80 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot Tampa Bay Nekton Index scores over time as average across bay segments</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_tbniscrall.R'><code>R/show_tbniscrall.R</code></a></small>
-    <div class="hidden name"><code>show_tbniscrall.Rd</code></div>
+    <h1>Get annual averages of seagrass frequency occurrence by bay segments and year</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/anlz_transectave.R'><code>R/anlz_transectave.R</code></a></small>
+    <div class="hidden name"><code>anlz_transectave.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot Tampa Bay Nekton Index scores over time as average across bay segments</p>
+    <p>Get annual averages of seagrass frequency occurrence by bay segments and year</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_tbniscrall</span>(
-  <span class='kw'>tbniscr</span>,
-  perc = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>46</span>),
-  alph = <span class='fl'>0.3</span>,
-  ylim = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>22</span>, <span class='fl'>58</span>),
-  rev = <span class='fl'>FALSE</span>,
-  plotly = <span class='fl'>FALSE</span>
+    <pre class="usage"><span class='fu'>anlz_transectave</span>(
+  <span class='kw'>transectocc</span>,
+  bay_segment = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>, <span class='st'>"BCB"</span>),
+  yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1998</span>, <span class='fl'>2019</span>),
+  rev = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tbniscr</th>
-      <td><p>input dat frame as returned by <code><a href='anlz_tbniscr.html'>anlz_tbniscr</a></code></p></td>
+      <th>transectocc</th>
+      <td><p>data frame returned by <code><a href='anlz_transectocc.html'>anlz_transectocc</a></code></p></td>
     </tr>
     <tr>
-      <th>perc</th>
-      <td><p>numeric values indicating break points for score categories</p></td>
+      <th>bay_segment</th>
+      <td><p>chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"</p></td>
     </tr>
     <tr>
-      <th>alph</th>
-      <td><p>numeric indicating alpha value for score category colors</p></td>
-    </tr>
-    <tr>
-      <th>ylim</th>
-      <td><p>numeric for y axis limits</p></td>
+      <th>yrrng</th>
+      <td><p>numeric indicating year ranges to evaluate</p></td>
     </tr>
     <tr>
       <th>rev</th>
       <td><p>logical if factor levels for bay segments are reversed</p></td>
     </tr>
-    <tr>
-      <th>plotly</th>
-      <td><p>logical if matrix is created using plotly</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object showing trends over time in TBNI scores for each bay segment or a <code><a href='https://rdrr.io/pkg/plotly/man/plotly.html'>plotly</a></code> object if <code>plotly = TRUE</code></p>
+    <p>A data frame of annual averages by bay segment</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other visualize: 
-<code><a href='show_boxplot.html'>show_boxplot</a>()</code>,
-<code><a href='show_compplot.html'>show_compplot</a>()</code>,
-<code><a href='show_matrixplotly.html'>show_matrixplotly</a>()</code>,
-<code><a href='show_matrix.html'>show_matrix</a>()</code>,
-<code><a href='show_reactable.html'>show_reactable</a>()</code>,
-<code><a href='show_segmatrix.html'>show_segmatrix</a>()</code>,
-<code><a href='show_segplotly.html'>show_segplotly</a>()</code>,
-<code><a href='show_sitemap.html'>show_sitemap</a>()</code>,
-<code><a href='show_tbbimatrix.html'>show_tbbimatrix</a>()</code>,
-<code><a href='show_tbnimatrix.html'>show_tbnimatrix</a>()</code>,
-<code><a href='show_tbniscrplotly.html'>show_tbniscrplotly</a>()</code>,
-<code><a href='show_tbniscr.html'>show_tbniscr</a>()</code>,
-<code><a href='show_tdlcrk.html'>show_tdlcrk</a>()</code>,
-<code><a href='show_thrplot.html'>show_thrplot</a>()</code>,
-<code><a href='show_transectmatrix.html'>show_transectmatrix</a>()</code>,
-<code><a href='show_transect.html'>show_transect</a>()</code>,
-<code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
+    <div class='dont-index'><p>Other analyze: 
+<code><a href='anlz_attain.html'>anlz_attain</a>()</code>,
+<code><a href='anlz_avedatsite.html'>anlz_avedatsite</a>()</code>,
+<code><a href='anlz_avedat.html'>anlz_avedat</a>()</code>,
+<code><a href='anlz_iwrraw.html'>anlz_iwrraw</a>()</code>,
+<code><a href='anlz_refs.html'>anlz_refs</a>()</code>,
+<code><a href='anlz_tbbimed.html'>anlz_tbbimed</a>()</code>,
+<code><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a>()</code>,
+<code><a href='anlz_tdlcrk.html'>anlz_tdlcrk</a>()</code>,
+<code><a href='anlz_transectocc.html'>anlz_transectocc</a>()</code>,
+<code><a href='anlz_yrattain.html'>anlz_yrattain</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>tbniscr</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_tbniscr.html'>anlz_tbniscr</a></span>(<span class='kw'>fimdata</span>)
-<span class='fu'>show_tbniscrall</span>(<span class='kw'>tbniscr</span>)
-</div><div class='img'><img src='show_tbniscrall-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
+}
+<span class='kw'>transectocc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_transectocc.html'>anlz_transectocc</a></span>(<span class='kw'>transect</span>)
+<span class='fu'>anlz_transectave</span>(<span class='kw'>transectocc</span>)
+</div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 110 x 4</span><span>
+#&gt;       yr bay_segment foest focat 
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 BCB          81.5 green 
+#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 HB           15.2 red   
+#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 LTB          78.9 green 
+#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 MTB          57.3 yellow
+#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 OTB          70.9 yellow
+#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 BCB          72.1 yellow
+#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 HB           10.1 red   
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 LTB          66.1 yellow
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 MTB          57.4 yellow
+#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 OTB          66.9 yellow
+#&gt; </span><span style='color: #555555;'># … with 100 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
