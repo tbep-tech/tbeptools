@@ -1,7 +1,7 @@
 ---
 title: "Seagrass Transect Data"
 csl: stylefile.csl
-# bibliography: seagrasstransect.bib
+bibliography: seagrasstransect.bib
 date: "`r Sys.Date()`"
 output: 
   rmarkdown::html_vignette:
@@ -73,7 +73,7 @@ The columns in the transect database describe the crew (`Crew`), the monitoring 
 
 ## Calculating seagrass frequency occurrence
 
-There are two functions for estimating seagrass frequency occurrence at individual transects and by bay segments.  The `anlz_transectocc()` summarizes frequency occurrence by all transects.  Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2. Frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  All attached and drift algae species are aggregated, except Caulerpa spp. which are grouped separately.
+There are three functions for estimating seagrass frequency occurrence at individual transects and by bay segments.  The `anlz_transectocc()` summarizes frequency occurrence by all transects.  Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2 [@tbep0917]. Frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  All attached and drift algae species are aggregated, except Caulerpa spp. which are grouped separately.
 
 ```{r}
 transectocc <- anlz_transectocc(transect)
@@ -84,6 +84,12 @@ The second function, `anlz_transectave()` takes the results from `anlz_transecto
 
 ```{r}
 transectave <- anlz_transectave(transectocc)
+```
+
+The third function, `anlz_transectavespp()` takes the results from `anlz_transectocc()` and estimates annual averages across major bay segments as in the last funciton, but results are retained for individual species.  This function is used internally within the `show_transectavespp()` function to create summary plots.  All summaries are aggregated across the selected bay segments, i.e., the default is to average by species/year across all segments.  Results for an individual bay segment can be returned with the appropriate argument, e.g., \code{bay_segment = 'OTB'}.  Results can also be filtered by specific species using the \code{species} argument, where the result is to reuturn all including \textit{Caulerpa spp.}
+
+```{r}
+transectavespp <- anlz_transectavespp(transectocc)
 ```
 
 ## Plotting results
@@ -100,7 +106,7 @@ The rest of the plotting functions work with the annual transect data. Data for 
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
 ```
 
-A summary matrix of frequency occurrence estimates across all species can be plotted with `show_transectmatrix()`.  This uses results from the `anlz_transectocc()` and `anlz_transectave()` functions to estimate annual averages by bay segment.  The continuous frequency occurrence estimates are binned into color categories described above. 
+A summary matrix of frequency occurrence estimates across all species can be plotted with `show_transectmatrix()`.  This uses results from the `anlz_transectocc()` and `anlz_transectave()` functions to estimate annual averages by bay segment.  The continuous frequency occurrence estimates are binned into color categories described above, as in Table 1 in [@tbep0816]. 
 
 ```{r, fig.height = 7, fig.width = 3}
 show_transectmatrix(transectocc)
@@ -111,3 +117,23 @@ The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive
 ```{r, fig.height = 7, fig.width = 4}
 show_transectmatrix(transectocc, plotly = T)
 ```
+
+Time series plots of annual averages of frequency occurrence estimates by each species can be shown with the `show_transectavespp()` function.  By default, all estimates are averaged across all bay segments for each species.  The plot is a representation of Figure 2 in [@tbep0816].
+
+```{r, fig.height = 6, fig.width = 7}
+show_transectavespp(transectocc)
+```
+
+Results for individual segments and species can be returned with the `bay_segment` and `species` arguments.  
+
+```{r, fig.height = 6, fig.width = 7}
+show_transectavespp(transectocc, bay_segment = 'LTB', species = c('Syringodium', 'Thalassia'))
+```
+
+The plot can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
+
+```{r, fig.height = 6, fig.width = 7}
+show_transectavespp(transectocc, bay_segment = 'LTB', species = c('Syringodium', 'Thalassia'), plotly = T)
+```
+
+# References

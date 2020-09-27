@@ -120,6 +120,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `anlz_transectave()`: Get annual averages of seagrass frequency occurrence by bay segments and year
 
+* `anlz_transectavespp()`: Get annual averages of seagrass frequency occurrence by bay segments, year, and species
+
 * `anlz_transectocc()`: Get seagrass average abundance and occurrence across transects
 
 * `anlz_yrattain()`: Get attainment categories for a selected year
@@ -165,6 +167,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
 * `show_transect()`: Plot results for a seagrass transect by time and location
+
+* `show_transectavespp()`: Show annual averages of seagrass frequency occurrence by bay segments, year, and species
 
 * `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
 
@@ -349,6 +353,8 @@ The analyze functions are used primarily to summarize the data returned by `read
 
 * `anlz_transectave()`: Get annual averages of seagrass frequency occurrence by bay segments and year
 
+* `anlz_transectavespp()`: Get annual averages of seagrass frequency occurrence by bay segments, year, and species
+
 * `anlz_transectocc()`: Get seagrass average abundance and occurrence across transects
 
 * `anlz_yrattain()`: Get attainment categories for a selected year
@@ -417,6 +423,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
 
 * `show_transect()`: Plot results for a seagrass transect by time and location
+
+* `show_transectavespp()`: Show annual averages of seagrass frequency occurrence by bay segments, year, and species
 
 * `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
 

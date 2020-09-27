@@ -51,6 +51,10 @@ transect <- read_transect()
 transectocc <- anlz_transectocc(transect)
 show_transectmatrix(transectocc)
 }
+\references{
+#' @references
+This plot is a representation of Table 1 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.
+}
 \seealso{
 Other visualize: 
 \code{\link{show_boxplot}()},
