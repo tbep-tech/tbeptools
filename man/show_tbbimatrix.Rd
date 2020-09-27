@@ -36,7 +36,7 @@ show_tbbimatrix(
 \item{plotly}{logical if matrix is created using plotly}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBBI scores for each bay segment
+A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBBI scores for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object
 }
 \description{
 Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
@@ -61,6 +61,7 @@ Other visualize:
 \code{\link{show_tbniscr}()},
 \code{\link{show_tdlcrk}()},
 \code{\link{show_thrplot}()},
+\code{\link{show_transectmatrix}()},
 \code{\link{show_transect}()},
 \code{\link{show_wqmatrix}()}
 }

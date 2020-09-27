@@ -8,7 +8,7 @@
 #' @return A data frame of annual medians by bay segment
 #' @export
 #'
-#' @family anlz
+#' @family analyze
 #'
 #' @importFrom magrittr %>%
 #'

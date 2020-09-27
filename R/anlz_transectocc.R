@@ -52,20 +52,29 @@ anlz_transectocc <- function(transect){
       )
     )
 
-  # get avg placements across dates by transect
-  plcmnt <- datcmp %>%
-    dplyr::group_by(Date, Transect) %>%
-    dplyr::summarize(cnts = length(unique(Site)), .groups = 'drop') %>%
-    dplyr::group_by(Transect) %>%
-    dplyr::summarize(plcmnt = mean(cnts, na.rm = T), .groups = 'drop')
+  # # get avg placements across dates by transect
+  # plcmnt <- datcmp %>%
+  #   dplyr::group_by(Date, Transect) %>%
+  #   dplyr::summarize(cnts = length(unique(Site)), .groups = 'drop') %>%
+  #   dplyr::group_by(Transect) %>%
+  #   dplyr::summarize(plcmnt = mean(cnts, na.rm = T), .groups = 'drop')
+  #
+  # out <- datcmp %>%
+  #   left_join(plcmnt, by = 'Transect') %>%
+  #   dplyr::group_by(Date, Transect, Savspecies) %>%
+  #   dplyr::summarize(
+  #     foest = sum(bb > 0, na.rm = T) / unique(plcmnt),
+  #     bbest = sum(bb, na.rm = T) / unique(plcmnt ),
+  #     .groups = 'drop'
+  #   )
 
+  # summarise fo/bb by unique sites per date/transect, this is better than commented code
   out <- datcmp %>%
-    left_join(plcmnt, by = 'Transect') %>%
     dplyr::group_by(Date, Transect, Savspecies) %>%
-    dplyr::summarize(
-      foest = sum(bb > 0, na.rm = T) / unique(plcmnt),
-      bbest = sum(bb, na.rm = T) / unique(plcmnt ),
-      .groups = 'drop'
+    dplyr::summarise(
+      nsites = length(unique(Site)),
+      foest = sum(bb > 0, na.rm = T) / nsites,
+      bbest = sum(bb, na.rm = T) / nsites
     )
 
   return(out)

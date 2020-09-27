@@ -32,7 +32,6 @@ anlz_tbniave(tbniscr)
 }
 \seealso{
 Other anlz: 
-\code{\link{anlz_tbbimed}()},
 \code{\link{anlz_tbbiscr}()},
 \code{\link{anlz_tbnimet}()},
 \code{\link{anlz_tbniscr}()}
