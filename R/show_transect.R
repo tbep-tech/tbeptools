@@ -5,6 +5,7 @@
 #' @param species chr string indicating which species to plot
 #' @param varplo chr string indicating which variable to plot
 #' @param base_size numeric indicating text scaling size for plot
+#' @param plotly logical if plot is created using plotly
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
@@ -21,7 +22,7 @@
 #' }
 #' show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
 show_transect <- function(transect, site, species = c('Halodule', 'Halophila', 'Ruppia', 'Syringodium', 'Thalassia'),
-                          varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12){
+                          varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12, plotly = FALSE){
 
   # sanity checks
   if(!site %in% transect$Transect)
@@ -53,7 +54,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
   leglab <- c('Abundance (BB)', 'Blade length (cm)', expression(paste('Shoot density (', m^-2, ')')))
   names(leglab) <- c('Abundance', 'Blade Length', 'Short Shoot Density')
   leglab <- leglab[varplo]
-
+browser()
   # data with species
   toplo1 <- dat %>%
     filter(pa == 1)
@@ -77,6 +78,9 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
       title = site,
       subtitle = bquote(italic(.(species)))
     )
+
+  if(plotly)
+    p <- plotly::ggplotly(p)
 
   return(p)
 

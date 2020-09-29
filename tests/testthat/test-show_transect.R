@@ -3,6 +3,11 @@ test_that("Checking show_transect class", {
   expect_is(result, 'ggplot')
 })
 
+test_that("Checking show_transect plotly class", {
+  result <- show_transect(transect, site = 'S3T10', plotly = TRUE)
+  expect_is(result, 'plotly')
+})
+
 test_that("Checking show_transect error for invalid site", {
   expect_error(show_transect(transect, site = 'asdf'))
 })

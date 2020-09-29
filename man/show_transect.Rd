@@ -9,7 +9,8 @@ show_transect(
   site,
   species = c("Halodule", "Halophila", "Ruppia", "Syringodium", "Thalassia"),
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
-  base_size = 12
+  base_size = 12,
+  plotly = FALSE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ show_transect(
 \item{varplo}{chr string indicating which variable to plot}
 
 \item{base_size}{numeric indicating text scaling size for plot}
+
+\item{plotly}{logical if plot is created using plotly}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object
