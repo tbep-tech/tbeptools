@@ -7,6 +7,7 @@
 show_transectmatrix(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
+  total = TRUE,
   yrrng = c(1998, 2019),
   alph = 1,
   txtsz = 3,
@@ -34,6 +35,8 @@ show_transectmatrix(
 \item{position}{chr string of location for bay segment labels, default on top, passed to \code{\link[ggplot2]{scale_x_discrete}}}
 
 \item{plotly}{logical if matrix is created using plotly}
+
+\item{logical}{indicating if average frequency occurrence is calculated for the entire bay across segments}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object

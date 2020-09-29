@@ -2,6 +2,7 @@
 #'
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
+#' @param logical indicating if average frequency occurrence is calculated for the entire bay across segments
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param alph numeric indicating alpha value for score category colors
 #' @param txtsz numeric for size of text in the plot
@@ -29,15 +30,15 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectmatrix(transectocc)
-show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2019), alph = 1,
+show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, yrrng = c(1998, 2019), alph = 1,
                              txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
 
   # annual average by segment
-  toplo <- anlz_transectave(transectocc, bay_segment = bay_segment, rev = rev, yrrng = yrrng)
+  toplo <- anlz_transectave(transectocc, bay_segment = bay_segment, total = total, rev = rev, yrrng = yrrng)
 
   # plot
   p <- ggplot2::ggplot(toplo, ggplot2::aes(x = bay_segment, y = yr, fill = focat)) +
-    geom_tile(colour = 'black', alpha = alph) +
+    ggplot2::geom_tile(colour = 'black', alpha = alph) +
     ggplot2::scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = position) +
     ggplot2::scale_fill_manual(values = levels(toplo$focat)) +
@@ -47,6 +48,22 @@ show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       legend.position = 'none',
       panel.grid = ggplot2::element_blank()
     )
+
+  # add horizontal line if total
+  if(total){
+
+    # get location, this is fucked because of idiocy
+    val <- 1
+    fudge <- 0.5
+    if(rev){
+      fudge <- -1 * fudge
+      val <- length(bay_segment) + 2 - val
+    }
+
+    p <- p +
+      ggplot2::geom_vline(xintercept = val + fudge, size = 2)
+
+  }
 
   if(!is.null(txtsz))
     p <- p +

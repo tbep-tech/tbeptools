@@ -7,6 +7,7 @@
 anlz_transectave(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
+  total = TRUE,
   yrrng = c(1998, 2019),
   rev = FALSE
 )
@@ -19,6 +20,8 @@ anlz_transectave(
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
 \item{rev}{logical if factor levels for bay segments are reversed}
+
+\item{logical}{indicating if average frequency occurrence is calculated for the entire bay across segments}
 }
 \value{
 A data frame of annual averages by bay segment
