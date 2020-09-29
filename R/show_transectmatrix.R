@@ -52,7 +52,7 @@ show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
   # add horizontal line if total
   if(total){
 
-    # get location, this is fucked because of idiocy
+    # get location of line
     val <- 1
     fudge <- 0.5
     if(rev){

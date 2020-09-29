@@ -13,8 +13,8 @@ test_that("Checking results for anlz_transectavespp", {
 
   results <- anlz_transectavespp(transectocc)
   results <- results[1, ]
-  expect_equal(results, structure(list(yr = 1998, Savspecies = structure(6L, .Label = c("Halodule",
-                                                                                        "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."
-  ), class = "factor"), foest = 0.0173992673992674), row.names = c(NA,
-                                                                   -1L), class = c("tbl_df", "tbl", "data.frame")))
+  expect_equal(results, structure(list(yr = 1998, foest = 0.571560015870411, Savspecies = structure(1L, .Label = c("total",
+                                                                                                                   "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.",
+                                                                                                                   "Caulerpa spp."), class = "factor")), row.names = c(NA, -1L), class = c("tbl_df",
+                                                                                                                                                                                           "tbl", "data.frame")))
 })

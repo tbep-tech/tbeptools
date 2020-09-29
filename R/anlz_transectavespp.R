@@ -9,7 +9,7 @@
 #' @return A data frame of annual averages by bay segment
 #' @export
 #'
-#' @details Frequency occurrence estimates are averaged across segments in \cod{bay_segment}, i.e., separate results by location are not returned.
+#' @details Frequency occurrence estimates are averaged across segments in \code{bay_segment}, i.e., separate results by location are not returned.
 #'
 #' @family analyze
 #'
