@@ -10,6 +10,7 @@ show_transectavespp(
   yrrng = c(1998, 2019),
   species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.",
     "Caulerpa spp."),
+  total = TRUE,
   alph = 1,
   family = NA,
   plotly = FALSE
@@ -23,6 +24,8 @@ show_transectavespp(
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
 \item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."}
+
+\item{total}{logical indicating if total frequency occurrence for all species is also returned}
 
 \item{alph}{numeric indicating alpha value for score category colors}
 

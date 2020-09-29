@@ -4,6 +4,7 @@
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."
+#' @param total logical indicating if total frequency occurrence for all species is also returned
 #' @param alph numeric indicating alpha value for score category colors
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
@@ -28,14 +29,20 @@
 #' show_transectavespp(transectocc)
 show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2019),
                                 species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.'),
-                                alph = 1, family = NA, plotly = FALSE){
+                                total = TRUE, alph = 1, family = NA, plotly = FALSE){
 
   # annual average by segment
-  toplo <- anlz_transectavespp(transectocc, bay_segment = bay_segment, yrrng = yrrng, species = species)
+  toplo <- anlz_transectavespp(transectocc, total = total, bay_segment = bay_segment, yrrng = yrrng, species = species)
+
+  # sort color palette so its the same regardless of species selected
+  sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#00C1B2', '#6FB1E7', '#D494E1')
+  names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.')
+  sppcol <- sppcol[levels(toplo$Savspecies)]
 
   p <- ggplot2::ggplot(toplo, ggplot2::aes(x = yr, y = 100 * foest, fill = Savspecies)) +
     ggplot2::geom_line(alpha = alph) +
     ggplot2::geom_point(pch = 21, size = 3, alpha = alph) +
+    ggplot2::scale_fill_manual(values = sppcol) +
     ggplot2::theme_bw() +
     ggplot2::theme(
       axis.title.x = ggplot2::element_blank(),

@@ -4,6 +4,7 @@
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."
+#' @param total logical indicating if total frequency occurrence for all species is also returned
 #'
 #' @return A data frame of annual averages by bay segment
 #' @export
@@ -21,7 +22,8 @@
 #' transectocc <- anlz_transectocc(transect)
 #' anlz_transectavespp(transectocc)
 anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2019),
-                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.')){
+                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.'),
+                                total = TRUE){
 
   # sanity checks
   stopifnot(length(yrrng) == 2)
@@ -41,13 +43,16 @@ anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
     dplyr::select(Transect = TRAN_ID, bay_segment) %>%
     unique
 
-  out <- transectocc %>%
+  # fo by species
+  filtdat <- transectocc %>%
     dplyr::left_join(trnptsshed, by = 'Transect') %>%
     dplyr::mutate(
       yr = lubridate::year(Date)
     ) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    dplyr::filter(bay_segment %in% !!bay_segment) %>%
+    dplyr::filter(bay_segment %in% !!bay_segment)
+
+  out <- filtdat %>%
     dplyr::filter(Savspecies %in% !!species) %>%
     dplyr::group_by(yr, Savspecies) %>%
     dplyr::summarise(
@@ -57,6 +62,24 @@ anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
     dplyr::mutate(
       Savspecies = factor(Savspecies, levels = species)
     )
+
+  # total
+  if(total){
+
+    tots <- filtdat %>%
+      dplyr::filter(Savspecies %in% 'No Cover') %>%
+      dplyr::mutate(foest = 1 - foest) %>%
+      dplyr::group_by(yr) %>%
+      dplyr::summarise(foest = mean(foest, na.rm = T)) %>%
+      dplyr::mutate(
+        Savspecies = 'total',
+        Savspecies = factor(Savspecies, levels = c('total', species))
+        )
+
+    out <- dplyr::bind_rows(tots, out) %>%
+      dplyr::arrange(yr, Savspecies)
+
+  }
 
   return(out)
 
