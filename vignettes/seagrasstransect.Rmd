@@ -35,7 +35,7 @@ Each year, TBEP partners collect seagrass transect data at fixed locations in Ta
 
 ## Data import and included datasets
 
-There are two datasets included in tbeptools that show the transect locations that are actively monitored in Tampa Bay.  The `trnpts` dataset is a point object for the starting location of each transect and the `trnlns` dataset is a line object showing the approximate direction and length of each transect beginning at each point in `trnpts`.  Each dataset also includes the `MonAgency` column that indicates which monitoring agency collects the data at each transect. 
+There are two datasets included in tbeptools that show the actively monitored transect locations in Tampa Bay.  The `trnpts` dataset is a point object for the starting location of each transect and the `trnlns` dataset is a line object showing the approximate direction and length of each transect beginning at each point in `trnpts`.  Each dataset also includes the `MonAgency` column that indicates which monitoring agency collects the data at each transect. 
 
 ```{r}
 trnpts
@@ -49,7 +49,7 @@ mapview(trnpts, label = trnpts$lab, zcol = 'MonAgency', lwd = 0, legend = F, hom
   mapview(trnlns, zcol = 'MonAgency', homebutton = F, layer.name = 'Monitoring Agency', lwd = 4)
 ```
 
-The transect data can be downloaded from the Water Atlas using the `read_transect()` function.  The only required argument for this function is `training`, which indicates if you want to download training data or the complete dataset, i.e., `training = TRUE` or `training = FALSE` (default).  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are used primarily used internally by TBEP staff to assess precision among different training crews. The data are downloaded as a JSON object and formatted internally using the `read_formtransect()` function.  Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data. Abundance is reported as a numeric value from 0 -5 for Braun-Blanquet coverage estimates, blade length is in cm, and short shoot density is number of shoots per square meter.  
+The transect data can be downloaded from the Water Atlas using the `read_transect()` function.  The only required argument for this function is `training`, which indicates if you want to download training data or the complete dataset, i.e., `training = TRUE` or `training = FALSE` (default).  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are primarily used internally by TBEP staff to assess precision among different training crews. The data are downloaded as a JSON object and formatted internally using the `read_formtransect()` function.  Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data. Abundance is reported as a numeric value from 0 -5 for Braun-Blanquet coverage estimates and blade length is in cm.  
 
 ```{r}
 # import training data
@@ -75,21 +75,21 @@ The columns in the complete transect database describe the crew (`Crew`), the mo
 
 The rest of the seagrass functions in tbeptools were developed to work with the complete database.  Only the `show_complot()` function (see below) was developed for the training data.  The rest of the functions can be used to estimate and plot frequency occurrence data.  
 
-The `anlz_transectocc()` function summarizes frequency occurrence for all transects and dates by collapsing species results across quadrats.  Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2 [@tbep0917]. In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  The estimates are obtained for all seagrass species including Caulerpa spp., whereas all attached and drift algae species are aggregated.
+The `anlz_transectocc()` function summarizes frequency occurrence for all transects and dates by collapsing species results across quadrats within each transect.  Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2 [@tbep0917]. In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  The estimates are obtained for all seagrass species including Caulerpa spp., whereas all attached and drift algae species are aggregated.
 
 ```{r}
 transectocc <- anlz_transectocc(transect)
 transectocc
 ```
 
-The second function, `anlz_transectave()`, takes the results from `anlz_transectocc()` and estimates annual results across major bay segments for all seagrass species by averaging frequency occurrence across transects.  This function is used internally within the `show_transectmatrix()` function to create summary plots. The frequency occurrence estimates are also binned into categories for simple trend assessments, e.g., red < 25, orange 25-50, yellow 50-75, and green > 75.  Results for specific bay segments and annual ranges can be filtered with the `bay_segment` and `yrrng` arguments.
+The second function, `anlz_transectave()`, takes the results from `anlz_transectocc()` and estimates annual results across major bay segments for all seagrass species by averaging frequency occurrence across transects.  This function is used internally within the `show_transectmatrix()` function to create summary plots. The frequency occurrence estimates are also binned into categories for simple trend assessments, e.g., red < 25%, orange 25-50%, yellow 50-75%, and green > 75%.  Results for specific bay segments and annual ranges can be filtered with the `bay_segment` and `yrrng` arguments.
 
 ```{r}
 transectave <- anlz_transectave(transectocc)
 transectave
 ```
 
-The third function, `anlz_transectavespp()`, takes the results from `anlz_transectocc()` and estimates annual averages across major bay segments as in the last function, but results are retained for individual species.  This function is used internally within the `show_transectavespp()` function to create summary plots.  All summaries are aggregated across the selected bay segments, i.e., the default is to average by species/year across all segments.  Results for an individual bay segment can be returned with the appropriate argument, e.g., \code{bay_segment = 'OTB'}.  Results can also be filtered by specific species using the \code{species} argument, where the default is to return all including \textit{Caulerpa spp.}
+The third function, `anlz_transectavespp()`, takes the results from `anlz_transectocc()` and estimates annual averages across major bay segments as in the last function, but results are retained for individual species.  This function is used internally within the `show_transectavespp()` function to create summary plots.  All summaries are aggregated across the selected bay segments, i.e., the default is to average by species/year across all segments.  Results for an individual bay segment can be returned with the appropriate argument, e.g., by using `bay_segment = 'OTB'` to select only Old Tampa Bay.  Results can also be filtered by specific species using the `species` argument, where the default is to return all.  \textit{Caulerpa spp.} are also included. 
 
 ```{r}
 transectavespp <- anlz_transectavespp(transectocc)
@@ -123,7 +123,7 @@ The plot can also be produced as a [plotly](https://plotly.com/r/) interactive p
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance', plotly = T)
 ```
 
-The `show_transectsum()` function provides an alternative summary of data at an individual transect. This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.  Unlike `show_transect()`, the plot shows aggregates results across quadrats along the transect and uses results from the `anlz_transectocc()` function as input.  
+The `show_transectsum()` function provides an alternative summary of data at an individual transect. This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.  Unlike `show_transect()`, the plot shows aggregated results across quadrats along the transect and uses summarized data from the `anlz_transectocc()` function as input.  
 
 ```{r, out.width = '100%'}
 show_transectsum(transectocc, site = 'S3T10')

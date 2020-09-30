@@ -57,7 +57,7 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       ) +
       ggplot2::labs(
         y = '% frequency occurrence',
-        title = paste('Seagress estimates for', paste(bay_segment, collapse = ', '))
+        title = paste('Seagrass estimates for', paste(bay_segment, collapse = ', '))
       )
 
     if(plotly)
