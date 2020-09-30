@@ -18,3 +18,14 @@ test_that("Checking results for anlz_transectavespp", {
                                                                                                                    "Caulerpa spp."), class = "factor")), row.names = c(NA, -1L), class = c("tbl_df",
                                                                                                                                                                                            "tbl", "data.frame")))
 })
+
+test_that("Checking results for anlz_transectavespp by segment", {
+
+  results <- anlz_transectavespp(transectocc, by_seg = T)
+  results <- results[1, ]
+  expect_equal(results, structure(list(yr = 1998, bay_segment = structure(5L, .Label = c("OTB",
+                                                                                         "HB", "MTB", "LTB", "BCB"), class = "factor"), Savspecies = structure(7L, .Label = c("No Cover",
+                                                                                                                                                                              "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.",
+                                                                                                                                                                              "Caulerpa spp."), class = "factor"), foest = 0, nsites = 96L), row.names = c(NA,
+                                                                                                                                                                                                                                                           -1L), class = c("tbl_df", "tbl", "data.frame")))
+})

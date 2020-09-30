@@ -5,11 +5,15 @@
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."
 #' @param total logical indicating if total frequency occurrence for all species is also returned
+#' @param by_seg logical indicating if separate results by bay segments are retained
 #'
 #' @return A data frame of annual averages by bay segment
 #' @export
 #'
-#' @details Frequency occurrence estimates are averaged across segments in \code{bay_segment}, i.e., separate results by location are not returned.
+#' @details
+#' Frequency occurrence estimates are averaged across segments in \code{bay_segment} if \code{by_seg = F}, i.e., separate results by location are not returned.  Results are retained by bay segment if \code{by_seg = T}.  Also note that totals across species (\code{total = T}) are not returned if \code{by_seg = T}.
+#'
+#'
 #'
 #' @family analyze
 #'
@@ -23,7 +27,7 @@
 #' anlz_transectavespp(transectocc)
 anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2019),
                                 species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.'),
-                                total = TRUE){
+                                total = TRUE, by_seg = FALSE){
 
   # sanity checks
   stopifnot(length(yrrng) == 2)
@@ -52,19 +56,36 @@ anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(bay_segment %in% !!bay_segment)
 
-  out <- filtdat %>%
-    dplyr::filter(Savspecies %in% !!species) %>%
-    dplyr::group_by(yr, Savspecies) %>%
-    dplyr::summarise(
-      foest = mean(foest, na.rm = T),
-      .groups = 'drop'
+  # aggregate results across segments
+  if(!by_seg)
+    out <- filtdat %>%
+      dplyr::filter(Savspecies %in% !!species) %>%
+      dplyr::group_by(yr, Savspecies) %>%
+      dplyr::summarise(
+        foest = mean(foest, na.rm = T),
+        .groups = 'drop'
+        ) %>%
+      dplyr::mutate(
+        Savspecies = factor(Savspecies, levels = species)
+      )
+
+  # retain results across segments
+  if(by_seg)
+    out <- filtdat %>%
+      dplyr::filter(Savspecies %in% c('No Cover', !!species)) %>%
+      dplyr::group_by(yr, bay_segment, Savspecies) %>%
+      dplyr::summarise(
+        foest = mean(foest, na.rm = T),
+        nsites = sum(nsites, na.rm = T),
+        .groups = 'drop'
       ) %>%
-    dplyr::mutate(
-      Savspecies = factor(Savspecies, levels = species)
-    )
+      dplyr::mutate(
+        Savspecies = factor(Savspecies, levels = c('No Cover', species)),
+        bay_segment = factor(bay_segment, levels = !!bay_segment)
+      )
 
   # total
-  if(total){
+  if(total & !by_seg){
 
     tots <- filtdat %>%
       dplyr::filter(Savspecies %in% 'No Cover') %>%

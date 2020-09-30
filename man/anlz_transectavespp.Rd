@@ -10,7 +10,8 @@ anlz_transectavespp(
   yrrng = c(1998, 2019),
   species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.",
     "Caulerpa spp."),
-  total = TRUE
+  total = TRUE,
+  by_seg = FALSE
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ anlz_transectavespp(
 \item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."}
 
 \item{total}{logical indicating if total frequency occurrence for all species is also returned}
+
+\item{by_seg}{logical indicating if separate results by bay segments are retained}
 }
 \value{
 A data frame of annual averages by bay segment
@@ -31,7 +34,7 @@ A data frame of annual averages by bay segment
 Get annual averages of seagrass frequency occurrence by bay segments, year, and species
 }
 \details{
-Frequency occurrence estimates are averaged across segments in \code{bay_segment}, i.e., separate results by location are not returned.
+Frequency occurrence estimates are averaged across segments in \code{bay_segment} if \code{by_seg = F}, i.e., separate results by location are not returned.  Results are retained by bay segment if \code{by_seg = T}.  Also note that totals across species (\code{total = T}) are not returned if \code{by_seg = T}.
 }
 \examples{
 \dontrun{

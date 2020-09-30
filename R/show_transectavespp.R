@@ -32,7 +32,7 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
                                 total = TRUE, alph = 1, family = NA, plotly = FALSE){
 
   # annual average by segment
-  toplo <- anlz_transectavespp(transectocc, total = total, bay_segment = bay_segment, yrrng = yrrng, species = species)
+  toplo <- anlz_transectavespp(transectocc, total = total, bay_segment = bay_segment, yrrng = yrrng, species = species, by_seg = F)
 
   # sort color palette so its the same regardless of species selected
   sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#00C1B2', '#6FB1E7', '#D494E1')

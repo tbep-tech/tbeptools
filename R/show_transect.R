@@ -54,7 +54,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
   leglab <- c('Abundance (BB)', 'Blade length (cm)', expression(paste('Shoot density (', m^-2, ')')))
   names(leglab) <- c('Abundance', 'Blade Length', 'Short Shoot Density')
   leglab <- leglab[varplo]
-browser()
+
   # data with species
   toplo1 <- dat %>%
     filter(pa == 1)
