@@ -117,16 +117,16 @@ The rest of the plotting functions work with the complete transect data. Data fo
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
 ```
 
-The `show_transectsum()` function provides an alternative summary of data at an individual transect. This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.  Unlike `show_transect()`, the plot shows aggregates results across quadrats along the transect and uses results from the `anlz_transectocc()` function as input.  
-
-```{r, out.width = '100%'}
-show_transectsum(transectocc, site = 'S3T10')
-```
-
 The plot can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
 
 ```{r, fig.height = 8, fig.width = 8}
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance', plotly = T)
+```
+
+The `show_transectsum()` function provides an alternative summary of data at an individual transect. This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.  Unlike `show_transect()`, the plot shows aggregates results across quadrats along the transect and uses results from the `anlz_transectocc()` function as input.  
+
+```{r, out.width = '100%'}
+show_transectsum(transectocc, site = 'S3T10')
 ```
 
 A summary matrix of frequency occurrence estimates across all species can be plotted with `show_transectmatrix()`.  This uses results from the `anlz_transectocc()` and `anlz_transectave()` functions to estimate annual averages by bay segment.  The continuous frequency occurrence estimates are binned into color categories described above, as in Table 1 in [@tbep0816]. 
