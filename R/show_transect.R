@@ -67,7 +67,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
   p <- ggplot2::ggplot(toplo1, ggplot2::aes(y = Year, x = Site)) +
     ggplot2::geom_point(data = toplo2, alpha = 0.6, colour = 'tomato1', size = 1) +
     ggplot2::geom_point(aes(size = val), alpha = 0.6) +
-    ggplot2::scale_size(leglab) +
+    ggplot2::scale_size(leglab, breaks = c(0.1, 0.5, 1, 2, 3, 4, 5)) +
     ggplot2::theme_minimal(base_size = base_size) +
     ggplot2::theme(
       panel.grid.major.y = ggplot2::element_blank(),
