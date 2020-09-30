@@ -138,6 +138,7 @@
     <pre class="usage"><span class='fu'>show_transectmatrix</span>(
   <span class='kw'>transectocc</span>,
   bay_segment = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>, <span class='st'>"BCB"</span>),
+  total = <span class='fl'>TRUE</span>,
   yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1998</span>, <span class='fl'>2019</span>),
   alph = <span class='fl'>1</span>,
   txtsz = <span class='fl'>3</span>,
@@ -157,6 +158,10 @@
     <tr>
       <th>bay_segment</th>
       <td><p>chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"</p></td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td><p>logical indicating if average frequency occurrence is calculated for the entire bay across segments</p></td>
     </tr>
     <tr>
       <th>yrrng</th>

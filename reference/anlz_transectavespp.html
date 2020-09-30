@@ -140,7 +140,8 @@
   bay_segment = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>, <span class='st'>"BCB"</span>),
   yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1998</span>, <span class='fl'>2019</span>),
   species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Halophila spp."</span>,
-    <span class='st'>"Caulerpa spp."</span>)
+    <span class='st'>"Caulerpa spp."</span>),
+  total = <span class='fl'>TRUE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -162,6 +163,10 @@
       <th>species</th>
       <td><p>chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."</p></td>
     </tr>
+    <tr>
+      <th>total</th>
+      <td><p>logical indicating if total frequency occurrence for all species is also returned</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -169,7 +174,7 @@
     <p>A data frame of annual averages by bay segment</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Frequency occurrence estimates are averaged across segments in bay_segment, i.e., separate results by location are not returned.</p>
+    <p>Frequency occurrence estimates are averaged across segments in <code>bay_segment</code>, i.e., separate results by location are not returned.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other analyze: 
@@ -191,20 +196,20 @@
 }
 <span class='kw'>transectocc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_transectocc.html'>anlz_transectocc</a></span>(<span class='kw'>transect</span>)
 <span class='fu'>anlz_transectavespp</span>(<span class='kw'>transectocc</span>)
-</div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 132 x 3</span><span>
-#&gt;       yr Savspecies        foest
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Caulerpa spp.  0.017</span><span style='text-decoration: underline;'>4</span><span>  
-#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Halodule       0.358   
-#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Halophila spp. 0       
-#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Ruppia         0.011</span><span style='text-decoration: underline;'>8</span><span>  
-#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Syringodium    0.040</span><span style='text-decoration: underline;'>6</span><span>  
-#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 Thalassia      0.241   
-#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Caulerpa spp.  0.029</span><span style='text-decoration: underline;'>6</span><span>  
-#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Halodule       0.313   
-#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Halophila spp. 0.001</span><span style='text-decoration: underline;'>26</span><span> 
-#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 Ruppia         0.000</span><span style='text-decoration: underline;'>733</span><span>
-#&gt; </span><span style='color: #555555;'># … with 122 more rows</span><span></div></span></pre>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: st_crs&lt;- : replacing crs does not reproject data; use st_transform for that</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 154 x 3</span><span>
+#&gt;       yr  foest Savspecies    
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>         
+#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 0.572  total         
+#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 0.358  Halodule      
+#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 0.040</span><span style='text-decoration: underline;'>6</span><span> Syringodium   
+#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 0.241  Thalassia     
+#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 0.011</span><span style='text-decoration: underline;'>8</span><span> Ruppia        
+#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 0      Halophila spp.
+#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>998 0.017</span><span style='text-decoration: underline;'>4</span><span> Caulerpa spp. 
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 0.509  total         
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 0.313  Halodule      
+#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>999 0.064</span><span style='text-decoration: underline;'>5</span><span> Syringodium   
+#&gt; </span><span style='color: #555555;'># … with 144 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
