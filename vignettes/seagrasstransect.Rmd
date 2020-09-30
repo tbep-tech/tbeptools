@@ -125,13 +125,13 @@ show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundanc
 
 A summary matrix of frequency occurrence estimates across all species can be plotted with `show_transectmatrix()`.  This uses results from the `anlz_transectocc()` and `anlz_transectave()` functions to estimate annual averages by bay segment.  The continuous frequency occurrence estimates are binned into color categories described above, as in Table 1 in [@tbep0816]. 
 
-```{r, fig.height = 7, fig.width = 3}
+```{r, fig.height = 7, fig.width = 4}
 show_transectmatrix(transectocc)
 ```
 
 The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
 
-```{r, fig.height = 7, fig.width = 4}
+```{r, fig.height = 7, fig.width = 5}
 show_transectmatrix(transectocc, plotly = T)
 ```
 
