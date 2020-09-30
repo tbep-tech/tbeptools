@@ -31,7 +31,7 @@ A data frame of annual averages by bay segment
 Get annual averages of seagrass frequency occurrence by bay segments, year, and species
 }
 \details{
-Frequency occurrence estimates are averaged across segments in \cod{bay_segment}, i.e., separate results by location are not returned.
+Frequency occurrence estimates are averaged across segments in \code{bay_segment}, i.e., separate results by location are not returned.
 }
 \examples{
 \dontrun{

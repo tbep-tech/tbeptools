@@ -17,11 +17,11 @@ anlz_transectave(
 
 \item{bay_segment}{chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"}
 
+\item{total}{logical indicating if average frequency occurrence is calculated for the entire bay across segments}
+
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
 \item{rev}{logical if factor levels for bay segments are reversed}
-
-\item{logical}{indicating if average frequency occurrence is calculated for the entire bay across segments}
 }
 \value{
 A data frame of annual averages by bay segment

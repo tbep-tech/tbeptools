@@ -22,6 +22,8 @@ show_transectmatrix(
 
 \item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"}
 
+\item{total}{logical indicating if average frequency occurrence is calculated for the entire bay across segments}
+
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
 \item{alph}{numeric indicating alpha value for score category colors}
@@ -35,8 +37,6 @@ show_transectmatrix(
 \item{position}{chr string of location for bay segment labels, default on top, passed to \code{\link[ggplot2]{scale_x_discrete}}}
 
 \item{plotly}{logical if matrix is created using plotly}
-
-\item{logical}{indicating if average frequency occurrence is calculated for the entire bay across segments}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object

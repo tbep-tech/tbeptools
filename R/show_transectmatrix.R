@@ -2,7 +2,7 @@
 #'
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
-#' @param logical indicating if average frequency occurrence is calculated for the entire bay across segments
+#' @param total logical indicating if average frequency occurrence is calculated for the entire bay across segments
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param alph numeric indicating alpha value for score category colors
 #' @param txtsz numeric for size of text in the plot

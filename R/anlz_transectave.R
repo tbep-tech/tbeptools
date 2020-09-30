@@ -2,7 +2,7 @@
 #'
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
-#' @param logical indicating if average frequency occurrence is calculated for the entire bay across segments
+#' @param total logical indicating if average frequency occurrence is calculated for the entire bay across segments
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param rev logical if factor levels for bay segments are reversed
 #'
