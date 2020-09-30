@@ -6,7 +6,7 @@
 #' @return data frame in long format
 #' @export
 #' @details
-#' Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data.  Shoot density and blade height are based on averages across random observations at each transect point that are entered separately in the data form.
+#' Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data.  Shoot density and blade height (cm) are based on averages across random observations at each transect point that are entered separately in the data form. Abundance is reported as a numeric value from 0 - 5 for Braun-Blanquet coverage estimates.
 #'
 #' @importFrom magrittr %>%
 #'
