@@ -206,19 +206,7 @@
 <span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
 }
 <span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>, species = <span class='st'>'Halodule'</span>, varplo = <span class='st'>'Abundance'</span>)
-</div><div class='output co'>#&gt; Called from: show_transect(transect, site = "S3T10", species = "Halodule", 
-#&gt;     varplo = "Abundance")
-#&gt; debug: toplo1 &lt;- dat %&gt;% filter(pa == 1)
-#&gt; debug: toplo2 &lt;- dat %&gt;% filter(pa == 0)
-#&gt; debug: p &lt;- ggplot2::ggplot(toplo1, ggplot2::aes(y = Year, x = Site)) + 
-#&gt;     ggplot2::geom_point(data = toplo2, alpha = 0.6, colour = "tomato1", 
-#&gt;         size = 1) + ggplot2::geom_point(aes(size = val), alpha = 0.6) + 
-#&gt;     ggplot2::scale_size(leglab) + ggplot2::theme_minimal(base_size = base_size) + 
-#&gt;     ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(), 
-#&gt;         panel.grid.minor.y = ggplot2::element_blank()) + ggplot2::labs(x = "Transect distance (m)", 
-#&gt;     title = site, subtitle = bquote(italic(.(species))))
-#&gt; debug: if (plotly) p &lt;- plotly::ggplotly(p)
-#&gt; debug: return(p)</div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div></pre>
+</div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

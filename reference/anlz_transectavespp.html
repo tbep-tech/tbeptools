@@ -141,7 +141,8 @@
   yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1998</span>, <span class='fl'>2019</span>),
   species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Halophila spp."</span>,
     <span class='st'>"Caulerpa spp."</span>),
-  total = <span class='fl'>TRUE</span>
+  total = <span class='fl'>TRUE</span>,
+  by_seg = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -167,6 +168,10 @@
       <th>total</th>
       <td><p>logical indicating if total frequency occurrence for all species is also returned</p></td>
     </tr>
+    <tr>
+      <th>by_seg</th>
+      <td><p>logical indicating if separate results by bay segments are retained</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -174,7 +179,7 @@
     <p>A data frame of annual averages by bay segment</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Frequency occurrence estimates are averaged across segments in <code>bay_segment</code>, i.e., separate results by location are not returned.</p>
+    <p>Frequency occurrence estimates are averaged across segments in <code>bay_segment</code> if <code>by_seg = F</code>, i.e., separate results by location are not returned.  Results are retained by bay segment if <code>by_seg = T</code>.  Also note that totals across species (<code>total = T</code>) are not returned if <code>by_seg = T</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other analyze: 
