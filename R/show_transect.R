@@ -10,7 +10,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
 #'
-#' @details All sites along at transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.
+#' @details All sites along a transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.
 #'
 #' @importFrom magrittr %>%
 #'

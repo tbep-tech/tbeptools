@@ -63,6 +63,7 @@ Other visualize:
 \code{\link{show_thrplot}()},
 \code{\link{show_transectavespp}()},
 \code{\link{show_transectmatrix}()},
+\code{\link{show_transectsum}()},
 \code{\link{show_transect}()},
 \code{\link{show_wqmatrix}()}
 }

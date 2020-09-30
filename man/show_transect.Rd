@@ -33,7 +33,7 @@ A \code{\link[ggplot2]{ggplot}} object
 Plot results for a seagrass transect by time and location
 }
 \details{
-All sites along at transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.
+All sites along a transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.
 }
 \examples{
 \dontrun{
@@ -60,6 +60,7 @@ Other visualize:
 \code{\link{show_thrplot}()},
 \code{\link{show_transectavespp}()},
 \code{\link{show_transectmatrix}()},
+\code{\link{show_transectsum}()},
 \code{\link{show_wqmatrix}()}
 }
 \concept{visualize}

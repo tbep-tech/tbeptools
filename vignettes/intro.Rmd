@@ -172,6 +172,8 @@ The following shows all functions provided in tbeptools, organized by prefix.
 
 * `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
 
+* `show_transectsum()`: Plot frequency occurrence for a seagrass transect by time for all species
+
 * `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
@@ -427,6 +429,8 @@ The plotting functions are used to view long-term trends for each bay segment an
 * `show_transectavespp()`: Show annual averages of seagrass frequency occurrence by bay segments, year, and species
 
 * `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
+
+* `show_transectsum()`: Plot frequency occurrence for a seagrass transect by time for all species
 
 * `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 
