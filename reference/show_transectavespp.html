@@ -144,7 +144,8 @@
   total = <span class='fl'>TRUE</span>,
   alph = <span class='fl'>1</span>,
   family = <span class='fl'>NA</span>,
-  plotly = <span class='fl'>FALSE</span>
+  plotly = <span class='fl'>FALSE</span>,
+  asreact = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -168,7 +169,7 @@
     </tr>
     <tr>
       <th>total</th>
-      <td><p>logical indicating if total frequency occurrence for all species is also returned</p></td>
+      <td><p>logical indicating if total frequency occurrence for all species is also returned, only applies if <code>asreact = FALSE</code></p></td>
     </tr>
     <tr>
       <th>alph</th>
@@ -182,17 +183,22 @@
       <th>plotly</th>
       <td><p>logical if matrix is created using plotly</p></td>
     </tr>
+    <tr>
+      <th>asreact</th>
+      <td><p>logical if a reactable table is returned instead of a plot</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object showing trends over time by speies for selected bay segments if <code>plotly = FALSE</code>, otherwise a <code><a href='https://rdrr.io/pkg/plotly/man/plotly.html'>plotly</a></code> object</p>
+    <p>If <code>asreact = F</code>, a <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> or <code><a href='https://rdrr.io/pkg/plotly/man/plotly.html'>plotly</a></code> (if <code>plotly = T</code>) object is returned showing trends over time by species for selected bay segments.  If <code>asreact = T</code>, a <code><a href='https://rdrr.io/pkg/reactable/man/reactable.html'>reactable</a></code> table showing results by year, segment, and species is returned.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Results are based on averages across species by date and transect in each bay segment</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>This plot is a representation of Figure 2 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.</p>
+    <p>The plot is a representation of figure 2 in Johansson, R. (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.</p>
+<p>The table is a representation of table 2, p. 163 in Yarbro, L. A., and P. R. Carlson, Jr., eds. 2016. Seagrass Integrated Mapping and Monitoring Program: Mapping and Monitoring Report No. 2. Fish and Wildlife Research Institute Technical Report TR-17 version 2. vi + 281 p.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: 
