@@ -84,12 +84,21 @@ The second function, `anlz_transectave()` takes the results from `anlz_transecto
 
 ```{r}
 transectave <- anlz_transectave(transectocc)
+transectave
 ```
 
 The third function, `anlz_transectavespp()` takes the results from `anlz_transectocc()` and estimates annual averages across major bay segments as in the last funciton, but results are retained for individual species.  This function is used internally within the `show_transectavespp()` function to create summary plots.  All summaries are aggregated across the selected bay segments, i.e., the default is to average by species/year across all segments.  Results for an individual bay segment can be returned with the appropriate argument, e.g., \code{bay_segment = 'OTB'}.  Results can also be filtered by specific species using the \code{species} argument, where the result is to reuturn all including \textit{Caulerpa spp.}
 
 ```{r}
 transectavespp <- anlz_transectavespp(transectocc)
+transectavespp
+```
+
+Results for individual bay segments from `anlz_transectavespp()` can be retained by setting the `by_seg` argument to `TRUE`.  Note that totals are not returned in this case. 
+
+```{r}
+transectavespp <- anlz_transectavespp(transectocc, by_seg = TRUE)
+transectavespp
 ```
 
 ## Plotting results
@@ -140,6 +149,12 @@ The plot can also be produced as a [plotly](https://plotly.com/r/) interactive p
 
 ```{r, fig.height = 6, fig.width = 7}
 show_transectavespp(transectocc, bay_segment = 'LTB', species = c('Syringodium', 'Thalassia'), plotly = T)
+```
+
+As an alternative to plotting the species averages over time with `show_transectavespp()`, a table can be created by setting `asreact = TRUE`.  Filtering options that apply to the plot also apply to the table, e.g., filtering by the four major bay segments and specific year ranges.  Also note that the totals are not returned in the table. 
+
+```{r}
+show_transectavespp(transectocc, asreact = T, bay_segment = c('HB', 'OTB', 'MTB', 'LTB'), yrrng = c(2006, 2012))
 ```
 
 # References

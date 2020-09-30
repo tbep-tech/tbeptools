@@ -13,7 +13,8 @@ show_transectavespp(
   total = TRUE,
   alph = 1,
   family = NA,
-  plotly = FALSE
+  plotly = FALSE,
+  asreact = FALSE
 )
 }
 \arguments{
@@ -25,16 +26,18 @@ show_transectavespp(
 
 \item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."}
 
-\item{total}{logical indicating if total frequency occurrence for all species is also returned}
+\item{total}{logical indicating if total frequency occurrence for all species is also returned, only applies if \code{asreact = FALSE}}
 
 \item{alph}{numeric indicating alpha value for score category colors}
 
 \item{family}{optional chr string indicating font family for text labels}
 
 \item{plotly}{logical if matrix is created using plotly}
+
+\item{asreact}{logical if a reactable table is returned instead of a plot}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object showing trends over time by speies for selected bay segments if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object
+If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{plotly}} (if \code{plotly = T}) object is returned showing trends over time by species for selected bay segments.  If \code{asreact = T}, a \code{\link[reactable]{reactable}} table showing results by year, segment, and species is returned.
 }
 \description{
 Show annual averages of seagrass frequency occurrence by bay segments, year, and species
@@ -50,7 +53,9 @@ transectocc <- anlz_transectocc(transect)
 show_transectavespp(transectocc)
 }
 \references{
-This plot is a representation of Figure 2 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.
+The plot is a representation of figure 2 in Johansson, R. (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.
+
+The table is a representation of table 2, p. 163 in Yarbro, L. A., and P. R. Carlson, Jr., eds. 2016. Seagrass Integrated Mapping and Monitoring Program: Mapping and Monitoring Report No. 2. Fish and Wildlife Research Institute Technical Report TR-17 version 2. vi + 281 p.
 }
 \seealso{
 Other visualize: 
