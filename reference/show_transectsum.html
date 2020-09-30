@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment — show_tbnimatrix • tbeptools</title>
+<title>Plot frequency occurrence for a seagrass transect by time for all species — show_transectsum • tbeptools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment — show_tbnimatrix" />
-<meta property="og:description" content="Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment" />
+<meta property="og:title" content="Plot frequency occurrence for a seagrass transect by time for all species — show_transectsum" />
+<meta property="og:description" content="Plot frequency occurrence for a seagrass transect by time for all species" />
 
 
 
@@ -126,71 +126,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_tbnimatrix.R'><code>R/show_tbnimatrix.R</code></a></small>
-    <div class="hidden name"><code>show_tbnimatrix.Rd</code></div>
+    <h1>Plot frequency occurrence for a seagrass transect by time for all species</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/show_transectsum.R'><code>R/show_transectsum.R</code></a></small>
+    <div class="hidden name"><code>show_transectsum.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment</p>
+    <p>Plot frequency occurrence for a seagrass transect by time for all species</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_tbnimatrix</span>(
-  <span class='kw'>tbniscr</span>,
-  bay_segment = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
-  perc = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>46</span>),
-  alph = <span class='fl'>0.3</span>,
-  txtsz = <span class='fl'>3</span>,
-  family = <span class='fl'>NA</span>,
-  rev = <span class='fl'>FALSE</span>,
-  position = <span class='st'>"top"</span>,
-  plotly = <span class='fl'>FALSE</span>
+    <pre class="usage"><span class='fu'>show_transectsum</span>(
+  <span class='kw'>transectocc</span>,
+  <span class='kw'>site</span>,
+  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Halophila spp."</span>,
+    <span class='st'>"Caulerpa spp."</span>),
+  abund = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tbniscr</th>
-      <td><p>input data frame as returned by <code><a href='anlz_tbniscr.html'>anlz_tbniscr</a></code></p></td>
+      <th>transectocc</th>
+      <td><p>data frame returned by <code><a href='anlz_transectocc.html'>anlz_transectocc</a></code></p></td>
     </tr>
     <tr>
-      <th>bay_segment</th>
-      <td><p>chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB"</p></td>
+      <th>site</th>
+      <td><p>chr string indicating site results to plot</p></td>
     </tr>
     <tr>
-      <th>perc</th>
-      <td><p>numeric values indicating break points for score categories</p></td>
+      <th>species</th>
+      <td><p>chr string indicating which species to plot</p></td>
     </tr>
     <tr>
-      <th>alph</th>
-      <td><p>numeric indicating alpha value for score category colors</p></td>
-    </tr>
-    <tr>
-      <th>txtsz</th>
-      <td><p>numeric for size of text in the plot</p></td>
-    </tr>
-    <tr>
-      <th>family</th>
-      <td><p>optional chr string indicating font family for text labels</p></td>
-    </tr>
-    <tr>
-      <th>rev</th>
-      <td><p>logical if factor levels for bay segments are reversed</p></td>
-    </tr>
-    <tr>
-      <th>position</th>
-      <td><p>chr string of location for bay segment labels, default on top, passed to <code><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></code></p></td>
-    </tr>
-    <tr>
-      <th>plotly</th>
-      <td><p>logical if matrix is created using plotly</p></td>
+      <th>abund</th>
+      <td><p>logical indicating if abundance averages are plotted instead of frequency occurrence</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object showing trends over time in TBNI scores for each bay segment</p>
+    <p>A <code><a href='https://rdrr.io/pkg/plotly/man/plotly.html'>plotly</a></code> object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: 
@@ -203,6 +182,7 @@
 <code><a href='show_segplotly.html'>show_segplotly</a>()</code>,
 <code><a href='show_sitemap.html'>show_sitemap</a>()</code>,
 <code><a href='show_tbbimatrix.html'>show_tbbimatrix</a>()</code>,
+<code><a href='show_tbnimatrix.html'>show_tbnimatrix</a>()</code>,
 <code><a href='show_tbniscrall.html'>show_tbniscrall</a>()</code>,
 <code><a href='show_tbniscrplotly.html'>show_tbniscrplotly</a>()</code>,
 <code><a href='show_tbniscr.html'>show_tbniscr</a>()</code>,
@@ -210,14 +190,16 @@
 <code><a href='show_thrplot.html'>show_thrplot</a>()</code>,
 <code><a href='show_transectavespp.html'>show_transectavespp</a>()</code>,
 <code><a href='show_transectmatrix.html'>show_transectmatrix</a>()</code>,
-<code><a href='show_transectsum.html'>show_transectsum</a>()</code>,
 <code><a href='show_transect.html'>show_transect</a>()</code>,
 <code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>tbniscr</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_tbniscr.html'>anlz_tbniscr</a></span>(<span class='kw'>fimdata</span>)
-<span class='fu'>show_tbnimatrix</span>(<span class='kw'>tbniscr</span>)
-</div><div class='img'><img src='show_tbnimatrix-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
+}
+<span class='kw'>transectocc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_transectocc.html'>anlz_transectocc</a></span>(<span class='kw'>transect</span>)
+<span class='fu'>show_transectsum</span>(<span class='kw'>transectocc</span>, site = <span class='st'>'S3T10'</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
