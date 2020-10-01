@@ -89,7 +89,7 @@ transectave <- anlz_transectave(transectocc)
 transectave
 ```
 
-The third function, `anlz_transectavespp()`, takes the results from `anlz_transectocc()` and estimates annual averages across major bay segments as in the last function, but results are retained for individual species.  This function is used internally within the `show_transectavespp()` function to create summary plots.  All summaries are aggregated across the selected bay segments, i.e., the default is to average by species/year across all segments.  Results for an individual bay segment can be returned with the appropriate argument, e.g., by using `bay_segment = 'OTB'` to select only Old Tampa Bay.  Results can also be filtered by specific species using the `species` argument, where the default is to return all.  \textit{Caulerpa spp.} are also included. 
+The third function, `anlz_transectavespp()`, takes the results from `anlz_transectocc()` and estimates annual averages across major bay segments as in the last function, but results are retained for individual species.  This function is used internally within the `show_transectavespp()` function to create summary plots.  All summaries are aggregated across the selected bay segments, i.e., the default is to average by species/year across all segments.  Results for an individual bay segment can be returned with the appropriate argument, e.g., by using `bay_segment = 'OTB'` to select only Old Tampa Bay.  Results can also be filtered by specific species using the `species` argument, where the default is to return all.  *Caulerpa spp.* are also included. 
 
 ```{r}
 transectavespp <- anlz_transectavespp(transectocc)
