@@ -14,8 +14,8 @@ test_that("Checking results for anlz_transectavespp", {
   results <- anlz_transectavespp(transectocc)
   results <- results[1, ]
   expect_equal(results, structure(list(yr = 1998, foest = 0.571560015870411, Savspecies = structure(1L, .Label = c("total",
-                                                                                                                   "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.",
-                                                                                                                   "Caulerpa spp."), class = "factor")), row.names = c(NA, -1L), class = c("tbl_df",
+                                                                                                                   "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila",
+                                                                                                                   "Caulerpa"), class = "factor")), row.names = c(NA, -1L), class = c("tbl_df",
                                                                                                                                                                                            "tbl", "data.frame")))
 })
 
@@ -25,7 +25,7 @@ test_that("Checking results for anlz_transectavespp by segment", {
   results <- results[1, ]
   expect_equal(results, structure(list(yr = 1998, bay_segment = structure(5L, .Label = c("OTB",
                                                                                          "HB", "MTB", "LTB", "BCB"), class = "factor"), Savspecies = structure(7L, .Label = c("No Cover",
-                                                                                                                                                                              "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.",
-                                                                                                                                                                              "Caulerpa spp."), class = "factor"), foest = 0, nsites = 96L), row.names = c(NA,
+                                                                                                                                                                              "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila",
+                                                                                                                                                                              "Caulerpa"), class = "factor"), foest = 0, nsites = 96L), row.names = c(NA,
                                                                                                                                                                                                                                                            -1L), class = c("tbl_df", "tbl", "data.frame")))
 })

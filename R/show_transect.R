@@ -51,32 +51,33 @@ show_transect <- function(transect, site, species = c('Halodule', 'Halophila', '
     )
 
   # legend labels
-  leglab <- c('Abundance (BB)', 'Blade length (cm)', expression(paste('Shoot density (', m^-2, ')')))
+  leglab <- c('abundance (BB)', 'blade length (cm)', 'shoot density (m-2)')
   names(leglab) <- c('Abundance', 'Blade Length', 'Short Shoot Density')
   leglab <- leglab[varplo]
 
   # data with species
   toplo1 <- dat %>%
-    filter(pa == 1)
+    dplyr::filter(pa == 1) %>%
+    dplyr::mutate(val = round(val, 1))
 
   # data without species
   toplo2 <- dat %>%
-    filter(pa == 0)
+    dplyr::filter(pa == 0)
 
-  # plot
   p <- ggplot2::ggplot(toplo1, ggplot2::aes(y = Year, x = Site)) +
     ggplot2::geom_point(data = toplo2, alpha = 0.6, colour = 'tomato1', size = 1) +
-    ggplot2::geom_point(aes(size = val), alpha = 0.6) +
-    ggplot2::scale_size(leglab, breaks = c(0.1, 0.5, 1, 2, 3, 4, 5)) +
+    ggplot2::geom_point(aes(size = val, colour = factor(val)), alpha = 0.6) +
+    ggplot2::scale_size(breaks = as.numeric(levels(factor(toplo1$val)))) +
+    ggplot2::scale_colour_manual(values = rep('black', length(levels(factor(toplo1$val)))), guide = F) +
     ggplot2::theme_minimal(base_size = base_size) +
     ggplot2::theme(
       panel.grid.major.y = ggplot2::element_blank(),
-      panel.grid.minor.y = ggplot2::element_blank()
+      panel.grid.minor.y = ggplot2::element_blank(),
+      legend.title = ggplot2::element_blank()
     ) +
     ggplot2::labs(
       x = 'Transect distance (m)',
-      title = site,
-      subtitle = bquote(italic(.(species)))
+      title = paste0(site, ', ', species, ' ', leglab)
     )
 
   if(plotly)
