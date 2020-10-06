@@ -20,11 +20,11 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectsum(transectocc, site = 'S3T10')
-show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.'),
+show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa'),
                           abund = FALSE){
 
   # species pool
-  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.')
+  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa')
 
   # sanity checks
   if(!site %in% transectocc$Transect)

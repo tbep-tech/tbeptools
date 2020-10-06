@@ -8,8 +8,8 @@ show_transectavespp(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   yrrng = c(1998, 2019),
-  species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.",
-    "Caulerpa spp."),
+  species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila",
+    "Caulerpa"),
   total = TRUE,
   alph = 1,
   family = NA,
@@ -24,7 +24,7 @@ show_transectavespp(
 
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
-\item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."}
+\item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa"}
 
 \item{total}{logical indicating if total frequency occurrence for all species is also returned, only applies if \code{asreact = FALSE}}
 

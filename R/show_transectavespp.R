@@ -3,7 +3,7 @@
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
 #' @param yrrng numeric indicating year ranges to evaluate
-#' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila spp.", "Caulerpa spp."
+#' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa"
 #' @param total logical indicating if total frequency occurrence for all species is also returned, only applies if \code{asreact = FALSE}
 #' @param alph numeric indicating alpha value for score category colors
 #' @param family optional chr string indicating font family for text labels
@@ -31,7 +31,7 @@
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectavespp(transectocc)
 show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2019),
-                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.'),
+                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa'),
                                 total = TRUE, alph = 1, family = NA, plotly = FALSE, asreact = FALSE){
 
   # make plot
@@ -42,7 +42,7 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
 
     # sort color palette so its the same regardless of species selected
     sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#00C1B2', '#6FB1E7', '#D494E1')
-    names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila spp.', 'Caulerpa spp.')
+    names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa')
     sppcol <- sppcol[levels(toplo$Savspecies)]
 
     p <- ggplot2::ggplot(toplo, ggplot2::aes(x = yr, y = 100 * foest, fill = Savspecies)) +
