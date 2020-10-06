@@ -48,8 +48,11 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
     dplyr::rename(val = !!val) %>%
     dplyr::filter(val > 0) %>%
     dplyr::mutate(
-      Savspecies = factor(Savspecies)
-    )
+      Savspecies = factor(Savspecies),
+      yr = lubridate::year(Date)
+    ) %>%
+    dplyr::group_by(yr, Savspecies) %>%
+    dplyr::summarise(val = mean(val, na.rm = T))
 
   # sort color palette so its the same regardless of species selected
   sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#00C1B2', '#6FB1E7', '#D494E1')
@@ -64,7 +67,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
   # vertical lines in plots
 
   dts <- toplo %>%
-    dplyr::group_by(Date) %>%
+    dplyr::group_by(yr) %>%
     dplyr::summarise(val = sum(val)) %>%
     dplyr::ungroup()
 
@@ -77,8 +80,8 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
       y0 = 0,
       y1 = dts[[i, 'val']],
       xref = "x",
-      x0 = dts[[i, 'Date']],
-      x1 = dts[[i, 'Date']],
+      x0 = dts[[i, 'yr']],
+      x1 = dts[[i, 'yr']],
       line = list(color = 'grey', width = 0.5, opacity = 0.5)
     ))
 
@@ -88,7 +91,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
 
   # seagrass plot
   p <- plotly::plot_ly(toplo) %>%
-    plotly::add_markers(x = ~Date, y = ~val, color = ~factor(Savspecies), colors = sppcol, stackgroup = 'one', mode = 'none', marker = list(opacity = 0, size = 0)) %>%
+    plotly::add_markers(x = ~yr, y = ~val, color = ~factor(Savspecies), colors = sppcol, stackgroup = 'one', mode = 'none', marker = list(opacity = 0, size = 0)) %>%
     plotly::layout(
       yaxis = list(title = ylb),
       xaxis = list(title = NA, gridcolor = '#FFFFFF'),
