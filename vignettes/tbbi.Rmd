@@ -128,7 +128,7 @@ tbbiscr
 
 ## Plotting results
 
-The TBBI scores can be viewed as annual averages for each bay segment using the `show_tbbimatrix()` function.  The `show_tbbimatrix()` plots the annual bay segment averages as categorical values in a conventional "stoplight" graphic.  The input to `show_tbbimatrix()` function is the output from the `anlz_tbbiscr()` function.  
+The TBBI scores can be viewed as annual averages for each bay segment using the `show_tbbimatrix()` function.  The `show_tbbimatrix()` plots the annual bay segment averages as categorical values in a conventional "stoplight" graphic. A baywide estimate is also returned, one based on all samples across all locations ("All") and another weighted by the relative surface areas of each bay segment ("All (wt)"). The input to `show_tbbimatrix()` function is the output from the `anlz_tbbiscr()` function.  
 
 ```{r, fig.height = 7, fig.width = 3}
 show_tbbimatrix(tbbiscr)

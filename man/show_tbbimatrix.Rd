@@ -6,7 +6,7 @@
 \usage{
 show_tbbimatrix(
   tbbiscr,
-  bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
+  bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"),
   yrrng = c(1993, 2018),
   alph = 1,
   txtsz = 3,
@@ -19,7 +19,7 @@ show_tbbimatrix(
 \arguments{
 \item{tbbiscr}{input data frame as returned by \code{\link{anlz_tbbiscr}}}
 
-\item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"}
+\item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"}
 
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
@@ -40,6 +40,9 @@ A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBBI scores f
 }
 \description{
 Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
+}
+\details{
+Additional summaries are provided for the entire bay, as a summary across categories ("All") and a summary weighted across the relative sizes of each bay segment ("All (wt)").
 }
 \examples{
 tbbiscr <- anlz_tbbiscr(benthicdata)

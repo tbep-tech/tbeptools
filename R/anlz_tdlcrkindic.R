@@ -1,6 +1,6 @@
 #' Analyze tidal creek water quality indicators
 #'
-#' Estimate tidal creek water quality indicators to suppport report card scores
+#' Estimate tidal creek water quality indicators to support report card scores
 #'
 #' @param tidalcreeks \code{\link[sf]{sf}} object for population of tidal creeks
 #' @param iwrraw FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}

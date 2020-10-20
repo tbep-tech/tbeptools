@@ -3,7 +3,7 @@
 #' Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
 #'
 #' @param tbbiscr input data frame as returned by \code{\link{anlz_tbbiscr}}
-#' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
+#' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param alph numeric indicating alpha value for score category colors
 #' @param txtsz numeric for size of text in the plot
@@ -15,6 +15,9 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBBI scores for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object
 #' @export
 #'
+#' @details
+#' Additional summaries are provided for the entire bay, as a summary across categories ("All") and a summary weighted across the relative sizes of each bay segment ("All (wt)").
+#'
 #' @family visualize
 #'
 #' @importFrom magrittr "%>%"
@@ -22,7 +25,7 @@
 #' @examples
 #' tbbiscr <- anlz_tbbiscr(benthicdata)
 #' show_tbbimatrix(tbbiscr)
-show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), yrrng = c(1993, 2018), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
+show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All', 'All (wt)'), yrrng = c(1993, 2018), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
 
   # annual average by segment
   toplo <- anlz_tbbimed(tbbiscr, bay_segment, rev = rev, yrrng = yrrng)
