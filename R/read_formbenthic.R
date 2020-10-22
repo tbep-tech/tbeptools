@@ -39,6 +39,7 @@ read_formbenthic <- function(channel){
   Header <- RODBC::sqlFetch(channel, 'Header')
   Programs <- RODBC::sqlFetch(channel, 'Programs')
   ProgramsStations <- RODBC::sqlFetch(channel, 'ProgramsStations')
+  SegmentName <- RODBC::sqlFetch(channel, 'SegmentName')
 
   # water chem
   FieldSamples <- RODBC::sqlFetch(channel, 'FieldSamples')
@@ -64,19 +65,24 @@ read_formbenthic <- function(channel){
 
   # subset columns from relevant tables
   stations <- Stations %>%
-    dplyr::select(StationID, Latitude, Longitude)
+    dplyr::select(StationID, AreaID, Latitude, Longitude)
+
+  # for segment id, do not use spatial join
+  segments <- SegmentName %>%
+    select(AreaID, AreaAbbr)
 
   stations <- programs %>%
     dplyr::inner_join(programsstations, by = 'ProgramID') %>%
     dplyr::inner_join(header, by = 'StationID') %>%
     dplyr::inner_join(stations, by = 'StationID') %>%
+    dplyr::inner_join(segments, by = 'AreaID') %>%
     dplyr::filter(IsComplete == 1) %>%
     dplyr::mutate(
       SampleTime = lubridate::force_tz(SampleTime, tz = tzone),
       date = as.Date(SampleTime),
       yr = lubridate::year(date)
     ) %>%
-    dplyr::select(StationID, ProgramID, ProgramName, Latitude, Longitude, date, yr)
+    dplyr::select(StationID, AreaAbbr, ProgramID, ProgramName, Latitude, Longitude, date, yr)
 
   # field samples -----------------------------------------------------------
 

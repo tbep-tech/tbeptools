@@ -20,13 +20,13 @@
 #' @examples
 #' \dontrun{
 #' # location to download data
-#' path <- 'C:/path/to/benthic.zip'
+#' path <- 'C:/Users/mbeck/Desktop/benthic.zip'
 #'
 #' # load and assign to object
 #' benthicdata <- read_importbenthic(path, download_latest = TRUE)
 #'
 #' # or use existing mdb
-#' path <- 'C:/path/to/benthic/EPC DataSubmittals.mdb'
+#' path <- 'C:/Users/mbeck/Desktop/benthic/EPC DataSubmittals.mdb'
 #' benthicdata <- read_importbenthic(path, download_latest = FALSE)
 #'
 #' # use a temporary zip file
@@ -54,7 +54,7 @@ read_importbenthic <- function(path, download_latest = FALSE, remove = FALSE){
 
   ##
   # download
-  urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals_08262020.zip'
+  urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/EPC DataSubmittals.zip'
   read_dlcurrent(path, download_latest, urlin = urlin)
 
   # unzip, find mdb
