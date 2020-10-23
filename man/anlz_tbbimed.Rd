@@ -28,6 +28,8 @@ Get annual medians of Tampa Bay Benthic Index scores by bay segment
 }
 \details{
 Additional summaries are provided for the entire bay, as a summary across categories ("All") and a summary weighted across the relative sizes of each bay segment ("All (wt)").
+
+Only sampling funded by TBEP and as part of the routine EPC benthic monitoring program are included in the final categories.
 }
 \examples{
 tbbiscr <- anlz_tbbiscr(benthicdata)

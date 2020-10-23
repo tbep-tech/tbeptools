@@ -29,13 +29,13 @@ The .mdb database in the unzipped folder is large and a temporary file can be cr
 \examples{
 \dontrun{
 # location to download data
-path <- 'C:/path/to/benthic.zip'
+path <- 'C:/Users/mbeck/Desktop/benthic.zip'
 
 # load and assign to object
 benthicdata <- read_importbenthic(path, download_latest = TRUE)
 
 # or use existing mdb
-path <- 'C:/path/to/benthic/EPC DataSubmittals.mdb'
+path <- 'C:/Users/mbeck/Desktop/benthic/EPC DataSubmittals.mdb'
 benthicdata <- read_importbenthic(path, download_latest = FALSE)
 
 # use a temporary zip file

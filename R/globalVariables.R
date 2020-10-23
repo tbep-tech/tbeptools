@@ -33,7 +33,8 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   'StationID', 'StratumID', 'SumofAdjCount', 'SumofCount', 'TAXA_GROUP', 'TAXA_ID', 'TaxaCount',
                   'TaxaCountID', 'TaxaID', 'TaxaListId', 'TaxaListID', 'TBBI', 'TBBICat', 'tbsegshed',
                   'TotalAbundance', 'bb', 'pa', 'TRAN_ID', 'bbest', 'focat', 'nsites', 'trnpts', 'foest',
-                  'All', 'All (wt)', 'cntwts', 'grndn', 'nwts', 'per', 'tbbicatid', 'tbbicatwt', 'total'))
+                  'All', 'All (wt)', 'cntwts', 'grndn', 'nwts', 'per', 'tbbicatid', 'tbbicatwt', 'total',
+                  'AreaAbbr', 'AreaID'))
 
 #' @importFrom grDevices rgb
 NULL
