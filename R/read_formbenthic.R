@@ -40,6 +40,7 @@ read_formbenthic <- function(channel){
   Programs <- RODBC::sqlFetch(channel, 'Programs')
   ProgramsStations <- RODBC::sqlFetch(channel, 'ProgramsStations')
   SegmentName <- RODBC::sqlFetch(channel, 'SegmentName')
+  FundingProject <- RODBC::sqlFetch(channel, 'FundingProject')
 
   # water chem
   FieldSamples <- RODBC::sqlFetch(channel, 'FieldSamples')
@@ -58,10 +59,10 @@ read_formbenthic <- function(channel){
   programs <- Programs %>%
     dplyr::select(ProgramID, ProgramName) %>%
     dplyr::filter(ProgramID %in% c(4, 8, 13, 18))
-  # filter(ProgramID %in% c(4, 8, 13, 14, 16, 18))
+    # dplyr::filter(ProgramID %in% c(4, 8, 13, 14, 16, 18))
 
   header <- Header %>%
-    select(StationID, SampleTime = ArrivalTime, IsComplete)
+    select(StationID, FundingId, SampleTime = ArrivalTime, IsComplete)
 
   # subset columns from relevant tables
   stations <- Stations %>%
@@ -69,20 +70,26 @@ read_formbenthic <- function(channel){
 
   # for segment id, do not use spatial join
   segments <- SegmentName %>%
-    select(AreaID, AreaAbbr)
+    dplyr::select(AreaID, AreaAbbr)
+
+  # funding source
+  fundingproject <- FundingProject %>%
+    dplyr::select(FundingId, FundingProject) %>%
+    dplyr::mutate(FundingProject = gsub('\\s+$', '', FundingProject))
 
   stations <- programs %>%
     dplyr::inner_join(programsstations, by = 'ProgramID') %>%
     dplyr::inner_join(header, by = 'StationID') %>%
     dplyr::inner_join(stations, by = 'StationID') %>%
     dplyr::inner_join(segments, by = 'AreaID') %>%
+    dplyr::inner_join(fundingproject, by = 'FundingId') %>%
     dplyr::filter(IsComplete == 1) %>%
     dplyr::mutate(
       SampleTime = lubridate::force_tz(SampleTime, tz = tzone),
       date = as.Date(SampleTime),
       yr = lubridate::year(date)
     ) %>%
-    dplyr::select(StationID, AreaAbbr, ProgramID, ProgramName, Latitude, Longitude, date, yr)
+    dplyr::select(StationID, AreaAbbr, FundingProject, ProgramID, ProgramName, Latitude, Longitude, date, yr)
 
   # field samples -----------------------------------------------------------
 

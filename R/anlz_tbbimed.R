@@ -35,28 +35,23 @@ anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TC
     wts = c(0.1042, 0.1964, 0.3028, 0.2470, 0.0163, 0.0406, 0.0925)
   )
 
-  st_crs(tbsegshed) <- 4326
-
-  # percent sites in category, by bay segment, year
+  # percent sites in category, by bay segment, year, TBEP only, benthic monitoring only (programID 4)
   perc <- tbbiscr %>%
-    sf::st_as_sf(
-      coords = c("Longitude", "Latitude"),
-      crs = 4326
-    ) %>%
-    sf::st_join(tbsegshed, join = sf::st_within) %>%
-    dplyr::filter(!is.na(bay_segment)) %>%
+    dplyr::rename(bay_segment = AreaAbbr) %>%
+    dplyr::filter(bay_segment %in% wts$bay_segment) %>%
+    dplyr::filter(FundingProject %in% 'TBEP') %>%
+    dplyr::filter(ProgramID %in% 4) %>%
     dplyr::filter(yr <= yrrng[2] & yr >= yrrng[1]) %>%
-    st_set_geometry(NULL) %>%
-    filter(TBBI >= 0 & TBBI <= 100) %>%
-    group_by(bay_segment, yr, TBBICat) %>%
-    summarise(cnt = n(), .groups = 'drop') %>%
-    # filter(TBBICat != 'Empty Sample') %>%
-    group_by(yr, bay_segment) %>%
-    mutate(
+    dplyr::filter(TBBI >= 0 & TBBI <= 100) %>%
+    dplyr::group_by(bay_segment, yr, TBBICat) %>%
+    dplyr::summarise(cnt = n(), .groups = 'drop') %>%
+    dplyr::filter(TBBICat != 'Empty Sample') %>%
+    dplyr::group_by(yr, bay_segment) %>%
+    dplyr::mutate(
       n = sum(cnt),
       per = cnt / n
       ) %>%
-    ungroup()
+    dplyr::ungroup()
 
   # bay average, non-weighted, weighted
   baycat <- perc %>%
@@ -89,9 +84,9 @@ anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TC
     rowwise() %>%
     mutate(
       TBBICat = case_when(
-        sum(Degraded, `Empty Sample`) >= 0.2 ~ 'Poor',
-        (sum(Degraded, `Empty Sample`) < 0.2 & sum(Degraded, `Empty Sample`) > 0.1) | sum(Degraded, Intermediate) > 0.5 ~ 'Fair',
-        sum(Degraded, `Empty Sample`) < 0.1 & Healthy > 0.5 ~ 'Good'
+        Degraded >= 0.2 ~ 'Poor',
+        (Degraded < 0.2 & Degraded > 0.1) | sum(Degraded, Intermediate) > 0.5 ~ 'Fair',
+        Degraded < 0.1 & Healthy > 0.5 ~ 'Good'
       ),
       TBBICat = factor(TBBICat, levels = c('Poor', 'Fair', 'Good'), labels = c('Poor', 'Fair', 'Good')),
       bay_segment = factor(bay_segment, levels = levs)
