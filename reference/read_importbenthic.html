@@ -178,13 +178,13 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># location to download data</span>
-<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/path/to/benthic.zip'</span>
+<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/Users/mbeck/Desktop/benthic.zip'</span>
 
 <span class='co'># load and assign to object</span>
 <span class='kw'>benthicdata</span> <span class='op'>&lt;-</span> <span class='fu'>read_importbenthic</span>(<span class='kw'>path</span>, download_latest = <span class='fl'>TRUE</span>)
 
 <span class='co'># or use existing mdb</span>
-<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/path/to/benthic/EPC DataSubmittals.mdb'</span>
+<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/Users/mbeck/Desktop/benthic/EPC DataSubmittals.mdb'</span>
 <span class='kw'>benthicdata</span> <span class='op'>&lt;-</span> <span class='fu'>read_importbenthic</span>(<span class='kw'>path</span>, download_latest = <span class='fl'>FALSE</span>)
 
 <span class='co'># use a temporary zip file</span>
