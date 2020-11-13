@@ -13,10 +13,10 @@ test_that("Checking results for anlz_transectavespp", {
 
   results <- anlz_transectavespp(transectocc)
   results <- results[1, ]
-  expect_equal(results, structure(list(yr = 1998, foest = 0.571560015870411, Savspecies = structure(1L, .Label = c("total",
+  expect_equal(results, structure(list(yr = 1998, foest = 0.577647767439316, Savspecies = structure(1L, .Label = c("total",
                                                                                                                    "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila",
                                                                                                                    "Caulerpa"), class = "factor")), row.names = c(NA, -1L), class = c("tbl_df",
-                                                                                                                                                                                           "tbl", "data.frame")))
+                                                                                                                                                                                      "tbl", "data.frame")))
 })
 
 test_that("Checking results for anlz_transectavespp by segment", {
