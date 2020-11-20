@@ -147,10 +147,10 @@ Time series plots of annual averages of frequency occurrence estimates by each s
 show_transectavespp(transectocc)
 ```
 
-Results for individual segments and species can be returned with the `bay_segment` and `species` arguments.  
+Results for individual segments and species can be returned with the `bay_segment` and `species` arguments.  Use the argument `total = FALSE` to omit the total frequency occurrence from the plot.
 
 ```{r, fig.height = 6, fig.width = 7}
-show_transectavespp(transectocc, bay_segment = 'LTB', species = c('Syringodium', 'Thalassia'))
+show_transectavespp(transectocc, bay_segment = 'LTB', species = c('Syringodium', 'Thalassia'), total = FALSE)
 ```
 
 The plot can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
