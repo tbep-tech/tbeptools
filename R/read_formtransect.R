@@ -64,7 +64,7 @@ read_formtransect <- function(jsn, training = FALSE){
       dplyr::ungroup() %>%
       dplyr::filter(Savspecies %in% c('Halodule', 'Halophila', 'Ruppia', 'Syringodium', 'Thalassia'))
 
-  if(!training)
+  if(!training){
     out <- jsn %>%
       tibble::as_tibble() %>%
       dplyr::rename(IDall = ID) %>%
@@ -113,6 +113,13 @@ read_formtransect <- function(jsn, training = FALSE){
         sdval = sd(val, na.rm = T)
       ) %>%
       dplyr::ungroup()
+
+    # fix abundance values to those only in BB estimates
+    est <- c(0, 0.1, 0.5, 1, 2, 3, 4, 5)
+    sub <- out$var == 'Abundance'
+    out[sub, 'aveval'] <- sapply(out[sub, 'aveval', drop = T], function(x) ifelse(is.na(x), NA, est[which.min(abs(x - est))]))
+
+  }
 
   return(out)
 
