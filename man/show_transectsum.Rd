@@ -7,7 +7,7 @@
 show_transectsum(
   transectocc,
   site,
-  species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila",
+  species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia",
     "Caulerpa"),
   abund = FALSE
 )

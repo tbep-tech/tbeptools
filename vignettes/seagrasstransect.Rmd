@@ -111,16 +111,28 @@ There is one plotting function for the training data.  The `show_compplot()` fun
 show_compplot(traindat, site = '1', species = 'Halodule', varplo = 'Abundance', base_size = 14)
 ```
 
-The rest of the plotting functions work with the complete transect data. Data for an individual transect can be viewed with the `show_transect()` function by entering the transect (site) number, species, and variable to plot.  The plot shows relative values for the selected species and variable by distance along the transect (x-axis) and year of sampling (y-axis).  The plots provide an overall summary of temporal and spatial changes in the selected seagrass metric for an individual location.  
+The rest of the plotting functions work with the complete transect data. Data for an individual transect can be viewed with the `show_transect()` function by entering the transect (site) number, species (one to many), and variable to plot.  The plot shows relative values for the selected species and variable by distance along the transect (x-axis) and year of sampling (y-axis).  The plots provide an overall summary of temporal and spatial changes in the selected seagrass metric for an individual location.  
 
 ```{r, fig.height = 8, fig.width = 9}
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
 ```
 
-The plot can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
+The plot can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function Note that the size legend is removed in this option, but sizes can be viewed on mouseover of each point. 
 
 ```{r, fig.height = 8, fig.width = 8}
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance', plotly = T)
+```
+
+The `show_transect()` function can also be used to plot multiple species.  One to many species can be provided to the `species` argument. 
+
+```{r, fig.height = 8, fig.width = 8}}
+show_transect(transect, site = 'S3T10', species = c('Halodule', 'Syringodium', 'Thalassia'), varplo = 'Abundance')
+```
+
+The plots can also be separated into facets for each species using `facet = TRUE`. This is useful to reduce overplotting of multiple species found at the same location.
+
+```{r, fig.height = 8, fig.width = 8}}
+show_transect(transect, site = 'S3T10', species = c('Halodule', 'Syringodium', 'Thalassia'), varplo = 'Abundance', facet = TRUE)
 ```
 
 The `show_transectsum()` function provides an alternative summary of data at an individual transect. This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.  Unlike `show_transect()`, the plot shows aggregated results across quadrats along the transect and uses summarized data from the `anlz_transectocc()` function as input.  

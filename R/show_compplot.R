@@ -16,7 +16,7 @@
 #' @examples
 #' transect <- read_transect(training = TRUE)
 #' show_compplot(transect, site = '1', species = 'Halodule', varplo = 'Abundance')
-show_compplot <- function(transect, site, species = c('Halodule', 'Halophila', 'Ruppia', 'Syringodium', 'Thalassia'),
+show_compplot <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 18, xtxt = 10, size = 1){
 
   # arguments

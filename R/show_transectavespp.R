@@ -31,7 +31,7 @@
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectavespp(transectocc)
 show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2019),
-                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa'),
+                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
                                 total = TRUE, alph = 1, family = NA, plotly = FALSE, asreact = FALSE){
 
   # make plot
@@ -41,8 +41,8 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
     toplo <- anlz_transectavespp(transectocc, total = total, bay_segment = bay_segment, yrrng = yrrng, species = species, by_seg = F)
 
     # sort color palette so its the same regardless of species selected
-    sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#00C1B2', '#6FB1E7', '#D494E1')
-    names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa')
+    sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
+    names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
     sppcol <- sppcol[levels(toplo$Savspecies)]
 
     p <- ggplot2::ggplot(toplo, ggplot2::aes(x = yr, y = 100 * foest, fill = Savspecies)) +

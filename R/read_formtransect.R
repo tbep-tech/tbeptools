@@ -62,7 +62,7 @@ read_formtransect <- function(jsn, training = FALSE){
         sdval = sd(val, na.rm = T)
       ) %>%
       dplyr::ungroup() %>%
-      dplyr::filter(Savspecies %in% c('Halodule', 'Halophila', 'Ruppia', 'Syringodium', 'Thalassia'))
+      dplyr::filter(Savspecies %in% c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'))
 
   if(!training){
     out <- jsn %>%
@@ -105,7 +105,8 @@ read_formtransect <- function(jsn, training = FALSE){
         ),
         val = gsub("[^0-9.-]", '', val),
         val = as.numeric(val),
-        Site = as.character(Site)
+        Site = as.character(Site),
+        Savspecies = gsub('^Halophila\\sspp\\.$', 'Halophila', Savspecies)
       ) %>%
       dplyr::group_by(Crew, MonitoringAgency, Date, Transect, Site, Depth, Savspecies, SeagrassEdge, var) %>%
       dplyr::summarise(

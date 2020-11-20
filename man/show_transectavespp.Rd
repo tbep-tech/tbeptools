@@ -8,7 +8,7 @@ show_transectavespp(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   yrrng = c(1998, 2019),
-  species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila",
+  species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia",
     "Caulerpa"),
   total = TRUE,
   alph = 1,

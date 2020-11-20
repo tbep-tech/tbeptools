@@ -7,9 +7,11 @@
 show_transect(
   transect,
   site,
-  species = c("Halodule", "Halophila", "Ruppia", "Syringodium", "Thalassia"),
+  species,
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
   base_size = 12,
+  facet = FALSE,
+  ncol = NULL,
   plotly = FALSE
 )
 }
@@ -18,11 +20,15 @@ show_transect(
 
 \item{site}{chr string indicating site results to plot}
 
-\item{species}{chr string indicating which species to plot}
+\item{species}{chr string indicating one to many of which species to plot}
 
 \item{varplo}{chr string indicating which variable to plot}
 
 \item{base_size}{numeric indicating text scaling size for plot}
+
+\item{facet}{logical indicating if plots are separated into facets by species}
+
+\item{ncol}{numeric indicating number of columns if \code{facet = TRUE}}
 
 \item{plotly}{logical if plot is created using plotly}
 }
@@ -33,13 +39,27 @@ A \code{\link[ggplot2]{ggplot}} object
 Plot results for a seagrass transect by time and location
 }
 \details{
-All sites along a transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.
+All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, and/or Ruppia.
+
+Note that if \code{plotly = TRUE}, the size legend is not shown.
 }
 \examples{
 \dontrun{
 transect <- read_transect()
 }
+
+# one species
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
+
+# multiple species, one plot
+show_transect(transect, site = 'S3T10',
+  species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
+  varplo = 'Abundance')
+
+# multiple species, multiple plots
+show_transect(transect, site = 'S3T10',
+  species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
+  varplo = 'Abundance', facet = TRUE)
 }
 \seealso{
 Other visualize: 
