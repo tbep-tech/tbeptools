@@ -138,9 +138,11 @@
     <pre class="usage"><span class='fu'>show_transect</span>(
   <span class='kw'>transect</span>,
   <span class='kw'>site</span>,
-  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Halodule"</span>, <span class='st'>"Halophila"</span>, <span class='st'>"Ruppia"</span>, <span class='st'>"Syringodium"</span>, <span class='st'>"Thalassia"</span>),
+  <span class='kw'>species</span>,
   varplo = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Abundance"</span>, <span class='st'>"Blade Length"</span>, <span class='st'>"Short Shoot Density"</span>),
   base_size = <span class='fl'>12</span>,
+  facet = <span class='fl'>FALSE</span>,
+  ncol = <span class='kw'>NULL</span>,
   plotly = <span class='fl'>FALSE</span>
 )</pre>
 
@@ -157,7 +159,7 @@
     </tr>
     <tr>
       <th>species</th>
-      <td><p>chr string indicating which species to plot</p></td>
+      <td><p>chr string indicating one to many of which species to plot</p></td>
     </tr>
     <tr>
       <th>varplo</th>
@@ -166,6 +168,14 @@
     <tr>
       <th>base_size</th>
       <td><p>numeric indicating text scaling size for plot</p></td>
+    </tr>
+    <tr>
+      <th>facet</th>
+      <td><p>logical indicating if plots are separated into facets by species</p></td>
+    </tr>
+    <tr>
+      <th>ncol</th>
+      <td><p>numeric indicating number of columns if <code>facet = TRUE</code></p></td>
     </tr>
     <tr>
       <th>plotly</th>
@@ -178,7 +188,8 @@
     <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>All sites along a transect that were surveyed are shown in the plot, including those where the selected species was not found.  The latter is colored in red.</p>
+    <p>All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, and/or Ruppia.</p>
+<p>Note that if <code>plotly = TRUE</code>, the size legend is not shown.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: 
@@ -206,8 +217,20 @@
     <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
 }
+
+<span class='co'># one species</span>
 <span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>, species = <span class='st'>'Halodule'</span>, varplo = <span class='st'>'Abundance'</span>)
-</div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div></pre>
+</div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># multiple species, one plot</span>
+<span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>,
+  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>),
+  varplo = <span class='st'>'Abundance'</span>)
+</div><div class='img'><img src='show_transect-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># multiple species, multiple plots</span>
+<span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>,
+  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>),
+  varplo = <span class='st'>'Abundance'</span>, facet = <span class='fl'>TRUE</span>)
+</div><div class='img'><img src='show_transect-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
