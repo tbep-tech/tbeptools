@@ -125,13 +125,13 @@ show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundanc
 
 The `show_transect()` function can also be used to plot multiple species.  One to many species can be provided to the `species` argument. 
 
-```{r, fig.height = 8, fig.width = 8}}
+```{r, fig.height = 8, fig.width = 8}
 show_transect(transect, site = 'S3T10', species = c('Halodule', 'Syringodium', 'Thalassia'), varplo = 'Abundance')
 ```
 
 The plots can also be separated into facets for each species using `facet = TRUE`. This is useful to reduce overplotting of multiple species found at the same location.
 
-```{r, fig.height = 8, fig.width = 8}}
+```{r, fig.height = 8, fig.width = 8}
 show_transect(transect, site = 'S3T10', species = c('Halodule', 'Syringodium', 'Thalassia'), varplo = 'Abundance', facet = TRUE)
 ```
 
