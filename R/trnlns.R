@@ -12,13 +12,12 @@
 #'    st_transform(crs = 4326) %>%
 #'    dplyr::filter(!as.character(Site) %in% c('S8T1', 'S8T2', 'S8T3', 'S3T2'))
 #'
-#' # add bearing
+#' # add bearing, positive counter-clockwise from east
 #' bearing <- lapply(trnlns$geometry, function(x) geosphere::bearing(x[, c(1:2)])[[1]]) %>%
-#'   unlist() %>%
-#'   ifelse(. < 0, 360 + ., .)
+#'   unlist()
 #'
 #' trnlns$bearing <- bearing
 #'
 #' save(trnlns, file = 'data/trnlns.RData', compress = 'xz')
-#' }
+#' #' }
 "trnlns"
