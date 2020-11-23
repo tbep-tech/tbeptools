@@ -143,24 +143,7 @@
     <p>A <code>sf</code> LINESTRING object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://r-spatial.github.io/sf'>sf</a></span>)
-<span class='fu'>libryar</span>(<span class='kw'>dplyr</span>)
-
-<span class='kw'>trnlns</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_read.html'>st_read</a></span>(<span class='st'>'T:/05_GIS/SEAGRASS_TRANSECTS/transect_routes.shp'</span>) <span class='op'>%&gt;%</span>
-   <span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_transform.html'>st_transform</a></span>(crs = <span class='fl'>4326</span>) <span class='op'>%&gt;%</span>
-   <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='kw'>Site</span>) <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'S8T1'</span>, <span class='st'>'S8T2'</span>, <span class='st'>'S8T3'</span>, <span class='st'>'S3T2'</span>))
-
-<span class='co'># add bearing</span>
-<span class='kw'>bearing</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='kw'>trnlns</span><span class='op'>$</span><span class='kw'>geometry</span>, <span class='fu'>function</span>(<span class='kw'>x</span>) <span class='kw'>geosphere</span>::<span class='fu'>bearing</span>(<span class='kw'>x</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>)])[[<span class='fl'>1</span>]]) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>() <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='kw'>.</span> <span class='op'>&lt;</span> <span class='fl'>0</span>, <span class='fl'>360</span> <span class='op'>+</span> <span class='kw'>.</span>, <span class='kw'>.</span>)
-
-<span class='kw'>trnlns</span><span class='op'>$</span><span class='kw'>bearing</span> <span class='op'>&lt;-</span> <span class='kw'>bearing</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='kw'>trnlns</span>, file = <span class='st'>'data/trnlns.RData'</span>, compress = <span class='st'>'xz'</span>)
-}
-</div></pre>
+    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
