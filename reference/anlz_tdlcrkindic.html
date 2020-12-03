@@ -159,7 +159,7 @@
     <p>A <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code> with the indicator values for each tidal creek</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.  Nitrogen ratios are estimated for JEIs that cover source (upstream, freshwater) and tidal (downstream) WBIDs, defined as the ratio of concentrations between the two (i.e., ratios &gt; 1 mean source has higher concentrations).  Nitrogen ratios for a given year reflect the median of all daily ratios when concentrations were measured in both a source and tidal segment during the same day.  Note that a ratio of one can be obtained if both the source and tidal segments are at minimum detection.</p>
+    <p>Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.  Nitrogen ratios are estimated for JEIs that cover source (upstream, freshwater) and tidal (downstream) WBIDs, defined as the ratio of concentrations between the two (i.e., ratios &gt; 1 mean source has higher concentrations).  Nitrogen ratios for a given year reflect the ratio of the median nitrogen concentrations when they were measured in both a source and tidal segment during the same day.  Note that a ratio of one can be obtained if both the source and tidal segments are at minimum detection.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other analyze: 
@@ -192,13 +192,20 @@
 #&gt; 4   NA   NA 27.39106   NA   NA    NA  NA   NA            NA          NA
 #&gt; 5 0.03   NA 36.91500 1.11 1.14 0.094   8  5.2      4.385965    12.12766
 #&gt; 6   NA   NA 34.20891   NA   NA    NA  NA   NA            NA          NA
-#&gt;   chla_tsi   tn_tsi  tn2_tsi   tp_tsi  tp2_tsi  nut_tsi      tsi no23_ratio
-#&gt; 1       NA       NA       NA       NA       NA      NaN       NA         NA
-#&gt; 2       NA       NA       NA       NA       NA      NaN       NA         NA
-#&gt; 3       NA       NA       NA       NA       NA      NaN       NA         NA
-#&gt; 4       NA       NA       NA       NA       NA      NaN       NA         NA
-#&gt; 5 39.97591 58.59436 62.41899 66.10528 83.42176 62.34982 51.16286         NA
-#&gt; 6       NA       NA       NA       NA       NA      NaN       NA         NA</div></pre>
+#&gt;   chla_tsi   tn_tsi  tn2_tsi   tp_tsi  tp2_tsi  nut_tsi      tsi no23_source
+#&gt; 1       NA       NA       NA       NA       NA      NaN       NA          NA
+#&gt; 2       NA       NA       NA       NA       NA      NaN       NA          NA
+#&gt; 3       NA       NA       NA       NA       NA      NaN       NA          NA
+#&gt; 4       NA       NA       NA       NA       NA      NaN       NA          NA
+#&gt; 5 39.97591 58.59436 62.41899 66.10528 83.42176 62.34982 51.16286          NA
+#&gt; 6       NA       NA       NA       NA       NA      NaN       NA          NA
+#&gt;   no23_tidal no23_ratio
+#&gt; 1         NA         NA
+#&gt; 2         NA         NA
+#&gt; 3         NA         NA
+#&gt; 4         NA         NA
+#&gt; 5         NA         NA
+#&gt; 6         NA         NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
