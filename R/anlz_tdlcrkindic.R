@@ -6,7 +6,7 @@
 #' @param iwrraw FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}
 #' @param yr numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date
 #'
-#' @details Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.  Nitrogen ratios are estimated for JEIs that cover source (upstream, freshwater) and tidal (downstream) WBIDs, defined as the ratio of concentrations between the two (i.e., ratios > 1 mean source has higher concentrations).  Nitrogen ratios for a given year reflect the median of all daily ratios when concentrations were measured in both a source and tidal segment during the same day.  Note that a ratio of one can be obtained if both the source and tidal segments are at minimum detection.
+#' @details Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.  Nitrogen ratios are estimated for JEIs that cover source (upstream, freshwater) and tidal (downstream) WBIDs, defined as the ratio of concentrations between the two (i.e., ratios > 1 mean source has higher concentrations).  Nitrogen ratios for a given year reflect the ratio of the median nitrogen concentrations when they were measured in both a source and tidal segment during the same day.  Note that a ratio of one can be obtained if both the source and tidal segments are at minimum detection.
 #'
 #' @return A \code{\link{data.frame}} with the indicator values for each tidal creek
 #' @export
@@ -78,18 +78,18 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018) {
     dplyr::ungroup() %>%
     tidyr::spread(class, result) %>%
     dplyr::mutate(
-      no23_ratio = Source / Tidal,
-      year = as.numeric(strftime(date, '%Y'))#,
-      # nit_mark = dplyr::case_when(
-      #   Tidal > 0.05 & no23_ratio < 1 ~ 1,
-      #   Tidal >= 0.05 & no23_ratio >= 1 ~ 0,
-      #   T ~ NaN
-      # )
+      year = as.numeric(strftime(date, '%Y'))
     ) %>%
     na.omit %>%
     dplyr::group_by(JEI, year) %>%
-    summarise(no23_ratio = median(no23_ratio, na.rm = T)) %>%
-    ungroup
+    summarise(
+      no23_source = median(Source, na.rm = T),
+      no23_tidal = median(Tidal, na.rm = T),
+      .groups = 'drop'
+      ) %>%
+    mutate(
+      no23_ratio = no23_source / no23_tidal
+    )
 
   # join nitrogen ratio data to all other data by JEI (same value applies to JEI across wbids)
   out <- alldat %>%
