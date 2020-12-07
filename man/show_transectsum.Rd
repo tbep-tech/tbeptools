@@ -9,6 +9,7 @@ show_transectsum(
   site,
   species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia",
     "Caulerpa"),
+  yrrng = c(1998, 2019),
   abund = FALSE
 )
 }
@@ -18,6 +19,8 @@ show_transectsum(
 \item{site}{chr string indicating site results to plot}
 
 \item{species}{chr string indicating which species to plot}
+
+\item{yrrng}{numeric indicating year ranges to evaluate}
 
 \item{abund}{logical indicating if abundance averages are plotted instead of frequency occurrence}
 }

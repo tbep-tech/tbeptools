@@ -3,6 +3,7 @@
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param site chr string indicating site results to plot
 #' @param species chr string indicating which species to plot
+#' @param yrrng numeric indicating year ranges to evaluate
 #' @param abund logical indicating if abundance averages are plotted instead of frequency occurrence
 #'
 #' @return A \code{\link[plotly]{plotly}} object
@@ -21,7 +22,7 @@
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectsum(transectocc, site = 'S3T10')
 show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
-                          abund = FALSE){
+                             yrrng = c(1998, 2019), abund = FALSE){
 
   # species pool
   spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
@@ -32,6 +33,9 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
 
   if(!any(species %in% spp))
     stop(paste('Species must be one to many of', paste(spp, collapse = ', ')))
+
+  if(yrrng[1] >= yrrng[2])
+    stop('Select different year range')
 
   # sort out variable names and labels
   val <- 'foest'
@@ -51,6 +55,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
       Savspecies = factor(Savspecies),
       yr = lubridate::year(Date)
     ) %>%
+    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::group_by(yr, Savspecies) %>%
     dplyr::summarise(val = mean(val, na.rm = T))
 

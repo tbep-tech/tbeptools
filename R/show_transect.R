@@ -3,6 +3,7 @@
 #' @param transect data frame returned by \code{\link{read_transect}}
 #' @param site chr string indicating site results to plot
 #' @param species chr string indicating one to many of which species to plot
+#' @param yrrng numeric indicating year ranges to evaluate
 #' @param varplo chr string indicating which variable to plot
 #' @param base_size numeric indicating text scaling size for plot
 #' @param facet logical indicating if plots are separated into facets by species
@@ -37,7 +38,7 @@
 #' show_transect(transect, site = 'S3T10',
 #'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
 #'   varplo = 'Abundance', facet = TRUE)
-show_transect <- function(transect, site, species,
+show_transect <- function(transect, site, species, yrrng = c(1998, 2019),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
                           facet = FALSE, ncol = NULL, plotly = FALSE){
 
@@ -49,6 +50,9 @@ show_transect <- function(transect, site, species,
 
   if(any(!species %in% spp))
     stop('Species must be one to many of ', paste(spp, collapse = ', '))
+
+  if(yrrng[1] >= yrrng[2])
+    stop('Select different year range')
 
   varplo <- match.arg(varplo)
 
@@ -73,7 +77,8 @@ show_transect <- function(transect, site, species,
       Year = lubridate::year(Date),
       Site = as.numeric(Site),
       pa = ifelse(val == 0, 0, 1)
-    )
+    ) %>%
+    dplyr::filter(Year >= yrrng[1] & Year <= yrrng[2])
 
   # sort color palette so its the same regardless of species selected
   sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2')

@@ -8,6 +8,7 @@ show_transect(
   transect,
   site,
   species,
+  yrrng = c(1998, 2019),
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
   base_size = 12,
   facet = FALSE,
@@ -21,6 +22,8 @@ show_transect(
 \item{site}{chr string indicating site results to plot}
 
 \item{species}{chr string indicating one to many of which species to plot}
+
+\item{yrrng}{numeric indicating year ranges to evaluate}
 
 \item{varplo}{chr string indicating which variable to plot}
 
