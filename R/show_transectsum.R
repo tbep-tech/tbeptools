@@ -55,7 +55,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
     dplyr::summarise(val = mean(val, na.rm = T))
 
   # sort color palette so its the same regardless of species selected
-  sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#00C1B2', '#6FB1E7', '#D494E1')
+  sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
   names(sppcol) <- spp
   sppcol <- sppcol[levels(toplo$Savspecies)]
 
