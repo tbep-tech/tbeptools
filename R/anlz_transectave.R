@@ -81,6 +81,9 @@ anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'L
       bay_segment = factor(bay_segment, levels = levs)
     ) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
+    dplyr::mutate(
+      focat = droplevels(focat)
+    ) %>%
     arrange(yr, bay_segment)
 
   return(out)
