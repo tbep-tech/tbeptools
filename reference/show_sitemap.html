@@ -138,6 +138,7 @@
     <pre class="usage"><span class='fu'>show_sitemap</span>(
   <span class='kw'>epcdata</span>,
   <span class='kw'>yrsel</span>,
+  mosel = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>12</span>),
   param = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>),
   trgs = <span class='kw'>NULL</span>,
   thrs = <span class='fl'>FALSE</span>,
@@ -156,20 +157,24 @@
       <td><p>numeric for year to plot</p></td>
     </tr>
     <tr>
+      <th>mosel</th>
+      <td><p>optional numeric of length one or two for mapping results for a specific month or month range in a given year, default full year</p></td>
+    </tr>
+    <tr>
       <th>param</th>
       <td><p>chr string for which parameter to plot, one of <code>"chla"</code> for chlorophyll or <code>"la"</code> for light attenuation</p></td>
     </tr>
     <tr>
       <th>trgs</th>
-      <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code></p></td>
+      <td><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href='targets.html'>targets</a></code>, only applies if <code>mosel = c(1, 12)</code></p></td>
     </tr>
     <tr>
       <th>thrs</th>
-      <td><p>logical indicating if attainment category is relative to targets (default) or thresholds, passed to <code><a href='anlz_attainsite.html'>anlz_attainsite</a></code></p></td>
+      <td><p>logical indicating if attainment category is relative to targets (default) or thresholds, passed to <code><a href='anlz_attainsite.html'>anlz_attainsite</a></code>, only applies if <code>mosel = c(1, 12)</code></p></td>
     </tr>
     <tr>
       <th>partialyr</th>
-      <td><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter</p></td>
+      <td><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter, only applies if <code>mosel = c(1, 12)</code></p></td>
     </tr>
     </table>
 
@@ -201,7 +206,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>show_sitemap</span>(<span class='kw'>epcdata</span>, yrsel = <span class='fl'>2019</span>)
-</div><div class='img'><img src='show_sitemap-1.png' alt='' width='700' height='433' /></div></pre>
+</div><div class='output co'>#&gt; <span class='message'>Coordinate system already present. Adding new coordinate system, which will replace the existing one.</span></div><div class='img'><img src='show_sitemap-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
