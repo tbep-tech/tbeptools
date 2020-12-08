@@ -4,6 +4,7 @@
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param yrsel numeric for year to plot
+#' @param param chr string for which parameter to plot, one of \code{"chla"} for chlorophyll or \code{"la"} for light attenuation
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
@@ -18,19 +19,22 @@
 #'
 #' @examples
 #' show_sitemap(epcdata, yrsel = 2019)
-show_sitemap <- function(epcdata, yrsel, trgs = NULL, thrs = FALSE, partialyr = FALSE){
+show_sitemap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL, thrs = FALSE, partialyr = FALSE){
 
   # sanity check
   # default targets from data file
   if(is.null(trgs))
     trgs <- targets
 
+  # parameter
+  param <- match.arg(param)
+
   prj <- '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
 
   # get site averages for selected year
   tomap <- epcdata %>%
     anlz_avedatsite(partialyr = partialyr) %>%
-    anlz_attainsite(yrrng = yrsel, thr = 'chla', trgs = trgs, thrs = thrs) %>%
+    anlz_attainsite(yrrng = yrsel, thr = param, trgs = trgs, thrs = thrs) %>%
     dplyr::left_join(stations, by = c('epchc_station', 'bay_segment')) %>%
     dplyr::mutate(
       met = factor(met, levels = c('yes', 'no'), labels = c('yes', 'no'))

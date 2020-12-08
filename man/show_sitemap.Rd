@@ -4,12 +4,21 @@
 \alias{show_sitemap}
 \title{Map site attainment categories for a selected year}
 \usage{
-show_sitemap(epcdata, yrsel, trgs = NULL, thrs = FALSE, partialyr = FALSE)
+show_sitemap(
+  epcdata,
+  yrsel,
+  param = c("chla", "la"),
+  trgs = NULL,
+  thrs = FALSE,
+  partialyr = FALSE
+)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
 
 \item{yrsel}{numeric for year to plot}
+
+\item{param}{chr string for which parameter to plot, one of \code{"chla"} for chlorophyll or \code{"la"} for light attenuation}
 
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
