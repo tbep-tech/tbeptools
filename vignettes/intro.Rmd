@@ -536,16 +536,10 @@ show_matrix(epcdata, txtsz = NULL) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
 
-If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. 
+If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. Only the first ten rows are shown by defaul.  The default number of rows can be changed with the \code{nrows} argument.  Use a very large number to show all rows.
 
 ```{r}
 show_matrix(epcdata, asreact = TRUE)
-```
-
-Use a sufficiently large number to view the entire matrix.
-
-```{r}
-show_matrix(epcdata, asreact = TRUE, nrows = 200)
 ```
 
 A plotly (interactive, dynamic plot) can be returned by setting the `plotly` argument to `TRUE`. 
@@ -564,6 +558,12 @@ A map showing if individual sites achieved chlorophyll targets can be obtained w
 
 ```{r, fig.height = 7, fig.width = 5}
 show_sitemap(epcdata, yrsel = 2018)
+```
+
+The `show_sitemap()` function also includes an argument to specify a particular monthly range for the selected year.  If this option is chosen, averages are shown as continuous values at each station. 
+
+```{r, fig.height = 7, fig.width = 6}
+show_sitemap(epcdata, yrsel = 2018, mosel = c(7, 9))
 ```
 
 Bay segment exceedances can also be viewed in a matrix using `show_wqmatrix()`.  The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).  

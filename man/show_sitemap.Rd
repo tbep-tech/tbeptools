@@ -7,6 +7,7 @@
 show_sitemap(
   epcdata,
   yrsel,
+  mosel = c(1, 12),
   param = c("chla", "la"),
   trgs = NULL,
   thrs = FALSE,
@@ -18,13 +19,15 @@ show_sitemap(
 
 \item{yrsel}{numeric for year to plot}
 
+\item{mosel}{optional numeric of length one or two for mapping results for a specific month or month range in a given year, default full year}
+
 \item{param}{chr string for which parameter to plot, one of \code{"chla"} for chlorophyll or \code{"la"} for light attenuation}
 
-\item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
+\item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}, only applies if \code{mosel = c(1, 12)}}
 
-\item{thrs}{logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}}
+\item{thrs}{logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}, only applies if \code{mosel = c(1, 12)}}
 
-\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
+\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter, only applies if \code{mosel = c(1, 12)}}
 }
 \value{
 A static \code{ggplot} object is returned
