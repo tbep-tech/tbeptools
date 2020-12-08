@@ -135,7 +135,14 @@
     <p>Map site attainment categories for a selected year</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_sitemap</span>(<span class='kw'>epcdata</span>, <span class='kw'>yrsel</span>, trgs = <span class='kw'>NULL</span>, thrs = <span class='fl'>FALSE</span>, partialyr = <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>show_sitemap</span>(
+  <span class='kw'>epcdata</span>,
+  <span class='kw'>yrsel</span>,
+  param = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>),
+  trgs = <span class='kw'>NULL</span>,
+  thrs = <span class='fl'>FALSE</span>,
+  partialyr = <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,6 +154,10 @@
     <tr>
       <th>yrsel</th>
       <td><p>numeric for year to plot</p></td>
+    </tr>
+    <tr>
+      <th>param</th>
+      <td><p>chr string for which parameter to plot, one of <code>"chla"</code> for chlorophyll or <code>"la"</code> for light attenuation</p></td>
     </tr>
     <tr>
       <th>trgs</th>
