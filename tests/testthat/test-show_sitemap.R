@@ -6,6 +6,10 @@ test_that("Checking show_sitemap class with mosel",{
   result <- show_sitemap(epcdata, yrsel = 2018, mosel = c(1, 5))
   expect_is(result, 'ggplot')
 })
+test_that("Checking show_sitemap class, partialyr = T", {
+  result <- show_sitemap(epcdata, yrsel = 2020, partialyr = TRUE)
+  expect_is(result, 'ggplot')
+})
 test_that("Checking show_sitemap class, thrs = T", {
   result <- show_sitemap(epcdata, thrs = TRUE, yrsel = 2018)
   expect_is(result, 'ggplot')

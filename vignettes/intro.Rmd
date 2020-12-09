@@ -536,7 +536,7 @@ show_matrix(epcdata, txtsz = NULL) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
 
-If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. Only the first ten rows are shown by defaul.  The default number of rows can be changed with the \code{nrows} argument.  Use a very large number to show all rows.
+If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. Only the first ten rows are shown by defaul.  The default number of rows (10) can be changed with the \code{nrows} argument.  Use a very large number to show all rows.
 
 ```{r}
 show_matrix(epcdata, asreact = TRUE)
