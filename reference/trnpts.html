@@ -153,7 +153,8 @@
    <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span>(MonAgency = <span class='st'>'MON_AGENCY'</span>) <span class='op'>%&gt;%</span>
    <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='kw'>TRAN_ID</span>) <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'S8T1'</span>, <span class='st'>'S8T2'</span>, <span class='st'>'S8T3'</span>, <span class='st'>'S3T2'</span>)) <span class='op'>%&gt;%</span>
    <span class='kw'>sf</span>::<span class='fu'><a href='https://rdrr.io/pkg/sf/man/geos_binary_ops.html'>st_intersection</a></span>(<span class='kw'>sf</span>::<span class='fu'><a href='https://rdrr.io/pkg/sf/man/valid.html'>st_make_valid</a></span>(<span class='kw'>tbsegshed</span>)) <span class='op'>%&gt;%</span>
-   <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='op'>-</span><span class='kw'>long_name</span>)
+   <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='op'>-</span><span class='kw'>long_name</span>) <span class='op'>%&gt;%</span>
+   <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate_all.html'>mutate_if</a></span>(<span class='kw'>is.factor</span>, <span class='kw'>as.character</span>)
 
 <span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='kw'>trnpts</span>, file = <span class='st'>'data/trnpts.RData'</span>, compress = <span class='st'>'xz'</span>)
 }
