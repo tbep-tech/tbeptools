@@ -1,8 +1,7 @@
 
 # tbeptools
 
-[![Travis-CI Build
-Status](https://travis-ci.org/tbep-tech/tbeptools.svg?branch=master)](https://travis-ci.org/tbep-tech/tbeptools)
+[![R-CMD-check](https://github.com/tbep-tech/tbeptools/workflows/R-CMD-check/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/tbep-tech/tbeptools?branch=master&svg=true)](https://ci.appveyor.com/project/tbep-tech/tbeptools)
 [![Codecov test
