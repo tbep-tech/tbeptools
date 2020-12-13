@@ -11,3 +11,5 @@
 ^\.github$
 ^README.*
 ^tbeptools\.png$
+^_pkgdown\.yml$
+^pkgdown$
