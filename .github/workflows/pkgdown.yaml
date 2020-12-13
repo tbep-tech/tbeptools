@@ -35,6 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_version("mapview", version = "2.7.8")
           install.packages("pkgdown", type = "binary")
         shell: Rscript {0}
 
