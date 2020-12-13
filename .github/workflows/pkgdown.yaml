@@ -36,6 +36,7 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_version("mapview", version = "2.7.8")
+          rmeotes::install_github("fawda123/Jabbrev")
           install.packages("pkgdown", type = "binary")
         shell: Rscript {0}
 

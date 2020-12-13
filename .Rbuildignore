@@ -1,6 +1,5 @@
 ^tbeptools\.Rproj$
 ^\.Rproj\.user$
-^\.travis\.yml$
 ^appveyor\.yml$
 ^data-raw$
 ^\.nojekyll$
