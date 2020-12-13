@@ -79,6 +79,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -135,14 +141,14 @@
     <p>Estimate tidal creek water quality indicators to support report card scores</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_tdlcrkindic</span>(<span class='kw'>tidalcreeks</span>, <span class='kw'>iwrraw</span>, yr = <span class='fl'>2018</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_tdlcrkindic</span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2018</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>tidalcreeks</th>
-      <td><p><code><a href='https://rdrr.io/pkg/sf/man/sf.html'>sf</a></code> object for population of tidal creeks</p></td>
+      <td><p><code><a href='https://r-spatial.github.io/sf/reference/sf.html'>sf</a></code> object for population of tidal creeks</p></td>
     </tr>
     <tr>
       <th>iwrraw</th>
@@ -176,8 +182,8 @@
 <code><a href='anlz_yrattain.html'>anlz_yrattain</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'>anlz_tdlcrkindic</span>(<span class='kw'>tidalcreeks</span>, <span class='kw'>iwrraw</span>, yr = <span class='fl'>2018</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>dat</span>)
+    <pre class="examples"><div class='input'><span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'>anlz_tdlcrkindic</span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2018</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   id  wbid  JEI         name class year CHLAC COLOR     COND       DO     DOSAT
 #&gt; 1  1  2052 CC01   Rock Creek    3M 2009    NA    NA 50923.64 5.998273  75.00467
 #&gt; 2  1  2052 CC01   Rock Creek    3M 2010    NA    NA 46485.21 8.849809 110.65252
@@ -193,12 +199,12 @@
 #&gt; 5 0.03   NA 36.91500 1.11 1.14 0.094   8  5.2      4.385965    12.12766
 #&gt; 6   NA   NA 34.20891   NA   NA    NA  NA   NA            NA          NA
 #&gt;   chla_tsi   tn_tsi  tn2_tsi   tp_tsi  tp2_tsi  nut_tsi      tsi no23_source
-#&gt; 1       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt; 2       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt; 3       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt; 4       NA       NA       NA       NA       NA      NaN       NA          NA
+#&gt; 1       NA       NA       NA       NA       NA      NaN      NaN          NA
+#&gt; 2       NA       NA       NA       NA       NA      NaN      NaN          NA
+#&gt; 3       NA       NA       NA       NA       NA      NaN      NaN          NA
+#&gt; 4       NA       NA       NA       NA       NA      NaN      NaN          NA
 #&gt; 5 39.97591 58.59436 62.41899 66.10528 83.42176 62.34982 51.16286          NA
-#&gt; 6       NA       NA       NA       NA       NA      NaN       NA          NA
+#&gt; 6       NA       NA       NA       NA       NA      NaN      NaN          NA
 #&gt;   no23_tidal no23_ratio
 #&gt; 1         NA         NA
 #&gt; 2         NA         NA
@@ -221,7 +227,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

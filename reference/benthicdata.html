@@ -79,6 +79,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -135,7 +141,7 @@
     <p>Benthic data for the Tampa Bay Benthic Index current as of 10222020</p>
     </div>
 
-    <pre class="usage"><span class='kw'>benthicdata</span></pre>
+    <pre class="usage"><span class='va'>benthicdata</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -167,16 +173,16 @@
 <code><a href='transect.html'>transect</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># location to download data</span>
-<span class='kw'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/Users/mbeck/Desktop/benthic.zip'</span>
+<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/Users/mbeck/Desktop/benthic.zip'</span>
 
 <span class='co'># load and assign to object</span>
-<span class='kw'>benthicdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_importbenthic.html'>read_importbenthic</a></span>(<span class='kw'>path</span>, download_latest = <span class='fl'>TRUE</span>, remove = <span class='fl'>TRUE</span>)
+<span class='va'>benthicdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_importbenthic.html'>read_importbenthic</a></span><span class='op'>(</span><span class='va'>path</span>, download_latest <span class='op'>=</span> <span class='cn'>TRUE</span>, remove <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='kw'>benthicdata</span>, file = <span class='st'>'data/benthicdata.RData'</span>, compress = <span class='st'>'xz'</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span><span class='op'>(</span><span class='va'>benthicdata</span>, file <span class='op'>=</span> <span class='st'>'data/benthicdata.RData'</span>, compress <span class='op'>=</span> <span class='st'>'xz'</span><span class='op'>)</span>
 
-}
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -193,7 +199,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

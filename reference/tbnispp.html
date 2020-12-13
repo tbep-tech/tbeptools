@@ -79,6 +79,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -135,7 +141,7 @@
     <p>Reference table for Tampa Bay Nekton Index species classifications</p>
     </div>
 
-    <pre class="usage"><span class='kw'>tbnispp</span></pre>
+    <pre class="usage"><span class='va'>tbnispp</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -174,20 +180,20 @@
 <code><a href='transect.html'>transect</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 
 <span class='co'># import and clean</span>
-<span class='kw'>tbnispp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(<span class='st'>'../tbni-proc/data/TBIndex_spp_codes.csv'</span>,
-    header = <span class='fl'>TRUE</span>, stringsAsFactors = <span class='fl'>FALSE</span>) <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(
-    NODCCODE = <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='kw'>NODCCODE</span>),
-    NODCCODE = <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span>(<span class='kw'>NODCCODE</span> <span class='op'>==</span> <span class='st'>"9.998e+09"</span> <span class='op'>~</span> <span class='st'>"9998000000"</span>,
-                             <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='kw'>NODCCODE</span>)
-  )
+<span class='va'>tbnispp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>'../tbni-proc/data/TBIndex_spp_codes.csv'</span>,
+    header <span class='op'>=</span> <span class='cn'>TRUE</span>, stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    NODCCODE <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>NODCCODE</span><span class='op'>)</span>,
+    NODCCODE <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span><span class='va'>NODCCODE</span> <span class='op'>==</span> <span class='st'>"9.998e+09"</span> <span class='op'>~</span> <span class='st'>"9998000000"</span>,
+                             <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>NODCCODE</span><span class='op'>)</span>
+  <span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='kw'>tbnispp</span>, file = <span class='st'>'data/tbnispp.RData'</span>, compress = <span class='st'>'xz'</span>)
-}
+<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span><span class='op'>(</span><span class='va'>tbnispp</span>, file <span class='op'>=</span> <span class='st'>'data/tbnispp.RData'</span>, compress <span class='op'>=</span> <span class='st'>'xz'</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -204,7 +210,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

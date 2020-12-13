@@ -79,6 +79,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -135,7 +141,7 @@
     <p>Reference conditions for Tampa Bay Nekton Index metrics</p>
     </div>
 
-    <pre class="usage"><span class='kw'>tbniref</span></pre>
+    <pre class="usage"><span class='va'>tbniref</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -177,28 +183,28 @@
 <code><a href='transect.html'>transect</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/tbep-tech/tbeptools'>tbeptools</a></span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tbep-tech/tbeptools'>tbeptools</a></span><span class='op'>)</span>
 
-<span class='kw'>tbniref</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_tbnimet.html'>anlz_tbnimet</a></span>(<span class='kw'>fimdata</span>) <span class='op'>%&gt;%</span>
-  <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/between.html'>between</a></span>(<span class='kw'>Year</span>, <span class='fl'>1998</span>, <span class='fl'>2015</span>)) <span class='op'>%&gt;%</span>
-  <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='kw'>Season</span>, <span class='kw'>bay_segment</span>, <span class='kw'>NumTaxa</span>, <span class='kw'>BenthicTaxa</span>, <span class='kw'>TaxaSelect</span>, <span class='kw'>NumGuilds</span>, <span class='kw'>Shannon</span>) <span class='op'>%&gt;%</span>
-  <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>bay_segment</span>, <span class='kw'>Season</span>) <span class='op'>%&gt;%</span>
-  <span class='kw'>dplyr</span>::<span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(NumTaxa_P5 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>NumTaxa</span>, probs = <span class='fl'>0.05</span>)),
-                   NumTaxa_P95 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>NumTaxa</span>, probs = <span class='fl'>0.95</span>)),
-                   BenthicTaxa_P5 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>BenthicTaxa</span>, probs = <span class='fl'>0.05</span>)),
-                   BenthicTaxa_P95 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>BenthicTaxa</span>, probs = <span class='fl'>0.95</span>)),
-                   TaxaSelect_P5 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>TaxaSelect</span>, probs = <span class='fl'>0.05</span>)),
-                   TaxaSelect_P95 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>TaxaSelect</span>, probs = <span class='fl'>0.95</span>)),
-                   NumGuilds_P5 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>NumGuilds</span>, probs = <span class='fl'>0.05</span>)),
-                   NumGuilds_P95 = <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>NumGuilds</span>, probs = <span class='fl'>0.95</span>)),
-                   Shannon_P5 = <span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>Shannon</span>, probs = <span class='fl'>0.05</span>),
-                   Shannon_P95 = <span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span>(<span class='kw'>Shannon</span>, probs = <span class='fl'>0.95</span>))
+<span class='va'>tbniref</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_tbnimet.html'>anlz_tbnimet</a></span><span class='op'>(</span><span class='va'>fimdata</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/between.html'>between</a></span><span class='op'>(</span><span class='va'>Year</span>, <span class='fl'>1998</span>, <span class='fl'>2015</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Season</span>, <span class='va'>bay_segment</span>, <span class='va'>NumTaxa</span>, <span class='va'>BenthicTaxa</span>, <span class='va'>TaxaSelect</span>, <span class='va'>NumGuilds</span>, <span class='va'>Shannon</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>bay_segment</span>, <span class='va'>Season</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>NumTaxa_P5 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>NumTaxa</span>, probs <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span><span class='op'>)</span>,
+                   NumTaxa_P95 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>NumTaxa</span>, probs <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span><span class='op'>)</span>,
+                   BenthicTaxa_P5 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>BenthicTaxa</span>, probs <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span><span class='op'>)</span>,
+                   BenthicTaxa_P95 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>BenthicTaxa</span>, probs <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span><span class='op'>)</span>,
+                   TaxaSelect_P5 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>TaxaSelect</span>, probs <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span><span class='op'>)</span>,
+                   TaxaSelect_P95 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>TaxaSelect</span>, probs <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span><span class='op'>)</span>,
+                   NumGuilds_P5 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>NumGuilds</span>, probs <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span><span class='op'>)</span>,
+                   NumGuilds_P95 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>NumGuilds</span>, probs <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span><span class='op'>)</span>,
+                   Shannon_P5 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>Shannon</span>, probs <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span>,
+                   Shannon_P95 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>Shannon</span>, probs <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='kw'>tbniref</span>, file = <span class='st'>'data/tbniref.RData'</span>, compress = <span class='st'>'xz'</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span><span class='op'>(</span><span class='va'>tbniref</span>, file <span class='op'>=</span> <span class='st'>'data/tbniref.RData'</span>, compress <span class='op'>=</span> <span class='st'>'xz'</span><span class='op'>)</span>
 
-}
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -215,7 +221,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

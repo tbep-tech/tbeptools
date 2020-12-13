@@ -79,6 +79,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -135,17 +141,17 @@
     <p>Plot results for a seagrass transect by time and location</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_transect</span>(
-  <span class='kw'>transect</span>,
-  <span class='kw'>site</span>,
-  <span class='kw'>species</span>,
-  yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1998</span>, <span class='fl'>2019</span>),
-  varplo = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Abundance"</span>, <span class='st'>"Blade Length"</span>, <span class='st'>"Short Shoot Density"</span>),
-  base_size = <span class='fl'>12</span>,
-  facet = <span class='fl'>FALSE</span>,
-  ncol = <span class='kw'>NULL</span>,
-  plotly = <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>show_transect</span><span class='op'>(</span>
+  <span class='va'>transect</span>,
+  <span class='va'>site</span>,
+  <span class='va'>species</span>,
+  yrrng <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1998</span>, <span class='fl'>2019</span><span class='op'>)</span>,
+  varplo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Abundance"</span>, <span class='st'>"Blade Length"</span>, <span class='st'>"Short Shoot Density"</span><span class='op'>)</span>,
+  base_size <span class='op'>=</span> <span class='fl'>12</span>,
+  facet <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  ncol <span class='op'>=</span> <span class='cn'>NULL</span>,
+  plotly <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -219,22 +225,22 @@
 <code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span>()
-}
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
 
 <span class='co'># one species</span>
-<span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>, species = <span class='st'>'Halodule'</span>, varplo = <span class='st'>'Abundance'</span>)
+<span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>, species <span class='op'>=</span> <span class='st'>'Halodule'</span>, varplo <span class='op'>=</span> <span class='st'>'Abundance'</span><span class='op'>)</span>
 </div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># multiple species, one plot</span>
-<span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>,
-  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>),
-  varplo = <span class='st'>'Abundance'</span>)
+<span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>,
+  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span><span class='op'>)</span>,
+  varplo <span class='op'>=</span> <span class='st'>'Abundance'</span><span class='op'>)</span>
 </div><div class='img'><img src='show_transect-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># multiple species, multiple plots</span>
-<span class='fu'>show_transect</span>(<span class='kw'>transect</span>, site = <span class='st'>'S3T10'</span>,
-  species = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>),
-  varplo = <span class='st'>'Abundance'</span>, facet = <span class='fl'>TRUE</span>)
+<span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>,
+  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span><span class='op'>)</span>,
+  varplo <span class='op'>=</span> <span class='st'>'Abundance'</span>, facet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='show_transect-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -251,7 +257,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

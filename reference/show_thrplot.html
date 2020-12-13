@@ -79,6 +79,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -135,18 +141,18 @@
     <p>Plot annual water quality values, targets, and thresholds for a bay segment</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_thrplot</span>(
-  <span class='kw'>epcdata</span>,
-  bay_segment = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>),
-  thr = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chla"</span>, <span class='st'>"la"</span>),
-  trgs = <span class='kw'>NULL</span>,
-  yrrng = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1975</span>, <span class='fl'>2019</span>),
-  family = <span class='fl'>NA</span>,
-  labelexp = <span class='fl'>TRUE</span>,
-  txtlab = <span class='fl'>TRUE</span>,
-  thrs = <span class='fl'>FALSE</span>,
-  partialyr = <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>show_thrplot</span><span class='op'>(</span>
+  <span class='va'>epcdata</span>,
+  bay_segment <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span><span class='op'>)</span>,
+  thr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"chla"</span>, <span class='st'>"la"</span><span class='op'>)</span>,
+  trgs <span class='op'>=</span> <span class='cn'>NULL</span>,
+  yrrng <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1975</span>, <span class='fl'>2019</span><span class='op'>)</span>,
+  family <span class='op'>=</span> <span class='cn'>NA</span>,
+  labelexp <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  txtlab <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  thrs <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  partialyr <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -220,7 +226,7 @@
 <code><a href='show_wqmatrix.html'>show_wqmatrix</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>show_thrplot</span>(<span class='kw'>epcdata</span>, bay_segment = <span class='st'>'OTB'</span>, thr = <span class='st'>'chl'</span>)
+    <pre class="examples"><div class='input'><span class='fu'>show_thrplot</span><span class='op'>(</span><span class='va'>epcdata</span>, bay_segment <span class='op'>=</span> <span class='st'>'OTB'</span>, thr <span class='op'>=</span> <span class='st'>'chl'</span><span class='op'>)</span>
 </div><div class='img'><img src='show_thrplot-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -237,7 +243,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

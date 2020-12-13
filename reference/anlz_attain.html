@@ -79,6 +79,12 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -135,7 +141,7 @@
     <p>Get attainment categories for each year and bay segment using chlorophyll and light attenuation</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_attain</span>(<span class='kw'>avedat</span>, magdurout = <span class='fl'>FALSE</span>, trgs = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>anlz_attain</span><span class='op'>(</span><span class='va'>avedat</span>, magdurout <span class='op'>=</span> <span class='cn'>FALSE</span>, trgs <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,8 +179,8 @@
 <code><a href='anlz_yrattain.html'>anlz_yrattain</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>avedat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_avedat.html'>anlz_avedat</a></span>(<span class='kw'>epcdata</span>)
-<span class='fu'>anlz_attain</span>(<span class='kw'>avedat</span>)
+    <pre class="examples"><div class='input'><span class='va'>avedat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_avedat.html'>anlz_avedat</a></span><span class='op'>(</span><span class='va'>epcdata</span><span class='op'>)</span>
+<span class='fu'>anlz_attain</span><span class='op'>(</span><span class='va'>avedat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 188 x 4</span><span>
 #&gt;    bay_segment    yr chl_la outcome
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
@@ -204,7 +210,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
