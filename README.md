@@ -2,8 +2,7 @@
 # tbeptools
 
 [![R-CMD-check](https://github.com/tbep-tech/tbeptools/workflows/R-CMD-check/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/tbep-tech/tbeptools?branch=master&svg=true)](https://ci.appveyor.com/project/tbep-tech/tbeptools)
+[![pkgdown](https://github.com/tbep-tech/tbeptools/workflows/pkgdown/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg)](https://codecov.io/gh/tbep-tech/tbeptools?branch=master)
 
