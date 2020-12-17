@@ -18,7 +18,7 @@ A \code{data.frame} of formatted FIM data.
 Load local FIM data for the Tampa Bay Nekton Index
 }
 \details{
-Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData_20200406.csv'}.
+Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv'}.
 }
 \examples{
 \dontrun{

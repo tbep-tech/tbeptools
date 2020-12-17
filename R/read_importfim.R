@@ -5,7 +5,7 @@
 #'
 #' @return A \code{data.frame} of formatted FIM data.
 #'
-#' @details Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData_20200406.csv'}.
+#' @details Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv'}.
 #' @export
 #'
 #' @family read

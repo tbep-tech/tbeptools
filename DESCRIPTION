@@ -41,7 +41,6 @@ Imports:
   dataRetrieval,
   dplyr,
   extrafont,
-  ggmap,
   ggplot2,
   ggrepel,
   ggsn,
@@ -68,6 +67,7 @@ Remotes:
 Suggests: 
   bookdown,
   english,
+  ggmap,
   here,
   Jabbrev,
   knitr,
