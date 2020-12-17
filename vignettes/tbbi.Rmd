@@ -23,7 +23,6 @@ knitr::opts_chunk$set(
 # libraries
 library(tbeptools) 
 library(here)
-library(Jabbrev)
 library(bookdown)
 library(patchwork)
 library(magrittr)
@@ -33,7 +32,7 @@ library(ggplot2)
 library(sf)
 library(tibble)
 
-bib_scrp(here('vignettes', 'tbbi.Rmd'), bib_new = here('vignettes', 'tbbirefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
+# Jabbrev::bib_scrp(here('vignettes', 'tbbi.Rmd'), bib_new = here('vignettes', 'tbbirefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
 
 # spelling::spell_check_files(here::here("vignettes", "tbbi.Rmd"))
 ```

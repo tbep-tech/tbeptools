@@ -24,7 +24,6 @@ knitr::opts_chunk$set(
 # libraries
 library(tbeptools) 
 library(here)
-library(Jabbrev)
 library(bookdown)
 library(magrittr)
 library(knitr)
@@ -33,7 +32,7 @@ library(plotly)
 
 sf::st_crs(tidalcreeks) <- 4326
 
-bib_scrp(here('vignettes', 'tidalcreeks.Rmd'), bib_new = here('vignettes', 'tidalrefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
+# Jabbrev::bib_scrp(here('vignettes', 'tidalcreeks.Rmd'), bib_new = here('vignettes', 'tidalrefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
 
 # spelling::spell_check_files(here("vignettes", "tidalcreeks.Rmd"))
 ```

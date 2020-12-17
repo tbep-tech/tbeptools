@@ -23,7 +23,6 @@ knitr::opts_chunk$set(
 # libraries
 library(tbeptools) 
 library(here)
-library(Jabbrev)
 library(bookdown)
 library(english)
 library(magrittr)
@@ -31,7 +30,7 @@ library(ggplot2)
 library(dplyr)
 library(knitr)
 
-bib_scrp(here('vignettes', 'intro.Rmd'), bib_new = here('vignettes', 'refs.bib'))
+# Jabbrev::bib_scrp(here('vignettes', 'intro.Rmd'), bib_new = here('vignettes', 'refs.bib'))
 
 # spelling::spell_check_files(here("vignettes", "intro.Rmd"))
 ```
