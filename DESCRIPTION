@@ -69,7 +69,6 @@ Suggests:
   english,
   ggmap,
   here,
-  Jabbrev,
   knitr,
   rmarkdown,
   testthat (>= 2.1.0),
