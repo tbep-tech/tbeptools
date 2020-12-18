@@ -6,8 +6,9 @@
 [![Codecov test coverage](https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg)](https://codecov.io/gh/tbep-tech/tbeptools?branch=master)
 
 R package for Tampa Bay Estuary Program functions. Please see the [vignette](https://tbep-tech.github.io/tbeptools/articles/intro.html) for a full description.
-
-<img src="man/figures/tbeptoolshex.png" align="left" width="125"/>
+ 
+<br>
+<img src="man/figures/tbeptoolshex.png" align="left" width="125"/></img>
 <br>
 
 # Installation
