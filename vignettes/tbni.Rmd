@@ -101,13 +101,13 @@ The imported data are formatted for calculating the TBNI.  The columns include a
 head(tbnispp)
 ```
 
-The `read_importfim()` function can also return a simple features object of sampled stations in the raw FIM data by setting \code{locs = TRUE}.  These data are matched to the appropriate bay segments for tabulating TBNI scores.      
+The `read_importfim()` function can also return a simple features object of sampled stations in the raw FIM data by setting \code{locs = TRUE}.  These data are matched to the appropriate bay segments for tabulating TBNI scores.  The resulting dataset indicates where sampling has occurred and can be mapped with the `mapview()` function.  For ease of use, a dataset named `fimstations` is included in tbeptools.      
 
-```{r, results = 'hide', echo = F}
-csv <- 'fimdata.csv'
+```{r, eval = F}
+fimstations <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
+mapview(fimstations, zcol = 'bay_segment')
 ```
-```{r}
-fimstattions <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
+```{r, echo = F}
 mapview(fimstations, zcol = 'bay_segment')
 ```
 

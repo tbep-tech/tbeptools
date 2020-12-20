@@ -6,7 +6,7 @@ test_that("Checking read_importfim", {
 
   # check if number of columns is correct
   result <- ncol(fimdata)
-  expect_equal(result, 17)
+  expect_equal(result, 19)
 
 })
 

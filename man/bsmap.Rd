@@ -18,6 +18,7 @@ Other utilities:
 \code{\link{benthicdata}},
 \code{\link{epcdata}},
 \code{\link{fimdata}},
+\code{\link{fimstations}},
 \code{\link{iwrraw}},
 \code{\link{stations}},
 \code{\link{targets}},

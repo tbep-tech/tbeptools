@@ -57,6 +57,7 @@ Other utilities:
 \code{\link{bsmap}},
 \code{\link{epcdata}},
 \code{\link{fimdata}},
+\code{\link{fimstations}},
 \code{\link{iwrraw}},
 \code{\link{stations}},
 \code{\link{targets}},

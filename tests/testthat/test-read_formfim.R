@@ -9,7 +9,7 @@ test_that("Checking read_formfim", {
 
   # check if number of columns is correct
   result <- ncol(frmdat)
-  expect_equal(result, 17)
+  expect_equal(result, 19)
 
 })
 
