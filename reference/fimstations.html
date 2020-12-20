@@ -148,8 +148,6 @@
 
     <p>A simple features <code><a href='https://r-spatial.github.io/sf/reference/sf.html'>sf</a></code> object (POINT) with 6186 features and 4 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p><dl>
   <dt>Reference</dt><dd><p>num</p></dd>
-  <dt>Zone</dt><dd><p>chr</p></dd>
-  <dt>Grid</dt><dd><p>chr</p></dd>
   <dt>bay_segment</dt><dd><p>chr</p></dd>
 
 </dl>
@@ -176,48 +174,11 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>tidyverse</span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
+<span class='co'># file path</span>
+<span class='va'>csv</span> <span class='op'>&lt;-</span> <span class='st'>'~/Desktop/fimraw.csv'</span>
 
-<span class='co'># Specify input catch file from the script "1_Query_FIM_Database"</span>
-<span class='va'>catch</span> <span class='op'>&lt;-</span> <span class='st'>"../tbni-proc/data/fimdata_through_2019.csv"</span>
-
-<span class='co'># Read in catch dataset and get list of FIM sites</span>
-<span class='va'>FIMsites</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='va'>catch</span>, header <span class='op'>=</span> <span class='cn'>TRUE</span>, stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>Reference</span>, <span class='va'>Longitude</span>, <span class='va'>Latitude</span>, <span class='va'>Zone</span>, <span class='va'>Grid</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>Reference</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>distinct</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># Read in the shape file of TBEP segments</span>
-<span class='va'>shape</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_read.html'>st_read</a></span><span class='op'>(</span><span class='st'>"../tbni-proc/data/TBEP_Segments_WGS84.shp"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>bay_segment <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span><span class='va'>.</span><span class='op'>$</span><span class='va'>BAY_SEGMEN</span> <span class='op'>==</span> <span class='fl'>1</span> <span class='op'>~</span> <span class='st'>"OTB"</span>,
-                                 <span class='va'>.</span><span class='op'>$</span><span class='va'>BAY_SEGMEN</span> <span class='op'>==</span> <span class='fl'>2</span> <span class='op'>~</span> <span class='st'>"HB"</span>,
-                                 <span class='va'>.</span><span class='op'>$</span><span class='va'>BAY_SEGMEN</span> <span class='op'>==</span> <span class='fl'>3</span> <span class='op'>~</span> <span class='st'>"MTB"</span>,
-                                 <span class='va'>.</span><span class='op'>$</span><span class='va'>BAY_SEGMEN</span> <span class='op'>==</span> <span class='fl'>4</span> <span class='op'>~</span> <span class='st'>"LTB"</span>,
-                                 <span class='va'>.</span><span class='op'>$</span><span class='va'>BAY_SEGMEN</span> <span class='op'>==</span> <span class='fl'>5</span> <span class='op'>~</span> <span class='st'>"Boca Ceiga"</span>,
-                                 <span class='va'>.</span><span class='op'>$</span><span class='va'>BAY_SEGMEN</span> <span class='op'>==</span> <span class='fl'>6</span> <span class='op'>~</span> <span class='st'>"Terra Ceia"</span>,
-                                 <span class='va'>.</span><span class='op'>$</span><span class='va'>BAY_SEGMEN</span> <span class='op'>==</span> <span class='fl'>7</span> <span class='op'>~</span> <span class='st'>"Manatee River"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>FID_1</span>, <span class='op'>-</span><span class='va'>Count_</span>, <span class='op'>-</span><span class='va'>BAY_SEGMEN</span><span class='op'>)</span>
-
-<span class='co'>#Convert FIM site list into sf object</span>
-<span class='va'>Sites_sf</span> <span class='op'>&lt;-</span> <span class='va'>FIMsites</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_as_sf.html'>st_as_sf</a></span><span class='op'>(</span>
-    coords <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Longitude"</span>, <span class='st'>"Latitude"</span><span class='op'>)</span>,
-    agr <span class='op'>=</span> <span class='st'>"constant"</span>,
-    crs <span class='op'>=</span> <span class='fl'>4326</span>,
-    stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>,
-    remove <span class='op'>=</span> <span class='cn'>TRUE</span>
-  <span class='op'>)</span>
-
-<span class='co'>#Find points/sites within bay segment polygons</span>
-<span class='va'>fimstations</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_join.html'>st_join</a></span><span class='op'>(</span><span class='va'>Sites_sf</span>, <span class='va'>shape</span>, join <span class='op'>=</span> <span class='va'>st_within</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>bay_segment <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span><span class='va'>Grid</span> <span class='op'>==</span> <span class='fl'>363</span> <span class='op'>~</span> <span class='st'>"LTB"</span>,
-                                 <span class='va'>Grid</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>203</span>, <span class='fl'>220</span><span class='op'>)</span> <span class='op'>~</span> <span class='st'>"MTB"</span>,
-                                 <span class='op'>(</span><span class='va'>Grid</span> <span class='op'>==</span> <span class='fl'>204</span> <span class='op'>&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'>map</span><span class='op'>(</span><span class='va'>.</span><span class='op'>$</span><span class='va'>geometry</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&lt;</span> <span class='fl'>27.7937</span><span class='op'>)</span> <span class='op'>~</span> <span class='st'>"MTB"</span>,
-                                 <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>bay_segment</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>bay_segment</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Boca Ceiga"</span>, <span class='st'>"Terra Ceia"</span>, <span class='st'>"Manatee River"</span><span class='op'>)</span>
-         <span class='op'>&amp;</span> <span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>bay_segment</span><span class='op'>)</span><span class='op'>)</span>
-
+<span class='co'># load and assign to object</span>
+<span class='va'>fimstations</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_importfim.html'>read_importfim</a></span><span class='op'>(</span><span class='va'>csv</span>, download_latest <span class='op'>=</span> <span class='cn'>TRUE</span>, locs <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span><span class='op'>(</span><span class='va'>fimstations</span>, file <span class='op'>=</span> <span class='st'>'data/fimstations.RData'</span>, compress <span class='op'>=</span> <span class='st'>'xz'</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
