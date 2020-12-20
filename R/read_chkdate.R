@@ -21,7 +21,7 @@
 #' read_chkdate(urlin, xlsx)
 #' }
 read_chkdate <- function(urlin, xlsx) {
-browser()
+
   # URL on server to check
   con <- urlin %>%
     dirname %>%
