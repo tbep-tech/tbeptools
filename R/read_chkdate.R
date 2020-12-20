@@ -42,13 +42,13 @@ read_chkdate <- function(urlin, xlsx) {
       dat <- try({getURL(con, ssl.verifypeer = FALSE, .opts = opts)})
     }
 
-    # parse date of file
-    srdate <- dat %>%
+    # parse size of file
+    srsize <- dat %>%
       strsplit('\\n') %>%
       .[[1]] %>%
       grep(basename(urlin), ., value = TRUE) %>%
-      gsub('^(.*AM|.*PM).*$', '\\1', .) %>%
-      lubridate::mdy_hm(.)
+      gsub('^.*\\s([0-9]+)\\s.*$', '\\1', .) %>%
+      as.numeric
 
   }
 
@@ -97,20 +97,21 @@ read_chkdate <- function(urlin, xlsx) {
     file.remove(tmp)
 
     # date of online file
-    srdate <- html %>%
+    srsize <- html %>%
       xml2::xml_text() %>%
       strsplit(., "[\n\r]+") %>%
       .[[1]] %>%
       grep(basename(urlin), ., value = TRUE) %>%
-      gsub('^(.*:\\d{2}).*$', '\\1', .) %>%
-      lubridate::mdy_hm()
+      gsub('^.*\\s([0-9]+)\\s.*$', '\\1', .) %>%
+      as.numeric
+
   }
 
-  # get date of local file
-  lcdate <- file.info(xlsx)$mtime
+  # get size of local file
+  lcsize <- file.info(xlsx)$size
 
   # check if server date is the same as the local file date
-  is_latest <- as.Date(srdate) == as.Date(lcdate)
+  is_latest <- srsize <= lcsize
 
   return(is_latest)
 
