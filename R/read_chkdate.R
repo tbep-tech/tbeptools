@@ -47,6 +47,7 @@ read_chkdate <- function(urlin, xlsx) {
       strsplit('\\n') %>%
       .[[1]] %>%
       grep(basename(urlin), ., value = TRUE) %>%
+      gsub('\\,', '', .) %>%
       gsub('^.*\\s([0-9]+)\\s.*$', '\\1', .) %>%
       as.numeric
 
@@ -102,6 +103,7 @@ read_chkdate <- function(urlin, xlsx) {
       strsplit(., "[\n\r]+") %>%
       .[[1]] %>%
       grep(basename(urlin), ., value = TRUE) %>%
+      gsub('\\,', '', .) %>%
       gsub('^.*\\s([0-9]+)\\s.*$', '\\1', .) %>%
       as.numeric
 

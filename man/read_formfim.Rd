@@ -4,13 +4,15 @@
 \alias{read_formfim}
 \title{Format FIM data for the Tampa Bay Nekton Index}
 \usage{
-read_formfim(datin)
+read_formfim(datin, locs = FALSE)
 }
 \arguments{
 \item{datin}{input \code{data.frame} loaded from \code{\link{read_importfim}}}
+
+\item{locs}{logical indicating if a spatial features object is returned with locations of each FIM sampling station}
 }
 \value{
-A formatted \code{data.frame} with chloropyll and secchi observations
+A formatted \code{data.frame} with FIM data if \code{locs = FALSE}, otherwise a simple features object if \code{locs = TRUE}
 }
 \description{
 Format FIM data for the Tampa Bay Nekton Index

@@ -1,8 +1,9 @@
 #' Format FIM data for the Tampa Bay Nekton Index
 #'
 #' @param datin input \code{data.frame} loaded from \code{\link{read_importfim}}
+#' @param locs logical indicating if a spatial features object is returned with locations of each FIM sampling station
 #'
-#' @return A formatted \code{data.frame} with chloropyll and secchi observations
+#' @return A formatted \code{data.frame} with FIM data if \code{locs = FALSE}, otherwise a simple features object if \code{locs = TRUE}
 #' @export
 #'
 #' @family read
@@ -21,13 +22,33 @@
 #' # load and assign to object
 #' fimdata <- read_importfim(csv)
 #' }
-read_formfim <- function(datin){
+read_formfim <- function(datin, locs = FALSE){
 
-  # join catch data with locations in fimstations, format
+  # make data sf to get bay segments
   frmdat <- datin %>%
-    select(-matches('^Project'), -Latitude, -Longitude, -Stratum, -effort, -Species_record_id, -Scientificname, -Commonname, -Cells) %>%
-    dplyr::right_join(fimstations, by = c("Reference", "Zone", "Grid")) %>%
-    dplyr::select(-geometry) %>%
+    dplyr::select(-matches('^Project'), -Stratum, -effort, -Species_record_id, -Scientificname, -Commonname, -Cells)
+
+  # get bay segments
+  majshed <- tbsegshed %>%
+    dplyr::filter(bay_segment %in% c('OTB', 'HB', 'MTB', 'LTB')) %>%
+    dplyr::select(bay_segment)
+
+  frmdatloc <- datin %>%
+    dplyr::select(Reference, Longitude, Latitude) %>%
+    unique %>%
+    sf::st_as_sf(
+      coords = c("Longitude", "Latitude"),
+      agr = "constant",
+      crs = 4326,
+      stringsAsFactors = FALSE,
+      remove = TRUE
+    ) %>%
+    sf::st_intersection(., st_make_valid(majshed))
+
+  if(locs)
+    return(frmdatloc)
+
+  frmdat <- frmdat %>%
     dplyr::mutate(
       NODCCODE = as.character(NODCCODE),
       NODCCODE = dplyr::case_when(
@@ -48,7 +69,7 @@ read_formfim <- function(datin){
         )
       ) %>%
     dplyr::select(-Splittype, -Splitlevel) %>%
-    dplyr::group_by(Reference, NODCCODE) %>%
+    dplyr::group_by(Reference, NODCCODE, Longitude, Latitude) %>%
     dplyr::mutate(Total_N = sum(Count)) %>%
     dplyr::select(-Count, -Number) %>%
     dplyr::distinct() %>%
@@ -59,7 +80,9 @@ read_formfim <- function(datin){
     dplyr::left_join(tbnispp, by = "NODCCODE") %>%
     dplyr::filter(Include_TB_Index == "Y") %>%
     dplyr::arrange(Reference, NODCCODE) %>%
-    dplyr::ungroup()
+    dplyr::ungroup() %>%
+    left_join(frmdatloc, by = 'Reference') %>%
+    select(-geometry)
 
   return(out)
 

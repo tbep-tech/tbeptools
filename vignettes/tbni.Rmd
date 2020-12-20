@@ -101,9 +101,13 @@ The imported data are formatted for calculating the TBNI.  The columns include a
 head(tbnispp)
 ```
 
-The `read_importfim()` function also matches the catch data with FIM sampling stations by appropriate bay segments.  This is done with an additional lookup table included in the package.  The `fimstations` table is a simple features object with georeferenced spatial coordinates.    
+The `read_importfim()` function can also return a simple features object of sampled stations in the raw FIM data by setting \code{locs = TRUE}.  These data are matched to the appropriate bay segments for tabulating TBNI scores.      
 
+```{r, results = 'hide', echo = F}
+csv <- 'fimdata.csv'
+```
 ```{r}
+fimstattions <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
 mapview(fimstations, zcol = 'bay_segment')
 ```
 

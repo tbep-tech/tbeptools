@@ -4,15 +4,17 @@
 \alias{read_importfim}
 \title{Load local FIM data for the Tampa Bay Nekton Index}
 \usage{
-read_importfim(csv, download_latest = FALSE)
+read_importfim(csv, download_latest = FALSE, locs = FALSE)
 }
 \arguments{
 \item{csv}{chr string path for local csv file, to overwrite if not current}
 
 \item{download_latest}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{csv} if available}
+
+\item{locs}{logical indicating if a spatial features object is returned with locations of each FIM sampling station}
 }
 \value{
-A \code{data.frame} of formatted FIM data.
+A formatted \code{data.frame} with FIM data if \code{locs = FALSE}, otherwise a simple features object if \code{locs = TRUE}
 }
 \description{
 Load local FIM data for the Tampa Bay Nekton Index
