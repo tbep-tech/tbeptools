@@ -21,7 +21,7 @@
 #' read_chkdate(urlin, xlsx)
 #' }
 read_chkdate <- function(urlin, xlsx) {
-
+browser()
   # URL on server to check
   con <- urlin %>%
     dirname %>%
@@ -109,8 +109,8 @@ read_chkdate <- function(urlin, xlsx) {
   # get date of local file
   lcdate <- file.info(xlsx)$mtime
 
-  # check if server date is less than or equal to local file date
-  is_latest <- srdate <= lcdate
+  # check if server date is the same as the local file date
+  is_latest <- as.Date(srdate) == as.Date(lcdate)
 
   return(is_latest)
 
