@@ -190,7 +190,7 @@ First, install the devtools package, load devtools, then install and load tbepto
 ```{r, eval = F}
 install.packages('devtools')
 library(devtools)
-install_github('tbeptools')
+install_github('tbep-tech/tbeptools')
 library(tbeptools)
 ```
 
