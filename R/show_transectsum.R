@@ -22,7 +22,7 @@
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectsum(transectocc, site = 'S3T10')
 show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
-                             yrrng = c(1998, 2019), abund = FALSE){
+                             yrrng = c(1998, 2020), abund = FALSE){
 
   # species pool
   spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')

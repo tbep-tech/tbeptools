@@ -8,7 +8,7 @@ show_transect(
   transect,
   site,
   species,
-  yrrng = c(1998, 2019),
+  yrrng = c(1998, 2020),
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
   base_size = 12,
   facet = FALSE,

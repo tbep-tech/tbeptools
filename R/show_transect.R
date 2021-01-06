@@ -38,7 +38,7 @@
 #' show_transect(transect, site = 'S3T10',
 #'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
 #'   varplo = 'Abundance', facet = TRUE)
-show_transect <- function(transect, site, species, yrrng = c(1998, 2019),
+show_transect <- function(transect, site, species, yrrng = c(1998, 2020),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
                           facet = FALSE, ncol = NULL, plotly = FALSE){
 

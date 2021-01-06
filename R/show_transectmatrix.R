@@ -30,7 +30,7 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectmatrix(transectocc)
-show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, yrrng = c(1998, 2019), alph = 1,
+show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, yrrng = c(1998, 2020), alph = 1,
                              txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
 
   # annual average by segment
