@@ -18,7 +18,7 @@
 #'
 #' @family visualize
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @references
 #' #' @references

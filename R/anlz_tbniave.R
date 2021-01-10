@@ -10,7 +10,7 @@
 #'
 #' @family anlz
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)

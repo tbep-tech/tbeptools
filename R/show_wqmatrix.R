@@ -22,7 +22,7 @@
 #' @seealso \code{\link{show_matrix}}, \code{\link{show_segmatrix}}
 #' @export
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @import ggplot2
 #'

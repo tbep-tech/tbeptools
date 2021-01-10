@@ -14,7 +14,7 @@
 #'
 #' @seealso \code{\link{anlz_tbnimet}}
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @examples
 #' anlz_tbniscr(fimdata)

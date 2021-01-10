@@ -7,7 +7,7 @@
 #'
 #' @family read
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @details Secchi data VOB depths or secchis < 0.5 ft from bottom are assigned \code{NA}, function is used internally within \code{\link{read_importwq}}
 #'

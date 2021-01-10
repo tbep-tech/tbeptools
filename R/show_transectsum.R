@@ -11,7 +11,7 @@
 #'
 #' @details This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @family visualize
 #'

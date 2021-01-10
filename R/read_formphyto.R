@@ -7,7 +7,7 @@
 #'
 #' @family read
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @details Only seven taxonomic groups are summarized. Pyrodinium bahamense, Karenia brevis, Tripos hircus, Pseudo-nitzschia sp., and Pseudo-nitzschia pungens are retained at the species level.  Bacillariophyta and Cyanobacteria are retained at the phylum level.  All other taxa are grouped into an "other" category.
 #'

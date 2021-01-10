@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @family analyze
 #'

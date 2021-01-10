@@ -11,7 +11,7 @@
 #'
 #' @family analyze
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @examples
 #' \dontrun{

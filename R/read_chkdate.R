@@ -5,7 +5,7 @@
 #'
 #' @return A logical vector indicating if the local file is current
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @importFrom RCurl getURL curlOptions
 #'

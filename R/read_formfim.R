@@ -8,7 +8,7 @@
 #'
 #' @family read
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @details Function is used internally within \code{\link{read_importfim}}
 #'

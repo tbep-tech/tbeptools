@@ -7,7 +7,7 @@
 #' @return A \code{\link[plotly]{plotly}} data object
 #' @export
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @family visualize
 #'

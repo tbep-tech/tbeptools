@@ -22,7 +22,7 @@
 #'
 #' @seealso \code{\link{show_wqmatrix}}, \code{\link{show_matrix}}
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @import ggplot2
 #'

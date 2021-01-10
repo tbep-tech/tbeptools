@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 library(tbeptools) 
 library(here)
 library(bookdown)
-library(magrittr)
+library(dplyr)
 library(knitr)
 library(mapview)
 library(plotly)

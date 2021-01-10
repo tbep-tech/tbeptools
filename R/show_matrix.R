@@ -22,7 +22,7 @@
 #' @seealso \code{\link{show_wqmatrix}}, \code{\link{show_segmatrix}}
 #' @export
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #' @importFrom reactable colDef
 #'
 #' @import ggplot2

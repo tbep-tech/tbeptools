@@ -15,7 +15,7 @@
 #'
 #' @family analyze
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @examples
 #' tbbiscr <- anlz_tbbiscr(benthicdata)

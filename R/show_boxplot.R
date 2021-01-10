@@ -25,7 +25,7 @@
 #'
 #' @import ggplot2
 #' @importFrom lubridate month
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')

@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @import ggplot2
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @examples
 #' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')

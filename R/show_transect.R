@@ -17,7 +17,7 @@
 #'
 #' Note that if \code{plotly = TRUE}, the size legend is not shown.
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @family visualize
 #'

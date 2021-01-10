@@ -11,7 +11,7 @@
 #'
 #' @family anlz
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @examples
 #' anlz_tbbiscr(benthicdata)

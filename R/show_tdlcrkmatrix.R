@@ -13,7 +13,7 @@
 #'
 #' @export
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #' @import patchwork
 #'
 #' @examples

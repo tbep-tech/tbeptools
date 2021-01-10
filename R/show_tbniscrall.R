@@ -14,7 +14,7 @@
 #'
 #' @family visualize
 #'
-#' @importFrom magrittr "%>%"
+#' @importFrom dplyr "%>%"
 #'
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)

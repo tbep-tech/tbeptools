@@ -8,7 +8,7 @@
 #'
 #' @family read
 #'
-#' @importFrom magrittr %>%
+#' @importFrom dplyr %>%
 #'
 #' @export
 #'
