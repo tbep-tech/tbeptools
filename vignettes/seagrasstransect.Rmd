@@ -45,8 +45,10 @@ trnlns
 The two datasets are `sf()` (simple features) objects and are easily mapped with `mapview()` to view their locations.
 
 ```{r, out.width = '100%'}
-mapview(trnpts, label = trnpts$lab, zcol = 'MonAgency', lwd = 0, legend = F, homebutton = F) + 
-  mapview(trnlns, zcol = 'MonAgency', homebutton = F, layer.name = 'Monitoring Agency', lwd = 4)
+cols <- c("#E16A86", "#CB7F2F", "#9F9400", "#50A315", "#00AC79", "#00AAB7", "#009ADE", "#A87BE4", "#DA65C3")
+
+mapview(trnpts, zcol = 'MonAgency', lwd = 0, legend = F, homebutton = F, col.regions = cols) + 
+  mapview(trnlns, zcol = 'MonAgency', homebutton = F, layer.name = 'Monitoring Agency', lwd = 4, color = cols)
 ```
 
 The transect data can be downloaded from the Water Atlas using the `read_transect()` function.  The only required argument for this function is `training`, which indicates if you want to download training data or the complete dataset, i.e., `training = TRUE` or `training = FALSE` (default).  In the former case, a small dataset is downloaded that includes only data collected during an annual training event. These are primarily used internally by TBEP staff to assess precision among different training crews. The data are downloaded as a JSON object and formatted internally using the `read_formtransect()` function.  Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data. Abundance is reported as a numeric value from 0 -5 for Braun-Blanquet coverage estimates and blade length is in cm.  
