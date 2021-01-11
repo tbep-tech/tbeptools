@@ -60,7 +60,7 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install gdal
 
-        - name: Install system dependencies
+      - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
           while read -r cmd
