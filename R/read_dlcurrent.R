@@ -32,7 +32,7 @@ read_dlcurrent <- function(xlsx, download_latest = TRUE, urlin){
     is_latest <- read_chkdate(urlin, xlsx)
 
     if (!is_latest){
-      cat('Replacing local file with current...\n')
+      message('Replacing local file with current...\n')
 
       # download data from EPCHC's ftp site
       tmp_xlsx <- tempfile(fileext = "xlsx")
