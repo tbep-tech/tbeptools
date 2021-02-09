@@ -23,6 +23,11 @@ Authors@R: c(
       role = c("aut"),
       email = "esherwood@tbep.org"
     ),
+    person(given = "Gary",
+      family = "Raulerson",
+      role = c("aut"),
+      email = "graulerson@tbep.org"
+    ),
     person(given = "Ben",
       family = "Best",
       role = c("aut"),
