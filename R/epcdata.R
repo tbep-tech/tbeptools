@@ -1,8 +1,8 @@
-#' All bay data as of 08212020
+#' All bay data as of 02092021
 #'
-#' All bay data as of 08212020
+#' All bay data as of 02092021
 #'
-#' @format A data frame with 25939 rows and 22 variables:
+#' @format A data frame with 26209 rows and 22 variables:
 #' \describe{
 #'   \item{bay_segment}{chr}
 #'   \item{epchc_station}{num}
@@ -29,4 +29,15 @@
 #'   }
 #'
 #' @family utilities
+#'
+#' @examples
+#' \dontrun{
+#' xlsx <- '~/Desktop/epcdata.xls'
+#' epcdata <- read_importwq(xlsx, download_latest = TRUE)
+#'
+#' nrow(epcdata)
+#' ncol(epcdata)
+#'
+#' save(epcdata, file = 'data/epcdata.RData', compress = 'xz')
+#' }
 "epcdata"
