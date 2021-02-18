@@ -8,6 +8,7 @@ show_transectmatrix(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   total = TRUE,
+  neutral = FALSE,
   yrrng = c(1998, 2020),
   alph = 1,
   txtsz = 3,
@@ -23,6 +24,8 @@ show_transectmatrix(
 \item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"}
 
 \item{total}{logical indicating if average frequency occurrence is calculated for the entire bay across segments}
+
+\item{neutral}{logical indicating if a neutral and continuous color scheme is used}
 
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
@@ -46,6 +49,8 @@ Show matrix of seagrass frequency occurrence by bay segments and year
 }
 \details{
 Results are based on averages across species by date and transect in each bay segment
+
+The color scheme is based on arbitrary breaks at 25, 50, and 75 percent frequency occurrence.  These don't necessarily translate to any ecological breakpoints.  Use \code{neutral = TRUE} to use a neutral and continuous color palette.
 }
 \examples{
 \dontrun{
@@ -55,7 +60,6 @@ transectocc <- anlz_transectocc(transect)
 show_transectmatrix(transectocc)
 }
 \references{
-#' @references
 This plot is a representation of Table 1 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.
 }
 \seealso{

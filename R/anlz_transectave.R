@@ -6,6 +6,9 @@
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param rev logical if factor levels for bay segments are reversed
 #'
+#' @details
+#' The \code{focat} column returned in the results shows a color category based on arbitrary breaks of the frequency occurrence estimates (\code{foest}) at 25, 50, and 75 percent.  These don't necessarily translate to any ecological breakpoints.
+#'
 #' @return A data frame of annual averages by bay segment
 #' @export
 #'

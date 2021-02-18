@@ -29,6 +29,9 @@ A data frame of annual averages by bay segment
 \description{
 Get annual averages of seagrass frequency occurrence by bay segments and year
 }
+\details{
+The \code{focat} column returned in the results shows a color category based on arbitrary breaks of the frequency occurrence estimates (\code{foest}) at 25, 50, and 75 percent.  These don't necessarily translate to any ecological breakpoints.
+}
 \examples{
 \dontrun{
 transect <- read_transect()

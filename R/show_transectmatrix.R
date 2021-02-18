@@ -3,6 +3,7 @@
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
 #' @param total logical indicating if average frequency occurrence is calculated for the entire bay across segments
+#' @param neutral logical indicating if a neutral and continuous color scheme is used
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param alph numeric indicating alpha value for score category colors
 #' @param txtsz numeric for size of text in the plot
@@ -20,8 +21,10 @@
 #'
 #' @importFrom dplyr "%>%"
 #'
+#' @details
+#' The color scheme is based on arbitrary breaks at 25, 50, and 75 percent frequency occurrence.  These don't necessarily translate to any ecological breakpoints.  Use \code{neutral = TRUE} to use a neutral and continuous color palette.
+#'
 #' @references
-#' #' @references
 #' This plot is a representation of Table 1 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.
 #'
 #' @examples
@@ -30,18 +33,36 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectmatrix(transectocc)
-show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, yrrng = c(1998, 2020), alph = 1,
-                             txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
+show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, neutral = FALSE,
+                                yrrng = c(1998, 2020), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
 
   # annual average by segment
   toplo <- anlz_transectave(transectocc, bay_segment = bay_segment, total = total, rev = rev, yrrng = yrrng)
 
   # plot
-  p <- ggplot2::ggplot(toplo, ggplot2::aes(x = bay_segment, y = yr, fill = focat)) +
-    ggplot2::geom_tile(colour = 'black', alpha = alph) +
+
+  # stoplight
+  if(!neutral){
+
+    p <- ggplot2::ggplot(toplo, ggplot2::aes(x = bay_segment, y = yr, fill = focat)) +
+      ggplot2::geom_tile(colour = 'black', alpha = alph) +
+      ggplot2::scale_fill_manual(values = levels(toplo$focat))
+
+  }
+
+  # neutral
+  if(neutral){
+
+    p <- ggplot2::ggplot(toplo, ggplot2::aes(x = bay_segment, y = yr, fill = foest)) +
+      ggplot2::geom_tile(colour = 'black', alpha = alph) +
+      ggplot2::scale_fill_gradient2(low = 'white', mid = '#7fcdbb', high = '#2c7fb8', limits = c(0, 100), midpoint = 50)
+
+  }
+
+  # format plot
+  p <- p +
     ggplot2::scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = position) +
-    ggplot2::scale_fill_manual(values = levels(toplo$focat)) +
     ggplot2::theme_bw() +
     ggplot2::theme(
       axis.title = ggplot2::element_blank(),

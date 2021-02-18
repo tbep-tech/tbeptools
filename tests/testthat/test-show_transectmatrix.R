@@ -6,6 +6,13 @@ test_that("Checking show_transectmatrix class", {
 
 })
 
+test_that("Checking show_transectmatrix class, neutral T", {
+
+  result <- show_transectmatrix(transectocc, neutral = T)
+  expect_is(result, 'ggplot')
+
+})
+
 test_that("Checking show_transectmatrix sanity checks", {
 
   expect_error(show_transectmatrix(NULL, yrrng = 1998))

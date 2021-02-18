@@ -149,6 +149,12 @@ A summary matrix of frequency occurrence estimates across all species can be plo
 show_transectmatrix(transectocc)
 ```
 
+The default color scheme is based on arbitrary breaks at 25, 50, and 75 percent frequency occurrence.  These don't necessarily translate to any ecological breakpoints. Use \code{neutral = TRUE} to use a neutral and continuous color palette.
+
+```{r, fig.height = 7, fig.width = 4}
+show_transectmatrix(transectocc, neutral = T)
+```
+
 The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. 
 
 ```{r, fig.height = 7, fig.width = 5}
