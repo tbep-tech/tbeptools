@@ -145,6 +145,7 @@
   <span class='va'>transectocc</span>,
   bay_segment <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span>, <span class='st'>"BCB"</span><span class='op'>)</span>,
   total <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  neutral <span class='op'>=</span> <span class='cn'>FALSE</span>,
   yrrng <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1998</span>, <span class='fl'>2020</span><span class='op'>)</span>,
   alph <span class='op'>=</span> <span class='fl'>1</span>,
   txtsz <span class='op'>=</span> <span class='fl'>3</span>,
@@ -168,6 +169,10 @@
     <tr>
       <th>total</th>
       <td><p>logical indicating if average frequency occurrence is calculated for the entire bay across segments</p></td>
+    </tr>
+    <tr>
+      <th>neutral</th>
+      <td><p>logical indicating if a neutral and continuous color scheme is used</p></td>
     </tr>
     <tr>
       <th>yrrng</th>
@@ -205,10 +210,10 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Results are based on averages across species by date and transect in each bay segment</p>
+<p>The color scheme is based on arbitrary breaks at 25, 50, and 75 percent frequency occurrence.  These don't necessarily translate to any ecological breakpoints.  Use <code>neutral = TRUE</code> to use a neutral and continuous color palette.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>#' @references
-This plot is a representation of Table 1 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.</p>
+    <p>This plot is a representation of Table 1 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other visualize: 
