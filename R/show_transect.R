@@ -13,7 +13,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
 #'
-#' @details All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, and/or Ruppia.
+#' @details All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, Ruppia, and/or Caulerpa.
 #'
 #' Note that if \code{plotly = TRUE}, the size legend is not shown.
 #'
@@ -31,18 +31,19 @@
 #'
 #' # multiple species, one plot
 #' show_transect(transect, site = 'S3T10',
-#'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
+#'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
 #'   varplo = 'Abundance')
 #'
 #' # multiple species, multiple plots
 #' show_transect(transect, site = 'S3T10',
-#'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
+#'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
 #'   varplo = 'Abundance', facet = TRUE)
-show_transect <- function(transect, site, species, yrrng = c(1998, 2020),
-                          varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
+show_transect <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
+                          yrrng = c(1998, 2020), varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
                           facet = FALSE, ncol = NULL, plotly = FALSE){
 
-  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia')
+  # species pool
+  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
 
   # sanity checks
   if(!site %in% transect$Transect)
@@ -61,6 +62,12 @@ show_transect <- function(transect, site, species, yrrng = c(1998, 2020),
     dplyr::filter(Transect %in% !!site) %>%
     dplyr::select(-sdval) %>%
     dplyr::filter(var %in% !!varplo) %>%
+    dplyr::mutate(
+      Savspecies = dplyr::case_when(
+        grepl('Caulerpa', Savspecies) ~ 'Caulerpa',
+        T ~ Savspecies
+      )
+    ) %>%
     tidyr::spread(Savspecies, aveval, fill = 0) %>%
     dplyr::select(Date, Site, dplyr::matches(paste0('^', species))) %>%
     tidyr::pivot_longer(dplyr::matches(paste0('^', species)), values_to = 'val') %>%
@@ -81,8 +88,8 @@ show_transect <- function(transect, site, species, yrrng = c(1998, 2020),
     dplyr::filter(Year >= yrrng[1] & Year <= yrrng[2])
 
   # sort color palette so its the same regardless of species selected
-  sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2')
-  names(sppcol) <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia')
+  sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
+  names(sppcol) <- spp
   sppcol <- sppcol[levels(dat$name)]
 
   # legend labels
