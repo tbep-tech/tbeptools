@@ -58,7 +58,9 @@ jobs:
 
       - name: Install gdal for macOS
         if: runner.os == 'macOS'
-        run: brew install gdal
+        run: |
+          brew install gdal
+          brew install udunits
 
       - name: Install system dependencies
         if: runner.os == 'Linux'

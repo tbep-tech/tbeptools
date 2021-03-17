@@ -32,8 +32,10 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install gdal for sf
-        run: brew install gdal
+      - name: Install OS depends
+        run: |
+          brew install gdal
+          brew install udunits
 
       - name: Install dependencies
         run: |
