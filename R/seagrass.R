@@ -9,6 +9,7 @@
 #'   \item{Hectares}{num}
 #' }
 #' @family utilities
+#' @examples
 #' \dontrun{
 #'
 #' seagrass <- structure(list(
