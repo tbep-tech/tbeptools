@@ -49,6 +49,7 @@ Other utilities:
 \code{\link{epcdata}},
 \code{\link{fimstations}},
 \code{\link{iwrraw}},
+\code{\link{seagrass}},
 \code{\link{stations}},
 \code{\link{targets}},
 \code{\link{tbniref}},

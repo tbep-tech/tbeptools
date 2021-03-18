@@ -27,6 +27,7 @@ Other utilities:
 \code{\link{fimdata}},
 \code{\link{fimstations}},
 \code{\link{iwrraw}},
+\code{\link{seagrass}},
 \code{\link{targets}},
 \code{\link{tbniref}},
 \code{\link{tbnispp}},

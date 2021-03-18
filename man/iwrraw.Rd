@@ -33,6 +33,7 @@ Other utilities:
 \code{\link{epcdata}},
 \code{\link{fimdata}},
 \code{\link{fimstations}},
+\code{\link{seagrass}},
 \code{\link{stations}},
 \code{\link{targets}},
 \code{\link{tbniref}},
