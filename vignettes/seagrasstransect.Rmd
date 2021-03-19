@@ -149,7 +149,7 @@ A summary matrix of frequency occurrence estimates across all species can be plo
 show_transectmatrix(transectocc)
 ```
 
-The default color scheme is based on arbitrary breaks at 25, 50, and 75 percent frequency occurrence.  These don't necessarily translate to any ecological breakpoints. Use \code{neutral = TRUE} to use a neutral and continuous color palette.
+The default color scheme is based on arbitrary breaks at 25, 50, and 75 percent frequency occurrence.  These don't necessarily translate to any ecological breakpoints. Use `neutral = TRUE` to use a neutral and continuous color palette.
 
 ```{r, fig.height = 7, fig.width = 4}
 show_transectmatrix(transectocc, neutral = T)
