@@ -38,14 +38,17 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
   if(!asreact){
 
     # annual average by segment
-    toplo <- anlz_transectavespp(transectocc, total = total, bay_segment = bay_segment, yrrng = yrrng, species = species, by_seg = F)
+    toplo <- anlz_transectavespp(transectocc, total = total, bay_segment = bay_segment, yrrng = yrrng, species = species, by_seg = F) %>%
+      dplyr::mutate(
+        fo = round(100 * foest, 1)
+      )
 
     # sort color palette so its the same regardless of species selected
     sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
     names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
     sppcol <- sppcol[levels(toplo$Savspecies)]
 
-    p <- ggplot2::ggplot(toplo, ggplot2::aes(x = yr, y = 100 * foest, fill = Savspecies)) +
+    p <- ggplot2::ggplot(toplo, ggplot2::aes(x = yr, y = fo, fill = Savspecies)) +
       ggplot2::geom_line(alpha = alph) +
       ggplot2::geom_point(pch = 21, size = 3, alpha = alph) +
       ggplot2::scale_fill_manual(values = sppcol) +
