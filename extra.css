@@ -1,0 +1,181 @@
+@import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
+
+/* Frutiger Light approximate */
+@import url("//fonts.googleapis.com/css?family=Lato:100,300,500,700,900"); 
+
+/* DIN condensed approximate */
+@import url("//fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
+
+/* Fira Mono, for centering bar plots in reactable */
+@import url("//fonts.googleapis.com/css?family=Karla:400,700|Fira+Mono&display=fallback");
+
+/* header styles */
+
+h1 {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+h2 {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+h3 {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+h4 {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+  font-style: italic;
+}
+h5 {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+  font-style: italic;
+}
+
+/* top navbar styles */
+
+.navbar {
+  background-color:#00806E;
+  border-color: black;
+  font-family: 'Lato'; /* main tab fonts */
+  font-weight: 300;
+}
+
+.navbar-brand { /* dashboard title */
+  font-family: 'Roboto Condensed';
+  font-weight: bold;
+  color: #FF0000;
+}
+
+.navbar-nav li a:hover, .navbar-nav > .active > a {
+  color: #fff !important;
+  background-color:#5c4a42!important;
+  background-image: none !important;
+}
+
+/* sidebar */
+
+.sidebar {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+
+.section.sidebar {
+  background-color: #95898430; /* gray with alpha */
+}
+
+#editor-map { /* this sets map editor height dynamically if in sidebar */
+  height: calc(100vh - 60px) !important;
+} 
+
+#map { /* this sets map height dynamically if in sidebar */
+  height: calc(100vh - 60px) !important;
+} 
+
+/* sub sections */
+
+.level3 {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+
+.chart-title {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: italic;
+  color: #958984;
+}
+
+.nav-tabs {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: italic;
+  color: #958984;
+}
+
+.control-label {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+
+.shiny-text-output {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+
+.material-switch {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+
+/* shiny slider stuff */
+
+.irs-bar {
+  background: #00806E
+}
+.irs-bar {
+  border-top: 1px #00806E
+}
+.irs-bar-edge {
+  background: #00806E
+}
+.irs-bar-edge {
+  border: 1px #00806E
+}
+.irs-single {
+  background: #00806E;
+}
+
+/* tabset top border */
+
+.nav-tabs-custom > .nav-tabs > li.active {
+  border-top-color: #00806E;
+}
+
+/* bar chart formatting for reactable */
+.bar-cell {
+  display: flex;
+  align-items: center;
+}
+.number {
+  font-family: "Fira Mono", Consolas, Monaco, monospace;
+  font-size: 13.5px;
+  white-space: pre;
+}
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 6px;
+  height: 14px;
+}
+.bar {
+  height: 100%;
+}
+
+/* leaflet */
+
+.leaflet-control { /* leaflet legends, control boxes */
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+}
+
+/* figure captions */
+
+.caption {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #958984;
+  font-style: italic;
+}
