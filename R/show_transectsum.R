@@ -99,7 +99,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
     plotly::add_markers(x = ~yr, y = ~val, color = ~factor(Savspecies), colors = sppcol, stackgroup = 'one', mode = 'none', marker = list(opacity = 0, size = 0)) %>%
     plotly::layout(
       yaxis = list(title = ylb),
-      xaxis = list(title = NA, gridcolor = '#FFFFFF'),
+      xaxis = list(title = NA, gridcolor = '#FFFFFF', tickvals = as.list(unique(toplo$yr))),
       barmode = 'stack',
       showlegend = T,
       legend = list(title = list(text = 'Species')),
