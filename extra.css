@@ -1,7 +1,7 @@
 @import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
 
 /* Frutiger Light approximate */
-@import url("//fonts.googleapis.com/css?family=Lato:100,300,500,700,900"); 
+@import url("//fonts.googleapis.com/css?family=Lato:100,300,500,700,900");
 
 /* DIN condensed approximate */
 @import url("//fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
@@ -44,6 +44,7 @@ h5 {
 .navbar {
   background-color:#00806E;
   border-color: black;
+  color: #FFFFFF;
   font-family: 'Lato'; /* main tab fonts */
   font-weight: 300;
 }
@@ -74,11 +75,11 @@ h5 {
 
 #editor-map { /* this sets map editor height dynamically if in sidebar */
   height: calc(100vh - 60px) !important;
-} 
+}
 
 #map { /* this sets map height dynamically if in sidebar */
   height: calc(100vh - 60px) !important;
-} 
+}
 
 /* sub sections */
 
