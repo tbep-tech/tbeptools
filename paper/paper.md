@@ -20,10 +20,12 @@ authors:
     affiliation: 1
   - name: Gary E. Raulerson
     orcid: 0000-0002-5920-5743
-    affiliation: 1
+    affiliation: 1  
+  - name: Adhokshaja Achar Budihal Prasad
+    affiliation: 4
   - name: Ben D. Best
     orcid: 0000-0002-2686-0784
-    affiliation: 4
+    affiliation: 5
 affiliations:
   - name: Tampa Bay Estuary Program, St. Petersburg, Florida, USA
     index: 1
@@ -31,8 +33,10 @@ affiliations:
     index: 2
   - name: Janicki Environmental, Inc., St. Petersburg, Florida, USA
     index: 3
-  - name: EcoQuants, LLC, Santa Barbara, California, USA
+  - name: University of South Florida, Tampa, Florida, USA
     index: 4
+  - name: EcoQuants, LLC, Santa Barbara, California, USA
+    index: 5
 date: 27 April 2021
 bibliography: paper.bib
 output: rticles::joss_article
