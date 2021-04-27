@@ -6,12 +6,14 @@ Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
       role = c("aut", "cre"),
-      email = "mbeck@tbep.org"
+      email = "mbeck@tbep.org",
+      comment = c(ORCID = "0000-0002-4996-0059")
     ),
     person(given = "Meagan",
       family = "Schrandt",
       role = c("aut"),
-      email = "Meagan.Schrandt@myfwc.com"
+      email = "Meagan.Schrandt@myfwc.com",,
+      comment = c(ORCID = "0000-0002-0482-5072")
     ),
     person(given = "Mike",
       family = "Wessel",
@@ -21,17 +23,20 @@ Authors@R: c(
     person(given = "Ed",
       family = "Sherwood",
       role = c("aut"),
-      email = "esherwood@tbep.org"
+      email = "esherwood@tbep.org",
+      comment = c(ORCID = "0000-0001-5330-302X")
     ),
     person(given = "Gary",
       family = "Raulerson",
       role = c("aut"),
-      email = "graulerson@tbep.org"
+      email = "graulerson@tbep.org",
+      comment = c(ORCID = "00000-0002-5920-5743")
     ),
     person(given = "Ben",
       family = "Best",
       role = c("aut"),
-      email = "ben@ecoquants.com"
+      email = "ben@ecoquants.com",
+      comment = c(ORCID = "0000-0002-2686-0784")
     )
   )
 Description: Several functions are provided for Working with Tampa Bay Estuary 
