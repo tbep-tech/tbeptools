@@ -5,6 +5,7 @@
 [![pkgdown](https://github.com/tbep-tech/tbeptools/workflows/pkgdown/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
 [![JOSS-draft](https://github.com/tbep-tech/tbeptools/actions/workflows/draft-pdf.yaml/badge.svg)](https://github.com/tbep-tech/tbeptools/actions/workflows/draft-pdf.yaml)
 [![Codecov test coverage](https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg)](https://codecov.io/gh/tbep-tech/tbeptools?branch=master)
+[![DOI](https://zenodo.org/badge/184627857.svg)](https://zenodo.org/badge/latestdoi/184627857)
 
 R package for Tampa Bay Estuary Program functions. Please see the [vignette](https://tbep-tech.github.io/tbeptools/articles/intro.html) for a full description.
 
