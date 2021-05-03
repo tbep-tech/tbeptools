@@ -23,7 +23,7 @@ authors:
     affiliation: 1  
   - name: Adhokshaja Achar Budihal Prasad
     affiliation: 4
-  - name: Ben D. Best
+  - name: Benjamin D. Best
     orcid: 0000-0002-2686-0784
     affiliation: 5
 affiliations:
