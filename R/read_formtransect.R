@@ -2,11 +2,14 @@
 #'
 #' @param jsn A data frame returned from \code{\link[jsonlite]{fromJSON}}
 #' @param training logical if input are transect training data or complete database
+#' @param raw logical indicating if raw, unformatted data are returned, see details
 #'
 #' @return data frame in long format
 #' @export
 #' @details
 #' Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data.  Shoot density and blade height (cm) are based on averages across random observations at each transect point that are entered separately in the data form. Abundance is reported as a numeric value from 0 - 5 for Braun-Blanquet coverage estimates.
+#'
+#' If \code{raw = TRUE}, the unformatted data are returned.  The default is to use formatting that allows the raw data to be used with the downstream functions. The raw data may have extra information that may be of use outside of the plotting functions in this package.
 #'
 #' @importFrom dplyr %>%
 #'
@@ -24,13 +27,19 @@
 #' url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'
 #' jsn <- fromJSON(url)
 #' trndat <- read_formtransect(jsn, training = TRUE)
-read_formtransect <- function(jsn, training = FALSE){
+read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
 
-  if(training)
+  if(training){
+
     out <- jsn %>%
       tibble::as_tibble() %>%
       dplyr::rename(IDall = ID) %>%
-      tidyr::unnest('Observation') %>%
+      tidyr::unnest('Observation')
+
+    if(raw)
+      return(out)
+
+    out <- out %>%
       dplyr::select(Crew, MonitoringAgency, Site, Depth, Savspecies = Species, Abundance = SpeciesAbundance,
                     matches('BladeLength_|ShootDensity_')) %>%
       dplyr::select(-BladeLength_Avg, -BladeLength_StdDev, -ShootDensity_Avg, -ShootDensity_StdDev) %>%
@@ -64,11 +73,18 @@ read_formtransect <- function(jsn, training = FALSE){
       dplyr::ungroup() %>%
       dplyr::filter(Savspecies %in% c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'))
 
+    }
+
   if(!training){
     out <- jsn %>%
       tibble::as_tibble() %>%
       dplyr::rename(IDall = ID) %>%
-      tidyr::unnest('Observation') %>%
+      tidyr::unnest('Observation')
+
+    if(raw)
+      return(out)
+
+    out <- out %>%
       dplyr::select(Crew, MonitoringAgency, Date = ObservationDate, Transect, Site, Depth, Savspecies = Species, SeagrassEdge, Abundance = SpeciesAbundance,
                     matches('BladeLength_|ShootDensity_|CountSqSize_')) %>%
       dplyr::select(-BladeLength_Avg, -BladeLength_StdDev, -ShootDensity_Avg, -ShootDensity_StdDev) %>%

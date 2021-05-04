@@ -73,6 +73,16 @@ transect
 
 The columns in the complete transect database describe the crew (`Crew`), the monitoring agency (`MonitoringAgency`), sample date (`Date`), transect name (`Transect`), the meter location for the quadrat along the transect (`Site`, m), depth at the site (`Depth`, cm), Seagrass species (`Savspecies`), distance of the seagrass edge on the transect (`SeagrassEdge`, m), the seagrass variable (`var`), average value of the variable (`aveval`), and standard deviation of the variable if appropriate (`sdval`).  
 
+If the raw, unformatted transect data are preferred, use the `raw = TRUE` argument for `read_transect()`. 
+
+```{r}
+# raw transect data
+transectraw <- read_transect(training = FALSE, raw = TRUE)
+
+# view the data
+transectraw
+```
+
 ## Calculating seagrass frequency occurrence
 
 The rest of the seagrass functions in tbeptools were developed to work with the complete database.  Only the `show_complot()` function (see below) was developed for the training data.  The rest of the functions can be used to estimate and plot frequency occurrence data.  

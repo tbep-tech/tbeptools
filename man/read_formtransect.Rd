@@ -4,12 +4,14 @@
 \alias{read_formtransect}
 \title{Format seagrass transect data from Water Atlas}
 \usage{
-read_formtransect(jsn, training = FALSE)
+read_formtransect(jsn, training = FALSE, raw = FALSE)
 }
 \arguments{
 \item{jsn}{A data frame returned from \code{\link[jsonlite]{fromJSON}}}
 
 \item{training}{logical if input are transect training data or complete database}
+
+\item{raw}{logical indicating if raw, unformatted data are returned, see details}
 }
 \value{
 data frame in long format
@@ -19,6 +21,8 @@ Format seagrass transect data from Water Atlas
 }
 \details{
 Shoot density is reported as number of shoots per square meter and is corrected for the quadrat size entered in the raw data.  Shoot density and blade height (cm) are based on averages across random observations at each transect point that are entered separately in the data form. Abundance is reported as a numeric value from 0 - 5 for Braun-Blanquet coverage estimates.
+
+If \code{raw = TRUE}, the unformatted data are returned.  The default is to use formatting that allows the raw data to be used with the downstream functions. The raw data may have extra information that may be of use outside of the plotting functions in this package.
 }
 \examples{
 library(jsonlite)
