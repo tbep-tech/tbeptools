@@ -33,3 +33,4 @@ The plot shows a matrix with rows for individual creeks and columns for overall 
 dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
 show_tdlcrkmatrix(dat)
 }
+\concept{show}

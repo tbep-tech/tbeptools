@@ -1,4 +1,4 @@
-#' Creates a plotly obect for TBNI score plots
+#' Creates a plotly object for TBNI score plots
 #'
 #' @param p \code{\link[ggplot2]{ggplot}} object as output from \code{\link{show_tbniscr}} or \code{\link{show_tbniscrall}}
 #'
@@ -7,7 +7,7 @@
 #'
 #' @importFrom dplyr "%>%"
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)

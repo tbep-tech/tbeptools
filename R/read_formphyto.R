@@ -5,7 +5,7 @@
 #' @return A formatted \code{data.frame} with phytoplankton count data
 #' @export
 #'
-#' @family read
+#' @concept read
 #'
 #' @importFrom dplyr %>%
 #'

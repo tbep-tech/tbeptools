@@ -15,7 +15,7 @@
 #' @param plotly logical if matrix is created using plotly
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @return A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned
 #'

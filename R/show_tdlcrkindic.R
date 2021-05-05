@@ -11,6 +11,8 @@
 #' @return A plotly object
 #' @export
 #'
+#' @concept show
+#'
 #' @importFrom plotly layout plot_ly subplot
 #'
 #' @examples

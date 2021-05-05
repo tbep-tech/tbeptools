@@ -9,7 +9,7 @@
 #' @details Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx}.
 #' @export
 #'
-#' @family read
+#' @concept read
 #'
 #' @seealso \code{\link{read_formwq}}, \code{\link{read_importphyto}}
 #'

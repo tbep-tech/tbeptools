@@ -15,7 +15,7 @@
 #'
 #' @export
 #'
-#' @family read
+#' @concept read
 #'
 #' @examples
 #' \dontrun{

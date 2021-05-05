@@ -9,5 +9,4 @@
 #'   \item{investigate}{num}
 #'   \item{caution}{num}
 #' }
-#' @family utilities
 "tidaltargets"

@@ -30,16 +30,4 @@ urlin <- paste0(urlin, 'RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx')
 read_dlcurrent(xlsx, urlin = urlin)
 }
 }
-\seealso{
-Other read: 
-\code{\link{read_chkdate}()},
-\code{\link{read_formbenthic}()},
-\code{\link{read_formfim}()},
-\code{\link{read_formphyto}()},
-\code{\link{read_formwq}()},
-\code{\link{read_importbenthic}()},
-\code{\link{read_importfim}()},
-\code{\link{read_importphyto}()},
-\code{\link{read_importwq}()}
-}
 \concept{read}

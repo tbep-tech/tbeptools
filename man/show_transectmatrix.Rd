@@ -62,26 +62,4 @@ show_transectmatrix(transectocc)
 \references{
 This plot is a representation of Table 1 in R. Johansson (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.
 }
-\seealso{
-Other visualize: 
-\code{\link{show_boxplot}()},
-\code{\link{show_compplot}()},
-\code{\link{show_matrixplotly}()},
-\code{\link{show_matrix}()},
-\code{\link{show_reactable}()},
-\code{\link{show_segmatrix}()},
-\code{\link{show_segplotly}()},
-\code{\link{show_sitemap}()},
-\code{\link{show_tbbimatrix}()},
-\code{\link{show_tbnimatrix}()},
-\code{\link{show_tbniscrall}()},
-\code{\link{show_tbniscrplotly}()},
-\code{\link{show_tbniscr}()},
-\code{\link{show_tdlcrk}()},
-\code{\link{show_thrplot}()},
-\code{\link{show_transectavespp}()},
-\code{\link{show_transectsum}()},
-\code{\link{show_transect}()},
-\code{\link{show_wqmatrix}()}
-}
-\concept{visualize}
+\concept{show}

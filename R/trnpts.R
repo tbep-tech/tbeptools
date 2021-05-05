@@ -3,6 +3,9 @@
 #' Seagrass transect starting locations
 #'
 #' @format A \code{sf} POINT object
+#'
+#' @concept data
+#'
 #' @examples
 #' \dontrun{
 #' library(sf)

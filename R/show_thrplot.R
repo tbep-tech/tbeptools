@@ -13,7 +13,7 @@
 #' @param thrs logical indicating if reference lines are shown only for the regulatory threshold
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #'

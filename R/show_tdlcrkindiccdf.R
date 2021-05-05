@@ -10,6 +10,8 @@
 #'
 #' @importFrom plotly add_trace layout plot_ly subplot
 #'
+#' @concept show
+#'
 #' @details This function returns several empirical cumulative distribution plots for the tidal creek context indicators.  Points on the plot indicate the observed values and percentiles for the creek specified by \code{id}. The percentiles and CDF values are defined by the "population" of creeks in \code{cntdat}.  Points in the plots are color-coded by sample year to evaluate temporal trends, if any.
 #'
 #' @return A plotly object

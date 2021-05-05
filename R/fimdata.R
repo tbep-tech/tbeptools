@@ -23,7 +23,7 @@
 #'   \item{Selected_Taxa}{chr}
 #'   }
 #'
-#' @family utilities
+#' @concept data
 #'
 #' @examples
 #' \dontrun{

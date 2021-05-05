@@ -17,7 +17,6 @@
 #'   \item{Shannon_P5}{num}
 #'   \item{Shannon_P95}{num}
 #' }
-#' @family utilities
 #'
 #' @examples
 #' \dontrun{

@@ -28,7 +28,7 @@
 #'   \item{Temp_Water_Bottom_degC}{num}
 #'   }
 #'
-#' @family utilities
+#' @concept data
 #'
 #' @examples
 #' \dontrun{

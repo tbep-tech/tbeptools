@@ -16,7 +16,7 @@ Seagrass transect locations
 \examples{
 \dontrun{
 library(sf)
-libryar(dplyr)
+library(dplyr)
 
 trnlns <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/transect_routes.shp') \%>\%
    st_transform(crs = 4326) \%>\%
@@ -33,4 +33,5 @@ trnlns$bearing <- bearing
 save(trnlns, file = 'data/trnlns.RData', compress = 'xz')
 #' }
 }
+\concept{data}
 \keyword{datasets}

@@ -6,6 +6,8 @@
 #' @return data frame
 #' @export
 #'
+#' @concept read
+#'
 #' @importFrom dplyr %>%
 #'
 #' @details The function imports a JSON file from the USF Water Atlas.  If \code{training = TRUE}, a dataset from the TBEP training survey is imported from \url{http://dev.seagrass.wateratlas.usf.edu/api/assessments/training}.  If \code{training = FALSE}, the entire transect survey database is imported from \url{http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care}.

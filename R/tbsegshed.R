@@ -7,7 +7,8 @@
 #'   \item{long_name}{chr}
 #'   \item{bay_segment}{chr}
 #' }
-#' @family utilities
+#'
+#' @concept data
 #'
 #' @examples
 #' library(sf)

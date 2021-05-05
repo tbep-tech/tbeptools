@@ -8,7 +8,7 @@
 #'   \item{value}{list}
 #'   }
 #'
-#' @family utilities
+#' @concept data
 #'
 #' @examples
 #' \dontrun{

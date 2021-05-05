@@ -11,6 +11,8 @@
 #'
 #' These estimates are used in annual compliance assessment reports produced by the Tampa Bay Nitrogen Management Consortium. Load estimates and adjustment factors are based on regression models in https://drive.google.com/file/d/11NT0NQ2WbPO6pVZaD7P7Z6qjcwO1jxHw/view?usp=drivesdk
 #'
+#' @concept analyze
+#'
 #' @return A data frame with hydrological load estimates by bay segments for the requested years
 #' @export
 #'

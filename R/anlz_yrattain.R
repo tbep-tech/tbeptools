@@ -6,12 +6,11 @@
 #' @param yrsel numeric indicating chosen year
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
-#'
 #' @return A \code{data.frame} for the chosen year and all bay segments showing the bay segment averages for chloropyll concentration, light attenuations, segment targets, and attainment categories.
 #'
 #' @export
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @examples
 #'

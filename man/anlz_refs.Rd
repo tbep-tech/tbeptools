@@ -26,18 +26,4 @@ bibs <- anlz_refs(path)
  writeLines(bibs, 'formatted.bib')
 }
 }
-\seealso{
-Other analyze: 
-\code{\link{anlz_attain}()},
-\code{\link{anlz_avedatsite}()},
-\code{\link{anlz_avedat}()},
-\code{\link{anlz_iwrraw}()},
-\code{\link{anlz_tbbimed}()},
-\code{\link{anlz_tdlcrkindic}()},
-\code{\link{anlz_tdlcrk}()},
-\code{\link{anlz_transectavespp}()},
-\code{\link{anlz_transectave}()},
-\code{\link{anlz_transectocc}()},
-\code{\link{anlz_yrattain}()}
-}
 \concept{analyze}

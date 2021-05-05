@@ -39,3 +39,4 @@ url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'
 jsn <- fromJSON(url)
 trndat <- read_formtransect(jsn, training = TRUE)
 }
+\concept{read}

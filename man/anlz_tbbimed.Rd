@@ -35,18 +35,4 @@ Only sampling funded by TBEP and as part of the routine EPC benthic monitoring p
 tbbiscr <- anlz_tbbiscr(benthicdata)
 anlz_tbbimed(tbbiscr)
 }
-\seealso{
-Other analyze: 
-\code{\link{anlz_attain}()},
-\code{\link{anlz_avedatsite}()},
-\code{\link{anlz_avedat}()},
-\code{\link{anlz_iwrraw}()},
-\code{\link{anlz_refs}()},
-\code{\link{anlz_tdlcrkindic}()},
-\code{\link{anlz_tdlcrk}()},
-\code{\link{anlz_transectavespp}()},
-\code{\link{anlz_transectave}()},
-\code{\link{anlz_transectocc}()},
-\code{\link{anlz_yrattain}()}
-}
 \concept{analyze}

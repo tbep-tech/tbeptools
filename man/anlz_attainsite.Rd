@@ -36,3 +36,4 @@ This function is a simplication of the attainment categories returned by \code{\
 avedatsite <- anlz_avedatsite(epcdata)
 anlz_attainsite(avedatsite)
 }
+\concept{analyze}

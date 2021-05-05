@@ -17,7 +17,7 @@
 #'   \item{sdval}{num}
 #'   }
 #'
-#' @family utilities
+#' @concept data
 #'
 #' @examples
 #' \dontrun{

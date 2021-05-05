@@ -9,7 +9,7 @@
 #'
 #' @export
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @examples
 #' dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)

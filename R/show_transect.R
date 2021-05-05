@@ -19,7 +19,7 @@
 #'
 #' @importFrom dplyr %>%
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @examples
 #' \dontrun{

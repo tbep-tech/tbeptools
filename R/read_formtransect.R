@@ -11,6 +11,8 @@
 #'
 #' If \code{raw = TRUE}, the unformatted data are returned.  The default is to use formatting that allows the raw data to be used with the downstream functions. The raw data may have extra information that may be of use outside of the plotting functions in this package.
 #'
+#' @concept read
+#'
 #' @importFrom dplyr %>%
 #'
 #' @examples

@@ -10,7 +10,7 @@
 #' @return A data frame of metrics and TBNI scores in wide format.
 #' @export
 #'
-#' @family anlz
+#' @concept analyze
 #'
 #' @seealso \code{\link{anlz_tbnimet}}
 #'

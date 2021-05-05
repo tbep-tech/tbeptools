@@ -12,7 +12,7 @@
 #' @return A data frame of annual averages by bay segment
 #' @export
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @importFrom dplyr %>%
 #'

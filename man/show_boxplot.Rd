@@ -53,26 +53,4 @@ Points not included in \code{yrsel} are plotted over the box plots using \code{\
 \examples{
 show_boxplot(epcdata, bay_segment = 'OTB')
 }
-\seealso{
-Other visualize: 
-\code{\link{show_compplot}()},
-\code{\link{show_matrixplotly}()},
-\code{\link{show_matrix}()},
-\code{\link{show_reactable}()},
-\code{\link{show_segmatrix}()},
-\code{\link{show_segplotly}()},
-\code{\link{show_sitemap}()},
-\code{\link{show_tbbimatrix}()},
-\code{\link{show_tbnimatrix}()},
-\code{\link{show_tbniscrall}()},
-\code{\link{show_tbniscrplotly}()},
-\code{\link{show_tbniscr}()},
-\code{\link{show_tdlcrk}()},
-\code{\link{show_thrplot}()},
-\code{\link{show_transectavespp}()},
-\code{\link{show_transectmatrix}()},
-\code{\link{show_transectsum}()},
-\code{\link{show_transect}()},
-\code{\link{show_wqmatrix}()}
-}
-\concept{visualize}
+\concept{show}

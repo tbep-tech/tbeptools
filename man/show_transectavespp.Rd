@@ -57,26 +57,4 @@ The plot is a representation of figure 2 in Johansson, R. (2016) Seagrass Transe
 
 The table is a representation of table 2, p. 163 in Yarbro, L. A., and P. R. Carlson, Jr., eds. 2016. Seagrass Integrated Mapping and Monitoring Program: Mapping and Monitoring Report No. 2. Fish and Wildlife Research Institute Technical Report TR-17 version 2. vi + 281 p.
 }
-\seealso{
-Other visualize: 
-\code{\link{show_boxplot}()},
-\code{\link{show_compplot}()},
-\code{\link{show_matrixplotly}()},
-\code{\link{show_matrix}()},
-\code{\link{show_reactable}()},
-\code{\link{show_segmatrix}()},
-\code{\link{show_segplotly}()},
-\code{\link{show_sitemap}()},
-\code{\link{show_tbbimatrix}()},
-\code{\link{show_tbnimatrix}()},
-\code{\link{show_tbniscrall}()},
-\code{\link{show_tbniscrplotly}()},
-\code{\link{show_tbniscr}()},
-\code{\link{show_tdlcrk}()},
-\code{\link{show_thrplot}()},
-\code{\link{show_transectmatrix}()},
-\code{\link{show_transectsum}()},
-\code{\link{show_transect}()},
-\code{\link{show_wqmatrix}()}
-}
-\concept{visualize}
+\concept{show}

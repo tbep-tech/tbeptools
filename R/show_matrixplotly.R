@@ -9,7 +9,7 @@
 #'
 #' @importFrom dplyr "%>%"
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @examples
 #' mat <- show_wqmatrix(epcdata)

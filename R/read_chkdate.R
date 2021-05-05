@@ -9,7 +9,7 @@
 #'
 #' @importFrom RCurl getURL curlOptions
 #'
-#' @family read
+#' @concept read
 #'
 #' @export
 #'

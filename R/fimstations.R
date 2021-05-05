@@ -7,7 +7,9 @@
 #'   \item{Reference}{num}
 #'   \item{bay_segment}{chr}
 #' }
-#' @family utilities
+#'
+#' @concept data
+#'
 #' @examples
 #' \dontrun{
 #' # file path

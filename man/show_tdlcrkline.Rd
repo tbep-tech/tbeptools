@@ -33,3 +33,4 @@ This function is used internally within \code{\link{show_tdlcrkindic}} and \code
 # code for vertical line output, chloropyll
 show_tdlcrkline('CHLAC', thrsel = TRUE)
 }
+\concept{show}

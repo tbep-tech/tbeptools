@@ -9,6 +9,8 @@
 #'
 #' @details This function is used internally within \code{\link{show_tdlcrkindic}} and \code{\link{show_tdlcrkindiccdf}}
 #'
+#' @concept show
+#'
 #' @return A list object passed to the layout argument of plotly, either shapes or annotate depending on user input
 #' @export
 #'

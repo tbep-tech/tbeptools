@@ -13,5 +13,4 @@
 #'   \item{la_smallex}{num}
 #'   \item{la_thresh}{num}
 #' }
-#' @family utilities
 "targets"

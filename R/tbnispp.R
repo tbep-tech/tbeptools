@@ -14,7 +14,6 @@
 #'   \item{Feeding_Guild}{chr}
 #'   \item{Selected_Taxa}{chr}
 #' }
-#' @family utilities
 #'
 #' @examples
 #' \dontrun{

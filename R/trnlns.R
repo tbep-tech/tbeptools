@@ -3,10 +3,13 @@
 #' Seagrass transect locations
 #'
 #' @format A \code{sf} LINESTRING object
+#'
+#' @concept data
+#'
 #' @examples
 #' \dontrun{
 #' library(sf)
-#' libryar(dplyr)
+#' library(dplyr)
 #'
 #' trnlns <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/transect_routes.shp') %>%
 #'    st_transform(crs = 4326) %>%

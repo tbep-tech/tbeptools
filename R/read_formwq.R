@@ -5,7 +5,7 @@
 #' @return A lightly formatted \code{data.frame} with chloropyll and secchi observations
 #' @export
 #'
-#' @family read
+#' @concept read
 #'
 #' @importFrom dplyr %>%
 #'

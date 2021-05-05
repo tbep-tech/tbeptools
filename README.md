@@ -13,12 +13,18 @@ R package for Tampa Bay Estuary Program functions. Please see the [vignette](htt
 
 # Installation
 
-The package can be installed from GitHub.
+The package can be installed from GitHub.  The source code is available on the tbep-tech GitHub group web page: <https://github.com/tbep-tech/tbeptools>.  
 
-```r
+First, install the devtools package, load devtools, then install and load tbeptools.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(tbeptools)`).
+
+```{r, eval = F}
 install.packages('devtools')
-devtools::install_github('tbep-tech/tbeptools')
+library(devtools)
+install_github('tbep-tech/tbeptools')
+library(tbeptools)
 ```
+
+After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required arguments that are needed to run the function.
 
 # Package vignettes
 
@@ -29,6 +35,23 @@ The vignettes are organized by topic and are an excellent place to start for und
 * [Tampa Bay Benthic Index](https://tbep-tech.github.io/tbeptools/articles/tbbi.html): Overview of functions to import data for Tampa Bay Benthic Index, under development
 * [Tidal Creeks Assessment](https://tbep-tech.github.io/tbeptools/articles/tidalcreeks.html): Overview of functions to import, analyze, and plot results for the assessment of tidal creeks in southwest Florida
 * [Seagrass Transect Data](https://tbep-tech.github.io/tbeptools/articles/seagrasstransect.html): Overview of functions to import, analyze, and plot results for the seagrass transect data collected in Tampa Bay
+
+# Package structure
+
+Functions in tbeptools fall in three categories depending on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
+
+* `read`: Import current data from the main ftp site.
+
+* `anlz`: Analyze or summarize the imported data. 
+
+* `show`: Create a plot of the analyzed data.
+
+The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
+
+```{r, out.width = '80%', echo = F, fig.cap = "Searching for functions in tbeptools by typing in the prefix."}
+knitr::include_graphics('readauto.png')
+```
+The function [reference page](https://tbep-tech.github.io/tbeptools/reference/index.html) can also be viewed for a complete list of functions organized by category, with links to the help files. 
 
 # Issues and suggestions
 

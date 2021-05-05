@@ -12,6 +12,8 @@
 #'
 #' @details This function is a simplication of the attainment categories returned by \code{\link{anlz_attain}}.  Sites are only compared to the targets/thresholds that apply separately for chlorophyll or light attenuation.
 #'
+#' @concept analyze
+#'
 #' @export
 #'
 #' @examples

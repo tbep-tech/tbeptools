@@ -11,7 +11,9 @@
 #'   \item{name}{chr}
 #'   \item{Creek_Length_m}{num}
 #' }
-#' @family utilities
+#'
+#' @concept data
+#'
 #' @examples
 #' \dontrun{
 #' library(sf)

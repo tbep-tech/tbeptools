@@ -8,7 +8,9 @@
 #'   \item{Acres}{num}
 #'   \item{Hectares}{num}
 #' }
-#' @family utilities
+#'
+#' @concept data
+#'
 #' @examples
 #' \dontrun{
 #'

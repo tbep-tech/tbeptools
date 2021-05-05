@@ -30,4 +30,5 @@ trnpts <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/TransectBasics2019.shp') \%>\%
 save(trnpts, file = 'data/trnpts.RData', compress = 'xz')
 }
 }
+\concept{data}
 \keyword{datasets}

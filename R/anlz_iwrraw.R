@@ -11,7 +11,7 @@
 #' @return A \code{\link{data.frame}} with the formatted data
 #' @export
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @examples
 #' anlz_iwrraw(iwrraw, tidalcreeks, yr = 2018)

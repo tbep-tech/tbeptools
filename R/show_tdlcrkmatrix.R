@@ -11,6 +11,8 @@
 #'
 #' @return A static \code{\link[ggplot2]{ggplot}} object is returned.
 #'
+#' @concept show
+#'
 #' @export
 #'
 #' @importFrom dplyr "%>%"

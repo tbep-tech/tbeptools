@@ -15,7 +15,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment
 #' @export
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @importFrom dplyr "%>%"
 #'

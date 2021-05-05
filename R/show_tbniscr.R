@@ -13,7 +13,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE}
 #' @export
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @importFrom dplyr "%>%"
 #'

@@ -8,7 +8,7 @@
 #' @param xtxt numeric indicating text size for x-axis labels
 #' @param size numeric indicating line size
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export

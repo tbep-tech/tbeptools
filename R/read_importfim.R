@@ -9,7 +9,7 @@
 #' @details Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv'}.
 #' @export
 #'
-#' @family read
+#' @concept read
 #'
 #' @seealso \code{\link{read_formwq}}, \code{\link{read_importphyto}}
 #'

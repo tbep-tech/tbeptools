@@ -8,7 +8,7 @@
 #'
 #' @return Mean estimates for chlorophyll and secchi
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @import dplyr tidyr
 #'

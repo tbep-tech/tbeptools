@@ -13,7 +13,7 @@
 #'
 #' Only sampling funded by TBEP and as part of the routine EPC benthic monitoring program are included in the final categories.
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @importFrom dplyr %>%
 #'

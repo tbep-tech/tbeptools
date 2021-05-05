@@ -13,10 +13,9 @@
 #' @param plotly logical if matrix is created using plotly
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #'
-#'
 #' @return A static \code{\link[ggplot2]{ggplot}} object is returned
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @details This function provides a combined output for the \code{\link{show_wqmatrix}} and \code{\link{show_matrix}} functions. Only one bay segment can be plotted for each function call.
 #'

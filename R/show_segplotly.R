@@ -10,7 +10,7 @@
 #'
 #' @return An interactive plotly object
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @export
 #'

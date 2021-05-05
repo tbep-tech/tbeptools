@@ -6,7 +6,7 @@
 #'
 #' @details Function is used internally within \code{\link{read_importbenthic}}, see the help file for limitations on using the function outside of Windows.
 #'
-#' @family read
+#' @concept read
 #'
 #' @importFrom dplyr %>%
 #'

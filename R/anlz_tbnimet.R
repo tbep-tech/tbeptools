@@ -10,7 +10,7 @@
 #' @return A data frame of raw metrics in wide fomat.  If \code{all = TRUE}, all metrics are returned, otherwise only \code{NumTaxa}, \code{BenthicTaxa}, \code{TaxaSelect}, \code{NumGuilds}, and \code{Shannon} are returned.
 #' @export
 #'
-#' @family anlz
+#' @concept analyze
 #'
 #' @importFrom dplyr %>%
 #'

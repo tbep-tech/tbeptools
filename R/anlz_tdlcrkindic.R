@@ -11,7 +11,7 @@
 #' @return A \code{\link{data.frame}} with the indicator values for each tidal creek
 #' @export
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @examples
 #' dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)

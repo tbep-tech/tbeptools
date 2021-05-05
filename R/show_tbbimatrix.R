@@ -18,7 +18,7 @@
 #' @details
 #' Additional summaries are provided for the entire bay, as a summary across categories ("All") and a summary weighted across the relative sizes of each bay segment ("All (wt)").
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @importFrom dplyr "%>%"
 #'

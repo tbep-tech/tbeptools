@@ -7,7 +7,7 @@
 #'
 #' @details Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2.  In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  The estimates are obtained for all seagrass species including Caulerpa, whereas all attached and drift algae species are aggregated.
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @importFrom dplyr %>%
 #'

@@ -6,7 +6,7 @@
 #' @return A formatted \code{data.frame} with FIM data if \code{locs = FALSE}, otherwise a simple features object if \code{locs = TRUE}
 #' @export
 #'
-#' @family read
+#' @concept read
 #'
 #' @importFrom dplyr %>%
 #'

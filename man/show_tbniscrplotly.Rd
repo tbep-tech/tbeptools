@@ -2,7 +2,7 @@
 % Please edit documentation in R/show_tbniscrplotly.R
 \name{show_tbniscrplotly}
 \alias{show_tbniscrplotly}
-\title{Creates a plotly obect for TBNI score plots}
+\title{Creates a plotly object for TBNI score plots}
 \usage{
 show_tbniscrplotly(p)
 }
@@ -13,33 +13,11 @@ show_tbniscrplotly(p)
 A \code{\link[plotly]{plotly}} data object
 }
 \description{
-Creates a plotly obect for TBNI score plots
+Creates a plotly object for TBNI score plots
 }
 \examples{
 tbniscr <- anlz_tbniscr(fimdata)
 p <- show_tbniscrall(tbniscr)
 show_tbniscrplotly(p)
 }
-\seealso{
-Other visualize: 
-\code{\link{show_boxplot}()},
-\code{\link{show_compplot}()},
-\code{\link{show_matrixplotly}()},
-\code{\link{show_matrix}()},
-\code{\link{show_reactable}()},
-\code{\link{show_segmatrix}()},
-\code{\link{show_segplotly}()},
-\code{\link{show_sitemap}()},
-\code{\link{show_tbbimatrix}()},
-\code{\link{show_tbnimatrix}()},
-\code{\link{show_tbniscrall}()},
-\code{\link{show_tbniscr}()},
-\code{\link{show_tdlcrk}()},
-\code{\link{show_thrplot}()},
-\code{\link{show_transectavespp}()},
-\code{\link{show_transectmatrix}()},
-\code{\link{show_transectsum}()},
-\code{\link{show_transect}()},
-\code{\link{show_wqmatrix}()}
-}
-\concept{visualize}
+\concept{show}

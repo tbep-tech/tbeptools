@@ -9,5 +9,6 @@
 #'   \item{Latitude}{num}
 #'   \item{Longitude}{num}
 #' }
-#' @family utilities
+#'
+#' @concept data
 "stations"

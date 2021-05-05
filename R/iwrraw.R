@@ -6,7 +6,9 @@
 #' This file was created by importing a SAS file directly into R using the \code{\link[haven]{read_sas}} function.  The SAS file is prepared annually by FDEP for Janicki Environmental, Inc.
 #'
 #' @format A data frame 1224558 rows and 52 variables
-#' @family utilities
+#'
+#' @concept data
+#'
 #' @examples
 #' \dontrun{
 #' library(haven)

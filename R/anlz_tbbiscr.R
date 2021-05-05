@@ -9,7 +9,7 @@
 #' @return A single data frame of TBBI scores for each site.
 #' @export
 #'
-#' @family anlz
+#' @concept analyze
 #'
 #' @importFrom dplyr %>%
 #'

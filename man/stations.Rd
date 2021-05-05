@@ -19,25 +19,5 @@ stations
 \description{
 Bay stations by segment
 }
-\seealso{
-Other utilities: 
-\code{\link{benthicdata}},
-\code{\link{bsmap}},
-\code{\link{epcdata}},
-\code{\link{fimdata}},
-\code{\link{fimstations}},
-\code{\link{iwrraw}},
-\code{\link{seagrass}},
-\code{\link{targets}},
-\code{\link{tbniref}},
-\code{\link{tbnispp}},
-\code{\link{tbseglines}},
-\code{\link{tbsegshed}},
-\code{\link{tbseg}},
-\code{\link{tbshed}},
-\code{\link{tidalcreeks}},
-\code{\link{tidaltargets}},
-\code{\link{transect}}
-}
-\concept{utilities}
+\concept{data}
 \keyword{datasets}

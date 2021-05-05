@@ -15,7 +15,7 @@
 #' @return If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{plotly}} (if \code{plotly = T}) object is returned showing trends over time by species for selected bay segments.  If \code{asreact = T}, a \code{\link[reactable]{reactable}} table showing results by year, segment, and species is returned.
 #' @export
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @references
 #' The plot is a representation of figure 2 in Johansson, R. (2016) Seagrass Transect Monitoring in Tampa Bay: A Summary of Findings from 1997 through 2015, Technical report #08-16, Tampa Bay Estuary Program, St. Petersburg, Florida.

@@ -10,7 +10,7 @@
 #' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}, only applies if \code{mosel = c(1, 12)}
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter, only applies if \code{mosel = c(1, 12)}
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @return A static \code{ggplot} object is returned
 #'

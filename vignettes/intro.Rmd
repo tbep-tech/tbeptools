@@ -38,196 +38,19 @@ library(knitr)
 
 Dashboard: https://shiny.tbep.org/wq-dash
 
+This vignette provides an overview of the functions in tbeptools that can be used to work with water quality data in Tampa Bay.  View the other vignettes for topical introductions to other reporting products (e.g., seagrasess, tidal creeks, etc.).
+
 The environmental recovery of Tampa Bay is an exceptional success story for coastal water quality management. Nitrogen loads in the mid 1970s have been estimated at 8.2 million kg/yr, with approximately 5.5 million kg/yr entering the upper Bay alone [@Poe05,@Greening06].  Reduced water clarity associated with phytoplankton biomass contributed to a dramatic reduction in the areal coverage of seagrass [@Tomasko05] and development of hypoxic events, causing a decline in benthic faunal production [@Santos80].  Extensive efforts to reduce nutrient loads to the Bay occurred by the late 1970s, with the most notable being improvements in infrastructure for wastewater treatment in 1979.  Improvements in water clarity and decreases in chlorophyll concentrations were observed Bay-wide in the 1980s, with conditions generally remaining constant to present day [@Beck15].
 
 Tracking changes in environmental condition from the past to present day would not have been possible without a long-term monitoring dataset. Data have been collected monthly by the Environmental Protection Commission of Hillsborough County since 1974 [@Sherwood16;@TBEP17].  Samples are taken at forty-five stations using by water collection or monitoring sonde at bottom, mid- or surface depths, depending on parameter.  The locations of monitoring stations are fixed and cover the entire Bay from the uppermost mesohaline sections to the lowermost euhaline portions that have direct interaction with the Gulf of Mexico.  Up to 515 observations are available for different parameters at each station, e.g., nitrogen, chlorophyll-a, and secchi depth. 
+
+Data collected from the monitoring program are processed and maintained in a spreadsheet titled `RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx` at <ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/>.  These data include observations at all stations and for all parameters throughout the period of record.  To date, there have been no systematic tools for importing, analyzing, and reporting information from these data. The **tbeptools** package provides was developed to address this need.
 
 ```{r tbmap, out.width = '80%', echo = F, fig.cap = 'Locations of long-term monitoring stations in Tampa Bay. The Bay is separated into four segments defined by chemical, physical, and geopolitical boundaries.'}
 knitr::include_graphics('tb_map.png')
 ```
 
-## Package goal
-
-Data collected from the monitoring program are processed and maintained in a spreadsheet titled `RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx` at <ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/>.  These data include observations at all stations and for all parameters throughout the period of record.  To date, there have been no systematic tools for importing, analyzing, and reporting information from these data. The **tbeptools** package provides was developed to address this need.
-
-Functions in tbeptools fall in three categories depending on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
-
-* `read`: Import current data from the main ftp site.
-
-* `anlz`: Analyze or summarize the imported data. 
-
-* `show`: Create a plot of the analyzed data.
-
-The following shows all functions provided in tbeptools, organized by prefix. 
-
-#### Read
-
-* `read_chkdate()`: Compare date of local xlsx file with the same file on the server
-
-* `read_dlcurrent()`: Download latest file from epchc.org
-
-* `read_formbenthic()`: Format benthic data for the Tampa Bay Benthic Index
-
-* `read_formfim()`: Format FIM data for the Tampa Bay Nekton Index
-
-* `read_formphyto()`: Format phytoplankton data
-
-* `read_formtransect()`: Format seagrass transect data from Water Atlas
-
-* `read_formwq()`: Format water quality data
-
-* `read_importbenthic()`: Download and import benthic data for Tampa Bay
-
-* `read_importfim()`: Load local FIM data for the Tampa Bay Nekton Index
-
-* `read_importphyto()`: Load local phytoplankton cell count file
-
-* `read_importwq()`: Load local water quality file
-
-* `read_transect()`: Import JSON seagrass transect data from Water Atlas
-
-#### Analyze
-
-* `anlz_attain()`: Get attainment categories
-
-* `anlz_attainsite()`: Get site attainments
-
-* `anlz_avedat()`: Estimate annual means
-
-* `anlz_avedatsite()`: Estimate annual means by site
-
-* `anlz_hydroload()`: Estimate hydrological estimates and adjustment factors for bay segments
-
-* `anlz_iwrraw()`: Format raw IWR data
-
-* `anlz_refs()`: Convert references csv to bib entries
-
-* `anlz_tbbimed()`: Get annual medians of Tampa Bay Benthic Index scores by bay segment
-
-* `anlz_tbbiscr()`: Get Tampa Bay Benthic Index scores
-
-* `anlz_tbniave()`: Get annual averages of Tampa Bay Nekton Index scores by bay segment 
-
-* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Nekton Index
-
-* `anlz_tbniscr()`: Get Tampa Bay Nekton Index scores
-
-* `anlz_tdlcrk()`: Estimate tidal creek report card scores
-
-* `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
-
-* `anlz_transectave()`: Get annual averages of seagrass frequency occurrence by bay segments and year
-
-* `anlz_transectavespp()`: Get annual averages of seagrass frequency occurrence by bay segments, year, and species
-
-* `anlz_transectocc()`: Get seagrass average abundance and occurrence across transects
-
-* `anlz_yrattain()`: Get attainment categories for a selected year
-
-#### Show
-
-* `show_boxplot()`: Plot monthly chlorophyll or light attenuation values for a bay segment
-
-* `show_compplot()`: Make a bar plot for transect training group comparisons
-
-* `show_matrix()`: Create a colorized table for indicator reporting
-
-* `show_matrixplotly()`: Creates a plotly matrix from any matrix function input
-
-* `show_reactable()`: Create a reactable table for reporting matrices, used internally only
-
-* `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
-
-* `show_segplotly()`: Plot chlorophyll and secchi data together with matrix outcomes 
-
-* `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
-
-* `show_tbbimatrix()`: Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
-
-* `show_tbnimatrix()`: Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
-
-* `show_tbniscr()`: Plot Tampa Bay Nekton Index scores over time by bay segment
-
-* `show_tbniscrall()`: Plot Tampa Bay Nekton Index scores over time as average across bay segments
-
-* `show_tbniscrplotly():` Creates a plotly obect for TBNI score plots
-
-* `show_tdlcrk()`: Make a map for tidal creek report card
-
-* `show_tdlcrkindic()`: Plotly barplots of tidal creek context indicators
-
-* `show_tdlcrkindiccdf()`: Plotly empirical CDF plots of tidal creek context indicators
-
-* `show_tdlcrkline()`: Add a line or annotation to a plotly graph for the tidal creek indicators
-
-* `show_tdlcrkmatrix()`: Plot the tidal creek report card matrix
-
-* `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
-
-* `show_transect()`: Plot results for a seagrass transect by time and location
-
-* `show_transectavespp()`: Show annual averages of seagrass frequency occurrence by bay segments, year, and species
-
-* `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
-
-* `show_transectsum()`: Plot frequency occurrence for a seagrass transect by time for all species
-
-* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
-
-The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
-
-```{r, out.width = '80%', echo = F, fig.cap = "Searching for functions in tbeptools by typing in the prefix."}
-knitr::include_graphics('readauto.png')
-```
-
-## Installing tbeptools
-
-Begin by installing the package from GitHub.  The source code is available on the tbep-tech GitHub group web page: <https://github.com/tbep-tech/tbeptools>.  
-
-First, install the devtools package, load devtools, then install and load tbeptools.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(tbeptools)`).
-
-```{r, eval = F}
-install.packages('devtools')
-library(devtools)
-install_github('tbep-tech/tbeptools')
-library(tbeptools)
-```
-
-After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., `?read_importwq`, on the console.  The help files provide a brief description of what each function does and the required arguments that are needed to run the function.
-
-```{r, echo = F, out.width = '70%', fig.cap = "The help file for `read_importwq`."}
-knitr::include_graphics('helpfileex.png')
-```
-
-In the above example, the `read_importwq()` functions accepts six arguments.  All but one argument have default values that change the behavior of the function. In most cases, the default values are appropriate.  The only required argument is `xlsx` that specifies a path where a local excel file is located.  The details of this function are described below. 
-
 ## Read
-
-There are `r lsf.str("package:tbeptools") %>% as.character %>% grepl('^read', .) %>% sum %>% english` functions in tbeptools for reading or importing data from the main ftp website listed above:
-
-* `read_chkdate()`: Compare date of local xlsx file with the same file on the server
-
-* `read_dlcurrent()`: Download latest file from epchc.org
-
-* `read_formbenthic()`: Format benthic data for the Tampa Bay Benthic Index
-
-* `read_formfim()`: Format FIM data for the Tampa Bay Nekton Index
-
-* `read_formphyto()`: Format phytoplankton data
-
-* `read_formtransect()`: Format seagrass transect data from Water Atlas
-
-* `read_formwq()`: Format water quality data
-
-* `read_importbenthic()`: Download and import benthic data for Tampa Bay
-
-* `read_importfim()`: Load local FIM data for the Tampa Bay Nekton Index
-
-* `read_importphyto()`: Load local phytoplankton cell count file
-
-* `read_importwq()`: Load local water quality file
-
-* `read_transect()`: Import JSON seagrass transect data from Water Atlas
 
 The main function for importing water quality data is `read_importwq()`.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.
 
@@ -321,44 +144,6 @@ These data are highly summarized from the raw data file available online.  Cell 
 
 ## Analyze {.tabset}
 
-The analyze functions are used primarily to summarize the data returned by `read_importwq()`. 
-
-* `anlz_attain()`: Get attainment categories
-
-* `anlz_attainsite()`: Get site attainments
-
-* `anlz_avedat()`: Estimate annual means
-
-* `anlz_avedatsite()`: Estimate annual means by site
-
-* `anlz_hydroload()`: Estimate hydrological estimates and adjustment factors for bay segments
-
-* `anlz_iwrraw()`: Format raw IWR data
-
-* `anlz_refs()`: Convert references csv to bib entries
-
-* `anlz_tbbimed()`: Get annual medians of Tampa Bay Benthic Index scores by bay segment
-
-* `anlz_tbbiscr()`: Get Tampa Bay Benthic Index scores
-
-* `anlz_tbniave()`: Get annual averages of Tampa Bay Nekton Index scores by bay segment 
-
-* `anlz_tbnimet()`: Get all raw metrics for Tampa Bay Nekton Index
-
-* `anlz_tbniscr()`: Get Tampa Bay Nekton Index scores
-
-* `anlz_tdlcrk()`: Estimate tidal creek report card scores
-
-* `anlz_tdlcrkindic()`: Analyze tidal creek water quality indicators
-
-* `anlz_transectave()`: Get annual averages of seagrass frequency occurrence by bay segments and year
-
-* `anlz_transectavespp()`: Get annual averages of seagrass frequency occurrence by bay segments, year, and species
-
-* `anlz_transectocc()`: Get seagrass average abundance and occurrence across transects
-
-* `anlz_yrattain()`: Get attainment categories for a selected year
-
 The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
 
 Here we use `anlz_avedat()` to summarize the data by bay segment to estimate annual and monthly means for chlorophyll and light attenuation.  The output is a two-element list for the annual (`ann`) and monthly (`mos`) means by segment.
@@ -381,56 +166,6 @@ anlz_avedatsite(epcdata) %>% anlz_attainsite
 ```
 
 ## Show
-
-The plotting functions are used to view long-term trends for each bay segment and annual results for the overall water quality assessment:
-
-* `show_boxplot()`: Plot monthly chlorophyll or light attenuation values for a bay segment
-
-* `show_compplot()`: Make a bar plot for transect training group comparisons
-
-* `show_matrix()`: Create a colorized table for indicator reporting
-
-* `show_matrixplotly()`: Creates a plotly matrix from any matrix function input
-
-* `show_reactable()`: Create a reactable table for reporting matrices, used internally only
-
-* `show_segmatrix()`: Create a colorized table for water quality outcomes and exceedances by segment
-
-* `show_segplotly()`: Plot chlorophyll and secchi data together with matrix outcomes 
-
-* `show_sitemap()`: Plot a map of water quality stations for a selected year, with targets
-
-* `show_tbbimatrix()`: Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
-
-* `show_tbnimatrix()`: Plot a matrix of Tampa Bay Nekton Index scores over time by bay segment
-
-* `show_tbniscr()`: Plot Tampa Bay Nekton Index scores over time by bay segment
-
-* `show_tbniscrall()`: Plot Tampa Bay Nekton Index scores over time as average across bay segments
-
-* `show_tbniscrplotly():` Creates a plotly obect for TBNI score plots
-
-* `show_tdlcrk()`: Make a map for tidal creek report card
-
-* `show_tdlcrkindic()`: Plotly barplots of tidal creek context indicators
-
-* `show_tdlcrkindiccdf()`: Plotly empirical CDF plots of tidal creek context indicators
-
-* `show_tdlcrkline()`: Add a line or annotation to a plotly graph for the tidal creek indicators
-
-* `show_tdlcrkmatrix()`: Plot the tidal creek report card matrix
-
-* `show_thrplot()`: Plot annual water quality values, targets, and thresholds for a bay segment
-
-* `show_transect()`: Plot results for a seagrass transect by time and location
-
-* `show_transectavespp()`: Show annual averages of seagrass frequency occurrence by bay segments, year, and species
-
-* `show_transectmatrix()`: Show matrix of seagrass frequency occurrence by bay segments and year
-
-* `show_transectsum()`: Plot frequency occurrence for a seagrass transect by time for all species
-
-* `show_wqmatrix()`: Create a colorized table for chlorophyll or light attenuation exceedances
 
 External package libraries in R can be used to plot the time series data.  Here's an example using the popular [ggplot2](https://ggplot2.tidyverse.org/) package.  Some data wrangling with the [dplyr](https://dplyr.tidyverse.org/) is done first to filter the data we want to plot.
 

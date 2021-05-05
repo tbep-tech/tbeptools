@@ -10,7 +10,7 @@
 #'
 #' @export
 #'
-#' @family read
+#' @concept read
 #'
 #' @seealso \code{\link{read_importwq}}
 #'

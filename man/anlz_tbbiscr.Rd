@@ -21,10 +21,4 @@ This function calculates scores for the TBBI based on station, taxa, and field s
 \examples{
 anlz_tbbiscr(benthicdata)
 }
-\seealso{
-Other anlz: 
-\code{\link{anlz_tbniave}()},
-\code{\link{anlz_tbnimet}()},
-\code{\link{anlz_tbniscr}()}
-}
-\concept{anlz}
+\concept{analyze}

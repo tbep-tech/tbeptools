@@ -10,7 +10,7 @@
 #' @return A \code{\link{data.frame}} with the report card scores for each creek, as prioritize, investigate, caution, monitor, or no data
 #' @export
 #'
-#' @family analyze
+#' @concept analyze
 #'
 #' @examples
 #' anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)

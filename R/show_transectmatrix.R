@@ -17,7 +17,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object
 #' @export
 #'
-#' @family visualize
+#' @concept show
 #'
 #' @importFrom dplyr "%>%"
 #'
