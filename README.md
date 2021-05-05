@@ -17,7 +17,7 @@ The package can be installed from GitHub.  The source code is available on the t
 
 First, install the devtools package, load devtools, then install and load tbeptools.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(tbeptools)`).
 
-```{r, eval = F}
+```r
 install.packages('devtools')
 library(devtools)
 install_github('tbep-tech/tbeptools')
@@ -46,11 +46,8 @@ Functions in tbeptools fall in three categories depending on mode of use.  Each 
 
 * `show`: Create a plot of the analyzed data.
 
-The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).  For example:
+The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).
 
-```{r, out.width = '80%', echo = F, fig.cap = "Searching for functions in tbeptools by typing in the prefix."}
-knitr::include_graphics('readauto.png')
-```
 The function [reference page](https://tbep-tech.github.io/tbeptools/reference/index.html) can also be viewed for a complete list of functions organized by category, with links to the help files. 
 
 # Issues and suggestions
