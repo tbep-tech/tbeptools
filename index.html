@@ -105,10 +105,10 @@
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
-<p>The package can be installed from GitHub.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'devtools'</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'tbep-tech/tbeptools'</span><span class="op">)</span></code></pre></div>
+<p>The package can be installed from GitHub. The source code is available on the tbep-tech GitHub group web page: <a href="https://github.com/tbep-tech/tbeptools" class="uri">https://github.com/tbep-tech/tbeptools</a>.</p>
+<p>First, install the devtools package, load devtools, then install and load tbeptools. Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., <code><a href="https://github.com/tbep-tech/tbeptools">library(tbeptools)</a></code>).</p>
+<p><code>{r, eval = F} install.packages('devtools') library(devtools) install_github('tbep-tech/tbeptools') library(tbeptools)</code></p>
+<p>After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., <code><a href="reference/read_importwq.html">?read_importwq</a></code>, on the console. The help files provide a brief description of what each function does and the required arguments that are needed to run the function.</p>
 </div>
 <div id="package-vignettes" class="section level1">
 <h1 class="hasAnchor">
@@ -126,6 +126,18 @@
 <li>
 <a href="https://tbep-tech.github.io/tbeptools/articles/seagrasstransect.html">Seagrass Transect Data</a>: Overview of functions to import, analyze, and plot results for the seagrass transect data collected in Tampa Bay</li>
 </ul>
+</div>
+<div id="package-structure" class="section level1">
+<h1 class="hasAnchor">
+<a href="#package-structure" class="anchor"></a>Package structure</h1>
+<p>Functions in tbeptools fall in three categories depending on mode of use. Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:</p>
+<ul>
+<li><p><code>read</code>: Import current data from the main ftp site.</p></li>
+<li><p><code>anlz</code>: Analyze or summarize the imported data.</p></li>
+<li><p><code>show</code>: Create a plot of the analyzed data.</p></li>
+</ul>
+<p>The functions can be easily found in RStudio after loading the package and typing the prefix at the command line. An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., <code>read</code>, <code>anlz</code>, or <code>show</code>). For example:</p>
+<p><code>{r, out.width = '80%', echo = F, fig.cap = "Searching for functions in tbeptools by typing in the prefix."} knitr::include_graphics('readauto.png')</code> The function <a href="https://tbep-tech.github.io/tbeptools/reference/index.html">reference page</a> can also be viewed for a complete list of functions organized by category, with links to the help files.</p>
 </div>
 <div id="issues-and-suggestions" class="section level1">
 <h1 class="hasAnchor">

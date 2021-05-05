@@ -168,18 +168,6 @@
     <p>This function downloads and unzips a Microsoft Access Database from <a href='ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/'>ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/</a>.  The database tables are accessed using a connection through the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at <a href='https://www.microsoft.com/en-us/download/details.aspx?id=54920'>https://www.microsoft.com/en-us/download/details.aspx?id=54920</a>.  The function has not been tested for 32-bit versions of R or outside of Windows.</p>
 <p>For the <code>path</code> argument, you must specify the full path and not the home expansion, i.e., <code>'C:/Users/yourname/Desktop/benthic.zip'</code> and not <code>'~/Desktop/benthic.zip'</code>.  If the zipped file has previously been downloaded and extracted, the direct path to the .mdb file can be uased for <code>path</code>.</p>
 <p>The .mdb database in the unzipped folder is large and a temporary file can be created to preserve file space, e.g., using <code><a href='https://rdrr.io/r/base/tempfile.html'>tempfile(fileext = '.zip')</a></code> for the <code>path</code> argument. See the examples.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other read: 
-<code><a href='read_chkdate.html'>read_chkdate</a>()</code>,
-<code><a href='read_dlcurrent.html'>read_dlcurrent</a>()</code>,
-<code><a href='read_formbenthic.html'>read_formbenthic</a>()</code>,
-<code><a href='read_formfim.html'>read_formfim</a>()</code>,
-<code><a href='read_formphyto.html'>read_formphyto</a>()</code>,
-<code><a href='read_formwq.html'>read_formwq</a>()</code>,
-<code><a href='read_importfim.html'>read_importfim</a>()</code>,
-<code><a href='read_importphyto.html'>read_importphyto</a>()</code>,
-<code><a href='read_importwq.html'>read_importwq</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
