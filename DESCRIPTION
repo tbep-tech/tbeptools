@@ -32,7 +32,7 @@ Authors@R: c(
       email = "graulerson@tbep.org",
       comment = c(ORCID = "00000-0002-5920-5743")
     ),
-    person(given = "Ben",
+    person(given = "Benjamin",
       family = "Best",
       role = c("aut"),
       email = "ben@ecoquants.com",
