@@ -11,7 +11,7 @@ test_that("Checking anlz_tdlcrkindic", {
                                       tn_tp_ratio = NA_real_, chla_tsi = NA_real_, tn_tsi = NA_real_,
                                       tn2_tsi = NA_real_, tp_tsi = NA_real_, tp2_tsi = NA_real_,
                                       nut_tsi = NaN, tsi = NaN, no23_source = NA_real_, no23_tidal = NA_real_,
-                                      no23_ratio = NA_real_), row.names = 1144L, class = "data.frame"))
+                                      no23_ratio = NA_real_, do_bnml = NA_real_, do_prop = NA_real_), row.names = 1144L, class = "data.frame"))
 
 })
 
