@@ -45,7 +45,6 @@ jobs:
         run: |
           install.packages(c("remotes"))
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_version("mapview", version = "2.7.8")
           remotes::install_github("fawda123/Jabbrev")
           remotes::install_cran("covr")
         shell: Rscript {0}
