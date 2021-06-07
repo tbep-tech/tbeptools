@@ -44,6 +44,7 @@ jobs:
         run: |
           sudo apt-get install libgdal-dev
           sudo apt-get install udunits-bin
+          sudo apt-get install libpoppler-cpp-dev
 
       - name: Install dependencies
         run: |
