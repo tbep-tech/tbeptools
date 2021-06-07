@@ -45,6 +45,8 @@ jobs:
           sudo apt-get install libgdal-dev
           sudo apt-get install udunits-bin
           sudo apt-get install libpoppler-cpp-dev
+          sudo apt-get install libharfbuzz-dev
+          sudo apt-get install libfribidi-dev
 
       - name: Install dependencies
         run: |
