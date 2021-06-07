@@ -9,7 +9,7 @@
 
 R package for Tampa Bay Estuary Program functions. Please see the [vignette](https://tbep-tech.github.io/tbeptools/articles/intro.html) for a full description.
 
-<img src="man/figures/tbeptoolshex.png" align="center" width="125"/>
+<img src="man/figures/logo.png" align="center" width="125"/>
 
 # Installation
 
