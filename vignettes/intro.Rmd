@@ -54,10 +54,10 @@ knitr::include_graphics('tb_map.png')
 
 The main function for importing water quality data is `read_importwq()`.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.
 
-First, create a character path for the location of the file.  If one does not exist, specify a desired location and name for the downloaded file.  Here, we want to put the file in the vignettes folder and name is 2018_Results_updated.xls.  Note that this file path is relative to the root working directly for the current R session.  You can view the working directory with `getwd()`.
+First, create a character path for the location of the file.  If one does not exist, specify a desired location and name for the downloaded file.  Here, we want to put the file in the vignettes folder and name is current_results.xls.  Note that this file path is relative to the root working directly for the current R session.  You can view the working directory with `getwd()`.
 
 ```{r}
-xlsx <- 'vignettes/2018_Results_updated.xls'
+xlsx <- 'vignettes/current_results.xls'
 ```
 
 Now we pass this `xlsx` object to the `read_importwq()` function. 
@@ -75,7 +75,7 @@ We get an error message from the function indicating that the file is not found.
 ecpdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 ```
-#> File vignettes/2018_Results_updated.xls does not exist, replacing with downloaded file...
+#> File vignettes/current_results.xls does not exist, replacing with downloaded file...
 
 #> trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
  length 24562051 bytes (23.4 MB)
@@ -101,13 +101,6 @@ The final argument `na` indicates which fields in the downloaded spreadsheet are
 
 After the data are successfully imported, you can view them from the assigned object: 
 
-```{r epchc_import, echo = F, message = F, include = F}
-# local file path
-xlsx <- here('vignettes', 'current_results.xls')
-
-# load data and some light formatting
-epcdata <- read_importwq(xlsx, download_latest = T)
-```
 ```{r}
 epcdata
 ```
@@ -198,7 +191,7 @@ We can show the same plot but for light attenuation by changing the `thr = "chla
 show_thrplot(epcdata, bay_segment = "OTB", thr = "la")
 ```
 
-The year range to plot can also be specified using the `yrrng` argument, where the default is `yrrng = c(1975, 2018)`.
+The year range to plot can also be specified using the `yrrng` argument, where the default is the year range from `epcdata`.
 
 ```{r, fig.height = 5, fig.width = 8}
 show_thrplot(epcdata, bay_segment = "OTB", thr = "la", yrrng = c(2000, 2018))
@@ -222,7 +215,7 @@ show_boxplot(epcdata, param = 'chla', bay_segment = "OTB")
 show_boxplot(epcdata, param = 'la', bay_segment = "HB")
 ```
 
-A different subset of years and selected year of interest can also be viewed by changing the `yrrng` and `yrsel` arguments.  Here we show 1980 compared to monthly averages for the last ten years. 
+A different subset of years and selected year of interest can also be viewed by changing the `yrrng` and `yrsel` arguments.  Here we show 1980 compared to monthly averages from 2008 to 2018. 
 
 ```{r, fig.height = 5, fig.width = 8}
 show_boxplot(epcdata, param = 'chla', bay_segment = "OTB", yrrng = c(2008, 2018), yrsel = 1980)
@@ -264,7 +257,7 @@ The matrix is also a `ggplot` object and its layout can be changed using `ggplot
 
 ```{r, fig.height = 1.5, fig.width = 8}
 show_matrix(epcdata, txtsz = NULL) +
-  scale_y_continuous(expand = c(0,0), breaks = c(1975:2018)) + 
+  scale_y_continuous(expand = c(0,0), breaks = sort(unique(epcdata$yr))) + 
   coord_flip() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```

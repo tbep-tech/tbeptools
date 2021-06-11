@@ -5,7 +5,7 @@
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param txtsz numeric for size of text in the plot, applies only if \code{tab = FALSE}
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
-#' @param yrrng numeric vector indicating min, max years to include
+#' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in \code{epcdata}
 #' @param bay_segment chr string for bay segments to include, one to all of "OTB", "HB", "MTB", "LTB"
 #' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
@@ -29,12 +29,16 @@
 #'
 #' @examples
 #' show_matrix(epcdata)
-show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE,
+show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE,
                         nrows = 10, abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE){
 
   # default targets from data file
   if(is.null(trgs))
     trgs <- targets
+
+  # get year range from data if not provided
+  if(is.null(yrrng))
+    yrrng <- c(1975, max(epcdata$yr, na.rm = T))
 
   # process data to plot
   avedat <- anlz_avedat(epcdata, partialyr = partialyr)

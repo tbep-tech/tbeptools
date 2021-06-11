@@ -8,7 +8,7 @@ show_matrix(
   epcdata,
   txtsz = 3,
   trgs = NULL,
-  yrrng = c(1975, 2019),
+  yrrng = NULL,
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   asreact = FALSE,
   nrows = 10,
@@ -26,7 +26,7 @@ show_matrix(
 
 \item{trgs}{optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}}
 
-\item{yrrng}{numeric vector indicating min, max years to include}
+\item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in \code{epcdata}}
 
 \item{bay_segment}{chr string for bay segments to include, one to all of "OTB", "HB", "MTB", "LTB"}
 
