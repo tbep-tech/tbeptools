@@ -36,13 +36,13 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018) {
     dplyr::filter(n >= 1) %>%
     dplyr::select(-n) %>%
     dplyr::mutate(result = exp(result)) %>%
-    spread(masterCode, result)
+    tidyr::spread(masterCode, result)
 
   # left join iwrdata to creek data
   # estimate annual geometric mean indicators
   alldat <- tidalcreeks %>%
     sf::st_set_geometry(NULL) %>%
-    dplyr::left_join(iwrgeo, by = c('wbid', 'JEI', 'class')) %>%
+   dplyr::left_join(iwrgeo, by = c('wbid', 'JEI', 'class')) %>%
     dplyr::mutate(
       # tn_mark = ifelse(TN > 1.1, 1, 0),
       chla_tn_ratio = CHLAC / TN,
@@ -109,9 +109,12 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018) {
     tidyr::spread(masterCode, result) %>%
     dplyr::filter(!is.na(DOSAT))%>%
     dplyr::mutate(
+      docrit = dplyr::case_when(
+        class %in% c('3F', '1') ~ 38,
+        class %in% c('3M', '2') ~ 42),
       do_cnt = dplyr::case_when(
-        DOSAT < 42 ~ 1,
-        DOSAT >= 42 ~ 0
+        DOSAT < docrit ~ 1,
+        DOSAT >= docrit ~ 0
         )
       ) %>%
     dplyr::group_by(JEI,wbid,year) %>%
@@ -139,5 +142,32 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018) {
     dplyr::left_join(do_exceed, by = c('JEI', 'wbid', 'year'))
 
   return(out)
+
+  out2<-out%>%
+    dplyr::filter(str_detect(class, c("2","3M")))%>%
+    dplyr::mutate(
+      tn_ind = dplyr::case_when(
+      TN > 1.1 ~1,
+          (TN > 0 & TN <1.1) ~0),
+      chla_ind = dplyr::case_when(
+        CHLAC > 11 ~1,
+        (CHLAC > 0 & CHLAC <11) ~0),
+      tsi_ind = dplyr::case_when(
+        tsi > 55 ~1,
+        (tsi > 0 & tsi <55) ~0),
+      nox_ind = dplyr::case_when(
+        no23_ratio >= 1 ~1,
+        (no23_ratio > 0 & no23_ratio <1.1) ~0),
+      ch_tn_rat_ind = dplyr::case_when(
+        CHLAC/TN >= 15 ~1,
+        (CHLAC/TN > 0 & CHLAC/TN <15) ~0))%>%
+    dplyr::select(JEI, wbid,year,do_prop,ch_tn_rat_ind,nox_ind,tsi_ind,chla_ind,tn_ind)%>%
+    tidyr::gather("Ind","Value",do_prop,ch_tn_rat_ind,nox_ind,tsi_ind,chla_ind,tn_ind)%>%
+    dplyr::group_by(JEI, wbid,Ind) %>%
+    dplyr::summarise(
+      result = mean(Value, na.rm = T),
+      .groups = 'drop')
+
+  return(out2)
 
 }
