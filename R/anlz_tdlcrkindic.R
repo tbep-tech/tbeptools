@@ -148,19 +148,19 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018) {
     dplyr::mutate(
       tn_ind = dplyr::case_when(
       TN > 1.1 ~1,
-          (TN > 0 & TN <1.1) ~0),
+          (!is.na(TN) & TN <1.1) ~0),
       chla_ind = dplyr::case_when(
         CHLAC > 11 ~1,
-        (CHLAC > 0 & CHLAC <11) ~0),
+        (!is.na(CHLAC) & CHLAC <11) ~0),
       tsi_ind = dplyr::case_when(
         tsi > 55 ~1,
-        (tsi > 0 & tsi <55) ~0),
+        (!is.na(tsi) & tsi <55) ~0),
       nox_ind = dplyr::case_when(
         no23_ratio >= 1 ~1,
-        (no23_ratio > 0 & no23_ratio <1.1) ~0),
+        (!is.na(no23_ratio) & no23_ratio <1.1) ~0),
       ch_tn_rat_ind = dplyr::case_when(
         CHLAC/TN >= 15 ~1,
-        (CHLAC/TN > 0 & CHLAC/TN <15) ~0))%>%
+        (!is.na(CHLAC/TN)  & CHLAC/TN <15) ~0))%>%
     dplyr::select(JEI, wbid,year,do_prop,ch_tn_rat_ind,nox_ind,tsi_ind,chla_ind,tn_ind)%>%
     tidyr::gather("Ind","Value",do_prop,ch_tn_rat_ind,nox_ind,tsi_ind,chla_ind,tn_ind)%>%
     dplyr::group_by(JEI, wbid,Ind) %>%
