@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -153,7 +153,7 @@
   <span class='va'>epcdata</span>,
   txtsz <span class='op'>=</span> <span class='fl'>3</span>,
   trgs <span class='op'>=</span> <span class='cn'>NULL</span>,
-  yrrng <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1975</span>, <span class='fl'>2019</span><span class='op'>)</span>,
+  yrrng <span class='op'>=</span> <span class='cn'>NULL</span>,
   bay_segment <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"OTB"</span>, <span class='st'>"HB"</span>, <span class='st'>"MTB"</span>, <span class='st'>"LTB"</span><span class='op'>)</span>,
   asreact <span class='op'>=</span> <span class='cn'>FALSE</span>,
   nrows <span class='op'>=</span> <span class='fl'>10</span>,
@@ -181,7 +181,7 @@
     </tr>
     <tr>
       <th>yrrng</th>
-      <td><p>numeric vector indicating min, max years to include</p></td>
+      <td><p>numeric vector indicating min, max years to include, defaults to range of years in <code>epcdata</code></p></td>
     </tr>
     <tr>
       <th>bay_segment</th>
