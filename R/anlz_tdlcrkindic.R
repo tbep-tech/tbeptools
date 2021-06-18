@@ -5,7 +5,7 @@
 #' @param tidalcreeks \code{\link[sf]{sf}} object for population of tidal creeks
 #' @param iwrraw FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}
 #' @param yr numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date
-#' @param radar logical indicating if output is for radar plots, see details
+#' @param radar logical indicating if output is for \code{\link{show_tdlcrkradar}}, see details
 #'
 #' @details Annual geometric means for additional water quality data available at each wbid, JEI combination.  Florida trophic state index values are also estimated where data are available.
 #'
@@ -13,7 +13,7 @@
 #'
 #' Indicators for years where more than 10\% of observations exceed DO saturation criteria are also estimated.  The \code{do_bnml} and \code{do_prop} columns show a 1 or 0 for a given year to indicate if more than ten percent of observations were below DO percent saturation of 42.  The first column is based on a binomial probability exceedance that takes into account the number of observations in the year and the second column is based on a simple proportional estimate from the raw data.
 #'
-#' If \code{radar = TRUE}, output is returned in a format for use with radar plots.  Specifically, results are calculated as the percentage of years where an indicator exceeds a relevant threshold.  This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  Six indicators are returned with percentage exceedances based on total nitrogen (\code{tn_ind}) greater than 1.1 mg/L, chlorophyll (\code{chla_ind}) greater than 11 ug/L, trophic state index (\code{tsi_ind}) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (\code{nox_ind}) greater than one, chlorophyll and total nitrogen ratios > 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.
+#' If \code{radar = TRUE}, output is returned in a format for use with \code{\link{show_tdlcrkradar}}  Specifically, results are calculated as the percentage of years where an indicator exceeds a relevant threshold.  This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  Six indicators are returned with percentage exceedances based on total nitrogen (\code{tn_ind}) greater than 1.1 mg/L, chlorophyll (\code{chla_ind}) greater than 11 ug/L, trophic state index (\code{tsi_ind}) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (\code{nox_ind}) greater than one, chlorophyll and total nitrogen ratios > 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.
 #'
 #' @return A \code{\link{data.frame}} with the indicator values for each tidal creek
 #' @export
@@ -45,7 +45,7 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018, radar = FALSE) {
   # estimate annual geometric mean indicators
   alldat <- tidalcreeks %>%
     sf::st_set_geometry(NULL) %>%
-   dplyr::left_join(iwrgeo, by = c('wbid', 'JEI', 'class')) %>%
+    dplyr::left_join(iwrgeo, by = c('wbid', 'JEI', 'class')) %>%
     dplyr::mutate(
       # tn_mark = ifelse(TN > 1.1, 1, 0),
       chla_tn_ratio = CHLAC / TN,
@@ -170,11 +170,11 @@ anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2018, radar = FALSE) {
         CHLAC / TN >= 15 ~ 1,
         (!is.na(CHLAC/TN)  & CHLAC/TN <15) ~ 0)
       ) %>%
-    dplyr::select(JEI, wbid, year, do_prop, ch_tn_rat_ind, nox_ind, tsi_ind, chla_ind ,tn_ind) %>%
+    dplyr::select(id, JEI, wbid, year, do_prop, ch_tn_rat_ind, nox_ind, tsi_ind, chla_ind ,tn_ind) %>%
     tidyr::gather('var', 'val', do_prop, ch_tn_rat_ind, nox_ind, tsi_ind, chla_ind, tn_ind) %>%
-    dplyr::group_by(JEI, wbid, var) %>%
+    dplyr::group_by(id, JEI, wbid, var) %>%
     dplyr::summarise(
-      val = mean(val, na.rm = T),
+      val = 100 * mean(val, na.rm = T),
       .groups = 'drop'
       )
 

@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
-#' show_tdlcrkindic(495, cntdat, thrsel = TRUE)
+#' show_tdlcrkindic(35, cntdat, thrsel = TRUE)
 show_tdlcrkindic <- function(id, cntdat, yr = 2018, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
 
   labs <- c('Chla (ug/L)', 'TN (mg/L)', 'Chla:TN', 'DO (mg/L)', 'Florida TSI', 'Nitrate ratio')

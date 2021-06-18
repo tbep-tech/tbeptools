@@ -19,7 +19,7 @@
 #'
 #' @examples
 #' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
-#' show_tdlcrkindiccdf(495, cntdat, thrsel = TRUE)
+#' show_tdlcrkindiccdf(35, cntdat, thrsel = TRUE)
 show_tdlcrkindiccdf <- function(id, cntdat, yr = 2018, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
 
   # variables to plot

@@ -21,11 +21,11 @@ test_that("Checking anlz_tdlcrkindic radar plot output", {
   result <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, radar = T) %>%
     .[c((nrow(.) - 5):nrow(.)), ]
 
-  expect_equal(result, structure(list(JEI = c("SC37", "SC37", "SC37", "SC37", "SC37",
-                                              "SC37"), wbid = c("2026", "2026", "2026", "2026", "2026", "2026"
-                                              ), var = c("ch_tn_rat_ind", "chla_ind", "do_prop", "nox_ind",
-                                                         "tn_ind", "tsi_ind"), val = c(0, 0, 1, NaN, 0, 0)), row.names = c(NA,
-                                                                                                                           -6L), class = c("tbl_df", "tbl", "data.frame")))
+  expect_equal(result, structure(list(id = c(564L, 564L, 564L, 564L, 564L, 564L),
+                                      JEI = c("SC37", "SC37", "SC37", "SC37", "SC37", "SC37"),
+                                      wbid = c("2026", "2026", "2026", "2026", "2026", "2026"),
+                                      var = c("ch_tn_rat_ind", "chla_ind", "do_prop", "nox_ind", "tn_ind", "tsi_ind"),
+                                      val = c(0, 0, 1, NaN, 0, 0)), row.names = c(NA, -6L), class = c("tbl_df", "tbl", "data.frame")))
 
 })
 
