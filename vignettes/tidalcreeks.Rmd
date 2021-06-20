@@ -124,4 +124,11 @@ The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative
 show_tdlcrkindiccdf(id = 495, cntdat = cntdat, thrsel = TRUE)
 ```
 
+Individual creek indicators can also be shown using a "radar plot" that indicates the percentage of years where indicators exceeded a threshold of interest. These plots are created by using the `radar = TRUE` argument with `anlz_tdlcrkindic()` function and then using those results with the `show_tldcrkradar()` function. This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  If `radar = TRUE`, six indicators are returned with percentage exceedances based on total nitrogen (`tn_ind`) greater than 1.1 mg/L, chlorophyll (`chla_ind`) greater than 11 ug/L, trophic state index (`tsi_ind`) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (`nox_ind`) greater than one, chlorophyll and total nitrogen ratios > 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.  The radar plot shows the results in an interpretable format as the percentage of years where an indicator exceeded the threshold.  Indicators without data for the creek do not have a point on the plot.
+
+```{r, fig.width = 5, fig.height = 5}
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, radar = T)
+show_tdlcrkradar(id = 35, cntdat = cntdat)
+```
+
 # References
