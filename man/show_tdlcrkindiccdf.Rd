@@ -34,6 +34,6 @@ This function returns several empirical cumulative distribution plots for the ti
 }
 \examples{
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
-show_tdlcrkindiccdf(495, cntdat, thrsel = TRUE)
+show_tdlcrkindiccdf(35, cntdat, thrsel = TRUE)
 }
 \concept{show}

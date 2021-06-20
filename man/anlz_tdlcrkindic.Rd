@@ -13,7 +13,7 @@ anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, radar = FALSE)
 
 \item{yr}{numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date}
 
-\item{radar}{logical indicating if output is for \code{\link{show_tldcrkradar}}, see details}
+\item{radar}{logical indicating if output is for \code{\link{show_tdlcrkradar}}, see details}
 }
 \value{
 A \code{\link{data.frame}} with the indicator values for each tidal creek
@@ -28,7 +28,7 @@ Nitrogen ratios are estimated for JEIs that cover source (upstream, freshwater) 
 
 Indicators for years where more than 10\% of observations exceed DO saturation criteria are also estimated.  The \code{do_bnml} and \code{do_prop} columns show a 1 or 0 for a given year to indicate if more than ten percent of observations were below DO percent saturation of 42.  The first column is based on a binomial probability exceedance that takes into account the number of observations in the year and the second column is based on a simple proportional estimate from the raw data.
 
-If \code{radar = TRUE}, output is returned in a format for use with \code{\link{show_tldcrkradar}}  Specifically, results are calculated as the percentage of years where an indicator exceeds a relevant threshold.  This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  Six indicators are returned with percentage exceedances based on total nitrogen (\code{tn_ind}) greater than 1.1 mg/L, chlorophyll (\code{chla_ind}) greater than 11 ug/L, trophic state index (\code{tsi_ind}) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (\code{nox_ind}) greater than one, chlorophyll and total nitrogen ratios > 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.
+If \code{radar = TRUE}, output is returned in a format for use with \code{\link{show_tdlcrkradar}}  Specifically, results are calculated as the percentage of years where an indicator exceeds a relevant threshold.  This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  Six indicators are returned with percentage exceedances based on total nitrogen (\code{tn_ind}) greater than 1.1 mg/L, chlorophyll (\code{chla_ind}) greater than 11 ug/L, trophic state index (\code{tsi_ind}) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (\code{nox_ind}) greater than one, chlorophyll and total nitrogen ratios > 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.
 }
 \examples{
 dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)

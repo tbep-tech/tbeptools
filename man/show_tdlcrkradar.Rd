@@ -4,7 +4,7 @@
 \alias{show_tdlcrkradar}
 \title{Radar plots for tidal creek indicators}
 \usage{
-show_tdlcrkradar(id, cntdat)
+show_tdlcrkradar(id, cntdat, col = "#338080E6")
 }
 \arguments{
 \item{id}{numeric indicating the \code{id} number of the tidal creek to plot}
@@ -19,9 +19,11 @@ Radar plots for tidal creek indicators
 }
 \details{
 See details in \code{\link{anlz_tldcrkindic}} for an explanation of the indicators
+
+Internal code borrowed heavily from \code{\link[fmsb]{radarchart}}.
 }
 \examples{
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, rader = TRUE)
-show_tdlcrkradar(495, cntdat)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, radar = TRUE)
+show_tdlcrkradar(35, cntdat)
 }
 \concept{show}
