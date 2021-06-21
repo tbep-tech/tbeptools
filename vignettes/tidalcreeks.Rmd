@@ -30,6 +30,7 @@ library(knitr)
 library(mapview)
 library(plotly)
 
+
 sf::st_crs(tidalcreeks) <- 4326
 
 # Jabbrev::bib_scrp(here('vignettes', 'tidalcreeks.Rmd'), bib_new = here('vignettes', 'tidalrefs.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
@@ -41,19 +42,22 @@ sf::st_crs(tidalcreeks) <- 4326
 
 Dashboard: https://shiny.tbep.org/tidalcreek-dash/
 
-Tidal creeks or tributaries are essential habitats in the Tampa Bay Estuary and serve as important focal points for understanding watershed inputs that affect water quality. A fundamental goal of the Tampa Bay Estuary Program is to develop effective nutrient management strategies to support the ecological function of tidal tributaries. In partnership with Sarasota Bay NEP, Coastal & Heartland NEP, and local government and agency stakeholders, preliminary methods have been developed for assessing the health of tidal tributaries for fisheries based on exceedances of nitrogen concentrations [@tbep0216;@tbep1319]. These assessments can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.
+Tidal creeks (aka tributaries) are essential habitats in the Tampa Bay Estuary and serve as important focal points for understanding watershed inputs that affect water quality. A fundamental goal of the Tampa Bay Estuary Program is to develop effective nutrient management strategies to support the ecological function of tidal creeks. In partnership with Sarasota Bay NEP, Coastal & Heartland NEP, and local government and agency stakeholders, an open science framework has been developed for assessing the tidal creek condition baseed on a host of commonly collected water quality data [@tbep0216;@tbep1319]. These assessments can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.
 
-The tbeptools package includes a [simple features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data object of the population of tidal creeks in southwest Florida, called `tidalcreeks()`. This includes `r nrow(tidalcreeks)` polyline features designated by a water body ID (`wbid`), creek id (`JEI`), and [FDEP class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria) (`class`, 1 for potable water, 2 for shellfish harvesting or propagation, and 3F/3M for freshwater/marine fish consumption, recreation, propagation and maintenance of a healthy, well-balanced population of fish and wildlife).
+The tbeptools package includes a [simple features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data object of the population of tidal creeks in southwest Florida, called `tidalcreeks()`. This includes `r nrow(tidalcreeks)` polyline features designated by a water body ID (`WBID`), creek id (`JEI`), and [FDEP class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria) (`class`, 1 for potable water, 2 for shellfish harvesting or propagation, and 3F/3M for freshwater/marine fish consumption, recreation, propagation and maintenance of a healthy, well-balanced population of fish and wildlife).
 
 ```{r, eval = T, cache = F}
 mapview(tidalcreeks, homebutton = F, legend = F)
 ```
 
-The tidal creek assessments use data from the FDEP [Impaired Waters Rule](https://www.flrules.org/gateway/ChapterHome.asp?Chapter=62-303) database, currently for run 56 available [here](http://publicfiles.dep.state.fl.us/DEAR/IWR/).  This includes data through January 10th, 2019. Raw data from the IWR database required for assessment of the population of tidal creeks in southwest Florida is provided in the tbeptools package in the `iwrraw()` data object.  
+The tidal creek assessment framework was established based on data from the FDEP [Impaired Waters Rule](https://www.flrules.org/gateway/ChapterHome.asp?Chapter=62-303) database run 56 available [here](http://publicfiles.dep.state.fl.us/DEAR/IWR/) which includes data collected through January 10th 2019. However, the this framework intends to link to future IWR databases to refresh the site with new data as it becomes available.  Raw data from the IWR database required for assessment is provided in the tbeptools package in the `iwrraw()` data object.  
 
 ## Assessment
+The tidal creek assessment framework includes both a "report card" and "indicators" assessment which are provided as separate tabs in the dashboard. The report card provides an assessment of total nitrogen concentrations (the limiting nutrient in these creeks) based on annual geometric average concentrations relative to standards developed for contributing freshwater streams. The indicators are based a several water quality metrics derived as outcomes of our study to describe tidal creek condition and provide insights into site specific attributes of these creeks that may govern overall creek health.
 
-Similar to the [water quality report card](https://shiny.tbep.org/wq-dash/), tidal creeks are assigned to categories within a management framework intended to serve as both a mechanism for evaluating data relative to the need for regulatory action, and to identify stewardship goals that, if properly pursued, preclude the need for any regulatory actions.  These categories were based on fish as a biological response indicator.  Additional indicators that may be more sensitive to elevated nutrient concentrations have not yet been identified and are an area of current research.  Tidal creeks are assigned to one of four categories:
+# Report Card
+
+The report card is similar to the TBEP [water quality report card](https://shiny.tbep.org/wq-dash/) in that tidal creeks are assigned to categories within an assessment framework intended to serve as both a mechanism for evaluating data relative to the need for management action, and to identify stewardship goals that, if properly pursued, may preclude the need for any regulatory actions. These categories were established based principally on fish as a biological response indicator. Tidal creeks are assigned to one of four categories:
 
 <span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Monitor__</span>: Creek is at or below nitrogen concentrations that protect individual creek types within the larger population of creeks.
 
@@ -77,9 +81,9 @@ The `tidaltargets()` data object included in tbeptools includes these thresholds
 tidaltargets
 ```
 
-A temporal component is also included in the assessment, whereby the overall score considers the individual categories that were observed in the previous ten years for the period of record.  For this analysis, the tidal creek assessments include data from 2008 to 2018 coinciding with the ten years prior from the most current year in the IWR period of record.  Each year of data in which nitrogen was measured at a site is given a score based on the categories defined above and an overall score is based on a frequency count for each category over the 10 year period.  The overall scores are typically assigned conservatively, such that the overall score is based on the highest category that is exceeded.  For example, a creek is assigned to the "Prioritize" (red) category if only two of ten years exceeds the Prioritize threshold, even if the remaining years are at target concentrations. Therefore, the framework can be considered a risk characterization representing the risk of the creek exceeding a particular threshold level.
+A scoring algorithm was derived to define the final report card outcome for each creek using the entire ten year record of available data based on the following criteria. A single exceedance of the Prioritize and Investigate categories in any year of the ten year record would result in a classification of that creek into the respective category unless at least three other years of data were below the threshold level for that category. Creeks were assigned the next lower category if only one AGM for TN was above a given level while multiple other years (i.e., more than two) were below the given levels defining the cutoff points for each category. For example, a creek with at least 4 years of data and only a single exceedance of the Prioritize threshold would be assigned the Investigate category. Outcomes are exemplified below.
 
-## Functions
+## Report Card Functions
 
 The two primary functions for the tidal creek assessments are `anlz_tdlcrk()` to obtain the scores and `show_tdlcrk()` to view an interactive map of the results.  The `anlz_tdlcrk()` function uses the included `tidalcreeks()` and `iwrraw()` datasets to estimate the scores: 
 
@@ -96,39 +100,47 @@ The `show_tdlcrk()` function can be used with the output of `anlz_tdlcrk()` to v
 show_tdlcrk(results)
 ```
 
-Several years of data included in the IWR database are used to estimate the assessment categories. A report card style matrix can be plotted using the `show_tdlcrkmatrix()` function that shows the overall creek score and the number of years of data that were used to estimate the overall score. The plot shows a matrix with rows for individual creeks and columns for overall creek score.  The columns show an overall creek score and the number of years in the prior ten years that nitrogen values at a creek were assigned to each of the four score categories.  Number of years is mapped to cell transparency.  By default, the plot shows creeks with a marine WBID (water body identifier) designation as `3M` or `2`.  This can be changed with the `class` argument (i.e., `class c('3M', '2', '3F', '1')` for marine and freshwater WBIDs). 
+A report card style matrix can be plotted using the `show_tdlcrkmatrix()` function that shows the overall creek score and the number of years of data that were used to estimate the overall score. The plot shows a matrix with rows for individual creeks and columns for overall creek score.  The columns show an overall creek score and the number of years in the prior ten years that nitrogen values at a creek were assigned to each of the four score categories.  Number of years is mapped to cell transparency.  By default, the plot shows creeks with a marine WBID (water body identifier) designation as `3M` or `2`.  This can be changed with the `class` argument (i.e., `class c('3M', '2', '3F', '1')` for marine and freshwater WBIDs). 
 
 ```{r, fig.height = 10, fig.width = 6}
 show_tdlcrkmatrix(results)
 ```
 
-Additional water quality parameters in the IWR database can provide context for interpreting the outcomes, e.g., chlorophyll, nitrogen, dissolved oxygen, etc. The `anlz_tdlcrkindic()` function can be used to summarize the raw data in the IWR database and returns annual geometric means of additional water quality measurements for the ten years of data that were used to define the score categories.  Averages for each year of available data at each `wbid`/`JEI` combination are returned for chlorophyll, dissolved oxygen, total nitrogen, total phosphorus, trophic state index, and several other parameters.
+## Indicator Functions
+Water quality Indicators were developed to provide context for interpreting the report card outcomes as described in detail in Wessel et al. 2021 and include thresholds for total nitrogen (>1.1 mg/l), chlorophyll a (>11 ug/l), dissolved oxygen (< 42 % saturation), a trophic state index score (>55), the chlorophyll/nitrogen ratio (>15) and a ratio of the nitrates in the tidal and freshwater portion of the creek (>1) (if data are available).  The results for each indicator relative to the established thresholds are calculated on an annual basis and then synthesized for the 10 year period by calculating the percentage of annual outcomes exceeding the identified threshold indicator values out of the total number of years with available data. An integrative summary for all indicators is presented using a standardized polar coordinate system and Radar Charts to provide a single multi-metric summary plot of the results across indicators.  
+
+The `anlz_tdlcrkindic()` function generates these annual outcomes for each `wbid`/`JEI` combination.
 
 ```{r}
 results <- anlz_tdlcrkindic(tidalcreeks, iwrraw)
 head(results)
 ```
 
-The estimated results for the context indicators can be plotted with interactive [plotly](https://plot.ly/r/) graphics using the `show_tdlcrkindic()` and `show_tdlcrkindiccdf()` functions.  These are used in the [tidal creeks dashboard](https://shiny.tbep.org/tidalcreek-dash/), but are included in the tbeptools package for external application. These two functions produce plots for six of the more relevant context indicators: chlorophyll, total nitrogen, chlorophyll/nitrogen ratio, dissolved oxygen, [Florida trophic state index](http://www.lake.wateratlas.usf.edu/shared/learnmore.asp?toolsection=lm_tsi), and nitrate ratio.  Values are shown for each year in the prior ten year record for a tidal creek when data were available.  The nitrate ratios are estimated for JEIs that cover source (upstream, freshwater) and tidal (downstream) WBIDs, defined as the ratio of concentrations between the two (i.e., ratios > 1 mean source has higher concentrations). Nitrogen ratios for a given year reflect the median of all daily ratios when concentrations were measured in both a source and tidal segment during the same day. Note that a ratio of one can be obtained if both the source and tidal segments are at minimum detection.  Many creeks do not have sufficient data to esimate the nitrate ratio.
-
-The `show_tdlcrindic()` function produces bar plots of annual averages for the six context indicators at the selected  creek.  The creek to plot is selected with the `id` argument as an integer that is used to filter results from the `anlz_tldcrkindic()` function, where the latter is passed to the `cntdat` argument.  The `thrsel` argument plots dotted red lines as references for "healthy" systems.  Each year has its own unique color.  
-
-```{r}
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
-show_tdlcrkindic(id = 495, cntdat = cntdat, thrsel = TRUE)
-```
-
-The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative distribution functions (CDF) are plotted as guides relative to the selected creek. This information can be used to compare the water quality conditions at the selected creek to the "population" in southwest Florida. Annual averages for each indicator and each year for the selected creek are plotted on the CDF curves.  Location of the points indicate both a comparison to the population and the trajectory of indicators over time (i.e., brown are older observations and blue are more recent).  Holding the mouse cursor over a point shows the year and holding the cursor over the line shows the percentile value from the CDF. 
-
-```{r}
-show_tdlcrkindiccdf(id = 495, cntdat = cntdat, thrsel = TRUE)
-```
-
-Individual creek indicators can also be shown using a "radar plot" that indicates the percentage of years where indicators exceeded a threshold of interest. These plots are created by using the `radar = TRUE` argument with `anlz_tdlcrkindic()` function and then using those results with the `show_tldcrkradar()` function. This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  If `radar = TRUE`, six indicators are returned with percentage exceedances based on total nitrogen (`tn_ind`) greater than 1.1 mg/L, chlorophyll (`chla_ind`) greater than 11 ug/L, trophic state index (`tsi_ind`) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (`nox_ind`) greater than one, chlorophyll and total nitrogen ratios > 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.  The radar plot shows the results in an interpretable format as the percentage of years where an indicator exceeded the threshold.  Indicators without data for the creek do not have a point on the plot.
+Individual creek indicators are summarized using a multivariate response plot called a "radar plot" that indicates the percentage of years where each indicator exceeded its respective threshold value. These plots are created by using the `radar = TRUE` argument with `anlz_tdlcrkindic()` function and then using those results with the `show_tldcrkradar()` function. The radar plots only apply to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M). Indicators without data for the creek do not have a point on the plot.
 
 ```{r, fig.width = 5, fig.height = 5}
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, radar = T)
 show_tdlcrkradar(id = 35, cntdat = cntdat)
 ```
 
+
+General descriptive plots of the annual outcomes are provided with interactive [plotly](https://plot.ly/r/) graphics using the `show_tdlcrkindic()` and `show_tdlcrkindiccdf()` functions. 
+
+The `show_tdlcrindic()` function produces bar plots of annual outcomes at the selected creek. The creek to plot is selected with the `id` argument as an integer that is used to filter results from the `anlz_tldcrkindic()` function, where the latter is passed to the `cntdat` argument.  The `thrsel` argument plots dotted red lines based on the threshold values.  Each year has its own unique color.  
+
+```{r}
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
+show_tdlcrkindic(id = 495, cntdat = cntdat, thrsel = TRUE)
+```
+
+The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative distribution functions (CDF) are plotted to evalaute outcomes for a speciic creek relative to the entire distribution of creeks in southwest Florida. Each indicator and each year for the selected creek are plotted on the CDF curves.  Location of the points indicate both a comparison to the population and the trajectory of indicators over time (i.e., brown are older observations and blue are more recent).  Holding the mouse cursor over a point shows the year and holding the cursor over the line shows the percentile value from the CDF. 
+
+```{r}
+show_tdlcrkindiccdf(id = 495, cntdat = cntdat, thrsel = TRUE)
+```
+
+
 # References
+
+Wessel, M. R., J. Leverone, M.W. Beck, E.T. Sherwood,J. Hecker, S. West, and A.Janicki.2021. Developing a Water Quality Assessment Framework for Southwest Florida Tidal Creeks. Estuaries and Coasts. Accepted   
+
