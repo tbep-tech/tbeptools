@@ -34,7 +34,9 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   'TaxaCountID', 'TaxaID', 'TaxaListId', 'TaxaListID', 'TBBI', 'TBBICat', 'tbsegshed',
                   'TotalAbundance', 'bb', 'pa', 'TRAN_ID', 'bbest', 'focat', 'nsites', 'trnpts', 'foest',
                   'All', 'All (wt)', 'cntwts', 'grndn', 'nwts', 'per', 'tbbicatid', 'tbbicatwt', 'total',
-                  'AreaAbbr', 'AreaID', 'FundingId', 'FundingProject', 'no23_source', 'no23_tidal'))
+                  'AreaAbbr', 'AreaID', 'FundingId', 'FundingProject', 'no23_source', 'no23_tidal', 'DOSAT',
+                  'DOSAT_prop', 'ch_tn_rat_ind', 'chla_ind', 'do_bnml', 'do_cnt', 'do_prop', 'fo', 'nox_ind',
+                  'sta', 'tn_ind', 'tsi_ind', 'xcd'))
 
 #' @importFrom grDevices rgb
 NULL
@@ -48,8 +50,11 @@ NULL
 #' @importFrom methods .S4methods new
 NULL
 
-#' @importFrom stats ecdf median na.omit sd
+#' @importFrom stats ecdf median na.omit pbinom sd
 NULL
 
 #' @importFrom utils read.csv
+NULL
+
+#' @importFrom graphics arrows points polygon text
 NULL

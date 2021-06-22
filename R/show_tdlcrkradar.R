@@ -4,6 +4,7 @@
 #'
 #' @param id numeric indicating the \code{id} number of the tidal creek to plot
 #' @param cntdat output from \code{\link{anlz_tdlcrkindic}}
+#' @param col color input for polygon and line portions
 #'
 #' @return A radar plot
 #' @export

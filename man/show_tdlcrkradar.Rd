@@ -10,6 +10,8 @@ show_tdlcrkradar(id, cntdat, col = "#338080E6")
 \item{id}{numeric indicating the \code{id} number of the tidal creek to plot}
 
 \item{cntdat}{output from \code{\link{anlz_tdlcrkindic}}}
+
+\item{col}{color input for polygon and line portions}
 }
 \value{
 A radar plot
