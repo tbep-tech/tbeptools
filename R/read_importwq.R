@@ -32,7 +32,7 @@ read_importwq <- function(xlsx, download_latest = FALSE, na = ''){
     stopifnot(file.exists(xlsx))
 
   # load
-  rawdat <- readxl::read_xlsx(xlsx, sheet="RWMDataSpreadsheet",
+  rawdat <- suppressWarnings(readxl::read_xlsx(xlsx, sheet="RWMDataSpreadsheet",
                        col_types = c("numeric", "numeric", "text", "text", "text", "text",
                                      "numeric", "numeric", "text", "numeric", "numeric",
                                      "text", "date", "text", "numeric", "text", "text",
@@ -62,7 +62,7 @@ read_importwq <- function(xlsx, download_latest = FALSE, na = ''){
                                      "text", "text", "text", "text", "text", "text",
                                      "text", "text", "text", "text", "text", "text",
                                      "text", "text", "text"),
-                       na = na)
+                       na = na))
 
   # format names
   names(rawdat) <- gsub('\\r\\n', '_', names(rawdat))

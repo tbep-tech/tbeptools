@@ -20,7 +20,7 @@ A radar plot
 Radar plots for tidal creek indicators
 }
 \details{
-See details in \code{\link{anlz_tldcrkindic}} for an explanation of the indicators
+See details in \code{\link{anlz_tdlcrkindic}} for an explanation of the indicators
 
 Internal code borrowed heavily from \code{\link[fmsb]{radarchart}}.
 }

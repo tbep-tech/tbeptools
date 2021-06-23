@@ -2,7 +2,7 @@ test_that("Checking read_formwq", {
   xlsx <- 'exdata.xls'
 
   # load
-  rawdat <- readxl::read_xlsx(xlsx, sheet="RWMDataSpreadsheet",
+  rawdat <- suppressWarnings(readxl::read_xlsx(xlsx, sheet="RWMDataSpreadsheet",
                               col_types = c("numeric", "numeric", "text", "text", "text", "text",
                                             "numeric", "numeric", "text", "numeric", "numeric",
                                             "text", "date", "text", "numeric", "text", "text",
@@ -32,7 +32,7 @@ test_that("Checking read_formwq", {
                                             "text", "text", "text", "text", "text", "text",
                                             "text", "text", "text", "text", "text", "text",
                                             "text", "text", "text"),
-                              na = '')
+                              na = ''))
 
   # format names
   names(rawdat) <- gsub('\\r\\n', '_', names(rawdat))

@@ -9,7 +9,7 @@
 #' @return A radar plot
 #' @export
 #'
-#' @details See details in \code{\link{anlz_tldcrkindic}} for an explanation of the indicators
+#' @details See details in \code{\link{anlz_tdlcrkindic}} for an explanation of the indicators
 #'
 #' Internal code borrowed heavily from \code{\link[fmsb]{radarchart}}.
 #'
