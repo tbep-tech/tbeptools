@@ -32,7 +32,7 @@
 #' anlz_hydroload(2019, noaa_key)
 #'
 #' }
-anlz_hydroload <- function(yrs, noaa_key, trace = FALSE){
+anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
 
   res <- yrs %>%
     tibble::enframe('name', 'year') %>%

@@ -4,7 +4,7 @@
 \alias{anlz_hydroload}
 \title{Estimate hydrological estimates and adjustment factors for bay segments}
 \usage{
-anlz_hydroload(yrs, noaa_key, trace = FALSE)
+anlz_hydroload(yrs, noaa_key = NULL, trace = FALSE)
 }
 \arguments{
 \item{yrs}{numeric vector indicating years to return}
