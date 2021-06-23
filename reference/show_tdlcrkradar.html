@@ -149,7 +149,7 @@
     <p>Radar plots for tidal creek indicators</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_tdlcrkradar</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>cntdat</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>show_tdlcrkradar</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>cntdat</span>, col <span class='op'>=</span> <span class='st'>"#338080E6"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +162,10 @@
       <th>cntdat</th>
       <td><p>output from <code><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></code></p></td>
     </tr>
+    <tr>
+      <th>col</th>
+      <td><p>color input for polygon and line portions</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -169,12 +173,13 @@
     <p>A radar plot</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>See details in <code>anlz_tldcrkindic</code> for an explanation of the indicators</p>
+    <p>See details in <code><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></code> for an explanation of the indicators</p>
+<p>Internal code borrowed heavily from <code>radarchart</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>cntdat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2018</span>, rader <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, rader = TRUE): unused argument (rader = TRUE)</span></div><div class='input'><span class='fu'>show_tdlcrkradar</span><span class='op'>(</span><span class='fl'>495</span>, <span class='va'>cntdat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in dplyr::filter(., id == !!id): object 'cntdat' not found</span></div></pre>
+    <pre class="examples"><div class='input'><span class='va'>cntdat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_tdlcrkindic.html'>anlz_tdlcrkindic</a></span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2018</span>, radar <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>show_tdlcrkradar</span><span class='op'>(</span><span class='fl'>35</span>, <span class='va'>cntdat</span><span class='op'>)</span>
+</div><div class='img'><img src='show_tdlcrkradar-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
