@@ -13,14 +13,10 @@ R package for Tampa Bay Estuary Program functions. Please see the [vignette](htt
 
 # Installation
 
-The package can be installed from GitHub.  The source code is available on the tbep-tech GitHub group web page: <https://github.com/tbep-tech/tbeptools>.  
-
-First, install the devtools package, load devtools, then install and load tbeptools.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(tbeptools)`).
+The package can be installed from [r-universe](https://tbep-tech.r-universe.dev).  The source code is available on the tbep-tech GitHub group web page: <https://github.com/tbep-tech/tbeptools>.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(tbeptools)`).
 
 ```r
-install.packages('devtools')
-library(devtools)
-install_github('tbep-tech/tbeptools')
+install.packages('tbeptools', repos = 'https://tbep-tech/r-universe.dev')
 library(tbeptools)
 ```
 
