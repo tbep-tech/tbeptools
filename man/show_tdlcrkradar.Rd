@@ -4,7 +4,15 @@
 \alias{show_tdlcrkradar}
 \title{Radar plots for tidal creek indicators}
 \usage{
-show_tdlcrkradar(id, cntdat, col = "#338080E6")
+show_tdlcrkradar(
+  id,
+  cntdat,
+  col = "#338080E6",
+  ptsz = 1,
+  lbsz = 0.8,
+  valsz = 1,
+  brdwd = 5
+)
 }
 \arguments{
 \item{id}{numeric indicating the \code{id} number of the tidal creek to plot}
@@ -12,6 +20,14 @@ show_tdlcrkradar(id, cntdat, col = "#338080E6")
 \item{cntdat}{output from \code{\link{anlz_tdlcrkindic}}}
 
 \item{col}{color input for polygon and line portions}
+
+\item{ptsz}{numeric size of points}
+
+\item{lbsz}{numeric for size of text labels}
+
+\item{valsz}{numeric for size of numeric value labels}
+
+\item{brdwd}{numeric for polygon border width}
 }
 \value{
 A radar plot

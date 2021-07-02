@@ -5,6 +5,11 @@
 #' @param id numeric indicating the \code{id} number of the tidal creek to plot
 #' @param cntdat output from \code{\link{anlz_tdlcrkindic}}
 #' @param col color input for polygon and line portions
+#' @param ptsz numeric size of points
+#' @param lbsz numeric for size of text labels
+#' @param valsz numeric for size of numeric value labels
+#' @param brdwd numeric for polygon border width
+#'
 #'
 #' @return A radar plot
 #' @export
@@ -18,7 +23,7 @@
 #' @examples
 #' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018, radar = TRUE)
 #' show_tdlcrkradar(35, cntdat)
-show_tdlcrkradar <- function (id, cntdat, col = '#338080E6'){
+show_tdlcrkradar <- function (id, cntdat, col = '#338080E6', ptsz = 1, lbsz = 0.8, valsz = 1, brdwd = 5){
 
   axistype <- 3
   seg <- 5
@@ -60,7 +65,7 @@ show_tdlcrkradar <- function (id, cntdat, col = '#338080E6'){
     CAXISLABELS <- caxislabels[i + 1]
 
     text(-0.05, (i + CGap)/(seg + CGap), CAXISLABELS,
-         col = axislabcol)
+         col = axislabcol, cex = valsz)
 
   }
 
@@ -69,7 +74,7 @@ show_tdlcrkradar <- function (id, cntdat, col = '#338080E6'){
 
   # variable labels
   VLABELS <- colnames(toplo)
-  text(xx * 1.2, yy * 1.2, VLABELS, cex = 0.8)
+  text(xx * 1.2, yy * 1.2, VLABELS, cex = lbsz)
 
   # polygon and points
   xxs <- xx
@@ -126,7 +131,7 @@ show_tdlcrkradar <- function (id, cntdat, col = '#338080E6'){
 
   }
 
-  polygon(xxs, yys, lty = 1, lwd = 5, border = col, col = pfcol)
-  points(xx * scale, yy * scale, pch = 16, col = col)
+  polygon(xxs, yys, lty = 1, lwd = brdwd, border = col, col = pfcol)
+  points(xx * scale, yy * scale, pch = 16, col = col, cex = ptsz)
 
 }
