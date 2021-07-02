@@ -51,8 +51,6 @@ Imports:
   dataRetrieval,
   dplyr,
   ggplot2,
-  ggrepel,
-  ggsn,
   jsonlite,
   leaflet,
   lubridate,
@@ -72,6 +70,8 @@ Imports:
 Suggests: 
   bookdown,
   ggmap,
+  ggrepel,
+  ggsn,
   knitr,
   rmarkdown,
   testthat (>= 2.1.0),

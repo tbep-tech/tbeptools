@@ -103,16 +103,21 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
 
   transcol <- rgb(1, 1, 1, 0.5)
 
-  if(requireNamespace('ggmap', quietly = TRUE)){
+  if(!requireNamespace('ggmap', quietly = TRUE))
+    stop("Package \"ggmap\" needed for this function to work. Please install it.", call. = FALSE)
 
-    p <- ggmap::ggmap(bsmap) +
-      geom_sf(data = tbseglines, colour = 'black', inherit.aes = F, size = 1) +
-      ggrepel::geom_text_repel(data = tomap, aes(label = round(val, 1), geometry = geometry), stat = "sf_coordinates", size = 3, inherit.aes = F) +
-      geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = transcol) +
-      ggsn::scalebar(tbseg, dist = 6, dist_unit = "km", st.size = 3,
-                     transform = TRUE, model = "WGS84", height = 0.015)
+  if(!requireNamespace('ggsn', quietly = TRUE))
+    stop("Package \"ggsn\" needed for this function to work. Please install it.", call. = FALSE)
 
-  }
+  if(!requireNamespace('ggrepel', quietly = TRUE))
+    stop("Package \"ggrepel\" needed for this function to work. Please install it.", call. = FALSE)
+
+  p <- ggmap::ggmap(bsmap) +
+    geom_sf(data = tbseglines, colour = 'black', inherit.aes = F, size = 1) +
+    ggrepel::geom_text_repel(data = tomap, aes(label = round(val, 1), geometry = geometry), stat = "sf_coordinates", size = 3, inherit.aes = F) +
+    geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = transcol) +
+    ggsn::scalebar(tbseg, dist = 6, dist_unit = "km", st.size = 3,
+                   transform = TRUE, model = "WGS84", height = 0.015)
 
   if(fullyr){
 
