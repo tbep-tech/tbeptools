@@ -73,7 +73,6 @@ Remotes:
   fawda123/Jabbrev
 Suggests: 
   bookdown,
-  english,
   ggmap,
   here,
   knitr,

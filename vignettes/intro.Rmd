@@ -24,7 +24,6 @@ knitr::opts_chunk$set(
 library(tbeptools) 
 library(here)
 library(bookdown)
-library(english)
 library(ggplot2)
 library(dplyr)
 library(knitr)
