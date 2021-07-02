@@ -39,7 +39,7 @@ show_tdlcrkradar <- function (id, cntdat, col = '#338080E6', ptsz = 1, lbsz = 0.
     dplyr::mutate(
       var = factor(var,
         levels = c('chla_ind', 'tsi_ind', 'tn_ind', 'nox_ind', 'do_prop', 'ch_tn_rat_ind'),
-        labels = c('Chloropyll', 'TSI score', 'Total Nitrogen', 'Nitrate Ratio', 'DO Saturation', 'Chl/TN Ratio'))
+        labels = c('Chlorophyll', 'TSI score', 'Total Nitrogen', 'Nitrate Ratio', 'DO Saturation', 'Chl/TN Ratio'))
     ) %>%
     tidyr::spread(var, val) %>%
     tibble::column_to_rownames(var = 'JEI') %>%
