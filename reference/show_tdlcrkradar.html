@@ -149,7 +149,15 @@
     <p>Radar plots for tidal creek indicators</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_tdlcrkradar</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>cntdat</span>, col <span class='op'>=</span> <span class='st'>"#338080E6"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>show_tdlcrkradar</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  <span class='va'>cntdat</span>,
+  col <span class='op'>=</span> <span class='st'>"#338080E6"</span>,
+  ptsz <span class='op'>=</span> <span class='fl'>1</span>,
+  lbsz <span class='op'>=</span> <span class='fl'>0.8</span>,
+  valsz <span class='op'>=</span> <span class='fl'>1</span>,
+  brdwd <span class='op'>=</span> <span class='fl'>5</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,6 +173,22 @@
     <tr>
       <th>col</th>
       <td><p>color input for polygon and line portions</p></td>
+    </tr>
+    <tr>
+      <th>ptsz</th>
+      <td><p>numeric size of points</p></td>
+    </tr>
+    <tr>
+      <th>lbsz</th>
+      <td><p>numeric for size of text labels</p></td>
+    </tr>
+    <tr>
+      <th>valsz</th>
+      <td><p>numeric for size of numeric value labels</p></td>
+    </tr>
+    <tr>
+      <th>brdwd</th>
+      <td><p>numeric for polygon border width</p></td>
     </tr>
     </table>
 
