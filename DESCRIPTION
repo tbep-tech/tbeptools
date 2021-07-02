@@ -69,12 +69,9 @@ Imports:
   tibble,
   tidyr,
   xml2
-Remotes:
-  fawda123/Jabbrev
 Suggests: 
   bookdown,
   ggmap,
-  here,
   knitr,
   rmarkdown,
   testthat (>= 2.1.0),

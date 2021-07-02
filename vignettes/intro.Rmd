@@ -22,15 +22,12 @@ knitr::opts_chunk$set(
 
 # libraries
 library(tbeptools) 
-library(here)
 library(bookdown)
 library(ggplot2)
 library(dplyr)
 library(knitr)
 
-# Jabbrev::bib_scrp(here('vignettes', 'intro.Rmd'), bib_new = here('vignettes', 'refs.bib'))
-
-# spelling::spell_check_files(here("vignettes", "intro.Rmd"))
+# spelling::spell_check_files("vignettes/intro.Rmd")
 ```
 
 ## Background
@@ -109,7 +106,7 @@ These data include the bay segment name, station number, sample time, year, mont
 An import function is also available to download and format phytoplankton cell count data.  The `read_importphyto()` function works similarly as the import function for the water quality data.  Start by specifying a path where the data should be downloaded and set `download_latest` to `TRUE`.  This function will download and summarize data from the file `PlanktonDataList_ThroughCurrentReportMonth.xlsx` on the EPC website.
 
 ```{r eval = F}
-xlsx <- 'vignettes/phyto_data.xlsx'
+xlsx <- 'phyto_data.xlsx'
 phytodata <- read_importphyto(xlsx, download_latest = T)
 ```
 ```
@@ -123,7 +120,7 @@ After the phytoplankton data are successfully imported, you can view them from t
 
 ```{r phyto_import, echo = F, message = F, include = F}
 # local file path
-xlsx <- here('vignettes', 'phyto_data.xlsx')
+xlsx <- 'phyto_data.xlsx'
 
 # load data and some light formatting
 phytodata <- read_importphyto(xlsx, download_latest = T)

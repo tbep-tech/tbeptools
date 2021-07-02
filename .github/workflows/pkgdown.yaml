@@ -51,7 +51,6 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("fawda123/Jabbrev")
           install.packages(c("ggplot2", "patchwork", "plotly", "rnoaa", "cachem", "pkgdown"))
         shell: Rscript {0}
 

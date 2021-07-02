@@ -15,7 +15,7 @@
 #'
 #' iwrraw <- read_sas('../../02_DOCUMENTS/tidal_creeks/iwr56_tidalcreeks.sas7bdat')
 #' iwrraw <- zap_formats(iwrraw)
-#' save(iwrraw, file = here('data', 'iwrraw.RData'), compress = 'xz')
+#' save(iwrraw, file = 'data/iwrraw.RData', compress = 'xz')
 #'
 #' }
 "iwrraw"

@@ -50,7 +50,7 @@ tidalcreeks <- st_read(
   select(id, wbid, JEI, name, class, Creek_Length_m)
 
 # save
-save(tidalcreeks, file = here::here('data', 'tidalcreeks.RData'), compress = 'xz')
+save(tidalcreeks, file = 'data/tidalcreeks.RData', compress = 'xz')
 }
 }
 \concept{data}

@@ -26,9 +26,7 @@ library(mapview)
 sf::st_crs(trnpts) <- 4326
 sf::st_crs(trnlns) <- 4326
 
-# Jabbrev::bib_scrp(here('vignettes', 'seagrasstransect.Rmd'), bib_new = here('vignettes', 'seagrasstransect.bib'), ext_bib = 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/bibs.bib')
-
-# spelling::spell_check_files(here::here("vignettes", "seagrasstransect.Rmd"))
+# spelling::spell_check_files("vignettes/seagrasstransect.Rmd")
 ```
 
 Each year, TBEP partners collect seagrass transect data at fixed locations in Tampa Bay.  Data have been collected since the mid 1990s and are hosted online at the [Tampa Bay Water Atlas](https://www.tampabay.wateratlas.usf.edu/) by the University of South Florida Water Institute.  Functions are available in tbeptools for downloading, analyzing, and plotting these data. 
