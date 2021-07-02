@@ -50,7 +50,6 @@ Depends:
 Imports:
   dataRetrieval,
   dplyr,
-  extrafont,
   ggplot2,
   ggrepel,
   ggsn,
