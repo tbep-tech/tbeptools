@@ -18,7 +18,7 @@ The package can be installed from [r-universe](https://tbep-tech.r-universe.dev)
 ```r
 # enable repos
 options(repos = c(
-    fawda123 = 'https://fawda123.r-universe.dev',
+    tbeptech = 'https://tbep-tech.r-universe.dev',
     CRAN = 'https://cloud.r-project.org'))
 
 # install tbeptools
