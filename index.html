@@ -114,7 +114,15 @@
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>The package can be installed from <a href="https://tbep-tech.r-universe.dev">r-universe</a>. The source code is available on the tbep-tech GitHub group web page: <a href="https://github.com/tbep-tech/tbeptools" class="uri">https://github.com/tbep-tech/tbeptools</a>. Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., <code><a href="https://github.com/tbep-tech/tbeptools">library(tbeptools)</a></code>).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tbeptools'</span>, repos <span class="op">=</span> <span class="st">'https://tbep-tech/r-universe.dev'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co"># enable repos</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+    tbeptech <span class="op">=</span> <span class="st">'https://tbep-tech.r-universe.dev'</span>,
+    CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># install tbeptools</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tbeptools'</span><span class="op">)</span>
+
+<span class="co"># load tbeptools</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools">tbeptools</a></span><span class="op">)</span></code></pre></div>
 <p>After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., <code><a href="reference/read_importwq.html">?read_importwq</a></code>, on the console. The help files provide a brief description of what each function does and the required arguments that are needed to run the function.</p>
 </div>
