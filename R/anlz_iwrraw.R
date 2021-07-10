@@ -14,33 +14,46 @@
 #' @concept analyze
 #'
 #' @examples
-#' anlz_iwrraw(iwrraw, tidalcreeks, yr = 2018)
-anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2018) {
+#' anlz_iwrraw(iwrraw, tidalcreeks, yr = 2021)
+anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2021) {
 
-  mcodes <- c("CHLAC","CHLA_ ", "COLOR", "COND", "DO", "DOSAT", "DO_MG", "NO23_", "NO3O2", "ORGN", "SALIN", "TKN", "TKN_M", "TN", "TN_MG", "TP", "TPO4_",
-              "TP_MG", "TSS", "TSS_M", "TURB")
+  mcodes <- c("CHLAC","COLOR","COND","DO","DOSAT","NO3O2","ORGN","SALIN","TKN","TN","TP","TSS","TURB")
 
   # format iwr data
   out <- iwrraw %>%
-    dplyr::filter(wbid %in% unique(tidalcreeks$wbid) & JEI %in% unique(tidalcreeks$JEI)) %>%
+   # dplyr::filter(wbid %in% unique(tidalcreeks$wbid) & JEI %in% unique(tidalcreeks$JEI)) %>%
     dplyr::filter(year > yr - 11) %>%
     dplyr::filter(year < yr) %>%
     dplyr::filter(masterCode %in% mcodes) %>%
     dplyr::filter(!is.na(result) & result > 0) %>%
     tidyr::unite('date', month, day, year, remove = F, sep = '-') %>%
-    dplyr::select(wbid, class, JEI, year, date, masterCode, result) %>%
+    dplyr::select(wbid, class, JEI, year, date, masterCode, result,rCode,newComment) %>%
     dplyr::mutate(
       masterCode = dplyr::case_when(
-        masterCode %in% 'CHLA_' ~ 'CHLAC',
-        masterCode %in% c('NO23_', 'NO3O2') ~ 'NO23',
-        masterCode %in% 'TKN_M' ~ 'TKN',
-        masterCode %in% 'TN_MG' ~ 'TN',
-        masterCode %in% c('TPO4_', 'TP_MG') ~ 'TP',
-        masterCode %in% 'TSS_M' ~ 'TSS',
+        masterCode %in% c('NO3O2') ~ 'NO23',
         T ~ masterCode
       ),
-      result = log(result),
-      date = as.Date(date, format = '%m-%d-%Y')
+
+ # added removal of FDEP qualifier codes
+      disqual = str_count(rCode, "[VFNOYHJKQ?]"),
+      disqual2 = str_count(newComment,"[VFNOYHJKQ?]"),
+    )
+
+  # Tried below instead but it doesnt handle the second filter condition
+  #disqual = dplyr::case_when(
+  #        grepl('[VFNOYHJKQ?]', rCode) ~ 1),
+  #disqual2 = dplyr::case_when(
+  #        grepl('[VFNOYHJKQ?]', newComment) ~ 1))%>%
+  #  dplyr::filter(is.na(disqual) | is.na(disqual2))
+
+
+ # Instead i used this which i had to seperate into two chinks or i would get error- no applicable method for 'filter' applied to an object of class "logical"
+  out<-out%>%
+    dplyr::filter(disqual==0) %>%
+    dplyr::filter(disqual2==0)%>%
+    dplyr::filter(result > 0)%>%
+    mutate(result = log(result),
+           date = as.Date(date, format = '%m-%d-%Y')
     )
 
   return(out)

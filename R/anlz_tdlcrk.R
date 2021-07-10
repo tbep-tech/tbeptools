@@ -13,8 +13,8 @@
 #' @concept analyze
 #'
 #' @examples
-#' anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
-anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
+#' anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2021)
+anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2021) {
 
   # default targets from data file
   if(is.null(tidtrgs))
@@ -108,7 +108,7 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018) {
         T ~ score
       ),
       score = dplyr::case_when(
-        (score == 'Investigate' & class %in% c('3M', '2') & (`4` < 1 | is.na(`4`))) & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 1) ~ 'Caution',
+        (score == 'Investigate' & class %in% c('3M', '2') & (`4` < 1 | is.na(`4`))) & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 2) ~ 'Caution',
         T ~ score
       )
     ) %>%
