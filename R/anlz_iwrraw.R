@@ -34,26 +34,15 @@ anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2021) {
         T ~ masterCode
       ),
 
- # added removal of FDEP qualifier codes
-      disqual = str_count(rCode, "[VFNOYHJKQ?]"),
-      disqual2 = str_count(newComment,"[VFNOYHJKQ?]"),
-    )
-
-  # Tried below instead but it doesnt handle the second filter condition
-  #disqual = dplyr::case_when(
-  #        grepl('[VFNOYHJKQ?]', rCode) ~ 1),
-  #disqual2 = dplyr::case_when(
-  #        grepl('[VFNOYHJKQ?]', newComment) ~ 1))%>%
-  #  dplyr::filter(is.na(disqual) | is.na(disqual2))
-
-
- # Instead i used this which i had to seperate into two chinks or i would get error- no applicable method for 'filter' applied to an object of class "logical"
-  out<-out%>%
-    dplyr::filter(disqual==0) %>%
-    dplyr::filter(disqual2==0)%>%
+    # Remove FDEP Qualifiers  mdl left at mdl
+      disqual = dplyr::case_when(
+        grepl('[VFNOYHJKQ?]', rCode) ~ 1),
+      disqual2 = dplyr::case_when(
+        grepl('[VFNOYHJKQ?]', newComment) ~ 1))%>%
+    dplyr::filter(is.na(disqual) & is.na(disqual2))%>%
     dplyr::filter(result > 0)%>%
-    mutate(result = log(result),
-           date = as.Date(date, format = '%m-%d-%Y')
+    mutate( result = log(result),
+            date = as.Date(date, format = '%m-%d-%Y')
     )
 
   return(out)
