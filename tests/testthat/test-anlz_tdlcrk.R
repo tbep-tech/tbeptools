@@ -95,7 +95,7 @@ test_that("Checking anlz_tldcrk", {
                          "Investigate", "No Data", "No Data", "No Data", "No Data", "Monitor",
                          "No Data", "Investigate", "Investigate", "No Data", "No Data",
                          "No Data", "Monitor", "No Data", "No Data", "No Data", "Caution",
-                         "Monitor", "No Data", "No Data", "No Data", "No Data", "No Data",
+                         "No Data", "No Data", "No Data", "No Data", "No Data", "No Data",
                          "No Data", "No Data", "No Data", "No Data", "No Data", "No Data",
                          "No Data", "No Data", "No Data", "No Data", "No Data", "No Data",
                          "No Data", "No Data", "No Data", "Monitor", "No Data", "No Data",

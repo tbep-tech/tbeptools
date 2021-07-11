@@ -4,7 +4,7 @@
 \alias{anlz_tdlcrk}
 \title{Estimate tidal creek report card scores}
 \usage{
-anlz_tdlcrk(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2018)
+anlz_tdlcrk(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2021)
 }
 \arguments{
 \item{tidalcreeks}{\code{\link[sf]{sf}} object for population of tidal creeks}
@@ -22,6 +22,6 @@ A \code{\link{data.frame}} with the report card scores for each creek, as priori
 Estimate tidal creek report card scores
 }
 \examples{
-anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
+anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2021)
 }
 \concept{analyze}
