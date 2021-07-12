@@ -7,7 +7,7 @@
 anlz_iwrraw(iwrraw, tidalcreeks, yr = 2021)
 }
 \arguments{
-\item{iwrraw}{FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}}
+\item{iwrraw}{FDEP impaired waters rule data base as \code{\link{data.frame}}}
 
 \item{tidalcreeks}{\code{\link[sf]{sf}} object for population of tidal creeks}
 

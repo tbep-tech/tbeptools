@@ -12,7 +12,7 @@
 #' @concept show
 #'
 #' @examples
-#' dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2018)
+#' dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2021)
 #' show_tdlcrk(dat)
 show_tdlcrk <- function(dat, weight = 1.5) {
 

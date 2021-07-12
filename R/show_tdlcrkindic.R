@@ -4,7 +4,7 @@
 #'
 #' @param id numeric indicating the \code{id} number of the tidal creek to plot
 #' @param cntdat output from \code{\link{anlz_tdlcrkindic}}
-#' @param yr numeric indicating reference year, almost always 2018
+#' @param yr numeric indicating reference year
 #' @param thrsel logical if threshold lines and annotations are shown on the plots
 #' @param pal vector of colors for the palette
 #'
@@ -16,9 +16,9 @@
 #' @importFrom plotly layout plot_ly subplot
 #'
 #' @examples
-#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
-#' show_tdlcrkindic(35, cntdat, thrsel = TRUE)
-show_tdlcrkindic <- function(id, cntdat, yr = 2018, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
+#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021)
+#' show_tdlcrkindic(479, cntdat, thrsel = TRUE)
+show_tdlcrkindic <- function(id, cntdat, yr = 2021, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
 
   labs <- c('Chla (ug/L)', 'TN (mg/L)', 'Chla:TN', 'DO (mg/L)', 'Florida TSI', 'Nitrate ratio')
   names(labs) <- c('CHLAC', 'TN', 'chla_tn_ratio', 'DO', 'tsi', 'no23_ratio')
@@ -26,7 +26,7 @@ show_tdlcrkindic <- function(id, cntdat, yr = 2018, thrsel = FALSE, pal = c('#5C
   pal_yrs <- leaflet::colorFactor(
     palette = pal,
     na.color = 'yellow',
-    levels = as.character(seq(2008, 2017))
+    levels = as.character(seq(yr - 10, yr - 1))
   )
 
   # data to plot
