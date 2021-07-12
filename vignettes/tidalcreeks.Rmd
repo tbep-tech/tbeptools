@@ -31,14 +31,14 @@ library(plotly)
 
 sf::st_crs(tidalcreeks) <- 4326
 
-# spelling::spell_check_files("vignettes/tidalcreeks.Rmd")
+spelling::spell_check_files("vignettes/tidalcreeks.Rmd")
 ```
 
 ## Background
 
 Dashboard: https://shiny.tbep.org/tidalcreek-dash/
 
-Tidal creeks (aka tributaries) are essential habitats in the Tampa Bay Estuary and serve as important focal points for understanding watershed inputs that affect water quality. A fundamental goal of the Tampa Bay Estuary Program is to develop effective nutrient management strategies to support the ecological function of tidal creeks. In partnership with Sarasota Bay NEP, Coastal & Heartland NEP, and local government and agency stakeholders, an open science framework has been developed for assessing the tidal creek condition baseed on a host of commonly collected water quality data [@tbep0216;@tbep0220;@tbep1121]. These assessments can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.
+Tidal creeks (aka tributaries) are essential habitats in the Tampa Bay Estuary and serve as important focal points for understanding watershed inputs that affect water quality. A fundamental goal of the Tampa Bay Estuary Program is to develop effective nutrient management strategies to support the ecological function of tidal creeks. In partnership with Sarasota Bay NEP, Coastal & Heartland NEP, and local government and agency stakeholders, an open science framework has been developed for assessing the tidal creek condition based on a host of commonly collected water quality data [@tbep0216;@tbep0220;@tbep1121]. These assessments can support tracking of water quality management goals and can help refine restoration and management plans in priority tributaries, including those in need of hydrologic restoration that can support critical nursery habitats for sportfishes.
 
 The tbeptools package includes a [simple features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data object of the population of tidal creeks in southwest Florida, called `tidalcreeks()`. This includes `r nrow(tidalcreeks)` polyline features designated by a water body ID (`WBID`), creek id (`JEI`), and [FDEP class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria) (`class`, 1 for potable water, 2 for shellfish harvesting or propagation, and 3F/3M for freshwater/marine fish consumption, recreation, propagation and maintenance of a healthy, well-balanced population of fish and wildlife).
 
@@ -116,7 +116,7 @@ Individual creek indicators are summarized using a multivariate response plot ca
 
 ```{r, fig.width = 5, fig.height = 5}
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = T)
-show_tdlcrkradar(id = 35, cntdat = cntdat)
+show_tdlcrkradar(id = 494, cntdat = cntdat)
 ```
 
 
@@ -129,7 +129,7 @@ cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021)
 show_tdlcrkindic(id = 495, cntdat = cntdat, thrsel = TRUE)
 ```
 
-The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative distribution functions (CDF) are plotted to evalaute outcomes for a speciic creek relative to the entire distribution of creeks in southwest Florida. Each indicator and each year for the selected creek are plotted on the CDF curves.  Location of the points indicate both a comparison to the population and the trajectory of indicators over time (i.e., brown are older observations and blue are more recent).  Holding the mouse cursor over a point shows the year and holding the cursor over the line shows the percentile value from the CDF. 
+The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative distribution functions (CDF) are plotted to evaluate outcomes for a specific creek relative to the entire distribution of creeks in southwest Florida. Each indicator and each year for the selected creek are plotted on the CDF curves.  Location of the points indicate both a comparison to the population and the trajectory of indicators over time (i.e., brown are older observations and blue are more recent).  Holding the mouse cursor over a point shows the year and holding the cursor over the line shows the percentile value from the CDF. 
 
 ```{r}
 show_tdlcrkindiccdf(id = 495, cntdat = cntdat, thrsel = TRUE)
@@ -137,6 +137,3 @@ show_tdlcrkindiccdf(id = 495, cntdat = cntdat, thrsel = TRUE)
 
 
 # References
-
-Wessel, M. R., J. Leverone, M.W. Beck, E.T. Sherwood,J. Hecker, S. West, and A.Janicki.2021. Developing a Water Quality Assessment Framework for Southwest Florida Tidal Creeks. Estuaries and Coasts. Accepted   
-
