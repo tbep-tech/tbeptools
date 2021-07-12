@@ -31,7 +31,7 @@ library(plotly)
 
 sf::st_crs(tidalcreeks) <- 4326
 
-spelling::spell_check_files("vignettes/tidalcreeks.Rmd")
+# spelling::spell_check_files("vignettes/tidalcreeks.Rmd")
 ```
 
 ## Background
