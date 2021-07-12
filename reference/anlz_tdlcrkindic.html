@@ -149,7 +149,7 @@
     <p>Estimate tidal creek water quality indicators to support report card scores</p>
     </div>
 
-    <pre class="usage"><span class='fu'>anlz_tdlcrkindic</span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2018</span>, radar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>anlz_tdlcrkindic</span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2021</span>, radar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,7 +160,7 @@
     </tr>
     <tr>
       <th>iwrraw</th>
-      <td><p>FDEP impaired waters rule run 56 data base as <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code></p></td>
+      <td><p>FDEP impaired waters rule data base as <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code></p></td>
     </tr>
     <tr>
       <th>yr</th>
@@ -183,36 +183,36 @@
 <p>If <code>radar = TRUE</code>, output is returned in a format for use with <code><a href='show_tdlcrkradar.html'>show_tdlcrkradar</a></code>  Specifically, results are calculated as the percentage of years where an indicator exceeds a relevant threshold.  This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  Six indicators are returned with percentage exceedances based on total nitrogen (<code>tn_ind</code>) greater than 1.1 mg/L, chlorophyll (<code>chla_ind</code>) greater than 11 ug/L, trophic state index (<code>tsi_ind</code>) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (<code>nox_ind</code>) greater than one, chlorophyll and total nitrogen ratios &gt; 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'>anlz_tdlcrkindic</span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2018</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'>anlz_tdlcrkindic</span><span class='op'>(</span><span class='va'>tidalcreeks</span>, <span class='va'>iwrraw</span>, yr <span class='op'>=</span> <span class='fl'>2021</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   id  wbid  JEI         name class year CHLAC COLOR     COND       DO     DOSAT
-#&gt; 1  1  2052 CC01   Rock Creek    3M 2009    NA    NA 50923.64 5.998273  75.00467
-#&gt; 2  1  2052 CC01   Rock Creek    3M 2010    NA    NA 46485.21 8.849809 110.65252
-#&gt; 3  2 1983B CC01   Rock Creek     2 2009    NA    NA 52099.90 8.249848 103.14795
-#&gt; 4  2 1983B CC01   Rock Creek     2 2010    NA    NA 42588.26 8.348653 104.38271
-#&gt; 5  3 1983B CC02 Oyster Creek     2 2008     5    10 55530.00 5.134803  64.19720
-#&gt; 6  3 1983B CC02 Oyster Creek     2 2009    NA    NA 52161.41 7.239759  90.53120
-#&gt;   NO23 ORGN    SALIN  TKN   TN    TP TSS TURB chla_tn_ratio tn_tp_ratio
-#&gt; 1   NA   NA 33.25918   NA   NA    NA  NA   NA            NA          NA
-#&gt; 2   NA   NA 30.20121   NA   NA    NA  NA   NA            NA          NA
-#&gt; 3   NA   NA 34.34996   NA   NA    NA  NA   NA            NA          NA
-#&gt; 4   NA   NA 27.39106   NA   NA    NA  NA   NA            NA          NA
-#&gt; 5 0.03   NA 36.91500 1.11 1.14 0.094   8  5.2      4.385965    12.12766
-#&gt; 6   NA   NA 34.20891   NA   NA    NA  NA   NA            NA          NA
-#&gt;   chla_tsi   tn_tsi  tn2_tsi   tp_tsi  tp2_tsi  nut_tsi      tsi no23_source
-#&gt; 1       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt; 2       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt; 3       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt; 4       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt; 5 39.97591 58.59436 62.41899 66.10528 83.42176 62.34982 51.16286          NA
-#&gt; 6       NA       NA       NA       NA       NA      NaN       NA          NA
-#&gt;   no23_tidal no23_ratio do_bnml do_prop
-#&gt; 1         NA         NA       0       0
-#&gt; 2         NA         NA       0       0
-#&gt; 3         NA         NA       0       0
-#&gt; 4         NA         NA       0       0
-#&gt; 5         NA         NA       0       0
-#&gt; 6         NA         NA       0       0</div></pre>
+</div><div class='output co'>#&gt;   id       name  JEI wbid class year    CHLAC     COLOR COND       DO    DOSAT
+#&gt; 1  1 Rock Creek CC01 2052    3M 2011 1.394022  3.399019   NA 4.249811 58.26457
+#&gt; 2  1 Rock Creek CC01 2052    3M 2012 2.281227 15.159408   NA 2.800000 48.48755
+#&gt; 3  1 Rock Creek CC01 2052    3M 2013 2.725391  9.607368   NA 6.819091 73.50770
+#&gt; 4  1 Rock Creek CC01 2052    3M 2014 2.380249 14.694735   NA 3.308289 60.31523
+#&gt; 5  1 Rock Creek CC01 2052    3M 2015 2.647817 21.911128   NA 4.034172 55.41609
+#&gt; 6  1 Rock Creek CC01 2052    3M 2016 2.265462 19.130797   NA 3.980251 55.96637
+#&gt;          NO23 ORGN    SALIN       TKN        TN         TP TSS     TURB
+#&gt; 1 0.006467844   NA 33.67785 0.4927774 0.4981428 0.05831404  NA 2.532379
+#&gt; 2 0.009742973   NA 26.49843 0.6707901 0.6803095 0.06762831  NA 2.085028
+#&gt; 3 0.010611775   NA 30.90561 0.6510575 0.7108146 0.06842811  NA 1.698004
+#&gt; 4 0.008132924   NA 26.63714 0.6161702 0.6228782 0.06938150  NA 2.044623
+#&gt; 5 0.009361504   NA 19.10494 0.6465161 0.5678241 0.07602770  NA 1.814818
+#&gt; 6 0.008532522   NA 25.84531 0.5813818 0.5408161 0.08330509  NA 2.082253
+#&gt;   chla_tn_ratio tn_tp_ratio chla_tsi   tn_tsi  tn2_tsi   tp_tsi  tp2_tsi
+#&gt; 1      2.798439    8.542416 21.58358 42.20200 44.62164 57.22468 72.15389
+#&gt; 2      3.353220   10.059537 28.67587 48.37289 51.32120 59.98090 75.65103
+#&gt; 3      3.834180   10.387756 31.23761 49.24140 52.26414 60.19958 75.92850
+#&gt; 4      3.821371    8.977584 29.28775 46.62660 49.42526 60.45694 76.25504
+#&gt; 5      4.663093    7.468648 30.82179 44.79432 47.43600 62.15842 78.41391
+#&gt; 6      4.188970    6.491994 28.57601 43.82942 46.38844 63.85868 80.57123
+#&gt;    nut_tsi      tsi no23_source no23_tidal no23_ratio do_bnml do_prop
+#&gt; 1 44.62164 33.10261          NA         NA         NA       0       0
+#&gt; 2 54.17690 41.42638          NA         NA         NA       1       1
+#&gt; 3 54.72049 42.97905          NA         NA         NA       0       0
+#&gt; 4 49.42526 39.35651          NA         NA         NA       0       1
+#&gt; 5 47.43600 39.12890          NA         NA         NA       0       1
+#&gt; 6 46.38844 37.48223          NA         NA         NA       0       1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

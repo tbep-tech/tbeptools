@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FDEP IWR run 56 — iwrraw • tbeptools</title>
+<title>FDEP IWR run 61 — iwrraw • tbeptools</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="FDEP IWR run 56 — iwrraw" />
-<meta property="og:description" content="Florida Department of Environmental Protection, Impaired Waters Rule, Run 56" />
+<meta property="og:title" content="FDEP IWR run 61 — iwrraw" />
+<meta property="og:description" content="Florida Department of Environmental Protection, Impaired Waters Rule, Run 61" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -140,13 +140,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>FDEP IWR run 56</h1>
+    <h1>FDEP IWR run 61</h1>
     <small class="dont-index">Source: <a href='https://github.com/tbep-tech/tbeptools/blob/master/R/iwrraw.R'><code>R/iwrraw.R</code></a></small>
     <div class="hidden name"><code>iwrraw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Florida Department of Environmental Protection, Impaired Waters Rule, Run 56</p>
+    <p>Florida Department of Environmental Protection, Impaired Waters Rule, Run 61</p>
     </div>
 
     <pre class="usage"><span class='va'>iwrraw</span></pre>
@@ -154,7 +154,7 @@
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame 1224558 rows and 52 variables</p>
+    <p>A data frame 1338532 rows and 15 variables</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This file was created by importing a SAS file directly into R using the <code>read_sas</code> function.  The SAS file is prepared annually by FDEP for Janicki Environmental, Inc.</p>
@@ -163,7 +163,7 @@
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>haven</span><span class='op'>)</span>
 
-<span class='va'>iwrraw</span> <span class='op'>&lt;-</span> <span class='fu'>read_sas</span><span class='op'>(</span><span class='st'>'../../02_DOCUMENTS/tidal_creeks/iwr56_tidalcreeks.sas7bdat'</span><span class='op'>)</span>
+<span class='va'>iwrraw</span> <span class='op'>&lt;-</span> <span class='fu'>read_sas</span><span class='op'>(</span><span class='st'>'../../02_DOCUMENTS/tidal_creeks/iwrraw_creeks61.sas7bdat'</span><span class='op'>)</span>
 <span class='va'>iwrraw</span> <span class='op'>&lt;-</span> <span class='fu'>zap_formats</span><span class='op'>(</span><span class='va'>iwrraw</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span><span class='op'>(</span><span class='va'>iwrraw</span>, file <span class='op'>=</span> <span class='st'>'data/iwrraw.RData'</span>, compress <span class='op'>=</span> <span class='st'>'xz'</span><span class='op'>)</span>
 
