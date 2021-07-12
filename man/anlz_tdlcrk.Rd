@@ -9,7 +9,7 @@ anlz_tdlcrk(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2021)
 \arguments{
 \item{tidalcreeks}{\code{\link[sf]{sf}} object for population of tidal creeks}
 
-\item{iwrraw}{FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}}
+\item{iwrraw}{FDEP impaired waters data base as \code{\link{data.frame}}}
 
 \item{tidtrgs}{optional \code{data.frame} for tidal creek nitrogen targets, defaults to \code{\link{tidaltargets}}}
 

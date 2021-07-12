@@ -3,7 +3,7 @@
 #' Estimate tidal creek report card scores
 #'
 #' @param tidalcreeks \code{\link[sf]{sf}} object for population of tidal creeks
-#' @param iwrraw FDEP impaired waters rule run 56 data base as \code{\link{data.frame}}
+#' @param iwrraw FDEP impaired waters data base as \code{\link{data.frame}}
 #' @param tidtrgs optional \code{data.frame} for tidal creek nitrogen targets, defaults to \code{\link{tidaltargets}}
 #' @param yr numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date
 #'

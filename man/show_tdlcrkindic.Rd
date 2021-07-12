@@ -7,7 +7,7 @@
 show_tdlcrkindic(
   id,
   cntdat,
-  yr = 2018,
+  yr = 2021,
   thrsel = FALSE,
   pal = c("#5C4A42", "#427355", "#004F7E")
 )
@@ -17,7 +17,7 @@ show_tdlcrkindic(
 
 \item{cntdat}{output from \code{\link{anlz_tdlcrkindic}}}
 
-\item{yr}{numeric indicating reference year, almost always 2018}
+\item{yr}{numeric indicating reference year}
 
 \item{thrsel}{logical if threshold lines and annotations are shown on the plots}
 
@@ -30,7 +30,7 @@ A plotly object
 Plotly barplots of tidal creek context indicators
 }
 \examples{
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
-show_tdlcrkindic(35, cntdat, thrsel = TRUE)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021)
+show_tdlcrkindic(479, cntdat, thrsel = TRUE)
 }
 \concept{show}

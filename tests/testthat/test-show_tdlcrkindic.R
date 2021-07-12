@@ -1,10 +1,9 @@
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2018)
 test_that("Checking show_tdlcrkindic class", {
-  result <- show_tdlcrkindic(197, cntdat, thrsel = TRUE)
+  result <- show_tdlcrkindic(479, cntdat, thrsel = TRUE, yr = 2021)
   expect_is(result, 'plotly')
 })
 test_that("Checking show_tdlcrkindic empty data", {
-  result <- show_tdlcrkindic('xxxxxxx', cntdat, thrsel = TRUE)
+  result <- show_tdlcrkindic('xxxxxxx', cntdat, thrsel = TRUE, yr = 2021)
   expect_null(result)
 })
 

@@ -125,7 +125,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
       ggplot2::geom_point(data = toplo3, alpha = 0.6, colour = 'darkgrey', size = 0.5) +
       ggplot2::geom_point(aes(size = val, fill = name), alpha = 0.6, pch = 21,) +
       ggplot2::scale_fill_manual(values = sppcol) +
-      ggplot2::guides(fill = FALSE) +
+      ggplot2::guides(fill = 'none') +
       ggplot2::facet_wrap(~name, ncol = ncol)
 
   # finish plot
