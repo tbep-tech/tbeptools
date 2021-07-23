@@ -42,7 +42,7 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
       return(out)
 
     out <- out %>%
-      dplyr::select(Crew, MonitoringAgency, Site, Depth, Savspecies = Species, Abundance = SpeciesAbundance,
+      dplyr::select(yr = AssessmentYear, Crew, MonitoringAgency, Site, Depth, Savspecies = Species, Abundance = SpeciesAbundance,
                     matches('BladeLength_|ShootDensity_')) %>%
       dplyr::select(-BladeLength_Avg, -BladeLength_StdDev, -ShootDensity_Avg, -ShootDensity_StdDev) %>%
       dplyr::mutate(
@@ -53,7 +53,7 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
         ),
         Abundance = as.numeric(Abundance)
       ) %>%
-      tidyr::gather('var', 'val', -Crew, -MonitoringAgency, -Site, -Depth, -Savspecies) %>%
+      tidyr::gather('var', 'val', -yr, -Crew, -MonitoringAgency, -Site, -Depth, -Savspecies) %>%
       dplyr::mutate(
         rep = gsub('.*([0-9])$', '\\1', var),
         rep = gsub('^Abundance$', '1', rep),
@@ -67,7 +67,7 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
         val = as.numeric(val),
         Site = as.character(Site)
       ) %>%
-      dplyr::group_by(Crew, MonitoringAgency, Site, Depth, Savspecies, var) %>%
+      dplyr::group_by(yr, Crew, MonitoringAgency, Site, Depth, Savspecies, var) %>%
       dplyr::summarise(
         aveval = mean(val, na.rm = T),
         sdval = sd(val, na.rm = T)
