@@ -1,6 +1,7 @@
 #' Make a bar plot for transect training group comparisons
 #'
 #' @param transect data frame returned by \code{\link{read_transect}}
+#' @param yr numeric for year of training data to plot
 #' @param site chr string indicating site results to plot
 #' @param species chr string indicating which species to plot
 #' @param varplo chr string indicating which variable to plot
@@ -15,8 +16,8 @@
 #'
 #' @examples
 #' transect <- read_transect(training = TRUE)
-#' show_compplot(transect, site = '1', species = 'Halodule', varplo = 'Abundance')
-show_compplot <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
+#' show_compplot(transect, yr = 2020, site = '1', species = 'Halodule', varplo = 'Abundance')
+show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 18, xtxt = 10, size = 1){
 
   # arguments
@@ -36,6 +37,7 @@ show_compplot <- function(transect, site, species = c('Halodule', 'Syringodium',
 
   # data to plot
   toplo <- transect %>%
+    dplyr::filter(yr %in% !!yr) %>%
     dplyr::filter(Site %in% site) %>%
     dplyr::filter(Savspecies %in% species) %>%
     dplyr::filter(var %in% varplo) %>%

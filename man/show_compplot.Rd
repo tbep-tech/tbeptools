@@ -6,6 +6,7 @@
 \usage{
 show_compplot(
   transect,
+  yr,
   site,
   species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia"),
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
@@ -16,6 +17,8 @@ show_compplot(
 }
 \arguments{
 \item{transect}{data frame returned by \code{\link{read_transect}}}
+
+\item{yr}{numeric for year of training data to plot}
 
 \item{site}{chr string indicating site results to plot}
 
@@ -37,6 +40,6 @@ Make a bar plot for transect training group comparisons
 }
 \examples{
 transect <- read_transect(training = TRUE)
-show_compplot(transect, site = '1', species = 'Halodule', varplo = 'Abundance')
+show_compplot(transect, yr = 2020, site = '1', species = 'Halodule', varplo = 'Abundance')
 }
 \concept{show}
