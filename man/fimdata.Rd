@@ -3,16 +3,17 @@
 \docType{data}
 \name{fimdata}
 \alias{fimdata}
-\title{FIM data for Tampa Bay Nekton Index current as of 04242020}
+\title{FIM data for Tampa Bay Nekton Index current as of 07262021}
 \format{
-A data frame with 41653 rows and 17 variables:
+A data frame with 61148 rows and 19 variables:
 \describe{
   \item{Reference}{chr}
   \item{Sampling_Date}{Date}
+  \item{Latitude}{num}
+  \item{Longitude}{num}
   \item{Zone}{chr}
   \item{Grid}{int}
   \item{NODCCODE}{chr}
-  \item{bay_segment}{chr}
   \item{Year}{num}
   \item{Month}{num}
   \item{Total_N}{num}
@@ -24,13 +25,14 @@ A data frame with 41653 rows and 17 variables:
   \item{Feeding_Cat}{chr}
   \item{Feeding_Guild}{chr}
   \item{Selected_Taxa}{chr}
+  \item{bay_segment}{chr}
   }
 }
 \usage{
 fimdata
 }
 \description{
-FIM data for Tampa Bay Nekton Index current as of 04242020
+FIM data for Tampa Bay Nekton Index current as of 07262021
 }
 \examples{
 \dontrun{

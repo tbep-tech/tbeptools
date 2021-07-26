@@ -104,7 +104,7 @@ The `read_importfim()` function can also return a simple features object of samp
 fimstations <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
 mapview(fimstations, zcol = 'bay_segment')
 ```
-```{r, echo = F}
+```{r, echo = F, out.width = '100%'}
 mapview(fimstations, zcol = 'bay_segment')
 ```
 
@@ -178,7 +178,7 @@ The graphs returned by the plotting functions are `ggplot` objects that can be f
 
 ```{r, fig.height = 7, fig.width = 7}
 p1 <- show_tbnimatrix(tbniscr, txtsz = NULL, rev = TRUE, position = 'bottom') +
-  scale_y_continuous(expand = c(0,0), breaks = c(1998:2018)) +
+  scale_y_continuous(expand = c(0,0), breaks = c(1998:2020)) +
   coord_flip() +
   theme(axis.text.x = element_blank())
 
