@@ -81,7 +81,7 @@ read_formfim <- function(datin, locs = FALSE){
     dplyr::filter(Include_TB_Index == "Y") %>%
     dplyr::arrange(Reference, NODCCODE) %>%
     dplyr::ungroup() %>%
-    left_join(frmdatloc, by = 'Reference') %>%
+    inner_join(frmdatloc, by = 'Reference') %>%
     select(-geometry)
 
   return(out)

@@ -5,7 +5,7 @@
 \alias{fimdata}
 \title{FIM data for Tampa Bay Nekton Index current as of 07262021}
 \format{
-A data frame with 61148 rows and 19 variables:
+A data frame with 45945 rows and 19 variables:
 \describe{
   \item{Reference}{chr}
   \item{Sampling_Date}{Date}
