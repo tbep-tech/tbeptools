@@ -34,7 +34,7 @@ read_formfim <- function(datin, locs = FALSE){
     dplyr::select(bay_segment)
 
   frmdatloc <- datin %>%
-    dplyr::select(Reference, Longitude, Latitude) %>%
+    dplyr::select(Reference, Grid, Longitude, Latitude) %>%
     unique %>%
     sf::st_as_sf(
       coords = c("Longitude", "Latitude"),
@@ -43,7 +43,15 @@ read_formfim <- function(datin, locs = FALSE){
       stringsAsFactors = FALSE,
       remove = TRUE
     ) %>%
-    sf::st_intersection(., st_make_valid(majshed))
+    sf::st_intersection(., st_make_valid(majshed)) %>%
+    dplyr::mutate(
+      bay_segment = dplyr::case_when(
+        Grid == 363 ~ "LTB",
+        Grid %in% c(203, 220) ~ "MTB",
+        (Grid == 204 & unlist(purrr::map(.$geometry,1)) < 27.7937) ~ "MTB",
+        TRUE ~ bay_segment)
+      ) %>%
+    dplyr::select(-Grid)
 
   if(locs)
     return(frmdatloc)
