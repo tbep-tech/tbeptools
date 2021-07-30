@@ -5,7 +5,7 @@
 \alias{iwrraw}
 \title{FDEP IWR run 61}
 \format{
-A data frame 1338532 rows and 15 variables
+A data frame 405682 rows and 15 variables
 }
 \usage{
 iwrraw
@@ -13,17 +13,14 @@ iwrraw
 \description{
 Florida Department of Environmental Protection, Impaired Waters Rule, Run 61
 }
-\details{
-This file was created by importing a SAS file directly into R using the \code{\link[haven]{read_sas}} function.  The SAS file is prepared annually by FDEP for Janicki Environmental, Inc.
-}
 \examples{
 \dontrun{
-library(haven)
+library(dplyr)
 
-iwrraw <- read_sas('../../02_DOCUMENTS/tidal_creeks/iwrraw_creeks61.sas7bdat')
-iwrraw <- zap_formats(iwrraw)
+load(file = '../../02_DOCUMENTS/tidal_creeks/iwrraw_run61.RData')
+iwrraw <- sf::st_set_geometry(iwrraw, NULL) \%>\%
+  rename(JEI = jei)
 save(iwrraw, file = 'data/iwrraw.RData', compress = 'xz')
-
 }
 }
 \concept{data}

@@ -116,7 +116,7 @@ Individual creek indicators are summarized using a multivariate response plot ca
 
 ```{r, fig.width = 5, fig.height = 5}
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = T)
-show_tdlcrkradar(id = 494, cntdat = cntdat)
+show_tdlcrkradar(id = 495, cntdat = cntdat)
 ```
 
 

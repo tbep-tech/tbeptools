@@ -5,7 +5,7 @@
 \alias{tidalcreeks}
 \title{Spatial data object of tidal creeks}
 \format{
-A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 613 features and 6 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 609 features and 6 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
   \item{id}{num}
   \item{wbid}{chr}
