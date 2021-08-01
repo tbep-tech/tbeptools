@@ -64,8 +64,9 @@ read_formbenthic <- function(pathin){
   programsstations <- ProgramsStations %>%
     select(StationID, ProgramID)
 
+  names(Programs) <- iconv(names(Programs), 'latin1', 'ASCII', sub = '')
   programs <- Programs %>%
-    dplyr::select(ProgramID = `ï..ProgramId`, ProgramName) %>%
+    dplyr::select(ProgramID = `..ProgramId`, ProgramName) %>%
     dplyr::filter(ProgramID %in% c(4, 8, 13, 18))
     # dplyr::filter(ProgramID %in% c(4, 8, 13, 14, 16, 18))
 
@@ -89,8 +90,9 @@ read_formbenthic <- function(pathin){
     )
 
   # funding source
+  names(FundingProject) <- iconv(names(FundingProject), 'latin1', 'ASCII', sub = '')
   fundingproject <- FundingProject %>%
-    dplyr::select(FundingId = `ï..FundingId`, FundingProject) %>%
+    dplyr::select(FundingId = `..FundingId`, FundingProject) %>%
     dplyr::mutate(
       FundingProject = gsub('\\s+$', '', FundingProject),
       FundingId = as.character(FundingId)
