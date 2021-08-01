@@ -13,7 +13,7 @@
 #' @examples
 #' \dontrun{
 #' # location to download data
-#' path <- 'C:/Users/mbeck/Desktop/benthic.zip'
+#' path <- '~/Desktop/benthic.zip'
 #'
 #' # load and assign to object
 #' benthicdata <- read_importbenthic(path, download_latest = TRUE, remove = TRUE)

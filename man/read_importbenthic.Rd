@@ -7,11 +7,11 @@
 read_importbenthic(path, download_latest = FALSE, remove = FALSE)
 }
 \arguments{
-\item{path}{chr string for local path where the mdb database is located or where it will be downloaded, must include file extension either \code{.mdb} for former or \code{.zip} for latter}
+\item{path}{chr string for local path where the zipped folder will be downloaded, must include .zip extension}
 
 \item{download_latest}{logical to download latest if a more recent dataset is available}
 
-\item{remove}{logical if the downloaded zip file is removed after unzipping}
+\item{remove}{logical if the downloaded folder is removed after unzipping}
 }
 \value{
 A nested \code{tibble} of station, taxa, and field sample data
@@ -20,27 +20,16 @@ A nested \code{tibble} of station, taxa, and field sample data
 Download and import benthic data for Tampa Bay
 }
 \details{
-This function downloads and unzips a Microsoft Access Database from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/}.  The database tables are accessed using a connection through the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at \url{https://www.microsoft.com/en-us/download/details.aspx?id=54920}.  The function has not been tested for 32-bit versions of R or outside of Windows.
-
-For the \code{path} argument, you must specify the full path and not the home expansion, i.e., \code{'C:/Users/yourname/Desktop/benthic.zip'} and not \code{'~/Desktop/benthic.zip'}.  If the zipped file has previously been downloaded and extracted, the direct path to the .mdb file can be uased for \code{path}.
-
-The .mdb database in the unzipped folder is large and a temporary file can be created to preserve file space, e.g., using \code{tempfile(fileext = '.zip')} for the \code{path} argument. See the examples.
+This function downloads and unzips a folder of base tables used to calculate the benthic index from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip}.
 }
 \examples{
 \dontrun{
 # location to download data
-path <- 'C:/Users/mbeck/Desktop/benthic.zip'
+path <- '~/Desktop/benthic.zip'
 
 # load and assign to object
 benthicdata <- read_importbenthic(path, download_latest = TRUE)
 
-# or use existing mdb
-path <- 'C:/Users/mbeck/Desktop/benthic/EPC DataSubmittals.mdb'
-benthicdata <- read_importbenthic(path, download_latest = FALSE)
-
-# use a temporary zip file
-path <- tempfile(fileext = '.zip')
-benthicdata <- read_importbenthic(path, download_latest = TRUE)
 }
 }
 \concept{read}

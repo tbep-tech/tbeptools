@@ -4,10 +4,10 @@
 \alias{read_formbenthic}
 \title{Format benthic data for the Tampa Bay Benthic Index}
 \usage{
-read_formbenthic(channel)
+read_formbenthic(pathin)
 }
 \arguments{
-\item{channel}{A \code{\link[RODBC]{RODBC}} class connection object to the .mdb benthic database}
+\item{pathin}{A path to unzipped csv files with base tables used to calculate benthic index}
 }
 \value{
 A nested \code{\link[tibble]{tibble}} of station, field sample, and taxa data
@@ -16,23 +16,28 @@ A nested \code{\link[tibble]{tibble}} of station, field sample, and taxa data
 Format benthic data for the Tampa Bay Benthic Index
 }
 \details{
-Function is used internally within \code{\link{read_importbenthic}}, see the help file for limitations on using the function outside of Windows.
+Function is used internally within \code{\link{read_importbenthic}}
 }
 \examples{
 \dontrun{
-library(RODBC)
 
-# setup driver and path to .mdb
-drvr <- 'Driver={Microsoft Access Driver (*.mdb, *.accdb)};'
-path <- 'C:/Users/mbeck/Desktop/benthic/EPC DataSubmittals.mdb'
-odbccall <- paste0(drvr, 'DBQ=', path)
+# location to download data
+path <- '~/Desktop/benthic.zip'
 
-# create channel and pass to read_formbenthic
-channel <- RODBC::odbcDriverConnect(odbccall)
-read_formbenthic(channel)
+# download
+urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip'
+read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 
-# close connection
-odbcClose(channel)
+# unzip
+tmppth <- tempfile()
+utils::unzip(path, exdir = tmppth, overwrite = TRUE)
+
+# format benthic data
+read_formbenthic(pathin = tmppth)
+
+# remove temporary path
+unlink(tmppth, recursive = TRUE)
+
 }
 }
 \concept{read}

@@ -1,10 +1,10 @@
 #' Format benthic data for the Tampa Bay Benthic Index
 #'
-#' @param channel A \code{\link[RODBC]{RODBC}} class connection object to the .mdb benthic database
+#' @param pathin A path to unzipped csv files with base tables used to calculate benthic index
 #'
 #' @return A nested \code{\link[tibble]{tibble}} of station, field sample, and taxa data
 #'
-#' @details Function is used internally within \code{\link{read_importbenthic}}, see the help file for limitations on using the function outside of Windows.
+#' @details Function is used internally within \code{\link{read_importbenthic}}
 #'
 #' @concept read
 #'
@@ -14,42 +14,50 @@
 #'
 #' @examples
 #' \dontrun{
-#' library(RODBC)
 #'
-#' # setup driver and path to .mdb
-#' drvr <- 'Driver={Microsoft Access Driver (*.mdb, *.accdb)};'
-#' path <- 'C:/Users/mbeck/Desktop/benthic/EPC DataSubmittals.mdb'
-#' odbccall <- paste0(drvr, 'DBQ=', path)
+#' # location to download data
+#' path <- '~/Desktop/benthic.zip'
 #'
-#' # create channel and pass to read_formbenthic
-#' channel <- RODBC::odbcDriverConnect(odbccall)
-#' read_formbenthic(channel)
+#' # download
+#' urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip'
+#' read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 #'
-#' # close connection
-#' odbcClose(channel)
+#' # unzip
+#' tmppth <- tempfile()
+#' utils::unzip(path, exdir = tmppth, overwrite = TRUE)
+#'
+#' # format benthic data
+#' read_formbenthic(pathin = tmppth)
+#'
+#' # remove temporary path
+#' unlink(tmppth, recursive = TRUE)
+#'
 #' }
-read_formbenthic <- function(channel){
+read_formbenthic <- function(pathin){
 
   tzone <- 'America/Jamaica'
 
   # fetch relevant tables ---------------------------------------------------
 
+  # files
+  fls <- list.files(pathin, recursive = T, full.names = T)
+
   # station metadata
-  Stations <- RODBC::sqlFetch(channel, 'Stations')
-  Header <- RODBC::sqlFetch(channel, 'Header')
-  Programs <- RODBC::sqlFetch(channel, 'Programs')
-  ProgramsStations <- RODBC::sqlFetch(channel, 'ProgramsStations')
-  SegmentName <- RODBC::sqlFetch(channel, 'SegmentName')
-  FundingProject <- RODBC::sqlFetch(channel, 'FundingProject')
+  Stations <- read.csv(grep('/Stations\\.csv$', fls, value = TRUE))
+  Header <- read.csv(grep('Header', fls, value = TRUE))
+  Programs <- read.csv(grep('Programs\\.csv$', fls, value = TRUE))
+  ProgramsStations <- read.csv(grep('ProgramsStations', fls, value = TRUE))
+  SegmentName <- read.csv(grep('SegmentName', fls, value = TRUE))
+  FundingProject <- read.csv(grep('FundingProject', fls, value = TRUE))
 
   # water chem
-  FieldSamples <- RODBC::sqlFetch(channel, 'FieldSamples')
+  FieldSamples <- read.csv(grep('FieldSamples', fls, value = TRUE))
 
   # bug data
-  TaxaCount <- RODBC::sqlFetch(channel, 'TaxaCount')
-  TaxaList <- RODBC::sqlFetch(channel, 'TaxaList')
-  TaxaGroup <- RODBC::sqlFetch(channel, 'TaxaIdGroup')
-  TaxaUnits <- RODBC::sqlFetch(channel, 'TaxaUnits')
+  TaxaCount <- read.csv(grep('TaxaCount', fls, value = TRUE))
+  TaxaList <- read.csv(grep('TaxaList', fls, value = TRUE))
+  TaxaGroup <- read.csv(grep('TaxaIdGroup', fls, value = TRUE))
+  TaxaUnits <- read.csv(grep('TaxaUnits', fls, value = TRUE))
 
   # Station meta ------------------------------------------------------------
 
@@ -57,25 +65,36 @@ read_formbenthic <- function(channel){
     select(StationID, ProgramID)
 
   programs <- Programs %>%
-    dplyr::select(ProgramID, ProgramName) %>%
+    dplyr::select(ProgramID = `ï..ProgramId`, ProgramName) %>%
     dplyr::filter(ProgramID %in% c(4, 8, 13, 18))
     # dplyr::filter(ProgramID %in% c(4, 8, 13, 14, 16, 18))
 
   header <- Header %>%
-    select(StationID, FundingId, SampleTime = ArrivalTime, IsComplete)
+    dplyr::select(StationID, FundingId, SampleTime = ArrivalTime, IsComplete)
 
   # subset columns from relevant tables
   stations <- Stations %>%
-    dplyr::select(StationID, AreaID, Latitude, Longitude)
+    dplyr::select(StationID, AreaID, Latitude, Longitude) %>%
+    dplyr::filter(!Longitude %in% 'NULL') %>%
+    dplyr::mutate(
+      Longitude = as.numeric(Longitude),
+      Latitude = as.numeric(Latitude)
+    )
 
   # for segment id, do not use spatial join
   segments <- SegmentName %>%
-    dplyr::select(AreaID, AreaAbbr)
+    dplyr::select(AreaID, AreaAbbr) %>%
+    dplyr::mutate(
+      AreaID = as.character(AreaID)
+    )
 
   # funding source
   fundingproject <- FundingProject %>%
-    dplyr::select(FundingId, FundingProject) %>%
-    dplyr::mutate(FundingProject = gsub('\\s+$', '', FundingProject))
+    dplyr::select(FundingId = `ï..FundingId`, FundingProject) %>%
+    dplyr::mutate(
+      FundingProject = gsub('\\s+$', '', FundingProject),
+      FundingId = as.character(FundingId)
+      )
 
   stations <- programs %>%
     dplyr::inner_join(programsstations, by = 'ProgramID') %>%
@@ -85,7 +104,7 @@ read_formbenthic <- function(channel){
     dplyr::inner_join(fundingproject, by = 'FundingId') %>%
     dplyr::filter(IsComplete == 1) %>%
     dplyr::mutate(
-      SampleTime = lubridate::force_tz(SampleTime, tz = tzone),
+      SampleTime = lubridate::mdy_hm(SampleTime, tz = tzone),
       date = as.Date(SampleTime),
       yr = lubridate::year(date)
     ) %>%
@@ -96,7 +115,7 @@ read_formbenthic <- function(channel){
   fieldsamples <- FieldSamples %>%
     dplyr::select(StationID, SampleTime, StratumID, Salinity) %>%
     dplyr::mutate(
-      SampleTime = lubridate::force_tz(SampleTime, tz = tzone),
+      SampleTime = lubridate::mdy_hm(SampleTime, tz = tzone),
       date = as.Date(SampleTime)
     ) %>%
     filter(StratumID %in% c(1, 3, 4)) %>%
@@ -106,7 +125,9 @@ read_formbenthic <- function(channel){
         StratumID == 1 ~ 'T',
         StratumID %in% c(3, 4) ~ 'B',
         T ~ NA_character_
-      )
+      ),
+      Salinity = gsub('NULL', '', Salinity),
+      Salinity = as.numeric(Salinity)
     ) %>%
     dplyr::filter(Stratum %in% 'B') %>%
     dplyr::group_by(StationID, date, Stratum) %>%
@@ -116,7 +137,7 @@ read_formbenthic <- function(channel){
   # taxa counts -------------------------------------------------------------
 
   taxalist <- TaxaList %>%
-    dplyr::select(TaxaListID, FAMILY, NAME, `COLONIAL/PLANKTONIC?`)
+    dplyr::select(TaxaListID, FAMILY, NAME, `COLONIAL/PLANKTONIC?` = `COLONIAL.PLANKTONIC.`)
   taxagroup <- TaxaGroup %>%
     dplyr::select(TaxaCountID = TAXA_ID, TAXA_GROUP)
   taxaunits <- TaxaUnits %>%
@@ -133,11 +154,15 @@ read_formbenthic <- function(channel){
     dplyr::filter(Units != 3) %>%
     dplyr::filter(Grab == 1) %>%
     dplyr::mutate(
+      COUNT = as.numeric(COUNT),
       AdjCount = dplyr::case_when(
         `COLONIAL/PLANKTONIC?` == 'Colonial' ~ 1,
         T ~ COUNT * StandardizingConstant
-      )
+      ),
+      StationID = gsub('NULL', '', StationID),
+      StationID = as.integer(StationID)
     ) %>%
+    dplyr::filter(!is.na(StationID)) %>%
     dplyr::select(StationID, TaxaCountID, TaxaListID, FAMILY, NAME, TaxaCount = COUNT, AdjCount)
 
   # combine all input needed for tbbi
