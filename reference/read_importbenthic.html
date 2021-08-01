@@ -156,7 +156,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>path</th>
-      <td><p>chr string for local path where the mdb database is located or where it will be downloaded, must include file extension either <code>.mdb</code> for former or <code>.zip</code> for latter</p></td>
+      <td><p>chr string for local path where the zipped folder will be downloaded, must include .zip extension</p></td>
     </tr>
     <tr>
       <th>download_latest</th>
@@ -164,7 +164,7 @@
     </tr>
     <tr>
       <th>remove</th>
-      <td><p>logical if the downloaded zip file is removed after unzipping</p></td>
+      <td><p>logical if the downloaded folder is removed after unzipping</p></td>
     </tr>
     </table>
 
@@ -173,25 +173,16 @@
     <p>A nested <code>tibble</code> of station, taxa, and field sample data</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function downloads and unzips a Microsoft Access Database from <a href='ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/'>ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/</a>.  The database tables are accessed using a connection through the RODBC package.  This requires an installation of the Microsoft 64 bit driver for Access databases, available at <a href='https://www.microsoft.com/en-us/download/details.aspx?id=54920'>https://www.microsoft.com/en-us/download/details.aspx?id=54920</a>.  The function has not been tested for 32-bit versions of R or outside of Windows.</p>
-<p>For the <code>path</code> argument, you must specify the full path and not the home expansion, i.e., <code>'C:/Users/yourname/Desktop/benthic.zip'</code> and not <code>'~/Desktop/benthic.zip'</code>.  If the zipped file has previously been downloaded and extracted, the direct path to the .mdb file can be uased for <code>path</code>.</p>
-<p>The .mdb database in the unzipped folder is large and a temporary file can be created to preserve file space, e.g., using <code><a href='https://rdrr.io/r/base/tempfile.html'>tempfile(fileext = '.zip')</a></code> for the <code>path</code> argument. See the examples.</p>
+    <p>This function downloads and unzips a folder of base tables used to calculate the benthic index from <a href='ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip'>ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># location to download data</span>
-<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/Users/mbeck/Desktop/benthic.zip'</span>
+<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='st'>'~/Desktop/benthic.zip'</span>
 
 <span class='co'># load and assign to object</span>
 <span class='va'>benthicdata</span> <span class='op'>&lt;-</span> <span class='fu'>read_importbenthic</span><span class='op'>(</span><span class='va'>path</span>, download_latest <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='co'># or use existing mdb</span>
-<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='st'>'C:/Users/mbeck/Desktop/benthic/EPC DataSubmittals.mdb'</span>
-<span class='va'>benthicdata</span> <span class='op'>&lt;-</span> <span class='fu'>read_importbenthic</span><span class='op'>(</span><span class='va'>path</span>, download_latest <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='co'># use a temporary zip file</span>
-<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>'.zip'</span><span class='op'>)</span>
-<span class='va'>benthicdata</span> <span class='op'>&lt;-</span> <span class='fu'>read_importbenthic</span><span class='op'>(</span><span class='va'>path</span>, download_latest <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>
