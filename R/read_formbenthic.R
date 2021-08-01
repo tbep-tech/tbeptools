@@ -45,10 +45,10 @@ read_formbenthic <- function(pathin){
   # station metadata
   Stations <- read.csv(grep('/Stations\\.csv$', fls, value = TRUE))
   Header <- read.csv(grep('Header', fls, value = TRUE))
-  Programs <- read.csv(grep('Programs\\.csv$', fls, value = TRUE))
+  Programs <- read.csv(grep('Programs\\.csv$', fls, value = TRUE), encoding = 'UTF-8')
   ProgramsStations <- read.csv(grep('ProgramsStations', fls, value = TRUE))
   SegmentName <- read.csv(grep('SegmentName', fls, value = TRUE))
-  FundingProject <- read.csv(grep('FundingProject', fls, value = TRUE))
+  FundingProject <- read.csv(grep('FundingProject', fls, value = TRUE), encoding = 'UTF-8')
 
   # water chem
   FieldSamples <- read.csv(grep('FieldSamples', fls, value = TRUE))
@@ -64,9 +64,8 @@ read_formbenthic <- function(pathin){
   programsstations <- ProgramsStations %>%
     select(StationID, ProgramID)
 
-  names(Programs) <- iconv(names(Programs), 'latin1', 'ASCII', sub = '')
   programs <- Programs %>%
-    dplyr::select(ProgramID = `..ProgramId`, ProgramName) %>%
+    dplyr::select(ProgramID = `X.U.FEFF.ProgramId`, ProgramName) %>%
     dplyr::filter(ProgramID %in% c(4, 8, 13, 18))
     # dplyr::filter(ProgramID %in% c(4, 8, 13, 14, 16, 18))
 
@@ -90,9 +89,8 @@ read_formbenthic <- function(pathin){
     )
 
   # funding source
-  names(FundingProject) <- iconv(names(FundingProject), 'latin1', 'ASCII', sub = '')
   fundingproject <- FundingProject %>%
-    dplyr::select(FundingId = `..FundingId`, FundingProject) %>%
+    dplyr::select(FundingId = `X.U.FEFF.FundingId`, FundingProject) %>%
     dplyr::mutate(
       FundingProject = gsub('\\s+$', '', FundingProject),
       FundingId = as.character(FundingId)
@@ -162,7 +160,8 @@ read_formbenthic <- function(pathin){
         T ~ COUNT * StandardizingConstant
       ),
       StationID = gsub('NULL', '', StationID),
-      StationID = as.integer(StationID)
+      StationID = as.integer(StationID),
+      NAME = iconv(NAME, 'latin1', 'ASCII', sub = '')
     ) %>%
     dplyr::filter(!is.na(StationID)) %>%
     dplyr::select(StationID, TaxaCountID, TaxaListID, FAMILY, NAME, TaxaCount = COUNT, AdjCount)
