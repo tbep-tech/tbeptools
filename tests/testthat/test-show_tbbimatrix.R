@@ -1,6 +1,5 @@
 test_that("Checking show_tbbimatrix class", {
 
-  tbbiscr <- anlz_tbbiscr(benthicdata)
   result <- show_tbbimatrix(tbbiscr)
   expect_is(result, 'ggplot')
 
@@ -15,7 +14,6 @@ test_that("Checking show_tbbimatrix sanity checks", {
 
 test_that("Checking show_tbbimatrix plotly class", {
 
-  tbbiscr <- anlz_tbbiscr(benthicdata)
   result <- show_tbbimatrix(tbbiscr, plotly = T)
   expect_is(result, 'plotly')
 

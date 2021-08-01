@@ -1,7 +1,5 @@
 test_that("Checking anlz_tbbiscr", {
 
-  tbbiscr <- anlz_tbbiscr(benthicdata)
-
   result <- tbbiscr[nrow(tbbiscr), ]
   expect_equal(result, structure(list(StationID = 12744L, AreaAbbr = "MTB", FundingProject = "TBEP",
                                       ProgramID = 18L, ProgramName = "Dredge Hole Study", Latitude = 27.822125,

@@ -3,7 +3,7 @@
 \docType{data}
 \name{benthicdata}
 \alias{benthicdata}
-\title{Benthic data for the Tampa Bay Benthic Index current as of 10222020}
+\title{Benthic data for the Tampa Bay Benthic Index current as of 08012021}
 \format{
 A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 \describe{
@@ -15,7 +15,7 @@ A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 benthicdata
 }
 \description{
-Benthic data for the Tampa Bay Benthic Index current as of 10222020
+Benthic data for the Tampa Bay Benthic Index current as of 08012021
 }
 \examples{
 \dontrun{

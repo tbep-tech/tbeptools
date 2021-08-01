@@ -20,7 +20,7 @@
 #' @examples
 #' tbbiscr <- anlz_tbbiscr(benthicdata)
 #' anlz_tbbimed(tbbiscr)
-anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB',  'All', 'All (wt)'), rev = FALSE, yrrng = c(1993, 2018)) {
+anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB',  'All', 'All (wt)'), rev = FALSE, yrrng = c(1993, 2019)) {
 
   # sanity checks
   stopifnot(length(yrrng) == 2)
@@ -88,7 +88,7 @@ anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TC
       TBBICat = case_when(
         Degraded >= 0.2 ~ 'Poor',
         (Degraded < 0.2 & Degraded > 0.1) | sum(Degraded, Intermediate) > 0.5 ~ 'Fair',
-        Degraded < 0.1 & Healthy > 0.5 ~ 'Good'
+        Degraded < 0.1 & Healthy >= 0.5 ~ 'Good'
       ),
       TBBICat = factor(TBBICat, levels = c('Poor', 'Fair', 'Good'), labels = c('Poor', 'Fair', 'Good')),
       bay_segment = factor(bay_segment, levels = levs)
