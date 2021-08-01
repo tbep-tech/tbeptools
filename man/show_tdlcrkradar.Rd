@@ -42,6 +42,6 @@ Internal code borrowed heavily from \code{\link[fmsb]{radarchart}}.
 }
 \examples{
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = TRUE)
-show_tdlcrkradar(494, cntdat)
+show_tdlcrkradar(495, cntdat)
 }
 \concept{show}
