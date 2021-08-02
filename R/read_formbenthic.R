@@ -64,8 +64,9 @@ read_formbenthic <- function(pathin){
   programsstations <- ProgramsStations %>%
     select(StationID, ProgramID)
 
+  names(Programs) <- gsub('^X\\.U\\.FEFF\\.', '', names(Programs))
   programs <- Programs %>%
-    dplyr::select(ProgramID = `X.U.FEFF.ProgramId`, ProgramName) %>%
+    dplyr::select(ProgramID = ProgramId, ProgramName) %>%
     dplyr::filter(ProgramID %in% c(4, 8, 13, 18))
     # dplyr::filter(ProgramID %in% c(4, 8, 13, 14, 16, 18))
 
@@ -89,8 +90,9 @@ read_formbenthic <- function(pathin){
     )
 
   # funding source
+  names(FundingProject) <- gsub('^X\\.U\\.FEFF\\.', '', names(FundingProject))
   fundingproject <- FundingProject %>%
-    dplyr::select(FundingId = `X.U.FEFF.FundingId`, FundingProject) %>%
+    dplyr::select(FundingId, FundingProject) %>%
     dplyr::mutate(
       FundingProject = gsub('\\s+$', '', FundingProject),
       FundingId = as.character(FundingId)
