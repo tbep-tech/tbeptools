@@ -45,7 +45,7 @@ journal: JOSS
 ---
 
 ```{r setup, warning = F, message = F, echo = F}
-knitr::opts_chunk$set(message = F, warning = F, echo = T, cache = F, dev.args = list(family = 'serif'), dpi = 400, tidy.opts=list(width.cutoff=80), tidy=TRUE)
+knitr::opts_chunk$set(message = F, warning = F, echo = T, cache = F, dev.args = list(family = 'serif'), dpi = 400, dev = 'jpeg')
 
 options(tibble.width = 60, tibble.print_max = 5, tibble.print_min = 5)
 ```
@@ -64,7 +64,7 @@ The function names were chosen with a typical analysis workflow in mind, where f
 
 The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <https://www.tampabay.wateratlas.usf.edu/>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.
 
-```{r thrplotex, fig.height = 3.5, fig.width = 7}
+```{r thrplotex, fig.height = 3.5, fig.width = 7, dev = 'jpeg'}
 # load the package
 library(tbeptools)
 

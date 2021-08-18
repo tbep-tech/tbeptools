@@ -66,7 +66,7 @@ The following example demonstrates use of a subset of the functions for water qu
 library(tbeptools)
 
 # read current data
-wqdat <- read_importwq(xlsx = "wqdata.xlsx", download_latest = TRUE)
+wqdat <- read_importwq(xlsx = 'wqdata.xlsx', download_latest = TRUE)
 wqdat
 ```
 
@@ -120,10 +120,10 @@ avedat
 
 ```r
 # show annual time series of chlorophyll for Hillsborough bay segment
-show_thrplot(wqdat, bay_segment = "HB", yrrng = c(1975, 2020))
+show_thrplot(wqdat, bay_segment = 'HB', yrrng = c(1975, 2020))
 ```
 
-![](paper_files/figure-latex/thrplotex-1.pdf)<!-- --> 
+![](paper_files/figure-latex/thrplotex-1.jpeg)<!-- --> 
 
 
 Most of the NEPs do not have analysis software to operationalize data import, analysis, and plotting for reporting.  Recently, a similar software package, `peptools` [@Beck21a], was developed for the Peconic Estuary Partnership (New York, USA) using many of the functions in `tbeptools` to develop reporting products for a new water quality monitoring program.  This successful technology transfer demonstrates the added value of presenting these methods in an open source environment available for discovery and reuse by others.  We expect other NEPs to begin using these tools as their application becomes more widespread among estuarine researchers.

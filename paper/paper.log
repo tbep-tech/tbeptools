@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.18)  18 AUG 2021 09:22
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.18)  18 AUG 2021 10:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1335,8 +1335,8 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [2]
-File: paper_files/figure-latex/thrplotex-1.pdf Graphic file (type pdf)
-<use paper_files/figure-latex/thrplotex-1.pdf>
+File: paper_files/figure-latex/thrplotex-1.jpeg Graphic file (type bmp)
+<paper_files/figure-latex/thrplotex-1.jpeg>
 File: C:/Users/mbeck/R/win-library/4.0/rticles/rmarkdown/templates/joss/resourc
 es/JOSS-logo.png Graphic file (type bmp)
 <C:/Users/mbeck/R/win-library/4.0/rticles/rmarkdown/templates/joss/resources/JO
@@ -1375,8 +1375,8 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35153 strings out of 478475
- 711792 string characters out of 5857611
+ 35154 strings out of 478475
+ 711786 string characters out of 5857611
  1510902 words of memory out of 5000000
  54902 multiletter control sequences out of 15000+600000
  410302 words of font info for 75 fonts, out of 8000000 for 9000
