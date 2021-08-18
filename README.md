@@ -119,7 +119,7 @@ avedat
 show_thrplot(wqdat, bay_segment = "HB", yrrng = c(1975, 2020))
 ```
 
-![](paper/paper_files/figure-latex/thrplotex-1.pdf)<!-- --> 
+<img src="man/figures/thrplotex-1.jpeg" align="center" width="125"/>
 
 # Issues and suggestions
 
