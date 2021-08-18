@@ -55,6 +55,72 @@ The functions can be easily found in RStudio after loading the package and typin
 
 The function [reference page](https://tbep-tech.github.io/tbeptools/reference/index.html) can also be viewed for a complete list of functions organized by category, with links to the help files. 
 
+The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <https://www.tampabay.wateratlas.usf.edu/>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.
+
+```r
+# load the package
+library(tbeptools)
+
+# read current data
+wqdat <- read_importwq(xlsx = "wqdata.xlsx", download_latest = TRUE)
+wqdat
+```
+
+```
+## # A tibble: 26,611 x 22
+##   bay_segment epchc_station SampleTime             yr    mo
+##   <chr>               <dbl> <dttm>              <dbl> <dbl>
+## 1 HB                      6 2021-06-08 10:59:00  2021     6
+## 2 HB                      7 2021-06-08 11:13:00  2021     6
+## 3 HB                      8 2021-06-08 14:15:00  2021     6
+## 4 MTB                     9 2021-06-08 13:14:00  2021     6
+## 5 MTB                    11 2021-06-08 11:30:00  2021     6
+## # ... with 26,606 more rows, and 17 more variables:
+## #   Latitude <dbl>, Longitude <dbl>, Total_Depth_m <dbl>,
+## #   Sample_Depth_m <dbl>, tn <dbl>, tn_q <chr>, sd_m <dbl>,
+## #   sd_raw_m <dbl>, sd_q <chr>, chla <dbl>, chla_q <chr>,
+## #   Sal_Top_ppth <dbl>, Sal_Mid_ppth <dbl>,
+## #   Sal_Bottom_ppth <dbl>, Temp_Water_Top_degC <dbl>,
+## #   Temp_Water_Mid_degC <dbl>, ...
+```
+
+```r
+# analyze monthly and annual means by bay segment
+avedat <- anlz_avedat(wqdat)
+avedat
+```
+
+```
+## $ann
+## # A tibble: 584 x 4
+##      yr bay_segment var         val
+##   <dbl> <chr>       <chr>     <dbl>
+## 1  1974 HB          mean_chla 22.4 
+## 2  1974 LTB         mean_chla  4.24
+## 3  1974 MTB         mean_chla  9.66
+## 4  1974 OTB         mean_chla 10.2 
+## 5  1975 HB          mean_chla 27.9 
+## # ... with 579 more rows
+## 
+## $mos
+## # A tibble: 4,484 x 5
+##   bay_segment    yr    mo var         val
+##   <chr>       <dbl> <dbl> <chr>     <dbl>
+## 1 HB           1974     1 mean_chla 36.2 
+## 2 LTB          1974     1 mean_chla  1.75
+## 3 MTB          1974     1 mean_chla 11.5 
+## 4 OTB          1974     1 mean_chla  4.4 
+## 5 HB           1974     2 mean_chla 42.4 
+## # ... with 4,479 more rows
+```
+
+```r
+# show annual time series of chlorophyll for Hillsborough bay segment
+show_thrplot(wqdat, bay_segment = "HB", yrrng = c(1975, 2020))
+```
+
+![](paper/paper_files/figure-latex/thrplotex-1.pdf)<!-- --> 
+
 # Issues and suggestions
 
 Please report any issues and suggestions on the [issues link](https://github.com/tbep-tech/tbeptools/issues) for the repository.  A guide to posting issues can be found [here](.github/ISSUE_TEMPLATE.md).
