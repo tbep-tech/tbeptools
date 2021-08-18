@@ -121,6 +121,8 @@ show_thrplot(wqdat, bay_segment = "HB", yrrng = c(1975, 2020))
 
 <img src="man/figures/thrplotex-1.jpeg" align="center"/>
 
+Functions in `tbeptools` also support the creation of content for interactive, online dashboards that can facilitate more informed decisions without requiring an intimate understanding of the R programming language or the methods for analysis.  These dashboards include assessments for [water quality](https://shiny.tbeptech.org/wq-dash/) [Figure \ref{fig:dashex}, @Beck20a], [seagrasses](https://shiny.tbep.org/seagrasstransect-dash/) [@Beck20b], [nekton communities](http://shiny.tbeptech.org/nekton-dash) [@Beck20c], and [tidal creeks](https://shiny.tbep.org/tidalcreek-dash/) [@Beck20d].
+
 # Issues and suggestions
 
 Please report any issues and suggestions on the [issues link](https://github.com/tbep-tech/tbeptools/issues) for the repository.  A guide to posting issues can be found [here](.github/ISSUE_TEMPLATE.md).
