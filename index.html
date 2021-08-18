@@ -154,6 +154,58 @@
 </ul>
 <p>The functions can be easily found in RStudio after loading the package and typing the prefix at the command line. An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., <code>read</code>, <code>anlz</code>, or <code>show</code>).</p>
 <p>The function <a href="https://tbep-tech.github.io/tbeptools/reference/index.html">reference page</a> can also be viewed for a complete list of functions organized by category, with links to the help files.</p>
+<p>The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <a href="https://www.tampabay.wateratlas.usf.edu/" class="uri">https://www.tampabay.wateratlas.usf.edu/</a>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># load the package</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools">tbeptools</a></span><span class="op">)</span>
+
+<span class="co"># read current data</span>
+<span class="va">wqdat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_importwq.html">read_importwq</a></span><span class="op">(</span>xlsx <span class="op">=</span> <span class="st">"wqdata.xlsx"</span>, download_latest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">wqdat</span></code></pre></div>
+<pre><code>## # A tibble: 26,611 x 22
+##   bay_segment epchc_station SampleTime             yr    mo
+##   &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;
+## 1 HB                      6 2021-06-08 10:59:00  2021     6
+## 2 HB                      7 2021-06-08 11:13:00  2021     6
+## 3 HB                      8 2021-06-08 14:15:00  2021     6
+## 4 MTB                     9 2021-06-08 13:14:00  2021     6
+## 5 MTB                    11 2021-06-08 11:30:00  2021     6
+## # ... with 26,606 more rows, and 17 more variables:
+## #   Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, Total_Depth_m &lt;dbl&gt;,
+## #   Sample_Depth_m &lt;dbl&gt;, tn &lt;dbl&gt;, tn_q &lt;chr&gt;, sd_m &lt;dbl&gt;,
+## #   sd_raw_m &lt;dbl&gt;, sd_q &lt;chr&gt;, chla &lt;dbl&gt;, chla_q &lt;chr&gt;,
+## #   Sal_Top_ppth &lt;dbl&gt;, Sal_Mid_ppth &lt;dbl&gt;,
+## #   Sal_Bottom_ppth &lt;dbl&gt;, Temp_Water_Top_degC &lt;dbl&gt;,
+## #   Temp_Water_Mid_degC &lt;dbl&gt;, ...</code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># analyze monthly and annual means by bay segment</span>
+<span class="va">avedat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/anlz_avedat.html">anlz_avedat</a></span><span class="op">(</span><span class="va">wqdat</span><span class="op">)</span>
+<span class="va">avedat</span></code></pre></div>
+<pre><code>## $ann
+## # A tibble: 584 x 4
+##      yr bay_segment var         val
+##   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;
+## 1  1974 HB          mean_chla 22.4 
+## 2  1974 LTB         mean_chla  4.24
+## 3  1974 MTB         mean_chla  9.66
+## 4  1974 OTB         mean_chla 10.2 
+## 5  1975 HB          mean_chla 27.9 
+## # ... with 579 more rows
+## 
+## $mos
+## # A tibble: 4,484 x 5
+##   bay_segment    yr    mo var         val
+##   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1 HB           1974     1 mean_chla 36.2 
+## 2 LTB          1974     1 mean_chla  1.75
+## 3 MTB          1974     1 mean_chla 11.5 
+## 4 OTB          1974     1 mean_chla  4.4 
+## 5 HB           1974     2 mean_chla 42.4 
+## # ... with 4,479 more rows</code></pre>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># show annual time series of chlorophyll for Hillsborough bay segment</span>
+<span class="fu"><a href="reference/show_thrplot.html">show_thrplot</a></span><span class="op">(</span><span class="va">wqdat</span>, bay_segment <span class="op">=</span> <span class="st">"HB"</span>, yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p><embed src="paper/paper_files/figure-latex/thrplotex-1.pdf"></embed><!-- --></p>
 </div>
 <div id="issues-and-suggestions" class="section level1">
 <h1 class="hasAnchor">
