@@ -23,6 +23,7 @@ These polygons are used by Southwest Florida Water Management District for summa
 \dontrun{
 library(sf)
 library(tidyverse)
+library(tools)
 
 prj <- 4326
 
@@ -33,7 +34,14 @@ sgseg <- st_read(
   ) \%>\%
   st_transform(crs = prj) \%>\%
   select(segment = SEAGRASSSE) \%>\%
-  mutate(segment = tolower(segment))
+  mutate(
+     segment = tolower(segment),
+     segment = case_when(
+        segment == 'terra ciea' ~ 'Terra Ceia',
+        T ~ segment
+     ),
+     segment = toTitleCase(segment)
+  )
 
 # save
 save(sgseg, file = 'data/sgseg.RData', compress = 'xz')
