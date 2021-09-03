@@ -1,0 +1,34 @@
+#' Seagrass management areas for Tampa Bay
+#'
+#' Seagrass management areas for Tampa Bay
+#'
+#' @format A simple features \code{\link[sf]{sf}} object (MULTIPOLYGON) with 30 features and 1 field, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+#' \describe{
+#'   \item{areas}{int}
+#' }
+#'
+#' @details These polygons are seagrass management areas for Tampa Bay that provide a finer division of areas within major segments (\code{\link{tbseg}}) having relevance for locations of seagrass beds.
+#'
+#' @concept data
+#'
+#' @examples
+#' \dontrun{
+#' library(sf)
+#' library(tidyverse)
+#' library(tools)
+#'
+#' prj <- 4326
+#'
+#' # create sf object of boundaries
+#' sgmanagement <- st_read(
+#'   dsn = '~/Desktop/TBEP_SG_MA_FINAL_Project.shp',
+#'   drivers = 'ESRI Shapefile'
+#'   ) %>%
+#'   st_transform(crs = prj) %>%
+#'   select(areas = TBEP_SG_MA)
+#'
+#' # save
+#' save(sgmanagement, file = 'data/sgmanagement.RData', compress = 'xz')
+#'
+#' }
+"sgmanagement"
