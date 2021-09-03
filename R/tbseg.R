@@ -8,6 +8,8 @@
 #'   \item{bay_segment}{chr}
 #' }
 #'
+#' @description Note that these boundaries not used for formal analysis and only for a visual aids in mapping.
+#'
 #' @concept data
 #'
 #' @examples

@@ -15,6 +15,9 @@ A simple features \code{\link[sf]{sf}} object (POLYGON) with 4 features and 2 fi
 tbseg
 }
 \description{
+Note that these boundaries not used for formal analysis and only for a visual aids in mapping.
+}
+\details{
 Spatial data object of Tampa Bay segments
 }
 \examples{
