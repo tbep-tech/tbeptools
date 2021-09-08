@@ -17,14 +17,12 @@
 #' library(tidyverse)
 #' library(tools)
 #'
-#' prj <- 4326
-#'
 #' # create sf object of boundaries
+#' # make sure projection does not change
 #' sgseg <- st_read(
 #'   dsn = '~/Desktop/Seagrass_Segment_Boundaries/Seagrass_Segment_Boundaries.shp',
 #'   drivers = 'ESRI Shapefile'
 #'   ) %>%
-#'   st_transform(crs = prj) %>%
 #'   select(segment = SEAGRASSSE) %>%
 #'   mutate(
 #'      segment = tolower(segment),

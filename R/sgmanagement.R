@@ -17,16 +17,18 @@
 #' library(tidyverse)
 #' library(tools)
 #'
-#' prj <- 4326
+#' # NAD83(HARN) / Florida West (ftUS)
+#' # same as sgseg
+#' prj <- 2882
 #'
 #' # create sf object of boundaries
 #' sgmanagement <- st_read(
 #'   dsn = '~/Desktop/TBEP_SG_MA_FINAL_Project.shp',
 #'   drivers = 'ESRI Shapefile'
 #'   ) %>%
-#'   st_transform(crs = prj) %>%
 #'   select(areas = TBEP_SG_MA) %>%
-#'   st_zm()
+#'   st_zm() %>%
+#'   st_transform(prj)
 #'
 #' # save
 #' save(sgmanagement, file = 'data/sgmanagement.RData', compress = 'xz')
