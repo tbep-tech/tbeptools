@@ -33,7 +33,8 @@ sgmanagement <- st_read(
   drivers = 'ESRI Shapefile'
   ) \%>\%
   st_transform(crs = prj) \%>\%
-  select(areas = TBEP_SG_MA)
+  select(areas = TBEP_SG_MA) \%>\%
+  st_zm()
 
 # save
 save(sgmanagement, file = 'data/sgmanagement.RData', compress = 'xz')
