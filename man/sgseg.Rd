@@ -37,7 +37,7 @@ sgseg <- st_read(
   mutate(
      segment = tolower(segment),
      segment = case_when(
-        segment == 'terra ciea' ~ 'Terra Ceia',
+        segment == 'terra ciea bay' ~ 'Terra Ceia Bay',
         T ~ segment
      ),
      segment = toTitleCase(segment)
