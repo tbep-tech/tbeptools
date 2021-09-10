@@ -68,7 +68,7 @@ Beyond the NEPs, `tbeptools` is an effective example of an R package for impleme
 
 ![The TBEP water quality dashboard, demonstrating use of the `tbeptools` R package to generate summary plots for specific bay segments.\label{fig:dashex}](paper_files/figure-latex/dashex.JPG){width='100%'}
 
-# Example usage
+# Usage
 
 The function names were chosen with a typical analysis workflow in mind, where functions are available to `read` data from a source (typically from an online repository or stable URL), `anlz` to analyze the imported data using methods in existing technical documents or published papers, and to `show` the results as a summary graphic for use by environmental managers.  The functions also include a suffix that is semi-descriptive of the type of data for which they apply (e.g., water quality, seagrass) and what they do (e.g., import, format).  The package [landing page](https://tbep-tech.github.io/tbeptools/) describes more of these suffixes.  Overall, the functions are used to report on water quality [@Beck21b], fisheries [@Schrandt21], benthic condition [@Karlen20], tidal creeks [@Wessel21], and seagrass transect data [@Sherwood17]. The [vignettes](https://tbep-tech.github.io/tbeptools/articles/intro.html) for the package are topically organized to describe the functions that apply to each of the indicators.
 
