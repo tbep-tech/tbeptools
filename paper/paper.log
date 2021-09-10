@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.18)  18 AUG 2021 15:28
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.8.18)  10 SEP 2021 14:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1322,6 +1322,8 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
 [1
 
 ]
+File: paper_files/figure-latex/dashex.JPG Graphic file (type bmp)
+<paper_files/figure-latex/dashex.JPG>
 File: C:/Users/mbeck/R/win-library/4.0/rticles/rmarkdown/templates/joss/resourc
 es/JOSS-logo.png Graphic file (type bmp)
 <C:/Users/mbeck/R/win-library/4.0/rticles/rmarkdown/templates/joss/resources/JO
@@ -1335,8 +1337,6 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [2]
-File: paper_files/figure-latex/thrplotex-1.jpeg Graphic file (type bmp)
-<paper_files/figure-latex/thrplotex-1.jpeg>
 File: C:/Users/mbeck/R/win-library/4.0/rticles/rmarkdown/templates/joss/resourc
 es/JOSS-logo.png Graphic file (type bmp)
 <C:/Users/mbeck/R/win-library/4.0/rticles/rmarkdown/templates/joss/resources/JO
@@ -1350,10 +1350,10 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [3]
-File: paper_files/figure-latex/dashex.JPG Graphic file (type bmp)
-<paper_files/figure-latex/dashex.JPG>
+File: paper_files/figure-latex/thrplotex-1.jpeg Graphic file (type bmp)
+<paper_files/figure-latex/thrplotex-1.jpeg>
 
-Overfull \hbox (39.75006pt too wide) in paragraph at lines 530--534
+Overfull \hbox (39.75006pt too wide) in paragraph at lines 535--539
 [][]\TU/lmr/m/n/10 Beck, M. W. (2020b). \TU/lmr/m/it/10 Tbep-tech/seagrasstrans
 ect-dash: v1.0\TU/lmr/m/n/10 . Zenodo. doi:[][]10.5281/zenodo.4319936[][] 
  []
@@ -1371,7 +1371,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [4]
-Underfull \hbox (badness 1189) in paragraph at lines 577--583
+Underfull \hbox (badness 1189) in paragraph at lines 582--588
 \TU/lmr/m/n/10 1980’s and reviewing the benefits. \TU/lmr/m/it/10 Southeastern 
 Geographer\TU/lmr/m/n/10 , \TU/lmr/m/it/10 57\TU/lmr/m/n/10 (3), 294–319.
  []
@@ -1390,16 +1390,16 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 
 [5] (./paper.aux)
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 42979B4ED0D86FE5695786D45153B82C;432.
+(rerunfilecheck)             Checksum: 1903736BC967F8673D1B2114FD83055F;544.
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35174 strings out of 478475
- 712273 string characters out of 5857611
- 1511067 words of memory out of 5000000
- 54918 multiletter control sequences out of 15000+600000
+ 35175 strings out of 478475
+ 712288 string characters out of 5857611
+ 1511236 words of memory out of 5000000
+ 54919 multiletter control sequences out of 15000+600000
  410310 words of font info for 76 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  87i,13n,95p,1194b,804s stack positions out of 5000i,500n,10000p,200000b,80000s
