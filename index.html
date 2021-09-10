@@ -143,9 +143,9 @@
 <a href="https://tbep-tech.github.io/tbeptools/articles/seagrasstransect.html">Seagrass Transect Data</a>: Overview of functions to import, analyze, and plot results for the seagrass transect data collected in Tampa Bay</li>
 </ul>
 </div>
-<div id="package-structure" class="section level1">
+<div id="usage" class="section level1">
 <h1 class="hasAnchor">
-<a href="#package-structure" class="anchor"></a>Package structure</h1>
+<a href="#usage" class="anchor"></a>Usage</h1>
 <p>Functions in tbeptools fall in three categories depending on mode of use. Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:</p>
 <ul>
 <li><p><code>read</code>: Import current data from the main ftp site.</p></li>
@@ -153,7 +153,49 @@
 <li><p><code>show</code>: Create a plot of the analyzed data.</p></li>
 </ul>
 <p>The functions can be easily found in RStudio after loading the package and typing the prefix at the command line. An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., <code>read</code>, <code>anlz</code>, or <code>show</code>).</p>
-<p>The function <a href="https://tbep-tech.github.io/tbeptools/reference/index.html">reference page</a> can also be viewed for a complete list of functions organized by category, with links to the help files.</p>
+<p>Each function also includes a semi-descriptive suffix that generally describes what category it applies to (e.g, water quality, seagrass) and what it does (e.g., imports, formats). These follow a loose convention that attempts to strike a balance between description and brevity. The optimal balance is often hard to achieve. To aid in understanding, we provide a brief description of suffixes that are used more than once.</p>
+<p>Suffix descriptions:</p>
+<ul>
+<li>
+<code>attain</code>: Analyze functions that summarize data relative to attainment categories specific to bay segments</li>
+<li>
+<code>ave</code>, <code>med</code>: Analyze functions that summarize data into averages or medians</li>
+<li>
+<code>benthic</code>: Applies to benthic monitoring data used for the Tampa Bay Benthic Index</li>
+<li>
+<code>fim</code>: Applies to data from the Fisheries Independent Monitoring program used for the Tampa Bay Nekton Index</li>
+<li>
+<code>form</code>: An intermediate function for formatting imported data for downstream analysis</li>
+<li>
+<code>import</code>: A function used to import data from a source external to the package</li>
+<li>
+<code>indic</code>: A function that analyzes or plots individual tidal creek indicator values, as opposed to integrated creek scores</li>
+<li>
+<code>iwr</code>: Functions or data that apply to the Impaired Waters Rule (IWR) data maintained by the Florida Department of Environmental Protection used as source data for the tidal creek functions</li>
+<li>
+<code>matrix</code>: A plotting function that creates a report card style matrix</li>
+<li>
+<code>met</code>: A function that analyses or plots individual metrics for integrated indices, e.g., TBBI, TBNI</li>
+<li>
+<code>phyto</code>: Applies to phytoplankton data from the Hillsborough County Environmental Protection Commission</li>
+<li>
+<code>plotly</code>: A plotting function that returns an interactive plotly object</li>
+<li>
+<code>scr</code>: A function that analyses or plots summary scores for integrated indices, e.g., TBBI, TBNI</li>
+<li>
+<code>seg</code>, <code>site</code>: Functions that analyze or plot results relative to bay segments or individual monitoring sites</li>
+<li>
+<code>tbbi</code>: Applies to the Tampa Bay Benthic Index (TBBI)</li>
+<li>
+<code>tbni</code>: Applies to the Tampa Bay Nekton Index (TBNI)</li>
+<li>
+<code>tdlcrk</code>: Applies to tidal creeks</li>
+<li>
+<code>transect</code>: Applies to seagrass transect data</li>
+<li>
+<code>wq</code>: Applies to water quality</li>
+</ul>
+<p>The function <a href="https://tbep-tech.github.io/tbeptools/reference/index.html">reference page</a> can also be viewed for a complete list of functions organized by category, a description of what they do, and links to the help files.</p>
 <p>The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <a href="https://www.tampabay.wateratlas.usf.edu/" class="uri">https://www.tampabay.wateratlas.usf.edu/</a>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load the package</span>
