@@ -53,7 +53,31 @@ Functions in tbeptools fall in three categories depending on mode of use.  Each 
 
 The functions can be easily found in RStudio after loading the package and typing the prefix at the command line.  An autofill dialog box will pop up showing all functions that apply for the prefix. This eliminates the need for searching for individual functions if all you know is the category of function you need (e.g., `read`, `anlz`, or `show`).
 
-The function [reference page](https://tbep-tech.github.io/tbeptools/reference/index.html) can also be viewed for a complete list of functions organized by category, with links to the help files. 
+Each function also includes a semi-descriptive suffix that generally describes what category it applies to (e.g, water quality, seagrass) and what it does (e.g., imports, formats).  These follow a loose convention that attempts to strike a balance between description and brevity.  The optimal balance is often hard to achieve.  To aid in understanding, we provide a brief description of suffixes that are used more than once.  
+
+Suffix descriptions:
+
+* `attain`: Analyze functions that summarize data relative to attainment categories specific to bay segments
+* `ave`, `med`: Analyze functions that summarize data into averages or medians
+* `benthic`: Applies to benthic monitoring data used for the Tampa Bay Benthic Index
+* `fim`: Applies to data from the Fisheries Independent Monitoring program used for the Tampa Bay Nekton Index
+* `form`: An intermediate function for formatting imported data for downstream analysis
+* `import`: A function used to import data from a source external to the package
+* `indic`: A function that analyzes or plots individual tidal creek indicator values, as opposed to integrated creek scores
+* `iwr`: Functions or data that apply to the Impaired Waters Rule (IWR) data maintained by the Florida Department of Environmental Protection used as source data for the tidal creek functions
+* `matrix`: A plotting function that creates a report card style matrix
+* `met`: A function that analyses or plots individual metrics for integrated indices, e.g., TBBI, TBNI
+* `phyto`: Applies to phytoplankton data from the Hillsborough County Environmental Protection Commission
+* `plotly`: A plotting function that returns an interactive plotly object
+* `scr`: A function that analyses or plots summary scores for integrated indices, e.g., TBBI, TBNI
+* `seg`, `site`: Functions that analyze or plot results relative to bay segments or individual monitoring sites 
+* `tbbi`: Applies to the Tampa Bay Benthic Index (TBBI)
+* `tbni`: Applies to the Tampa Bay Nekton Index (TBNI)
+* `tdlcrk`: Applies to tidal creeks
+* `transect`: Applies to seagrass transect data
+* `wq`: Applies to water quality
+
+The function [reference page](https://tbep-tech.github.io/tbeptools/reference/index.html) can also be viewed for a complete list of functions organized by category, a description of what they do, and links to the help files. 
 
 The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <https://www.tampabay.wateratlas.usf.edu/>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.
 
