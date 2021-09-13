@@ -23,7 +23,7 @@
 #'
 #' # create sf object of boundaries
 #' sgmanagement <- st_read(
-#'   dsn = '~/Desktop/TBEP/GISboundaries/Seagrass_Management_Areas/TBEP_SG_MA_FINAL_Project.shp',
+#'   dsn = '~/Desktop/TBEP/GISboundaries/Seagrass_Management_Areas/TBEP_SG_MA_FINAL_Projectfix.shp',
 #'   drivers = 'ESRI Shapefile'
 #'   ) %>%
 #'   select(areas = TBEP_SG_MA) %>%
