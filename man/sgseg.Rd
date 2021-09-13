@@ -28,7 +28,7 @@ library(tools)
 # create sf object of boundaries
 # make sure projection does not change
 sgseg <- st_read(
-  dsn = '~/Desktop/Seagrass_Segment_Boundaries/Seagrass_Segment_Boundaries.shp',
+  dsn = '~/Desktop/TBEP/GISboundaries/Seagrass_Segment_Boundaries/Seagrass_Segment_Boundaries.shp',
   drivers = 'ESRI Shapefile'
   ) \%>\%
   select(segment = SEAGRASSSE) \%>\%
