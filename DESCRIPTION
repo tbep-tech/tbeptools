@@ -32,6 +32,12 @@ Authors@R: c(
       email = "graulerson@tbep.org",
       comment = c(ORCID = "0000-0002-5920-5743")
     ),
+    person(given = "Adhokshaja Achar",
+      family = "Budihal Prasad",
+      role = c("aut"),
+      email = "adhokshajaac@usf.edu",
+      comment = c(ORCID = "0000-0002-6485-6858")
+    ),
     person(given = "Benjamin",
       family = "Best",
       role = c("aut"),
