@@ -11,6 +11,10 @@ R package for Tampa Bay Estuary Program functions. Please see the [vignette](htt
 
 <img src="man/figures/logo.png" align="center" width="125"/>
 
+Please cite this package as follows: 
+
+Beck, M.W., Schrandt, M.N., Wessel, M.R., Sherwood, E.T., Raulerson, G.E., Budihal Prasad, A.A., Best, B.D., (2021). tbeptools: An R package for synthesizing estuarine data for environmental research. Journal of Open Source Software, 6(65), 3485, https://doi.org/10.21105/joss.03485
+
 # Installation
 
 The package can be installed from [r-universe](https://tbep-tech.r-universe.dev).  The source code is available on the tbep-tech GitHub group web page: <https://github.com/tbep-tech/tbeptools>.  Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., `library(tbeptools)`).
