@@ -3,8 +3,7 @@
 
 [![R-CMD-check](https://github.com/tbep-tech/tbeptools/workflows/R-CMD-check/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
 [![pkgdown](https://github.com/tbep-tech/tbeptools/workflows/pkgdown/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
-[![JOSS-draft](https://github.com/tbep-tech/tbeptools/actions/workflows/draft-pdf.yaml/badge.svg)](https://github.com/tbep-tech/tbeptools/actions/workflows/draft-pdf.yaml)
-[![status](https://joss.theoj.org/papers/2fc39b299e66e93f1dbb05a9d57117ff/status.svg)](https://joss.theoj.org/papers/2fc39b299e66e93f1dbb05a9d57117ff)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.03485/status.svg)](https://doi.org/10.21105/joss.03485)
 [![Codecov test coverage](https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg)](https://codecov.io/gh/tbep-tech/tbeptools?branch=master)
 [![DOI](https://zenodo.org/badge/184627857.svg)](https://zenodo.org/badge/latestdoi/184627857)
 
