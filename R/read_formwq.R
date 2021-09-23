@@ -45,7 +45,8 @@ read_formwq <- function(datin){
     dplyr::inner_join(stations, by = 'epchc_station') %>%
     dplyr::select(bay_segment, epchc_station, SampleTime, yr, mo, Latitude, Longitude, SampleTime,
                   Total_Depth_m, Sample_Depth_m, tn, tn_q = `Total_Nitrogen_Q`, sd_m, sd_raw_m = Secchi_Depth_m, sd_q = Secchi_Q, chla, chla_q = `Chlorophyll_a uncorr_Q`, Sal_Top_ppth, Sal_Mid_ppth,
-                  Sal_Bottom_ppth, Temp_Water_Top_degC, Temp_Water_Mid_degC, Temp_Water_Bottom_degC
+                  Sal_Bottom_ppth, Temp_Water_Top_degC, Temp_Water_Mid_degC, Temp_Water_Bottom_degC, `Turbidity_JTU-NTU`, Turbidity_Q,
+                  Color_345_F45_PCU, Color_345_F45_Q
     )
 
   return(out)
