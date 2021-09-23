@@ -28,6 +28,7 @@ A data frame with 26656 rows and 26 variables:
   \item{Sal_Bottom_ppth}{num}
   \item{Temp_Water_Top_degC}{num}
   \item{Temp_Water_Mid_degC}{num}
+  \item{Temp_Water_Bottom_degC}{num}
   \item{Turbidity_JTU-NTU}{num}
   \item{Turbidity_Q}{num}
   \item{Color_345_F45_PCU}{num}
