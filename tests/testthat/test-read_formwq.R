@@ -49,8 +49,8 @@ test_that("Checking read_formwq", {
   # format
   dat <- read_formwq(rawdat)
 
-  # check if number of columns is equal to 11
+  # check if number of columns is equal to 26
   result <- ncol(dat)
-  expect_equal(result, 22)
+  expect_equal(result, 26)
 
 })
