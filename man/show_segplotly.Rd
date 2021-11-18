@@ -9,7 +9,9 @@ show_segplotly(
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   yrrng = c(1975, 2019),
   family = NULL,
-  partialyr = FALSE
+  partialyr = FALSE,
+  width = NULL,
+  height = NULL
 )
 }
 \arguments{
@@ -22,6 +24,10 @@ show_segplotly(
 \item{family}{optional chr string indicating font family for text labels}
 
 \item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
+
+\item{width}{numeric for width of the plot in pixels}
+
+\item{height}{numeric for height of the plot in pixels}
 }
 \value{
 An interactive plotly object

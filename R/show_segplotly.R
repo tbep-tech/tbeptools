@@ -5,6 +5,8 @@
 #' @param yrrng numeric for year range to plot
 #' @param family optional chr string indicating font family for text labels
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#' @param width numeric for width of the plot in pixels
+#' @param height numeric for height of the plot in pixels
 #'
 #' @details This function combines outputs from \code{\link{show_thrplot}} and \code{\link{show_segmatrix}} for a selected bay segment. The plot is interactive and can be zoomed by dragging the mouse pointer over a section of the plot. Information about each cell or value can be seen by hovering over a location in the plot.
 #'
@@ -16,7 +18,8 @@
 #'
 #' @examples
 #' show_segplotly(epcdata)
-show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), yrrng = c(1975, 2019), family = NULL, partialyr = FALSE){
+show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), yrrng = c(1975, 2019), family = NULL, partialyr = FALSE,
+                           width = NULL, height = NULL){
 
   bay_segment <- match.arg(bay_segment)
 
@@ -40,11 +43,11 @@ show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), 
 
   })
 
-  p3 <- plotly::ggplotly(p3, tooltip = 'Action')
+  p3 <- plotly::ggplotly(p3, tooltip = 'Action', width = width, height = height)
   for(i in 1:length(p3$x$data)) p3$x$data[[i]]$showlegend <- FALSE
 
-  p1 <- plotly::ggplotly(p1)
-  p2 <- plotly::ggplotly(p2)
+  p1 <- plotly::ggplotly(p1, width = width, height = height)
+  p2 <- plotly::ggplotly(p2, width = width, height = height)
   p2$x$data[[1]]$showlegend <- FALSE
   p2$x$data[[2]]$showlegend <- FALSE
   p2$x$data[[3]]$showlegend <- FALSE
