@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -171,25 +171,26 @@
     <p>Sherwood, E.T., Greening, H.S., Johansson, J.O.R., Kaufman, K., Raulerson, G.E. 2017. Tampa Bay (Florida, USA): Documenting seagrass recovery since the 1980's and reviewing the benefits. Southeastern Geographer. 57(3):294-319.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-<span class='fu'>anlz_transectocc</span><span class='op'>(</span><span class='va'>transect</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11,709 × 6</span>
-#&gt; <span style='color: #949494;'># Groups:   Date, Transect [1,301]</span>
-#&gt;    Date       Transect Savspecies  nsites  foest bbest
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> 1997-10-11 S2T3     AA              41 0      0    
-#&gt; <span style='color: #BCBCBC;'> 2</span> 1997-10-11 S2T3     Caulerpa        41 0      0    
-#&gt; <span style='color: #BCBCBC;'> 3</span> 1997-10-11 S2T3     DA              41 0      0    
-#&gt; <span style='color: #BCBCBC;'> 4</span> 1997-10-11 S2T3     Halodule        41 0.048<span style='text-decoration: underline;'>8</span> 0.146
-#&gt; <span style='color: #BCBCBC;'> 5</span> 1997-10-11 S2T3     Halophila       41 0      0    
-#&gt; <span style='color: #BCBCBC;'> 6</span> 1997-10-11 S2T3     No Cover        41 0.951  4.76 
-#&gt; <span style='color: #BCBCBC;'> 7</span> 1997-10-11 S2T3     Ruppia          41 0      0    
-#&gt; <span style='color: #BCBCBC;'> 8</span> 1997-10-11 S2T3     Syringodium     41 0      0    
-#&gt; <span style='color: #BCBCBC;'> 9</span> 1997-10-11 S2T3     Thalassia       41 0      0    
-#&gt; <span style='color: #BCBCBC;'>10</span> 1997-10-11 S2T5     AA              34 0      0    
-#&gt; <span style='color: #949494;'># … with 11,699 more rows</span></div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'><span class='fu'>anlz_transectocc</span><span class='op'>(</span><span class='va'>transect</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 11,709 × 6</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># Groups:   Date, Transect [1,301]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    Date       Transect Savspecies  nsites  foest bbest</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> 1997-10-11 S2T3     AA              41 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> 1997-10-11 S2T3     Caulerpa        41 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> 1997-10-11 S2T3     DA              41 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> 1997-10-11 S2T3     Halodule        41 0.048<span style='text-decoration: underline;'>8</span> 0.146</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> 1997-10-11 S2T3     Halophila       41 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> 1997-10-11 S2T3     No Cover        41 0.951  4.76 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> 1997-10-11 S2T3     Ruppia          41 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> 1997-10-11 S2T3     Syringodium     41 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> 1997-10-11 S2T3     Thalassia       41 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> 1997-10-11 S2T5     AA              34 0      0    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 11,699 more rows</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

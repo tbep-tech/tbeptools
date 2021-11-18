@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -190,25 +190,26 @@
     <p>The <code>focat</code> column returned in the results shows a color category based on arbitrary breaks of the frequency occurrence estimates (<code>foest</code>) at 25, 50, and 75 percent.  These don't necessarily translate to any ecological breakpoints.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-<span class='va'>transectocc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_transectocc.html'>anlz_transectocc</a></span><span class='op'>(</span><span class='va'>transect</span><span class='op'>)</span>
-<span class='fu'>anlz_transectave</span><span class='op'>(</span><span class='va'>transectocc</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 138 × 4</span>
-#&gt;       yr bay_segment foest focat 
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> 
-#&gt; <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>998 Tampa Bay    69.5 yellow
-#&gt; <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>1</span>998 OTB          70.9 yellow
-#&gt; <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>1</span>998 HB           15.2 red   
-#&gt; <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>1</span>998 MTB          57.3 yellow
-#&gt; <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>1</span>998 LTB          80.0 green 
-#&gt; <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>1</span>998 BCB          81.5 green 
-#&gt; <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>1</span>999 Tampa Bay    62.7 yellow
-#&gt; <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>1</span>999 OTB          66.9 yellow
-#&gt; <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>1</span>999 HB           10.1 red   
-#&gt; <span style='color: #BCBCBC;'>10</span>  <span style='text-decoration: underline;'>1</span>999 MTB          57.4 yellow
-#&gt; <span style='color: #949494;'># … with 128 more rows</span></div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'><span class='va'>transectocc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_transectocc.html'>anlz_transectocc</a></span><span class='op'>(</span><span class='va'>transect</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>anlz_transectave</span><span class='op'>(</span><span class='va'>transectocc</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 138 × 4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       yr bay_segment foest focat </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>  <span style='text-decoration: underline;'>1</span>998 Tampa Bay    69.5 yellow</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>  <span style='text-decoration: underline;'>1</span>998 OTB          70.9 yellow</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>  <span style='text-decoration: underline;'>1</span>998 HB           15.2 red   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>  <span style='text-decoration: underline;'>1</span>998 MTB          57.3 yellow</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>  <span style='text-decoration: underline;'>1</span>998 LTB          80.0 green </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>  <span style='text-decoration: underline;'>1</span>998 BCB          81.5 green </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>  <span style='text-decoration: underline;'>1</span>999 Tampa Bay    62.7 yellow</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>  <span style='text-decoration: underline;'>1</span>999 OTB          66.9 yellow</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>  <span style='text-decoration: underline;'>1</span>999 HB           10.1 red   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>  <span style='text-decoration: underline;'>1</span>999 MTB          57.4 yellow</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 128 more rows</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -163,25 +163,25 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='va'>seagrass</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-   Year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1950L</span>, <span class='fl'>1982L</span>, <span class='fl'>1988L</span>, <span class='fl'>1990L</span>, <span class='fl'>1992L</span>, <span class='fl'>1994L</span>, <span class='fl'>1996L</span>,
-        <span class='fl'>1999L</span>, <span class='fl'>2001L</span>, <span class='fl'>2004L</span>, <span class='fl'>2006L</span>, <span class='fl'>2008L</span>, <span class='fl'>2010L</span>, <span class='fl'>2012L</span>, <span class='fl'>2014L</span>,
-        <span class='fl'>2016L</span>, <span class='fl'>2018L</span>, <span class='fl'>2020L</span><span class='op'>)</span>,
-   Acres <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40420</span>, <span class='fl'>21650</span>, <span class='fl'>23285</span>, <span class='fl'>25226</span>, <span class='fl'>25753</span>, <span class='fl'>26518</span>, <span class='fl'>26916</span>,
-        <span class='fl'>24841</span>, <span class='fl'>26078</span>, <span class='fl'>27021</span>, <span class='fl'>28299</span>, <span class='fl'>29647</span>, <span class='fl'>32897</span>, <span class='fl'>34642</span>, <span class='fl'>40294.71</span>,
-        <span class='fl'>41655.16</span>, <span class='fl'>40651.55</span>, <span class='fl'>34298</span><span class='op'>)</span>,
-   Hectares <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>16357.39</span>, <span class='fl'>8761.44</span>, <span class='fl'>9423.11</span>, <span class='fl'>10208.6</span>, <span class='fl'>10421.87</span>,
-        <span class='fl'>10731.45</span>, <span class='fl'>10892.52</span>, <span class='fl'>10052.8</span>, <span class='fl'>10553.39</span>, <span class='fl'>10935.01</span>, <span class='fl'>11452.2</span>,
-        <span class='fl'>11997.72</span>, <span class='fl'>13312.94</span>, <span class='fl'>14019.27</span>, <span class='fl'>16306.69</span>, <span class='fl'>16857.25</span>, <span class='fl'>16451.1</span>,
-        <span class='fl'>13880</span><span class='op'>)</span>
- <span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"data.frame"</span>, row.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>18L</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span><span class='op'>(</span><span class='va'>seagrass</span>, file <span class='op'>=</span> <span class='st'>'data/seagrass.RData'</span>, compress <span class='op'>=</span> <span class='st'>'xz'</span><span class='op'>)</span>
-
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>seagrass</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>   Year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1950L</span>, <span class='fl'>1982L</span>, <span class='fl'>1988L</span>, <span class='fl'>1990L</span>, <span class='fl'>1992L</span>, <span class='fl'>1994L</span>, <span class='fl'>1996L</span>,</span>
+<span class='r-in'>        <span class='fl'>1999L</span>, <span class='fl'>2001L</span>, <span class='fl'>2004L</span>, <span class='fl'>2006L</span>, <span class='fl'>2008L</span>, <span class='fl'>2010L</span>, <span class='fl'>2012L</span>, <span class='fl'>2014L</span>,</span>
+<span class='r-in'>        <span class='fl'>2016L</span>, <span class='fl'>2018L</span>, <span class='fl'>2020L</span><span class='op'>)</span>,</span>
+<span class='r-in'>   Acres <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40420</span>, <span class='fl'>21650</span>, <span class='fl'>23285</span>, <span class='fl'>25226</span>, <span class='fl'>25753</span>, <span class='fl'>26518</span>, <span class='fl'>26916</span>,</span>
+<span class='r-in'>        <span class='fl'>24841</span>, <span class='fl'>26078</span>, <span class='fl'>27021</span>, <span class='fl'>28299</span>, <span class='fl'>29647</span>, <span class='fl'>32897</span>, <span class='fl'>34642</span>, <span class='fl'>40294.71</span>,</span>
+<span class='r-in'>        <span class='fl'>41655.16</span>, <span class='fl'>40651.55</span>, <span class='fl'>34298</span><span class='op'>)</span>,</span>
+<span class='r-in'>   Hectares <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>16357.39</span>, <span class='fl'>8761.44</span>, <span class='fl'>9423.11</span>, <span class='fl'>10208.6</span>, <span class='fl'>10421.87</span>,</span>
+<span class='r-in'>        <span class='fl'>10731.45</span>, <span class='fl'>10892.52</span>, <span class='fl'>10052.8</span>, <span class='fl'>10553.39</span>, <span class='fl'>10935.01</span>, <span class='fl'>11452.2</span>,</span>
+<span class='r-in'>        <span class='fl'>11997.72</span>, <span class='fl'>13312.94</span>, <span class='fl'>14019.27</span>, <span class='fl'>16306.69</span>, <span class='fl'>16857.25</span>, <span class='fl'>16451.1</span>,</span>
+<span class='r-in'>        <span class='fl'>13880</span><span class='op'>)</span></span>
+<span class='r-in'> <span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"data.frame"</span>, row.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>18L</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span><span class='op'>(</span><span class='va'>seagrass</span>, file <span class='op'>=</span> <span class='st'>'data/seagrass.RData'</span>, compress <span class='op'>=</span> <span class='st'>'xz'</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

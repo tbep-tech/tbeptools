@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -159,7 +159,9 @@
   family <span class='op'>=</span> <span class='cn'>NA</span>,
   historic <span class='op'>=</span> <span class='cn'>FALSE</span>,
   plotly <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  partialyr <span class='op'>=</span> <span class='cn'>FALSE</span>
+  partialyr <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  height <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -205,6 +207,14 @@
       <th>partialyr</th>
       <td><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter</p></td>
     </tr>
+    <tr>
+      <th>width</th>
+      <td><p>numeric for width of the plot in pixels, only applies of <code>plotly = TRUE</code></p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>numeric for height of the plot in pixels, only applies of <code>plotly = TRUE</code></p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -218,8 +228,9 @@
     <div class='dont-index'><p><code><a href='show_wqmatrix.html'>show_wqmatrix</a></code>, <code><a href='show_matrix.html'>show_matrix</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>show_segmatrix</span><span class='op'>(</span><span class='va'>epcdata</span>, bay_segment <span class='op'>=</span> <span class='st'>'OTB'</span><span class='op'>)</span>
-</div><div class='img'><img src='show_segmatrix-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>show_segmatrix</span><span class='op'>(</span><span class='va'>epcdata</span>, bay_segment <span class='op'>=</span> <span class='st'>'OTB'</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='show_segmatrix-1.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -168,23 +168,24 @@
     <p>This function calculates scores for the TBBI based on station, taxa, and field sample data.  The total TBBI scores are returned as <code>TBBI</code> and <code>TBBICat</code>, where the latter is a categorical description of the scores.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>anlz_tbbiscr</span><span class='op'>(</span><span class='va'>benthicdata</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4,605 × 14</span>
-#&gt;    StationID AreaAbbr FundingProject ProgramID ProgramName    Latitude Longitude
-#&gt;        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>       448 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 2</span>       449 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 3</span>       450 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span>       451 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 5</span>       452 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 6</span>       453 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span>       454 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 8</span>       455 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'> 9</span>       456 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #BCBCBC;'>10</span>       457 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span>
-#&gt; <span style='color: #949494;'># … with 4,595 more rows, and 7 more variables: date &lt;date&gt;, yr &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   TotalAbundance &lt;dbl&gt;, SpeciesRichness &lt;dbl&gt;, TBBI &lt;dbl&gt;, TBBICat &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   Salinity &lt;dbl&gt;</span></div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>anlz_tbbiscr</span><span class='op'>(</span><span class='va'>benthicdata</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 4,605 × 14</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    StationID AreaAbbr FundingProject ProgramID ProgramName    Latitude Longitude</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span>       448 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span>       449 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span>       450 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span>       451 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span>       452 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span>       453 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span>       454 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span>       455 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span>       456 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span>       457 BB       Apollo Beach           4 Benthic Monit…     27.8     -<span style='color: #BB0000;'>82.4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 4,595 more rows, and 7 more variables: date &lt;date&gt;, yr &lt;dbl&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   TotalAbundance &lt;dbl&gt;, SpeciesRichness &lt;dbl&gt;, TBBI &lt;dbl&gt;, TBBICat &lt;chr&gt;,</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'>#   Salinity &lt;dbl&gt;</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -159,7 +159,9 @@
   base_size <span class='op'>=</span> <span class='fl'>12</span>,
   facet <span class='op'>=</span> <span class='cn'>FALSE</span>,
   ncol <span class='op'>=</span> <span class='cn'>NULL</span>,
-  plotly <span class='op'>=</span> <span class='cn'>FALSE</span>
+  plotly <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  width <span class='op'>=</span> <span class='cn'>NULL</span>,
+  height <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -201,6 +203,14 @@
       <th>plotly</th>
       <td><p>logical if plot is created using plotly</p></td>
     </tr>
+    <tr>
+      <th>width</th>
+      <td><p>numeric for width of the plot in pixels, only applies of <code>plotly = TRUE</code></p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>numeric for height of the plot in pixels, only applies of <code>plotly = TRUE</code></p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -212,23 +222,26 @@
 <p>Note that if <code>plotly = TRUE</code>, the size legend is not shown.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='co'># one species</span>
-<span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>, species <span class='op'>=</span> <span class='st'>'Halodule'</span>, varplo <span class='op'>=</span> <span class='st'>'Abundance'</span><span class='op'>)</span>
-</div><div class='img'><img src='show_transect-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># multiple species, one plot</span>
-<span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>,
-  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>, <span class='st'>'Caulerpa'</span><span class='op'>)</span>,
-  varplo <span class='op'>=</span> <span class='st'>'Abundance'</span><span class='op'>)</span>
-</div><div class='img'><img src='show_transect-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># multiple species, multiple plots</span>
-<span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>,
-  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>, <span class='st'>'Caulerpa'</span><span class='op'>)</span>,
-  varplo <span class='op'>=</span> <span class='st'>'Abundance'</span>, facet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='img'><img src='show_transect-3.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>transect</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_transect.html'>read_transect</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># one species</span></span>
+<span class='r-in'><span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>, species <span class='op'>=</span> <span class='st'>'Halodule'</span>, varplo <span class='op'>=</span> <span class='st'>'Abundance'</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='show_transect-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># multiple species, one plot</span></span>
+<span class='r-in'><span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>,</span>
+<span class='r-in'>  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>, <span class='st'>'Caulerpa'</span><span class='op'>)</span>,</span>
+<span class='r-in'>  varplo <span class='op'>=</span> <span class='st'>'Abundance'</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='show_transect-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># multiple species, multiple plots</span></span>
+<span class='r-in'><span class='fu'>show_transect</span><span class='op'>(</span><span class='va'>transect</span>, site <span class='op'>=</span> <span class='st'>'S3T10'</span>,</span>
+<span class='r-in'>  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Halodule'</span>, <span class='st'>'Syringodium'</span>, <span class='st'>'Thalassia'</span>, <span class='st'>'Halophila'</span>, <span class='st'>'Ruppia'</span>, <span class='st'>'Caulerpa'</span><span class='op'>)</span>,</span>
+<span class='r-in'>  varplo <span class='op'>=</span> <span class='st'>'Abundance'</span>, facet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='show_transect-3.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

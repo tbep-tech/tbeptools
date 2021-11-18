@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -168,27 +168,27 @@
     <p>Function is used internally within <code><a href='read_importbenthic.html'>read_importbenthic</a></code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-
-<span class='co'># location to download data</span>
-<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='st'>'~/Desktop/benthic.zip'</span>
-
-<span class='co'># download</span>
-<span class='va'>urlin</span> <span class='op'>&lt;-</span> <span class='st'>'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip'</span>
-<span class='fu'><a href='read_dlcurrent.html'>read_dlcurrent</a></span><span class='op'>(</span><span class='va'>path</span>, download_latest <span class='op'>=</span> <span class='cn'>TRUE</span>, urlin <span class='op'>=</span> <span class='va'>urlin</span><span class='op'>)</span>
-
-<span class='co'># unzip</span>
-<span class='va'>tmppth</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/unzip.html'>unzip</a></span><span class='op'>(</span><span class='va'>path</span>, exdir <span class='op'>=</span> <span class='va'>tmppth</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='co'># format benthic data</span>
-<span class='fu'>read_formbenthic</span><span class='op'>(</span>pathin <span class='op'>=</span> <span class='va'>tmppth</span><span class='op'>)</span>
-
-<span class='co'># remove temporary path</span>
-<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>tmppth</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># location to download data</span></span>
+<span class='r-in'><span class='va'>path</span> <span class='op'>&lt;-</span> <span class='st'>'~/Desktop/benthic.zip'</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># download</span></span>
+<span class='r-in'><span class='va'>urlin</span> <span class='op'>&lt;-</span> <span class='st'>'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip'</span></span>
+<span class='r-in'><span class='fu'><a href='read_dlcurrent.html'>read_dlcurrent</a></span><span class='op'>(</span><span class='va'>path</span>, download_latest <span class='op'>=</span> <span class='cn'>TRUE</span>, urlin <span class='op'>=</span> <span class='va'>urlin</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># unzip</span></span>
+<span class='r-in'><span class='va'>tmppth</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/unzip.html'>unzip</a></span><span class='op'>(</span><span class='va'>path</span>, exdir <span class='op'>=</span> <span class='va'>tmppth</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># format benthic data</span></span>
+<span class='r-in'><span class='fu'>read_formbenthic</span><span class='op'>(</span>pathin <span class='op'>=</span> <span class='va'>tmppth</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># remove temporary path</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>tmppth</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
       </span>
     </div>
 
@@ -173,22 +173,23 @@
     <p>A <code>data.frame</code> for each year and bay segment showing the attainment category</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>avedat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_avedat.html'>anlz_avedat</a></span><span class='op'>(</span><span class='va'>epcdata</span><span class='op'>)</span>
-<span class='fu'>anlz_attain</span><span class='op'>(</span><span class='va'>avedat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 192 × 4</span>
-#&gt;    bay_segment    yr chl_la outcome
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  
-#&gt; <span style='color: #BCBCBC;'> 1</span> HB           <span style='text-decoration: underline;'>1</span>974 3_0    yellow 
-#&gt; <span style='color: #BCBCBC;'> 2</span> HB           <span style='text-decoration: underline;'>1</span>975 3_2    red    
-#&gt; <span style='color: #BCBCBC;'> 3</span> HB           <span style='text-decoration: underline;'>1</span>976 3_2    red    
-#&gt; <span style='color: #BCBCBC;'> 4</span> HB           <span style='text-decoration: underline;'>1</span>977 3_2    red    
-#&gt; <span style='color: #BCBCBC;'> 5</span> HB           <span style='text-decoration: underline;'>1</span>978 3_3    red    
-#&gt; <span style='color: #BCBCBC;'> 6</span> HB           <span style='text-decoration: underline;'>1</span>979 3_3    red    
-#&gt; <span style='color: #BCBCBC;'> 7</span> HB           <span style='text-decoration: underline;'>1</span>980 3_3    red    
-#&gt; <span style='color: #BCBCBC;'> 8</span> HB           <span style='text-decoration: underline;'>1</span>981 3_3    red    
-#&gt; <span style='color: #BCBCBC;'> 9</span> HB           <span style='text-decoration: underline;'>1</span>982 3_3    red    
-#&gt; <span style='color: #BCBCBC;'>10</span> HB           <span style='text-decoration: underline;'>1</span>983 3_0    yellow 
-#&gt; <span style='color: #949494;'># … with 182 more rows</span></div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>avedat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='anlz_avedat.html'>anlz_avedat</a></span><span class='op'>(</span><span class='va'>epcdata</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>anlz_attain</span><span class='op'>(</span><span class='va'>avedat</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 192 × 4</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    bay_segment    yr chl_la outcome</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> HB           <span style='text-decoration: underline;'>1</span>974 3_0    yellow </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> HB           <span style='text-decoration: underline;'>1</span>975 3_2    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> HB           <span style='text-decoration: underline;'>1</span>976 3_2    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> HB           <span style='text-decoration: underline;'>1</span>977 3_2    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> HB           <span style='text-decoration: underline;'>1</span>978 3_3    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> HB           <span style='text-decoration: underline;'>1</span>979 3_3    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> HB           <span style='text-decoration: underline;'>1</span>980 3_3    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> HB           <span style='text-decoration: underline;'>1</span>981 3_3    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> HB           <span style='text-decoration: underline;'>1</span>982 3_3    red    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> HB           <span style='text-decoration: underline;'>1</span>983 3_0    yellow </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 182 more rows</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
