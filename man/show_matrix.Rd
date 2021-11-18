@@ -16,7 +16,9 @@ show_matrix(
   family = NA,
   historic = FALSE,
   plotly = FALSE,
-  partialyr = FALSE
+  partialyr = FALSE,
+  width = NULL,
+  height = NULL
 )
 }
 \arguments{
@@ -43,6 +45,10 @@ show_matrix(
 \item{plotly}{logical if matrix is created using plotly}
 
 \item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
+
+\item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned if \code{asreact = FALSE}, otherwise a \code{\link[reactable]{reactable}} table is returned

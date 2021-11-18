@@ -13,7 +13,9 @@ show_tbbimatrix(
   family = NA,
   rev = FALSE,
   position = "top",
-  plotly = FALSE
+  plotly = FALSE,
+  width = NULL,
+  height = NULL
 )
 }
 \arguments{
@@ -34,6 +36,10 @@ show_tbbimatrix(
 \item{position}{chr string of location for bay segment labels, default on top, passed to \code{\link[ggplot2]{scale_x_discrete}}}
 
 \item{plotly}{logical if matrix is created using plotly}
+
+\item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBBI scores for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object

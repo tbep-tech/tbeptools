@@ -9,6 +9,8 @@
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
 #' @param asreact logical if a reactable table is returned instead of a plot
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @details Results are based on averages across species by date and transect in each bay segment
 #'
@@ -32,7 +34,8 @@
 #' show_transectavespp(transectocc)
 show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2020),
                                 species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
-                                total = TRUE, alph = 1, family = NA, plotly = FALSE, asreact = FALSE){
+                                total = TRUE, alph = 1, family = NA, plotly = FALSE, asreact = FALSE, width = NULL,
+                                height = NULL){
 
   # make plot
   if(!asreact){
@@ -64,7 +67,7 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       )
 
     if(plotly)
-      p <- plotly::ggplotly(p)
+      p <- plotly::ggplotly(p, width = width, height = height)
 
     out <- p
 

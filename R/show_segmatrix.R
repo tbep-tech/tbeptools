@@ -12,6 +12,8 @@
 #' @param historic logical if historic data are used from 2005 and earlier
 #' @param plotly logical if matrix is created using plotly
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @return A static \code{\link[ggplot2]{ggplot}} object is returned
 #'
@@ -30,7 +32,8 @@
 #' @examples
 #' show_segmatrix(epcdata, bay_segment = 'OTB')
 show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
-                           abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE) {
+                           abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE, width = NULL,
+                           height = NULL) {
 
   bay_segment <- match.arg(bay_segment)
 
@@ -102,7 +105,7 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2019
       geom_text(aes(label = outcometxt), size = txtsz, family = family)
 
   if(plotly)
-    p <- show_matrixplotly(p, family = family, tooltip = 'Action')
+    p <- show_matrixplotly(p, family = family, tooltip = 'Action', width = width, height = height)
 
   return(p)
 

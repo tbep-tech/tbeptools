@@ -11,7 +11,9 @@ show_tbniscr(
   alph = 0.3,
   ylim = c(22, 58),
   rev = FALSE,
-  plotly = FALSE
+  plotly = FALSE,
+  width = NULL,
+  height = NULL
 )
 }
 \arguments{
@@ -28,6 +30,10 @@ show_tbniscr(
 \item{rev}{logical if factor levels for bay segments are reversed}
 
 \item{plotly}{logical if matrix is created using plotly}
+
+\item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE}

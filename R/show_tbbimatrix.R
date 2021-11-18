@@ -11,6 +11,8 @@
 #' @param rev logical if factor levels for bay segments are reversed
 #' @param position chr string of location for bay segment labels, default on top, passed to \code{\link[ggplot2]{scale_x_discrete}}
 #' @param plotly logical if matrix is created using plotly
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBBI scores for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object
 #' @export
@@ -25,7 +27,9 @@
 #' @examples
 #' tbbiscr <- anlz_tbbiscr(benthicdata)
 #' show_tbbimatrix(tbbiscr)
-show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All', 'All (wt)'), yrrng = c(1993, 2019), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
+show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All', 'All (wt)'),
+                            yrrng = c(1993, 2019), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top',
+                            plotly = FALSE, width = NULL, height = NULL){
 
   # annual average by segment
   toplo <- anlz_tbbimed(tbbiscr, bay_segment, rev = rev, yrrng = yrrng)
@@ -47,7 +51,7 @@ show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 
       ggplot2::geom_text(aes(label = TBBICat), size = txtsz, family = family)
 
   if(plotly)
-    p <- show_matrixplotly(p, family = family, tooltip = NULL)
+    p <- show_matrixplotly(p, family = family, tooltip = NULL, width = width, height = height)
 
   return(p)
 

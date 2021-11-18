@@ -9,6 +9,8 @@
 #' @param facet logical indicating if plots are separated into facets by species
 #' @param ncol numeric indicating number of columns if \code{facet = TRUE}
 #' @param plotly logical if plot is created using plotly
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
@@ -40,7 +42,7 @@
 #'   varplo = 'Abundance', facet = TRUE)
 show_transect <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
                           yrrng = c(1998, 2020), varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
-                          facet = FALSE, ncol = NULL, plotly = FALSE){
+                          facet = FALSE, ncol = NULL, plotly = FALSE, width = NULL, height = NULL){
 
   # species pool
   spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
@@ -144,7 +146,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
     )
 
   if(plotly)
-    p <- plotly::ggplotly(p)
+    p <- plotly::ggplotly(p, width = width, height = height)
 
   return(p)
 

@@ -14,7 +14,9 @@ show_transectavespp(
   alph = 1,
   family = NA,
   plotly = FALSE,
-  asreact = FALSE
+  asreact = FALSE,
+  width = NULL,
+  height = NULL
 )
 }
 \arguments{
@@ -35,6 +37,10 @@ show_transectavespp(
 \item{plotly}{logical if matrix is created using plotly}
 
 \item{asreact}{logical if a reactable table is returned instead of a plot}
+
+\item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
 If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{plotly}} (if \code{plotly = T}) object is returned showing trends over time by species for selected bay segments.  If \code{asreact = T}, a \code{\link[reactable]{reactable}} table showing results by year, segment, and species is returned.

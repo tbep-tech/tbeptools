@@ -4,10 +4,14 @@
 \alias{show_tbniscrplotly}
 \title{Creates a plotly object for TBNI score plots}
 \usage{
-show_tbniscrplotly(p)
+show_tbniscrplotly(p, width = NULL, height = NULL)
 }
 \arguments{
 \item{p}{\code{\link[ggplot2]{ggplot}} object as output from \code{\link{show_tbniscr}} or \code{\link{show_tbniscrall}}}
+
+\item{width}{numeric for width of the plot in pixels}
+
+\item{height}{numeric for height of the plot in pixels}
 }
 \value{
 A \code{\link[plotly]{plotly}} data object

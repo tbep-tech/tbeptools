@@ -11,6 +11,8 @@
 #' @param rev logical if factor levels for bay segments are reversed
 #' @param position chr string of location for bay segment labels, default on top, passed to \code{\link[ggplot2]{scale_x_discrete}}
 #' @param plotly logical if matrix is created using plotly
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @details Results are based on averages across species by date and transect in each bay segment
 #'
@@ -34,7 +36,8 @@
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectmatrix(transectocc)
 show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, neutral = FALSE,
-                                yrrng = c(1998, 2020), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top', plotly = FALSE){
+                                yrrng = c(1998, 2020), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top',
+                                plotly = FALSE, width = NULL, height = NULL){
 
   # annual average by segment
   toplo <- anlz_transectave(transectocc, bay_segment = bay_segment, total = total, rev = rev, yrrng = yrrng)
@@ -91,7 +94,7 @@ show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       ggplot2::geom_text(aes(label = round(foest, 0)), size = txtsz, family = family)
 
   if(plotly)
-    p <- show_matrixplotly(p, family = family, tooltip = NULL)
+    p <- show_matrixplotly(p, family = family, tooltip = NULL, width = width, height = height)
 
 
   return(p)

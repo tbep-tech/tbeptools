@@ -14,6 +14,8 @@
 #' @param historic logical if historic data are used from 2005 and earlier
 #' @param plotly logical if matrix is created using plotly
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @concept show
 #'
@@ -30,7 +32,8 @@
 #' @examples
 #' show_matrix(epcdata)
 show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE,
-                        nrows = 10, abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE){
+                        nrows = 10, abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE, width = NULL,
+                        height = NULL){
 
   # default targets from data file
   if(is.null(trgs))
@@ -164,7 +167,7 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segme
       labs(caption = paste0('*Incomplete data for ', max(yrrng), ' estimated\nby five year average'))
 
   if(plotly)
-    p <- show_matrixplotly(p, family = family, tooltip = 'Action')
+    p <- show_matrixplotly(p, family = family, tooltip = 'Action', width = width, height = height)
 
   return(p)
 

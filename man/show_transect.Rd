@@ -14,7 +14,9 @@ show_transect(
   base_size = 12,
   facet = FALSE,
   ncol = NULL,
-  plotly = FALSE
+  plotly = FALSE,
+  width = NULL,
+  height = NULL
 )
 }
 \arguments{
@@ -35,6 +37,10 @@ show_transect(
 \item{ncol}{numeric indicating number of columns if \code{facet = TRUE}}
 
 \item{plotly}{logical if plot is created using plotly}
+
+\item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object

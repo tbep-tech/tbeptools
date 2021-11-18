@@ -9,6 +9,8 @@
 #' @param ylim numeric for y axis limits
 #' @param rev logical if factor levels for bay segments are reversed
 #' @param plotly logical if matrix is created using plotly
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time in TBNI scores for each bay segment or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE}
 #' @export
@@ -20,7 +22,8 @@
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbniscr(tbniscr)
-show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3, ylim = c(22 ,58), rev = FALSE, plotly = FALSE){
+show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3,
+                         ylim = c(22 ,58), rev = FALSE, plotly = FALSE, width = NULL, height = NULL){
 
   # sanity checks
   stopifnot(length(perc) == 2)
@@ -69,7 +72,7 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
     )
 
   if(plotly)
-    out <- show_tbniscrplotly(out)
+    out <- show_tbniscrplotly(out, width = width, height = height)
 
   return(out)
 

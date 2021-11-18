@@ -14,6 +14,8 @@
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @concept show
 #'
@@ -29,7 +31,8 @@
 #' @examples
 #' show_wqmatrix(epcdata)
 show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2019), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
-                          asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, plotly = FALSE, partialyr = FALSE){
+                          asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, plotly = FALSE, partialyr = FALSE, width = NULL,
+                          height = NULL){
 
   # sanity checks
   param <- match.arg(param)
@@ -137,7 +140,7 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
       labs(caption = paste0('*Incomplete data for ', max(yrrng), ' estimated\nby five year average'))
 
   if(plotly)
-    p <- show_matrixplotly(p, family = family, tooltip = 'Result')
+    p <- show_matrixplotly(p, family = family, tooltip = 'Result', width = width, height = height)
 
   return(p)
 

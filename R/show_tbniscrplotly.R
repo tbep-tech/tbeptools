@@ -1,6 +1,8 @@
 #' Creates a plotly object for TBNI score plots
 #'
 #' @param p \code{\link[ggplot2]{ggplot}} object as output from \code{\link{show_tbniscr}} or \code{\link{show_tbniscrall}}
+#' @param width numeric for width of the plot in pixels
+#' @param height numeric for height of the plot in pixels
 #'
 #' @return A \code{\link[plotly]{plotly}} data object
 #' @export
@@ -13,7 +15,7 @@
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' p <- show_tbniscrall(tbniscr)
 #' show_tbniscrplotly(p)
-show_tbniscrplotly <- function(p){
+show_tbniscrplotly <- function(p, width = NULL, height = NULL){
 
   # xmax value
   xmax <- max(p$data$Year) + 0.55
@@ -28,7 +30,7 @@ show_tbniscrplotly <- function(p){
   # alpha
   alph <- pg[[1]]$alpha
 
-  p <- plotly::ggplotly(p)
+  p <- plotly::ggplotly(p, width = width, height = height)
 
   shp1 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(255,0,0,", alph, ")"),
                x0 = 1997.45, x1 = xmax, y0 = 0, y1 = perc[1])
