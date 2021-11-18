@@ -57,7 +57,8 @@ show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), 
   p1$x$data[[1]]$text <- gsub('colour:\\sAnnual\\sMean$', '', p1$x$data[[1]]$text)
   p2$x$data[[1]]$text <- gsub('colour:\\sAnnual\\sMean$', '', p2$x$data[[1]]$text)
 
-  out <- plotly::subplot(p1, p3, p2, nrows = 3, heights = c(0.4, 0.2, 0.4), shareX = T, titleY = TRUE)
+  out <- plotly::subplot(p1, p3, p2, nrows = 3, heights = c(0.4, 0.2, 0.4), shareX = T, titleY = TRUE) %>%
+    plotly::layout(legend = list(title = ''))
 
   return(out)
 
