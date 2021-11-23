@@ -9,6 +9,7 @@
 #' @param ylim numeric for y axis limits
 #' @param rev logical if factor levels for bay segments are reversed
 #' @param plotly logical if matrix is created using plotly
+#' @param family optional chr string indicating font family for text labels
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
@@ -23,7 +24,7 @@
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbniscr(tbniscr)
 show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3,
-                         ylim = c(22 ,58), rev = FALSE, plotly = FALSE, width = NULL, height = NULL){
+                         ylim = c(22 ,58), rev = FALSE, plotly = FALSE, family = NA, width = NULL, height = NULL){
 
   # sanity checks
   stopifnot(length(perc) == 2)
@@ -68,7 +69,8 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
       legend.key = ggplot2::element_blank(),
       legend.background = ggplot2::element_blank(),
       panel.grid.major = ggplot2::element_blank(),
-      panel.grid.minor = ggplot2::element_blank()
+      panel.grid.minor = ggplot2::element_blank(),
+      text = ggplot2::element_text(family = family)
     )
 
   if(plotly)

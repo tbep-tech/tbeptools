@@ -12,6 +12,7 @@ show_tbniscr(
   ylim = c(22, 58),
   rev = FALSE,
   plotly = FALSE,
+  family = NA,
   width = NULL,
   height = NULL
 )
@@ -30,6 +31,8 @@ show_tbniscr(
 \item{rev}{logical if factor levels for bay segments are reversed}
 
 \item{plotly}{logical if matrix is created using plotly}
+
+\item{family}{optional chr string indicating font family for text labels}
 
 \item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
 
