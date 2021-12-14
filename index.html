@@ -30,6 +30,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -42,18 +44,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tbeptools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0.9001</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -84,7 +80,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/tbep-tech/tbeptools/">
+  <a href="https://github.com/tbep-tech/tbeptools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -102,52 +98,52 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="tbeptools" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#tbeptools" class="anchor"></a>tbeptools</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="tbeptools">tbeptools<a class="anchor" aria-label="anchor" href="#tbeptools"></a>
+</h1></div>
 
-<p>R package for Tampa Bay Estuary Program functions. Please see the <a href="https://tbep-tech.github.io/tbeptools/articles/intro.html">vignette</a> for a full description.</p>
+<p>R package for Tampa Bay Estuary Program functions. Please see the <a href="https://tbep-tech.github.io/tbeptools/articles/intro.html" class="external-link">vignette</a> for a full description.</p>
 <p><img src="reference/figures/logo.png" align="center" width="125"></p>
 <p>Please cite this package as follows:</p>
-<p>Beck, M.W., Schrandt, M.N., Wessel, M.R., Sherwood, E.T., Raulerson, G.E., Budihal Prasad, A.A., Best, B.D., (2021). tbeptools: An R package for synthesizing estuarine data for environmental research. Journal of Open Source Software, 6(65), 3485, <a href="https://doi.org/10.21105/joss.03485" class="uri">https://doi.org/10.21105/joss.03485</a></p>
+<p>Beck, M.W., Schrandt, M.N., Wessel, M.R., Sherwood, E.T., Raulerson, G.E., Budihal Prasad, A.A., Best, B.D., (2021). tbeptools: An R package for synthesizing estuarine data for environmental research. Journal of Open Source Software, 6(65), 3485, <a href="https://doi.org/10.21105/joss.03485" class="external-link uri">https://doi.org/10.21105/joss.03485</a></p>
 </div>
-<div id="installation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h1>
-<p>The package can be installed from <a href="https://tbep-tech.r-universe.dev">r-universe</a>. The source code is available on the tbep-tech GitHub group web page: <a href="https://github.com/tbep-tech/tbeptools" class="uri">https://github.com/tbep-tech/tbeptools</a>. Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., <code><a href="https://github.com/tbep-tech/tbeptools">library(tbeptools)</a></code>).</p>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
+<p>The package can be installed from <a href="https://tbep-tech.r-universe.dev" class="external-link">r-universe</a>. The source code is available on the tbep-tech GitHub group web page: <a href="https://github.com/tbep-tech/tbeptools" class="external-link uri">https://github.com/tbep-tech/tbeptools</a>. Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., <code><a href="https://github.com/tbep-tech/tbeptools" class="external-link">library(tbeptools)</a></code>).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># enable repos</span>
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
     tbeptech <span class="op">=</span> <span class="st">'https://tbep-tech.r-universe.dev'</span>,
     CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># install tbeptools</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tbeptools'</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'tbeptools'</span><span class="op">)</span>
 
 <span class="co"># load tbeptools</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools">tbeptools</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools" class="external-link">tbeptools</a></span><span class="op">)</span></code></pre></div>
 <p>After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., <code><a href="reference/read_importwq.html">?read_importwq</a></code>, on the console. The help files provide a brief description of what each function does and the required arguments that are needed to run the function.</p>
 </div>
-<div id="package-vignettes" class="section level1">
-<h1 class="hasAnchor">
-<a href="#package-vignettes" class="anchor"></a>Package vignettes</h1>
+<div class="section level1">
+<h1 id="package-vignettes">Package vignettes<a class="anchor" aria-label="anchor" href="#package-vignettes"></a>
+</h1>
 <p>The vignettes are organized by topic and are an excellent place to start for understanding how to use the package. Currently, there are five vignettes available for tbeptools:</p>
 <ul>
 <li>
-<a href="https://tbep-tech.github.io/tbeptools/articles/intro.html">Intro to TBEP tools</a>: A general overview of the package with specific examples of functions for working with the water quality report card</li>
+<a href="https://tbep-tech.github.io/tbeptools/articles/intro.html" class="external-link">Intro to TBEP tools</a>: A general overview of the package with specific examples of functions for working with the water quality report card</li>
 <li>
-<a href="https://tbep-tech.github.io/tbeptools/articles/tbni.html">Tampa Bay Nekton Index</a>: Overview of functions to import, analyze, and plot results for the Tampa Bay Nekton Index</li>
+<a href="https://tbep-tech.github.io/tbeptools/articles/tbni.html" class="external-link">Tampa Bay Nekton Index</a>: Overview of functions to import, analyze, and plot results for the Tampa Bay Nekton Index</li>
 <li>
-<a href="https://tbep-tech.github.io/tbeptools/articles/tbbi.html">Tampa Bay Benthic Index</a>: Overview of functions to import data for Tampa Bay Benthic Index, under development</li>
+<a href="https://tbep-tech.github.io/tbeptools/articles/tbbi.html" class="external-link">Tampa Bay Benthic Index</a>: Overview of functions to import data for Tampa Bay Benthic Index, under development</li>
 <li>
-<a href="https://tbep-tech.github.io/tbeptools/articles/tidalcreeks.html">Tidal Creeks Assessment</a>: Overview of functions to import, analyze, and plot results for the assessment of tidal creeks in southwest Florida</li>
+<a href="https://tbep-tech.github.io/tbeptools/articles/tidalcreeks.html" class="external-link">Tidal Creeks Assessment</a>: Overview of functions to import, analyze, and plot results for the assessment of tidal creeks in southwest Florida</li>
 <li>
-<a href="https://tbep-tech.github.io/tbeptools/articles/seagrasstransect.html">Seagrass Transect Data</a>: Overview of functions to import, analyze, and plot results for the seagrass transect data collected in Tampa Bay</li>
+<a href="https://tbep-tech.github.io/tbeptools/articles/seagrasstransect.html" class="external-link">Seagrass Transect Data</a>: Overview of functions to import, analyze, and plot results for the seagrass transect data collected in Tampa Bay</li>
 </ul>
 </div>
-<div id="usage" class="section level1">
-<h1 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h1>
+<div class="section level1">
+<h1 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h1>
 <p>Functions in tbeptools fall in three categories depending on mode of use. Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:</p>
 <ul>
 <li><p><code>read</code>: Import current data from the main ftp site.</p></li>
@@ -197,69 +193,69 @@
 <li>
 <code>wq</code>: Applies to water quality</li>
 </ul>
-<p>The function <a href="https://tbep-tech.github.io/tbeptools/reference/index.html">reference page</a> can also be viewed for a complete list of functions organized by category, a description of what they do, and links to the help files.</p>
-<p>The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <a href="https://www.tampabay.wateratlas.usf.edu/" class="uri">https://www.tampabay.wateratlas.usf.edu/</a>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.</p>
+<p>The function <a href="https://tbep-tech.github.io/tbeptools/reference/index.html" class="external-link">reference page</a> can also be viewed for a complete list of functions organized by category, a description of what they do, and links to the help files.</p>
+<p>The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <a href="https://www.tampabay.wateratlas.usf.edu/" class="external-link uri">https://www.tampabay.wateratlas.usf.edu/</a>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load the package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools">tbeptools</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools" class="external-link">tbeptools</a></span><span class="op">)</span>
 
 <span class="co"># read current data</span>
 <span class="va">wqdat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_importwq.html">read_importwq</a></span><span class="op">(</span>xlsx <span class="op">=</span> <span class="st">"wqdata.xlsx"</span>, download_latest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">wqdat</span></code></pre></div>
-<pre><code>## # A tibble: 26,611 x 22
-##   bay_segment epchc_station SampleTime             yr    mo
-##   &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;
-## 1 HB                      6 2021-06-08 10:59:00  2021     6
-## 2 HB                      7 2021-06-08 11:13:00  2021     6
-## 3 HB                      8 2021-06-08 14:15:00  2021     6
-## 4 MTB                     9 2021-06-08 13:14:00  2021     6
-## 5 MTB                    11 2021-06-08 11:30:00  2021     6
-## # ... with 26,606 more rows, and 17 more variables:
-## #   Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, Total_Depth_m &lt;dbl&gt;,
-## #   Sample_Depth_m &lt;dbl&gt;, tn &lt;dbl&gt;, tn_q &lt;chr&gt;, sd_m &lt;dbl&gt;,
-## #   sd_raw_m &lt;dbl&gt;, sd_q &lt;chr&gt;, chla &lt;dbl&gt;, chla_q &lt;chr&gt;,
-## #   Sal_Top_ppth &lt;dbl&gt;, Sal_Mid_ppth &lt;dbl&gt;,
-## #   Sal_Bottom_ppth &lt;dbl&gt;, Temp_Water_Top_degC &lt;dbl&gt;,
-## #   Temp_Water_Mid_degC &lt;dbl&gt;, ...</code></pre>
+<pre><code><span class="co">## # A tibble: 26,611 x 22</span>
+<span class="co">##   bay_segment epchc_station SampleTime             yr    mo</span>
+<span class="co">##   &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">## 1 HB                      6 2021-06-08 10:59:00  2021     6</span>
+<span class="co">## 2 HB                      7 2021-06-08 11:13:00  2021     6</span>
+<span class="co">## 3 HB                      8 2021-06-08 14:15:00  2021     6</span>
+<span class="co">## 4 MTB                     9 2021-06-08 13:14:00  2021     6</span>
+<span class="co">## 5 MTB                    11 2021-06-08 11:30:00  2021     6</span>
+<span class="co">## # ... with 26,606 more rows, and 17 more variables:</span>
+<span class="co">## #   Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, Total_Depth_m &lt;dbl&gt;,</span>
+<span class="co">## #   Sample_Depth_m &lt;dbl&gt;, tn &lt;dbl&gt;, tn_q &lt;chr&gt;, sd_m &lt;dbl&gt;,</span>
+<span class="co">## #   sd_raw_m &lt;dbl&gt;, sd_q &lt;chr&gt;, chla &lt;dbl&gt;, chla_q &lt;chr&gt;,</span>
+<span class="co">## #   Sal_Top_ppth &lt;dbl&gt;, Sal_Mid_ppth &lt;dbl&gt;,</span>
+<span class="co">## #   Sal_Bottom_ppth &lt;dbl&gt;, Temp_Water_Top_degC &lt;dbl&gt;,</span>
+<span class="co">## #   Temp_Water_Mid_degC &lt;dbl&gt;, ...</span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># analyze monthly and annual means by bay segment</span>
 <span class="va">avedat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/anlz_avedat.html">anlz_avedat</a></span><span class="op">(</span><span class="va">wqdat</span><span class="op">)</span>
 <span class="va">avedat</span></code></pre></div>
-<pre><code>## $ann
-## # A tibble: 584 x 4
-##      yr bay_segment var         val
-##   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;
-## 1  1974 HB          mean_chla 22.4 
-## 2  1974 LTB         mean_chla  4.24
-## 3  1974 MTB         mean_chla  9.66
-## 4  1974 OTB         mean_chla 10.2 
-## 5  1975 HB          mean_chla 27.9 
-## # ... with 579 more rows
-## 
-## $mos
-## # A tibble: 4,484 x 5
-##   bay_segment    yr    mo var         val
-##   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
-## 1 HB           1974     1 mean_chla 36.2 
-## 2 LTB          1974     1 mean_chla  1.75
-## 3 MTB          1974     1 mean_chla 11.5 
-## 4 OTB          1974     1 mean_chla  4.4 
-## 5 HB           1974     2 mean_chla 42.4 
-## # ... with 4,479 more rows</code></pre>
+<pre><code><span class="co">## $ann</span>
+<span class="co">## # A tibble: 584 x 4</span>
+<span class="co">##      yr bay_segment var         val</span>
+<span class="co">##   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;</span>
+<span class="co">## 1  1974 HB          mean_chla 22.4 </span>
+<span class="co">## 2  1974 LTB         mean_chla  4.24</span>
+<span class="co">## 3  1974 MTB         mean_chla  9.66</span>
+<span class="co">## 4  1974 OTB         mean_chla 10.2 </span>
+<span class="co">## 5  1975 HB          mean_chla 27.9 </span>
+<span class="co">## # ... with 579 more rows</span>
+<span class="co">## </span>
+<span class="co">## $mos</span>
+<span class="co">## # A tibble: 4,484 x 5</span>
+<span class="co">##   bay_segment    yr    mo var         val</span>
+<span class="co">##   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;</span>
+<span class="co">## 1 HB           1974     1 mean_chla 36.2 </span>
+<span class="co">## 2 LTB          1974     1 mean_chla  1.75</span>
+<span class="co">## 3 MTB          1974     1 mean_chla 11.5 </span>
+<span class="co">## 4 OTB          1974     1 mean_chla  4.4 </span>
+<span class="co">## 5 HB           1974     2 mean_chla 42.4 </span>
+<span class="co">## # ... with 4,479 more rows</span></code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># show annual time series of chlorophyll for Hillsborough bay segment</span>
-<span class="fu"><a href="reference/show_thrplot.html">show_thrplot</a></span><span class="op">(</span><span class="va">wqdat</span>, bay_segment <span class="op">=</span> <span class="st">"HB"</span>, yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="reference/show_thrplot.html">show_thrplot</a></span><span class="op">(</span><span class="va">wqdat</span>, bay_segment <span class="op">=</span> <span class="st">"HB"</span>, yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/thrplotex-1.jpeg" align="center"></p>
-<p>Functions in <code>tbeptools</code> also support the creation of content for interactive, online dashboards that can facilitate more informed decisions without requiring an intimate understanding of the R programming language or the methods for analysis. These dashboards include assessments for <a href="https://shiny.tbeptech.org/wq-dash/">water quality</a>, <a href="https://shiny.tbep.org/seagrasstransect-dash/">seagrasses</a>, <a href="http://shiny.tbeptech.org/nekton-dash">nekton communities</a>, and <a href="https://shiny.tbep.org/tidalcreek-dash/">tidal creeks</a>.</p>
+<p>Functions in <code>tbeptools</code> also support the creation of content for interactive, online dashboards that can facilitate more informed decisions without requiring an intimate understanding of the R programming language or the methods for analysis. These dashboards include assessments for <a href="https://shiny.tbeptech.org/wq-dash/" class="external-link">water quality</a>, <a href="https://shiny.tbep.org/seagrasstransect-dash/" class="external-link">seagrasses</a>, <a href="http://shiny.tbeptech.org/nekton-dash" class="external-link">nekton communities</a>, and <a href="https://shiny.tbep.org/tidalcreek-dash/" class="external-link">tidal creeks</a>.</p>
 </div>
-<div id="issues-and-suggestions" class="section level1">
-<h1 class="hasAnchor">
-<a href="#issues-and-suggestions" class="anchor"></a>Issues and suggestions</h1>
-<p>Please report any issues and suggestions on the <a href="https://github.com/tbep-tech/tbeptools/issues">issues link</a> for the repository. A guide to posting issues can be found <a href="ISSUE_TEMPLATE.html">here</a>.</p>
+<div class="section level1">
+<h1 id="issues-and-suggestions">Issues and suggestions<a class="anchor" aria-label="anchor" href="#issues-and-suggestions"></a>
+</h1>
+<p>Please report any issues and suggestions on the <a href="https://github.com/tbep-tech/tbeptools/issues" class="external-link">issues link</a> for the repository. A guide to posting issues can be found <a href="ISSUE_TEMPLATE.html">here</a>.</p>
 </div>
-<div id="contributing" class="section level1">
-<h1 class="hasAnchor">
-<a href="#contributing" class="anchor"></a>Contributing</h1>
+<div class="section level1">
+<h1 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h1>
 <p>Please view our <a href="CONTRIBUTING.html">contributing</a> guidelines for any changes or pull requests.</p>
 </div>
 
@@ -267,60 +263,71 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/tbep-tech/tbeptools/">https://​github.com/​tbep-tech/​tbeptools/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/tbep-tech/tbeptools/issues">https://​github.com/​tbep-tech/​tbeptools/​issues</a>
-</li>
+<li><a href="https://github.com/tbep-tech/tbeptools/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/tbep-tech/tbeptools/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Marcus Beck <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4996-0059" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Meagan Schrandt <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0482-5072" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Mike Wessel <br><small class="roles"> Author </small>  </li>
-<li>Ed Sherwood <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-5330-302X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Gary Raulerson <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5920-5743" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Adhokshaja Achar Budihal Prasad <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-6485-6858" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Benjamin Best <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-2686-0784" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing tbeptools</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/tbep-tech/tbeptools/actions"><img src="https://github.com/tbep-tech/tbeptools/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://github.com/tbep-tech/tbeptools/actions"><img src="https://github.com/tbep-tech/tbeptools/workflows/pkgdown/badge.svg" alt="pkgdown"></a></li>
-<li><a href="https://doi.org/10.21105/joss.03485"><img src="https://joss.theoj.org/papers/10.21105/joss.03485/status.svg" alt="DOI"></a></li>
-<li><a href="https://codecov.io/gh/tbep-tech/tbeptools?branch=master"><img src="https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/184627857"><img src="https://zenodo.org/badge/184627857.svg" alt="DOI"></a></li>
+<li>Marcus Beck <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4996-0059" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Meagan Schrandt <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0482-5072" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Mike Wessel <br><small class="roles"> Author </small>  </li>
+<li>Ed Sherwood <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-5330-302X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Gary Raulerson <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5920-5743" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Adhokshaja Achar Budihal Prasad <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-6485-6858" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Benjamin Best <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-2686-0784" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/tbep-tech/tbeptools/actions" class="external-link"><img src="https://github.com/tbep-tech/tbeptools/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/tbep-tech/tbeptools/actions" class="external-link"><img src="https://github.com/tbep-tech/tbeptools/workflows/pkgdown/badge.svg" alt="pkgdown"></a></li>
+<li><a href="https://doi.org/10.21105/joss.03485" class="external-link"><img src="https://joss.theoj.org/papers/10.21105/joss.03485/status.svg" alt="DOI"></a></li>
+<li><a href="https://codecov.io/gh/tbep-tech/tbeptools?branch=master" class="external-link"><img src="https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/184627857" class="external-link"><img src="https://zenodo.org/badge/184627857.svg" alt="DOI"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Marcus Beck, Meagan Schrandt, Mike Wessel, Ed Sherwood, Gary Raulerson, Adhokshaja Achar Budihal Prasad, Benjamin Best.</p>
+  <p></p>
+<p>Developed by Marcus Beck, Meagan Schrandt, Mike Wessel, Ed Sherwood, Gary Raulerson, Adhokshaja Achar Budihal Prasad, Benjamin Best.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -328,6 +335,8 @@
 
   
 
+
+  
 
   </body>
 </html>
