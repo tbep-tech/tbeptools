@@ -27,14 +27,14 @@ anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TC
   stopifnot(yrrng[1] < yrrng[2])
 
   # bay segment factor levels
-  levs <- c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All', 'All (wt)')
+  levs <- c('OTB', 'HB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All', 'All (wt)')
   if(rev)
     levs <- rev(levs)
 
   # bay segment area percentages, for weighting
   wts <- tibble(
-    bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'),
-    wts = c(0.1042, 0.1964, 0.3028, 0.2470, 0.0163, 0.0406, 0.0925)
+    bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'),
+    wts = c(0.1964, 0.1042, 0.3028, 0.2470, 0.0163, 0.0406, 0.0925)
   )
 
   # percent sites in category, by bay segment, year, TBEP only, benthic monitoring only (programID 4)
