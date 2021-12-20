@@ -106,6 +106,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
     geom_line(data = toplo, aes(x = yr, y = yval, colour = "Annual Mean"), linetype = 'solid', size = 0.75) +
     labs(y = axlab, title = ttl) +
     scale_x_continuous(breaks = seq(yrrng[1], yrrng[2], by = 1)) +
+    theme_grey(base_family = family) +
     theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),
           panel.grid.major=element_blank(),

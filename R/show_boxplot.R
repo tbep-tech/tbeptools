@@ -144,6 +144,7 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
     geom_point(data = toplo2, aes(x = mo, y = val, group = yr, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
     geom_hline(aes(yintercept = thrnum, linetype = '+2 se (large exceedance)'), colour = 'blue') +
     labs(y = axlab, title = ttl) +
+    theme_grey(base_family = family) +
     theme(axis.title.x = element_blank(),
           panel.grid.minor=element_blank(),
           panel.grid.major=element_blank(),
