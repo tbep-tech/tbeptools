@@ -6,6 +6,7 @@
 #' @param class character vector indicating which creek classes to show, one to many of \code{'3M'}, \code{'2'}, \code{'3F'}, and \code{'1'}.  Defaults to marine only (\code{'3M', '2'}).
 #' @param score character vector of score categories to include, one to many of \code{'Prioritize'}, \code{'Investigate'}, \code{'Caution'}, and \code{'Monitor'}. Defaults to all.
 #' @param family optional chr string indicating font family for text labels
+#' @param size numeric for text and line scaling
 #'
 #' @details The plot shows a matrix with rows for individual creeks and columns for overall creek score.  The columns show an overall creek score and the number of years in the prior ten years that nitrogen values at a creek were assigned to each of the four score categories.  Number of years is mapped to cell transparency.
 #'
@@ -21,7 +22,7 @@
 #' @examples
 #' dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2021)
 #' show_tdlcrkmatrix(dat)
-show_tdlcrkmatrix <- function(dat, class = c('3M', '2'), score = c('Prioritize', 'Investigate', 'Caution', 'Monitor'), family = NA){
+show_tdlcrkmatrix <- function(dat, class = c('3M', '2'), score = c('Prioritize', 'Investigate', 'Caution', 'Monitor'), family = NA, size = 11){
 
   # sanity checks
   if(any(!class %in% c('3M', '2', '3F', '1')))
@@ -66,12 +67,12 @@ show_tdlcrkmatrix <- function(dat, class = c('3M', '2'), score = c('Prioritize',
     )
 
   # theme
-  pthm <- ggplot2::theme(
+  pthm <- ggplot2::theme_gray(base_size = size, base_family = family) +
+    ggplot2::theme(
     legend.position = 'top',
-    axis.text.y = ggplot2::element_text(size  = 6, family = family),
+    axis.text.y = ggplot2::element_text(size  = 0.6 * size),
     panel.background = ggplot2::element_blank(),
-    axis.text.x = ggplot2::element_text(size = 8, family = family),
-    text = ggplot2::element_text(family = family)
+    axis.text.x = ggplot2::element_text(size = 0.7 * size)
   )
 
   # plot for individual year counts

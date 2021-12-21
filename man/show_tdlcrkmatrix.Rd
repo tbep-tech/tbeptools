@@ -8,7 +8,8 @@ show_tdlcrkmatrix(
   dat,
   class = c("3M", "2"),
   score = c("Prioritize", "Investigate", "Caution", "Monitor"),
-  family = NA
+  family = NA,
+  size = 11
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ show_tdlcrkmatrix(
 \item{score}{character vector of score categories to include, one to many of \code{'Prioritize'}, \code{'Investigate'}, \code{'Caution'}, and \code{'Monitor'}. Defaults to all.}
 
 \item{family}{optional chr string indicating font family for text labels}
+
+\item{size}{numeric for text and line scaling}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned.
