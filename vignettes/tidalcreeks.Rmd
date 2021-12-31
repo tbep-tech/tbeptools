@@ -49,11 +49,14 @@ mapview(tidalcreeks, homebutton = F, legend = F)
 The tidal creek assessment framework was established based on data from the FDEP [Impaired Waters Rule](https://www.flrules.org/gateway/ChapterHome.asp?Chapter=62-303) database run 56 available [here](http://publicfiles.dep.state.fl.us/DEAR/IWR/) which includes data collected through January 10th 2019. However, the this framework intends to link to future IWR databases to refresh the site with new data as it becomes available.  Raw data from the IWR database required for assessment is provided in the tbeptools package in the `iwrraw()` data object.  
 
 ## Assessment
+
 The tidal creek assessment framework includes both a "report card" and "indicators" assessment which are provided as separate tabs in the dashboard. The report card provides an assessment of total nitrogen concentrations (the limiting nutrient in these creeks) based on annual geometric average concentrations relative to standards developed for contributing freshwater streams. The indicators are based a several water quality metrics derived as outcomes of our study to describe tidal creek condition and provide insights into site specific attributes of these creeks that may govern overall creek health.
 
 # Report Card
 
-The report card is similar to the TBEP [water quality report card](https://shiny.tbep.org/wq-dash/) in that tidal creeks are assigned to categories within an assessment framework intended to serve as both a mechanism for evaluating data relative to the need for management action, and to identify stewardship goals that, if properly pursued, may preclude the need for any regulatory actions. These categories were established based principally on fish as a biological response indicator. Tidal creeks are assigned to one of four categories:
+The report card is similar to the TBEP [water quality report card](https://shiny.tbep.org/wq-dash/) in that tidal creeks are assigned to categories within an assessment framework intended to serve as both a mechanism for evaluating data relative to the need for management action, and to identify stewardship goals that, if properly pursued, may preclude the need for any regulatory actions. These categories were established based principally on fish as a biological response indicator. Tidal creeks are assigned to one of five categories:
+
+<span style="color:#ADD8E6; text-shadow: 0 0 3px #333;">__No Data__</span>: Data are unavailable for evaluation.
 
 <span style="color:#33FF3B; text-shadow: 0 0 3px #333;">__Monitor__</span>: Creek is at or below nitrogen concentrations that protect individual creek types within the larger population of creeks.
 
