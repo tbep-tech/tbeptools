@@ -16,7 +16,8 @@ show_transectavespp(
   plotly = FALSE,
   asreact = FALSE,
   width = NULL,
-  height = NULL
+  height = NULL,
+  sppcol = NULL
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ show_transectavespp(
 \item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
 
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{sppcol}{character vector of alternative colors to use for each species, must have length of six}
 }
 \value{
 If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{plotly}} (if \code{plotly = T}) object is returned showing trends over time by species for selected bay segments.  If \code{asreact = T}, a \code{\link[reactable]{reactable}} table showing results by year, segment, and species is returned.

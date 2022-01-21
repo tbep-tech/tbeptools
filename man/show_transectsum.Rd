@@ -10,7 +10,8 @@ show_transectsum(
   species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia",
     "Caulerpa"),
   yrrng = c(1998, 2021),
-  abund = FALSE
+  abund = FALSE,
+  sppcol = NULL
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ show_transectsum(
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
 \item{abund}{logical indicating if abundance averages are plotted instead of frequency occurrence}
+
+\item{sppcol}{character vector of alternative colors to use for each species, must have length of six}
 }
 \value{
 A \code{\link[plotly]{plotly}} object

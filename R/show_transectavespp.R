@@ -11,6 +11,7 @@
 #' @param asreact logical if a reactable table is returned instead of a plot
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param sppcol character vector of alternative colors to use for each species, must have length of six
 #'
 #' @details Results are based on averages across species by date and transect in each bay segment
 #'
@@ -35,7 +36,16 @@
 show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2021),
                                 species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
                                 total = TRUE, alph = 1, family = NA, plotly = FALSE, asreact = FALSE, width = NULL,
-                                height = NULL){
+                                height = NULL, sppcol = NULL){
+
+  # check correct length of optional color vector
+  if(!is.null(sppcol)){
+    if(length(sppcol) != 6)
+      stop('sppcol required length is six')
+
+    sppcol <- c('#FFFFFF', sppcol)
+
+  }
 
   # make plot
   if(!asreact){
@@ -47,7 +57,8 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       )
 
     # sort color palette so its the same regardless of species selected
-    sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
+    if(is.null(sppcol))
+      sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
     names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
     sppcol <- sppcol[levels(toplo$Savspecies)]
 

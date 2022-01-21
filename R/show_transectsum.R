@@ -5,6 +5,7 @@
 #' @param species chr string indicating which species to plot
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param abund logical indicating if abundance averages are plotted instead of frequency occurrence
+#' @param sppcol character vector of alternative colors to use for each species, must have length of six
 #'
 #' @return A \code{\link[plotly]{plotly}} object
 #' @export
@@ -22,7 +23,7 @@
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectsum(transectocc, site = 'S3T10')
 show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
-                             yrrng = c(1998, 2021), abund = FALSE){
+                             yrrng = c(1998, 2021), abund = FALSE, sppcol = NULL){
 
   # species pool
   spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
@@ -36,6 +37,11 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
 
   if(yrrng[1] >= yrrng[2])
     stop('Select different year range')
+
+  # check correct length of optional color vector
+  if(!is.null(sppcol))
+    if(length(sppcol) != length(spp))
+      stop('sppcol required length is six')
 
   # sort out variable names and labels
   val <- 'foest'
@@ -60,7 +66,8 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
     dplyr::summarise(val = mean(val, na.rm = T))
 
   # sort color palette so its the same regardless of species selected
-  sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
+  if(is.null(sppcol))
+    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
   names(sppcol) <- spp
   sppcol <- sppcol[levels(toplo$Savspecies)]
 

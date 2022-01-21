@@ -24,3 +24,7 @@ test_that("Checking show_transect error for invalid site", {
 test_that("Checking show_transect error for invalid species", {
   expect_error(show_transect(transect, site = 'S3T2', species = 'Halophillllla', varplo = 'Abundance'))
 })
+
+test_that("Checking show_transect error for invalid color entry", {
+  expect_error(show_transect(transect, species = 'Halodule', site = 'S3T10', sppcol = 'red'))
+})

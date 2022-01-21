@@ -11,6 +11,7 @@
 #' @param plotly logical if plot is created using plotly
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param sppcol character vector of alternative colors to use for each species, must have length of six
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
@@ -42,7 +43,7 @@
 #'   varplo = 'Abundance', facet = TRUE)
 show_transect <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
                           yrrng = c(1998, 2021), varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
-                          facet = FALSE, ncol = NULL, plotly = FALSE, width = NULL, height = NULL){
+                          facet = FALSE, ncol = NULL, plotly = FALSE, width = NULL, height = NULL, sppcol = NULL){
 
   # species pool
   spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
@@ -56,6 +57,11 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
 
   if(yrrng[1] >= yrrng[2])
     stop('Select different year range')
+
+  # check correct length of optional color vector
+  if(!is.null(sppcol))
+    if(length(sppcol) != length(spp))
+      stop('sppcol required length is six')
 
   varplo <- match.arg(varplo)
 
@@ -90,7 +96,8 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
     dplyr::filter(Year >= yrrng[1] & Year <= yrrng[2])
 
   # sort color palette so its the same regardless of species selected
-  sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
+  if(is.null(sppcol))
+    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
   names(sppcol) <- spp
   sppcol <- sppcol[levels(dat$name)]
 

@@ -16,7 +16,8 @@ show_transect(
   ncol = NULL,
   plotly = FALSE,
   width = NULL,
-  height = NULL
+  height = NULL,
+  sppcol = NULL
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ show_transect(
 \item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
 
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{sppcol}{character vector of alternative colors to use for each species, must have length of six}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object
