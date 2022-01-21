@@ -40,6 +40,6 @@ Make a bar plot for transect training group comparisons
 }
 \examples{
 transect <- read_transect(training = TRUE)
-show_compplot(transect, yr = 2020, site = '1', species = 'Halodule', varplo = 'Abundance')
+show_compplot(transect, yr = 2021, site = '1', species = 'Halodule', varplo = 'Abundance')
 }
 \concept{show}

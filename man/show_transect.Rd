@@ -9,7 +9,7 @@ show_transect(
   site,
   species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia",
     "Caulerpa"),
-  yrrng = c(1998, 2020),
+  yrrng = c(1998, 2021),
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
   base_size = 12,
   facet = FALSE,

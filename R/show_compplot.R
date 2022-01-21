@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' transect <- read_transect(training = TRUE)
-#' show_compplot(transect, yr = 2020, site = '1', species = 'Halodule', varplo = 'Abundance')
+#' show_compplot(transect, yr = 2021, site = '1', species = 'Halodule', varplo = 'Abundance')
 show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 18, xtxt = 10, size = 1){
 
