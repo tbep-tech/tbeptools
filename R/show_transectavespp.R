@@ -58,7 +58,7 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
 
     # sort color palette so its the same regardless of species selected
     if(is.null(sppcol))
-      sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
+      sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF')
     names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
     sppcol <- sppcol[levels(toplo$Savspecies)]
 

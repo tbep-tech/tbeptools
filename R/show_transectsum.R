@@ -67,7 +67,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
 
   # sort color palette so its the same regardless of species selected
   if(is.null(sppcol))
-    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D494E1')
+    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF')
   names(sppcol) <- spp
   sppcol <- sppcol[levels(toplo$Savspecies)]
 
