@@ -16,3 +16,9 @@ test_that("Checking show_thrplot labelexp = F", {
   result <- show_thrplot(epcdata, labelexp = F)
   expect_is(result, 'ggplot')
 })
+
+test_that("Checking show_thrplot partialyr = T", {
+  result <- show_thrplot(epcdata, partialyr = T)
+  expect_is(result, 'ggplot')
+})
+

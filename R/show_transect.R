@@ -66,7 +66,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
   varplo <- match.arg(varplo)
 
   # prep plot data
-  dat <- transect %>%
+  dat <- try({transect %>%
     dplyr::filter(Transect %in% !!site) %>%
     dplyr::select(-sdval) %>%
     dplyr::filter(var %in% !!varplo) %>%
@@ -81,10 +81,10 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
     tidyr::pivot_longer(dplyr::matches(paste0('^', species)), values_to = 'val') %>%
     dplyr::mutate(
       name = factor(name, levels = species)
-    )
+    )}, silent = T)
 
   # stop if no data for the species, transect
-  if(ncol(dat) == 2)
+  if(inherits(dat, 'try-error'))
     stop(paste('No data for', species, 'at transect', site))
 
   dat <- dat %>%

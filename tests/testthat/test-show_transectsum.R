@@ -19,3 +19,11 @@ test_that("Checking show_transectsum errors", {
 test_that("Checking show_transectsum error for invalid color entry", {
   expect_error(show_transectsum(transectocc, site = 'S3T10', sppcol = 'red'))
 })
+
+test_that("Checking show_transectsum error for invalid year entry", {
+  expect_error(show_transectsum(transectocc, site = 'S3T10', yrrng = c(2001, 2000)))
+})
+
+test_that("Checking show_transectsum error for no species at transect", {
+  expect_error(show_transectsum(transectocc, site = 'S5T1', species = 'Caulerpa'))
+})
