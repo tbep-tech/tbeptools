@@ -22,6 +22,6 @@ Get attainment categories for a chosen year
 \examples{
 
 # defaults to current year
-anlz_yrattain(epcdata, yrsel = 2019)
+anlz_yrattain(epcdata, yrsel = 2021)
 }
 \concept{analyze}

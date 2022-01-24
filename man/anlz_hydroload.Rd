@@ -36,8 +36,8 @@ cat("NOAA_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n",
 # retrieve the key after saving, may need to restart R
 noaa_key <- Sys.getenv('NOAA_key')
 
-# get estimates for 2019
-anlz_hydroload(2019, noaa_key)
+# get estimates for 2021
+anlz_hydroload(2021, noaa_key)
 
 }
 }

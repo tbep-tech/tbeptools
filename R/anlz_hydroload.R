@@ -28,8 +28,8 @@
 #' # retrieve the key after saving, may need to restart R
 #' noaa_key <- Sys.getenv('NOAA_key')
 #'
-#' # get estimates for 2019
-#' anlz_hydroload(2019, noaa_key)
+#' # get estimates for 2021
+#' anlz_hydroload(2021, noaa_key)
 #'
 #' }
 anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
