@@ -112,6 +112,12 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
       legend = list(title = list(text = 'Species')),
       shapes = vrts,
       title = site
+    ) %>%
+    config(
+      toImageButtonOptions = list(
+        format = "svg",
+        filename = "myplot"
+      )
     )
 
   return(p)

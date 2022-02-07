@@ -45,7 +45,12 @@ show_matrixplotly <- function(mat, family = NA, tooltip = 'Result', width = NULL
   out <- plotly::ggplotly(plo, tooltip = tooltip, width = width, height = height) %>%
     plotly::add_bars(x = collev,y = seq(1, length(collev)), xaxis = "x2", inherit = F) %>%
     plotly::layout(xaxis2 = ax) %>%
-    plotly::config(displayModeBar = FALSE)
+    plotly::config(
+      toImageButtonOptions = list(
+        format = "svg",
+        filename = "myplot"
+      )
+    )
 
   return(out)
 

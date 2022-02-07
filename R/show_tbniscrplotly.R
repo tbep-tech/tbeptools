@@ -45,7 +45,13 @@ show_tbniscrplotly <- function(p, width = NULL, height = NULL){
 
   p[['x']][['layout']][['shapes']] <- c()
 
-  out <- plotly::layout(p, shapes = shapes)
+  out <- plotly::layout(p, shapes = shapes) %>%
+    config(
+    toImageButtonOptions = list(
+      format = "svg",
+      filename = "myplot"
+    )
+  )
 
   return(out)
 

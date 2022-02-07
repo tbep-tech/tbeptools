@@ -96,7 +96,13 @@ show_tdlcrkindiccdf <- function(id, cntdat, yr = 2021, thrsel = FALSE, pal = c('
   p5 <- plos$plo[[5]]
   p6 <- plos$plo[[6]]
 
-  out <- subplot(p1, p2, p3, p4, p5, p6, nrows = 2, shareY = TRUE, titleX = TRUE, margin = c(0.02, 0.02, 0.1, 0.1))
+  out <- subplot(p1, p2, p3, p4, p5, p6, nrows = 2, shareY = TRUE, titleX = TRUE, margin = c(0.02, 0.02, 0.1, 0.1)) %>%
+    config(
+      toImageButtonOptions = list(
+        format = "svg",
+        filename = "myplot"
+      )
+    )
 
   return(out)
 

@@ -78,7 +78,13 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       )
 
     if(plotly)
-      p <- plotly::ggplotly(p, width = width, height = height)
+      p <- plotly::ggplotly(p, width = width, height = height) %>%
+        config(
+          toImageButtonOptions = list(
+            format = "svg",
+            filename = "myplot"
+          )
+        )
 
     out <- p
 
