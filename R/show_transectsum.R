@@ -113,7 +113,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
       shapes = vrts,
       title = site
     ) %>%
-    config(
+    plotly::config(
       toImageButtonOptions = list(
         format = "svg",
         filename = "myplot"

@@ -79,7 +79,7 @@ show_tdlcrkindic <- function(id, cntdat, yr = 2021, thrsel = FALSE, pal = c('#5C
   p6 <- plos$plo[[6]]
 
   out <- subplot(p1, p2, p3, p4, p5, p6, shareX = TRUE, titleY = TRUE, nrows = 3, margin = 0.04) %>%
-    config(
+    plotly::config(
       toImageButtonOptions = list(
         format = "svg",
         filename = "myplot"

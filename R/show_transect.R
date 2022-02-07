@@ -154,7 +154,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
 
   if(plotly)
     p <- plotly::ggplotly(p, width = width, height = height) %>%
-      config(
+      plotly::config(
         toImageButtonOptions = list(
           format = "svg",
           filename = "myplot"
