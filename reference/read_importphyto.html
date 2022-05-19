@@ -76,7 +76,7 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Pytoplankton cell count data downloaded from ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/, file PlanktonDataList_ThroughCurrentReportMonth.xlsx</p>
+    <p>Pytoplankton cell count data downloaded from https://epcbocc.sharepoint.com/:x:/s/Share/ETAfRQ5drmRHntDd1O8s3FQB180Fumed4nQ99w-OIVDxrA?e=eSmtxD&amp;download=1</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -90,7 +90,7 @@
 <span class="r-in"><span class="va">xlsx</span> <span class="op">&lt;-</span> <span class="st">'~/Desktop/phyto_data.xlsx'</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># load and assign to object</span></span>
-<span class="r-in"><span class="va">phytodata</span> <span class="op">&lt;-</span> <span class="fu">read_importphyto</span><span class="op">(</span><span class="va">xlsx</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">phytodata</span> <span class="op">&lt;-</span> <span class="fu">read_importphyto</span><span class="op">(</span><span class="va">xlsx</span>, download_latest <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
