@@ -20,7 +20,7 @@ The local copy specified in the path by \code{locin} is overwritten by the new f
 Download latest file from epchc.org
 }
 \details{
-The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the file sizes are different.
+The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 }
 \examples{
 \dontrun{

@@ -68,10 +68,9 @@ Imports:
   readxl,
   rnoaa,
   sf,
-  RCurl,
   tibble,
   tidyr,
-  xml2
+  tools
 Suggests: 
   bookdown,
   ggmap,

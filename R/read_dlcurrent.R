@@ -12,7 +12,7 @@
 #'
 #' @concept read
 #'
-#' @details The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the file sizes are different.
+#' @details The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 #' @examples
 #' \dontrun{
 #' locin <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
@@ -32,7 +32,7 @@ read_dlcurrent <- function(locin, download_latest = TRUE, urlin){
   if (file.exists(locin)){
 
     # compare dates
-    is_latest <- file.info(tmpfl)$size < file.info(locin)$size
+    is_latest <- tools::md5sum(tmpfl)[[1]] == tools::md5sum(locin)[[1]]
 
     if (!is_latest){
       message('Replacing local file with current...\n')

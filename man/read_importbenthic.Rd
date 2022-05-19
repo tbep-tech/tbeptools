@@ -20,7 +20,7 @@ A nested \code{tibble} of station, taxa, and field sample data
 Download and import benthic data for Tampa Bay
 }
 \details{
-This function downloads and unzips a folder of base tables used to calculate the benthic index from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip}.
+This function downloads and unzips a folder of base tables used to calculate the benthic index from \url{https://epcbocc.sharepoint.com/:u:/s/Share/EdY7IaU75kFPnVhyoe1yITcBESvFZNAreBwabwyL8EfuqQ?e=1i8Rnf&download=1}.
 }
 \examples{
 \dontrun{

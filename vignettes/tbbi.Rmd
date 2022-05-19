@@ -38,11 +38,11 @@ library(tibble)
 
 The Tampa Bay Benthic Index (TBBI) [@tbep0620;@tbep0106]) is an assessment method that quantifies the ecological health of the benthic community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for the region (e.g., water quality report card, nekton index, etc.). The tbeptools package includes several functions described below to import data required for the index and plot the results to view trends over time.  Each of the functions are described in detail below. 
 
-The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Hillsborough Country Environmental Protection Commission (EPC).  The data are updated annually on a FTP site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](https://tbep-tech.github.io/tbeptools/articles/intro.html).  The required data for the TBBI are more extensive than the water quality report card and the data are made available as a zipped folder of csv files, available [here](ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip).  The process for downloading and working with the data are similar as for the other functions in tbeptools.
+The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Hillsborough Country Environmental Protection Commission (EPC).  The data are updated annually on a public site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](https://tbep-tech.github.io/tbeptools/articles/intro.html).  The required data for the TBBI are more extensive than the water quality report card and the data are made available as a zipped folder of csv files, available [here](ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip).  The process for downloading and working with the data are similar as for the other functions in tbeptools.
 
 ## Data import and included datasets
 
-Data for calculating TBBI scores can be imported into the current R session using the `read_importbenthic()` function.  This function downloads the zipped folder of base tables used for the TBBI from the EPC FTP site if the data have not already been downloaded to the location specified by the input arguments.  
+Data for calculating TBBI scores can be imported into the current R session using the `read_importbenthic()` function.  This function downloads the zipped folder of base tables used for the TBBI from the EPC site if the data have not already been downloaded to the location specified by the input arguments.  
 
 To download the data with teptools, first create a character path for the location where you want to download the zipped files. If one does not exist, specify a location and name for the downloaded file. Here, we name the folder `benthic.zip` and download it on our desktop.
 
@@ -65,7 +65,7 @@ benthicdata <- read_importbenthic(path, download_latest = T)
 ```{r, eval = F}
 #> File ~/Desktop/benthic.zip does not exist, replacing with downloaded file...
 
-#> trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/Benthic_Monitoring/DataDeliverables/BaseTables.zip' length 37122877 bytes (35.4 MB)
+#> trying URL 'https://epcbocc.sharepoint.com/:u:/s/Share/EdY7IaU75kFPnVhyoe1yITcBESvFZNAreBwabwyL8EfuqQ?e=1i8Rnf&download=1' length 37122877 bytes (35.4 MB)
 ```
 
 Now we get an indication that the file on the server is being downloaded. When the download is complete, we’ll have the data downloaded and saved to the `benthicdata` object in the current R session.

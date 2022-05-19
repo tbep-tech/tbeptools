@@ -20,7 +20,7 @@
 #' xlsx <- '~/Desktop/phyto_data.xlsx'
 #'
 #' # load and assign to object
-#' phytodata <- read_importphyto(xlsx)
+#' phytodata <- read_importphyto(xlsx, download_latest = T)
 #' }
 read_importphyto <- function(xlsx, download_latest = FALSE, na = ''){
 

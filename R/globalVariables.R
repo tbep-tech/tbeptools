@@ -37,7 +37,8 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   'AreaAbbr', 'AreaID', 'FundingId', 'FundingProject', 'no23_source', 'no23_tidal', 'DOSAT',
                   'DOSAT_prop', 'ch_tn_rat_ind', 'chla_ind', 'do_bnml', 'do_cnt', 'do_prop', 'fo', 'nox_ind',
                   'sta', 'tn_ind', 'tsi_ind', 'xcd', 'AssessmentYear', 'disqual', 'disqual2', 'newComment',
-                  'rCode', 'Grid', 'COLONIAL.PLANKTONIC.'))
+                  'rCode', 'Grid', 'COLONIAL.PLANKTONIC.', "Color_345_F45_PCU", "Color_345_F45_Q", "ProgramId",
+                  "Turbidity_JTU-NTU", "Turbidity_Q"))
 
 #' @importFrom grDevices rgb
 NULL

@@ -118,13 +118,6 @@ phytodata <- read_importphyto(xlsx, download_latest = T)
 
 After the phytoplankton data are successfully imported, you can view them from the assigned object: 
 
-```{r phyto_import, echo = F, message = F, include = F}
-# local file path
-xlsx <- 'phyto_data.xlsx'
-
-# load data and some light formatting
-phytodata <- read_importphyto(xlsx, download_latest = T)
-```
 ```{r}
 phytodata
 ```

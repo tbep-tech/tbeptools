@@ -28,7 +28,7 @@ Pytoplankton cell count data downloaded from https://epcbocc.sharepoint.com/:x:/
 xlsx <- '~/Desktop/phyto_data.xlsx'
 
 # load and assign to object
-phytodata <- read_importphyto(xlsx)
+phytodata <- read_importphyto(xlsx, download_latest = T)
 }
 }
 \seealso{
