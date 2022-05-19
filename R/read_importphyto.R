@@ -6,7 +6,7 @@
 #'
 #' @return A \code{data.frame} of formatted water quality data.
 #'
-#' @details Pytoplankton cell count data downloaded from ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/, file PlanktonDataList_ThroughCurrentReportMonth.xlsx
+#' @details Pytoplankton cell count data downloaded from https://epcbocc.sharepoint.com/:x:/s/Share/ETAfRQ5drmRHntDd1O8s3FQB180Fumed4nQ99w-OIVDxrA?e=eSmtxD&download=1
 #'
 #' @export
 #'
@@ -25,7 +25,7 @@
 read_importphyto <- function(xlsx, download_latest = FALSE, na = ''){
 
   # download latest and compare with current if exists
-  urlin <- "ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/PlanktonDataList_ThroughCurrentReportMonth.xlsx"
+  urlin <- "https://epcbocc.sharepoint.com/:x:/s/Share/ETAfRQ5drmRHntDd1O8s3FQB180Fumed4nQ99w-OIVDxrA?e=eSmtxD&download=1"
   read_dlcurrent(xlsx, download_latest, urlin = urlin)
 
   # sanity checks

@@ -6,7 +6,7 @@
 #'
 #' @return A formatted \code{data.frame} with FIM data if \code{locs = FALSE}, otherwise a simple features object if \code{locs = TRUE}
 #'
-#' @details Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv'}.
+#' @details Data downloaded from ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv.
 #' @export
 #'
 #' @concept read

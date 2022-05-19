@@ -12,7 +12,7 @@
 #'
 #' @concept read
 #'
-#' @details The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
+#' @details The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the file sizes are different.
 #' @examples
 #' \dontrun{
 #' locin <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'

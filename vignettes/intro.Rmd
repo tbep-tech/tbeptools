@@ -112,7 +112,7 @@ phytodata <- read_importphyto(xlsx, download_latest = T)
 ```
 #> File vignettes/phyto_data.xlsx does not exist, replacing with downloaded file...
 
-#> trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/PlanktonDataList_ThroughCurrentReportMonth.xlsx'
+#> trying URL 'https://epcbocc.sharepoint.com/:x:/s/Share/ETAfRQ5drmRHntDd1O8s3FQB180Fumed4nQ99w-OIVDxrA?e=eSmtxD&download=1'
  length 12319508 bytes (11.7 MB)
 ```
 

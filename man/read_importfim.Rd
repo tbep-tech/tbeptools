@@ -20,7 +20,7 @@ A formatted \code{data.frame} with FIM data if \code{locs = FALSE}, otherwise a 
 Load local FIM data for the Tampa Bay Nekton Index
 }
 \details{
-Data downloaded from \url{'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv'}.
+Data downloaded from ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv.
 }
 \examples{
 \dontrun{
