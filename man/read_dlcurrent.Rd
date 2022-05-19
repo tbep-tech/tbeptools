@@ -4,17 +4,17 @@
 \alias{read_dlcurrent}
 \title{Download latest file from epchc.org}
 \usage{
-read_dlcurrent(xlsx, download_latest = TRUE, urlin)
+read_dlcurrent(locin, download_latest = TRUE, urlin)
 }
 \arguments{
-\item{xlsx}{chr string path for local excel file, to overwrite it not current}
+\item{locin}{chr string path for local file, to overwrite it not current}
 
 \item{download_latest}{logical to download latest file regardless of local copy}
 
 \item{urlin}{url for file location}
 }
 \value{
-The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
+The local copy specified in the path by \code{locin} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
 }
 \description{
 Download latest file from epchc.org
@@ -24,10 +24,9 @@ The local copy is checked against a temporary file downloaded from the location 
 }
 \examples{
 \dontrun{
-xlsx <- '~/Desktop/2018_Results_Updated.xls'
-urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/'
-urlin <- paste0(urlin, 'RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx')
-read_dlcurrent(xlsx, urlin = urlin)
+locin <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+urlin <- 'https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1'
+read_dlcurrent(locin = locin, urlin = urlin)
 }
 }
 \concept{read}

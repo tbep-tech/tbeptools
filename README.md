@@ -48,7 +48,7 @@ The vignettes are organized by topic and are an excellent place to start for und
 
 Functions in tbeptools fall in three categories depending on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
 
-* `read`: Import current data from the main ftp site.
+* `read`: Import current data from the main site.
 
 * `anlz`: Analyze or summarize the imported data. 
 

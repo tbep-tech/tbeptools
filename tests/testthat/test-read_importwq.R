@@ -1,5 +1,5 @@
 test_that("Checking read_importwq", {
-  xlsx <- 'exdata.xls'
+  xlsx <- 'exdatatmp.xlsx'
 
   # load and assign to object
   epcdata <- read_importwq(xlsx)

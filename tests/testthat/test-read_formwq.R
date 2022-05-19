@@ -1,5 +1,5 @@
 test_that("Checking read_formwq", {
-  xlsx <- 'exdata.xls'
+  xlsx <- 'exdatatmp.xlsx'
 
   # load
   rawdat <- suppressWarnings(readxl::read_xlsx(xlsx, sheet="RWMDataSpreadsheet",

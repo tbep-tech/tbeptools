@@ -40,7 +40,7 @@ The environmental recovery of Tampa Bay is an exceptional success story for coas
 
 Tracking changes in environmental condition from the past to present day would not have been possible without a long-term monitoring dataset. Data have been collected monthly by the Environmental Protection Commission of Hillsborough County since 1974 [@Sherwood16;@TBEP17].  Samples are taken at forty-five stations by water collection or monitoring sonde at bottom, mid- or surface depths, depending on parameter.  The locations of monitoring stations are fixed and cover the entire Bay from the uppermost mesohaline sections to the lowermost euhaline portions that have direct interaction with the Gulf of Mexico.  Up to 515 observations are available for different parameters at each station, e.g., nitrogen, chlorophyll-a, and secchi depth. 
 
-Data collected from the monitoring program are processed and maintained in a spreadsheet titled `RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx` at <ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/>.  These data include observations at all stations and for all parameters throughout the period of record.  To date, there have been no systematic tools for importing, analyzing, and reporting information from these data. The **tbeptools** package provides was developed to address this need.
+Data collected from the monitoring program are processed and maintained in a spreadsheet titled `RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx` at <https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1>.  These data include observations at all stations and for all parameters throughout the period of record.  To date, there have been no systematic tools for importing, analyzing, and reporting information from these data. The **tbeptools** package provides was developed to address this need.
 
 ```{r tbmap, out.width = '80%', echo = F, fig.cap = 'Locations of long-term monitoring stations in Tampa Bay. The Bay is separated into four segments defined by chemical, physical, and geopolitical boundaries.'}
 knitr::include_graphics('tb_map.png')
@@ -53,7 +53,7 @@ The main function for importing water quality data is `read_importwq()`.  This f
 First, create a character path for the location of the file.  If one does not exist, specify a desired location and name for the downloaded file.  Here, we want to put the file in the vignettes folder and name is current_results.xls.  Note that this file path is relative to the root working directly for the current R session.  You can view the working directory with `getwd()`.
 
 ```{r}
-xlsx <- 'vignettes/current_results.xls'
+xlsx <- 'vignettes/current_results.xlsx'
 ```
 
 Now we pass this `xlsx` object to the `read_importwq()` function. 
@@ -71,9 +71,9 @@ We get an error message from the function indicating that the file is not found.
 ecpdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 ```
-#> File vignettes/current_results.xls does not exist, replacing with downloaded file...
+#> File vignettes/current_results.xlsx does not exist, replacing with downloaded file...
 
-#> trying URL 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+#> trying URL 'https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1'
  length 24562051 bytes (23.4 MB)
 ```
 Now we get the same message, but with an indication that file on the server is being downloaded. We'll have the data downloaded and saved to the `epcdata` object after it finishes downloading. 

@@ -36,7 +36,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' xlsx <- '~/Desktop/epcdata.xls'
+#' xlsx <- '~/Desktop/epcdata.xlsx'
 #' epcdata <- read_importwq(xlsx, download_latest = TRUE)
 #'
 #' nrow(epcdata)

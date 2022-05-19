@@ -16,7 +16,7 @@
 #' @examples
 #' \dontrun{
 #' # file path
-#' xlsx <- '~/Desktop/2018_Results_Updated.xls'
+#' xlsx <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
 #'
 #' # load and assign to object
 #' epcdata <- read_importwq(xlsx, download_latest = T)

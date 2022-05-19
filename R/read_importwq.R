@@ -6,7 +6,7 @@
 #'
 #' @return A \code{data.frame} of formatted water quality data.
 #'
-#' @details Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx}.
+#' @details Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1}.
 #' @export
 #'
 #' @concept read
@@ -16,7 +16,7 @@
 #' @examples
 #' \dontrun{
 #' # file path
-#' xlsx <- '~/Desktop/2018_Results_Updated.xls'
+#' xlsx <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
 #'
 #' # load and assign to object
 #' epcdata <- read_importwq(xlsx, download_latest = T)
@@ -24,7 +24,7 @@
 read_importwq <- function(xlsx, download_latest = FALSE, na = ''){
 
   # download latest and compare with current if exists
-  urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+  urlin <- 'https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1'
   read_dlcurrent(xlsx, download_latest, urlin = urlin)
 
   # sanity checks

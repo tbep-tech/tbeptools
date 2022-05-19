@@ -1,10 +1,10 @@
 #' Download latest file from epchc.org
 #'
-#' @param xlsx chr string path for local excel file, to overwrite it not current
+#' @param locin chr string path for local file, to overwrite it not current
 #' @param download_latest logical to download latest file regardless of local copy
 #' @param urlin url for file location
 #'
-#' @return The local copy specified in the path by \code{xlsx} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
+#' @return The local copy specified in the path by \code{locin} is overwritten by the new file is not current or \code{download_latest = TRUE}.  The function does nothing if \code{download_latest = FALSE}.
 #'
 #' @importFrom dplyr %>%
 #'
@@ -15,30 +15,29 @@
 #' @details The local copy is checked against a temporary file downloaded from the location specified by \code{urlin}.  The local file is replaced with the downloaded file if the MD5 hashes are different.
 #' @examples
 #' \dontrun{
-#' xlsx <- '~/Desktop/2018_Results_Updated.xls'
-#' urlin <- 'ftp://ftp.epchc.org/EPC_ERM_FTP/WQM_Reports/'
-#' urlin <- paste0(urlin, 'RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx')
-#' read_dlcurrent(xlsx, urlin = urlin)
+#' locin <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
+#' urlin <- 'https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1'
+#' read_dlcurrent(locin = locin, urlin = urlin)
 #' }
-read_dlcurrent <- function(xlsx, download_latest = TRUE, urlin){
+read_dlcurrent <- function(locin, download_latest = TRUE, urlin){
 
   # exit the function if no download
   if(!download_latest) return()
 
+  # download data from remote
+  tmpfl <- tempfile(fileext = tools::file_ext(locin))
+  download.file(url = urlin, destfile = tmpfl, method = "libcurl", mode = "wb")
+
   # if the file exists, compare with the file on server
-  if (file.exists(xlsx)){
+  if (file.exists(locin)){
 
     # compare dates
-    is_latest <- read_chkdate(urlin, xlsx)
+    is_latest <- file.info(tmpfl)$size < file.info(locin)$size
 
     if (!is_latest){
       message('Replacing local file with current...\n')
 
-      # download data from EPCHC's ftp site
-      tmp_xlsx <- tempfile(fileext = "xlsx")
-      download.file(url = urlin, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
-
-      file.copy(tmp_xlsx, xlsx, overwrite=T)
+      file.copy(tmpfl, locin, overwrite=T)
 
     }
 
@@ -48,13 +47,9 @@ read_dlcurrent <- function(xlsx, download_latest = TRUE, urlin){
 
   } else {
 
-    message('File ', xlsx, ' does not exist, replacing with downloaded file...\n')
+    message('File ', locin, ' does not exist, replacing with downloaded file...\n')
 
-    # download data from EPCHC's ftp site
-    tmp_xlsx <- tempfile(fileext = tools::file_ext(xlsx))
-    download.file(url = urlin, destfile = tmp_xlsx, method = "libcurl", mode = "wb") # 23.2 MB
-
-    file.copy(tmp_xlsx, xlsx)
+    file.copy(tmpfl, locin)
 
   }
 }
