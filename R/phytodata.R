@@ -27,4 +27,4 @@
 #' save(phytodata, file = 'data/phytodata.RData', compress = 'xz')
 #'
 #' }
-"phtyodata"
+"phytodata"
