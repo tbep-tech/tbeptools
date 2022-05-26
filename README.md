@@ -7,13 +7,7 @@
 [![Codecov test coverage](https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg)](https://codecov.io/gh/tbep-tech/tbeptools?branch=master)
 [![DOI](https://zenodo.org/badge/184627857.svg)](https://zenodo.org/badge/latestdoi/184627857)
 
-R package for Tampa Bay Estuary Program functions. Please see the [vignette](https://tbep-tech.github.io/tbeptools/articles/intro.html) for a full description.
-
-<img src="man/figures/logo.png" align="center" width="125"/>
-
-Please cite this package as follows: 
-
-Beck, M.W., Schrandt, M.N., Wessel, M.R., Sherwood, E.T., Raulerson, G.E., Budihal Prasad, A.A., Best, B.D., (2021). tbeptools: An R package for synthesizing estuarine data for environmental research. Journal of Open Source Software, 6(65), 3485, https://doi.org/10.21105/joss.03485
+R package for Tampa Bay Estuary Program functions. Please see the [vignettes](https://tbep-tech.github.io/tbeptools/articles/intro.html) for a full description.
 
 # Installation
 

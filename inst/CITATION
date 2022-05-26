@@ -1,0 +1,55 @@
+citHeader("To cite tbeptools in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "{t}beptools: An {R} package for synthesizing estuarine data for environmental research",
+  author   = c(
+    person(given = "Marcus",
+      family = "Beck",
+      role = c("aut", "cre"),
+      email = "mbeck@tbep.org",
+      comment = c(ORCID = "0000-0002-4996-0059")
+    ),
+    person(given = "Meagan",
+      family = "Schrandt",
+      role = c("aut"),
+      email = "Meagan.Schrandt@myfwc.com",,
+      comment = c(ORCID = "0000-0002-0482-5072")
+    ),
+    person(given = "Mike",
+      family = "Wessel",
+      role = c("aut"),
+      email = "mwessel@janickienvironmental.com"
+    ),
+    person(given = "Ed",
+      family = "Sherwood",
+      role = c("aut"),
+      email = "esherwood@tbep.org",
+      comment = c(ORCID = "0000-0001-5330-302X")
+    ),
+    person(given = "Gary",
+      family = "Raulerson",
+      role = c("aut"),
+      email = "graulerson@tbep.org",
+      comment = c(ORCID = "0000-0002-5920-5743")
+    ),
+    person(given = "Adhokshaja Achar",
+      family = "Budihal Prasad",
+      role = c("aut"),
+      email = "adhokshajaac@usf.edu",
+      comment = c(ORCID = "0000-0002-6485-6858")
+    ),
+    person(given = "Benjamin",
+      family = "Best",
+      role = c("aut"),
+      email = "ben@ecoquants.com",
+      comment = c(ORCID = "0000-0002-2686-0784")
+    )
+  ),
+  journal  = "Journal of Open Source Software",
+  year     = "2021",
+  volume   = "6",
+  number   = "65",
+  pages    = "3485",
+  doi      = "10.21105/joss.03485"
+)
