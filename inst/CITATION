@@ -51,5 +51,6 @@ citEntry(
   volume   = "6",
   number   = "65",
   pages    = "3485",
-  doi      = "10.21105/joss.03485"
+  doi      = "10.21105/joss.03485",
+  textVersion = "Beck, M.W., Schrandt, M.N., Wessel, M.R., Sherwood, E.T., Raulerson, G.E., Budihal Prasad, A.A., Best, B.D., (2021). tbeptools: An R package for synthesizing estuarine data for environmental research. Journal of Open Source Software, 6(65), 3485, https://doi.org/10.21105/joss.03485"
 )
