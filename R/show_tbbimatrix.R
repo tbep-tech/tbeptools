@@ -28,7 +28,7 @@
 #' tbbiscr <- anlz_tbbiscr(benthicdata)
 #' show_tbbimatrix(tbbiscr)
 show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All', 'All (wt)'),
-                            yrrng = c(1993, 2019), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top',
+                            yrrng = c(1993, 2020), alph = 1, txtsz = 3, family = NA, rev = FALSE, position = 'top',
                             plotly = FALSE, width = NULL, height = NULL){
 
   # annual average by segment

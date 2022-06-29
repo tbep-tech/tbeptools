@@ -8,7 +8,7 @@ anlz_tbbimed(
   tbbiscr,
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"),
   rev = FALSE,
-  yrrng = c(1993, 2019)
+  yrrng = c(1993, 2020)
 )
 }
 \arguments{

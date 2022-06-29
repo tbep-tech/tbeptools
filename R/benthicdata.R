@@ -1,6 +1,6 @@
-#' Benthic data for the Tampa Bay Benthic Index current as of 06012022
+#' Benthic data for the Tampa Bay Benthic Index current as of 06292022
 #'
-#' Benthic data for the Tampa Bay Benthic Index current as of 06012022
+#' Benthic data for the Tampa Bay Benthic Index current as of 06292022
 #'
 #' @format A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 #' \describe{
