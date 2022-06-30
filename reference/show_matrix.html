@@ -58,58 +58,87 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">show_matrix</span><span class="op">(</span>
-  <span class="va">epcdata</span>,
-  txtsz <span class="op">=</span> <span class="fl">3</span>,
-  trgs <span class="op">=</span> <span class="cn">NULL</span>,
-  yrrng <span class="op">=</span> <span class="cn">NULL</span>,
-  bay_segment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"OTB"</span>, <span class="st">"HB"</span>, <span class="st">"MTB"</span>, <span class="st">"LTB"</span><span class="op">)</span>,
-  asreact <span class="op">=</span> <span class="cn">FALSE</span>,
-  nrows <span class="op">=</span> <span class="fl">10</span>,
-  abbrev <span class="op">=</span> <span class="cn">FALSE</span>,
-  family <span class="op">=</span> <span class="cn">NA</span>,
-  historic <span class="op">=</span> <span class="cn">FALSE</span>,
-  plotly <span class="op">=</span> <span class="cn">FALSE</span>,
-  partialyr <span class="op">=</span> <span class="cn">FALSE</span>,
-  width <span class="op">=</span> <span class="cn">NULL</span>,
-  height <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_matrix</span><span class="op">(</span></span>
+<span>  <span class="va">epcdata</span>,</span>
+<span>  txtsz <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  trgs <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  yrrng <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  bay_segment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"OTB"</span>, <span class="st">"HB"</span>, <span class="st">"MTB"</span>, <span class="st">"LTB"</span><span class="op">)</span>,</span>
+<span>  asreact <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  nrows <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  abbrev <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  family <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  historic <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  plotly <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  partialyr <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  height <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>epcdata</dt>
 <dd><p>data frame of epc data returned by <code><a href="read_importwq.html">read_importwq</a></code></p></dd>
+
+
 <dt>txtsz</dt>
 <dd><p>numeric for size of text in the plot, applies only if <code>tab = FALSE</code></p></dd>
+
+
 <dt>trgs</dt>
 <dd><p>optional <code>data.frame</code> for annual bay segment water quality targets, defaults to <code><a href="targets.html">targets</a></code></p></dd>
+
+
 <dt>yrrng</dt>
 <dd><p>numeric vector indicating min, max years to include, defaults to range of years in <code>epcdata</code></p></dd>
+
+
 <dt>bay_segment</dt>
 <dd><p>chr string for bay segments to include, one to all of "OTB", "HB", "MTB", "LTB"</p></dd>
+
+
 <dt>asreact</dt>
 <dd><p>logical indicating if a <code><a href="https://glin.github.io/reactable/reference/reactable.html" class="external-link">reactable</a></code> object is returned</p></dd>
+
+
 <dt>nrows</dt>
 <dd><p>if <code>asreact = TRUE</code>, a numeric specifying number of rows in the table</p></dd>
+
+
 <dt>abbrev</dt>
 <dd><p>logical indicating if text labels in the plot are abbreviated as the first letter</p></dd>
+
+
 <dt>family</dt>
 <dd><p>optional chr string indicating font family for text labels</p></dd>
+
+
 <dt>historic</dt>
 <dd><p>logical if historic data are used from 2005 and earlier</p></dd>
+
+
 <dt>plotly</dt>
 <dd><p>logical if matrix is created using plotly</p></dd>
+
+
 <dt>partialyr</dt>
 <dd><p>logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter</p></dd>
+
+
 <dt>width</dt>
 <dd><p>numeric for width of the plot in pixels, only applies of <code>plotly = TRUE</code></p></dd>
+
+
 <dt>height</dt>
 <dd><p>numeric for height of the plot in pixels, only applies of <code>plotly = TRUE</code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A static <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></code> object is returned if <code>asreact = FALSE</code>, otherwise a <code><a href="https://glin.github.io/reactable/reference/reactable.html" class="external-link">reactable</a></code> table is returned</p>
+    
+
+<p>A static <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></code> object is returned if <code>asreact = FALSE</code>, otherwise a <code><a href="https://glin.github.io/reactable/reference/reactable.html" class="external-link">reactable</a></code> table is returned</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -118,7 +147,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">show_matrix</span><span class="op">(</span><span class="va">epcdata</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">show_matrix</span><span class="op">(</span><span class="va">epcdata</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="show_matrix-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -131,7 +160,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

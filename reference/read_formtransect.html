@@ -58,21 +58,28 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_formtransect</span><span class="op">(</span><span class="va">jsn</span>, training <span class="op">=</span> <span class="cn">FALSE</span>, raw <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_formtransect</span><span class="op">(</span><span class="va">jsn</span>, training <span class="op">=</span> <span class="cn">FALSE</span>, raw <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>jsn</dt>
 <dd><p>A data frame returned from <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></code></p></dd>
+
+
 <dt>training</dt>
 <dd><p>logical if input are transect training data or complete database</p></dd>
+
+
 <dt>raw</dt>
 <dd><p>logical indicating if raw, unformatted data are returned, see details</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>data frame in long format</p>
+    
+
+<p>data frame in long format</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -82,19 +89,19 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805" class="external-link">jsonlite</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># all transect data</span></span>
-<span class="r-in"><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">'http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'</span></span>
-<span class="r-in"><span class="va">jsn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">trndat</span> <span class="op">&lt;-</span> <span class="fu">read_formtransect</span><span class="op">(</span><span class="va">jsn</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># training transect data</span></span>
-<span class="r-in"><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'</span></span>
-<span class="r-in"><span class="va">jsn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">trndat</span> <span class="op">&lt;-</span> <span class="fu">read_formtransect</span><span class="op">(</span><span class="va">jsn</span>, training <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805" class="external-link">jsonlite</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># all transect data</span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">'http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'</span></span></span>
+<span class="r-in"><span><span class="va">jsn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">trndat</span> <span class="op">&lt;-</span> <span class="fu">read_formtransect</span><span class="op">(</span><span class="va">jsn</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># training transect data</span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'</span></span></span>
+<span class="r-in"><span><span class="va">jsn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">fromJSON</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">trndat</span> <span class="op">&lt;-</span> <span class="fu">read_formtransect</span><span class="op">(</span><span class="va">jsn</span>, training <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -106,7 +113,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

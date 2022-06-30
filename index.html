@@ -95,16 +95,16 @@
 </h1>
 <p>The package can be installed from <a href="https://tbep-tech.r-universe.dev" class="external-link">r-universe</a>. The source code is available on the tbep-tech GitHub group web page: <a href="https://github.com/tbep-tech/tbeptools" class="external-link uri">https://github.com/tbep-tech/tbeptools</a>. Note that tbeptools only needs to be installed once, but it needs to be loaded every new R session (i.e., <code><a href="https://github.com/tbep-tech/tbeptools" class="external-link">library(tbeptools)</a></code>).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># enable repos</span>
-<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
-    tbeptech <span class="op">=</span> <span class="st">'https://tbep-tech.r-universe.dev'</span>,
-    CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># install tbeptools</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'tbeptools'</span><span class="op">)</span>
-
-<span class="co"># load tbeptools</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools" class="external-link">tbeptools</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># enable repos</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    tbeptech <span class="op">=</span> <span class="st">'https://tbep-tech.r-universe.dev'</span>,</span>
+<span>    CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># install tbeptools</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'tbeptools'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load tbeptools</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools" class="external-link">tbeptools</a></span><span class="op">)</span></span></code></pre></div>
 <p>After the package is loaded, you can view the help files for each function by typing a question mark followed by the function name, e.g., <code><a href="reference/read_importwq.html">?read_importwq</a></code>, on the console. The help files provide a brief description of what each function does and the required arguments that are needed to run the function.</p>
 </div>
 <div class="section level1">
@@ -179,55 +179,55 @@
 <p>The function <a href="https://tbep-tech.github.io/tbeptools/reference/index.html">reference page</a> can also be viewed for a complete list of functions organized by category, a description of what they do, and links to the help files.</p>
 <p>The following example demonstrates use of a subset of the functions for water quality data to read a file from the Hillsborough County Environmental Protection Commission long-term monitoring dataset (available from <a href="https://www.tampabay.wateratlas.usf.edu/" class="external-link uri">https://www.tampabay.wateratlas.usf.edu/</a>), analyze monthly and annual averages by major bay segments of Tampa Bay, and plot an annual time series for one of the bay segments.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># load the package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools" class="external-link">tbeptools</a></span><span class="op">)</span>
-
-<span class="co"># read current data</span>
-<span class="va">wqdat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_importwq.html">read_importwq</a></span><span class="op">(</span>xlsx <span class="op">=</span> <span class="st">"wqdata.xlsx"</span>, download_latest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">wqdat</span></code></pre></div>
-<pre><code><span class="co">## # A tibble: 26,611 x 22</span>
-<span class="co">##   bay_segment epchc_station SampleTime             yr    mo</span>
-<span class="co">##   &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">## 1 HB                      6 2021-06-08 10:59:00  2021     6</span>
-<span class="co">## 2 HB                      7 2021-06-08 11:13:00  2021     6</span>
-<span class="co">## 3 HB                      8 2021-06-08 14:15:00  2021     6</span>
-<span class="co">## 4 MTB                     9 2021-06-08 13:14:00  2021     6</span>
-<span class="co">## 5 MTB                    11 2021-06-08 11:30:00  2021     6</span>
-<span class="co">## # ... with 26,606 more rows, and 17 more variables:</span>
-<span class="co">## #   Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, Total_Depth_m &lt;dbl&gt;,</span>
-<span class="co">## #   Sample_Depth_m &lt;dbl&gt;, tn &lt;dbl&gt;, tn_q &lt;chr&gt;, sd_m &lt;dbl&gt;,</span>
-<span class="co">## #   sd_raw_m &lt;dbl&gt;, sd_q &lt;chr&gt;, chla &lt;dbl&gt;, chla_q &lt;chr&gt;,</span>
-<span class="co">## #   Sal_Top_ppth &lt;dbl&gt;, Sal_Mid_ppth &lt;dbl&gt;,</span>
-<span class="co">## #   Sal_Bottom_ppth &lt;dbl&gt;, Temp_Water_Top_degC &lt;dbl&gt;,</span>
-<span class="co">## #   Temp_Water_Mid_degC &lt;dbl&gt;, ...</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># load the package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tbep-tech/tbeptools" class="external-link">tbeptools</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># read current data</span></span>
+<span><span class="va">wqdat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_importwq.html">read_importwq</a></span><span class="op">(</span>xlsx <span class="op">=</span> <span class="st">"wqdata.xlsx"</span>, download_latest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">wqdat</span></span></code></pre></div>
+<pre><code><span><span class="co">## # A tibble: 26,611 x 22</span></span>
+<span><span class="co">##   bay_segment epchc_station SampleTime             yr    mo</span></span>
+<span><span class="co">##   &lt;chr&gt;               &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">## 1 HB                      6 2021-06-08 10:59:00  2021     6</span></span>
+<span><span class="co">## 2 HB                      7 2021-06-08 11:13:00  2021     6</span></span>
+<span><span class="co">## 3 HB                      8 2021-06-08 14:15:00  2021     6</span></span>
+<span><span class="co">## 4 MTB                     9 2021-06-08 13:14:00  2021     6</span></span>
+<span><span class="co">## 5 MTB                    11 2021-06-08 11:30:00  2021     6</span></span>
+<span><span class="co">## # ... with 26,606 more rows, and 17 more variables:</span></span>
+<span><span class="co">## #   Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, Total_Depth_m &lt;dbl&gt;,</span></span>
+<span><span class="co">## #   Sample_Depth_m &lt;dbl&gt;, tn &lt;dbl&gt;, tn_q &lt;chr&gt;, sd_m &lt;dbl&gt;,</span></span>
+<span><span class="co">## #   sd_raw_m &lt;dbl&gt;, sd_q &lt;chr&gt;, chla &lt;dbl&gt;, chla_q &lt;chr&gt;,</span></span>
+<span><span class="co">## #   Sal_Top_ppth &lt;dbl&gt;, Sal_Mid_ppth &lt;dbl&gt;,</span></span>
+<span><span class="co">## #   Sal_Bottom_ppth &lt;dbl&gt;, Temp_Water_Top_degC &lt;dbl&gt;,</span></span>
+<span><span class="co">## #   Temp_Water_Mid_degC &lt;dbl&gt;, ...</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># analyze monthly and annual means by bay segment</span>
-<span class="va">avedat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/anlz_avedat.html">anlz_avedat</a></span><span class="op">(</span><span class="va">wqdat</span><span class="op">)</span>
-<span class="va">avedat</span></code></pre></div>
-<pre><code><span class="co">## $ann</span>
-<span class="co">## # A tibble: 584 x 4</span>
-<span class="co">##      yr bay_segment var         val</span>
-<span class="co">##   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;</span>
-<span class="co">## 1  1974 HB          mean_chla 22.4 </span>
-<span class="co">## 2  1974 LTB         mean_chla  4.24</span>
-<span class="co">## 3  1974 MTB         mean_chla  9.66</span>
-<span class="co">## 4  1974 OTB         mean_chla 10.2 </span>
-<span class="co">## 5  1975 HB          mean_chla 27.9 </span>
-<span class="co">## # ... with 579 more rows</span>
-<span class="co">## </span>
-<span class="co">## $mos</span>
-<span class="co">## # A tibble: 4,484 x 5</span>
-<span class="co">##   bay_segment    yr    mo var         val</span>
-<span class="co">##   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;</span>
-<span class="co">## 1 HB           1974     1 mean_chla 36.2 </span>
-<span class="co">## 2 LTB          1974     1 mean_chla  1.75</span>
-<span class="co">## 3 MTB          1974     1 mean_chla 11.5 </span>
-<span class="co">## 4 OTB          1974     1 mean_chla  4.4 </span>
-<span class="co">## 5 HB           1974     2 mean_chla 42.4 </span>
-<span class="co">## # ... with 4,479 more rows</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># analyze monthly and annual means by bay segment</span></span>
+<span><span class="va">avedat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/anlz_avedat.html">anlz_avedat</a></span><span class="op">(</span><span class="va">wqdat</span><span class="op">)</span></span>
+<span><span class="va">avedat</span></span></code></pre></div>
+<pre><code><span><span class="co">## $ann</span></span>
+<span><span class="co">## # A tibble: 584 x 4</span></span>
+<span><span class="co">##      yr bay_segment var         val</span></span>
+<span><span class="co">##   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">## 1  1974 HB          mean_chla 22.4 </span></span>
+<span><span class="co">## 2  1974 LTB         mean_chla  4.24</span></span>
+<span><span class="co">## 3  1974 MTB         mean_chla  9.66</span></span>
+<span><span class="co">## 4  1974 OTB         mean_chla 10.2 </span></span>
+<span><span class="co">## 5  1975 HB          mean_chla 27.9 </span></span>
+<span><span class="co">## # ... with 579 more rows</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $mos</span></span>
+<span><span class="co">## # A tibble: 4,484 x 5</span></span>
+<span><span class="co">##   bay_segment    yr    mo var         val</span></span>
+<span><span class="co">##   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">## 1 HB           1974     1 mean_chla 36.2 </span></span>
+<span><span class="co">## 2 LTB          1974     1 mean_chla  1.75</span></span>
+<span><span class="co">## 3 MTB          1974     1 mean_chla 11.5 </span></span>
+<span><span class="co">## 4 OTB          1974     1 mean_chla  4.4 </span></span>
+<span><span class="co">## 5 HB           1974     2 mean_chla 42.4 </span></span>
+<span><span class="co">## # ... with 4,479 more rows</span></span></code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># show annual time series of chlorophyll for Hillsborough bay segment</span>
-<span class="fu"><a href="reference/show_thrplot.html">show_thrplot</a></span><span class="op">(</span><span class="va">wqdat</span>, bay_segment <span class="op">=</span> <span class="st">"HB"</span>, yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># show annual time series of chlorophyll for Hillsborough bay segment</span></span>
+<span><span class="fu"><a href="reference/show_thrplot.html">show_thrplot</a></span><span class="op">(</span><span class="va">wqdat</span>, bay_segment <span class="op">=</span> <span class="st">"HB"</span>, yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/thrplotex-1.jpeg" align="center"></p>
 <p>Functions in <code>tbeptools</code> also support the creation of content for interactive, online dashboards that can facilitate more informed decisions without requiring an intimate understanding of the R programming language or the methods for analysis. These dashboards include assessments for <a href="https://shiny.tbeptech.org/wq-dash/" class="external-link">water quality</a>, <a href="https://shiny.tbep.org/seagrasstransect-dash/" class="external-link">seagrasses</a>, <a href="http://shiny.tbeptech.org/nekton-dash" class="external-link">nekton communities</a>, and <a href="https://shiny.tbep.org/tidalcreek-dash/" class="external-link">tidal creeks</a>.</p>
 </div>
@@ -307,7 +307,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>

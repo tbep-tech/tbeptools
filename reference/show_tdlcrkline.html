@@ -58,28 +58,37 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">show_tdlcrkline</span><span class="op">(</span>
-  varin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CHLAC"</span>, <span class="st">"TN"</span>, <span class="st">"chla_tn_ratio"</span>, <span class="st">"DO"</span>, <span class="st">"tsi"</span>, <span class="st">"no23_ratio"</span><span class="op">)</span>,
-  thrsel <span class="op">=</span> <span class="cn">FALSE</span>,
-  horiz <span class="op">=</span> <span class="cn">TRUE</span>,
-  annotate <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_tdlcrkline</span><span class="op">(</span></span>
+<span>  varin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CHLAC"</span>, <span class="st">"TN"</span>, <span class="st">"chla_tn_ratio"</span>, <span class="st">"DO"</span>, <span class="st">"tsi"</span>, <span class="st">"no23_ratio"</span><span class="op">)</span>,</span>
+<span>  thrsel <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  horiz <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  annotate <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>varin</dt>
 <dd><p>chr string for the indicator</p></dd>
+
+
 <dt>thrsel</dt>
 <dd><p>logical if something is returned, otherwise NULL, this is a hack for working with the plotly output</p></dd>
+
+
 <dt>horiz</dt>
 <dd><p>logical indicating if output is horizontal or vertical</p></dd>
+
+
 <dt>annotate</dt>
 <dd><p>logical indicating if output is line or annotation text</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list object passed to the layout argument of plotly, either shapes or annotate depending on user input</p>
+    
+
+<p>A list object passed to the layout argument of plotly, either shapes or annotate depending on user input</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -88,8 +97,8 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># code for vertical line output, chloropyll</span></span>
-<span class="r-in"><span class="fu">show_tdlcrkline</span><span class="op">(</span><span class="st">'CHLAC'</span>, thrsel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># code for vertical line output, chloropyll</span></span></span>
+<span class="r-in"><span><span class="fu">show_tdlcrkline</span><span class="op">(</span><span class="st">'CHLAC'</span>, thrsel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$type</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "line"</span>
@@ -129,7 +138,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>
