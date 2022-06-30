@@ -14,7 +14,7 @@
 #' @examples
 #' \dontrun{
 #' library(sf)
-#' library(tidyverse)
+#' library(dplyr)
 #' library(tools)
 #'
 #' # create sf object of boundaries

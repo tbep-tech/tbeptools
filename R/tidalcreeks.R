@@ -17,7 +17,7 @@
 #' @examples
 #' \dontrun{
 #' library(sf)
-#' library(tidyverse)
+#' library(dplyr)
 #'
 #' prj <- 4326
 #'

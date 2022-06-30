@@ -22,7 +22,7 @@ These polygons are used by Southwest Florida Water Management District for summa
 \examples{
 \dontrun{
 library(sf)
-library(tidyverse)
+library(dplyr)
 library(tools)
 
 # create sf object of boundaries
