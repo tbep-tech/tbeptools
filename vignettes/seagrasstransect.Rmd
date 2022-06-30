@@ -22,6 +22,9 @@ knitr::opts_chunk$set(
 
 library(tbeptools)
 library(mapview)
+library(sf)
+
+sf_use_s2(FALSE)
 
 sf::st_crs(trnpts) <- 4326
 sf::st_crs(trnlns) <- 4326

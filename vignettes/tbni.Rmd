@@ -30,6 +30,7 @@ library(mapview)
 library(ggplot2)
 library(sf)
 
+sf_use_s2(FALSE)
 st_crs(fimstations) <- 4326
 
 # spelling::spell_check_files("vignettes/tbni.Rmd")

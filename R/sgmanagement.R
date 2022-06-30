@@ -14,7 +14,7 @@
 #' @examples
 #' \dontrun{
 #' library(sf)
-#' library(tidyverse)
+#' library(dplyr)
 #' library(tools)
 #'
 #' # NAD83(HARN) / Florida West (ftUS)

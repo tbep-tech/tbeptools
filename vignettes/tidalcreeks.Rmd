@@ -28,7 +28,9 @@ library(dplyr)
 library(knitr)
 library(mapview)
 library(plotly)
+library(sf)
 
+sf_use_s2(FALSE)
 sf::st_crs(tidalcreeks) <- 4326
 
 # spelling::spell_check_files("vignettes/tidalcreeks.Rmd")

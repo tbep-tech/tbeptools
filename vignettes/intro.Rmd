@@ -26,6 +26,9 @@ library(bookdown)
 library(ggplot2)
 library(dplyr)
 library(knitr)
+library(sf)
+
+sf_use_s2(FALSE)
 
 # spelling::spell_check_files("vignettes/intro.Rmd")
 ```
