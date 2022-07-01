@@ -66,9 +66,9 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segme
       tidyr::gather('bay_segment', 'outcome', -yr) %>%
       dplyr::mutate(
         outcome = dplyr::case_when(
-          outcome == 'r' ~ '#CC3231',
-          outcome == 'g' ~ '#2DC938',
-          outcome == 'y' ~ '#E9C318'
+          outcome == 'g' ~ 'green',
+          outcome == 'r' ~ 'red',
+          outcome == 'y' ~ 'yellow'
         ),
         bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
       )
