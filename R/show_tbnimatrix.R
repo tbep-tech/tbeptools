@@ -24,7 +24,7 @@
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbnimatrix(tbniscr)
-show_tbnimatrix <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3, txtsz = 3,
+show_tbnimatrix <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 1, txtsz = 3,
                             family = NA, rev = FALSE, position = 'top', plotly = FALSE, width = NULL, height = NULL){
 
   # annual average by segment
@@ -34,7 +34,7 @@ show_tbnimatrix <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
     ggplot2::geom_tile(aes(group = Action), colour = 'black', alpha = alph) +
     ggplot2::scale_y_reverse(expand = c(0, 0), breaks = toplo$Year) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = position) +
-    ggplot2::scale_fill_manual(values = c(red = 'red', yellow = 'yellow', green = 'green')) +
+    ggplot2::scale_fill_manual(values = c(red = '#CC3231', yellow = '#E9C318', green = '#2DC938')) +
     ggplot2::theme_bw() +
     ggplot2::theme(
       axis.title = ggplot2::element_blank(),

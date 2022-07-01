@@ -8,7 +8,7 @@ show_tbnimatrix(
   tbniscr,
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   perc = c(32, 46),
-  alph = 0.3,
+  alph = 1,
   txtsz = 3,
   family = NA,
   rev = FALSE,

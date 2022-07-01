@@ -23,7 +23,7 @@
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbniscr(tbniscr)
-show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 0.3,
+show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 1,
                          ylim = c(22 ,58), rev = FALSE, plotly = FALSE, family = NA, width = NULL, height = NULL){
 
   # sanity checks
@@ -40,9 +40,9 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
 
   # plot
   out <- ggplot2::ggplot(toplo) +
-    annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = 'red') +
-    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = 'yellow') +
-    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = 'green') +
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = '#CC3231') + # red
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = '#E9C318') + # yellow
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = '#2DC938') + # green
     ggplot2::geom_line(aes(x = Year, y = Segment_TBNI, linetype = bay_segment, color = bay_segment), size = 1.25) +
     # stat_summary(fun.y=sum, geom="line") +
     ggplot2::scale_linetype_manual(name = "",

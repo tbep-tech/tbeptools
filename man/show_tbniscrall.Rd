@@ -7,7 +7,7 @@
 show_tbniscrall(
   tbniscr,
   perc = c(32, 46),
-  alph = 0.3,
+  alph = 1,
   ylim = c(22, 58),
   rev = FALSE,
   plotly = FALSE

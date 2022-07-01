@@ -92,7 +92,7 @@ show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2021
     geom_tile(aes(group = Action), colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
-    scale_fill_manual(values = c(red = 'red', yellow = 'yellow', green = 'green')) +
+    scale_fill_manual(values = c(red = '#CC3231', yellow = '#E9C318', green = '#2DC938')) +
     theme_bw() +
     theme(
       axis.title = element_blank(),

@@ -19,7 +19,7 @@
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbniscrall(tbniscr)
-show_tbniscrall <- function(tbniscr, perc = c(32, 46), alph = 0.3, ylim = c(22 ,58), rev = FALSE, plotly = FALSE){
+show_tbniscrall <- function(tbniscr, perc = c(32, 46), alph = 1, ylim = c(22 ,58), rev = FALSE, plotly = FALSE){
 
   # sanity checks
   stopifnot(length(perc) == 2)
@@ -43,9 +43,9 @@ show_tbniscrall <- function(tbniscr, perc = c(32, 46), alph = 0.3, ylim = c(22 ,
 
   # plot
   out <- ggplot2::ggplot(toplo) +
-    annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = 'red') +
-    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = 'yellow') +
-    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = 'green') +
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = '#CC3231') +
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = '#E9C318') +
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = '#2DC938') +
     geom_ribbon(aes(x = Year, ymin = TBNI_Score - seval, ymax = TBNI_Score + seval), fill = secol) +
     ggplot2::geom_line(aes(x = Year, y = TBNI_Score), size = 1.25) +
     ggplot2::scale_y_continuous(name = "TBNI average of bay segments", limits = ylim, breaks = seq(ylim[1], ylim[2], 4)) +

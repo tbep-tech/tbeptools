@@ -80,7 +80,7 @@ anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'L
 
   out <- segs %>%
     dplyr::mutate(
-      focat = cut(foest, breaks = c(-Inf, 25, 50, 75, Inf), labels = c('red', 'orange', 'yellow', 'green')),
+      focat = cut(foest, breaks = c(-Inf, 25, 50, 75, Inf), labels = c('#CC3231', '#EE7600', '#E9C318', '#2DC938')),
       bay_segment = factor(bay_segment, levels = levs)
     ) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%

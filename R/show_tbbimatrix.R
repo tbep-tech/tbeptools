@@ -38,7 +38,7 @@ show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 
     geom_tile(colour = 'black', alpha = alph) +
     ggplot2::scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = position) +
-    ggplot2::scale_fill_manual(values = c(Poor = 'red', Fair = 'yellow', Good = 'darkgreen')) +
+    ggplot2::scale_fill_manual(values = c(Poor = '#CC3231', Fair = '#E9C318', Good = '#2DC938')) +
     ggplot2::theme_bw() +
     ggplot2::theme(
       axis.title = ggplot2::element_blank(),

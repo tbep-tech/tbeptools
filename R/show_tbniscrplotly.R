@@ -32,14 +32,14 @@ show_tbniscrplotly <- function(p, width = NULL, height = NULL){
 
   p <- plotly::ggplotly(p, width = width, height = height)
 
-  shp1 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(255,0,0,", alph, ")"),
-               x0 = 1997.45, x1 = xmax, y0 = 0, y1 = perc[1])
+  shp1 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(204,50,49,", alph, ")"), # red
+               x0 = 1997.45, x1 = xmax, y0 = 0, y1 = perc[1], layer = 'below')
 
-  shp2 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(255,255,0,", alph, ")"),
-               x0 = 1997.45, x1 = xmax, y0 = perc[1], y1 = perc[2])
+  shp2 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(233,195,24,", alph, ")"), # yellow
+               x0 = 1997.45, x1 = xmax, y0 = perc[1], y1 = perc[2], layer = 'below')
 
-  shp3 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(0,255,0,", alph, ")"),
-               x0 = 1997.45, x1 = xmax, y0 = perc[2], y1 = 100)
+  shp3 <- list(type='rect', line = list(color = 'rgba(0,0,0,0)'), fillcolor=paste0("rgba(45,201,56,", alph, ")"), # green
+               x0 = 1997.45, x1 = xmax, y0 = perc[2], y1 = 100, layer = 'below')
 
   shapes <- list(shp1, shp2, shp3)
 

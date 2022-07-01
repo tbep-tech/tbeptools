@@ -8,7 +8,7 @@ show_tbniscr(
   tbniscr,
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   perc = c(32, 46),
-  alph = 0.3,
+  alph = 1,
   ylim = c(22, 58),
   rev = FALSE,
   plotly = FALSE,

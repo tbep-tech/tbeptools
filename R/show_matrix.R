@@ -66,9 +66,9 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segme
       tidyr::gather('bay_segment', 'outcome', -yr) %>%
       dplyr::mutate(
         outcome = dplyr::case_when(
-          outcome == 'g' ~ 'green',
-          outcome == 'r' ~ 'red',
-          outcome == 'y' ~ 'yellow'
+          outcome == 'r' ~ '#CC3231',
+          outcome == 'g' ~ '#2DC938',
+          outcome == 'y' ~ '#E9C318'
         ),
         bay_segment = factor(bay_segment, levels = c('OTB', 'HB', 'MTB', 'LTB'))
       )
@@ -111,9 +111,9 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segme
     colfun <- function(x){
 
       out <- dplyr::case_when(
-        x %in% c('R', 'red') ~ '#FF3333',
-        x %in% c('Y', 'yellow') ~ '#F9FF33',
-        x %in% c('G', 'green') ~ '#33FF3B'
+        x %in% c('R', 'red') ~ '#CC3231',
+        x %in% c('Y', 'yellow') ~ '#E9C318',
+        x %in% c('G', 'green') ~ '#2DC938'
       )
 
       return(out)
@@ -151,7 +151,7 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segme
     geom_tile(aes(group = Action), colour = 'black') +
     scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
     scale_x_discrete(expand = c(0, 0), position = 'top') +
-    scale_fill_manual(values = c(red = 'red', yellow = 'yellow', green = 'green')) +
+    scale_fill_manual(values = c(red = '#CC3231', yellow = '#E9C318', green = '#2DC938')) +
     theme_bw() +
     theme(
       axis.title = element_blank(),

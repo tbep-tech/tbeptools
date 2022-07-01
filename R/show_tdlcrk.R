@@ -18,7 +18,7 @@ show_tdlcrk <- function(dat, weight = 1.5) {
 
   # color palette
   pal_exp <- leaflet::colorFactor(
-    palette = c('lightblue', 'green', 'yellow', 'orange', 'coral'),
+    palette = c('#ADD8E6', '#2DC938', '#E9C318', '#EE7600', '#FF4040'), # lightblue, green, yellow, darkorange2, brown1
     levels = c('No Data', 'Monitor', 'Caution', 'Investigate', 'Prioritize')
   )
 

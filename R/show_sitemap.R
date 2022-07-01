@@ -126,8 +126,8 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
 
       p <- p +
         geom_sf(data = tomap, aes(colour = met, fill = met), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
-        scale_fill_manual(leglab,  values = c('green', 'red'), drop = F) +
-        scale_colour_manual(leglab, values = c('green', 'red'), drop = F) +
+        scale_fill_manual(leglab,  values = c('#2DC938', '#CC3231'), drop = F) +
+        scale_colour_manual(leglab, values = c('#2DC938', '#CC3231'), drop = F) +
         theme(
           axis.title = element_blank(),
           axis.text = element_text(size = 7),
@@ -135,8 +135,8 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
           legend.background = element_blank()
         ) +
         guides(
-          colour = guide_legend(override.aes = list(colour = c('green', 'red'))),
-          fill = guide_legend(override.aes = list(colour = c('green', 'red')))
+          colour = guide_legend(override.aes = list(colour = c('#2DC938', '#CC3231'))),
+          fill = guide_legend(override.aes = list(colour = c('#2DC938', '#CC3231')))
         )
 
     })
@@ -158,7 +158,7 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
 
       p <- p +
         geom_sf(data = tomap, aes(fill = val), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
-        scale_fill_gradient(leglab, low = 'green', high = 'red') +
+        scale_fill_gradient(leglab, low = '#2DC938', high = '#CC3231') + #green, red
         theme(
           axis.title = element_blank(),
           axis.text = element_text(size = 7),

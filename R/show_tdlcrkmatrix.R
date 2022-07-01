@@ -32,7 +32,7 @@ show_tdlcrkmatrix <- function(dat, class = c('3M', '2'), score = c('Prioritize',
     stop('score must be from Prioritize, Investigate, Caution, Monitor')
 
   # named color vector
-  cols <- list(Monitor = 'green', Caution = 'yellow', Investigate = 'orange', Prioritize = 'coral')
+  cols <- list(Monitor = '#2DC938', Caution = '#E9C318', Investigate = '#EE7600', Prioritize = '#FF4040') # green, yellow, darkorange2, brown1
 
   # overall score categories
   toplo2 <- dat %>%
