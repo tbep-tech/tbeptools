@@ -54,6 +54,7 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
         Abundance = as.numeric(Abundance)
       ) %>%
       tidyr::gather('var', 'val', -yr, -Crew, -MonitoringAgency, -Site, -Depth, -Savspecies) %>%
+      dplyr::group_by(yr) %>%
       dplyr::mutate(
         rep = gsub('.*([0-9])$', '\\1', var),
         rep = gsub('^Abundance$', '1', rep),
@@ -65,9 +66,17 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
         ),
         val = gsub("[^0-9.-]", '', val),
         val = as.numeric(val),
-        Site = as.character(Site)
+        Site = as.character(Site),
+        grpact = paste0(yr, ': ', MonitoringAgency, ' (', Crew, ')')
       ) %>%
-      dplyr::group_by(yr, Crew, MonitoringAgency, Site, Depth, Savspecies, var) %>%
+      dplyr::ungroup() %>%
+      dplyr::group_by(yr) %>%
+      dplyr::mutate(
+        grp = factor(grpact, levels = unique(sort(grpact)), labels = toupper(letters[1:length(unique(grpact))])),
+        grp = as.character(grp)
+      ) %>%
+      dplyr::ungroup() %>%
+      dplyr::group_by(yr, grp, grpact, Crew, MonitoringAgency, Site, Depth, Savspecies, var) %>%
       dplyr::summarise(
         aveval = mean(val, na.rm = T),
         sdval = sd(val, na.rm = T)

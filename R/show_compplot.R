@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' transect <- read_transect(training = TRUE)
-#' show_compplot(transect, yr = 2021, site = '1', species = 'Halodule', varplo = 'Abundance')
+#' show_compplot(transect, yr = 2021, site = '2', species = 'Halodule', varplo = 'Abundance')
 show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 18, xtxt = 10, size = 1){
 
@@ -40,12 +40,7 @@ show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodi
     dplyr::filter(yr %in% !!yr) %>%
     dplyr::filter(Site %in% site) %>%
     dplyr::filter(Savspecies %in% species) %>%
-    dplyr::filter(var %in% varplo) %>%
-    dplyr::mutate(
-      grp = paste0(MonitoringAgency, ' (', Crew, ')'),
-      grp = gsub('(.{1,12})(\\s|$)', '\\1\n', grp),
-      grp = gsub('\\n*$', '', grp)
-      )
+    dplyr::filter(var %in% varplo)
 
   # get summary stats
   sumplo <- toplo %>%
@@ -70,7 +65,6 @@ show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodi
     ggplot2::theme_bw(base_size = base_size) +
     ggplot2::theme(
       panel.border = ggplot2::element_blank(),
-      axis.title.x = ggplot2::element_blank(),
       axis.text.x = ggplot2::element_text(size = xtxt),
       panel.grid.major.x = ggplot2::element_blank(),
       panel.grid.minor.x = ggplot2::element_blank(),
@@ -100,6 +94,10 @@ show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodi
 
   }
 
+  p <- p +
+    ggplot2::labs(
+      x = 'Crew'
+    )
   return(p)
 
 }
