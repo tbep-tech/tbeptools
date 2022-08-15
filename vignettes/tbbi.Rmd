@@ -49,7 +49,7 @@ To download the data with teptools, first create a character path for the locati
 
 ```{r, eval = F}
 path <- '~/Desktop/benthic.zip'
-benthicdata <- read_importbenthos(path)
+benthicdata <- read_importbenthic(path)
 ```
 
 Running the above code will return the following error: 
