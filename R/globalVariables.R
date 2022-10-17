@@ -1,5 +1,5 @@
-globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime", "Sample_Depth_m",
-                  "Secchi_Depth_m", "Station_Number", "Total_Depth_m", "bay_segment", "chla",
+globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "SampleDepth",
+                  "SecchiDepth", "Station_Number", "TotalDepth", "bay_segment", "chla",
                   "epchc_station", "mo", "sd_m", "stations", "yr", "mean_chla", "mean_la", "mean_sdm", "sdm",
                   "sum_chla", "sum_sdm", "chla_thresh", "name", "targets", "val", "var", "yval", ".",
                   "chl_la", "data", "durats", "la", "na.omit", "outcome", "smallex", "target",
@@ -7,7 +7,7 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   "<NA>", "JEI", "cnt", "grade", "masterCode", "result", "score", "tidalcreeks", "wbid", "year",
                   "title", "index", "subindex", "tag", "type", "act", "caution", "region", "investigate",
                   "tidaltargets", "1", "2", "3", "4", "outcometxt", "Act", "Result", "chl", "mags",
-                  "outcome.x", "segval", "Sal_Bottom_ppth", "Sal_Mid_ppth", "Sal_Top_ppth", "Action",
+                  "outcome.x", "segval", "Sal-B", "Sal-M", "Sal-T", "Action",
                   "CHLAC", "Creek_Length_m", "TN", "TP", "chla_tsi", "day", "nut_tsi", "Source", "Tidal",
                   "median", "no23_ratio", "color", "Flow", "adj", "bs", "compload", "ests", "value",
                   "COUNT", "Date", "NAME", "PHYLUM", "StationNumber", "Units", "tbseglines", "Chlorophyll-a",
@@ -25,8 +25,8 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   'matches', 'var', 'sdval', 'val', 'BladeLength_Avg', 'BladeLength_StdDev', 'Crew', 'ID',
                   'ShootDensity_Avg','ShootDensity_StdDev', 'Species', 'SpeciesAbundance', 'Transect', 'Average',
                   'Median', 'MonitoringAgency', 'grp', 'sumval', 'sumvar', 'ObservationDate', 'Depth',
-                  'SeagrassEdge', 'Temp_Water_Bottom_degC', 'Temp_Water_Mid_degC', 'Temp_Water_Top_degC',
-                  'Total_Nitrogen_Q', 'Total_Nitrogen_mgL', 'tn', 'indyr', 'monitor', 'author', 'AdjCount',
+                  'SeagrassEdge', 'TempWater-B', 'TempWater-C', 'TempWater-T',
+                  'Total_NitrogenQ', 'Total_Nitrogen', 'tn', 'indyr', 'monitor', 'author', 'AdjCount',
                   'AdjCountAbundance', 'ArrivalTime', 'CapitellidAbundance', 'COLONIAL/PLANKTONIC?', 'FAMILY',
                   'Grab', 'IsComplete', 'ProgramID', 'ProgramName', 'RawCountAbundance', 'Salinity',
                   'SpeciesRichness', 'SpionidAbundance', 'StandardizingConstant', 'StandPropLnSpecies',
@@ -37,8 +37,8 @@ globalVariables(c("Chlorophyll_a uncorr_Q", "Latitude", "Longitude", "SampleTime
                   'AreaAbbr', 'AreaID', 'FundingId', 'FundingProject', 'no23_source', 'no23_tidal', 'DOSAT',
                   'DOSAT_prop', 'ch_tn_rat_ind', 'chla_ind', 'do_bnml', 'do_cnt', 'do_prop', 'fo', 'nox_ind',
                   'sta', 'tn_ind', 'tsi_ind', 'xcd', 'AssessmentYear', 'disqual', 'disqual2', 'newComment',
-                  'rCode', 'Grid', 'COLONIAL.PLANKTONIC.', "Color_345_F45_PCU", "Color_345_F45_Q", "ProgramId",
-                  "Turbidity_JTU-NTU", "Turbidity_Q"))
+                  'rCode', 'Grid', 'COLONIAL.PLANKTONIC.', "Color345_F45", "Color345_F45Q", "ProgramId",
+                  "Turbidity", "TurbidityQ", "grpact"))
 
 #' @importFrom grDevices rgb
 NULL
