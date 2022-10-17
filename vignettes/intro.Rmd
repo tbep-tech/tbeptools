@@ -76,7 +76,7 @@ ecpdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 #> File vignettes/current_results.xlsx does not exist, replacing with downloaded file...
 
-#> trying URL 'https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1'
+#> trying URL 'https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&download=1'
  length 24562051 bytes (23.4 MB)
 ```
 Now we get the same message, but with an indication that the file on the server is being downloaded. We'll have the data downloaded and saved to the `epcdata` object after it finishes downloading. 
