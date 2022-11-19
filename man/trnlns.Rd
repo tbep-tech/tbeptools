@@ -31,7 +31,7 @@ bearing <- lapply(trnlns$geometry, function(x) geosphere::bearing(x[, c(1:2)])[[
 trnlns$bearing <- bearing
 
 save(trnlns, file = 'data/trnlns.RData', compress = 'xz')
-#' }
+}
 }
 \concept{data}
 \keyword{datasets}

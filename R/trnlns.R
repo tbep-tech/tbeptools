@@ -24,5 +24,5 @@
 #' trnlns$bearing <- bearing
 #'
 #' save(trnlns, file = 'data/trnlns.RData', compress = 'xz')
-#' #' }
+#' }
 "trnlns"
