@@ -166,7 +166,7 @@
 <p>These datasets are created in the repository <a href="https://github.com/tbep-tech/hmpu-workflow" class="external-link uri">https://github.com/tbep-tech/hmpu-workflow</a> and require updates as land use and cover datasets are produced every two to three years by the Southwest Florida Water Management District.</p>
 </div>
 <div class="section level3">
-<h3 id="report-card">Report Card<a class="anchor" aria-label="anchor" href="#report-card"></a>
+<h3 id="report-card-summary">Report card summary<a class="anchor" aria-label="anchor" href="#report-card-summary"></a>
 </h3>
 <p>An important reporting product for the Habitat Master Plan is a report card that summarizes attainment of targets and goals and evaluates prior trends to identify if coverages are trending above or below the targets or goals. Two functions are provided in tbeptools to create this report card. The <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code> summarizes the above datasets to provide the necessary information for creating the report card. The <code><a href="../reference/show_hmpreport.html">show_hmpreport()</a></code> generates the plot for the report card. The latter can be used by itself and the former is only provided if there is a need to view the data behind the report card.</p>
 <p>Using the <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code> function summarizes the acreage coverage estimates for each habitat type, compares them to the targets and goals for each year of data, and assesses the coverage trend between year pairs to determine if the changes are trending above or below the targets and goals.</p>
@@ -238,7 +238,7 @@
 </ul>
 </div>
 <div class="section level3">
-<h3 id="report-card-1">Report Card<a class="anchor" aria-label="anchor" href="#report-card-1"></a>
+<h3 id="report-card-plot">Report card plot<a class="anchor" aria-label="anchor" href="#report-card-plot"></a>
 </h3>
 <p>The <code><a href="../reference/show_hmpreport.html">show_hmpreport()</a></code> can be used to create the Habitat Master Plan report card. The <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code> function is used internally and does not need to be used separately. The input files are the same.</p>
 <p>The plot below shows the report card for the 2030 targets, using <code>typ = "targets"</code>. The colors of each cell correspond to the numbers in the <code>targeteval</code> column (or <code>goaleval</code> if <code>typ = "goals"</code>) returned by <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code>. The numbers in each cell indicate the proportion of the target from <code>targetprop</code> (or goal from <code>goalprop</code> if <code>typ = "goals"</code>) that is met for each habitat type in each assessment year. Note that the creation of datasets to generate the summaries is not continuous each year and varies between the subtidal and inter/supratidal habitat.</p>
