@@ -24,6 +24,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/habitatmasterplan.html">Habitat Master Plan</a>
     <a class="dropdown-item" href="../articles/intro.html">Intro to TBEP Tools</a>
     <a class="dropdown-item" href="../articles/seagrasstransect.html">Seagrass Transect Data</a>
     <a class="dropdown-item" href="../articles/tbbi.html">Tampa Bay Benthic Index</a>
@@ -58,7 +59,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_hmpreport</span><span class="op">(</span><span class="va">acres</span>, <span class="va">subtacres</span>, <span class="va">hmptrgs</span>, <span class="va">typ</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_hmpreport</span><span class="op">(</span><span class="va">acres</span>, <span class="va">subtacres</span>, <span class="va">hmptrgs</span>, <span class="va">typ</span>, text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -78,6 +79,10 @@
 <dt>typ</dt>
 <dd><p>character string indicating <code>"targets"</code> or <code>"goals"</code></p></dd>
 
+
+<dt>text</dt>
+<dd><p>logical indicating if proportion of target or goal met for habitat types is shown in each cell types</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -87,7 +92,8 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Colors indicate target not met, trending below (red), target met, trending below (yellow), target not met, trending above (light green), and target met, trending above (green).  Numbers in cell show the proportion of the target or goal met at each year where data are available.</p>
+    <p>Colors indicate target or goal not met, trending below (red), target or goal met, trending below (yellow), target or goal not met, trending above (light green), and target or goal  met, trending above (green).  Numbers in cell show the proportion of the target or goal met at each year where data are available.</p>
+<p>The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.</p>
     </div>
 
     <div class="section level2">
