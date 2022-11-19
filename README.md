@@ -37,6 +37,7 @@ The vignettes are organized by topic and are an excellent place to start for und
 * [Tampa Bay Benthic Index](https://tbep-tech.github.io/tbeptools/articles/tbbi.html): Overview of functions to import data for Tampa Bay Benthic Index, under development
 * [Tidal Creeks Assessment](https://tbep-tech.github.io/tbeptools/articles/tidalcreeks.html): Overview of functions to import, analyze, and plot results for the assessment of tidal creeks in southwest Florida
 * [Seagrass Transect Data](https://tbep-tech.github.io/tbeptools/articles/seagrasstransect.html): Overview of functions to import, analyze, and plot results for the seagrass transect data collected in Tampa Bay
+* [Habitat Master Plan](https://tbep-tech.github.io/tbeptools/articles/habitatmasterplan.html): Overview of functions to analyze and create a report card for the Tampa Bay Habitat Master Plan 2020 update
 
 # Usage
 
@@ -59,6 +60,7 @@ Suffix descriptions:
 * `benthic`: Applies to benthic monitoring data used for the Tampa Bay Benthic Index
 * `fim`: Applies to data from the Fisheries Independent Monitoring program used for the Tampa Bay Nekton Index
 * `form`: An intermediate function for formatting imported data for downstream analysis
+* `hmp`: Functions that work with Habitat Master Plan data
 * `import`: A function used to import data from a source external to the package
 * `indic`: A function that analyzes or plots individual tidal creek indicator values, as opposed to integrated creek scores
 * `iwr`: Functions or data that apply to the Impaired Waters Rule (IWR) data maintained by the Florida Department of Environmental Protection used as source data for the tidal creek functions

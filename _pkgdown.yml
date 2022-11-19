@@ -2,6 +2,17 @@ url: https://tbep-tech.github.io/tbeptools
 template:
   bootstrap: 5
 
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - intro
+  - tbni
+  - tbbi
+  - tidalcreeks
+  - seagrasstransect
+  - habitatmasterplan
+
 reference:
 - title: Read data
   desc: >

@@ -40,17 +40,18 @@ This update builds on the previous Habitat Master Plan [@tbep0609] in several wa
 Three internal datasets in tbeptools provide the necessary information to create the Habitat Master Plan report card.  
 
 1. Summary of annual acreage estimates for each major habitat type in intertidal and supratidal strata.  
-     ```r
+     ```{r}
      acres
      ```
 1. Summary of annual acreage estimates for each major habitat type in the subtidal stratam.
-     ```r
+     ```{r}
      subtacres
      ```
 1. A table of targets and goals for each major habitat type, developed in the Habitat Master Plan 2020 update [@tbep0720] (only select columns shown).
-     ```r
+     ```{r}
      hmptrgs[, c("Category", "HMPU_TARGETS", "Target2030", "Goal2050")]
      ```
+     
 These datasets are created in the repository <https://github.com/tbep-tech/hmpu-workflow> and require updates as land use and cover datasets are produced every two to three years by the Southwest Florida Water Management District.   
 
 ## Report Card
