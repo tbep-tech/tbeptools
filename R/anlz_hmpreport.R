@@ -25,7 +25,7 @@
 #'  \item{Goal: }{2050 goal for the habitat type from the Habitat Master Plan}
 #'  \item{acresdiff: }{Difference in acres for the current year and the previous set of available data}
 #'  \item{yeardiff: }{Difference in years for the current year and the previous set of available data}
-#'  \item{changerate: }{Change per year for the current year relative to the previous set of available data}
+#'  \item{changerate: }{Acreage change per year for the current year relative to the previous set of available data}
 #'  \item{targetrate: }{Annual rate required to achieve the 2030 target}
 #'  \item{goalrate: }Annual rate required to achieve the 2050 goal}
 #'  \item{targetprop: }{Proportion of target met for the current year}

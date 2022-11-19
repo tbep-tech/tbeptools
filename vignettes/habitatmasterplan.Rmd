@@ -31,7 +31,7 @@ library(tbeptools)
 
 Dashboard: https://shiny.tbep.org/landuse-change/
 
-The habitats of Tampa Bay provide food, shelter, and other important services that support numerous birds, fish, mammals, and invertebrates. Significant habitat alteration and loss has occurred with development activities. To address these challenges, the Habitat Master Plan (2020 Update) [@tbep0720] provides a set of targets and goals that, if achieved, will provide a healthy and balanced coverage of native habitats in Tampa Bay and its watershd.  
+The habitats of Tampa Bay provide food, shelter, and other important services that support birds, fish, mammals, and invertebrates. Significant habitat alteration and loss has occurred with development activities. To address these challenges, the Habitat Master Plan (2020 Update) [@tbep0720] provides a set of targets and goals that, if achieved, will provide a healthy and balanced coverage of native habitats in Tampa Bay and its watershed.  
 
 This update builds on the previous Habitat Master Plan [@tbep0609] in several ways. The target and goal setting approach is informed by past changes and over forty years of habitat restoration experience in the region. The approach also identifies what is possible today rather than replicating past ecological conditions and accounts for the potential future effects of sea-level rise, climate change, and development. The Habitat Master Plan defines 10-year (2030) habitat protection and restoration targets and 30-year (2050) goals. Maps of habitat protection and restoration opportunity areas where these targets and goals can be attained are additional products available under the new plan.  Please visit <https://tbep.org/habitat-master-plan-update/> for additional information.  
 
@@ -55,9 +55,9 @@ These datasets are created in the repository <https://github.com/tbep-tech/hmpu-
 
 ## Report Card
 
-An important reporting product for the Habitat Master Plan is a report card that summarizes attainment of targets and goals and evaluates prior trends to identify if coverages are trending above or below the targets or goals.  Two functions are provided in tbeptools to create this report card.  The `anlz_hmpreport()` summarizes the above datasets to provide the necessary information for createing the report card.  The `show_hmpreport()` generates the plot for the report card.  The latter can be used by itself and the former is only provided if there is a need to view the data behind the report card.  
+An important reporting product for the Habitat Master Plan is a report card that summarizes attainment of targets and goals and evaluates prior trends to identify if coverages are trending above or below the targets or goals.  Two functions are provided in tbeptools to create this report card.  The `anlz_hmpreport()` summarizes the above datasets to provide the necessary information for creating the report card.  The `show_hmpreport()` generates the plot for the report card.  The latter can be used by itself and the former is only provided if there is a need to view the data behind the report card.  
 
-Using the `anlz_hmpreport()` function summarizes the acreage coverage estimates for each habitat type, compares them to the targets and goals for each year of data, and assesses the coverage trends between year pairs to determine if the changes are trending above or below the targets and goals.  
+Using the `anlz_hmpreport()` function summarizes the acreage coverage estimates for each habitat type, compares them to the targets and goals for each year of data, and assesses the coverage trend between year pairs to determine if the changes are trending above or below the targets and goals.  
 
 ```{r}
 anlz_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs)
@@ -75,7 +75,7 @@ The columns are as follows:
 - **Goal**: 2050 goal for the habitat type from the Habitat Master Plan
 - **acresdiff**: Difference in acres for the current year and the previous set of available data
 - **yeardiff**: Difference in years for the current year and the previous set of available data
-- **changerate**: Change per year for the current year relative to the previous set of available data
+- **changerate**: Acreage change per year for the current year relative to the previous set of available data
 - **targetrate**: Annual rate required to achieve the 2030 target
 - **goalrate**: Annual rate required to achieve the 2050 goal
 - **targetprop**: Proportion of target met for the current year 
@@ -83,7 +83,7 @@ The columns are as follows:
 - **targeteval**: A number indicating target status of the current year for the report card
 - **goaleval**: A number indicating goal status of the current year for the report card
 
-The important columns in the output are `targetprop`, `goalprop`, `targetrate`, and `goalrate`.  The `targetprop` and `goalprop` columns indicate the proportion of the target or goal met for habitat type in the current assessment year.  The `targetrate` and `goalrate` columns are one of four values as -1, 0, 0.5, and 1. These numbers define the status for the assessment year:
+The important columns in the output are `targetprop`, `goalprop`, `targeteval`, and `goaleval`.  The `targetprop` and `goalprop` columns indicate the proportion of the target or goal met for habitat type in the current assessment year.  The `targeteval` and `goaleval` columns are one of four values, as -1, 0, 0.5, and 1, for each habitat type and year. These numbers define the habitat status for the assessment year:
 
 - **-1**: target or goal not met, trending below
 - **0**: target or goal met, trending below
@@ -92,22 +92,26 @@ The important columns in the output are `targetprop`, `goalprop`, `targetrate`, 
 
 ## Report Card
 
-The `show_hmpreport()` can be used to create the Habitat Master Plan report card.  The `anlz_hmpreport()` function is used internally and does not need to be used separately. The input files are the same.  The plot below shows the report card for the 2030 targets, using the `type` argument.  The colors of each cell correspond to the numbers in the `targetrate` (or `goalrate` if `type = "goals"`) column returned by `anlz_hmpreport()`.  The numbers in each cell indicate the proportion of the target from `targetprop` (or goal from `goalprop` if `type = "goals"`) that is met for each habitat type in each assessment year.  Note that the creation of datasets to generate the summaries is not continous each year and varies between the subtidal and inter/supratidal habitat. 
+The `show_hmpreport()` can be used to create the Habitat Master Plan report card.  The `anlz_hmpreport()` function is used internally and does not need to be used separately. The input files are the same.  
+
+The plot below shows the report card for the 2030 targets, using `typ = "targets"`.  The colors of each cell correspond to the numbers in the `targeteval` column (or `goaleval` if `typ = "goals"`) returned by `anlz_hmpreport()`.  The numbers in each cell indicate the proportion of the target from `targetprop` (or goal from `goalprop` if `typ = "goals"`) that is met for each habitat type in each assessment year.  Note that the creation of datasets to generate the summaries is not continuous each year and varies between the subtidal and inter/supratidal habitat. 
 
 ```{r, fig.height = 8, fig.width = 8}
-show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, type = 'targets')
+show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets')
 ```
 
-The 2050 goals report card can be shown using `type = "goals"`. 
+The 2050 goals report card can be shown using `typ = "goals"`. 
 
 ```{r, fig.height = 8, fig.width = 8}
-show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, type = 'goals')
+show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'goals')
 ```
 
 Finally, the text showing the proportion of the target or goal met each year can be suppressed using `text = F`.
 
 ```{r, fig.height = 8, fig.width = 8}
-show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, type = 'targets', text = F)
+show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', text = F)
 ```
+
+The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan. 
 
 # References

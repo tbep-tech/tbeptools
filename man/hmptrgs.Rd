@@ -15,9 +15,13 @@ Habitat Master Plan targets and goals
 }
 \examples{
 \dontrun{
+library(dplyr)
+
 load(url("https://github.com/tbep-tech/hmpu-workflow/raw/master/data/trgs.RData"))
 
-hmptrgs <- trgs
+hmptrgs <- trgs \%>\%
+   rename(Goal2050 = Target2050)
+
 save(hmptrgs, file = 'data/hmptrgs.RData', compress = 'xz')
 }
 }

@@ -20,7 +20,7 @@ A summarized \code{data.frame} appropriate for creating a report card
 Evaluate Habitat Master Plan progress for report card
 }
 \details{
-The relevant output columns are \code{targeteval} and \code{goaleval} that indicate numeric values as -1 (target not met, trending below), 0 (target met, trending below), 0.5 (target not met, trending above), and 1 (target met, trending above).
+
 }
 \examples{
 # view summarized data for report card
