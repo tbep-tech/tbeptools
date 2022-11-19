@@ -4,7 +4,7 @@
 \alias{show_hmpreport}
 \title{Show Habitat Master Plan progress report card}
 \usage{
-show_hmpreport(acres, subtacres, hmptrgs, typ)
+show_hmpreport(acres, subtacres, hmptrgs, typ, text = TRUE)
 }
 \arguments{
 \item{acres}{\code{data.frame} for intertidal and supratidal land use and cover of habitat types for each year of data}
@@ -14,6 +14,8 @@ show_hmpreport(acres, subtacres, hmptrgs, typ)
 \item{hmptrgs}{\code{data.frame} of Habitat Master Plan targets and goals}
 
 \item{typ}{character string indicating \code{"targets"} or \code{"goals"}}
+
+\item{text}{logical indicating if proportion of target or goal met for habitat types is shown in each cell types}
 }
 \value{
 A \code{\link[ggplot2]{ggplot2}} object showing overall progress in attaining Habitat Master Plan targets or goals.

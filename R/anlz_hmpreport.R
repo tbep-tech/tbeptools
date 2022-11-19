@@ -12,6 +12,37 @@
 #'
 #' @details The relevant output columns are \code{targeteval} and \code{goaleval} that indicate numeric values as -1 (target not met, trending below), 0 (target met, trending below), 0.5 (target not met, trending above), and 1 (target met, trending above).
 #'
+#' Columns in the output are as follows:
+#'
+#' \itemize{
+#'  \item{year: }{Year of the assessment}
+#'  \item{metric :}{Habitat type assessed}
+#'  \item{Acres: }{Coverage estimate for the year}
+#'  \item{lacres: }{Coverage estimate for the previous set of available data}
+#'  \item{lyr: }{Year for the previous set of available data}
+#'  \item{category: }{Strata for the habitat type}
+#'  \item{Target: }{2030 target for the habitat type from the Habitat Master Plan}
+#'  \item{Goal: }{2050 goal for the habitat type from the Habitat Master Plan}
+#'  \item{acresdiff: }{Difference in acres for the current year and the previous set of available data}
+#'  \item{yeardiff: }{Difference in years for the current year and the previous set of available data}
+#'  \item{changerate: }{Change per year for the current year relative to the previous set of available data}
+#'  \item{targetrate: }{Annual rate required to achieve the 2030 target}
+#'  \item{goalrate: }Annual rate required to achieve the 2050 goal}
+#'  \item{targetprop: }{Proportion of target met for the current year}
+#'  \item{goalprop: }{Proportion of goal met for the current year}
+#'  \item{targeteval: }{A number indicating target status of the current year for the report card}
+#'  \item{goaleval: }{A number indicating goal status of the current year for the report card}
+#' }
+#'
+#' The numbers in \code{targeteval} and \code{goaleval} are one of four values as -1, 0, 0.5, and 1. These numbers define the status for the assessment year:
+#'
+#' \itemize{
+#'  \item{-1: }{target or goal not met, trending below}
+#'  \item{0: }{target or goal met, trending below}
+#'  \item{0.5: }{target or goal not met, trending above}
+#'  \item{1: }{target or goal met, trending above}
+#' }
+#'
 #' @export
 #'
 #' @examples
@@ -43,7 +74,7 @@ anlz_hmpreport <- function(acres, subtacres, hmptrgs){
       metric = HMPU_TARGETS,
       category = Category,
       Target = Target2030,
-      Goal = Target2050
+      Goal = Goal2050
     ) %>%
     dplyr::mutate(
       metric = as.character(metric),
@@ -98,7 +129,8 @@ anlz_hmpreport <- function(acres, subtacres, hmptrgs){
       )
     ) %>%
     dplyr::filter(!is.na(changerate))%>%
-    dplyr::arrange(category, year, metric)
+    dplyr::arrange(category, year, metric) %>%
+    dplyr::select(-yr)
 
   return(out)
 

@@ -6,10 +6,11 @@
 #' @param subtacres \code{data.frame} for subtidal cover of habitat types for each year of data
 #' @param hmptrgs \code{data.frame} of Habitat Master Plan targets and goals
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
+#' @param text logical indicating if proportion of target or goal met for habitat types is shown in each cell types
 #'
 #' @return A \code{\link[ggplot2]{ggplot2}} object showing overall progress in attaining Habitat Master Plan targets or goals.
 #'
-#' @details Colors indicate target not met, trending below (red), target met, trending below (yellow), target not met, trending above (light green), and target met, trending above (green).  Numbers in cell show the proportion of the target or goal met at each year where data are available.
+#' @details Colors indicate target or goal not met, trending below (red), target or goal met, trending below (yellow), target or goal not met, trending above (light green), and target or goal  met, trending above (green).  Numbers in cell show the proportion of the target or goal met at each year where data are available.
 #'
 #' @concept show
 #'
@@ -21,7 +22,7 @@
 #'
 #' # view summarized data for report card, goals
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, text = TRUE){
 
   typ <- match.arg(typ, choices = c('targets', 'goals'))
 
@@ -72,7 +73,6 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ){
 
   p <- ggplot2::ggplot(toplo, ggplot2::aes(y = year, x = metric, fill = fillv)) +
     ggplot2::geom_tile(color = 'black') +
-    ggplot2::geom_text(ggplot2::aes(label = textv), size = 2.5) +
     ggplot2::scale_y_reverse(breaks = seq(min(toplo$year), max(toplo$year)), expand = c(0, 0)) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
     ggplot2::theme_bw() +
@@ -92,10 +92,14 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ){
       fill = NULL,
       title = ttl
     ) +
-    ggplot2::annotate('text', x = 2, y = 2021, label = 'Subtidal') +
-    ggplot2::annotate('text', x = 5.5, y = 2021, label = 'Intertidal') +
-    ggplot2::annotate('text', x = 9.5, y = 2021, label = 'Supratidal') +
+    ggplot2::annotate('text', x = 2, y = 2021, label = 'Subtidal', size = 3) +
+    ggplot2::annotate('text', x = 5.5, y = 2021, label = 'Intertidal', size = 3) +
+    ggplot2::annotate('text', x = 9.5, y = 2021, label = 'Supratidal', size = 3) +
     ggplot2::coord_cartesian(ylim = c(max(toplo$year) + 1, min(toplo$year)) - 0.5, clip = "off")
+
+  if(text)
+    p <- p +
+      ggplot2::geom_text(ggplot2::aes(label = textv), size = 2.5)
 
   return(p)
 
