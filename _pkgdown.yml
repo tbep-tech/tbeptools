@@ -2,3 +2,24 @@ url: https://tbep-tech.github.io/tbeptools
 template:
   bootstrap: 5
 
+reference:
+- title: Read data
+  desc: >
+    Functions for reading data.
+  contents:
+    - starts_with('read')
+- title: Analyze data
+  desc: >
+    Functions for analyzing data.
+  contents:
+    - starts_with('anlz')
+- title: Show data
+  desc: >
+    Functions for plotting data.
+  contents:
+    - starts_with('show')
+- title: Internal datasets
+  desc: >
+    Supporting datasets used by the other functions.
+  contents:
+    - -starts_with(c('read', 'anlz', 'show'))
