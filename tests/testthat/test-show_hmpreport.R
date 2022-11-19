@@ -1,0 +1,13 @@
+test_that("Checking show_hmpreport class, type as targets", {
+
+  result <- show_hmpreport(acres, subtacres, hmptrgs, typ = 'targets')
+  expect_is(result, 'ggplot')
+
+})
+
+test_that("Checking show_hmpreport class, type as goals", {
+
+  result <- show_hmpreport(acres, subtacres, hmptrgs, typ = 'goals')
+  expect_is(result, 'ggplot')
+
+})

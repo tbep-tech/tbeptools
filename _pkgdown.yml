@@ -22,4 +22,6 @@ reference:
   desc: >
     Supporting datasets used by the other functions.
   contents:
-    - -starts_with(c('read', 'anlz', 'show'))
+    - -starts_with('read')
+    - -starts_with('anlz')
+    - -starts_with('show')
