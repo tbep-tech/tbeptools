@@ -55,6 +55,9 @@
     <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_avedatsite.html</loc>
   </url>
   <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_hmpreport.html</loc>
+  </url>
+  <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_hydroload.html</loc>
   </url>
   <url>
@@ -170,6 +173,9 @@
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/show_compplot.html</loc>
+  </url>
+  <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/show_hmpreport.html</loc>
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/show_matrix.html</loc>
