@@ -54,7 +54,7 @@ The tidal creek assessment framework was established based on data from the FDEP
 
 The tidal creek assessment framework includes both a "report card" and "indicators" assessment which are provided as separate tabs in the dashboard. The report card provides an assessment of total nitrogen concentrations (the limiting nutrient in these creeks) based on annual geometric average concentrations relative to standards developed for contributing freshwater streams. The indicators are based a several water quality metrics derived as outcomes of our study to describe tidal creek condition and provide insights into site specific attributes of these creeks that may govern overall creek health.
 
-# Report Card
+# Report card
 
 The report card is similar to the TBEP [water quality report card](https://shiny.tbep.org/wq-dash/) in that tidal creeks are assigned to categories within an assessment framework intended to serve as both a mechanism for evaluating data relative to the need for management action, and to identify stewardship goals that, if properly pursued, may preclude the need for any regulatory actions. These categories were established based principally on fish as a biological response indicator. Tidal creeks are assigned to one of five categories:
 
@@ -84,7 +84,7 @@ tidaltargets
 
 A scoring algorithm was derived to define the final report card outcome for each creek using the entire ten year record of available data based on the following criteria. A single exceedance of the Prioritize and Investigate categories in any year of the ten year record would result in a classification of that creek into the respective category unless at least three other years of data were below the threshold level for that category. Creeks were assigned the next lower category if only one AGM for TN was above a given level while multiple other years (i.e., more than two) were below the given levels defining the cutoff points for each category. For example, a creek with at least 4 years of data and only a single exceedance of the Prioritize threshold would be assigned the Investigate category. Outcomes are exemplified below.
 
-## Report Card Functions
+## Report card functions
 
 The two primary functions for the tidal creek assessments are `anlz_tdlcrk()` to obtain the scores and `show_tdlcrk()` to view an interactive map of the results.  The `anlz_tdlcrk()` function uses the included `tidalcreeks()` and `iwrraw()` datasets to estimate the scores: 
 
@@ -107,7 +107,8 @@ A report card style matrix can be plotted using the `show_tdlcrkmatrix()` functi
 show_tdlcrkmatrix(results)
 ```
 
-## Indicator Functions
+## Indicator functions
+
 Water quality Indicators were developed to provide context for interpreting the report card outcomes as described in detail in Wessel et al. 2021 and include thresholds for total nitrogen (>1.1 mg/l), chlorophyll a (>11 ug/l), dissolved oxygen (< 42 % saturation), a trophic state index score (>55), the chlorophyll/nitrogen ratio (>15) and a ratio of the nitrates in the tidal and freshwater portion of the creek (>1) (if data are available).  The results for each indicator relative to the established thresholds are calculated on an annual basis and then synthesized for the 10 year period by calculating the percentage of annual outcomes exceeding the identified threshold indicator values out of the total number of years with available data. An integrative summary for all indicators is presented using a standardized polar coordinate system and Radar Charts to provide a single multi-metric summary plot of the results across indicators.  
 
 The `anlz_tdlcrkindic()` function generates these annual outcomes for each `wbid`/`JEI` combination.

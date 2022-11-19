@@ -54,7 +54,7 @@ Three internal datasets in tbeptools provide the necessary information to create
      
 These datasets are created in the repository <https://github.com/tbep-tech/hmpu-workflow> and require updates as land use and cover datasets are produced every two to three years by the Southwest Florida Water Management District.   
 
-## Report Card
+## Report card summary
 
 An important reporting product for the Habitat Master Plan is a report card that summarizes attainment of targets and goals and evaluates prior trends to identify if coverages are trending above or below the targets or goals.  Two functions are provided in tbeptools to create this report card.  The `anlz_hmpreport()` summarizes the above datasets to provide the necessary information for creating the report card.  The `show_hmpreport()` generates the plot for the report card.  The latter can be used by itself and the former is only provided if there is a need to view the data behind the report card.  
 
@@ -91,7 +91,7 @@ The important columns in the output are `targetprop`, `goalprop`, `targeteval`, 
 - **0.5**: target or goal not met, trending above
 - **1**: target or goal met, trending above
 
-## Report Card
+## Report card plot
 
 The `show_hmpreport()` can be used to create the Habitat Master Plan report card.  The `anlz_hmpreport()` function is used internally and does not need to be used separately. The input files are the same.  
 
