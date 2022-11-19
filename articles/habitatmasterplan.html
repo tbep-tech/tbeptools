@@ -48,12 +48,12 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/habitatmasterplan.html">Habitat Master Plan</a>
     <a class="dropdown-item" href="../articles/intro.html">Intro to TBEP Tools</a>
-    <a class="dropdown-item" href="../articles/seagrasstransect.html">Seagrass Transect Data</a>
-    <a class="dropdown-item" href="../articles/tbbi.html">Tampa Bay Benthic Index</a>
     <a class="dropdown-item" href="../articles/tbni.html">Tampa Bay Nekton Index</a>
+    <a class="dropdown-item" href="../articles/tbbi.html">Tampa Bay Benthic Index</a>
     <a class="dropdown-item" href="../articles/tidalcreeks.html">Tidal Creek Assessment</a>
+    <a class="dropdown-item" href="../articles/seagrasstransect.html">Seagrass Transect Data</a>
+    <a class="dropdown-item" href="../articles/habitatmasterplan.html">Habitat Master Plan</a>
   </div>
 </li>
       </ul>
@@ -101,19 +101,76 @@
 </h3>
 <p>Three internal datasets in tbeptools provide the necessary information to create the Habitat Master Plan report card.</p>
 <ol style="list-style-type: decimal">
-<li>Summary of annual acreage estimates for each major habitat type in intertidal and supratidal strata.<br><code>r   acres</code>
+<li>
+<p>Summary of annual acreage estimates for each major habitat type in intertidal and supratidal strata.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">acres</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 90 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   name [9]</span></span></span>
+<span><span class="co">#&gt;    name  HMPU_TARGETS                       Acres</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1990  Coastal Uplands                    <span style="text-decoration: underline;">5</span>078.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1990  Developed                        <span style="text-decoration: underline;">372</span>438.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1990  Forested Freshwater Wetlands     <span style="text-decoration: underline;">159</span>561.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1990  Mangrove Forests                  <span style="text-decoration: underline;">13</span>522.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1990  Native Uplands                   <span style="text-decoration: underline;">229</span>990.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1990  Non-Forested Freshwater Wetlands  <span style="text-decoration: underline;">54</span>454.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1990  Open Water                        <span style="text-decoration: underline;">38</span>357.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1990  Restorable                       <span style="text-decoration: underline;">571</span>513.</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1990  Salt Barrens                        468 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1990  Salt Marshes                       <span style="text-decoration: underline;">4</span>482.</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 80 more rows</span></span></span></code></pre></div>
 </li>
-<li>Summary of annual acreage estimates for each major habitat type in the subtidal stratam. <code>r   subtacres</code>
+<li>
+<p>Summary of annual acreage estimates for each major habitat type in the subtidal stratam.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">subtacres</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 61 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Groups:   name [16]</span></span></span>
+<span><span class="co">#&gt;    name  HMPU_TARGETS    Acres</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1988  Open Water   <span style="text-decoration: underline;">197</span>168. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1988  Restorable       46.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1988  Seagrasses    <span style="text-decoration: underline;">22</span>999. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1988  Tidal Flats   <span style="text-decoration: underline;">21</span>497. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1990  Open Water   <span style="text-decoration: underline;">196</span>418. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1990  Restorable       39.6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1990  Seagrasses    <span style="text-decoration: underline;">24</span>923. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1990  Tidal Flats   <span style="text-decoration: underline;">20</span>279. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1992  Open Water   <span style="text-decoration: underline;">195</span>268. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1992  Restorable       58.6</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 51 more rows</span></span></span></code></pre></div>
 </li>
-<li>A table of targets and goals for each major habitat type, developed in the Habitat Master Plan 2020 update <span class="citation">[1]</span> (only select columns shown). <code>r   hmptrgs[, c("Category", "HMPU_TARGETS", "Target2030", "Goal2050")]</code> These datasets are created in the repository <a href="https://github.com/tbep-tech/hmpu-workflow" class="external-link uri">https://github.com/tbep-tech/hmpu-workflow</a> and require updates as land use and cover datasets are produced every two to three years by the Southwest Florida Water Management District.</li>
+<li>
+<p>A table of targets and goals for each major habitat type, developed in the Habitat Master Plan 2020 update <span class="citation">[1]</span> (only select columns shown).</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">hmptrgs</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Category"</span>, <span class="st">"HMPU_TARGETS"</span>, <span class="st">"Target2030"</span>, <span class="st">"Goal2050"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co">#&gt;      Category                     HMPU_TARGETS Target2030 Goal2050</span></span>
+<span><span class="co">#&gt; 1    Subtidal                      Hard Bottom      423.0    423.0</span></span>
+<span><span class="co">#&gt; 2    Subtidal                 Artificial Reefs      166.0    166.0</span></span>
+<span><span class="co">#&gt; 3    Subtidal                      Tidal Flats    16220.0  16220.0</span></span>
+<span><span class="co">#&gt; 4    Subtidal                       Seagrasses    40000.0  40000.0</span></span>
+<span><span class="co">#&gt; 5    Subtidal                      Oyster Bars      221.0    471.0</span></span>
+<span><span class="co">#&gt; 6  Intertidal                Living Shorelines       21.3     56.3</span></span>
+<span><span class="co">#&gt; 7  Intertidal                 Total Intertidal    21353.0  23803.0</span></span>
+<span><span class="co">#&gt; 8  Intertidal                 Mangrove Forests    15300.0  15300.0</span></span>
+<span><span class="co">#&gt; 9  Intertidal                     Salt Barrens      546.0    796.0</span></span>
+<span><span class="co">#&gt; 10 Intertidal                     Salt Marshes     4807.0   5457.0</span></span>
+<span><span class="co">#&gt; 11 Intertidal                Tidal Tributaries        4.0     18.0</span></span>
+<span><span class="co">#&gt; 12 Supratidal                  Coastal Uplands     3769.0   4219.0</span></span>
+<span><span class="co">#&gt; 13 Supratidal Non-Forested Freshwater Wetlands    68937.0  71787.0</span></span>
+<span><span class="co">#&gt; 14 Supratidal     Forested Freshwater Wetlands   152282.0 152732.0</span></span>
+<span><span class="co">#&gt; 15 Supratidal                   Native Uplands   141050.0 142100.0</span></span></code></pre></div>
+</li>
 </ol>
+<p>These datasets are created in the repository <a href="https://github.com/tbep-tech/hmpu-workflow" class="external-link uri">https://github.com/tbep-tech/hmpu-workflow</a> and require updates as land use and cover datasets are produced every two to three years by the Southwest Florida Water Management District.</p>
 </div>
 <div class="section level3">
 <h3 id="report-card">Report Card<a class="anchor" aria-label="anchor" href="#report-card"></a>
 </h3>
 <p>An important reporting product for the Habitat Master Plan is a report card that summarizes attainment of targets and goals and evaluates prior trends to identify if coverages are trending above or below the targets or goals. Two functions are provided in tbeptools to create this report card. The <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code> summarizes the above datasets to provide the necessary information for creating the report card. The <code><a href="../reference/show_hmpreport.html">show_hmpreport()</a></code> generates the plot for the report card. The latter can be used by itself and the former is only provided if there is a need to view the data behind the report card.</p>
 <p>Using the <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code> function summarizes the acreage coverage estimates for each habitat type, compares them to the targets and goals for each year of data, and assesses the coverage trend between year pairs to determine if the changes are trending above or below the targets and goals.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/anlz_hmpreport.html">anlz_hmpreport</a></span><span class="op">(</span>acres <span class="op">=</span> <span class="va">acres</span>, subtacres <span class="op">=</span> <span class="va">subtacres</span>, hmptrgs <span class="op">=</span> <span class="va">hmptrgs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 146 × 17</span></span></span>
 <span><span class="co">#&gt;    year  metric  Acres lacres   lyr categ…¹ Target  Goal acres…² yeard…³ chang…⁴</span></span>
@@ -185,17 +242,17 @@
 </h3>
 <p>The <code><a href="../reference/show_hmpreport.html">show_hmpreport()</a></code> can be used to create the Habitat Master Plan report card. The <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code> function is used internally and does not need to be used separately. The input files are the same.</p>
 <p>The plot below shows the report card for the 2030 targets, using <code>typ = "targets"</code>. The colors of each cell correspond to the numbers in the <code>targeteval</code> column (or <code>goaleval</code> if <code>typ = "goals"</code>) returned by <code><a href="../reference/anlz_hmpreport.html">anlz_hmpreport()</a></code>. The numbers in each cell indicate the proportion of the target from <code>targetprop</code> (or goal from <code>goalprop</code> if <code>typ = "goals"</code>) that is met for each habitat type in each assessment year. Note that the creation of datasets to generate the summaries is not continuous each year and varies between the subtidal and inter/supratidal habitat.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/show_hmpreport.html">show_hmpreport</a></span><span class="op">(</span>acres <span class="op">=</span> <span class="va">acres</span>, subtacres <span class="op">=</span> <span class="va">subtacres</span>, hmptrgs <span class="op">=</span> <span class="va">hmptrgs</span>, typ <span class="op">=</span> <span class="st">'targets'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="habitatmasterplan_files/figure-html/unnamed-chunk-2-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="habitatmasterplan_files/figure-html/unnamed-chunk-5-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>The 2050 goals report card can be shown using <code>typ = "goals"</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/show_hmpreport.html">show_hmpreport</a></span><span class="op">(</span>acres <span class="op">=</span> <span class="va">acres</span>, subtacres <span class="op">=</span> <span class="va">subtacres</span>, hmptrgs <span class="op">=</span> <span class="va">hmptrgs</span>, typ <span class="op">=</span> <span class="st">'goals'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="habitatmasterplan_files/figure-html/unnamed-chunk-3-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="habitatmasterplan_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>Finally, the text showing the proportion of the target or goal met each year can be suppressed using <code>text = F</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/show_hmpreport.html">show_hmpreport</a></span><span class="op">(</span>acres <span class="op">=</span> <span class="va">acres</span>, subtacres <span class="op">=</span> <span class="va">subtacres</span>, hmptrgs <span class="op">=</span> <span class="va">hmptrgs</span>, typ <span class="op">=</span> <span class="st">'targets'</span>, text <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
-<p><img src="habitatmasterplan_files/figure-html/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="habitatmasterplan_files/figure-html/unnamed-chunk-7-1.png" width="768" style="display: block; margin: auto;"></p>
 <p>The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats. These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.</p>
 </div>
 <div class="section level2">
