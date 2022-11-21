@@ -7,6 +7,10 @@
 #' @param hmptrgs \code{data.frame} of Habitat Master Plan targets and goals
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
 #' @param text logical indicating if proportion of target or goal met for habitat types is shown in each cell types
+#' @param family optional chr string indicating font family for text labels
+#' @param plotly logical if matrix is created using plotly
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @return A \code{\link[ggplot2]{ggplot2}} object showing overall progress in attaining Habitat Master Plan targets or goals.
 #'
@@ -24,7 +28,7 @@
 #'
 #' # view summarized data for report card, goals
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, text = TRUE){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
 
   typ <- match.arg(typ, choices = c('targets', 'goals'))
 
@@ -45,7 +49,8 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, text = TRUE){
       )
     )
 
-  cols <- c(`-1` = '#CC3231', `0` = '#E9C318', `0.5` = '#AEFA2F', `1` = '#2DC938')
+  # -1, 0, 0.5, 1
+  cols <- c('#CC3231', '#E9C318', '#AEFA2F', '#2DC938')
 
   if(typ == 'targets'){
 
@@ -73,11 +78,16 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, text = TRUE){
 
   }
 
+  toplo <- toplo %>%
+    dplyr::mutate(
+      fillv = factor(fillv, levels = c("-1", "0", "0.5", "1"), labels = leglabs)
+    )
+
   p <- ggplot2::ggplot(toplo, ggplot2::aes(y = year, x = metric, fill = fillv)) +
     ggplot2::geom_tile(color = 'black') +
     ggplot2::scale_y_reverse(breaks = seq(min(toplo$year), max(toplo$year)), expand = c(0, 0)) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
-    ggplot2::theme_bw() +
+    ggplot2::theme_bw(base_family = family) +
     ggplot2::scale_fill_manual(
       values = cols,
       labels = leglabs
@@ -85,7 +95,8 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, text = TRUE){
     ggplot2::geom_vline(xintercept = c(3.5, 7.5), linewidth = 0.5) +
     ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
-      axis.text.x = ggplot2::element_text(angle = 25, hjust = 0, size = 8),
+      text = element_text(family = family),
+      axis.text.x = ggplot2::element_text(angle = 25, hjust = 0, size = 8, family = family),
       plot.margin = ggplot2::margin(0, 0, 14, 2, "pt")
     ) +
     ggplot2::labs(
@@ -94,14 +105,17 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, text = TRUE){
       fill = NULL,
       title = ttl
     ) +
-    ggplot2::annotate('text', x = 2, y = 2021, label = 'Subtidal', size = 3) +
-    ggplot2::annotate('text', x = 5.5, y = 2021, label = 'Intertidal', size = 3) +
-    ggplot2::annotate('text', x = 9.5, y = 2021, label = 'Supratidal', size = 3) +
+    ggplot2::annotate('text', x = 2, y = max(toplo$year) + 1, label = 'Subtidal', size = 3, family = family) +
+    ggplot2::annotate('text', x = 5.5, y = max(toplo$year) + 1, label = 'Intertidal', size = 3, family = family) +
+    ggplot2::annotate('text', x = 9.5, y = max(toplo$year) + 1, label = 'Supratidal', size = 3, family = family) +
     ggplot2::coord_cartesian(ylim = c(max(toplo$year) + 1, min(toplo$year)) - 0.5, clip = "off")
 
   if(text)
     p <- p +
-      ggplot2::geom_text(ggplot2::aes(label = textv), size = 2.5)
+      ggplot2::geom_text(ggplot2::aes(label = textv), size = 2.5, family = family)
+
+  if(plotly)
+    p <- show_matrixplotly(p, family = family, hmp = TRUE, width = width, height = height)
 
   return(p)
 
