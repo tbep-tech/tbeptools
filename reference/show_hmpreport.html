@@ -59,7 +59,17 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_hmpreport</span><span class="op">(</span><span class="va">acres</span>, <span class="va">subtacres</span>, <span class="va">hmptrgs</span>, <span class="va">typ</span>, text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_hmpreport</span><span class="op">(</span></span>
+<span>  <span class="va">acres</span>,</span>
+<span>  <span class="va">subtacres</span>,</span>
+<span>  <span class="va">hmptrgs</span>,</span>
+<span>  <span class="va">typ</span>,</span>
+<span>  text <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  family <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  plotly <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  height <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -82,6 +92,22 @@
 
 <dt>text</dt>
 <dd><p>logical indicating if proportion of target or goal met for habitat types is shown in each cell types</p></dd>
+
+
+<dt>family</dt>
+<dd><p>optional chr string indicating font family for text labels</p></dd>
+
+
+<dt>plotly</dt>
+<dd><p>logical if matrix is created using plotly</p></dd>
+
+
+<dt>width</dt>
+<dd><p>numeric for width of the plot in pixels, only applies of <code>plotly = TRUE</code></p></dd>
+
+
+<dt>height</dt>
+<dd><p>numeric for height of the plot in pixels, only applies of <code>plotly = TRUE</code></p></dd>
 
 </dl></div>
     <div class="section level2">
