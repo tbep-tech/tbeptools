@@ -149,7 +149,9 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
     ) +
     ggplot2::labs(
       x = 'Transect distance (m)',
-      title = paste0(site, ', ', leglab)
+      title = paste0(site, ', ', leglab),
+      size = NULL,
+      fill = NULL
     )
 
   if(plotly)

@@ -130,7 +130,7 @@ The rest of the plotting functions work with the complete transect data. Data fo
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
 ```
 
-The plot can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function Note that the size legend is removed in this option, but sizes can be viewed on mouseover of each point. 
+The plot can also be produced as a [plotly](https://plotly.com/r/) interactive plot by setting `plotly = TRUE` inside the function. Note that the size legend is merged with the species legend, where the point size is the average abundance for the species.  The sizes can be viewed on mouseover of each point. 
 
 ```{r, fig.height = 8, fig.width = 8}
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance', plotly = T)
