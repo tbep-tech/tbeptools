@@ -5,7 +5,7 @@ test_that("Checking results for anlz_transectave", {
   results <- anlz_transectave(transectocc)
   results <- results[1, ]
   expect_equal(results, structure(list(yr = 1998, bay_segment = structure(1L, .Label = c("Tampa Bay",
-                                                                                         "OTB", "HB", "MTB", "LTB", "BCB"), class = "factor"), foest = 69.5422696525089,
+                                                                                         "OTB", "HB", "MTB", "LTB", "BCB"), class = "factor"), foest = 69.8599661755626,
                                        focat = structure(3L, .Label = c("#CC3231", "#EE7600", "#E9C318",
                                                                         "#2DC938"), class = "factor")), row.names = c(NA, -1L), class = c("tbl_df",
                                                                                                                                           "tbl", "data.frame")))
