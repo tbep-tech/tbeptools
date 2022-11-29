@@ -27,7 +27,7 @@
 #'  \item{yeardiff: }{Difference in years for the current year and the previous set of available data}
 #'  \item{changerate: }{Acreage change per year for the current year relative to the previous set of available data}
 #'  \item{targetrate: }{Annual rate required to achieve the 2030 target}
-#'  \item{goalrate: }Annual rate required to achieve the 2050 goal}
+#'  \item{goalrate: }{Annual rate required to achieve the 2050 goal}
 #'  \item{targetprop: }{Proportion of target met for the current year}
 #'  \item{goalprop: }{Proportion of goal met for the current year}
 #'  \item{targeteval: }{A number indicating target status of the current year for the report card}

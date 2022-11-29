@@ -15,10 +15,18 @@
 #' trnpts <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/TransectBasics2019.shp') %>%
 #'    st_transform(crs = 4326) %>%
 #'    dplyr::rename(MonAgency = 'MON_AGENCY') %>%
-#'    dplyr::filter(!as.character(TRAN_ID) %in% c('S8T1', 'S8T2', 'S8T3', 'S3T2')) %>%
+#'    dplyr::filter(!as.character(TRAN_ID) %in% c('S8T1', 'S8T2', 'S8T3', 'S3T2'))
+#'
+#' # s4t10 is slightly outside boundary for lower tampa bay
+#' s4t10 <- trnpts %>%
+#'    dplyr::filter(TRAN_ID %in% 'S4T10') %>%
+#'    dplyr::mutate(bay_segment = 'LTB')
+#'
+#' trnpts <- trnpts %>%
 #'    sf::st_intersection(sf::st_make_valid(tbsegshed)) %>%
 #'    dplyr::select(-long_name) %>%
-#'    dplyr::mutate_if(is.factor, as.character)
+#'    dplyr::mutate_if(is.factor, as.character) %>%
+#'    dplyr::bind_rows(s4t10)
 #'
 #' save(trnpts, file = 'data/trnpts.RData', compress = 'xz')
 #' }
