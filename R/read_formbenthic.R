@@ -156,6 +156,7 @@ read_formbenthic <- function(pathin){
     dplyr::filter(Units != 3) %>%
     dplyr::filter(Grab == 1) %>%
     dplyr::mutate(
+      COUNT = gsub('NULL', NA, COUNT),
       COUNT = as.numeric(COUNT),
       AdjCount = dplyr::case_when(
         `COLONIAL/PLANKTONIC?` == 'Colonial' ~ 1,
