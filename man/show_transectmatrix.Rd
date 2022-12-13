@@ -9,7 +9,7 @@ show_transectmatrix(
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   total = TRUE,
   neutral = FALSE,
-  yrrng = c(1998, 2021),
+  yrrng = c(1998, 2022),
   alph = 1,
   txtsz = 3,
   family = NA,

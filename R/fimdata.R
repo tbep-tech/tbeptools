@@ -1,6 +1,6 @@
-#' FIM data for Tampa Bay Nekton Index current as of 07262021
+#' FIM data for Tampa Bay Nekton Index current as of 12122022
 #'
-#' FIM data for Tampa Bay Nekton Index current as of 07262021
+#' FIM data for Tampa Bay Nekton Index current as of 12122022
 #'
 #' @format A data frame with 45945 rows and 19 variables:
 #' \describe{

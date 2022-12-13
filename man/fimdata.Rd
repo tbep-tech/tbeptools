@@ -3,7 +3,7 @@
 \docType{data}
 \name{fimdata}
 \alias{fimdata}
-\title{FIM data for Tampa Bay Nekton Index current as of 07262021}
+\title{FIM data for Tampa Bay Nekton Index current as of 12122022}
 \format{
 A data frame with 45945 rows and 19 variables:
 \describe{
@@ -32,7 +32,7 @@ A data frame with 45945 rows and 19 variables:
 fimdata
 }
 \description{
-FIM data for Tampa Bay Nekton Index current as of 07262021
+FIM data for Tampa Bay Nekton Index current as of 12122022
 }
 \examples{
 \dontrun{

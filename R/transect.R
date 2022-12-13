@@ -1,8 +1,8 @@
-#' Seagrass transect data for Tampa Bay current as of 01212022
+#' Seagrass transect data for Tampa Bay current as of 12122022
 #'
-#' Seagrass transect data for Tampa Bay current as of 01212022
+#' Seagrass transect data for Tampa Bay current as of 12122022
 #'
-#' @format A data frame with 140460 rows and 11 variables:
+#' @format A data frame with 146286 rows and 11 variables:
 #' \describe{
 #'   \item{Crew}{chr}
 #'   \item{MonitoringAgency}{chr}
