@@ -4,7 +4,7 @@ test_that("Checking results for anlz_tbbimed", {
   results <- results[1, ]
   expect_equal(results, structure(list(bay_segment = structure(8L, .Label = c("OTB",
                                                                               "HB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"), class = "factor"),
-                                       yr = 1993, Degraded = 0.3, Healthy = 0.233333333333333, Intermediate = 0.466666666666667,
+                                       yr = 1993, Degraded = 0.3, Healthy = 0.244444444444444, Intermediate = 0.455555555555556,
                                        TBBICat = structure(1L, .Label = c("Poor", "Fair", "Good"
                                        ), class = "factor")), class = c("rowwise_df", "tbl_df",
                                                                         "tbl", "data.frame"), row.names = c(NA, -1L), groups = structure(list(
@@ -19,7 +19,7 @@ test_that("Checking results for anlz_tbbimed, rev = T", {
   results <- results[1, ]
   expect_equal(results, structure(list(bay_segment = structure(2L, .Label = c("All (wt)",
                                                                               "All", "BCB", "MR", "TCB", "LTB", "MTB", "HB", "OTB"), class = "factor"),
-                                       yr = 1993, Degraded = 0.3, Healthy = 0.233333333333333, Intermediate = 0.466666666666667,
+                                       yr = 1993, Degraded = 0.3, Healthy = 0.244444444444444, Intermediate = 0.455555555555556,
                                        TBBICat = structure(1L, .Label = c("Poor", "Fair", "Good"
                                        ), class = "factor")), class = c("rowwise_df", "tbl_df",
                                                                         "tbl", "data.frame"), row.names = c(NA, -1L), groups = structure(list(
