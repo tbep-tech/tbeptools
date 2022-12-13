@@ -39,33 +39,29 @@ anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'L
     dplyr::select(Transect = TRAN_ID, bay_segment) %>%
     unique
 
-  # summarize fo by segment, species
-  occsum <- transectocc %>%
-    dplyr::group_by(Date, Transect) %>%
-    dplyr::mutate(foest = foest / sum(foest)) %>%
-    dplyr::ungroup() %>%
-    dplyr::inner_join(trnptsshed, by = 'Transect') %>%
-    dplyr::mutate(yr = lubridate::year(Date)) %>%
-    dplyr::group_by(Savspecies, yr, bay_segment) %>%
-    dplyr::summarise(
-      foest = mean(foest, na.rm = T),
-      bbest = mean(bbest, na.rm = T),
-      .groups = 'drop'
+  # fo all
+  filtdat <- transectocc %>%
+    dplyr::left_join(trnptsshed, by = 'Transect') %>%
+    dplyr::mutate(
+      yr = lubridate::year(Date)
     ) %>%
-    dplyr::filter(yr <= yrrng[2] & yr >= yrrng[1]) %>%
-    dplyr::filter(!Savspecies %in% c('No Cover', 'AA', 'DA'))
+    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
+    dplyr::filter(bay_segment %in% !!bay_segment) %>%
+    dplyr::group_by(Date, Transect, bay_segment, yr) %>%
+    dplyr::filter(Savspecies %in% 'No Cover') %>%
+    dplyr::mutate(foest = 100 * (1 - foest))
 
   # summarize fo total by segment
-  segs <- occsum %>%
-    dplyr::group_by(yr, bay_segment) %>%
-    dplyr::summarise(foest = 100 * sum(foest), .groups = 'drop')
+  segs <- filtdat %>%
+    dplyr::group_by(bay_segment, yr) %>%
+    dplyr::summarise(foest = mean(foest, na.rm = T))
 
   # add total if true
   if(total){
 
-    tots <- segs %>%
+    tots <- filtdat %>%
       dplyr::group_by(yr) %>%
-      dplyr::summarise(foest = mean(foest, na.rm = T), .groups = 'drop') %>%
+      dplyr::summarise(foest = mean(foest, na.rm = T)) %>%
       dplyr::mutate(bay_segment = 'Tampa Bay')
 
     segs <- bind_rows(segs, tots)
