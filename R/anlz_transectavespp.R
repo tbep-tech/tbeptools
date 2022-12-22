@@ -39,6 +39,8 @@ anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
 
   sf::st_crs(trnpts) <- 4326
 
+  species <- c('total', species)
+
   # pts by segment
   trnptsshed <- trnpts %>%
     sf::st_set_geometry(NULL) %>%
@@ -83,22 +85,9 @@ anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       )
 
   # total
-  if(total & !by_seg){
-
-    tots <- filtdat %>%
-      dplyr::filter(Savspecies %in% 'No Cover') %>%
-      dplyr::mutate(foest = 1 - foest) %>%
-      dplyr::group_by(yr) %>%
-      dplyr::summarise(foest = mean(foest, na.rm = T)) %>%
-      dplyr::mutate(
-        Savspecies = 'total',
-        Savspecies = factor(Savspecies, levels = c('total', species))
-        )
-
-    out <- dplyr::bind_rows(tots, out) %>%
-      dplyr::arrange(yr, Savspecies)
-
-  }
+  if(!total)
+    out <- out %>%
+      dplyr::filter(!Savspecies %in% 'total')
 
   return(out)
 

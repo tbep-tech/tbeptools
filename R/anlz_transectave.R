@@ -48,8 +48,8 @@ anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'L
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::group_by(Date, Transect, bay_segment, yr) %>%
-    dplyr::filter(Savspecies %in% 'No Cover') %>%
-    dplyr::mutate(foest = 100 * (1 - foest))
+    dplyr::filter(Savspecies %in% 'total') %>%
+    dplyr::mutate(foest = 100 * foest)
 
   # summarize fo total by segment
   segs <- filtdat %>%

@@ -68,8 +68,17 @@ anlz_transectocc <- function(transect){
   #     .groups = 'drop'
   #   )
 
+  tots <- datcmp %>%
+    dplyr::filter(Savspecies %in% c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila')) %>%
+    dplyr::group_by(Date, Transect, Site) %>%
+    dplyr::summarise(bb = mean(bb), .groups = 'drop') %>%
+    dplyr::mutate(
+      Savspecies = 'total'
+    )
+
   # summarise fo/bb by unique sites per date/transect, this is better than commented code
   out <- datcmp %>%
+    dplyr::bind_rows(tots) %>%
     dplyr::group_by(Date, Transect, Savspecies) %>%
     dplyr::summarise(
       nsites = length(unique(Site)),
