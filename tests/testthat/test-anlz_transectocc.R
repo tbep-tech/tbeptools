@@ -1,4 +1,4 @@
 test_that("Checking anlz_transectocc", {
-  result <- anlz_transectocc(transect)
+  result <- transectocc
   expect_equal(ncol(result), 6)
 })

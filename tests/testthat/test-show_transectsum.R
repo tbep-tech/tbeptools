@@ -1,5 +1,3 @@
-transectocc <- anlz_transectocc(transect)
-
 test_that("Checking show_transectsum plotly class", {
   result <- show_transectsum(transectocc, site = 'S3T10')
   expect_is(result, 'plotly')

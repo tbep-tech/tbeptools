@@ -1,5 +1,3 @@
-transectocc <- anlz_transectocc(transect)
-
 test_that("Checking show_transectavespp ggplot class", {
   result <- show_transectavespp(transectocc)
   expect_is(result, 'ggplot')

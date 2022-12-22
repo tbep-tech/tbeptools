@@ -12,3 +12,6 @@ tdldat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2021)
 
 # benthic index scores
 tbbiscr <- anlz_tbbiscr(benthicdata)
+
+# transect freq occ
+transectocc <- anlz_transectocc(transect)
