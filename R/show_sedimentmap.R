@@ -82,6 +82,10 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), weight 
     ) %>%
     dplyr::select(yr, AreaAbbr, StationNumber, SedResultsType, Parameter, ValueAdjusted, Units, Qualifier, score)
 
+  # bounding box
+  bbx <- sf::st_bbox(tomap) %>%
+    as.numeric()
+
   # create map
   out <- mapview::mapView(map.types = mapviewGetOption("basemaps")) %>%
     .@map %>%
