@@ -142,6 +142,9 @@
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_formphyto.html</loc>
   </url>
   <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/read_formsediment.html</loc>
+  </url>
+  <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_formtransect.html</loc>
   </url>
   <url>
@@ -157,6 +160,9 @@
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_importphyto.html</loc>
   </url>
   <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/read_importsediment.html</loc>
+  </url>
+  <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_importwq.html</loc>
   </url>
   <url>
@@ -164,6 +170,9 @@
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/seagrass.html</loc>
+  </url>
+  <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/sedimentdata.html</loc>
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/sgmanagement.html</loc>
