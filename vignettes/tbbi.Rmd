@@ -39,13 +39,13 @@ sf_use_s2(FALSE)
 
 The Tampa Bay Benthic Index (TBBI) [@tbep0620;@tbep0106]) is an assessment method that quantifies the ecological health of the benthic community in Tampa Bay.  The index provides a complementary approach to evaluating environmental condition that is supported by other assessment methods currently available for the region (e.g., water quality report card, nekton index, etc.). The tbeptools package includes several functions described below to import data required for the index and plot the results to view trends over time.  Each of the functions are described in detail below. 
 
-The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Hillsborough Country Environmental Protection Commission (EPC).  The data are updated annually on a public site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](https://tbep-tech.github.io/tbeptools/articles/intro.html).  The required data for the TBBI are more extensive than the water quality report card and the data are made available as a zipped folder of csv files, available [here](https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ).  The process for downloading and working with the data are similar as for the other functions in tbeptools.
+The TBBI uses data from the Tampa Bay Benthic Monitoring Program as part of the Environmental Protection Commission (EPC) of Hillsborough Country.  The data are updated annually on a public site maintained by EPC, typically in December after Summer/Fall sampling.  This is the same website that hosts water quality data used for the [water quality report card](https://tbep-tech.github.io/tbeptools/articles/intro.html).  The required data for the TBBI are more extensive than the water quality report card and the data are made available as a zipped folder of csv files, available [here](https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ).  The process for downloading and working with the data are similar as for the other functions in tbeptools.
 
 ## Data import and included datasets
 
 Data for calculating TBBI scores can be imported into the current R session using the `read_importbenthic()` function.  This function downloads the zipped folder of base tables used for the TBBI from the EPC site if the data have not already been downloaded to the location specified by the input arguments.  
 
-To download the data with teptools, first create a character path for the location where you want to download the zipped files. If one does not exist, specify a location and name for the downloaded file. Here, we name the folder `benthic.zip` and download it on our desktop.
+To download the data with tbeptools, first create a character path for the location where you want to download the zipped files. If one does not exist, specify a location and name for the downloaded file. Here, we name the folder `benthic.zip` and download it on our desktop.
 
 ```{r, eval = F}
 path <- '~/Desktop/benthic.zip'
@@ -123,6 +123,23 @@ The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive
 
 ```{r, fig.height = 7, fig.width = 5}
 show_tbbimatrix(tbbiscr, plotly = T)
+```
+
+## Additional sediment data
+
+In addition to biological data, sediment contaminant concentrations are measured at sites within Tampa Bay.  These include over 100 different constituents grouped broadly as metals, organics, physical, or other.  The concentrations of these constituents can be compared relative to Threshold Effects Levels (TEL) or Potential Effects Levels (PEL), when available, as relative indications of the likelihood that the concentrations will have toxic effects on invertebrates that inhabit the sediments. The functions in tbeptools can be used to retrieve the sediment data and provide an indication of the concentrations relative to the TEL or PEL thresholds. 
+
+The `read_importsediment()` function will retrieve all sediment data for Tampa Bay collected annually by the Environmental Protection Commission of Hillsborough County.  The data are retrieved from the [same location](https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ) as the biological data used to calculate the TBBI. 
+
+```{r, eval = F}
+path <- '~/Desktop/sediment.zip'
+sedimentdata <- read_importsediment(path, download_latest = T)
+```
+
+After the data are imported, you can view them from the assigned object.
+
+```{r}
+sedimentdata
 ```
 
 # References

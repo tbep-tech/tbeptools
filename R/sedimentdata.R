@@ -1,0 +1,47 @@
+#' Sediment data for the Tampa Bay current as of 01042023
+#'
+#' Sediment data for the Tampa Bay current as of 01042023
+#'
+#' @format A \code{data.frame} with 216627 rows and 25 variables:
+#' \describe{
+#'   \item{ProgramId}{int}
+#'   \item{ProgramName}{chr}
+#'   \item{FundingProject}{chr}
+#'   \item{yr}{int}
+#'   \item{AreaAbbr}{chr}
+#'   \item{StationID}{int}
+#'   \item{StationNumber}{chr}
+#'   \item{Latitude}{num}
+#'   \item{Longitude}{num}
+#'   \item{Replicate}{chr}
+#'   \item{SedResultsType}{chr}
+#'   \item{Parameter}{chr}
+#'   \item{ValueAdjusted}{num}
+#'   \item{Units}{chr}
+#'   \item{Qualifier}{chr}
+#'   \item{MDLnum}{num}
+#'   \item{PQLnum}{num}
+#'   \item{TEL}{num}
+#'   \item{PEL}{num}
+#'   \item{BetweenTELPEL}{chr}
+#'   \item{ExceedsPEL}{chr}
+#'   \item{PELRatio}{num}
+#'   \item{PreparationDate}{chr}
+#'   \item{AnalysisTimeMerge}{chr}
+#'   \item{PELGrade}{Factor}
+#'  }
+#'
+#' @concept data
+#'
+#' @examples
+#' \dontrun{
+#' # location to download data
+#' path <- '~/Desktop/sediment.zip'
+#'
+#' # load and assign to object
+#' sedimentdata <- read_importsediment(path, download_latest = TRUE, remove = TRUE)
+#'
+#' save(sedimentdata, file = 'data/sedimentdata.RData', compress = 'xz')
+#'
+#' }
+"sedimentdata"
