@@ -55,7 +55,9 @@ read_formsediment <- function(pathin){
     dplyr::rename(yr = Year) %>%
     dplyr::mutate(
       FundingProject = gsub('\\s+$', '', FundingProject),
-      PELGrade = cut(PELRatio, breaks = c(-Inf, 0.00756, 0.02052, 0.08567, 0.28026, Inf), labels = c('A', 'B', 'C', 'D', 'F'))
+      PELGrade = cut(PELRatio, breaks = c(-Inf, 0.00756, 0.02052, 0.08567, 0.28026, Inf), labels = c('A', 'B', 'C', 'D', 'F')),
+      Replicate = tolower(Replicate),
+      Units = gsub('Kg$', 'kg', Units)
     ) %>%
     tibble::tibble()
 

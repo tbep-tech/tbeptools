@@ -142,4 +142,16 @@ After the data are imported, you can view them from the assigned object.
 sedimentdata
 ```
 
+The `show_sedimentmap()` function can be used to create maps of selected parameters relative to TEL and PEL values. Green points show concentrations below the TEL, yellow points show concentrations between the TEL and PEL, and red points show concentrations above the PEL. The applicable TEL and PEL values for the parameter are indicated in the legend.  The selected stations are those that are sampled in the years within the `yrrng` argument.
+
+```{r}
+show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
+```
+
+A single year of data can be shown as well.  
+
+```{r}
+show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2021)
+```
+
 # References
