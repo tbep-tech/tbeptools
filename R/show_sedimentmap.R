@@ -87,7 +87,7 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), weight 
     as.numeric()
 
   # create map
-  out <- mapview::mapView(map.types = mapviewGetOption("basemaps")) %>%
+  out <- mapview::mapView(map.types = mapview::mapviewGetOption("basemaps")) %>%
     .@map %>%
     leaflet::addLegend(data = tomap, "topright", pal = pal_exp, values = ~score,
                        title = "Site categories",
