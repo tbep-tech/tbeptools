@@ -3,9 +3,9 @@
 \docType{data}
 \name{sedimentdata}
 \alias{sedimentdata}
-\title{Sediment data for the Tampa Bay current as of 01042023}
+\title{Sediment data for the Tampa Bay current as of 01062023}
 \format{
-A \code{data.frame} with 216627 rows and 25 variables:
+A \code{data.frame} with 216627 rows and 24 variables:
 \describe{
   \item{ProgramId}{int}
   \item{ProgramName}{chr}
@@ -28,7 +28,6 @@ A \code{data.frame} with 216627 rows and 25 variables:
   \item{PEL}{num}
   \item{BetweenTELPEL}{chr}
   \item{ExceedsPEL}{chr}
-  \item{PELRatio}{num}
   \item{PreparationDate}{chr}
   \item{AnalysisTimeMerge}{chr}
   \item{PELGrade}{Factor}
@@ -38,7 +37,7 @@ A \code{data.frame} with 216627 rows and 25 variables:
 sedimentdata
 }
 \description{
-Sediment data for the Tampa Bay current as of 01042023
+Sediment data for the Tampa Bay current as of 01062023
 }
 \examples{
 \dontrun{
