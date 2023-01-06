@@ -70,6 +70,9 @@
     <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_refs.html</loc>
   </url>
   <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentave.html</loc>
+  </url>
+  <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentpel.html</loc>
   </url>
   <url>
@@ -200,6 +203,9 @@
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/show_reactable.html</loc>
+  </url>
+  <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/show_sedimentave.html</loc>
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/show_sedimentmap.html</loc>
