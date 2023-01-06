@@ -1,5 +1,5 @@
 test_that("Checking show_sedimentmap class", {
-  result <- show_sedimentmap(sedimentdata, param = 'Arsenic')
+  result <- show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2021)
   expect_is(result, 'leaflet')
 })
 

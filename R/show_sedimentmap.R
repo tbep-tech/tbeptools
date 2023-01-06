@@ -26,11 +26,11 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), weight 
   if(yrrng[1] > yrrng[2])
     stop('yrrng argument must be in ascending order, e.g., c(1993, 2017)')
 
-  # yrrng not in epcdata
+  # yrrng not in sedimentdata
   if(any(!yrrng %in% sedimentdata$yr))
     stop(paste('Check yrrng is within', paste(range(sedimentdata$yr, na.rm = TRUE), collapse = '-')))
 
-  # check if param is inn data
+  # check if param is in data
   params <- sedimentdata$Parameter %>%
     unique %>%
     sort
@@ -70,7 +70,6 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), weight 
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(FundingProject %in% 'TBEP') %>%
     dplyr::filter(Replicate == 'no') %>%
-    as.data.frame() %>%
     sf::st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326) %>%
     dplyr::mutate(
       score = dplyr::case_when(
