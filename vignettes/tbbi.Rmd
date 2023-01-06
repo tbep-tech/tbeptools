@@ -144,19 +144,19 @@ sedimentdata
 
 The `show_sedimentmap()` function can be used to create maps of selected parameters relative to TEL and PEL values. Green points show concentrations below the TEL, yellow points show concentrations between the TEL and PEL, and red points show concentrations above the PEL. The applicable TEL and PEL values for the parameter are indicated in the legend.  The selected stations are those that are sampled in the years within the `yrrng` argument.
 
-```{r}
+```{r, out.width = '100%'}
 show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
 ```
 
 A single year of data can be shown as well.  
 
-```{r}
+```{r, out.width = '100%'}
 show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2021)
 ```
 
 The PEL ratio can also be used to assess relative sediment quality given the measured contaminants.  The `show_sedimentpelmap()` function creates a map of average PEL ratios graded from A to F for benthic stations monitored in Tampa Bay. The PEL ratio is the contaminant concentration divided by the Potential Effects Levels (PEL) that applies to a contaminant, if available. Higher ratios and lower grades indicate sediment conditions that are likely unfavorable for invertebrates. The station average combines the PEL ratios across all contaminants measured at a station.
 
-```{r}
+```{r, out.width = '100%'}
 show_sedimentpelmap(sedimentdata, yrrng = c(1993, 2021))
 ```
 
@@ -166,5 +166,16 @@ The average PEL ratios and grades used to create the map can also be returned as
 anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2021))
 ```
 
+Plots of bay segment averages of sediment concentrations for selected parameters can be created with `show_sedimentave()`.  The plot includes appropriate lines for the TEL and PEL values, as well the grand mean across all segments.  The former are omitted from the plot if unavailable for a selected parameter.
+
+```{r, fig.height = 5, fig.width = 7}
+show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
+```
+
+The values used in the plot can be returned with `anlz_sedimentave()`. 
+
+```{r}
+anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
+```
 
 # References
