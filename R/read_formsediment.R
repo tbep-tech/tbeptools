@@ -58,7 +58,8 @@ read_formsediment <- function(pathin){
       Replicate = tolower(Replicate),
       Units = gsub('Kg$', 'kg', Units),
       BetweenTELPEL = ifelse(`ValueAdjusted` > TEL & `ValueAdjusted` <= PEL, 'Yes', 'No'),
-      ExceedsPEL = ifelse(`ValueAdjusted` > PEL, 'Yes', 'No')
+      ExceedsPEL = ifelse(`ValueAdjusted` > PEL, 'Yes', 'No'),
+      PELRatio = `ValueAdjusted` / PEL
     ) %>%
     tibble::tibble()
 
