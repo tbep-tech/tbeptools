@@ -56,7 +56,9 @@ read_formsediment <- function(pathin){
     dplyr::mutate(
       FundingProject = gsub('\\s+$', '', FundingProject),
       Replicate = tolower(Replicate),
-      Units = gsub('Kg$', 'kg', Units)
+      Units = gsub('Kg$', 'kg', Units),
+      BetweenTELPEL = ifelse(`ValueAdjusted` > TEL & `ValueAdjusted` <= PEL, 'Yes', 'No'),
+      ExceedsPEL = ifelse(`ValueAdjusted` > PEL, 'Yes', 'No')
     ) %>%
     tibble::tibble()
 
