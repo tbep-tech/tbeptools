@@ -54,6 +54,7 @@ read_formsediment <- function(pathin){
                   -CASNumber, -NELACNumber, -DOHCertification, -WQMQCSignOff) %>%
     dplyr::rename(yr = Year) %>%
     dplyr::mutate(
+      PEL = ifelse(Parameter == 'DDE', 374, PEL), # see dk email 1/11/2023, should not be 37.4
       FundingProject = gsub('\\s+$', '', FundingProject),
       Replicate = tolower(Replicate),
       Units = gsub('Kg$', 'kg', Units),
