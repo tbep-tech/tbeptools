@@ -32,19 +32,116 @@ anlz_sedimentpel <- function(sedimentdata, yrrng = c(1993, 2021)){
   if(any(!yrrng %in% sedimentdata$yr))
     stop(paste('Check yrrng is within', paste(range(sedimentdata$yr, na.rm = TRUE), collapse = '-')))
 
-  # get avg PELRatio and grades
-  out <- sedimentdata %>%
+  # param lookups
+  metalpar <- c('Arsenic', 'Cadmium', 'Chromium', 'Copper', 'Lead', 'Mercury', 'Nickel', 'Silver', 'Zinc')
+  lmwpahpar <- c('Acenaphthene', 'Acenaphthylene', 'Anthracene', 'Fluorene', 'Naphthalene', 'Phenanthrene')
+  hmwpahpar <- c('Benzo(a)anthracene', 'Benzo(a)pyrene', 'Chrysene', 'Dibenzo(a,h)anthracene', 'Fluoranthene', 'Pyrene')
+  ddtpar <- c('DDD', 'DDE', 'DDT')
+
+  # filter relevant data
+  flt <- sedimentdata %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(FundingProject %in% 'TBEP') %>%
-    dplyr::filter(Replicate == 'no') %>%
-    dplyr::filter(!is.na(PELRatio)) %>%
-    # dplyr::filter(SedResultsType %in% c('Organics', 'Metals')) %>%
+    dplyr::filter(Replicate == 'no')
+
+  # metals
+  mets <- flt %>%
+    dplyr::filter(Parameter %in% metalpar)
+
+  # lmwpah
+  lmwpah <- flt %>%
+    dplyr::filter(Parameter %in% lmwpahpar)
+
+  # get sum of lmwpah
+  lmwpahsum <- lmwpah %>%
+    dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude) %>%
+    dplyr::summarize(
+      lmwpahsum = sum(ValueAdjusted, na.rm = T),
+      .groups = 'drop'
+    ) %>%
+    dplyr::mutate(
+      Parameter = 'lmwpah',
+      PELRatio = lmwpahsum / 1442
+    )
+
+  # hmwpah
+  hmwpah <- flt %>%
+    dplyr::filter(Parameter %in% hmwpahpar)
+
+  # get sum of hmwpah
+  hmwpahsum <- hmwpah %>%
+    dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude) %>%
+    dplyr::summarize(
+      hmwpahsum = sum(ValueAdjusted, na.rm = T),
+      .groups = 'drop'
+    ) %>%
+    dplyr::mutate(
+      Parameter = 'hmwpah',
+      PELRatio = hmwpahsum / 6676
+    )
+
+  # total pah
+  pahsum <- flt %>%
+    dplyr::filter(Parameter %in% c(lmwpahpar, hmwpahpar)) %>%
+    dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude) %>%
+    dplyr::summarize(
+      pahsum = sum(ValueAdjusted, na.rm = T),
+      .groups = 'drop'
+    ) %>%
+    dplyr::mutate(
+      Parameter = 'pah',
+      PELRatio = pahsum / 16770
+    )
+
+  #lindane
+  lindanesum <- flt %>%
+    dplyr::filter(Parameter %in% 'G BHC')
+
+  # chlordane
+  chlordanesum <- flt %>%
+    dplyr::filter(Parameter %in% 'Total Chlordane')
+
+  # dieldrin
+  dieldrinsum <- flt %>%
+    dplyr::filter(Parameter %in% 'Dieldrin')
+
+  # ddt
+  ddt <- flt %>%
+    dplyr::filter(Parameter %in% ddtpar)
+
+  # get sum of ddt
+  ddtsum <- ddt %>%
+    dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude) %>%
+    dplyr::summarize(
+      ddtsum = sum(ValueAdjusted, na.rm = T),
+      .groups = 'drop'
+    ) %>%
+    dplyr::mutate(
+      Parameter = 'total ddt',
+      PELRatio = ddtsum / 51.7
+    )
+
+  # get sum of pcb
+  pcbsum <- flt %>%
+    dplyr::filter(grepl('^PCB', Parameter)) %>%
+    dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude) %>%
+    dplyr::summarize(
+      pcbsum = sum(ValueAdjusted, na.rm = T),
+      .groups = 'drop'
+    ) %>%
+    dplyr::mutate(
+      Parameter = 'total pcb',
+      PELRatio = pcbsum / 189
+    )
+
+  # combine all, take average, get grade
+  out <- bind_rows(mets, lmwpah, lmwpahsum, hmwpah, hmwpahsum, pahsum, lindanesum, chlordanesum,
+                   dieldrinsum, ddt, ddtsum, pcbsum) %>%
     dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude) %>%
     dplyr::summarise(
       PELRatio = mean(PELRatio, na.rm = T),
       .groups = 'drop'
     ) %>%
-    dplyr::filter(!is.na(PELRatio)) %>%
     dplyr::mutate(
       Grade = cut(PELRatio, breaks = c(-Inf, 0.00756, 0.02052, 0.08567, 0.28026, Inf), labels = c('A', 'B', 'C', 'D', 'F'))
     )
