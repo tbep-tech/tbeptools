@@ -66,7 +66,11 @@
 <span>  alph <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.4</span><span class="op">)</span>,</span>
 <span>  lnsz <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  base_size <span class="op">=</span> <span class="fl">12</span></span>
+<span>  base_size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  plotly <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  family <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  height <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -99,12 +103,28 @@
 <dt>base_size</dt>
 <dd><p>numeric indicating text scaling size for plot</p></dd>
 
+
+<dt>plotly</dt>
+<dd><p>logical if matrix is created using plotly</p></dd>
+
+
+<dt>family</dt>
+<dd><p>optional chr string indicating font family for text labels</p></dd>
+
+
+<dt>width</dt>
+<dd><p>numeric for width of the plot in pixels, only applies of <code>plotly = TRUE</code></p></dd>
+
+
+<dt>height</dt>
+<dd><p>numeric for height of the plot in pixels, only applies of <code>plotly = TRUE</code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></code> object showing PEL averages (average of the averages) and 95<!-- % confidence intervals for each bay segment --></p>
+<p>A <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></code> object or a <code><a href="https://rdrr.io/pkg/plotly/man/plotly.html" class="external-link">plotly</a></code> object if <code>plotly = TRUE</code> showing PEL averages (average of the averages) and 95<!-- % confidence intervals for each bay segment --></p>
 
 
     </div>
