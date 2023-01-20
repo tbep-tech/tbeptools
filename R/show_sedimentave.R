@@ -98,7 +98,11 @@ show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_seg
     p <- plotly::ggplotly(p, width = width, height = height) %>%
       plotly::layout(
         legend = list(
-          traceorder= 'reversed'
+          traceorder = 'reversed',
+          orientation = "h",
+          xanchor = "center",
+          x = 0.5,
+          y = 1.1
         )
       ) %>%
       plotly::config(

@@ -57,6 +57,14 @@ show_sedimentpelaveplotly <- function(p, width = NULL, height = NULL){
         format = "svg",
         filename = "myplot"
       )
+    ) %>%
+    plotly::layout(
+      legend = list(
+        orientation = "h",
+        xanchor = "center",
+        x = 0.5,
+        y = 1.1
+      )
     )
 
   return(out)
