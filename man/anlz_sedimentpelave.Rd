@@ -6,7 +6,6 @@
 \usage{
 anlz_sedimentpelave(
   sedimentdata,
-  param,
   yrrng = c(1993, 2021),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB")
 )

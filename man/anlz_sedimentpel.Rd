@@ -16,6 +16,14 @@ anlz_sedimentpel(
 \item{yrrng}{numeric vector indicating min, max years to include, use single year for one year of data}
 
 \item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"}
+
+\item{plotly}{logical if matrix is created using plotly}
+
+\item{family}{optional chr string indicating font family for text labels}
+
+\item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
 A \code{data.frame} object with average PEL ratios and grades at each station

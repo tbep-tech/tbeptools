@@ -172,6 +172,12 @@ Plots of bay segment averages of sediment concentrations for selected parameters
 show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
 ```
 
+The same plot can be returned as an interactive [plotly](https://plotly.com/r/) object using `plotly = T`.
+
+```{r, fig.height = 5, fig.width = 7}
+show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021), plotly = T)
+```
+
 The values used in the plot can be returned with `anlz_sedimentave()`. 
 
 ```{r}
@@ -182,6 +188,12 @@ A similar plot of the bay segment averages for the average PEL ratios can be cre
 
 ```{r, fig.height = 5, fig.width = 7}
 show_sedimentpelave(sedimentdata, yrrng = c(1993, 2021))
+```
+
+The same plot can be returned as an interactive [plotly](https://plotly.com/r/) object using `plotly = T`.
+
+```{r, fig.height = 5, fig.width = 7}
+show_sedimentpelave(sedimentdata, yrrng = c(1993, 2021), plotly = T)
 ```
 
 The values used in the plot can be returned with `anlz_sedimentpelave()`. 

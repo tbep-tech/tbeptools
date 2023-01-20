@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' anlz_sedimentpelave(sedimentdata)
-anlz_sedimentpelave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')){
+anlz_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')){
 
   levs <- c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')
 

@@ -7,8 +7,12 @@
 #' @param ylim numeric for y axis limits
 #' @param lnsz numeric for line size
 #' @param base_size numeric indicating text scaling size for plot
+#' @param plotly logical if matrix is created using plotly
+#' @param family optional chr string indicating font family for text labels
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
-#' @return A \code{\link[ggplot2]{ggplot}} object showing PEL averages (average of the averages) and 95% confidence intervals for each bay segment
+#' @return A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing PEL averages (average of the averages) and 95% confidence intervals for each bay segment
 #'
 #' @details Lines for the grades are shown on the plot. Confidence intervals may not be shown for segments with insufficient data.
 #'
@@ -18,7 +22,7 @@
 #'
 #' @examples
 #' show_sedimentpelave(sedimentdata)
-show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), alph = 1, ylim = c(0, 0.4), lnsz = 1, base_size = 12){
+show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), alph = 1, ylim = c(0, 0.4), lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
 
   # get avg pel ratios by station, then get averages
   toplo <- anlz_sedimentpelave(sedimentdata, yrrng = yrrng, bay_segment = bay_segment)
@@ -28,7 +32,8 @@ show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
       panel.border = ggplot2::element_blank(),
       panel.grid = ggplot2::element_blank(),
       legend.title = ggplot2::element_blank(),
-      legend.position = 'top'
+      legend.position = 'top',
+      text = ggplot2::element_text(family = family)
     )
 
   grdtxt <- toplo %>%
@@ -50,6 +55,10 @@ show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
     ggplot2::scale_x_discrete(drop = F) +
     ggplot2::geom_errorbar(ggplot2::aes(ymin = lov, ymax = hiv), width = 0, na.rm = T) +
     ggplot2::geom_hline(ggplot2::aes(yintercept = grandave, linetype = grdtxt), color = 'grey', size = lnsz) +
+    ggplot2::geom_hline(aes(yintercept = brks[1]), color = "black", linetype = "dotted") +
+    ggplot2::geom_hline(aes(yintercept = brks[2]), color = "black", linetype = "dotted") +
+    ggplot2::geom_hline(aes(yintercept = brks[3]), color = "black", linetype = "dotted") +
+    ggplot2::geom_hline(aes(yintercept = brks[4]), color = "black", linetype = "dotted") +
     ggplot2::scale_linetype_manual(values = 'dashed', breaks = grdtxt) +
     ggplot2::scale_y_continuous(expand = c(0, 0)) +
     ggplot2::coord_cartesian(ylim = ylim) +
@@ -59,6 +68,9 @@ show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
       y = ylb
     ) +
     thm
+
+  if(plotly)
+    p <- show_sedimentpelaveplotly(p, width = width, height = height)
 
   return(p)
 

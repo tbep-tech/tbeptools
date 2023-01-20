@@ -9,7 +9,7 @@
 #' @param lnsz numeric for line size
 #' @param base_size numeric indicating text scaling size for plot
 #'
-#' @return A \code{\link[ggplot2]{ggplot}} object showing sediment averages and 95% confidence intervals of the selected parameter concentrations for each bay segment
+#' @return A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing sediment averages and 95% confidence intervals of the selected parameter concentrations for each bay segment
 #'
 #' @details Lines for the Threshold Effect Level (TEL) and Potential Effect Level (PEL) are shown for the parameter, if available. Confidence intervals may not be shown for segments with insufficient data.
 #'
@@ -19,7 +19,7 @@
 #'
 #' @examples
 #' show_sedimentave(sedimentdata, param = 'Arsenic')
-show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), lnsz = 1, base_size = 12){
+show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
 
   toplo <- anlz_sedimentave(sedimentdata, param = param, yrrng = yrrng, bay_segment = bay_segment)
 
@@ -28,7 +28,8 @@ show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_seg
       panel.border = ggplot2::element_blank(),
       panel.grid = ggplot2::element_blank(),
       legend.title = ggplot2::element_blank(),
-      legend.position = 'top'
+      legend.position = 'top',
+      text = ggplot2::element_text(family = family)
     )
 
   grdtxt <- toplo %>%
@@ -88,6 +89,20 @@ show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_seg
       y = ylb
     ) +
     thm
+
+  if(plotly)
+    p <- plotly::ggplotly(p, width = width, height = height) %>%
+      plotly::layout(
+        legend = list(
+          traceorder= 'reversed'
+        )
+      ) %>%
+      plotly::config(
+        toImageButtonOptions = list(
+          format = "svg",
+          filename = "myplot"
+        )
+      )
 
   return(p)
 

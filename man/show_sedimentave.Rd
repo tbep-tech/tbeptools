@@ -10,7 +10,11 @@ show_sedimentave(
   yrrng = c(1993, 2021),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
   lnsz = 1,
-  base_size = 12
+  base_size = 12,
+  plotly = FALSE,
+  family = NA,
+  width = NULL,
+  height = NULL
 )
 }
 \arguments{
@@ -27,7 +31,7 @@ show_sedimentave(
 \item{base_size}{numeric indicating text scaling size for plot}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object showing sediment averages and 95% confidence intervals of the selected parameter concentrations for each bay segment
+A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing sediment averages and 95% confidence intervals of the selected parameter concentrations for each bay segment
 }
 \description{
 Plot sediment concentration averages by bay segment
