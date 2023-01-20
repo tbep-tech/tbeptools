@@ -5,10 +5,6 @@
 #' @param sedimentdata input sediment \code{data.frame} as returned by \code{\link{read_importsediment}}
 #' @param yrrng numeric vector indicating min, max years to include, use single year for one year of data
 #' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
-#' @param plotly logical if matrix is created using plotly
-#' @param family optional chr string indicating font family for text labels
-#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
-#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @return A \code{data.frame} object with average PEL ratios and grades at each station
 #'

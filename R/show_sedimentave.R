@@ -8,6 +8,10 @@
 #' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
 #' @param lnsz numeric for line size
 #' @param base_size numeric indicating text scaling size for plot
+#' @param plotly logical if matrix is created using plotly
+#' @param family optional chr string indicating font family for text labels
+#' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing sediment averages and 95% confidence intervals of the selected parameter concentrations for each bay segment
 #'
