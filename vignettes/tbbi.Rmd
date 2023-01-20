@@ -178,4 +178,16 @@ The values used in the plot can be returned with `anlz_sedimentave()`.
 anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
 ```
 
+A similar plot of the bay segment averages for the average PEL ratios can be created with `show_sedimentpelave()`.  The colors indicate the grades for A (green) to F (red).
+
+```{r, fig.height = 5, fig.width = 7}
+show_sedimentpelave(sedimentdata, yrrng = c(1993, 2021))
+```
+
+The values used in the plot can be returned with `anlz_sedimentpelave()`. 
+
+```{r}
+anlz_sedimentpelave(sedimentdata, yrrng = c(1993, 2021))
+```
+
 # References

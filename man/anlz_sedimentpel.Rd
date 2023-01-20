@@ -4,12 +4,18 @@
 \alias{anlz_sedimentpel}
 \title{Get sediment PEL ratios at stations in Tampa Bay}
 \usage{
-anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2021))
+anlz_sedimentpel(
+  sedimentdata,
+  yrrng = c(1993, 2021),
+  bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB")
+)
 }
 \arguments{
 \item{sedimentdata}{input sediment \code{data.frame} as returned by \code{\link{read_importsediment}}}
 
 \item{yrrng}{numeric vector indicating min, max years to include, use single year for one year of data}
+
+\item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"}
 }
 \value{
 A \code{data.frame} object with average PEL ratios and grades at each station

@@ -4,8 +4,10 @@
 #'
 #' @param sedimentdata input sediment \code{data.frame} as returned by \code{\link{read_importsediment}}
 #' @param yrrng numeric vector indicating min, max years to include, use single year for one year of data
+#' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
 #'
 #' @return A \code{data.frame} object with average PEL ratios and grades at each station
+#'
 #' @export
 #'
 #' @concept anlz
@@ -18,7 +20,7 @@
 #'
 #' @examples
 #' anlz_sedimentpel(sedimentdata)
-anlz_sedimentpel <- function(sedimentdata, yrrng = c(1993, 2021)){
+anlz_sedimentpel <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')){
 
   # make yrrng two if only one year provided
   if(length(yrrng) == 1)
@@ -32,6 +34,13 @@ anlz_sedimentpel <- function(sedimentdata, yrrng = c(1993, 2021)){
   if(any(!yrrng %in% sedimentdata$yr))
     stop(paste('Check yrrng is within', paste(range(sedimentdata$yr, na.rm = TRUE), collapse = '-')))
 
+  # check bay segments
+  chk <- !bay_segment %in% c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')
+  if(any(chk)){
+    msg <- bay_segment[chk]
+    stop('bay_segment input is incorrect: ', paste(msg, collapse = ', '))
+  }
+
   # param lookups
   metalpar <- c('Arsenic', 'Cadmium', 'Chromium', 'Copper', 'Lead', 'Mercury', 'Nickel', 'Silver', 'Zinc')
   lmwpahpar <- c('Acenaphthene', 'Acenaphthylene', 'Anthracene', 'Fluorene', 'Naphthalene', 'Phenanthrene')
@@ -42,7 +51,8 @@ anlz_sedimentpel <- function(sedimentdata, yrrng = c(1993, 2021)){
   flt <- sedimentdata %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(FundingProject %in% 'TBEP') %>%
-    dplyr::filter(Replicate == 'no')
+    dplyr::filter(Replicate == 'no') %>%
+    dplyr::filter(AreaAbbr %in% bay_segment)
 
   # metals
   mets <- flt %>%

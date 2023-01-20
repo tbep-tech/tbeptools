@@ -80,6 +80,7 @@ show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_seg
     ggplot2::scale_linetype_manual(values = ltyp, breaks = names(ctyp)) +
     ggplot2::scale_color_manual(values = ctyp, breaks = names(ctyp)) +
     ggplot2::scale_y_log10(expand = c(0, 0)) +
+    ggplot2::scale_x_discrete(drop = F) +
     ggplot2::labs(
       x = 'Bay segment',
       color = NULL,
