@@ -156,7 +156,7 @@ show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2021)
 
 A map showing only the concentrations is returned if TEL and PEL values are not available for a parameter.
 
-```{r, warning = FALSE}
+```{r, warning = FALSE, out.width = '100%'}
 show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2021))
 ```
 
