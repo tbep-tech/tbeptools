@@ -154,6 +154,12 @@ A single year of data can be shown as well.
 show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2021)
 ```
 
+A map showing only the concentrations is returned if TEL and PEL values are not available for a parameter.
+
+```{r, warning = FALSE}
+show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2021))
+```
+
 The PEL ratio can also be used to assess relative sediment quality given the measured contaminants.  The `show_sedimentpelmap()` function creates a map of average PEL ratios graded from A to F for benthic stations monitored in Tampa Bay. The PEL ratio is the contaminant concentration divided by the Potential Effects Levels (PEL) that applies to a contaminant, if available. Higher ratios and lower grades indicate sediment conditions that are likely unfavorable for invertebrates. The station average combines the PEL ratios across all contaminants measured at a station.
 
 ```{r, out.width = '100%'}

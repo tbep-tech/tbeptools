@@ -22,7 +22,7 @@ A \code{\link[leaflet]{leaflet}} object
 Make a map for sediment contaminants at stations in Tampa Bay
 }
 \details{
-The map shows sediment contaminant concentrations for the selected parameter relative to Threshold Effects Levels (TEL) and Potential Effects Levels (PEL), if available.  Green points show concentrations below the TEL, yellow points show concentrations between the TEL and PEL, and red points show concentrations above the PEL. The applicable TEL and PEL values for the parameter are indicated in the legend.  A map can be created only for parameters with TEL and PEL thresholds.  An error will be returned if none are available for the selected parameter.
+The map shows sediment contaminant concentrations for the selected parameter relative to Threshold Effects Levels (TEL) and Potential Effects Levels (PEL), if available.  Green points show concentrations below the TEL, yellow points show concentrations between the TEL and PEL, and red points show concentrations above the PEL. The applicable TEL and PEL values for the parameter are indicated in the legend.  If TEL and PEL thresholds are not available, a map of the sediment concentrations is shown and a warning is returned to the console.
 }
 \examples{
 show_sedimentmap(sedimentdata, param = 'Arsenic')
