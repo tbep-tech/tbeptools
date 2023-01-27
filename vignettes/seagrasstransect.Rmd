@@ -196,4 +196,10 @@ As an alternative to plotting the species averages over time with `show_transect
 show_transectavespp(transectocc, asreact = T, bay_segment = c('HB', 'OTB', 'MTB', 'LTB'), yrrng = c(2006, 2012))
 ```
 
+All of the above describes methods in tbeptools for working with transect monitoring data. Seagrass coverage maps are also created approximately biennially by the Southwest Florida Water Management District, available at [https://data-swfwmd.opendata.arcgis.com/](https://data-swfwmd.opendata.arcgis.com/). The `seagrass` data object included with the package shows Tampa Bay coverage total for each year of available data, including a 1950s reference estimate.  The `show_seagrasscoverage()` function creates the flagship seagrass coverage graphic to report on changes over time from these data.  
+
+```{r, fig.height = 6, fig.width = 7}
+show_seagrasscoverage(seagrass)
+```
+
 # References

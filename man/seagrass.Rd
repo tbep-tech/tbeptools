@@ -18,6 +18,9 @@ seagrass
 \description{
 Seagrass coverage by year
 }
+\details{
+Original data are from the Southwest Florida Water Management District and available online at <https://data-swfwmd.opendata.arcgis.com/>.  Totals are for all of Tampa Bay.
+}
 \examples{
 \dontrun{
 

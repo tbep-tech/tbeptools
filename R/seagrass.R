@@ -9,6 +9,8 @@
 #'   \item{Hectares}{num}
 #' }
 #'
+#' @details Original data are from the Southwest Florida Water Management District and available online at <https://data-swfwmd.opendata.arcgis.com/>.  Totals are for all of Tampa Bay.
+#'
 #' @concept data
 #'
 #' @examples
