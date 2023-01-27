@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' show_seagrasscoverage(seagrass)
-show_seagrasscoverage <- function(seagrass, maxyr = 2022, family = NULL, lastlab = 'acres', axsbrk = c(0.08, 0.1)){
+show_seagrasscoverage <- function(seagrass, maxyr = 2022, family = NA, lastlab = 'acres', axsbrk = c(0.08, 0.1)){
 
   # check maxyr input
   chk <- !maxyr %in% seagrass$Year
@@ -67,7 +67,7 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2022, family = NULL, lastlab
     ggplot2::geom_segment(x = 4, xend = 42, y = 38, yend = 38, col = 'red', size = 2) +
     ggplot2::geom_segment(x = 42, xend = nrow(toplo) + 1, y = 40, yend = 40, col = 'red', size = 2) +
     ggplot2::annotate("text", label = "Seagrass Coverage Goal", x = 4, y = 40.5, color = 'red', size = 5, hjust = 0, family = family) +
-    ggplot2::annotate('text', x = nrow(toplo), y = lasty, label = lastlab, angle = 90, hjust = 1, vjust = 0.3, size = 3) +
+    ggplot2::annotate('text', x = nrow(toplo), y = lasty, label = lastlab, angle = 90, hjust = 1, vjust = 0.3, size = 3, family = family) +
     ggplot2::scale_x_continuous(breaks = brks, labels = lbs, expand = c(0.04, 0.04)) +
     ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, 1.1 * max(toplo$Acres, na.rm = T))) +
     ggplot2::theme_grey(base_family = family) +
@@ -111,6 +111,6 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2022, family = NULL, lastlab
   gt$grobs[[is_axist]] <- axist
   gt$grobs[[is_axisr]] <- axisl$children[[1]]
 
-  grid::grid.newpage(); grid::grid.draw(gt)
+  grid::grid.draw(gt)
 
 }

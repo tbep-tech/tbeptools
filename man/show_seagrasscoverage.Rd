@@ -7,7 +7,7 @@
 show_seagrasscoverage(
   seagrass,
   maxyr = 2022,
-  family = NULL,
+  family = NA,
   lastlab = "acres",
   axsbrk = c(0.08, 0.1)
 )
