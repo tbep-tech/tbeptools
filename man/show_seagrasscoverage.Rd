@@ -30,7 +30,7 @@ A grid object showing acres of total seagrass coverage in Tampa Bay over time.
 Create a barplot of seagrass coverage over time in Tampa Bay
 }
 \details{
-This function creates the flagship seagrass coverage graphic to report on coverage changes over time.  All data were pre-processed and included in the package as the \code{\link{seagrass}} dataset.  Original data are from the Southwest Florida Water Management District and available online at \link{https://data-swfwmd.opendata.arcgis.com/}.  This function and the data used to create the plot are distinct from those used for the transect monitoring program.
+This function creates the flagship seagrass coverage graphic to report on coverage changes over time.  All data were pre-processed and included in the package as the \code{\link{seagrass}} dataset.  Original data are from the Southwest Florida Water Management District and available online at \link[https://data-swfwmd.opendata.arcgis.com/]{https://data-swfwmd.opendata.arcgis.com/}.  This function and the data used to create the plot are distinct from those used for the transect monitoring program.
 }
 \examples{
 show_seagrasscoverage(seagrass)

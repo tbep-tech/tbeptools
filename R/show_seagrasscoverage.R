@@ -6,7 +6,7 @@
 #' @param lastlab chr string of text to append to label in last bar of the barplot
 #' @param axsbrk numeric vector of length two indicating where the x-axis break occurs
 #'
-#' @details This function creates the flagship seagrass coverage graphic to report on coverage changes over time.  All data were pre-processed and included in the package as the \code{\link{seagrass}} dataset.  Original data are from the Southwest Florida Water Management District and available online at \link{https://data-swfwmd.opendata.arcgis.com/}.  This function and the data used to create the plot are distinct from those used for the transect monitoring program.
+#' @details This function creates the flagship seagrass coverage graphic to report on coverage changes over time.  All data were pre-processed and included in the package as the \code{\link{seagrass}} dataset.  Original data are from the Southwest Florida Water Management District and available online at \link[https://data-swfwmd.opendata.arcgis.com/]{https://data-swfwmd.opendata.arcgis.com/}.  This function and the data used to create the plot are distinct from those used for the transect monitoring program.
 #'
 #' @return A grid object showing acres of total seagrass coverage in Tampa Bay over time.
 #'
