@@ -5,6 +5,7 @@
 #' @param sedimentdata input sediment \code{data.frame} as returned by \code{\link{read_importsediment}}
 #' @param param chr string for which parameter to plot
 #' @param yrrng numeric vector indicating min, max years to include, use single year for one year of data
+#' @param funding_proj chr string for the funding project, one to many of "TBEP" (default), "TBEP-Special", "Apollo Beach", "Janicki Contract", "Rivers", "Tidal Streams"
 #' @param weight numeric for outline width of station points on the map
 #'
 #' @return A \code{\link[leaflet]{leaflet}} object
@@ -16,7 +17,7 @@
 #'
 #' @examples
 #' show_sedimentmap(sedimentdata, param = 'Arsenic')
-show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), weight = 1.5){
+show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), funding_proj = 'TBEP', weight = 1.5){
 
   # make yrrng two if only one year provided
   if(length(yrrng) == 1)
@@ -29,6 +30,13 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), weight 
   # yrrng not in sedimentdata
   if(any(!yrrng %in% sedimentdata$yr))
     stop(paste('Check yrrng is within', paste(range(sedimentdata$yr, na.rm = TRUE), collapse = '-')))
+
+  # check funding project
+  chk <- !funding_proj %in% c('TBEP', 'TBEP-Special', 'Apollo Beach', 'Janicki Contract', 'Rivers', 'Tidal Streams')
+  if(any(chk)){
+    msg <- funding_proj[chk]
+    stop('funding_proj input is incorrect: ', paste(msg, collapse = ', '))
+  }
 
   # check if param is in data
   params <- sedimentdata$Parameter %>%
@@ -59,7 +67,7 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), weight 
   tomap <- sedimentdata %>%
     dplyr::filter(Parameter %in% !!param) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    dplyr::filter(FundingProject %in% 'TBEP') %>%
+    dplyr::filter(FundingProject %in% funding_proj) %>%
     dplyr::filter(Replicate == 'no') %>%
     sf::st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326) %>%
     dplyr::select(yr, AreaAbbr, StationNumber, SedResultsType, Parameter, ValueAdjusted, Units,

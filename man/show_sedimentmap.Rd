@@ -4,7 +4,13 @@
 \alias{show_sedimentmap}
 \title{Make a map for sediment contaminants at stations in Tampa Bay}
 \usage{
-show_sedimentmap(sedimentdata, param, yrrng = c(1993, 2021), weight = 1.5)
+show_sedimentmap(
+  sedimentdata,
+  param,
+  yrrng = c(1993, 2021),
+  funding_proj = "TBEP",
+  weight = 1.5
+)
 }
 \arguments{
 \item{sedimentdata}{input sediment \code{data.frame} as returned by \code{\link{read_importsediment}}}
@@ -12,6 +18,8 @@ show_sedimentmap(sedimentdata, param, yrrng = c(1993, 2021), weight = 1.5)
 \item{param}{chr string for which parameter to plot}
 
 \item{yrrng}{numeric vector indicating min, max years to include, use single year for one year of data}
+
+\item{funding_proj}{chr string for the funding project, one to many of "TBEP" (default), "TBEP-Special", "Apollo Beach", "Janicki Contract", "Rivers", "Tidal Streams"}
 
 \item{weight}{numeric for outline width of station points on the map}
 }

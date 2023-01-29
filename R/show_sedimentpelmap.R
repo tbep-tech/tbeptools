@@ -2,8 +2,7 @@
 #'
 #' Make a map for sediment PEL ratios at stations in Tampa Bay
 #'
-#' @param sedimentdata input sediment \code{data.frame} as returned by \code{\link{read_importsediment}}
-#' @param yrrng numeric vector indicating min, max years to include, use single year for one year of data
+#' @inheritParams anlz_sedimentpel
 #' @param weight numeric for outline width of station points on the map
 #'
 #' @return A \code{\link[leaflet]{leaflet}} object
@@ -15,10 +14,10 @@
 #'
 #' @examples
 #' show_sedimentpelmap(sedimentdata)
-show_sedimentpelmap <- function(sedimentdata, yrrng = c(1993, 2021), weight = 1.5){
+show_sedimentpelmap <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = c('TBEP', 'TBEP-Special', 'Apollo Beach', 'Janicki Contract', 'Rivers', 'Tidal Streams'), weight = 1.5){
 
   # map prep
-  tomap <- anlz_sedimentpel(sedimentdata, yrrng = yrrng) %>%
+  tomap <- anlz_sedimentpel(sedimentdata, yrrng = yrrng, bay_segment = bay_segment, funding_proj = funding_proj) %>%
     sf::st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326)
 
   # for legend
