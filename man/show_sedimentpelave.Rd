@@ -8,6 +8,7 @@ show_sedimentpelave(
   sedimentdata,
   yrrng = c(1993, 2021),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
+  funding_proj = "TBEP",
   alph = 1,
   ylim = c(0, 0.4),
   lnsz = 1,
@@ -24,6 +25,8 @@ show_sedimentpelave(
 \item{yrrng}{numeric vector indicating min, max years to include, use single year for one year of data}
 
 \item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"}
+
+\item{funding_proj}{chr string for the funding project, one to many of "TBEP" (default), "TBEP-Special", "Apollo Beach", "Janicki Contract", "Rivers", "Tidal Streams"}
 
 \item{alph}{numeric indicating alpha value for score category colors}
 

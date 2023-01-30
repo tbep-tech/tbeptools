@@ -2,10 +2,7 @@
 #'
 #' Plot sediment concentration averages by bay segment
 #'
-#' @param sedimentdata input sediment \code{data.frame} as returned by \code{\link{read_importsediment}}
-#' @param param chr string for which parameter to plot
-#' @param yrrng numeric vector indicating min, max years to include, use single year for one year of data
-#' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
+#' @inheritParams anlz_sedimentave
 #' @param lnsz numeric for line size
 #' @param base_size numeric indicating text scaling size for plot
 #' @param plotly logical if matrix is created using plotly
@@ -23,9 +20,9 @@
 #'
 #' @examples
 #' show_sedimentave(sedimentdata, param = 'Arsenic')
-show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
+show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
 
-  toplo <- anlz_sedimentave(sedimentdata, param = param, yrrng = yrrng, bay_segment = bay_segment)
+  toplo <- anlz_sedimentave(sedimentdata, param = param, yrrng = yrrng, bay_segment = bay_segment, funding_proj = funding_proj)
 
   thm <- ggplot2::theme_bw(base_size = base_size) +
     ggplot2::theme(

@@ -8,8 +8,7 @@ show_sedimentpelmap(
   sedimentdata,
   yrrng = c(1993, 2021),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
-  funding_proj = c("TBEP", "TBEP-Special", "Apollo Beach", "Janicki Contract",
-    "Rivers", "Tidal Streams"),
+  funding_proj = "TBEP",
   weight = 1.5
 )
 }

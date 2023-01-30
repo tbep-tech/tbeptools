@@ -9,6 +9,7 @@ show_sedimentave(
   param,
   yrrng = c(1993, 2021),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
+  funding_proj = "TBEP",
   lnsz = 1,
   base_size = 12,
   plotly = FALSE,
@@ -25,6 +26,8 @@ show_sedimentave(
 \item{yrrng}{numeric vector indicating min, max years to include, use single year for one year of data}
 
 \item{bay_segment}{chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"}
+
+\item{funding_proj}{chr string for the funding project, one to many of "TBEP" (default), "TBEP-Special", "Apollo Beach", "Janicki Contract", "Rivers", "Tidal Streams"}
 
 \item{lnsz}{numeric for line size}
 
