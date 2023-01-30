@@ -15,11 +15,11 @@
 #'
 #' @examples
 #' anlz_sedimentpelave(sedimentdata)
-anlz_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')){
+anlz_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP'){
 
   levs <- c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')
 
-  out <- anlz_sedimentpel(sedimentdata, yrrng = yrrng, bay_segment = bay_segment) %>%
+  out <- anlz_sedimentpel(sedimentdata, yrrng = yrrng, bay_segment = bay_segment, funding_proj = funding_proj) %>%
     dplyr::group_by(AreaAbbr) %>%
     dplyr::summarize(
       ave = mean(PELRatio, na.rm = T),
