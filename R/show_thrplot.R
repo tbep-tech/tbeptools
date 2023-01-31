@@ -49,10 +49,8 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
 
   # axis label
   if(labelexp)
-    axlab <- dplyr::case_when(
-      thr == 'chla' ~ expression("Mean Ann. Chl-a ("~ mu * "g\u00B7L"^-1 *")"),
-      thr == 'la' ~ expression("Mean Ann. Light Att. (m  " ^-1 *")")
-    )
+    axlab <- ifelse(thr == 'chla', expression("Mean Ann. Chl-a ("~ mu * "g\u00B7L"^-1 *")"),
+                    ifelse(thr == 'la', expression("Mean Ann. Light Att. (m  " ^-1 *")"), NA))
   if(!labelexp)
     axlab <- dplyr::case_when(
       thr == 'chla' ~ "Mean Ann. Chl-a (ug/L)",
@@ -121,7 +119,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
   # all targets/thresholds
   if(!thrs)
     p <- p +
-      geom_hline(aes(yintercept = trgnum, colour = 'Management Target')) +
+      geom_hline(aes(yintercept = trgnum, colour = 'Management Target'), linetype = 'solid') +
       geom_hline(aes(yintercept = smlnum, colour = '+1 se (small exceedance)'), linetype = 'dashed') +
       geom_hline(aes(yintercept = thrnum, colour = '+2 se (large exceedance)'), linetype = 'dotted') +
       scale_colour_manual(values = cols, labels = factor(names(cols), levels = names(cols))) +
@@ -130,7 +128,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
           shape = c(19, NA, NA, NA),
           colour = cols,
           linetype = c('solid', 'solid', 'dashed', 'dotted'),
-          size = c(0.75, 0.5, 0.5, 0.5)
+          linewidth = c(0.75, 0.5, 0.5, 0.5)
           )
       ))
 
@@ -144,7 +142,7 @@ show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), th
           shape = c(19, NA),
           colour = cols[c(1, 4)],
           linetype = c('solid', 'dotted'),
-          size = c(0.75, 0.5)
+          linewidth = c(0.75, 0.5)
         )
       ))
 

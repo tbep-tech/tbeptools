@@ -92,10 +92,8 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
 
   # axis label
   if(labelexp)
-    axlab <- dplyr::case_when(
-      param == 'chla' ~ expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")"),
-      param == 'la' ~ expression("Mean Annual Light Attenuation (m  " ^-1 *")")
-    )
+    axlab <- ifelse(param == 'chla', expression("Mean Annual Chlorophyll-a ("~ mu * "g\u00B7L"^-1 *")"),
+                    ifelse(param == 'la', expression("Mean Annual Light Attenuation (m  " ^-1 *")"), NA))
   if(!labelexp)
     axlab <- dplyr::case_when(
       param == 'chla' ~ "Mean Annual Chlorophyll-a (ug/L)",
