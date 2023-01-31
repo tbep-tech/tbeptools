@@ -82,8 +82,8 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
 
     # legend label
     leglab <- dplyr::case_when(
-        param == 'chla' ~ expression("Chl-a ("~mu * "g\u00B7L"^-1 *")"),
-        param == 'la' ~ expression("Light Att. (m" ^-1 *")")
+        param == 'chla' ~ "Chl-a ~ (mu * g%.% L^-1)",
+        param == 'la' ~ "Light ~ Att. ~(m^-1)"
       )
 
   }
@@ -126,7 +126,7 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
 
       p <- p +
         geom_sf(data = tomap, aes(colour = met, fill = met), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
-        scale_fill_manual(leglab,  values = c('#2DC938', '#CC3231'), drop = F) +
+        scale_fill_manual(leglab, values = c('#2DC938', '#CC3231'), drop = F) +
         scale_colour_manual(leglab, values = c('#2DC938', '#CC3231'), drop = F) +
         theme(
           axis.title = element_blank(),
@@ -158,7 +158,7 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
 
       p <- p +
         geom_sf(data = tomap, aes(fill = val), colour = 'black', inherit.aes = F, size = 3, pch = 21) +
-        scale_fill_gradient(leglab, low = '#2DC938', high = '#CC3231') + #green, red
+        scale_fill_gradient(parse(text = leglab), low = '#2DC938', high = '#CC3231') + #green, red
         theme(
           axis.title = element_blank(),
           axis.text = element_text(size = 7),
