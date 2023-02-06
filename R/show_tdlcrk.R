@@ -31,18 +31,19 @@ show_tdlcrk <- function(dat, weight = 1.5) {
 
   sf::st_crs(tomap) <- 4326
 
-  out <- mapview::mapview(tomap, homebutton = F) %>%
+  bbx <- sf::st_bbox(tomap) %>%
+    as.numeric()
+
+  out <- mapview::mapview(map.types = mapview::mapviewGetOption("basemaps")) %>%
     .@map %>%
-    leaflet::clearMarkers() %>%
-    leaflet::clearShapes() %>%
-    leaflet::clearControls() %>%
     leaflet::addLegend(data = tomap, "topright", pal = pal_exp, values = ~score,
               title = "Creek scores",
               opacity = 1
     ) %>%
     leaflet::addPolylines(data = tomap, opacity = 1, weight = weight, color = ~pal_exp(score),
               layerId = ~id, label = ~paste0("WBID: ", wbid, ", JEI: ", JEI, ', Name: ', name, ', Creek score: ', score)
-    )
+    ) %>%
+    leaflet::fitBounds(lng1 = bbx[1], lng2 = bbx[3], lat1 = bbx[2], lat2 = bbx[4])
 
   return(out)
 
