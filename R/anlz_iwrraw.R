@@ -29,16 +29,12 @@ anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2021) {
     tidyr::unite('date', month, day, year, remove = F, sep = '-') %>%
     dplyr::select(wbid, class, JEI, year, date, masterCode, result,rCode,newComment) %>%
     dplyr::mutate(
-      masterCode = dplyr::case_when(
-        masterCode %in% c('NO3O2') ~ 'NO23',
-        T ~ masterCode
-      ),
+      masterCode = ifelse(masterCode %in% c('NO3O2'), 'NO23', masterCode),
 
     # Remove FDEP Qualifiers  mdl left at mdl
-      disqual = dplyr::case_when(
-        grepl('[VFNOYHJKQ?]', rCode) ~ 1),
-      disqual2 = dplyr::case_when(
-        grepl('[VFNOYHJKQ?]', newComment) ~ 1))%>%
+      disqual = ifelse(grepl('[VFNOYHJKQ?]', rCode), 1, NA_integer_),
+      disqual2 = ifelse(grepl('[VFNOYHJKQ?]', newComment), 1, NA_integer_)
+    ) %>%
     dplyr::filter(is.na(disqual) & is.na(disqual2))%>%
     dplyr::filter(result > 0)%>%
     mutate( result = log(result),

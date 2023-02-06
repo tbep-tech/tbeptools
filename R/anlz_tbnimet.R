@@ -23,8 +23,7 @@ anlz_tbnimet <- function(fimdata, all = FALSE){
     dplyr::select(Reference, NODCCODE) %>%
     dplyr::group_by(Reference) %>%
     dplyr::mutate(NumTaxa1 = dplyr::n_distinct(NODCCODE)) %>%
-    dplyr::mutate(NumTaxa = dplyr::case_when(NODCCODE == "9998000000" ~ 0,
-                               TRUE ~ as.numeric(NumTaxa1))) %>%
+    dplyr::mutate(NumTaxa = ifelse(NODCCODE == "9998000000", 0, as.numeric(NumTaxa1))) %>%
     dplyr::ungroup() %>%
     dplyr::select(-NODCCODE, -NumTaxa1) %>%
     dplyr::distinct() %>%
@@ -57,8 +56,12 @@ anlz_tbnimet <- function(fimdata, all = FALSE){
   # Calculate number of selected taxa per set
   TaxaSelect <- fimdata %>%
     dplyr::select(Reference, NODCCODE, Selected_Taxa) %>%
-    dplyr::mutate(Select = dplyr::case_when(Selected_Taxa == "Y" ~ 1,
-                              Selected_Taxa == "N" ~ 0)) %>%
+    dplyr::mutate(Select = ifelse(Selected_Taxa == "Y", 1,
+      ifelse(Selected_Taxa == "N", 0,
+        NA_integer_
+        )
+      )
+    ) %>%
     dplyr::distinct() %>%
     dplyr::group_by(Reference) %>%
     dplyr::summarize(TaxaSelect = sum(Select)) %>%
@@ -78,10 +81,16 @@ anlz_tbnimet <- function(fimdata, all = FALSE){
   outprp <- fimdata %>%
     dplyr::ungroup() %>%
     #apply the season - based on avearge water temperatures of FIM sampling sites
-    dplyr::mutate(Season = dplyr::case_when(Month %in% c(12, 1, 2, 3) ~ "Winter",
-                                            Month %in% c(4, 5) ~ "Spring",
-                                            Month %in% c(6, 7, 8, 9) ~ "Summer",
-                                            Month %in% c(10, 11) ~ "Fall")) %>%
+    dplyr::mutate(Season = ifelse(Month %in% c(12, 1, 2, 3), "Winter",
+      ifelse(Month %in% c(4, 5), "Spring",
+        ifelse(Month %in% c(6, 7, 8, 9), "Summer",
+          ifelse(Month %in% c(10, 11), "Fall",
+            NA_character_
+            )
+          )
+        )
+      )
+    ) %>%
     dplyr::select(Reference, Year, Month, Season, bay_segment) %>%
     dplyr::distinct() %>%
     dplyr::left_join(NumTaxa, by = "Reference") %>%
@@ -97,7 +106,7 @@ anlz_tbnimet <- function(fimdata, all = FALSE){
     BenthTax <- fimdata %>%
       dplyr::group_by(Reference) %>%
       dplyr::mutate(
-        BenthicTaxa = dplyr::case_when(Hab_Cat == "B" ~ 1, TRUE ~ 0)
+        BenthicTaxa = ifelse(Hab_Cat == "B", 1, 0)
       ) %>%
       dplyr::select(Reference, BenthicTaxa) %>%
       dplyr::summarise_all(sum)
@@ -105,11 +114,11 @@ anlz_tbnimet <- function(fimdata, all = FALSE){
     out <- outprp %>%
       dplyr::left_join(BenthTax, by = 'Reference') %>%
       dplyr::mutate(
-        NumTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ NumTaxa),
-        Shannon = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ Shannon),
-        TaxaSelect = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ TaxaSelect),
-        NumGuilds = dplyr::case_when(NumIndiv == as.numeric(0) ~ 0, TRUE ~ as.numeric(NumGuilds)),
-        BenthicTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ BenthicTaxa)
+        NumTaxa = ifelse(NumIndiv == 0, 0, NumTaxa),
+        Shannon = ifelse(NumIndiv == 0, 0, Shannon),
+        TaxaSelect = ifelse(NumIndiv == 0, 0, TaxaSelect),
+        NumGuilds = ifelse(NumIndiv == as.numeric(0), 0, as.numeric(NumGuilds)),
+        BenthicTaxa = ifelse(NumIndiv == 0, 0, BenthicTaxa)
       ) %>%
       dplyr::select(-Simpson, -Pielou, -NumIndiv)
 
@@ -122,13 +131,13 @@ anlz_tbnimet <- function(fimdata, all = FALSE){
     TaxaCountPrep <- fimdata %>%
       dplyr::group_by(Reference) %>%
       dplyr::mutate(
-        TSTaxa = dplyr::case_when(Feeding_Cat == "TS" ~ 1, TRUE ~ 0),
-        TGTaxa = dplyr::case_when(Feeding_Cat == "TG" ~ 1, TRUE ~ 0),
-        BenthicTaxa = dplyr::case_when(Hab_Cat == "B" ~ 1, TRUE ~ 0),
-        PelagicTaxa = dplyr::case_when(Hab_Cat == "P" ~ 1, TRUE ~ 0),
-        OblTaxa = dplyr::case_when(Est_Use == "O" ~ 1, TRUE ~ 0),
-        MSTaxa = dplyr::case_when(Est_Cat == "MS" ~ 1, TRUE ~ 0),
-        ESTaxa = dplyr::case_when(Est_Cat == "ES" ~ 1, TRUE ~ 0)
+        TSTaxa = ifelse(Feeding_Cat == "TS" , 1, 0),
+        TGTaxa = ifelse(Feeding_Cat == "TG", 1, 0),
+        BenthicTaxa = ifelse(Hab_Cat == "B", 1, 0),
+        PelagicTaxa = ifelse(Hab_Cat == "P", 1, 0),
+        OblTaxa = ifelse(Est_Use == "O", 1, 0),
+        MSTaxa = ifelse(Est_Cat == "MS", 1, 0),
+        ESTaxa = ifelse(Est_Cat == "ES", 1,  0)
       )
 
     taxa <- TaxaCountPrep %>%
@@ -201,37 +210,37 @@ anlz_tbnimet <- function(fimdata, all = FALSE){
              Num_LR = tidyr::replace_na(Num_LR, 0),
              PropSelect = tidyr::replace_na(PropSelect, 0)) %>%
       #set all metrics to zero if it's a no fish set
-      dplyr::mutate(NumTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ NumTaxa),
-             Shannon = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ Shannon),
-             Simpson = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ Simpson),
-             Pielou = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ Pielou),
-             TaxaSelect = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ TaxaSelect),
-             SelectIndiv = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ SelectIndiv),
-             NumGuilds = dplyr::case_when(NumIndiv == as.numeric(0) ~ 0, TRUE ~ as.numeric(NumGuilds)),
-             Taxa90 = dplyr::case_when(NumIndiv == as.numeric(0) ~ 0, TRUE ~ as.numeric(Taxa90)),
-             TSTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ TSTaxa),
-             TGTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ TGTaxa),
-             BenthicTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ BenthicTaxa),
-             PelagicTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PelagicTaxa),
-             OblTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ OblTaxa),
-             MSTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ MSTaxa),
-             ESTaxa = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ ESTaxa),
-             TSAbund = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ TSAbund),
-             TGAbund = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ TGAbund),
-             BenthicAbund = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ BenthicAbund),
-             PelagicAbund  = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PelagicAbund),
-             OblAbund = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ OblAbund),
-             ESAbund = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ ESAbund),
-             MSAbund = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ MSAbund),
-             Num_LR = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ Num_LR),
-             PropTG = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropTG),
-             PropTS = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropTS),
-             PropBenthic = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropBenthic),
-             PropPelagic = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropPelagic),
-             PropObl = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropObl),
-             PropMS = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropMS),
-             PropES = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropES),
-             PropSelect = dplyr::case_when(NumIndiv == 0 ~ 0, TRUE ~ PropSelect))
+      dplyr::mutate(NumTaxa = ifelse(NumIndiv == 0, 0, NumTaxa),
+             Shannon = ifelse(NumIndiv == 0, 0, Shannon),
+             Simpson = ifelse(NumIndiv == 0, 0, Simpson),
+             Pielou = ifelse(NumIndiv == 0, 0, Pielou),
+             TaxaSelect = ifelse(NumIndiv == 0, 0, TaxaSelect),
+             SelectIndiv = ifelse(NumIndiv == 0, 0, SelectIndiv),
+             NumGuilds = ifelse(NumIndiv == as.numeric(0), 0, as.numeric(NumGuilds)),
+             Taxa90 = ifelse(NumIndiv == as.numeric(0), 0, as.numeric(Taxa90)),
+             TSTaxa = ifelse(NumIndiv == 0, 0, TSTaxa),
+             TGTaxa = ifelse(NumIndiv == 0, 0, TGTaxa),
+             BenthicTaxa = ifelse(NumIndiv == 0, 0, BenthicTaxa),
+             PelagicTaxa = ifelse(NumIndiv == 0, 0, PelagicTaxa),
+             OblTaxa = ifelse(NumIndiv == 0, 0, OblTaxa),
+             MSTaxa = ifelse(NumIndiv == 0, 0, MSTaxa),
+             ESTaxa = ifelse(NumIndiv == 0, 0, ESTaxa),
+             TSAbund = ifelse(NumIndiv == 0, 0, TSAbund),
+             TGAbund = ifelse(NumIndiv == 0, 0, TGAbund),
+             BenthicAbund = ifelse(NumIndiv == 0, 0, BenthicAbund),
+             PelagicAbund  = ifelse(NumIndiv == 0, 0, PelagicAbund),
+             OblAbund = ifelse(NumIndiv == 0, 0, OblAbund),
+             ESAbund = ifelse(NumIndiv == 0, 0, ESAbund),
+             MSAbund = ifelse(NumIndiv == 0, 0, MSAbund),
+             Num_LR = ifelse(NumIndiv == 0, 0, Num_LR),
+             PropTG = ifelse(NumIndiv == 0, 0, PropTG),
+             PropTS = ifelse(NumIndiv == 0, 0, PropTS),
+             PropBenthic = ifelse(NumIndiv == 0, 0, PropBenthic),
+             PropPelagic = ifelse(NumIndiv == 0, 0, PropPelagic),
+             PropObl = ifelse(NumIndiv == 0, 0, PropObl),
+             PropMS = ifelse(NumIndiv == 0, 0, PropMS),
+             PropES = ifelse(NumIndiv == 0, 0, PropES),
+             PropSelect = ifelse(NumIndiv == 0, 0, PropSelect))
 
   }
 

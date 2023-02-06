@@ -27,21 +27,32 @@ anlz_tbniscr <- function(fimdata, raw = TRUE){
   out <- tbnimet %>%
     dplyr::select(Reference, Year, Month, Season, bay_segment, NumTaxa, BenthicTaxa, TaxaSelect, NumGuilds, Shannon) %>%
     dplyr::left_join(tbniref, by = c("bay_segment", "Season")) %>%
-    dplyr::mutate(ScoreNumTaxa = dplyr::case_when(NumTaxa == 0 ~ 0,
-                                    NumTaxa > NumTaxa_P95 ~ 10,
-                                    TRUE ~ ((NumTaxa-NumTaxa_P5)/(NumTaxa_P95-NumTaxa_P5))*10),
-           ScoreShannon = dplyr::case_when(NumTaxa == 0 ~ 0,
-                                    Shannon > Shannon_P95 ~ 10,
-                                    TRUE ~ ((Shannon-Shannon_P5)/(Shannon_P95-Shannon_P5))*10),
-           ScoreTaxaSelect = dplyr::case_when(NumTaxa == 0 ~ 0,
-                                       TaxaSelect > TaxaSelect_P95 ~ 10,
-                                       TRUE ~ ((TaxaSelect-TaxaSelect_P5)/(TaxaSelect_P95-TaxaSelect_P5))*10),
-           ScoreBenthicTaxa = dplyr::case_when(NumTaxa == 0 ~ 0,
-                                        BenthicTaxa > BenthicTaxa_P95 ~ 10,
-                                        TRUE ~ ((BenthicTaxa-BenthicTaxa_P5)/(BenthicTaxa_P95-BenthicTaxa_P5))*10),
-           ScoreNumGuilds = dplyr::case_when(NumTaxa == 0 ~ 0,
-                                      NumGuilds > NumGuilds_P95 ~ 10,
-                                      TRUE ~ ((NumGuilds-NumGuilds_P5)/(NumGuilds_P95-NumGuilds_P5))*10)) %>%
+    dplyr::mutate(ScoreNumTaxa = ifelse(NumTaxa == 0, 0,
+      ifelse(NumTaxa > NumTaxa_P95, 10,
+        ((NumTaxa-NumTaxa_P5)/(NumTaxa_P95-NumTaxa_P5))*10
+        )
+      ),
+          ScoreShannon = ifelse(NumTaxa == 0, 0,
+            ifelse(Shannon > Shannon_P95, 10,
+              ((Shannon-Shannon_P5)/(Shannon_P95-Shannon_P5))*10
+              )
+            ),
+          ScoreTaxaSelect = ifelse(NumTaxa == 0, 0,
+            ifelse(TaxaSelect > TaxaSelect_P95, 10,
+              ((TaxaSelect-TaxaSelect_P5)/(TaxaSelect_P95-TaxaSelect_P5))*10
+              )
+            ),
+          ScoreBenthicTaxa = ifelse(NumTaxa == 0, 0,
+            ifelse(BenthicTaxa > BenthicTaxa_P95, 10,
+              ((BenthicTaxa-BenthicTaxa_P5)/(BenthicTaxa_P95-BenthicTaxa_P5))*10
+              )
+            ),
+          ScoreNumGuilds = ifelse(NumTaxa == 0, 0,
+            ifelse(NumGuilds > NumGuilds_P95, 10,
+              ((NumGuilds-NumGuilds_P5)/(NumGuilds_P95-NumGuilds_P5))*10
+              )
+            )
+      ) %>%
     dplyr::mutate(
       ScoreBenthicTaxa = replace(ScoreBenthicTaxa, ScoreBenthicTaxa <0, 0),
       ScoreNumTaxa = round(ScoreNumTaxa),

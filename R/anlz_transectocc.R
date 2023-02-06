@@ -25,11 +25,12 @@ anlz_transectocc <- function(transect){
   datcmp <- transect %>%
     dplyr::filter(var %in% 'Abundance') %>%
     dplyr::mutate(
-      Savspecies = dplyr::case_when(
-        grepl('Caulerpa', Savspecies) ~ 'Caulerpa',
-        grepl('^AA', Savspecies) ~ 'AA',
-        grepl('^DA', Savspecies) ~ 'DA',
-        T ~ Savspecies
+      Savspecies = ifelse(grepl('Caulerpa', Savspecies), 'Caulerpa',
+        ifelse(grepl('^AA', Savspecies), 'AA',
+          ifelse(grepl('^DA', Savspecies), 'DA',
+            Savspecies
+          )
+        )
       )
     ) %>%
     dplyr::select(Date, Transect, Site, Savspecies, bb = aveval) %>%
@@ -42,14 +43,8 @@ anlz_transectocc <- function(transect){
   datcmp <- datcmp %>%
     dplyr::group_by(Transect, Date, Site) %>%
     dplyr::mutate(
-      bb = dplyr::case_when(
-        Savspecies == 'No Cover' ~ 0,
-        T ~ bb
-      ),
-      bb = dplyr::case_when(
-        sum(bb[!Savspecies %in% 'No Cover']) == 0 & Savspecies == 'No Cover' ~ 5,
-        T ~ bb
-      )
+      bb = ifelse(Savspecies == 'No Cover', 0, bb),
+      bb = ifelse(sum(bb[!Savspecies %in% 'No Cover']) == 0 & Savspecies == 'No Cover', 5, bb)
     )
 
   # # get avg placements across dates by transect

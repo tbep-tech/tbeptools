@@ -56,26 +56,35 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2021) {
     sf::st_set_geometry(NULL) %>%
     dplyr::left_join(iwrdat, by = c('wbid', 'JEI', 'class')) %>%
     dplyr::mutate(
-      tn_pri = dplyr::case_when(
-        !is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI) ~ wcpri,
-        !is.na(Creek_Length_m) & grepl('^PC|^LC', JEI) ~ pepri
+      tn_pri = ifelse(!is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI), wcpri,
+        ifelse(!is.na(Creek_Length_m) & grepl('^PC|^LC', JEI), pepri,
+          NA_real_
+        )
       ),
-      investigate = dplyr::case_when(
-        !is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI) ~ wcinv,
-        !is.na(Creek_Length_m) & grepl('^PC|^LC', JEI) ~ peinv
+      investigate = ifelse(!is.na(Creek_Length_m) & !grepl('^PC|^LC', JEI), wcinv,
+        ifelse(!is.na(Creek_Length_m) & grepl('^PC|^LC', JEI), peinv,
+          NA_real_
+        )
       ),
-      caution = dplyr::case_when(
-        class %in% c('3M', '2') & tn_pri == wcpri ~ eval(parse(text = wccau)),
-        class %in% c('3M', '2') & tn_pri == pepri ~ eval(parse(text = pecau))
+      caution = ifelse(class %in% c('3M', '2') & tn_pri == wcpri, eval(parse(text = wccau)),
+        ifelse(class %in% c('3M', '2') & tn_pri == pepri, eval(parse(text = pecau)),
+          NA_real_
+        )
       ),
-      grade = dplyr::case_when(
-        class %in% c('3F', '1') & TN > tn_pri ~ 4,
-        class %in% c('3F', '1') & TN <= tn_pri & investigate <= TN ~ 3,
-        class %in% c('3F', '1') & TN < investigate ~ 1,
-        class %in% c('3M', '2') & TN < caution ~ 1,
-        class %in% c('3M', '2') & caution <= TN & TN <= investigate ~ 2,
-        class %in% c('3M', '2') & investigate <= TN & TN <= tn_pri ~ 3,
-        class %in% c('3M', '2') & TN > tn_pri ~ 4
+      grade = ifelse(class %in% c('3F', '1') & TN > tn_pri, 4,
+        ifelse(class %in% c('3F', '1') & TN <= tn_pri & investigate <= TN, 3,
+          ifelse(class %in% c('3F', '1') & TN < investigate, 1,
+            ifelse(class %in% c('3M', '2') & TN < caution, 1,
+              ifelse(class %in% c('3M', '2') & caution <= TN & TN <= investigate, 2,
+                ifelse(class %in% c('3M', '2') & investigate <= TN & TN <= tn_pri, 3,
+                  ifelse(class %in% c('3M', '2') & TN > tn_pri, 4,
+                    NA_integer_
+                  )
+                )
+              )
+            )
+          )
+        )
       )
     ) %>%
     dplyr::group_by(id, wbid, JEI, name, class, grade) %>%
@@ -87,29 +96,28 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2021) {
   scrdat <- alldat %>%
     dplyr::rowwise() %>%
     dplyr::mutate(
-      score = dplyr::case_when(
-        !is.na(`4`) & `4` > 0 ~ 'Prioritize',
-        !is.na(`3`) & `3` > 0 ~ 'Investigate',
-        !is.na(`2`) & `2` > 2 ~ 'Caution',
-        is.na(`1`) & is.na(`2`) & is.na(`3`) & is.na(`4`) ~ 'No Data',
-        T ~ 'Monitor'
+      score = ifelse(!is.na(`4`) & `4` > 0, 'Prioritize',
+        ifelse(!is.na(`3`) & `3` > 0, 'Investigate',
+          ifelse(!is.na(`2`) & `2` > 2, 'Caution',
+            ifelse(is.na(`1`) & is.na(`2`) & is.na(`3`) & is.na(`4`), 'No Data',
+              'Monitor'
+            )
+          )
+        )
       ),
-      score = dplyr::case_when(
-        score == 'Prioritize' & class %in% c('3F', '1') & `4` == 1 & `3` > 1 ~ 'Investigate',
-        score == 'Prioritize' & class %in% c('3F', '1') & `4` == 1 & `1` > 3 ~ 'Monitor',
-        T ~ score
+      score = ifelse(score == 'Prioritize' & class %in% c('3F', '1') & `4` == 1 & `3` > 1, 'Investigate',
+        ifelse(score == 'Prioritize' & class %in% c('3F', '1') & `4` == 1 & `1` > 3, 'Monitor',
+          score
+        )
       ),
-      score = dplyr::case_when(
-        score == 'Investigate' & class %in% c('3F', '1') & `3` == 1 & `1` > 3 ~ 'Monitor',
-        T ~ score
+      score = ifelse(score == 'Investigate' & class %in% c('3F', '1') & `3` == 1 & `1` > 3, 'Monitor',
+        score
       ),
-      score = dplyr::case_when(
-        (score == 'Prioritize' & class %in% c('3M', '2')) & (`4` == 1 & sum(`1`, `2`, `3`, na.rm = T) > 2) ~ 'Investigate',
-        T ~ score
+      score = ifelse((score == 'Prioritize' & class %in% c('3M', '2')) & (`4` == 1 & sum(`1`, `2`, `3`, na.rm = T) > 2), 'Investigate',
+        score
       ),
-      score = dplyr::case_when(
-        (score == 'Investigate' & class %in% c('3M', '2') & (`4` < 1 | is.na(`4`))) & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 2) ~ 'Caution',
-        T ~ score
+      score = ifelse((score == 'Investigate' & class %in% c('3M', '2') & (`4` < 1 | is.na(`4`))) & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 2), 'Caution',
+        score
       )
     ) %>%
     tidyr::as_tibble() %>%
