@@ -89,17 +89,17 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2021) {
     ) %>%
     dplyr::group_by(id, wbid, JEI, name, class, grade) %>%
     dplyr::summarise(cnt = n()) %>%
-    tidyr::spread(grade, cnt) %>%
+    tidyr::spread(grade, cnt, fill = 0) %>%
     dplyr::select(-`<NA>`)
 
   # assign categories based on grades
   scrdat <- alldat %>%
     dplyr::rowwise() %>%
     dplyr::mutate(
-      score = ifelse(!is.na(`4`) & `4` > 0, 'Prioritize',
-        ifelse(!is.na(`3`) & `3` > 0, 'Investigate',
-          ifelse(!is.na(`2`) & `2` > 2, 'Caution',
-            ifelse(is.na(`1`) & is.na(`2`) & is.na(`3`) & is.na(`4`), 'No Data',
+      score = ifelse(`4` > 0, 'Prioritize',
+        ifelse(`3` > 0, 'Investigate',
+          ifelse(`2` > 2, 'Caution',
+            ifelse(`1` == 0 & `2` == 0 & `3` == 0 & `4` == 0, 'No Data',
               'Monitor'
             )
           )
@@ -119,6 +119,13 @@ anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2021) {
       score = ifelse((score == 'Investigate' & class %in% c('3M', '2') & (`4` < 1 | is.na(`4`))) & (`3` == 1 & sum(`1`, `2`, na.rm = T) > 2), 'Caution',
         score
       )
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(
+      `1` = ifelse(`1` == 0, NA, `1`),
+      `2` = ifelse(`2` == 0, NA, `2`),
+      `3` = ifelse(`3` == 0, NA, `3`),
+      `4` = ifelse(`4` == 0, NA, `4`),
     ) %>%
     tidyr::as_tibble() %>%
     dplyr::select(id, wbid, JEI, name, class, monitor = `1`, caution = `2`, investigate = `3`, prioritize = `4`, score)
