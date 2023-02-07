@@ -36,6 +36,6 @@ A static \code{ggplot} object is returned
 Map site attainment categories for a selected year
 }
 \examples{
-show_sitemap(epcdata, yrsel = 2021)
+show_sitemap(epcdata, yrsel = 2022)
 }
 \concept{show}

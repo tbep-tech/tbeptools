@@ -8,7 +8,7 @@ show_boxplot(
   epcdata,
   param = c("chla", "la"),
   yrsel = NULL,
-  yrrng = c(1975, 2021),
+  yrrng = c(1975, 2022),
   ptsz = 0.5,
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   trgs = NULL,

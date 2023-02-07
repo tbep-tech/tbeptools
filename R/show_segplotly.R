@@ -18,7 +18,7 @@
 #'
 #' @examples
 #' show_segplotly(epcdata)
-show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), yrrng = c(1975, 2021), family = NULL, partialyr = FALSE,
+show_segplotly <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), yrrng = c(1975, 2022), family = NULL, partialyr = FALSE,
                            width = NULL, height = NULL){
 
   bay_segment <- match.arg(bay_segment)
