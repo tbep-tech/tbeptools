@@ -1,8 +1,8 @@
-#' All bay data as of 12132022
+#' All bay data as of 20230206
 #'
-#' All bay data as of 12132022
+#' All bay data as of 20230206
 #'
-#' @format A data frame with 27331 rows and 26 variables:
+#' @format A data frame with 27286 rows and 26 variables:
 #' \describe{
 #'   \item{bay_segment}{chr}
 #'   \item{epchc_station}{num}
