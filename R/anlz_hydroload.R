@@ -127,7 +127,11 @@ anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
       `Adjusted?` = adj,
       `Compliance Load Adjustment Factor` = factor,
       `Compliance Load` = compload
-    )
+    ) %>%
+    dplyr::mutate(
+      `Bay Segment` = factor(`Bay Segment`, levels = c('Old Tampa Bay', 'Hillsborough Bay', 'Middle Tampa Bay', 'Lower Tampa Bay'))
+    ) %>%
+    dplyr::arrange(Year, `Bay Segment`)
 
   return(out)
 
