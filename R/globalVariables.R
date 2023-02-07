@@ -38,7 +38,21 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   'DOSAT_prop', 'ch_tn_rat_ind', 'chla_ind', 'do_bnml', 'do_cnt', 'do_prop', 'fo', 'nox_ind',
                   'sta', 'tn_ind', 'tsi_ind', 'xcd', 'AssessmentYear', 'disqual', 'disqual2', 'newComment',
                   'rCode', 'Grid', 'COLONIAL.PLANKTONIC.', "Color345_F45", "Color345_F45Q", "ProgramId",
-                  "Turbidity", "TurbidityQ", "grpact"))
+                  "Turbidity", "TurbidityQ", "grpact",
+                  "Acres", "AnalysisTypeAbbr", "AreaName", "BenthicTaxa_P5", "BenthicTaxa_P95",
+                  "BetweenTELPEL", "CASNumber", "Category", "DOHCertification", "DataSource",
+                  "Est_Cat", "Est_Use", "ExceedsPEL", "Feeding_Cat", "Goal", "Goal2050",
+                  "HMPU_TARGETS", "Hab_Cat", "Hexagon", "LabIdNumber", "LaboratoryAbbr", "MDLCode",
+                  "MDLText", "MethodTypeAbbr", "NELACNumber", "NumGuilds_P5", "NumGuilds_P95",
+                  "NumTaxa_P5", "NumTaxa_P95", "PEL","PELRatio", "PQLText", "Parameter",
+                  "ParameterID", "PrepMethod", "PropBenthic", "PropES", "PropMS", "PropObl",
+                  "PropPelagic", "PropTG", "PropTS", "Qualifier", "Replicate", "ResultComments",
+                  "SedResultsType", "Shannon_P5", "Shannon_P95", "TEL", "Target", "Target2030",
+                  "Taxa90", "TaxaSelect_P5", "TaxaSelect_P95", "TempWater-M", "ValueAdjusted",
+                  "ValueNum", "ValueText", "WQMQCSignOff", "acresdiff", "ave", "category",
+                  "changerate", "fillv", "goaleval", "goalprop", "grandave", "hiv", "ind",
+                  "lacres", "lov", "lyr", "metric", "targeteval", "targetprop", "textv", "tn_pri",
+                  "yeardiff"))
 
 #' @importFrom grDevices rgb
 NULL
