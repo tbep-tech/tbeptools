@@ -96,10 +96,12 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), funding
     # subset data
     tomap <- tomap %>%
       dplyr::mutate(
-        score = dplyr::case_when(
-          BetweenTELPEL == 'No' & ExceedsPEL == 'No' ~ levs[1],
-          BetweenTELPEL == 'Yes' ~ levs[2],
-          ExceedsPEL == 'Yes' ~ levs[3]
+        score = ifelse(BetweenTELPEL == 'No' & ExceedsPEL == 'No', levs[1],
+          ifelse(BetweenTELPEL == 'Yes', levs[2],
+            ifelse(ExceedsPEL == 'Yes', levs[3],
+              NA_character_
+            )
+          )
         ),
         score = factor(score, levels = levs)
       ) %>%
