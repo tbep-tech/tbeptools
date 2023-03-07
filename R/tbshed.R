@@ -8,5 +8,13 @@
 #'
 #' @examples
 #' library(sf)
+#' \dontrun{
+#' library(dplyr)
+#' tbshed <- st_read('T:/05_GIS/BOUNDARIES/TBEP_Watershed_Correct_Projection.shp') %>%
+#'   select(-Id, -Name, -Area_m, -Hectares) %>%
+#'   st_transform(crs = 4326)
+#'
+#' save(tbshed, file = 'data/tbshed.RData', compress = 'xz')
+#' }
 #' plot(st_geometry(tbshed))
 "tbshed"
