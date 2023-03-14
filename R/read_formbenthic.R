@@ -75,7 +75,7 @@ read_formbenthic <- function(pathin){
 
   # subset columns from relevant tables
   stations <- Stations %>%
-    dplyr::select(StationID, AreaID, Latitude, Longitude) %>%
+    dplyr::select(StationID, StationNumber, AreaID, Latitude, Longitude) %>%
     dplyr::filter(!Longitude %in% 'NULL') %>%
     dplyr::mutate(
       Longitude = as.numeric(Longitude),
@@ -110,7 +110,7 @@ read_formbenthic <- function(pathin){
       date = as.Date(SampleTime),
       yr = lubridate::year(date)
     ) %>%
-    dplyr::select(StationID, AreaAbbr, FundingProject, ProgramID, ProgramName, Latitude, Longitude, date, yr)
+    dplyr::select(StationID, StationNumber, AreaAbbr, FundingProject, ProgramID, ProgramName, Latitude, Longitude, date, yr)
 
   # field samples -----------------------------------------------------------
 
