@@ -16,7 +16,7 @@
 #'
 #' @details See details in \code{\link{anlz_tdlcrkindic}} for an explanation of the indicators
 #'
-#' Internal code borrowed heavily from \code{\link[fmsb]{radarchart}}.
+#' Internal code borrowed heavily from the radarchart function in the fmsb package.
 #'
 #' @concept show
 #'

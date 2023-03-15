@@ -19,7 +19,9 @@
 #' path <- '~/Desktop/sediment.zip'
 #'
 #' # download
-#' urlin <- 'https://epcbocc.sharepoint.com/:u:/s/Share/Ef9utuKCHD9LliarsOPKCJwB5kxgCObf0tY5x5wX20JQUA?e=DuTseb&download=1'
+#' urlin1 <- 'https://epcbocc.sharepoint.com/:x:/s/Share/'
+#' urlin2 <- 'Ef9utuKCHD9LliarsOPKCJwB5kxgCObf0tY5x5wX20JQUA?e=DuTseb'
+#' urlin <- paste0(urlin1, urlin2, '&download=1')
 #' read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 #'
 #' # unzip

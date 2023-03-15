@@ -16,7 +16,9 @@
 #' @examples
 #' \dontrun{
 #' locin <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
-#' urlin <- 'https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&download=1'
+#' urlin1 <- 'https://epcbocc.sharepoint.com/:x:/s/Share/'
+#' urlin2 <- 'EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL'
+#' urlin <- paste0(urlin1, urlin2, '&download=1')
 #' read_dlcurrent(locin = locin, urlin = urlin)
 #' }
 read_dlcurrent <- function(locin, download_latest = TRUE, urlin){

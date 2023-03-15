@@ -38,7 +38,7 @@ Radar plots for tidal creek indicators
 \details{
 See details in \code{\link{anlz_tdlcrkindic}} for an explanation of the indicators
 
-Internal code borrowed heavily from \code{\link[fmsb]{radarchart}}.
+Internal code borrowed heavily from the radarchart function in the fmsb package.
 }
 \examples{
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = TRUE)
