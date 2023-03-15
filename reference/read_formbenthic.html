@@ -87,7 +87,9 @@
 <span class="r-in"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">'~/Desktop/benthic.zip'</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># download</span></span></span>
-<span class="r-in"><span><span class="va">urlin</span> <span class="op">&lt;-</span> <span class="st">'https://epcbocc.sharepoint.com/:u:/s/Share/EQUCWBuwCNdGuMREYAyAD1gBKC98mYtCHMWX0FYLrbT4KA?e=nDfnnQ&amp;download=1'</span></span></span>
+<span class="r-in"><span><span class="va">urlin1</span> <span class="op">&lt;-</span> <span class="st">'https://epcbocc.sharepoint.com/:x:/s/Share/'</span></span></span>
+<span class="r-in"><span><span class="va">urlin2</span> <span class="op">&lt;-</span> <span class="st">'EQUCWBuwCNdGuMREYAyAD1gBKC98mYtCHMWX0FYLrbT4KA?e=nDfnnQ'</span></span></span>
+<span class="r-in"><span><span class="va">urlin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">urlin1</span>, <span class="va">urlin2</span>, <span class="st">'&amp;download=1'</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="read_dlcurrent.html">read_dlcurrent</a></span><span class="op">(</span><span class="va">path</span>, download_latest <span class="op">=</span> <span class="cn">TRUE</span>, urlin <span class="op">=</span> <span class="va">urlin</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># unzip</span></span></span>

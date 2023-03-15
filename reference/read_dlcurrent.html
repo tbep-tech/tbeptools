@@ -91,7 +91,9 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">locin</span> <span class="op">&lt;-</span> <span class="st">'~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'</span></span></span>
-<span class="r-in"><span><span class="va">urlin</span> <span class="op">&lt;-</span> <span class="st">'https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&amp;download=1'</span></span></span>
+<span class="r-in"><span><span class="va">urlin1</span> <span class="op">&lt;-</span> <span class="st">'https://epcbocc.sharepoint.com/:x:/s/Share/'</span></span></span>
+<span class="r-in"><span><span class="va">urlin2</span> <span class="op">&lt;-</span> <span class="st">'EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL'</span></span></span>
+<span class="r-in"><span><span class="va">urlin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">urlin1</span>, <span class="va">urlin2</span>, <span class="st">'&amp;download=1'</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">read_dlcurrent</span><span class="op">(</span>locin <span class="op">=</span> <span class="va">locin</span>, urlin <span class="op">=</span> <span class="va">urlin</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
