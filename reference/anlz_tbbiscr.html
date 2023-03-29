@@ -83,22 +83,22 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">anlz_tbbiscr</span><span class="op">(</span><span class="va">benthicdata</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4,723 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    StationID Statio…¹ AreaA…² Fundi…³ Progr…⁴ Progr…⁵ Latit…⁶ Longi…⁷ date      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>       448 02BBs301 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>       449 02BBs305 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>       450 02BBs307 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>       451 02BBs364 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>       452 02BBs369 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>       453 02BBs395 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>       454 02BBs397 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>       455 02BBs398 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>       456 02BBs401 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>       457 02BBs402 MTB     Apollo…       4 Benthi…    27.8   -<span style="color: #BB0000;">82.4</span> 2002-05-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 4,713 more rows, 6 more variables: yr &lt;dbl&gt;, TotalAbundance &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   SpeciesRichness &lt;dbl&gt;, TBBI &lt;dbl&gt;, TBBICat &lt;chr&gt;, Salinity &lt;dbl&gt;, and</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​StationNumber, ²​AreaAbbr, ³​FundingProject,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​ProgramID, ⁵​ProgramName, ⁶​Latitude, ⁷​Longitude</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    StationID StationNumber AreaAbbr FundingProject ProgramID ProgramName       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>       448 02BBs301      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>       449 02BBs305      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>       450 02BBs307      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>       451 02BBs364      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>       452 02BBs369      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>       453 02BBs395      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>       454 02BBs397      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>       455 02BBs398      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>       456 02BBs401      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>       457 02BBs402      MTB      Apollo Beach           4 Benthic Monitoring</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4,713 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 more variables: Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;, date &lt;date&gt;, yr &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   TotalAbundance &lt;dbl&gt;, SpeciesRichness &lt;dbl&gt;, TBBI &lt;dbl&gt;, TBBICat &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Salinity &lt;dbl&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
