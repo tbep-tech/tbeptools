@@ -1,8 +1,10 @@
-#' FDEP IWR run 61
+#' FDEP IWR run 64
 #'
-#' Florida Department of Environmental Protection, Impaired Waters Rule, Run 61
+#' Florida Department of Environmental Protection, Impaired Waters Rule, Run 64
 #'
-#' @format A data frame 405682 rows and 15 variables
+#' @format A data frame 189713 rows and 11 variables
+#'
+#' @details File was created using workflow at <https://tbep-tech.github.io/tidalcreek-stats/Creek_select_tbeptools>, example below is old and for Run 61.
 #'
 #' @concept data
 #'

@@ -18,7 +18,7 @@ A \code{\link[leaflet]{leaflet}} object
 Make a map for tidal creek report card
 }
 \examples{
-dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2021)
+dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2022)
 show_tdlcrk(dat)
 }
 \concept{show}

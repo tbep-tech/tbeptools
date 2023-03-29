@@ -41,7 +41,10 @@ See details in \code{\link{anlz_tdlcrkindic}} for an explanation of the indicato
 Internal code borrowed heavily from the radarchart function in the fmsb package.
 }
 \examples{
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = TRUE)
-show_tdlcrkradar(495, cntdat)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022, radar = TRUE)
+
+set.seed(123)
+id <- sample(unique(cntdat$id), 1)
+show_tdlcrkradar(id, cntdat)
 }
 \concept{show}

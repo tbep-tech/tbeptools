@@ -7,7 +7,7 @@
 show_tdlcrkindic(
   id,
   cntdat,
-  yr = 2021,
+  yr = 2022,
   thrsel = FALSE,
   pal = c("#5C4A42", "#427355", "#004F7E")
 )
@@ -30,7 +30,10 @@ A plotly object
 Plotly barplots of tidal creek context indicators
 }
 \examples{
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021)
-show_tdlcrkindic(495, cntdat, thrsel = TRUE)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022)
+
+set.seed(123)
+id <- sample(unique(cntdat$id), 1)
+show_tdlcrkindic(id, cntdat, thrsel = TRUE)
 }
 \concept{show}

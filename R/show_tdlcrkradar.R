@@ -21,8 +21,11 @@
 #' @concept show
 #'
 #' @examples
-#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = TRUE)
-#' show_tdlcrkradar(495, cntdat)
+#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022, radar = TRUE)
+#'
+#' set.seed(123)
+#' id <- sample(unique(cntdat$id), 1)
+#' show_tdlcrkradar(id, cntdat)
 show_tdlcrkradar <- function (id, cntdat, col = '#338080E6', ptsz = 1, lbsz = 0.8, valsz = 1, brdwd = 5){
 
   axistype <- 3

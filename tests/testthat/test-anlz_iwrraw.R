@@ -1,6 +1,6 @@
 test_that("Checking correct parameter codes in anlz_iwrraw", {
 
-  result <- anlz_iwrraw(iwrraw, tidalcreeks, yr = 2021) %>%
+  result <- anlz_iwrraw(iwrraw, tidalcreeks, yr = 2022) %>%
     pull(masterCode) %>%
     unique
 

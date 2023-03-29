@@ -14,8 +14,8 @@
 #' @concept analyze
 #'
 #' @examples
-#' anlz_iwrraw(iwrraw, tidalcreeks, yr = 2021)
-anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2021) {
+#' anlz_iwrraw(iwrraw, tidalcreeks, yr = 2022)
+anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2022) {
 
   mcodes <- c("CHLAC","COLOR","COND","DO","DOSAT","NO3O2","ORGN","SALIN","TKN","TN","TP","TSS","TURB")
 

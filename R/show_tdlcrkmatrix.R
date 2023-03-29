@@ -20,7 +20,7 @@
 #' @import patchwork
 #'
 #' @examples
-#' dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2021)
+#' dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2022)
 #' show_tdlcrkmatrix(dat)
 show_tdlcrkmatrix <- function(dat, class = c('3M', '2'), score = c('Prioritize', 'Investigate', 'Caution', 'Monitor'), family = NA, size = 11){
 

@@ -4,7 +4,7 @@
 \alias{anlz_tdlcrkindic}
 \title{Analyze tidal creek water quality indicators}
 \usage{
-anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = FALSE)
+anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022, radar = FALSE)
 }
 \arguments{
 \item{tidalcreeks}{\code{\link[sf]{sf}} object for population of tidal creeks}
@@ -31,7 +31,7 @@ Indicators for years where more than 10\% of observations exceed DO saturation c
 If \code{radar = TRUE}, output is returned in a format for use with \code{\link{show_tdlcrkradar}}  Specifically, results are calculated as the percentage of years where an indicator exceeds a relevant threshold.  This only applies to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M).  Six indicators are returned with percentage exceedances based on total nitrogen (\code{tn_ind}) greater than 1.1 mg/L, chlorophyll (\code{chla_ind}) greater than 11 ug/L, trophic state index (\code{tsi_ind}) greater than 55 (out of 100), nitrate/nitrite ratio between marine and upstream segments (\code{nox_ind}) greater than one, chlorophyll and total nitrogen ratios > 15, and percentage of years more where than ten percent of observations were below DO percent saturation of 42.
 }
 \examples{
-dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021)
+dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022)
 head(dat)
 }
 \concept{analyze}

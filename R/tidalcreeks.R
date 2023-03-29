@@ -1,8 +1,8 @@
-#' Spatial data object of tidal creeks
+#' Spatial data object of tidal creeks in Impaired Waters Rule, Run 64
 #'
-#' Spatial data object of tidal creeks
+#' Spatial data object of tidal creeks in Impaired Waters Rule, Run 64
 #'
-#' @format A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 609 features and 6 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+#' @format A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 615 features and  fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 #' \describe{
 #'   \item{id}{num}
 #'   \item{wbid}{chr}
@@ -13,6 +13,8 @@
 #' }
 #'
 #' @concept data
+#'
+#' @details File was created using workflow at <https://tbep-tech.github.io/tidalcreek-stats/Creek_select_tbeptools>, example below is old and for Run 61.
 #'
 #' @examples
 #' \dontrun{

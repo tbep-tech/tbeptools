@@ -48,7 +48,7 @@ The tbeptools package includes a [simple features](https://r-spatial.github.io/s
 mapview(tidalcreeks, homebutton = F, legend = F)
 ```
 
-The tidal creek assessment framework was established based on data from the FDEP [Impaired Waters Rule](https://www.flrules.org/gateway/ChapterHome.asp?Chapter=62-303) database run 56 available [here](http://publicfiles.dep.state.fl.us/DEAR/IWR/) which includes data collected through January 10th 2019. However, the this framework intends to link to future IWR databases to refresh the site with new data as it becomes available.  Raw data from the IWR database required for assessment is provided in the tbeptools package in the `iwrraw()` data object.  
+The tidal creek assessment framework was established based on data from the FDEP [Impaired Waters Rule](https://www.flrules.org/gateway/ChapterHome.asp?Chapter=62-303) database run 56 available [here](http://publicfiles.dep.state.fl.us/DEAR/IWR/) which includes data collected through January 10th 2019. However, the this framework intends to link to future IWR databases to refresh the site with new data as it becomes available.  Raw and updated data from the IWR database required for assessment is provided in the tbeptools package in the `iwrraw()` data object.  
 
 ## Assessment
 
@@ -93,7 +93,7 @@ results <- anlz_tdlcrk(tidalcreeks, iwrraw)
 results
 ```
 
-The results include a unique creek identifier (`id`, based on the `wbid` and `JEI` fields), the waterbody id (`wbid`), the creek ID (`JEI`), the FDEP class (`class`), and results from the assessment in the remaining columns.  The columns `monitor`, `caution`, `investigate`, and `prioritize` indicate the number of years from 2011 to 2021 that the nitrogen values were within the ranges appropriate for the creek type as specified within `tidaltargets()`.  The `score` column indicates the overall category assigned to the creek for the period of record.  Note that many creeks are assigned a `No Data` value if sufficient data were unavailable.  A summation of the four component columns (`monitor`, `caution`, `investigate`, and `prioritize`) provides the number of years for which data were available at a creek. 
+The results include a unique creek identifier (`id`, based on the `wbid` and `JEI` fields), the waterbody id (`wbid`), the creek ID (`JEI`), the FDEP class (`class`), and results from the assessment in the remaining columns.  The columns `monitor`, `caution`, `investigate`, and `prioritize` indicate the number of years from 2012 to 2021 that the nitrogen values were within the ranges appropriate for the creek type as specified within `tidaltargets()`.  The `score` column indicates the overall category assigned to the creek for the period of record.  Note that many creeks are assigned a `No Data` value if sufficient data were unavailable.  A summation of the four component columns (`monitor`, `caution`, `investigate`, and `prioritize`) provides the number of years for which data were available at a creek. 
 
 The `show_tdlcrk()` function can be used with the output of `anlz_tdlcrk()` to view an interactive map of the results. Creeks are color-coded by the exceedance categories, with "No Data" creeks shown in light blue.  
 
@@ -121,24 +121,27 @@ head(results)
 Individual creek indicators are summarized using a multivariate response plot called a "radar plot" that indicates the percentage of years where each indicator exceeded its respective threshold value. These plots are created by using the `radar = TRUE` argument with `anlz_tdlcrkindic()` function and then using those results with the `show_tdlcrkradar()` function. The radar plots only apply to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M). Indicators without data for the creek do not have a point on the plot.
 
 ```{r, fig.width = 5, fig.height = 5}
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021, radar = T)
-show_tdlcrkradar(id = 495, cntdat = cntdat)
-```
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022, radar = T)
 
+# get random creek id
+set.seed(123)
+id <- sample(unique(cntdat$id), 1)
+show_tdlcrkradar(id = id, cntdat = cntdat)
+```
 
 General descriptive plots of the annual outcomes are provided with interactive [plotly](https://plot.ly/r/) graphics using the `show_tdlcrkindic()` and `show_tdlcrkindiccdf()` functions. 
 
 The `show_tdlcrindic()` function produces bar plots of annual outcomes at the selected creek. The creek to plot is selected with the `id` argument as an integer that is used to filter results from the `anlz_tdlcrkindic()` function, where the latter is passed to the `cntdat` argument.  The `thrsel` argument plots dotted red lines based on the threshold values.  Each year has its own unique color.  
 
 ```{r}
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2021)
-show_tdlcrkindic(id = 495, cntdat = cntdat, thrsel = TRUE)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022)
+show_tdlcrkindic(id = id, cntdat = cntdat, thrsel = TRUE)
 ```
 
 The `show_tdlcrkindiccdf()` function is similar except that empirical cumulative distribution functions (CDF) are plotted to evaluate outcomes for a specific creek relative to the entire distribution of creeks in southwest Florida. Each indicator and each year for the selected creek are plotted on the CDF curves.  Location of the points indicate both a comparison to the population and the trajectory of indicators over time (i.e., brown are older observations and blue are more recent).  Holding the mouse cursor over a point shows the year and holding the cursor over the line shows the percentile value from the CDF. 
 
 ```{r}
-show_tdlcrkindiccdf(id = 495, cntdat = cntdat, thrsel = TRUE)
+show_tdlcrkindiccdf(id = id, cntdat = cntdat, thrsel = TRUE)
 ```
 
 
