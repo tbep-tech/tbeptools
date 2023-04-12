@@ -7,7 +7,7 @@
 #' @return A nested \code{tibble} of station, taxa, and field sample data
 #'
 #' @details
-#' This function downloads and unzips a folder of base tables used to calculate the benthic index from \url{https://epcbocc.sharepoint.com/:u:/s/Share/EdY7IaU75kFPnVhyoe1yITcBESvFZNAreBwabwyL8EfuqQ?e=1i8Rnf&download=1} (viewable at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ}).
+#' This function downloads and unzips a folder of base tables used to calculate the benthic index from \url{https://epcbocc.sharepoint.com/:u:/s/Share/EQUCWBuwCNdGuMREYAyAD1gBKC98mYtCHMWX0FYLrbT4KA?e=nDfnnQ&download=1} (viewable at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ}).
 #'
 #' @export
 #'
