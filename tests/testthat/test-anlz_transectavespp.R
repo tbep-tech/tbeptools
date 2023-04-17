@@ -32,3 +32,5 @@ test_that("Checking results for anlz_transectavespp, total FALSE", {
 
   results <- anlz_transectavespp(transectocc, total = F)
   expect_is(results, 'tbl_df')
+
+})
