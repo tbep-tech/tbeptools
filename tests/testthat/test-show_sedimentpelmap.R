@@ -1,3 +1,4 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("Checking show_sedimentpelmap class", {
+  result <- show_sedimentpelmap(sedimentdata, yrrng = 2021)
+  expect_is(result, 'leaflet')
 })

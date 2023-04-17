@@ -1,5 +1,5 @@
 test_that("Checking show_transectavespp ggplot class", {
-  result <- show_transectavespp(transectocc)
+  result <- show_transectavespp(transectocc, sppcol = rep('red', 6))
   expect_is(result, 'ggplot')
 })
 

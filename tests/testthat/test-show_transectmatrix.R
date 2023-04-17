@@ -1,7 +1,6 @@
-transectocc <- anlz_transectocc(transect)
 test_that("Checking show_transectmatrix class", {
 
-  result <- show_transectmatrix(transectocc)
+  result <- show_transectmatrix(transectocc, rev = TRUE)
   expect_is(result, 'ggplot')
 
 })

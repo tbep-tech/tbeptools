@@ -1,5 +1,5 @@
-test_that("Checking show_boxplot class", {
-  result <- show_boxplot(epcdata)
+test_that("Checking show_boxplot class, partial year", {
+  result <- show_boxplot(epcdata, partialyr = T)
   expect_is(result, 'ggplot')
 })
 

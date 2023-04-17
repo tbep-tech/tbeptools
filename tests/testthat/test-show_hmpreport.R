@@ -11,3 +11,10 @@ test_that("Checking show_hmpreport class, type as goals", {
   expect_is(result, 'ggplot')
 
 })
+
+test_that("Checking show_hmpreport class, plotly output", {
+
+  result <- show_hmpreport(acres, subtacres, hmptrgs, typ = 'goals', plotly = T)
+  expect_is(result, 'plotly')
+
+})

@@ -27,3 +27,8 @@ test_that("Checking results for anlz_transectavespp by segment", {
                                                                                                                                                                               "Caulerpa"), class = "factor"), foest = 0, nsites = 96L), row.names = c(NA,
                                                                                                                                                                                                                                                       -1L), class = c("tbl_df", "tbl", "data.frame")))
 })
+
+test_that("Checking results for anlz_transectavespp, total FALSE", {
+
+  results <- anlz_transectavespp(transectocc, total = F)
+  expect_is(results, 'tbl_df')

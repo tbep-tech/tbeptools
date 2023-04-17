@@ -1,5 +1,5 @@
 test_that("Checking show_wqmatrix ggplot class", {
-  result <- show_wqmatrix(epcdata, abbrev = TRUE)
+  result <- show_wqmatrix(epcdata, abbrev = TRUE, partialyr = TRUE)
   expect_is(result, 'ggplot')
 })
 test_that("Checking show_wqmatrix reactable class", {

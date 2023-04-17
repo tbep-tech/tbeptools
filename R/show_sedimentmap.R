@@ -19,56 +19,20 @@
 #' show_sedimentmap(sedimentdata, param = 'Arsenic')
 show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), funding_proj = 'TBEP', weight = 1.5){
 
-  # make yrrng two if only one year provided
-  if(length(yrrng) == 1)
-    yrrng <- rep(yrrng, 2)
+  # add totals
+  sedimentdata <- anlz_sedimentaddtot(sedimentdata, yrrng = yrrng, funding_proj = funding_proj, param = param, pelave = FALSE)
 
-  # yrrng must be in ascending order
-  if(yrrng[1] > yrrng[2])
-    stop('yrrng argument must be in ascending order, e.g., c(1993, 2017)')
-
-  # yrrng not in sedimentdata
-  if(any(!yrrng %in% sedimentdata$yr))
-    stop(paste('Check yrrng is within', paste(range(sedimentdata$yr, na.rm = TRUE), collapse = '-')))
-
-  # check funding project
-  chk <- !funding_proj %in% c('TBEP', 'TBEP-Special', 'Apollo Beach', 'Janicki Contract', 'Rivers', 'Tidal Streams')
-  if(any(chk)){
-    msg <- funding_proj[chk]
-    stop('funding_proj input is incorrect: ', paste(msg, collapse = ', '))
-  }
-
-  # check if param is in data
-  params <- sedimentdata$Parameter %>%
-    unique %>%
-    sort
-  chk <- !param %in% params
-  if(chk)
-    stop(param, ' not found in Parameter column')
-
-  # check if pel/tel exit
+  # check if pel/tel exists
   telpel <- sedimentdata %>%
     dplyr::select(Parameter, TEL, PEL, Units) %>%
     unique %>%
     na.omit()
-
-  telpelparams <- telpel %>%
-    pull(Parameter) %>%
-    unique() %>%
-    sort()
-
-  telpel <- telpel %>%
-    filter(Parameter %in% !!param)
   chkpeltel <- nrow(telpel) == 0
   if(chkpeltel)
     warning('No TEL/PEL data for ', param, ', map shows concentrations only')
 
   # prep data
   tomap <- sedimentdata %>%
-    dplyr::filter(Parameter %in% !!param) %>%
-    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    dplyr::filter(FundingProject %in% funding_proj) %>%
-    dplyr::filter(Replicate == 'no') %>%
     sf::st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326) %>%
     dplyr::select(yr, AreaAbbr, StationNumber, SedResultsType, Parameter, ValueAdjusted, Units,
                   Qualifier, BetweenTELPEL, ExceedsPEL)
@@ -132,8 +96,7 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), funding
   # concentration only map
   if(chkpeltel){
 
-    dmn <- sedimentdata %>%
-      dplyr::filter(Parameter %in% !!param) %>%
+    dmn <- tomap %>%
       pull(ValueAdjusted) %>%
       range(., na.rm = T)
 

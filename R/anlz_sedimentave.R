@@ -21,49 +21,14 @@
 #' anlz_sedimentave(sedimentdata, param = 'Arsenic')
 anlz_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP'){
 
-  # check bay segments
-  chk <- !bay_segment %in% c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')
-  if(any(chk)){
-    msg <- bay_segment[chk]
-    stop('bay_segment input is incorrect: ', paste(msg, collapse = ', '))
-  }
-
-  # make yrrng two if only one year provided
-  if(length(yrrng) == 1)
-    yrrng <- rep(yrrng, 2)
-
-  # yrrng must be in ascending order
-  if(yrrng[1] > yrrng[2])
-    stop('yrrng argument must be in ascending order, e.g., c(1993, 2017)')
-
-  # yrrng not in sedimentdata
-  if(any(!yrrng %in% sedimentdata$yr))
-    stop(paste('Check yrrng is within', paste(range(sedimentdata$yr, na.rm = TRUE), collapse = '-')))
-
-  # check if param is in data
-  params <- sedimentdata$Parameter %>%
-    unique %>%
-    sort
-  chk <- !param %in% params
-  if(chk)
-    stop(param, ' not found in Parameter column')
-
-  # check funding project
-  chk <- !funding_proj %in% c('TBEP', 'TBEP-Special', 'Apollo Beach', 'Janicki Contract', 'Rivers', 'Tidal Streams')
-  if(any(chk)){
-    msg <- funding_proj[chk]
-    stop('funding_proj input is incorrect: ', paste(msg, collapse = ', '))
-  }
+  # add totals
+  sedimentdata <- anlz_sedimentaddtot(sedimentdata, yrrng = yrrng, bay_segment = bay_segment,
+                                      funding_proj = funding_proj, param = param, pelave = FALSE)
 
   levs <- c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB')
 
   # summarize
   out <- sedimentdata %>%
-    dplyr::filter(Parameter %in% !!param) %>%
-    dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    dplyr::filter(FundingProject %in% funding_proj) %>%
-    dplyr::filter(Replicate == 'no') %>%
-    dplyr::filter(AreaAbbr %in% bay_segment) %>%
     dplyr::group_by(AreaAbbr, TEL, PEL, Units) %>%
     dplyr::summarize(
       ave = mean(ValueAdjusted, na.rm = T),

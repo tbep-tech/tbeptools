@@ -1,5 +1,5 @@
 test_that("Checking show_matrix ggplot class", {
-  result <- show_matrix(epcdata, historic = TRUE, abbrev = TRUE)
+  result <- show_matrix(epcdata, historic = TRUE, abbrev = TRUE, partialyr = TRUE)
   expect_is(result, 'ggplot')
 })
 test_that("Checking show_matrix reactable class", {
