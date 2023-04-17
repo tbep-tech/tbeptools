@@ -160,6 +160,12 @@ A map showing only the concentrations is returned if TEL and PEL values are not 
 show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2021))
 ```
 
+Maps for total contaminant values (e.g., Total DDT, Total PAH, Total PCB, Total LMW PAH, Total HMW PAH) can also be returned.  Although the totals are not included in the `sedimentdata` object, they are calculated by tbeptools using the `anlz_sedimentaddtot()` function. Simply entering the name of the total parameter in the `show_sedimentmap()` function will produce the summary map. 
+
+```{r, out.width = '100%'}
+show_sedimentmap(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2021))
+```
+
 The PEL ratio can also be used to assess relative sediment quality given the measured contaminants.  The `show_sedimentpelmap()` function creates a map of average PEL ratios graded from A to F for benthic stations monitored in Tampa Bay. The PEL ratio is the contaminant concentration divided by the Potential Effects Levels (PEL) that applies to a contaminant, if available. Higher ratios and lower grades indicate sediment conditions that are likely unfavorable for invertebrates. The station average combines the PEL ratios across all contaminants measured at a station.
 
 ```{r, out.width = '100%'}
@@ -188,6 +194,12 @@ The values used in the plot can be returned with `anlz_sedimentave()`.
 
 ```{r}
 anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
+```
+
+As before, the total contaminant values (e.g., Total DDT, Total PAH, Total PCB, Total LMW PAH, Total HMW PAH) can also be returned even though they are not included in the `sedimentdata` object. The `anlz_sedimentaddtot()` function is used to calculate the totals within `anlz_sedimentave()`.
+
+```{r}
+anlz_sedimentave(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2021))
 ```
 
 A similar plot of the bay segment averages for the average PEL ratios can be created with `show_sedimentpelave()`.  The colors indicate the grades for A (green) to F (red).
