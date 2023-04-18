@@ -21,6 +21,8 @@ Download and import sediment data for Tampa Bay
 }
 \details{
 This function downloads and unzips a folder of results tables from \url{https://epcbocc.sharepoint.com/:u:/s/Share/Ef9utuKCHD9LliarsOPKCJwB5kxgCObf0tY5x5wX20JQUA?e=DuTseb&download=1} (viewable at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ}).
+
+The row entries for columns \code{"BetweenTELPEL"} and \code{"ExceedsPEL"} for rows where the \code{"Qualifier"} column is \code{"U"} or \code{"T"} (below detection, not detected) are assigned \code{NA}, regardless of the entry in the source data.
 }
 \examples{
 \dontrun{

@@ -47,13 +47,15 @@ anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
   lmwpahpar <- c('Acenaphthene', 'Acenaphthylene', 'Anthracene', 'Fluorene', 'Naphthalene', 'Phenanthrene')
   hmwpahpar <- c('Benzo(a)anthracene', 'Benzo(a)pyrene', 'Chrysene', 'Dibenzo(a,h)anthracene', 'Fluoranthene', 'Pyrene')
   ddtpar <- c('DDD', 'DDE', 'DDT')
+  chlordanepar <- c('A Chlordane', 'G Chlordane')
 
   # filter relevant data
   flt <- sedimentdata %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
     dplyr::filter(FundingProject %in% funding_proj) %>%
     dplyr::filter(Replicate == 'no') %>%
-    dplyr::filter(AreaAbbr %in% bay_segment)
+    dplyr::filter(AreaAbbr %in% bay_segment) %>%
+    dplyr::filter(!Parameter %in% 'Total Chlordane') # these are summed from a and g chlordane below
 
   # metals
   mets <- flt %>%
@@ -65,6 +67,9 @@ anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
 
   # get sum of lmwpah
   lmwpahsum <- lmwpah %>%
+    dplyr::mutate(
+      ValueAdjusted = ifelse(grepl('T|U', Qualifier), NA, ValueAdjusted)
+    ) %>%
     dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude, SedResultsType, Units) %>%
     dplyr::summarize(
       ValueAdjusted = sum(ValueAdjusted, na.rm = T),
@@ -84,6 +89,9 @@ anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
 
   # get sum of hmwpah
   hmwpahsum <- hmwpah %>%
+    dplyr::mutate(
+      ValueAdjusted = ifelse(grepl('T|U', Qualifier), NA, ValueAdjusted)
+    ) %>%
     dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude, SedResultsType, Units) %>%
     dplyr::summarize(
       ValueAdjusted = sum(ValueAdjusted, na.rm = T),
@@ -99,6 +107,9 @@ anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
   # total pah
   pahsum <- flt %>%
     dplyr::filter(Parameter %in% c(lmwpahpar, hmwpahpar)) %>%
+    dplyr::mutate(
+      ValueAdjusted = ifelse(grepl('T|U', Qualifier), NA, ValueAdjusted)
+    ) %>%
     dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude, SedResultsType, Units) %>%
     dplyr::summarize(
       ValueAdjusted = sum(ValueAdjusted, na.rm = T),
@@ -113,11 +124,28 @@ anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
 
   #lindane
   lindanesum <- flt %>%
-    dplyr::filter(Parameter %in% 'G BHC')
+    dplyr::filter(Parameter %in% 'G BHC') %>%
+    dplyr::mutate(
+      ValueAdjusted = ifelse(grepl('T|U', Qualifier), NA, ValueAdjusted)
+    )
 
-  # chlordane
+  # total chlordane
   chlordanesum <- flt %>%
-    dplyr::filter(Parameter %in% 'Total Chlordane')
+    dplyr::filter(Parameter %in% chlordanepar) %>%
+    dplyr::mutate(
+      ValueAdjusted = ifelse(grepl('T|U', Qualifier), NA, ValueAdjusted)
+    ) %>%
+    dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude, SedResultsType, Units) %>%
+    dplyr::summarize(
+      ValueAdjusted = sum(ValueAdjusted, na.rm = T),
+      .groups = 'drop'
+    ) %>%
+    dplyr::mutate(
+      Parameter = 'Total Chlordane',
+      TEL = 2.26,
+      PEL = 4.79,
+      PELRatio = ValueAdjusted / PEL
+    )
 
   # dieldrin
   dieldrinsum <- flt %>%
@@ -144,6 +172,9 @@ anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
   # get sum of pcb
   pcbsum <- flt %>%
     dplyr::filter(grepl('^PCB', Parameter)) %>%
+    dplyr::mutate(
+      ValueAdjusted = ifelse(grepl('T|U', Qualifier), NA, ValueAdjusted)
+    ) %>%
     dplyr::group_by(yr, AreaAbbr, StationNumber, Latitude, Longitude, SedResultsType, Units) %>%
     dplyr::summarize(
       ValueAdjusted = sum(ValueAdjusted, na.rm = T),
@@ -161,7 +192,7 @@ anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2021), bay_segment
                    dieldrinsum, ddt, ddtsum, pcbsum)
 
   if(!pelave)
-    out <- dplyr::bind_rows(lmwpahsum, hmwpahsum, pahsum, ddtsum, pcbsum) %>%
+    out <- dplyr::bind_rows(lmwpahsum, hmwpahsum, pahsum, ddtsum, pcbsum, chlordanesum) %>%
       dplyr::mutate(
         BetweenTELPEL = ifelse(ValueAdjusted > TEL & ValueAdjusted <= PEL, 'Yes', 'No'),
         ExceedsPEL = ifelse(ValueAdjusted > PEL, 'Yes', 'No')
