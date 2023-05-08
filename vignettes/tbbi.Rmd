@@ -220,4 +220,16 @@ The values used in the plot can be returned with `anlz_sedimentpelave()`.
 anlz_sedimentpelave(sedimentdata, yrrng = c(1993, 2021))
 ```
 
+The `show_sedimentalratio()` function creates a plot of a selected metal parameter against Aluminum.  This plot provides information on the concentration of the parameter relative to background levels, where Aluminum is present as a common metal in the Earth's crust.  An elevated ratio of a metal parameter relative to aluminum suggests it is higher than background concentrations.  The linear fit of a log-log model is shown as a solid black line, with 95% prediction intervals.  The TEL/PEL values, if available, are also shown as horizontal red lines. 
+
+```{r, fig.height = 5, fig.width = 7}
+show_sedimentalratio(sedimentdata, param = 'Zinc', bay_segment = c('HB', 'LTB'))
+```
+
+The same plot can be returned as an interactive [plotly](https://plotly.com/r/) object using `plotly = T`.
+
+```{r, fig.height = 5, fig.width = 7}
+show_sedimentalratio(sedimentdata, param = 'Zinc', bay_segment = c('HB', 'LTB'), plotly = T)
+```
+
 # References

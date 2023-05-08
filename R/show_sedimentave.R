@@ -48,7 +48,7 @@ show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_seg
   p <- ggplot2::ggplot(toplo, ggplot2::aes(x = AreaAbbr, y = ave)) +
     ggplot2::geom_point(size = 3) +
     ggplot2::geom_errorbar(ggplot2::aes(ymin = lov, ymax = hiv), width = 0, na.rm = T) +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = grandave, color = grdtxt, linetype = grdtxt), size = lnsz)
+    ggplot2::geom_hline(ggplot2::aes(yintercept = grandave, color = grdtxt, linetype = grdtxt), linewidth = lnsz)
 
   # add pel, tel if present
   chkpel <- unique(toplo$PEL)
@@ -73,8 +73,8 @@ show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_seg
     names(ctyp) <-  c(peltxt, teltxt, grdtxt)
 
     p <- p +
-      ggplot2::geom_hline(ggplot2::aes(yintercept = TEL, color = teltxt, linetype = teltxt), size = lnsz) +
-      ggplot2::geom_hline(ggplot2::aes(yintercept = PEL, color = peltxt, linetype = peltxt), size = lnsz)
+      ggplot2::geom_hline(ggplot2::aes(yintercept = TEL, color = teltxt, linetype = teltxt), linewidth = lnsz) +
+      ggplot2::geom_hline(ggplot2::aes(yintercept = PEL, color = peltxt, linetype = peltxt), linewidth = lnsz)
 
   }
 
