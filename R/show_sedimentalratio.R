@@ -20,6 +20,10 @@
 #'
 #' Lines for the Threshold Effect Level (TEL) and Potential Effect Level (PEL) are shown for the parameter, if available.
 #'
+#' @references
+#'
+#' Schropp, S. J., Graham Lewis, F., Windom, H. L., Ryan, J. D., Calder, F. D., & Burney, L. C. 1990. Interpretation of metal concentrations in estuarine sediments of Florida using aluminum as a reference element. Estuaries. 13:227-235.
+#'
 #' @export
 #'
 #' @examples
