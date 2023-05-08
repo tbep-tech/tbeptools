@@ -52,7 +52,8 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "ValueNum", "ValueText", "WQMQCSignOff", "acresdiff", "ave", "category",
                   "changerate", "fillv", "goaleval", "goalprop", "grandave", "hiv", "ind",
                   "lacres", "lov", "lyr", "metric", "targeteval", "targetprop", "textv", "tn_pri",
-                  "yeardiff", "Degraded" ,"Healthy", "Intermediate", "Bay Segment"))
+                  "yeardiff", "Degraded" ,"Healthy", "Intermediate", "Bay Segment", "Aluminum",
+                  "fit", "lwr", "upr"))
 
 #' @importFrom grDevices rgb
 NULL
@@ -66,7 +67,7 @@ NULL
 #' @importFrom methods .S4methods new
 NULL
 
-#' @importFrom stats ecdf median na.omit pbinom sd t.test
+#' @importFrom stats ecdf lm median na.omit pbinom predict sd t.test
 NULL
 
 #' @importFrom utils read.csv
