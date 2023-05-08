@@ -14,9 +14,9 @@
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
-#' @return A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing the ratio the selected parameter plotted against aluminum concentrations collected at the same site. Black lines show the linear fit of a log-log model and the 95% prediction intervals.
+#' @return A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing the ratio of the selected parameter plotted against aluminum concentrations collected at the same site. Black lines show the linear fit of a log-log model and the 95% prediction intervals.
 #'
-#' @details The plot provides relative information of the contaminant concentration relative to aluminum, the latter being present as a common metal in the Earth's crust.  An elevated ratio of a metal parameter relative to aluminum suggests it is higher than background concentrations.
+#' @details The plot shows the selected contaminant concentration relative to aluminum, the latter being present as a common metal in the Earth's crust.  An elevated ratio of a metal parameter relative to aluminum suggests it is higher than background concentrations.
 #'
 #' Lines for the Threshold Effect Level (TEL) and Potential Effect Level (PEL) are shown for the parameter, if available.
 #'
