@@ -102,7 +102,9 @@ show_sedimentalratio <- function(sedimentdata, param, yrrng = c(1993, 2021), bay
     dplyr::rename(param = !!param) %>%
     dplyr::mutate(
       AreaAbbr = factor(AreaAbbr, levels = levs)
-    )
+    ) %>%
+    dplyr::filter(!is.na(param)) %>%
+    dplyr::filter(!is.na(Aluminum))
 
   tomod <- toplo %>%
     dplyr::filter(!is.infinite(log10(param)) | !is.infinite(log10(Aluminum)))
