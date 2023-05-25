@@ -30,9 +30,9 @@ After the package is loaded, you can view the help files for each function by ty
 
 # Package vignettes
 
-The vignettes are organized by topic and are an excellent place to start for understanding how to use the package. Currently, there are five vignettes available for tbeptools:
+The vignettes are organized by topic and are an excellent place to start for understanding how to use the package. Currently, there are six vignettes available for tbeptools:
 
-* [Intro to TBEP tools](https://tbep-tech.github.io/tbeptools/articles/intro.html): A general overview of the package with specific examples of functions for working with the water quality report card
+* [Water Quality Data](https://tbep-tech.github.io/tbeptools/articles/intro.html): Overview of functions for working with water quality data and the water quality report card
 * [Tampa Bay Nekton Index](https://tbep-tech.github.io/tbeptools/articles/tbni.html): Overview of functions to import, analyze, and plot results for the Tampa Bay Nekton Index
 * [Tampa Bay Benthic Index](https://tbep-tech.github.io/tbeptools/articles/tbbi.html): Overview of functions to import data for Tampa Bay Benthic Index, under development
 * [Tidal Creeks Assessment](https://tbep-tech.github.io/tbeptools/articles/tidalcreeks.html): Overview of functions to import, analyze, and plot results for the assessment of tidal creeks in southwest Florida
@@ -41,7 +41,7 @@ The vignettes are organized by topic and are an excellent place to start for und
 
 # Usage
 
-Functions in tbeptools fall in three categories depending on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
+Functions in tbeptools are in three categories based on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
 
 * `read`: Import current data from the main site.
 

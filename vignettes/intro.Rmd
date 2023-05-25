@@ -1,5 +1,5 @@
 ---
-title: "Intro to TBEP Tools"
+title: "Water Quality Data"
 csl: stylefile.csl
 bibliography: refs.bib
 date: "`r Sys.Date()`"
@@ -7,7 +7,7 @@ output:
   rmarkdown::html_vignette:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{Intro to TBEP Tools}
+  %\VignetteIndexEntry{Water Quality Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
