@@ -4,7 +4,7 @@
 \alias{read_importwq}
 \title{Load local water quality file}
 \usage{
-read_importwq(xlsx, download_latest = FALSE, na = "")
+read_importwq(xlsx, download_latest = FALSE, na = "", all = FALSE)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite if not current}
@@ -12,6 +12,8 @@ read_importwq(xlsx, download_latest = FALSE, na = "")
 \item{download_latest}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available}
 
 \item{na}{chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}}
+
+\item{all}{logical indicating if all water quality parameters are returned, see details}
 }
 \value{
 A \code{data.frame} of formatted water quality data.
@@ -21,6 +23,8 @@ Load local water quality file
 }
 \details{
 Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&download=1}.  The files can be viewed at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU}.
+
+Water quality parameters returned by default are total nitrogen (\code{tn}), Secchi depth (\code{sd}), chlorophyll-a (\code{chla}), salinity (top, mid, and bottom depths, \code{Sal_} prefix), water temperature (top, mid, and bottom depths, {\code{Temp_Water_} prefix}), turbidity (\code{Turbidity_JTU-NTU}), and water color (\code{Color_345_F45}).  Additional qualifier columns for each that include the \code{_Q} suffix are also returned, excluding salinity and water temperature.  All other water quality parameters and qualifiers can be returned by setting \code{all = T}.
 }
 \examples{
 \dontrun{
@@ -29,6 +33,9 @@ xlsx <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
 
 # load and assign to object
 epcdata <- read_importwq(xlsx, download_latest = T)
+
+# get all water quality parameters
+epcdataall <- read_importwq(xlsx, download_latest = T, all = T)
 }
 }
 \seealso{

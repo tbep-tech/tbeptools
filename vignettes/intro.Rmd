@@ -96,7 +96,7 @@ Every time that tbeptools is used to work with the monitoring data, `read_import
 #> Replacing local file with current...
 ```
 
-The final argument `na` indicates which fields in the downloaded spreadsheet are treated as blank values and assigned to `NA`. Any number of strings can be added to this function to replace fields with `NA` values.  
+The argument `na` indicates which fields in the downloaded spreadsheet are treated as blank values and assigned to `NA`. Any number of strings can be added to this function to replace fields with `NA` values.  
 
 After the data are successfully imported, you can view them from the assigned object: 
 
@@ -104,7 +104,7 @@ After the data are successfully imported, you can view them from the assigned ob
 epcdata
 ```
 
-These data include the bay segment name, station number, sample time, year, month, latitude, longitude, station depth, sample depth, secchi depth, and chlorophyll.  Note that the monitoring data include additional parameters.  Chlorophyll and secchi depth are currently the only parameters returned by `read_importwq()` given the reporting indicators used below. 
+These data include the bay segment name, station number, sample time, year, month, latitude, longitude, station depth, sample depth, total nitrogen, secchi depth, chlorophyll, salinity, water temperature, turbidity, and water color.  All other parameters can be included by setting `all = TRUE` in `read_importwq()`.
 
 An import function is also available to download and format phytoplankton cell count data.  The `read_importphyto()` function works similarly as the import function for the water quality data.  Start by specifying a path where the data should be downloaded and set `download_latest` to `TRUE`.  This function will download and summarize data from the file `PlanktonDataList_ThroughCurrentReportMonth.xlsx` on the EPC website.
 

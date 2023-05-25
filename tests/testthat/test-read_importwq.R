@@ -9,3 +9,15 @@ test_that("Checking read_importwq", {
   expect_equal(result, 26)
 
 })
+
+test_that("Checking read_importwq all parameters", {
+  xlsx <- 'exdatatmp.xlsx'
+
+  # load and assign to object
+  epcdata <- read_importwq(xlsx, all = T)
+
+  # check if number of columns is equal to 152
+  result <- ncol(epcdata)
+  expect_equal(result, 152)
+
+})

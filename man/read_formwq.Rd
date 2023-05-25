@@ -4,10 +4,12 @@
 \alias{read_formwq}
 \title{Format water quality data}
 \usage{
-read_formwq(datin)
+read_formwq(datin, all = FALSE)
 }
 \arguments{
 \item{datin}{input \code{data.frame} loaded from \code{\link{read_importwq}}}
+
+\item{all}{logical indicating if all water quality parameters are returned, see details}
 }
 \value{
 A lightly formatted \code{data.frame} with chloropyll and secchi observations
