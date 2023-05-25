@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9002</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,7 +59,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_importwq</span><span class="op">(</span><span class="va">xlsx</span>, download_latest <span class="op">=</span> <span class="cn">FALSE</span>, na <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_importwq</span><span class="op">(</span><span class="va">xlsx</span>, download_latest <span class="op">=</span> <span class="cn">FALSE</span>, na <span class="op">=</span> <span class="st">""</span>, all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -75,6 +75,10 @@
 <dt>na</dt>
 <dd><p>chr vector of strings to interpret as <code>NA</code>, passed to <code><a href="https://readxl.tidyverse.org/reference/read_excel.html" class="external-link">read_xlsx</a></code></p></dd>
 
+
+<dt>all</dt>
+<dd><p>logical indicating if all water quality parameters are returned, see details</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -85,6 +89,7 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Loads the "RWMDataSpreadsheet" worksheet from the file located at <code>xlsx</code>.  The file is downloaded from <a href="https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&amp;download=1" class="external-link">https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&amp;download=1</a>.  The files can be viewed at <a href="https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU" class="external-link">https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU</a>.</p>
+<p>Water quality parameters returned by default are total nitrogen (<code>tn</code>), Secchi depth (<code>sd</code>), chlorophyll-a (<code>chla</code>), salinity (top, mid, and bottom depths, <code>Sal_</code> prefix), water temperature (top, mid, and bottom depths, <code>Temp_Water_</code> prefix), turbidity (<code>Turbidity_JTU-NTU</code>), and water color (<code>Color_345_F45</code>).  Additional qualifier columns for each that include the <code>_Q</code> suffix are also returned, excluding salinity and water temperature.  All other water quality parameters and qualifiers can be returned by setting <code>all = T</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -99,6 +104,9 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># load and assign to object</span></span></span>
 <span class="r-in"><span><span class="va">epcdata</span> <span class="op">&lt;-</span> <span class="fu">read_importwq</span><span class="op">(</span><span class="va">xlsx</span>, download_latest <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># get all water quality parameters</span></span></span>
+<span class="r-in"><span><span class="va">epcdataall</span> <span class="op">&lt;-</span> <span class="fu">read_importwq</span><span class="op">(</span><span class="va">xlsx</span>, download_latest <span class="op">=</span> <span class="cn">T</span>, all <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
