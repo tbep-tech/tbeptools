@@ -122,7 +122,8 @@ read_formwqmanatee <- function(res, sta, trace = F){
     tidyr::unnest('data') %>%
     sf::st_as_sf() %>%
     sf::st_set_geometry(NULL) %>%
-    select(manco_station = station, SampleTime, yr, mo, Latitude = lat, Longitude = lon, var, val, uni, qual)
+    select(manco_station = station, SampleTime, yr, mo, Latitude = lat, Longitude = lon, var, val, uni, qual) %>%
+    unique()
 
   return(out)
 
