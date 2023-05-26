@@ -163,6 +163,9 @@
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_formwq.html</loc>
   </url>
   <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/read_formwqmanatee.html</loc>
+  </url>
+  <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_importbenthic.html</loc>
   </url>
   <url>
@@ -176,6 +179,9 @@
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_importwq.html</loc>
+  </url>
+  <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/read_importwqmanatee.html</loc>
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_transect.html</loc>
