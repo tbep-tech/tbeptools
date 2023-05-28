@@ -57,6 +57,7 @@ Imports:
   dataRetrieval,
   dplyr,
   ggplot2,
+  httr,
   jsonlite,
   leaflet,
   lubridate,

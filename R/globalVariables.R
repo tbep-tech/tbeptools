@@ -22,7 +22,7 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "NumGuilds", "NumTaxa", "ScoreBenthicTaxa", "ScoreNumGuilds", "ScoreNumTaxa", "ScoreShannon",
                   "ScoreTaxaSelect", "TBNI_Score", "TaxaSelect", "fimdat", "tbniref", "Segment_TBNI",
                   "prioritize", "seval", "TBNI_Scoreall", 'Abundance', 'Agency', 'Savspecies', 'Site', 'aveval',
-                  'matches', 'var', 'sdval', 'val', 'BladeLength_Avg', 'BladeLength_StdDev', 'Crew', 'ID',
+                  'matches', 'sdval', 'BladeLength_Avg', 'BladeLength_StdDev', 'Crew', 'ID',
                   'ShootDensity_Avg','ShootDensity_StdDev', 'Species', 'SpeciesAbundance', 'Transect', 'Average',
                   'Median', 'MonitoringAgency', 'grp', 'sumval', 'sumvar', 'ObservationDate', 'Depth',
                   'SeagrassEdge', 'TempWater-B', 'TempWater-C', 'TempWater-T',
@@ -53,7 +53,17 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "changerate", "fillv", "goaleval", "goalprop", "grandave", "hiv", "ind",
                   "lacres", "lov", "lyr", "metric", "targeteval", "targetprop", "textv", "tn_pri",
                   "yeardiff", "Degraded" ,"Healthy", "Intermediate", "Bay Segment", "Aluminum",
-                  "fit", "lwr", "upr"))
+                  "fit", "lwr", "upr", "ActivityStartDate", "ActivityStartTime.Time",
+                  "ActivityTypeCode", "AirTemp", "CharacteristicName", "Class", "Color_345_F45_PCU",
+                  "Color_345_F45_Q", "HUC", "HorizontalCoordinateReferenceSystemDatumName", "LabIDNumber",
+                  "LatitudeMeasure", "LongitudeMeasure", "MonitoringLocationIdentifier", "Notes",
+                  "PKBasin", "PrimaryStationType", "ResultMeasure.MeasureUnitCode",
+                  "ResultMeasureValue", "RunName", "Sal_Bottom_ppth", "Sal_Mid_ppth",
+                  "Sal_Top_ppth", "Sample Collector", "Sample_Depth_m", "Temp_Water_Bottom_degC",
+                  "Temp_Water_Mid_degC", "Temp_Water_Top_degC", "Total_Depth_m",
+                  "Turbidity_JTU-NTU", "Turbidity_Q", "WBID", "WINStation", "YearMonth", "chla_q",
+                  "datum", "lat", "lon", "qual", "sd_check", "sd_q", "sd_raw_m", "station", "time",
+                  "tn_q", "uni"))
 
 #' @importFrom grDevices rgb
 NULL

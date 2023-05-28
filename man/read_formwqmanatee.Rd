@@ -40,8 +40,7 @@ body <- list(
   characteristicType = c("Information", "Nutrient", "Biological, Algae, Phytoplankton,
     Photosynthetic Pigments"),
   providers = c("STORET"),
-  siteType = c("Estuary")#,
-  # ActivityTypeCode = c("Field Msr/Obs", "Sample-Routine")
+  siteType = c("Estuary")
 )
 
 res <- url[['Result']] \%>\%
