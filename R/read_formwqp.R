@@ -1,18 +1,20 @@
-#' Format water quality and station metadata for Manatee County
+#' Format water quality and station metadata from the Water Quality Portal
 #'
 #' @param res A data frame containing water quality results obtained from the API
 #' @param sta A data frame containing station metadata obtained from the API
+#' @param org chr string indicating either \code{"Manatee"} or \code{"Pinellas"}
+#' @param orgin chr string indicating either \code{"21FLMANA_WQX"} or \code{"21FLPDEM_WQX"}
 #' @param trace Logical indicating whether to display progress messages, default is \code{FALSE}
 #'
-#' @return A data frame containing formatted water quality and station metadata for Manatee County.
+#' @return A data frame containing formatted water quality and station metadata
 #'
-#' @details This function is used by \code{\link{read_importwqmanatee}} to combine, format, and process water quality data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Data Exchange API for Manatee County. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.
+#' @details This function is used by \code{\link{read_importwqp}} to combine, format, and process water quality data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Data Exchange API for the selected county. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.
 #'
 #' @concept read
 #'
 #' @importFrom dplyr %>%
 #'
-#' @seealso \code{\link{read_importwqmanatee}}
+#' @seealso \code{\link{read_importwqp}}
 #'
 #' @export
 #'
@@ -48,9 +50,17 @@
 #'   read.csv(text = .)
 #'
 #' # combine and format
-#' read_formwqmanatee(res, sta)
+#' read_formwqp(res, sta, 'Manatee', '21FLMANA_WQX')
 #'}
-read_formwqmanatee <- function(res, sta, trace = F){
+read_formwqp <- function(res, sta, org, orgin, trace = F){
+
+  # get station column name based on county input
+  org <- match.arg(org, c('Manatee', 'Pinellas'))
+  stanm <- list(
+      Manatee = 'manco_station',
+      Pinellas = 'pinco_station'
+    ) %>%
+    .[[org]]
 
   if(trace)
     cat('Combining and formatting output...\n')
@@ -80,13 +90,14 @@ read_formwqmanatee <- function(res, sta, trace = F){
     dplyr::left_join(stafrm, by = 'ident') %>%
     dplyr::filter(type %in% c('Field Msr/Obs', 'Sample-Routine')) %>%
     dplyr::filter(!var %in% c('Nitrate', 'Depth')) %>% # only kept no23
-    dplyr::filter(!val %in% '*Not Reported') %>%
+    dplyr::filter(!val %in% c('*Not Reported', 'Not Reported')) %>%
+    dplyr::filter(!uni %in% 'ft') %>%
     dplyr::mutate(
       time = ifelse(time == '', '00:00:00', time)
     ) %>%
     unite('SampleTime', date, time, sep = ' ') %>%
     dplyr::mutate(
-      station = gsub('^.*\\-(.*$)', '\\1', ident),
+      station = gsub(paste0('^', orgin, '\\-'), '', ident),
       SampleTime = lubridate::ymd_hms(SampleTime, tz = 'America/Jamaica'),
       yr = lubridate::year(SampleTime),
       mo = lubridate::month(SampleTime),
@@ -105,8 +116,8 @@ read_formwqmanatee <- function(res, sta, trace = F){
         uni == 'mg/L' ~ 'mgl',
         T ~ uni
       ),
-      qual = ifelse(val == '*Non-detect', 'U', NA_character_),
-      val = ifelse(val == '*Non-detect', '', val),
+      qual = ifelse(val %in% c('*Non-detect', '*Present <QL'), 'U', NA_character_),
+      val = ifelse(val %in% c('*Non-detect', '*Present <QL'), '', val),
       val = as.numeric(val)
     ) %>%
     tidyr::nest(.by = datum) %>%
@@ -121,8 +132,11 @@ read_formwqmanatee <- function(res, sta, trace = F){
     tidyr::unnest('data') %>%
     sf::st_as_sf() %>%
     sf::st_set_geometry(NULL) %>%
-    select(manco_station = station, SampleTime, yr, mo, Latitude = lat, Longitude = lon, var, val, uni, qual) %>%
+    select(station, SampleTime, yr, mo, Latitude = lat, Longitude = lon, var, val, uni, qual) %>%
     unique()
+
+  # rename station column based on org
+  names(out)[names(out) %in% 'station'] <- stanm
 
   return(out)
 
