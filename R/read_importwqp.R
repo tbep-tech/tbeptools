@@ -5,9 +5,9 @@
 #' @param org chr string indicating either \code{"Manatee"} or \code{"Pinellas"}
 #' @param trace logical indicating whether to display progress messages, default \code{FALSE}
 #'
-#' @return A data frame containing the imported water quality data for Manatee County.
+#' @return A data frame containing the imported water quality data for Manatee or Pinellas County.
 #'
-#' @details This function retrieves water quality data from the Water Quality Data Exchange API for Manatee or Pinellas County. Based on the input to the \code{org} argument, data for the organization defined as \code{"21FLMANA_WQX"} or \code{"21FLPDEM_WQX"} for Manatee or Pinellas County are returned. It fetches results and station metadata, combines and formats them using the \code{read_formwqmanatee} function, and returns the processed data as a data frame.  Parameters included are nutrients, chlorophyll, and Secchi depth.
+#' @details This function retrieves water quality data from the Water Quality Data Exchange API for Manatee or Pinellas County. Based on the input to the \code{org} argument, data for the organization defined as \code{"21FLMANA_WQX"} or \code{"21FLPDEM_WQX"} for Manatee or Pinellas County are returned. It fetches results and station metadata, combines and formats them using the \code{read_formwqmp} function, and returns the processed data as a data frame.  Parameters included are nutrients, chlorophyll, and Secchi depth.
 #'
 #' @concept read
 #'
