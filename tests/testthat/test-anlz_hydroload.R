@@ -1,7 +1,7 @@
 test_that("Check output class for anlz_hydroload", {
 
   noaa_key <- Sys.getenv('NOAA_KEY')
-  result <- anlz_hydroload(2021, noaa_key)
+  result <- anlz_hydroload(2021, noaa_key, trace = T)
 
   expect_s3_class(result, 'tbl_df')
   expect_equal(result$`Adjusted?`[1], 'YES')
