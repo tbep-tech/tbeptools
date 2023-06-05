@@ -127,6 +127,20 @@ phytodata
 
 These data are highly summarized from the raw data file available online.  Cell counts (as number of cells per 0.1mL) for selected taxa are summed for each station by quarters (i.e., Jan/Feb/Mar, Apr/May/Jun, etc.).  The quarter is indicated in the `yrqrt` column specified by the starting date of each quarter (e.g., `1975-07-01` is the quarter Jul/Aug/Sep for 1975).  These data are primarily used to support analyses in the water quality dashboard: <https://shiny.tbep.org/wq-dash/>
 
+### Retrieving additional water quality data
+
+Most of the water quality functions in tbeptools were developed to work with the long-term monitoring data from the Environmental Protection Commission of Hillsborough County.  Additional monitoring programs in Tampa Bay can also be used to develop a more complete description of water quality.  
+
+The `import_readwqp()` function can be used to retrieve data from the USEPA Water Quality Portal for monitoring data from Pinellas and Manatee County.  The function retrieves nutrient, chlorophyll, and secchi data for all available estuarine stations monitored by each county.  The data can be retrieved as follows and will typically take less than one minute to download. 
+
+```{r, eval=FALSE}
+# get Manatee County data
+mancodata <- read_importwqp(org = 'Manatee', trace = T)
+
+# get Pinellas County data
+pincodata <- read_importwqp(org = 'Pinellas', trace = T)
+```
+
 ## Analyze {.tabset}
 
 The functions `anlz_avedat()` and `anlz_avedatsite()` summarize the station data by bay segments or by sites, respectively.  Both functions return annual means for chlorophyll and light attenuation (based on Secchi depth measurements) and monthly means by year for chlorophyll and light attenuation.  These summaries are then used to determine if bay segment targets for water quality are met using the `anlz_attain()` and `anlz_attainsite()` function.
