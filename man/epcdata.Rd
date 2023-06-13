@@ -3,9 +3,9 @@
 \docType{data}
 \name{epcdata}
 \alias{epcdata}
-\title{All bay data as of 20230206}
+\title{All bay data as of 20230613}
 \format{
-A data frame with 27286 rows and 26 variables:
+A data frame with 27601 rows and 26 variables:
 \describe{
   \item{bay_segment}{chr}
   \item{epchc_station}{num}
@@ -39,7 +39,7 @@ A data frame with 27286 rows and 26 variables:
 epcdata
 }
 \description{
-All bay data as of 20230206
+All bay data as of 20230613
 }
 \examples{
 \dontrun{
