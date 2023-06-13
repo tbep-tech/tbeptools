@@ -38,6 +38,10 @@ read_formwq <- function(datin, all = FALSE){
         sd_check < 0.5 ~ NaN,
         T ~ sd_m
         ),
+      Secchi_Q = dplyr::case_when(
+        Secchi_Q != '>' ~ NA_character_,
+        T ~ Secchi_Q
+      ),
       chla = suppressWarnings(as.numeric(`Chlorophyll_a`)),
       tn = suppressWarnings(as.numeric(`Total_Nitrogen`)),
       yr = lubridate::year(SampleTime),

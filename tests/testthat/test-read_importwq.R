@@ -8,6 +8,10 @@ test_that("Checking read_importwq", {
   result <- ncol(epcdata)
   expect_equal(result, 26)
 
+  # check secchi sd_q
+  result <- unique(epcdata$sd_q)
+  expect_equal(result, c(NA, ">"))
+
 })
 
 test_that("Checking read_importwq all parameters", {
