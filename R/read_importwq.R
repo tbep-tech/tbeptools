@@ -1,8 +1,6 @@
 #' Load local water quality file
 #'
-#' @param xlsx chr string path for local excel file, to overwrite if not current
-#' @param download_latest logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available
-#' @param na chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}
+#' @inheritParams read_importepc
 #' @param all logical indicating if all water quality parameters are returned, see details
 #'
 #' @return A \code{data.frame} of formatted water quality data.
@@ -30,58 +28,8 @@
 #' }
 read_importwq <- function(xlsx, download_latest = FALSE, na = '', all = FALSE){
 
-  # download latest and compare with current if exists
-  urlin <- 'https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&download=1'
-  read_dlcurrent(xlsx, download_latest, urlin = urlin)
-
-  # sanity checks
-  if(!download_latest)
-    stopifnot(file.exists(xlsx))
-
-  # load
-  rawdat <- suppressWarnings(readxl::read_xlsx(xlsx, sheet="RWMDataSpreadsheet",
-                       col_types = c("numeric", "numeric", "text", "text", "text", "text",
-                                     "numeric", "numeric", "text", "numeric", "numeric",
-                                     "text", "date", "text", "numeric", "text", "text",
-                                     "numeric", "numeric", "numeric", "numeric", "text",
-                                     "text", "text", "numeric", "text", "numeric", "text",
-                                     "numeric", "text", "numeric", "text", "numeric",
-                                     "text", "numeric", "text", "numeric", "text",
-                                     "numeric", "text", "numeric", "text", "numeric",
-                                     "text", "numeric", "text", "numeric", "text",
-                                     "numeric", "text", "numeric", "text", "numeric",
-                                     "text", "numeric", "text", "numeric", "text",
-                                     "numeric", "text", "numeric", "text", "numeric",
-                                     "text", "numeric", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text", "text", "text", "text",
-                                     "text", "text", "text"),
-                       na = na))
-
-  # format names
-  names(rawdat) <- gsub('\\r\\n', '_', names(rawdat))
-  names(rawdat) <- gsub('/l$|/L$', 'L', names(rawdat))
-  names(rawdat) <- gsub('/cm$', 'cm', names(rawdat))
-  names(rawdat) <- gsub('/', '-', names(rawdat))
-  names(rawdat) <- gsub('\\#\\-', 'num', names(rawdat))
-  names(rawdat) <- gsub('\\(|\\)', '', names(rawdat))
-  names(rawdat) <- gsub('\\%', 'pct', names(rawdat))
-  names(rawdat) <- gsub('F\\s', '_F', names(rawdat))
-  names(rawdat) <- gsub('C\\u', 'c\\u', names(rawdat))
-  names(rawdat) <- gsub('^Nitrates$', 'Nitrates_mgL', names(rawdat))
+  # download data
+  rawdat <- read_importepc(xlsx, download_latest = download_latest, na = na)
 
   # format
   out <- read_formwq(rawdat, all = all)
