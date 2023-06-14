@@ -19,8 +19,11 @@
 #' # file path
 #' xlsx <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
 #'
-#' # load and assign to object
-#' epcdata <- read_importwq(xlsx, download_latest = T)
+#' # load raw data and assign to object
+#' epcall <- read_importepc(xlsx, download_latest = T)
+#'
+#' # final formatting
+#' epcdata <- read_formwq(epcall)
 #' }
 read_formwq <- function(datin, all = FALSE){
 

@@ -24,7 +24,7 @@
 #' # load and assign to object
 #' epcall <- read_importepc(xlsx, download_latest = T)
 #' }
-read_importepc <- function(xlsx, download_latest = FALSE, na = '', all = FALSE){
+read_importepc <- function(xlsx, download_latest = FALSE, na = ''){
 
   # download latest and compare with current if exists
   urlin <- 'https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&download=1'
