@@ -148,6 +148,9 @@
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_formbenthic.html</loc>
   </url>
   <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/read_formfib.html</loc>
+  </url>
+  <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_formfim.html</loc>
   </url>
   <url>
@@ -170,6 +173,9 @@
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_importepc.html</loc>
+  </url>
+  <url>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/read_importfib.html</loc>
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/read_importfim.html</loc>

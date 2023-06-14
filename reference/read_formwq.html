@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9004</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,8 +93,11 @@
 <span class="r-in"><span><span class="co"># file path</span></span></span>
 <span class="r-in"><span><span class="va">xlsx</span> <span class="op">&lt;-</span> <span class="st">'~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># load and assign to object</span></span></span>
-<span class="r-in"><span><span class="va">epcdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_importwq.html">read_importwq</a></span><span class="op">(</span><span class="va">xlsx</span>, download_latest <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># load raw data and assign to object</span></span></span>
+<span class="r-in"><span><span class="va">epcall</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_importepc.html">read_importepc</a></span><span class="op">(</span><span class="va">xlsx</span>, download_latest <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># final formatting</span></span></span>
+<span class="r-in"><span><span class="va">epcdata</span> <span class="op">&lt;-</span> <span class="fu">read_formwq</span><span class="op">(</span><span class="va">epcall</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
