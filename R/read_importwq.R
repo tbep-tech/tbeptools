@@ -26,7 +26,7 @@
 #' # get all water quality parameters
 #' epcdataall <- read_importwq(xlsx, download_latest = T, all = T)
 #' }
-read_importwq <- function(xlsx, download_latest = FALSE, na = '', all = FALSE){
+read_importwq <- function(xlsx, download_latest = FALSE, na = c('', 'NULL'), all = FALSE){
 
   # download data
   rawdat <- read_importepc(xlsx, download_latest = download_latest, na = na)

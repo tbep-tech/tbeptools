@@ -4,7 +4,7 @@
 \alias{read_importphyto}
 \title{Load local phytoplankton cell count file}
 \usage{
-read_importphyto(xlsx, download_latest = FALSE, na = "")
+read_importphyto(xlsx, download_latest = FALSE, na = c("", "NULL"))
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite if not current}

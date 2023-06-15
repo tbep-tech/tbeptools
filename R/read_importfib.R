@@ -1,7 +1,6 @@
 #' Load local water quality file for Fecal Indicator Bacteria (FIB)
 #'
 #' @inheritParams read_importepc
-#' @param all logical indicating if all water quality parameters are returned, see details
 #'
 #' @return A \code{data.frame} of formatted water quality data.
 #'
@@ -24,7 +23,7 @@
 #' fibdata <- read_importfib(xlsx, download_latest = T)
 #'
 #' }
-read_importfib <- function(xlsx, download_latest = FALSE, na = '', all = FALSE){
+read_importfib <- function(xlsx, download_latest = FALSE, na = c('', 'NULL'), all = FALSE){
 
   # download data
   rawdat <- read_importepc(xlsx, download_latest = download_latest, na = na)

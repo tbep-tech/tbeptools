@@ -7,7 +7,7 @@
 read_formwq(datin, all = FALSE)
 }
 \arguments{
-\item{datin}{input \code{data.frame} loaded from \code{\link{read_importwq}}}
+\item{datin}{input \code{data.frame} loaded from \code{\link{read_importepc}}}
 
 \item{all}{logical indicating if all water quality parameters are returned, see details}
 }
@@ -33,6 +33,6 @@ epcdata <- read_formwq(epcall)
 }
 }
 \seealso{
-\code{\link{read_importwq}}
+\code{\link{read_importwq}}, \code{\link{read_importepc}}
 }
 \concept{read}

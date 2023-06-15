@@ -4,7 +4,7 @@
 \alias{read_importwq}
 \title{Load local water quality file}
 \usage{
-read_importwq(xlsx, download_latest = FALSE, na = "", all = FALSE)
+read_importwq(xlsx, download_latest = FALSE, na = c("", "NULL"), all = FALSE)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite if not current}

@@ -4,7 +4,7 @@
 \alias{read_importfib}
 \title{Load local water quality file for Fecal Indicator Bacteria (FIB)}
 \usage{
-read_importfib(xlsx, download_latest = FALSE, na = "", all = FALSE)
+read_importfib(xlsx, download_latest = FALSE, na = c("", "NULL"), all = FALSE)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite if not current}
@@ -12,8 +12,6 @@ read_importfib(xlsx, download_latest = FALSE, na = "", all = FALSE)
 \item{download_latest}{logical passed to \code{\link{read_dlcurrent}} to download raw data and compare with existing in \code{xlsx} if available}
 
 \item{na}{chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}}
-
-\item{all}{logical indicating if all water quality parameters are returned, see details}
 }
 \value{
 A \code{data.frame} of formatted water quality data.

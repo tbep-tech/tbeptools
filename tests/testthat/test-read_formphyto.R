@@ -2,7 +2,8 @@ test_that("Checking read_formphyto", {
   xlsx <- 'phytodata.xlsx'
 
   # load
-  rawdat <- readxl::read_xlsx(xlsx, na = '', col_types = c("text", "text", "text", "text", "text", "text", "date", "text",
+  rawdat <- readxl::read_xlsx(xlsx, na = c('', 'NULL'),
+                              col_types = c("text", "text", "text", "text", "text", "text", "date", "text",
                                                            "text", "text", "text", "text", "text", "text", "text", "text",
                                                            "text", "text", "text", "text", "text", "text", "text", "text",
                                                            "text", "text", "text")

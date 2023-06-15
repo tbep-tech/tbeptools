@@ -63,7 +63,9 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "Temp_Water_Mid_degC", "Temp_Water_Top_degC", "Total_Depth_m",
                   "Turbidity_JTU-NTU", "Turbidity_Q", "WBID", "WINStation", "YearMonth", "chla_q",
                   "datum", "lat", "lon", "qual", "sd_check", "sd_q", "sd_raw_m", "station", "time",
-                  "tn_q", "uni"))
+                  "tn_q", "uni", "E_Coliform", "E_ColiformQ", "Enterococci", "EnterococciQ",
+                  "Fecal_Coliform", "Fecal_ColiformQ", "Total_Coliform", "Total_ColiformQ",
+                  "ecocci", "ecoli", "fcolif", "totcol"))
 
 #' @importFrom grDevices rgb
 NULL

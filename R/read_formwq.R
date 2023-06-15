@@ -1,6 +1,6 @@
 #' Format water quality data
 #'
-#' @param datin input \code{data.frame} loaded from \code{\link{read_importwq}}
+#' @param datin input \code{data.frame} loaded from \code{\link{read_importepc}}
 #' @param all logical indicating if all water quality parameters are returned, see details
 #'
 #' @return A lightly formatted \code{data.frame} with chloropyll and secchi observations
@@ -12,7 +12,7 @@
 #'
 #' @details Secchi data VOB depths or secchis < 0.5 ft from bottom are assigned \code{NA}, function is used internally within \code{\link{read_importwq}}
 #'
-#' @seealso \code{\link{read_importwq}}
+#' @seealso \code{\link{read_importwq}}, \code{\link{read_importepc}}
 #'
 #' @examples
 #' \dontrun{

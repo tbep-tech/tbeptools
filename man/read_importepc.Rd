@@ -4,7 +4,7 @@
 \alias{read_importepc}
 \title{Download and/or import local water quality file for internal use}
 \usage{
-read_importepc(xlsx, download_latest = FALSE, na = "")
+read_importepc(xlsx, download_latest = FALSE, na = c("", "NULL"))
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite if not current}

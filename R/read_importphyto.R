@@ -22,7 +22,7 @@
 #' # load and assign to object
 #' phytodata <- read_importphyto(xlsx, download_latest = T)
 #' }
-read_importphyto <- function(xlsx, download_latest = FALSE, na = ''){
+read_importphyto <- function(xlsx, download_latest = FALSE, na = c('', 'NULL')){
 
   # download latest and compare with current if exists
   urlin <- "https://epcbocc.sharepoint.com/:x:/s/Share/ETAfRQ5drmRHntDd1O8s3FQB180Fumed4nQ99w-OIVDxrA?e=eSmtxD&download=1"
