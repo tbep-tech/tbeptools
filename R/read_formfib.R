@@ -28,7 +28,7 @@
 read_formfib <- function(datin, all = FALSE){
 
   # relevant bmap areas
-  areas <- c('Hillsborough River', 'Hillsborough River Tributary', 'Alafia River',
+  areasfib <- c('Hillsborough River', 'Hillsborough River Tributary', 'Alafia River',
              'Alafia River Tributary', 'Lake Thonotosassa', 'Lake Thonotosassa Tributary',
              'Lake Roberta')
 
@@ -55,7 +55,7 @@ read_formfib <- function(datin, all = FALSE){
 
   if(!all)
     out <- out %>%
-      dplyr::filter(area %in% areas)
+      dplyr::filter(area %in% areasfib)
 
   return(out)
 
