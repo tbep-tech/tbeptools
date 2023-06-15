@@ -50,7 +50,7 @@ read_formfib <- function(datin, all = FALSE){
     dplyr::select(area = AreaName, epchc_station, class = Class, SampleTime, yr, mo, Latitude, Longitude, SampleTime,
                   Total_Depth_m = TotalDepth, Sample_Depth_m = SampleDepth, ecoli, ecoli_q = E_ColiformQ,
                   ecocci, ecocci_q = EnterococciQ, fcolif, fcolif_q = Fecal_ColiformQ,
-                  totcol, tocol_q = Total_ColiformQ
+                  totcol, totcol_q = Total_ColiformQ
     )
 
   if(!all)
