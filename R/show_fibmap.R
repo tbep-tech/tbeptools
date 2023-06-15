@@ -81,15 +81,15 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
       tiles = leaflet::providers$Esri.WorldGrayCanvas,
       toggleDisplay = TRUE,
       position = 'bottomleft'
-      ) %>%
-    htmlwidgets::onRender("
-      function(el, x) {
-        var myMap = this;
-        myMap.on('baselayerchange',
-          function (e) {
-            myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
-          })
-      }")
+      ) #%>%
+    # htmlwidgets::onRender("
+    #   function(el, x) {
+    #     var myMap = this;
+    #     myMap.on('baselayerchange',
+    #       function (e) {
+    #         myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
+    #       })
+    #   }")
 
   return(out)
 
