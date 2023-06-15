@@ -3,11 +3,11 @@
 #' @param fibdata input FIB \code{data.frame} as returned by \code{\link{read_importfib}}
 #' @param yrsel optional numeric value to filter output by years in \code{fibdata}
 #' @param mosel optional numeric value to filter output by month in \code{fibdata}
-#' @param areasel optional character string to filter output by stations in the \code{"Alafia"} or \code{"Hillsborough} River basins, see details
+#' @param areasel optional character string to filter output by stations in the \code{"Alafia"} or \code{"Hillsborough"} River basins, see details
 #'
 #' @details Categories based on relevant thresholds are assigned to each observation.  The categories are specific to E. coli or Enterococcus and are assigned based on the station class as freshwater (\code{class} as 1 or 3F) or marine (\code{class} as 2 or 3M), respectively.  A station is categorized into one of four ranges defined by the thresholds as noted in the \code{cat} column of the output, with corresponding colors appropriate for each range as noted in the \code{col} column of the output.
 #'
-#' The \code{areasel} argument can indicate either \code{"Alafia"} or \code{"Hillsborough} for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection.  The Alafia River basin includes values in the \code{area} column of \code{fibdata} as \code{"Alafia River"} and \code{"Alafia River Tributary"}.  The Hillsborough River basin includes values in the \code{area} column of \code{fibdat} as \code{"Hillsborough River"}, \code{"Hillsborough River Tributary"}, \code{"Lake Thonotosassa"}, \code{"Lake Thonotosassa Tributary"}, and \code{"Lake Roberta"}.  Not all areas may be present based on the selection.
+#' The \code{areasel} argument can indicate either \code{"Alafia"} or \code{"Hillsborough"} for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection.  The Alafia River basin includes values in the \code{area} column of \code{fibdata} as \code{"Alafia River"} and \code{"Alafia River Tributary"}.  The Hillsborough River basin includes values in the \code{area} column of \code{fibdat} as \code{"Hillsborough River"}, \code{"Hillsborough River Tributary"}, \code{"Lake Thonotosassa"}, \code{"Lake Thonotosassa Tributary"}, and \code{"Lake Roberta"}.  Not all areas may be present based on the selection.
 #'
 #' @return A \code{data.frame} similar to \code{fibdata} with additional columns describing station categories and optionally filtered by arguments passed to the function
 #'
