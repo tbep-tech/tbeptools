@@ -115,13 +115,8 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">transect</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_transect.html">read_transect</a></span><span class="op">(</span>training <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>URL 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training': Timeout of 60 seconds was reached</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in open.connection(con, "rb"):</span> cannot open the connection to 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'</span>
 <span class="r-in"><span><span class="fu">show_compplot</span><span class="op">(</span><span class="va">transect</span>, yr <span class="op">=</span> <span class="fl">2022</span>, site <span class="op">=</span> <span class="st">'2'</span>, species <span class="op">=</span> <span class="st">'Halodule'</span>, varplo <span class="op">=</span> <span class="st">'Abundance'</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in ggplot2::geom_bar(stat = "identity", alpha = 0.7):</span> Problem while computing aesthetics.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Error occurred in the 1st layer.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Caused by error:</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> object 'grp' not found</span>
+<span class="r-plt img"><img src="show_compplot-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
