@@ -2,10 +2,11 @@
 #'
 #' @inheritParams anlz_fibcat
 #'
-#' @return a leaflet map
+#' @return A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
 #'
 #' @concept anlz
 #'
+#' @seealso \code{\link{anlz_fibcat}} for details on the categories
 #' @export
 #'
 #' @examples

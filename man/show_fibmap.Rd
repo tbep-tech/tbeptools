@@ -16,12 +16,15 @@ show_fibmap(fibdata, yrsel, mosel, areasel)
 \item{areasel}{optional character string to filter output by stations in the \code{"Alafia"} or \code{"Hillsborough"} River basins, see details}
 }
 \value{
-a leaflet map
+A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
 }
 \description{
 Map Fecal Indicator Bacteria (FIB) results by month, year, and location
 }
 \examples{
 show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Hillsborough')
+}
+\seealso{
+\code{\link{anlz_fibcat}} for details on the categories
 }
 \concept{anlz}
