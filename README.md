@@ -41,7 +41,7 @@ The vignettes are organized by topic and are an excellent place to start for und
 
 # Usage
 
-Functions in tbeptools are in three categories based on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
+The core functions in tbeptools are in three categories based on mode of use.  Each function is named using a prefix for the mode of use, followed by what the function does. The prefixes are:
 
 * `read`: Import current data from the main site.
 

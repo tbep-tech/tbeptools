@@ -42,7 +42,7 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
     ) %>%
     dplyr::select(-colnm, -indnm)
 
-
+  # create custom icon list for fib categories
   icons <- leaflet::iconList(
     ecoli_green <- leaflet::makeIcon(iconUrl = system.file('ecoli_green.png', package = 'tbeptools'),
                             iconWidth = 18, iconHeight = 18),
@@ -62,34 +62,9 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
                                iconWidth = 18, iconHeight = 18)
   )
 
-  esri <- rev(grep("^Esri", leaflet::providers, value = TRUE))
-
-  bnds <- sf::st_bbox(tomap)
-
-  m <- leaflet::leaflet() %>%
-    leaflet::fitBounds(bnds[['xmin']], bnds[['ymin']], bnds[['xmax']], bnds[['ymax']])
-
-  for (provider in esri) {
-    m <- m %>% leaflet::addProviderTiles(provider, group = provider)
-  }
-
-  out <- m %>%
-    leaflet::addLayersControl(baseGroups = names(esri),
-                     options = leaflet::layersControlOptions(collapsed = T)) %>%
-    leaflet::addMarkers(data = tomap, lng = ~Longitude, lat = ~Latitude, icon = ~icons[as.numeric(grp)]) %>%
-    leaflet::addMiniMap(
-      tiles = leaflet::providers$Esri.WorldGrayCanvas,
-      toggleDisplay = TRUE,
-      position = 'bottomleft'
-      ) #%>%
-    # htmlwidgets::onRender("
-    #   function(el, x) {
-    #     var myMap = this;
-    #     myMap.on('baselayerchange',
-    #       function (e) {
-    #         myMap.minimap.changeLayer(L.tileLayer.provider(e.name));
-    #       })
-    #   }")
+  # create map
+  out <- util_map(tomap) %>%
+    leaflet::addMarkers(data = tomap, lng = ~Longitude, lat = ~Latitude, icon = ~icons[as.numeric(grp)])
 
   return(out)
 
