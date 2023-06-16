@@ -37,13 +37,8 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), funding
     dplyr::select(yr, AreaAbbr, StationNumber, SedResultsType, Parameter, ValueAdjusted, Units,
                   Qualifier, BetweenTELPEL, ExceedsPEL)
 
-  # bounding box
-  bbx <- sf::st_bbox(tomap) %>%
-    as.numeric()
-
   # base map
-  bsmap <- mapview::mapView(map.types = mapview::mapviewGetOption("basemaps")) %>%
-    .@map
+  bsmap <- util_map(tomap)
 
   # peltel map
   if(!chkpeltel){
@@ -88,8 +83,7 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), funding
         radius = 4,
         fillColor = ~pal_exp(score),
         label = ~paste0("StationNumber: ", StationNumber, ", Year: ", yr, ', Value: ', paste(ValueAdjusted, Units))
-      ) %>%
-      leaflet::fitBounds(lng1 = bbx[1], lng2 = bbx[3], lat1 = bbx[2], lat2 = bbx[4])
+      )
 
   }
 
@@ -126,8 +120,7 @@ show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2021), funding
         radius = 4,
         fillColor = ~pal_exp(ValueAdjusted),
         label = ~paste0("StationNumber: ", StationNumber, ", Year: ", yr, ', Value: ', paste(ValueAdjusted, Units))
-      ) %>%
-      leaflet::fitBounds(lng1 = bbx[1], lng2 = bbx[3], lat1 = bbx[2], lat2 = bbx[4])
+      )
 
   }
 

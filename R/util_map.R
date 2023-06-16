@@ -30,7 +30,8 @@ util_map <- function(tomap, minimap = 'bottomleft'){
 
   out <- m %>%
     leaflet::addLayersControl(baseGroups = names(esri),
-                              options = leaflet::layersControlOptions(collapsed = T))
+                              options = leaflet::layersControlOptions(collapsed = T),
+                              position = 'topleft')
 
   # add inset minimap if not null
   if(!is.null(minimap))
@@ -38,7 +39,8 @@ util_map <- function(tomap, minimap = 'bottomleft'){
       leaflet::addMiniMap(
         tiles = leaflet::providers$Esri.WorldGrayCanvas,
         toggleDisplay = TRUE,
-        position = minimap
+        position = minimap,
+        minimized = TRUE
       ) %>%
     htmlwidgets::onRender("
       function(el, x) {
