@@ -4,6 +4,8 @@
 #'
 #' @return A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
 #'
+#' @details Placing the mouse cursor over an item on the map will reveal additional information about a station.
+#'
 #' @concept anlz
 #'
 #' @seealso \code{\link{anlz_fibcat}} for details on the categories
@@ -13,8 +15,10 @@
 #' show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Hillsborough')
 show_fibmap <- function(fibdata, yrsel, mosel, areasel){
 
+  # get categories
   fibcat <- anlz_fibcat(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel)
 
+  # create the object to map
   tomap <- fibcat %>%
     dplyr::filter(!is.na(Longitude)) %>%
     dplyr::filter(!is.na(Latitude)) %>%
@@ -28,10 +32,20 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
       indnm = factor(ind,
                                   levels = c('E. coli', 'Enterococcus'),
                                   labels = c('ecoli', 'ecocci')
-                           )
+                           ),
+      conc = dplyr::case_when(
+        indnm == 'ecoli' ~ ecoli,
+        indnm == 'ecocci' ~ ecocci
+      ),
+      conc = round(conc, 1),
+      cls = dplyr::case_when(
+        indnm == 'ecoli' ~ 'Freshwater',
+        indnm == 'ecocci' ~ 'Marine'
+      )
     ) %>%
     tidyr::unite('grp', indnm, colnm, remove = F)
 
+  # create levels for group, must match order of icons list
   levs <- expand.grid(levels(tomap$colnm), levels(tomap$indnm)) %>%
     unite('levs', Var2, Var1) %>%
     pull(levs)
@@ -39,7 +53,8 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
   # get correct levels
   tomap <- tomap %>%
     dplyr::mutate(
-      grp = factor(grp, levels = levs)
+      grp = factor(grp, levels = levs),
+      lab = paste0('Station Number: ', epchc_station, ', Class: ', cls, ' (', ind, '), Category: ', cat, ' (', conc, '/100mL)')
     ) %>%
     dplyr::select(-colnm, -indnm)
 
@@ -65,7 +80,13 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
 
   # create map
   out <- util_map(tomap) %>%
-    leaflet::addMarkers(data = tomap, lng = ~Longitude, lat = ~Latitude, icon = ~icons[as.numeric(grp)])
+    leaflet::addMarkers(
+      data = tomap,
+      lng = ~Longitude,
+      lat = ~Latitude,
+      icon = ~icons[as.numeric(grp)],
+      label = ~lab
+      )
 
   return(out)
 

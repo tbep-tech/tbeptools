@@ -21,6 +21,9 @@ A \code{leaflet} map for the selected year, month, and area showing stations and
 \description{
 Map Fecal Indicator Bacteria (FIB) results by month, year, and location
 }
+\details{
+Placing the mouse cursor over an item on the map will reveal additional information about a station.
+}
 \examples{
 show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Hillsborough')
 }
