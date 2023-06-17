@@ -36,3 +36,12 @@ test_that("Filtering by area works correctly for anlz_fibcat", {
   expect_false(any(result$area %in% expected_areas))
 
 })
+
+# Test case 5: Check error no data
+test_that("Checking error for no data with anlz_fibcat", {
+
+  expect_error(anlz_fibcat(fibdata, yrsel = 2020, mosel = 5, areasel = "Alafia"),
+    'No FIB data for May 2020, Alafia')
+
+})
+

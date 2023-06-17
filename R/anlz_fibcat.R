@@ -72,10 +72,14 @@ anlz_fibcat <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL){
       Hillsborough = c('Hillsborough River', 'Hillsborough River Tributary',  'Lake Thonotosassa',
                        'Lake Thonotosassa Tributary', 'Lake Roberta')
     )
-    areasel <- areasls[[areasel]]
     out <- out %>%
-      dplyr::filter(area %in% areasel)
+      dplyr::filter(area %in% areasls[[areasel]])
   }
+
+  # check empty data
+  chk <- length(na.omit(out$cat)) == 0
+  if(chk)
+    stop('No FIB data for ', paste(lubridate::month(mosel, label = T), yrsel, sep = ' '), ', ', areasel)
 
   return(out)
 
