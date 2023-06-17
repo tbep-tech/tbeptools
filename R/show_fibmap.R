@@ -54,7 +54,7 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
   tomap <- tomap %>%
     dplyr::mutate(
       grp = factor(grp, levels = levs),
-      lab = paste0('Station Number: ', epchc_station, ', Class: ', cls, ' (', ind, '), Category: ', cat, ' (', conc, '/100mL)')
+      lab = paste0('<html>Station Number: ', epchc_station, '<br>Class: ', cls, ' (', ind, ')<br> Category: ', cat, ' (', conc, '/100mL)</html>')
     ) %>%
     dplyr::select(-colnm, -indnm)
 
@@ -85,7 +85,7 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
       lng = ~Longitude,
       lat = ~Latitude,
       icon = ~icons[as.numeric(grp)],
-      label = ~lab
+      label = ~lapply(as.list(lab), util_html)
       )
 
   return(out)
