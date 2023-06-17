@@ -92,11 +92,11 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
   ecolileg <- leg %>%
     grep('ecoli', ., value = T) %>%
     paste(collapse = '<br/>') %>%
-    paste0('<b>Freshwater (<em>E. Coli</em>)</b><br/>', .)
+    paste0('<b>Freshwater (<em>E. Coli</em>)</b><br/>#/100mL<br/>', .)
   ecoccileg <- leg %>%
     grep('ecocci', ., value = T) %>%
     paste(collapse = '<br/>') %>%
-    paste0('<b>Marine (<em>Enteroccus</em>)</b><br/>', .)
+    paste0('<b>Marine (<em>Enterococcus</em>)</b><br/>#/100mL<br/>', .)
 
   # create map
   out <- util_map(tomap) %>%
