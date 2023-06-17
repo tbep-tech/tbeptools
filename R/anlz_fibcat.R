@@ -23,12 +23,7 @@
 #' anlz_fibcat(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia')
 anlz_fibcat <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL){
 
-  levs <- list(
-    ecolilev = c(-Inf, 126, 410, 1e3, Inf),
-    ecolilbs = c('< 126', '126 - 409', '410 - 999', '> 999'),
-    ecoccilev = c(-Inf, 35, 130, 1e3, Inf),
-    ecoccilbs = c('< 35', '35 - 129', '130 - 999', '> 999')
-  )
+  levs <- util_fiblevs()
 
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231')
 

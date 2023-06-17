@@ -78,6 +78,26 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
                                iconWidth = 18, iconHeight = 18)
   )
 
+  # legend as HTML string
+  levs <- util_fiblevs()
+  leg <- tibble::tibble(
+    src = paste0('https://github.com/tbep-tech/tbeptools/blob/master/inst/', basename(sapply(icons, `[[`, 1)), '?raw=true'),
+    brk = c(levs$ecolilbs, levs$ecoccilbs)
+    ) %>%
+    tidyr::unite('val', src, brk, sep = "' style='width:10px;height:10px;'> ") %>%
+    dplyr::mutate(
+      val = paste0("<img src='", val)
+    ) %>%
+    dplyr::pull(val)
+  ecolileg <- leg %>%
+    grep('ecoli', ., value = T) %>%
+    paste(collapse = '<br/>') %>%
+    paste0('<b>E. Coli (Marine)</b><br>', .)
+  ecoccileg <- leg %>%
+    grep('ecocci', ., value = T) %>%
+    paste(collapse = '<br/>') %>%
+    paste0('<b>Enteroccus (Marine)</b><br>', .)
+
   # create map
   out <- util_map(tomap) %>%
     leaflet::addMarkers(
@@ -86,7 +106,10 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
       lat = ~Latitude,
       icon = ~icons[as.numeric(grp)],
       label = ~lapply(as.list(lab), util_html)
-      )
+      ) %>%
+    leaflet::addControl(html = ecoccileg, position = 'topright') %>%
+    leaflet::addControl(html = ecolileg, position = 'topright')
+
 
   return(out)
 
