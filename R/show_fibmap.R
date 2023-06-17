@@ -54,7 +54,7 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
   tomap <- tomap %>%
     dplyr::mutate(
       grp = factor(grp, levels = levs),
-      lab = paste0('<html>Station Number: ', epchc_station, '<br>Class: ', cls, ' (', ind, ')<br> Category: ', cat, ' (', conc, '/100mL)</html>')
+      lab = paste0('<html>Station Number: ', epchc_station, '<br>Class: ', cls, ' (<i>', ind, '</i>)<br> Category: ', cat, ' (', conc, '/100mL)</html>')
     ) %>%
     dplyr::select(-colnm, -indnm)
 
@@ -92,11 +92,11 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
   ecolileg <- leg %>%
     grep('ecoli', ., value = T) %>%
     paste(collapse = '<br/>') %>%
-    paste0('<b>E. Coli (Marine)</b><br>', .)
+    paste0('<b>Freshwater (<em>E. Coli</em>)</b><br/>', .)
   ecoccileg <- leg %>%
     grep('ecocci', ., value = T) %>%
     paste(collapse = '<br/>') %>%
-    paste0('<b>Enteroccus (Marine)</b><br>', .)
+    paste0('<b>Marine (<em>Enteroccus</em>)</b><br/>', .)
 
   # create map
   out <- util_map(tomap) %>%
@@ -109,6 +109,8 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
       ) %>%
     leaflet::addControl(html = ecoccileg, position = 'topright') %>%
     leaflet::addControl(html = ecolileg, position = 'topright')
+
+
 
 
   return(out)
