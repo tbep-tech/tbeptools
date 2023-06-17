@@ -110,9 +110,6 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel){
     leaflet::addControl(html = ecoccileg, position = 'topright') %>%
     leaflet::addControl(html = ecolileg, position = 'topright')
 
-
-
-
   return(out)
 
 }
