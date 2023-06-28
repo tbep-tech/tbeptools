@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_fiblevs.R
 \name{util_fiblevs}
 \alias{util_fiblevs}
-\title{A list of Fecal Indicator Bactiera (FIB) category breakpoints and labels}
+\title{A list of Fecal Indicator Bacteria (FIB) category breakpoints and labels}
 \usage{
 util_fiblevs()
 }
@@ -10,7 +10,7 @@ util_fiblevs()
 A \code{list} showing cut points and labels for FIB categories
 }
 \description{
-A list of Fecal Indicator Bactiera (FIB) category breakpoints and labels
+A list of Fecal Indicator Bacteria (FIB) category breakpoints and labels
 }
 \examples{
 util_fiblevs()

@@ -20,7 +20,7 @@ A \code{data.frame} of formatted water quality data.
 Load local phytoplankton cell count file
 }
 \details{
-Pytoplankton cell count data downloaded from https://epcbocc.sharepoint.com/:x:/s/Share/ETAfRQ5drmRHntDd1O8s3FQB180Fumed4nQ99w-OIVDxrA?e=eSmtxD&download=1
+Phytoplankton cell count data downloaded from https://epcbocc.sharepoint.com/:x:/s/Share/ETAfRQ5drmRHntDd1O8s3FQB180Fumed4nQ99w-OIVDxrA?e=eSmtxD&download=1
 }
 \examples{
 \dontrun{
