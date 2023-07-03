@@ -1,7 +1,7 @@
 Package: tbeptools
 Title: Data and Indicators for the Tampa Bay Estuary Program
-Version: 2.0.1.9006
-Date: 2023-06-16
+Version: 2.0.1.9007
+Date: 2023-07-03
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
@@ -47,9 +47,9 @@ Authors@R: c(
   )
 Description: Several functions are provided for working with Tampa Bay Estuary 
   Program data and indicators, including the water quality report card, tidal creek
-  assessments, Tampa Bay Nekton Index, and the Tampa Bay Benthic Index. Additional
-  functions are provided for miscellaneous tasks, such as reference library curation
-  and assessing seagrass data.
+  assessments, Tampa Bay Nekton Index, Tampa Bay Benthic Index, seagrass transect
+  data, habitat report card, and fecal indicator bacteria. Additional functions are 
+  provided for miscellaneous tasks, such as reference library curation.
 Depends: 
   R (>= 3.6),
   methods
