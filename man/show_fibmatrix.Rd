@@ -8,7 +8,7 @@ show_fibmatrix(
   fibdata,
   txtsz = 3,
   yrrng = NULL,
-  stations = c(143, 108, 107, 135, 118, 148, 105, 152, 137),
+  stas = c(143, 108, 107, 135, 118, 148, 105, 152, 137),
   asreact = FALSE,
   nrows = 10,
   family = NA,
@@ -24,7 +24,7 @@ show_fibmatrix(
 
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in \code{epcdata}}
 
-\item{stations}{numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan}
+\item{stas}{numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan, see details}
 
 \item{asreact}{logical indicating if a \code{\link[reactable]{reactable}} object is returned}
 
@@ -45,7 +45,9 @@ A static \code{\link[ggplot2]{ggplot}} object is returned by default. A \code{\l
 Plot a matrix of Fecal Indicator Bacteria categories over time by station
 }
 \details{
-The matrix color codes years by station based on the proportion of monthly samples where fecal indicator bacteria concentration exceed 400 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at \url{http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST%20Report/Fecal%20BMAP%20DST%20Final%20Report%20--%20June%202008.pdf}.
+The matrix color codes years by station based on the proportion of monthly samples where fecal indicator bacteria concentrations exceed 400 CFU / 100 mL (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  The proportions are categorized as A, B, C, D, or E with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at \url{http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST%20Report/Fecal%20BMAP%20DST%20Final%20Report%20--%20June%202008.pdf}.
+
+The default stations are those used in TBEP report #05-14 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Acion Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in \code{fibdata} can be plotted using the \code{stas} argument.
 }
 \examples{
 show_fibmatrix(fibdata)

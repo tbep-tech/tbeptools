@@ -4,7 +4,7 @@
 \alias{show_reactable}
 \title{Create reactable table from matrix data}
 \usage{
-show_reactable(totab, colfun, nrows = 10)
+show_reactable(totab, colfun, nrows = 10, txtsz = 3)
 }
 \arguments{
 \item{totab}{A data frame in wide format of summarized results}
@@ -12,6 +12,8 @@ show_reactable(totab, colfun, nrows = 10)
 \item{colfun}{Function specifying how colors are treated in cell background}
 
 \item{nrows}{numeric specifying number of rows in the table}
+
+\item{txtsz}{numeric indicating text size in the cells, use \code{txtsz = NULL} to suppress}
 }
 \value{
 A \code{\link[reactable]{reactable}} table

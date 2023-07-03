@@ -66,7 +66,7 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "tn_q", "uni", "E_Coliform", "E_ColiformQ", "Enterococci", "EnterococciQ",
                   "Fecal_Coliform", "Fecal_ColiformQ", "Total_Coliform", "Total_ColiformQ",
                   "ecocci", "ecoli", "fcolif", "totcol", "areasfib", "Var1", "Var2", "colnm",
-                  "indnm"))
+                  "indnm", "brk", "cls", "conc", "exced"))
 
 #' @importFrom grDevices rgb
 NULL
