@@ -28,6 +28,6 @@ Placing the mouse cursor over an item on the map will reveal additional informat
 show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Hillsborough')
 }
 \seealso{
-\code{\link{anlz_fibcat}} for details on the categories
+\code{\link{anlz_fibmap}} for details on the categories
 }
 \concept{anlz}

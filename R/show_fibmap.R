@@ -1,6 +1,6 @@
 #' Map Fecal Indicator Bacteria (FIB) results by month, year, and location
 #'
-#' @inheritParams anlz_fibcat
+#' @inheritParams anlz_fibmap
 #'
 #' @return A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
 #'
@@ -8,7 +8,7 @@
 #'
 #' @concept anlz
 #'
-#' @seealso \code{\link{anlz_fibcat}} for details on the categories
+#' @seealso \code{\link{anlz_fibmap}} for details on the categories
 #' @export
 #'
 #' @examples
@@ -16,10 +16,10 @@
 show_fibmap <- function(fibdata, yrsel, mosel, areasel){
 
   # get categories
-  fibcat <- anlz_fibcat(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel)
+  fibmap <- anlz_fibmap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel)
 
   # create the object to map
-  tomap <- fibcat %>%
+  tomap <- fibmap %>%
     dplyr::filter(!is.na(Longitude)) %>%
     dplyr::filter(!is.na(Latitude)) %>%
     dplyr::filter(!is.na(cat)) %>%
