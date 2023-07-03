@@ -92,7 +92,7 @@ show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NU
     }
 
     # make reactable
-    out <- show_reactable(totab, colfun, nrows = nrows)
+    out <- show_reactable(totab, colfun, nrows = nrows, txtsz = txtsz)
 
     return(out)
 

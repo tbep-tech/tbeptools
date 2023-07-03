@@ -77,7 +77,7 @@ show_fibmatrix <- function(fibdata, txtsz = 3, yrrng = NULL,
     }
 
     # make reactable
-    out <- show_reactable(totab, colfun, nrows = nrows)
+    out <- show_reactable(totab, colfun, nrows = nrows, txtsz = txtsz)
 
     return(out)
 

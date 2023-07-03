@@ -122,7 +122,7 @@ show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segme
 
 
     # make reactable
-    out <- show_reactable(totab, colfun, nrows = nrows)
+    out <- show_reactable(totab, colfun, nrows = nrows, txtsz = txtsz)
 
     return(out)
 

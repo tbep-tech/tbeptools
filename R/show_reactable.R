@@ -5,6 +5,7 @@
 #' @param totab A data frame in wide format of summarized results
 #' @param colfun Function specifying how colors are treated in cell background
 #' @param nrows numeric specifying number of rows in the table
+#' @param txtsz numeric indicating text size in the cells, use \code{txtsz = NULL} to suppress
 #'
 #' @importFrom reactable colDef
 #'
@@ -52,18 +53,21 @@
 #' }
 #'
 #' show_reactable(totab, colfun)
-show_reactable <- function(totab, colfun, nrows = 10) {
+show_reactable <- function(totab, colfun, nrows = 10, txtsz = 3) {
+
+  # converts ggplot size input to ~ 16 as default for reactable
+  txtsz <- ifelse(is.null(txtsz), '0px', paste0(txtsz * 5.33, 'px'))
 
   out <- reactable::reactable(totab,
     defaultPageSize = nrows,
     columns = list(
      yr = colDef(
-       name = "Year"
+       name = "Year", style = list(fontSize = "16px")
      )
     ),
     defaultColDef = colDef(
      style = function(value){
-       list(background = colfun(value))
+       list(background = colfun(value), fontSize = txtsz)
        }
     )
   )
