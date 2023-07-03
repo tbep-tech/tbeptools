@@ -16,6 +16,9 @@
     <loc>https://tbep-tech.github.io/tbeptools/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://tbep-tech.github.io/tbeptools/articles/fib.html</loc>
+  </url>
+  <url>
     <loc>https://tbep-tech.github.io/tbeptools/articles/habitatmasterplan.html</loc>
   </url>
   <url>
@@ -58,7 +61,7 @@
     <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_avedatsite.html</loc>
   </url>
   <url>
-    <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_fibcat.html</loc>
+    <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_fibmap.html</loc>
   </url>
   <url>
     <loc>https://tbep-tech.github.io/tbeptools/reference/anlz_hmpreport.html</loc>
