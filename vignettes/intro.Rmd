@@ -61,17 +61,14 @@ xlsx <- 'vignettes/current_results.xlsx'
 
 Now we pass this `xlsx` object to the `read_importwq()` function. 
 
-```{r, eval = F}
-ecpdata <- read_importwq(xlsx)
-```
-```
-#> Error in read_importwq("empty") : file.exists(xlsx) is not TRUE
+```{r, eval = F, error = T}
+epcdata <- read_importwq(xlsx)
 ```
 
 We get an error message from the function indicating that the file is not found. This makes sense because the file doesn't exist yet, so we need to tell the function to download the latest file.  This is done by changing the `download_latest` argument to `TRUE` (the default is `FALSE`). 
 
 ```{r, eval = F}
-ecpdata <- read_importwq(xlsx, download_latest = TRUE)
+epcdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 ```
 #> File vignettes/current_results.xlsx does not exist, replacing with downloaded file...
@@ -84,7 +81,7 @@ Now we get the same message, but with an indication that the file on the server 
 If we try to run the function again after downloading the data from the server, we get the following message.  This check is done to make sure that the data are not unnecessarily downloaded if the current file matches the file on the server.
 
 ```{r, eval = F}
-ecpdata <- read_importwq(xlsx, download_latest = TRUE)
+epcdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 ```
 #> File is current...
@@ -268,7 +265,7 @@ show_matrix(epcdata, txtsz = NULL) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7))
 ```
 
-If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. Only the first ten rows are shown by defaul.  The default number of rows (10) can be changed with the \code{nrows} argument.  Use a very large number to show all rows.
+If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. Only the first ten rows are shown by default.  The default number of rows (10) can be changed with the `nrows` argument.  Use a sufficiently large number to show all rows.
 
 ```{r}
 show_matrix(epcdata, asreact = TRUE)

@@ -38,6 +38,7 @@ The vignettes are organized by topic and are an excellent place to start for und
 * [Tidal Creeks Assessment](https://tbep-tech.github.io/tbeptools/articles/tidalcreeks.html): Overview of functions to import, analyze, and plot results for the assessment of tidal creeks in southwest Florida
 * [Seagrass Transect Data](https://tbep-tech.github.io/tbeptools/articles/seagrasstransect.html): Overview of functions to import, analyze, and plot results for the seagrass transect data collected in Tampa Bay
 * [Habitat Master Plan](https://tbep-tech.github.io/tbeptools/articles/habitatmasterplan.html): Overview of functions to analyze and create a report card for the Tampa Bay Habitat Master Plan 2020 update
+* [Fecal Indicator Bacteria](https://tbep-tech.github.io/tbeptools/articles/fib.html): Overview of functions to import, analyze, and plot results for Fecal Indicator Bacteria (FIB)
 
 # Usage
 

@@ -1,0 +1,141 @@
+---
+title: "Fecal Indicator Bacteria"
+csl: stylefile.csl
+bibliography: fibrefs.bib
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Fecal Indicator Bacteria}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = F, warning = F, 
+  fig.align = 'center', 
+  cache = F
+)
+
+# libraries
+library(tbeptools)
+library(dplyr)
+
+# spelling::spell_check_files("vignettes/fib.Rmd")
+```
+
+## Background
+
+Fecal Indicator Bacteria (FIB) are used to track concentrations of pathogens in surface waters that may be detrimental to human health and the environment.  These are commonly measured with select indicators that are present in the human gut and can enter the environment through wastewater discharges or other illicit sources.  Common indicators include concentrations of *E. coli*, *Enterococcus*, or Fecal Coliform as the number of colony forming units (CFU) per 100 mL of water.
+
+Many monitoring programs routinely measure FIB concentrations at select locations.  The Environmental Protection Commission (EPC) of Hillsborough County has been tracking FIB indicators for several decades as part of their long-term monitoring.  Functions in tbeptools can be used to download EPC FIB data, analyze the results, and create summary maps or plots.  This vignette describes use of these functions. Most of these functions are focused on reporting for the Hillsborough River fecal coliform impairment and the associated Basin Management Action Plan (BMAP). These tools can be used to track long-term changes in FIBs in this basin to assess progress in reducing fecal coliform levels.   
+
+Data collected from the monitoring program are processed and maintained in a spreadsheet titled `RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx` at <https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1> (viewable [here](https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU)). These data include observations at all stations and for all parameters throughout the period of record. FIB data are collected at most stations where additional water quality data are collected.  This is the same dataset used for reporting on water quality indicators in Tampa Bay (see the [water quality data](https://tbep-tech.github.io/tbeptools/articles/intro.html) vignette).
+
+## Read
+
+The main function for importing FIB data is `read_importfib()`.  This function downloads the latest file if one is not already available at the location specified by the `xlsx` input argument.  The function operates similarly as `read_importwq()` for importing water quality data.  Please refer to the see the [water quality data](https://tbep-tech.github.io/tbeptools/articles/intro.html) vignette for additional details on the import function.  
+
+The FIB data can be downloaded as follows: 
+
+```{r, eval = F}
+fibdata <- read_importfib('vignettes/current_data.xlsx', download_latest = T)
+```
+
+A data object called `fibdata` is also provided with the package, although it may not contain the most current data available from EPC. View the [help file](https://tbep-tech.github.io/tbeptools/reference/fibdata.html) for the download date. 
+
+```{r}
+fibdata
+```
+
+The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin.  Some stations include samples beginning in 1972. The default output for `read_importwq()` returns only stations with `AreaName` in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.  Use `all = TRUE` to return all stations. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Values shown are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix. Qualifier codes can be interpreted from the source spreadsheet. Concentrations noted with \code{<} or \code{>} in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
+
+The `fibdata` object can be used for the remaining FIB functions. 
+
+## Analyze
+
+The `anlz_fibmap()` function assigns categories to each observation in `fibdata` for a selected month and year.  These results are then mapped using `anlz_fibmap()` (see below). The categories are specific to *E. coli* or *Enterococcus* and are assigned based on the station class as freshwater (`class` as 1 or 3F) or marine (`class` as 2 or 3M), respectively.  A station is categorized into one of four ranges defined by the thresholds as noted in the `cat` column of the output, with corresponding colors appropriate for each range as noted in the `col` column of the output.
+
+```{r}
+anlz_fibmap(fibdata)
+```
+
+The thresholds are from EPC and are as follows for *E. coli* or *Enterococcus*.
+
+```{r, echo = T}
+fibdata %>%
+  anlz_fibmap() %>% 
+  select(Indicator = ind, Threshold = cat) %>% 
+  unique() %>% 
+  na.omit() %>% 
+  arrange(Indicator) %>% 
+  knitr::kable()
+```
+
+External package libraries in R can be used to plot the time series data.  Not specifying these arguments will return results for the entire period of record. 
+
+```{r}
+anlz_fibmap(fibdata, yrsel = 2022, mosel = 7)
+```
+
+The `areasel` argument can indicate either `"Alafia"` or `"Hillsborough"` to select data for the corresponding river basins, where rows in `fibdata` are filtered based on the the selection.  All areas are returned if this argument is not specified. The Alafia River basin includes values in the `area` column of `fibdata` as `"Alafia River"` and `"Alafia River Tributary"`.  The Hillsborough River basin includes values in the `area` column of `fibdat` as `"Hillsborough River"`, `"Hillsborough River Tributary"`, `"Lake Thonotosassa"`, `"Lake Thonotosassa Tributary"`, and `"Lake Roberta"`.  Not all areas may be present based on the selection for `yrsel` and `mosel`.
+
+```{r}
+anlz_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough')
+```
+
+## Show
+
+The `show_fibmap()` function creates a map of FIB sites and thresholds based on output from `anlz_fibmap()`.  The same arguments that apply to `anlz_fibmap()` also apply to `show_fibmap()` such that freshwater and marine stations categorized by relevant thresholds are plotted by a selected year, month, and area.  Unlike `anlz_fibmap()`, all arguments are required
+
+```{r, out.width="100%"}
+show_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough')
+show_fibmap(fibdata, yrsel = 2021, mosel = 6, areasel = 'Alafia')
+```
+
+Additional information about a site can be seen by placing the cursor over a location.  A map inset can also be seen by clicking the arrow in the button left.  
+
+The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data.  The matrix colors are based on the proportion of monthly samples where fecal indicator bacteria concentrations exceed 400 CFU / 100 mL (using Fecal Coliform, `fcolif` in `fibdata`).  The proportions are categorized as A, B, C, D, or E with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08.
+
+```{r, fig.height = 8, fig.width = 3}
+show_fibmatrix(fibdata)
+```
+
+The default stations are those used in TBEP report #05-13 (@tbep0513) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in \code{fibdata} can be plotted using the \code{stas} argument.
+
+```{r, fig.height = 8, fig.width = 1.5}
+show_fibmatrix(fibdata, stas = c(115, 116))
+```
+
+The `yrrng` argument can also be used to select a year range, where the default is 1985 to the most current year of data in `fibdata`.  
+
+```{r, fig.height = 8, fig.width = 3}
+show_fibmatrix(fibdata, yrrng = c(1990, 2020))
+```
+
+If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. Only the first ten rows are shown by default.  The default number of rows (10) can be changed with the `nrows` argument.  Use a sufficiently large number to show all rows.
+
+```{r}
+show_fibmatrix(fibdata, asreact = TRUE)
+```
+
+A plotly (interactive, dynamic plot) can be returned by setting the `plotly` argument to `TRUE`. 
+
+```{r, fig.height = 8, fig.width = 3}
+show_fibmatrix(fibdata, plotly = TRUE)
+```
+
+<!-- Results can also be obtained for a selected year. Outcomes can be returned in tabular format with `anlz_yrattain()`.  This table also shows segment averages for chlorophyll and light attenuation, including the associated targets.  -->
+
+<!-- ```{r} -->
+<!-- anlz_yrattain(epcdata, yrsel = 2018) -->
+<!-- ``` -->
+
+From these plots, we can view locations and general trends in FIB data for the Hillsborough and Alafia river basins.  Additional functions may be added in the future to evaluate FIB data at other locations. 
+
+# References
+
