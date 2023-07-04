@@ -52,7 +52,7 @@ A data object called `fibdata` is also provided with the package, although it ma
 fibdata
 ```
 
-The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin.  Some stations include samples beginning in 1972. The default output for `read_importwq()` returns only stations with `AreaName` in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.  Use `all = TRUE` to return all stations. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Values shown are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix. Qualifier codes can be interpreted from the source spreadsheet. Concentrations noted with \code{<} or \code{>} in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
+The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin. Some stations include samples beginning in 1972. The default output for `read_importwq()` returns only stations with `AreaName` in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.  Use `all = TRUE` to return all stations. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Values shown are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix. Qualifier codes can be interpreted from the source spreadsheet. Concentrations noted with \code{<} or \code{>} in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
 
 The `fibdata` object can be used for the remaining FIB functions. 
 
@@ -66,7 +66,7 @@ anlz_fibmap(fibdata)
 
 The thresholds are from EPC and are as follows for *E. coli* or *Enterococcus*.
 
-```{r, echo = T}
+```{r, echo = F}
 fibdata %>%
   anlz_fibmap() %>% 
   select(Indicator = ind, Threshold = cat) %>% 
@@ -76,7 +76,7 @@ fibdata %>%
   knitr::kable()
 ```
 
-External package libraries in R can be used to plot the time series data.  Not specifying these arguments will return results for the entire period of record. 
+The `yrsel` and `mosel` arguments can be used to filter results by year and month.  Not specifying these arguments will return results for the entire period of record. 
 
 ```{r}
 anlz_fibmap(fibdata, yrsel = 2022, mosel = 7)
