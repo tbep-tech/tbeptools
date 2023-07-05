@@ -105,7 +105,7 @@ show_fibmap(fibdata, yrsel = 2021, mosel = 6, areasel = 'Alafia')
 
 Additional information about a site can be seen by placing the cursor over a location.  A map inset can also be seen by clicking the arrow in the button left.  
 
-The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data.  The matrix colors are based on the proportion of monthly samples where fecal indicator bacteria concentrations exceed 400 CFU / 100 mL (using Fecal Coliform, `fcolif` in `fibdata`).  The proportions are categorized as A, B, C, D, or E with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08.
+The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data [@Morrison09].  The matrix colors are based on the proportion of monthly samples where fecal indicator bacteria concentrations exceed 400 CFU / 100 mL (using Fecal Coliform, `fcolif` in `fibdata`).  The proportions are categorized as A, B, C, D, or E with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08.
 
 ```{r, fig.height = 8, fig.width = 3}
 show_fibmatrix(fibdata)
