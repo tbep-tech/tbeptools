@@ -63,7 +63,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span></span>
 <span>  <span class="va">fibdata</span>,</span>
 <span>  yrrng <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  stas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">143</span>, <span class="fl">108</span>, <span class="fl">107</span>, <span class="fl">135</span>, <span class="fl">118</span>, <span class="fl">148</span>, <span class="fl">105</span>, <span class="fl">152</span>, <span class="fl">137</span><span class="op">)</span></span>
+<span>  stas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">143</span>, <span class="fl">108</span>, <span class="fl">107</span>, <span class="fl">135</span>, <span class="fl">118</span>, <span class="fl">148</span>, <span class="fl">105</span>, <span class="fl">152</span>, <span class="fl">137</span><span class="op">)</span>,</span>
+<span>  lagyr <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -80,6 +81,10 @@
 <dt>stas</dt>
 <dd><p>numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan, see details</p></dd>
 
+
+<dt>lagyr</dt>
+<dd><p>numeric for year lag to calculate categories, see details</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -89,7 +94,7 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year is categorized based on the proportion of monthly samples where fecal indicator bacteria concentrations exceed 400 CFU / 100 mL (using Fecal Coliform, <code>fcolif</code> in <code>fibdata</code>).  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are &lt;10%, 10-30%, 30-50%, 50-75%, and &gt;75% (right-closed).  See <code><a href="show_fibmatrix.html">show_fibmatrix</a></code> for additional details.</p>
+    <p>This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding 400 CFU / 100 mL in a given year (using Fecal Coliform, <code>fcolif</code> in <code>fibdata</code>).  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are &lt;10%, 10-30%, 30-50%, 50-75%, and &gt;75% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (<code>lagyr = 3</code>). See <code><a href="show_fibmatrix.html">show_fibmatrix</a></code> for additional details.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -104,13 +109,13 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">1</span>985 143             <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">1</span>985 108            126. A    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">1</span>985 107            181. A    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">1</span>985 107            181. C    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">1</span>985 135            100  A    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">1</span>985 118            155. A    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">1</span>985 148             <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">1</span>985 105            227. A    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">1</span>985 105            227. C    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>985 152             <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>985 137            206. A    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>985 137            206. C    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>986 143             <span style="color: #BB0000;">NA</span>  <span style="color: #BB0000;">NA</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 341 more rows</span></span>
 </code></pre></div>
