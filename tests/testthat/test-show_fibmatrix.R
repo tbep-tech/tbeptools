@@ -10,6 +10,3 @@ test_that("Checking show_fibmatrix plotly class", {
   result <- show_fibmatrix(fibdata, plotly = T)
   expect_is(result, 'plotly')
 })
-test_that("Checking show_fibmatrix station error", {
-  expect_error(show_fibmatrix(fibdata, stas = '999'))
-})

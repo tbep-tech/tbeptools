@@ -6,9 +6,9 @@
 \usage{
 show_fibmatrix(
   fibdata,
-  txtsz = 3,
   yrrng = NULL,
   stas = c(143, 108, 107, 135, 118, 148, 105, 152, 137),
+  txtsz = 3,
   asreact = FALSE,
   nrows = 10,
   family = NA,
@@ -20,11 +20,11 @@ show_fibmatrix(
 \arguments{
 \item{fibdata}{input data frame as returned by \code{\link{read_importfib}}}
 
-\item{txtsz}{numeric for size of text in the plot, applies only if \code{tab = FALSE}.  Use \code{txtsz = NULL} to suppress.}
-
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in \code{epcdata}}
 
 \item{stas}{numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan, see details}
+
+\item{txtsz}{numeric for size of text in the plot, applies only if \code{tab = FALSE}.  Use \code{txtsz = NULL} to suppress.}
 
 \item{asreact}{logical indicating if a \code{\link[reactable]{reactable}} object is returned}
 
