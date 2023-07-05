@@ -52,7 +52,7 @@ A data object called `fibdata` is also provided with the package, although it ma
 fibdata
 ```
 
-The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin. Some stations include samples beginning in 1972. The default output for `read_importwq()` returns only stations with `AreaName` in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.  Use `all = TRUE` to return all stations. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Values shown are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix. Qualifier codes can be interpreted from the source spreadsheet. Concentrations noted with \code{<} or \code{>} in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
+The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin. Some stations include samples beginning in 1972. The default output for `read_importwq()` returns only stations with `AreaName` in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.  Use `all = TRUE` to return all stations. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Values shown are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix. Qualifier codes can be interpreted from the source spreadsheet. Concentrations noted with `<` or `>` in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
 
 The `fibdata` object can be used for the remaining FIB functions. 
 
@@ -88,7 +88,7 @@ The `areasel` argument can indicate either `"Alafia"` or `"Hillsborough"` to sel
 anlz_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough')
 ```
 
-The `anlz_fibmatrix()` function creates a summary of FIB categories by station and year as output for the `show_fibmatrix()` function described below.  The function assigns Microbial Water Quality Assessment (MWQA) letter categories for each station and year based on the proportion of samples in a year that exceed fecal coliform concentrations of 400 CFU / 100 mL.  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (`gmean`), the proportions of samples exceeding 400 CFU / 100 mL (`exced`), the count of samples (`cnt`), and a category indicating a letter outcome based on the proportion of exceedences (`cat`).
+The `anlz_fibmatrix()` function creates a summary of FIB categories by station and year as output for the `show_fibmatrix()` function described below.  The function assigns Microbial Water Quality Assessment (MWQA) letter categories for each station and year based on the likelihood that fecal coliform concentrations will exceed 400 CFU / 100 mL for a given year.  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (`lagyr = 3`).  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (`gmean`) and a category indicating a letter outcome based on the likelihood of exceedences (`cat`).
 
 ```{r}
 anlz_fibmatrix(fibdata)
@@ -105,13 +105,19 @@ show_fibmap(fibdata, yrsel = 2021, mosel = 6, areasel = 'Alafia')
 
 Additional information about a site can be seen by placing the cursor over a location.  A map inset can also be seen by clicking the arrow in the button left.  
 
-The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data [@Morrison09].  The matrix colors are based on the proportion of monthly samples where fecal indicator bacteria concentrations exceed 400 CFU / 100 mL (using Fecal Coliform, `fcolif` in `fibdata`).  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08.
+The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data [@Morrison09].  The matrix colors are based on the likelihood that fecal indicator bacteria concentrations exceed 400 CFU / 100 mL in a given year (using Fecal Coliform, `fcolif` in `fibdata`).  The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08 and @Morrison09.
 
 ```{r, fig.height = 8, fig.width = 3}
 show_fibmatrix(fibdata)
 ```
 
-The default stations are those used in TBEP report #05-13 [@tbep0513] for the Hillsborough River Basin Management Action Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in \code{fibdata} can be plotted using the \code{stas} argument.
+By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (`lagyr = 3`).  This example shows results using only the monthly observations in each year. 
+
+```{r, fig.height = 8, fig.width = 3}
+show_fibmatrix(fibdata, lagyr = 1)
+```
+
+The default stations are those used in TBEP report #05-13 [@tbep0513] for the Hillsborough River Basin Management Action Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in `fibdata` can be plotted using the `stas` argument.
 
 ```{r, fig.height = 8, fig.width = 1.5}
 show_fibmatrix(fibdata, stas = c(115, 116))

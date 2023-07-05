@@ -7,7 +7,8 @@
 anlz_fibmatrix(
   fibdata,
   yrrng = NULL,
-  stas = c(143, 108, 107, 135, 118, 148, 105, 152, 137)
+  stas = c(143, 108, 107, 135, 118, 148, 105, 152, 137),
+  lagyr = 3
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ anlz_fibmatrix(
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in \code{epcdata}}
 
 \item{stas}{numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan, see details}
+
+\item{lagyr}{numeric for year lag to calculate categories, see details}
 }
 \value{
 A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station, including columns for the estimated geometric mean of fecal coliform concentrations (\code{gmean}), the proportions of samples exceeding 400 CFU / 100 mL (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).
@@ -24,7 +27,7 @@ A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station, inc
 Analyze Fecal Indicator Bacteria categories over time by station
 }
 \details{
-This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year is categorized based on the proportion of monthly samples where fecal indicator bacteria concentrations exceed 400 CFU / 100 mL (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  See \code{\link{show_fibmatrix}} for additional details.
+This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding 400 CFU / 100 mL in a given year (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
 }
 \examples{
 anlz_fibmatrix(fibdata)
