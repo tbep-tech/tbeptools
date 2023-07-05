@@ -88,6 +88,12 @@ The `areasel` argument can indicate either `"Alafia"` or `"Hillsborough"` to sel
 anlz_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough')
 ```
 
+The `anlz_fibmatrix()` function creates a summary of FIB categories by station and year as output for the `show_fibmatrix()` function described below.  The function assigns letter categories for each station and year based on the proportion of samples in a year that exceed fecal coliform concentrations of 400 CFU / 100 mL.  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (\code{gmean}), the proportions of samples exceeding 400 CFU / 100 mL (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).
+
+```{r}
+anlz_fibmatrix(fibdata)
+```
+
 ## Show
 
 The `show_fibmap()` function creates a map of FIB sites and thresholds based on output from `anlz_fibmap()`.  The same arguments that apply to `anlz_fibmap()` also apply to `show_fibmap()` such that freshwater and marine stations categorized by relevant thresholds are plotted by a selected year, month, and area.  Unlike `anlz_fibmap()`, all arguments are required
@@ -105,7 +111,7 @@ The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB da
 show_fibmatrix(fibdata)
 ```
 
-The default stations are those used in TBEP report #05-13 (@tbep0513) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in \code{fibdata} can be plotted using the \code{stas} argument.
+The default stations are those used in TBEP report #05-13 [@tbep0513] for the Hillsborough River Basin Management Action Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in \code{fibdata} can be plotted using the \code{stas} argument.
 
 ```{r, fig.height = 8, fig.width = 1.5}
 show_fibmatrix(fibdata, stas = c(115, 116))
@@ -128,12 +134,6 @@ A plotly (interactive, dynamic plot) can be returned by setting the `plotly` arg
 ```{r, fig.height = 8, fig.width = 3}
 show_fibmatrix(fibdata, plotly = TRUE)
 ```
-
-<!-- Results can also be obtained for a selected year. Outcomes can be returned in tabular format with `anlz_yrattain()`.  This table also shows segment averages for chlorophyll and light attenuation, including the associated targets.  -->
-
-<!-- ```{r} -->
-<!-- anlz_yrattain(epcdata, yrsel = 2018) -->
-<!-- ``` -->
 
 From these plots, we can view locations and general trends in FIB data for the Hillsborough and Alafia river basins.  Additional functions may be added in the future to evaluate FIB data at other locations. 
 
