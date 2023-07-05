@@ -49,7 +49,7 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
         x %in% 'B' ~ '#E9C318',
         x %in% 'C' ~ '#EE7600',
         x %in% 'D' ~ '#CC3231',
-        x %in% 'F' ~ '#800080'
+        x %in% 'E' ~ '#800080'
       )
 
       return(out)

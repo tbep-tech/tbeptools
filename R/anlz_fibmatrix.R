@@ -34,18 +34,59 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL,
   if(any(!chk))
     stop('Station(s) not found in fibdata: ', paste(stas[!chk], collapse = ', '))
 
-  out <- fibdata %>%
+  # Set time period at 1980-2011
+  dat <- fibdata %>%
     dplyr::filter(epchc_station %in% stas) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    dplyr::filter(!is.na(fcolif)) %>%
-    dplyr::summarize(
-      gmean = geomean(fcolif),
-      exced = sum(fcolif > 400) / length(fcolif),
-      cnt = dplyr::n(),
-      .by = c('epchc_station', 'yr')
-    ) %>%
+    dplyr::filter(!is.na(fcolif) | fcolif < 0) %>%
     dplyr::mutate(
-      cat = cut(exced, c(-Inf, 0.1, 0.3, 0.5, 0.75, Inf), c('A', 'B', 'C', 'D', 'E')),
+      bin1 = dplyr::if_else(fcolif > 0 & fcolif <= 200, 1, 0),
+      bin2 = dplyr::if_else(fcolif > 200 & fcolif <= 400, 1, 0),
+      bin3 = dplyr::if_else(fcolif > 400 & fcolif <= 800, 1, 0),
+      bin4 = dplyr::if_else(fcolif > 800 & fcolif <= 2000, 1, 0),
+      bin5 = dplyr::if_else(fcolif > 2000, 1, 0)
+    ) %>%
+    select(yr, epchc_station, fcolif, bin1, bin2, bin3, bin4, bin5)
+
+  # Calculate summary information by epchc_station and year
+  station_binsums <- dat %>%
+    summarise(
+      gmean = geomean(fcolif),
+      sum_bin1 = sum(bin1),
+      sum_bin2 = sum(bin2),
+      sum_bin3 = sum(bin3),
+      sum_bin4 = sum(bin4),
+      sum_bin5 = sum(bin5),
+      .by = c('epchc_station', 'yr')
+    )
+
+  # Calculate ranked scores and check for exceedances
+  ranks <- station_binsums %>%
+    mutate(
+      station_tot = sum_bin1 + sum_bin2 + sum_bin3 + sum_bin4 + sum_bin5,
+      proprtn1 = sum_bin1 / station_tot,
+      proprtn2 = sum_bin2 / station_tot,
+      proprtn3 = sum_bin3 / station_tot,
+      proprtn4 = sum_bin4 / station_tot,
+      proprtn5 = sum_bin5 / station_tot,
+      sum345 = sum_bin3 + sum_bin4 + sum_bin5,
+      exceed_10_400_prob = pbinom(sum345 - 1, station_tot, 0.10, lower.tail = FALSE),
+      exceed_30_400_prob = pbinom(sum345 - 1, station_tot, 0.30, lower.tail = FALSE),
+      exceed_50_400_prob = pbinom(sum345 - 1, station_tot, 0.50, lower.tail = FALSE),
+      exceed_75_400_prob = pbinom(sum345 - 1, station_tot, 0.75, lower.tail = FALSE)
+    )
+
+  # Put stations into binomial test groups based on significant exceedances of 400cfu criteria
+  ranks$MWQA <- NA
+  ranks$MWQA[ranks$exceed_10_400_prob >= 0.10] <- 'A'
+  ranks$MWQA[ranks$exceed_10_400_prob < 0.10 & ranks$exceed_30_400_prob >= 0.10] <- 'B'
+  ranks$MWQA[ranks$exceed_30_400_prob < 0.10 & ranks$exceed_50_400_prob >= 0.10] <- 'C'
+  ranks$MWQA[ranks$exceed_50_400_prob < 0.10 & ranks$exceed_75_400_prob >= 0.10] <- 'D'
+  ranks$MWQA[ranks$exceed_75_400_prob < 0.10] <- 'E'
+
+  out <- ranks %>%
+    dplyr::select(yr, epchc_station, gmean, cat = MWQA) %>%
+    dplyr::mutate(
       epchc_station = factor(epchc_station, levels = stas)
     ) %>%
     tidyr::complete(yr = yrrng[1]:yrrng[2], epchc_station)
