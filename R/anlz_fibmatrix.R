@@ -34,8 +34,6 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL,
   if(any(!chk))
     stop('Station(s) not found in fibdata: ', paste(stas[!chk], collapse = ', '))
 
-  cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
-
   out <- fibdata %>%
     dplyr::filter(epchc_station %in% stas) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%

@@ -31,6 +31,8 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
                            asreact = FALSE, nrows = 10, family = NA, plotly = FALSE, width = NULL,
                            height = NULL){
 
+  cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
+
   toplo <- anlz_fibmatrix(fibdata, yrrng = yrrng, stas = stas)
 
   # reactable object
