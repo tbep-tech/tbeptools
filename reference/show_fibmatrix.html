@@ -62,9 +62,9 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_fibmatrix</span><span class="op">(</span></span>
 <span>  <span class="va">fibdata</span>,</span>
-<span>  txtsz <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>  yrrng <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  stas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">143</span>, <span class="fl">108</span>, <span class="fl">107</span>, <span class="fl">135</span>, <span class="fl">118</span>, <span class="fl">148</span>, <span class="fl">105</span>, <span class="fl">152</span>, <span class="fl">137</span><span class="op">)</span>,</span>
+<span>  txtsz <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>  asreact <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  nrows <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  family <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -80,16 +80,16 @@
 <dd><p>input data frame as returned by <code><a href="read_importfib.html">read_importfib</a></code></p></dd>
 
 
-<dt>txtsz</dt>
-<dd><p>numeric for size of text in the plot, applies only if <code>tab = FALSE</code>.  Use <code>txtsz = NULL</code> to suppress.</p></dd>
-
-
 <dt>yrrng</dt>
 <dd><p>numeric vector indicating min, max years to include, defaults to range of years in <code>epcdata</code></p></dd>
 
 
 <dt>stas</dt>
 <dd><p>numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan, see details</p></dd>
+
+
+<dt>txtsz</dt>
+<dd><p>numeric for size of text in the plot, applies only if <code>tab = FALSE</code>.  Use <code>txtsz = NULL</code> to suppress.</p></dd>
 
 
 <dt>asreact</dt>
