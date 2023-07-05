@@ -88,7 +88,7 @@ The `areasel` argument can indicate either `"Alafia"` or `"Hillsborough"` to sel
 anlz_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough')
 ```
 
-The `anlz_fibmatrix()` function creates a summary of FIB categories by station and year as output for the `show_fibmatrix()` function described below.  The function assigns letter categories for each station and year based on the proportion of samples in a year that exceed fecal coliform concentrations of 400 CFU / 100 mL.  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (\code{gmean}), the proportions of samples exceeding 400 CFU / 100 mL (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).
+The `anlz_fibmatrix()` function creates a summary of FIB categories by station and year as output for the `show_fibmatrix()` function described below.  The function assigns letter categories for each station and year based on the proportion of samples in a year that exceed fecal coliform concentrations of 400 CFU / 100 mL.  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (`gmean`), the proportions of samples exceeding 400 CFU / 100 mL (`exced`), the count of samples (`cnt`), and a category indicating a letter outcome based on the proportion of exceedences (`cat`).
 
 ```{r}
 anlz_fibmatrix(fibdata)
