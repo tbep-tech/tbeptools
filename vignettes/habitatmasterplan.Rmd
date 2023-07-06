@@ -109,7 +109,7 @@ show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'g
 
 The subtidal data in `subtacres` and the inter/supratidal data in `acres` are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets are plotted on the same y axis for year, where gaps are shown in years where each dataset was unavailable.  Use `combined = FALSE` to create two separate plots with no gaps.
 
-```{r}
+```{r, fig.height = 6, fig.width = 8}
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', combined = F)
 ```
 
