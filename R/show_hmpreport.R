@@ -33,6 +33,9 @@
 #'
 #' # view summarized data for report card, goals
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
+#'
+#' # keep subtidal separate from inter/supratidal
+#' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", combined = FALSE)
 show_hmpreport <- function(acres, subtacres, hmptrgs, typ, combined = TRUE, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
 
   typ <- match.arg(typ, choices = c('targets', 'goals'))

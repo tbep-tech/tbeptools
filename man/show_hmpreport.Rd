@@ -57,5 +57,8 @@ show_hmpreport(acres, subtacres, hmptrgs, typ = "targets")
 
 # view summarized data for report card, goals
 show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
+
+# keep subtidal separate from inter/supratidal
+show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", combined = FALSE)
 }
 \concept{show}
