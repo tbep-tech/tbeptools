@@ -9,6 +9,7 @@ show_hmpreport(
   subtacres,
   hmptrgs,
   typ,
+  combined = TRUE,
   text = TRUE,
   family = NA,
   plotly = FALSE,
@@ -24,6 +25,8 @@ show_hmpreport(
 \item{hmptrgs}{\code{data.frame} of Habitat Master Plan targets and goals}
 
 \item{typ}{character string indicating \code{"targets"} or \code{"goals"}}
+
+\item{combined}{logical indicating if subtidal and inter/supratidal habitat types are plotted together, see details}
 
 \item{text}{logical indicating if proportion of target or goal met for habitat types is shown in each cell types}
 
@@ -45,6 +48,8 @@ Show Habitat Master Plan progress report card
 Colors indicate target or goal not met, trending below (red), target or goal met, trending below (yellow), target or goal not met, trending above (light green), and target or goal  met, trending above (green).  Numbers in cell show the proportion of the target or goal met at each year where data are available.
 
 The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.
+
+The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets are plotted on the same y axis for year, where gaps are shown in years where each dataset was unavailable.  Use \code{combined = FALSE} to create two separate plots with no gaps.
 }
 \examples{
 # view summarized data for report card, targets
