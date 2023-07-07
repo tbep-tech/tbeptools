@@ -6,7 +6,7 @@
 #' @param subtacres \code{data.frame} for subtidal cover of habitat types for each year of data
 #' @param hmptrgs \code{data.frame} of Habitat Master Plan targets and goals
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
-#' @param combined logical indicating if subtidal and inter/supratidal habitat types are plotted together, see details
+#' @param yshr logical indicating if subtidal and inter/supratidal habitat types are plotted with the same y-axis, see details
 #' @param text logical indicating if proportion of target or goal met for habitat types is shown in each cell types
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
@@ -19,7 +19,7 @@
 #'
 #' The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.
 #'
-#' The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets are plotted on the same y axis for year, where gaps are shown in years where each dataset was unavailable.  Use \code{combined = FALSE} to create two separate plots with no gaps.
+#' The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets share the same y-axis for year, where gaps are shown in years when each dataset was unavailable.  Use \code{yshr = FALSE} to create two separate plots with no gaps.
 #'
 #' @concept show
 #'
@@ -35,8 +35,8 @@
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
 #'
 #' # keep subtidal separate from inter/supratidal
-#' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", combined = FALSE)
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, combined = TRUE, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
+#' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", yshr = FALSE)
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, yshr = TRUE, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
 
   typ <- match.arg(typ, choices = c('targets', 'goals'))
 
@@ -99,7 +99,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, combined = TRUE, text
       plot.margin = ggplot2::margin(0, 5, 14, 2, "pt")
     )
 
-  if(combined){
+  if(yshr){
 
       p <- ggplot2::ggplot(toplo, ggplot2::aes(y = year, x = metric, fill = fillv)) +
         ggplot2::geom_tile(color = 'black') +
@@ -131,7 +131,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, combined = TRUE, text
 
   }
 
-  if(!combined){
+  if(!yshr){
 
     toploa <- toplo %>%
       dplyr::filter(category == 'Sub') %>%
@@ -176,7 +176,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, combined = TRUE, text
     }
 
     if(plotly)
-      warning("Plotly not possible if combined is FALSE")
+      warning("Plotly not possible if yshr is FALSE")
 
     p <- pa + pb + plot_layout(ncol = 2, guides = 'collect') +
       plot_annotation(

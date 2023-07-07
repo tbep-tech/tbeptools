@@ -9,7 +9,7 @@ show_hmpreport(
   subtacres,
   hmptrgs,
   typ,
-  combined = TRUE,
+  yshr = TRUE,
   text = TRUE,
   family = NA,
   plotly = FALSE,
@@ -26,7 +26,7 @@ show_hmpreport(
 
 \item{typ}{character string indicating \code{"targets"} or \code{"goals"}}
 
-\item{combined}{logical indicating if subtidal and inter/supratidal habitat types are plotted together, see details}
+\item{yshr}{logical indicating if subtidal and inter/supratidal habitat types are plotted with the same y-axis, see details}
 
 \item{text}{logical indicating if proportion of target or goal met for habitat types is shown in each cell types}
 
@@ -49,7 +49,7 @@ Colors indicate target or goal not met, trending below (red), target or goal met
 
 The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.
 
-The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets are plotted on the same y axis for year, where gaps are shown in years where each dataset was unavailable.  Use \code{combined = FALSE} to create two separate plots with no gaps.
+The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets share the same y-axis for year, where gaps are shown in years when each dataset was unavailable.  Use \code{yshr = FALSE} to create two separate plots with no gaps.
 }
 \examples{
 # view summarized data for report card, targets
@@ -59,6 +59,6 @@ show_hmpreport(acres, subtacres, hmptrgs, typ = "targets")
 show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
 
 # keep subtidal separate from inter/supratidal
-show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", combined = FALSE)
+show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", yshr = FALSE)
 }
 \concept{show}
