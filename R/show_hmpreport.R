@@ -34,8 +34,11 @@
 #' # view summarized data for report card, goals
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
 #'
-#' # keep subtidal separate from inter/supratidal
-#' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", yshr = FALSE)
+#' # remove empty years
+#' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE)
+#'
+#' # select only subtidal
+#' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
 show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
@@ -149,7 +152,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal'
       fill = NULL,
       title = ttl
     ) +
-    ggplot2::annotate('text', x = botlabs, y = 0.5, vjust = 1.2, label = levels(strata), size = 3, family = family) +
+    ggplot2::annotate('text', x = botlabs, y = 0.5, vjust = 1.5, label = levels(strata), size = 3, family = family) +
     ggplot2::coord_cartesian(
       ylim = c(max(toplo$year) + 1, min(toplo$year)) - 0.5,
       clip = "off"

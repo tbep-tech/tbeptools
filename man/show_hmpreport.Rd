@@ -59,7 +59,10 @@ show_hmpreport(acres, subtacres, hmptrgs, typ = "targets")
 # view summarized data for report card, goals
 show_hmpreport(acres, subtacres, hmptrgs, typ = "goals")
 
-# keep subtidal separate from inter/supratidal
-show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", yshr = FALSE)
+# remove empty years
+show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE)
+
+# select only subtidal
+show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
 }
 \concept{show}
