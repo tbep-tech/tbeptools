@@ -65,7 +65,8 @@
 <span>  <span class="va">subtacres</span>,</span>
 <span>  <span class="va">hmptrgs</span>,</span>
 <span>  <span class="va">typ</span>,</span>
-<span>  yshr <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Subtidal"</span>, <span class="st">"Intertidal"</span>, <span class="st">"Supratidal"</span><span class="op">)</span>,</span>
+<span>  ycollapse <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  text <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  family <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  plotly <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -92,8 +93,12 @@
 <dd><p>character string indicating <code>"targets"</code> or <code>"goals"</code></p></dd>
 
 
-<dt>yshr</dt>
-<dd><p>logical indicating if subtidal and inter/supratidal habitat types are plotted with the same y-axis, see details</p></dd>
+<dt>strata</dt>
+<dd><p>character string indicating with strata to plot, one to many of <code>"Subtidal"</code>, <code>"Intertidal"</code>, and <code>"Supratidal"</code></p></dd>
+
+
+<dt>ycollapse</dt>
+<dd><p>logical indicating if the y-axis is collapsed to year with data, see details</p></dd>
 
 
 <dt>text</dt>
@@ -102,10 +107,6 @@
 
 <dt>family</dt>
 <dd><p>optional chr string indicating font family for text labels</p></dd>
-
-
-<dt>plotly</dt>
-<dd><p>logical if matrix is created using plotly</p></dd>
 
 
 <dt>width</dt>
@@ -126,7 +127,7 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Colors indicate target or goal not met, trending below (red), target or goal met, trending below (yellow), target or goal not met, trending above (light green), and target or goal  met, trending above (green).  Numbers in cell show the proportion of the target or goal met at each year where data are available.</p>
 <p>The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.</p>
-<p>The subtidal data in <code>subtacres</code> and the inter/supratidal data in <code>acres</code> are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets share the same y-axis for year, where gaps are shown in years when each dataset was unavailable.  Use <code>yshr = FALSE</code> to create two separate plots with no gaps.</p>
+<p>The subtidal data in <code>subtacres</code> and the inter/supratidal data in <code>acres</code> are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match and each dataset is collected at approximate 2 to 3 year intervals.  By default, year on the y-axis is shown as a continuous variable, where gaps are shown in years when each dataset was unavailable.  Use <code>ycollapse = TRUE</code> to remove years without data.</p>
     </div>
 
     <div class="section level2">
@@ -141,7 +142,7 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># keep subtidal separate from inter/supratidal</span></span></span>
 <span class="r-in"><span><span class="fu">show_hmpreport</span><span class="op">(</span><span class="va">acres</span>, <span class="va">subtacres</span>, <span class="va">hmptrgs</span>, typ <span class="op">=</span> <span class="st">"targets"</span>, yshr <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="show_hmpreport-3.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", yshr = FALSE):</span> unused argument (yshr = FALSE)</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
