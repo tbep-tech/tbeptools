@@ -39,7 +39,7 @@
 #'
 #' # select only subtidal
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = TRUE, family = NA, width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
   typ <- match.arg(typ, choices = c('targets', 'goals'))

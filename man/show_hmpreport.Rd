@@ -13,7 +13,6 @@ show_hmpreport(
   ycollapse = FALSE,
   text = TRUE,
   family = NA,
-  plotly = FALSE,
   width = NULL,
   height = NULL
 )
