@@ -12,16 +12,9 @@ test_that("Checking show_hmpreport class, type as goals", {
 
 })
 
-test_that("Checking show_hmpreport class, plotly output", {
-
-  result <- show_hmpreport(acres, subtacres, hmptrgs, typ = 'goals', plotly = T)
-  expect_is(result, 'plotly')
-
-})
-
 test_that("Checking show_hmpreport class, ycollapse = T", {
 
-  result <- expect_warning(show_hmpreport(acres, subtacres, hmptrgs, typ = 'targets', ycollapse = T, plotly = T))
+  result <- show_hmpreport(acres, subtacres, hmptrgs, typ = 'targets', ycollapse = T)
   expect_is(result, 'ggplot')
 
 })

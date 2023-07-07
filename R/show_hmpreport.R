@@ -10,7 +10,6 @@
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
 #' @param text logical indicating if proportion of target or goal met for habitat types is shown in each cell types
 #' @param family optional chr string indicating font family for text labels
-#' @param plotly logical if matrix is created using plotly
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
@@ -159,9 +158,6 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal'
   if(text)
     p <- p +
       ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = 2.5, family = family)
-
-  if(plotly)
-    p <- show_matrixplotly(p, family = family, hmp = TRUE, width = width, height = height)
 
   return(p)
 

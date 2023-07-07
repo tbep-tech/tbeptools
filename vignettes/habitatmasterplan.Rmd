@@ -119,12 +119,6 @@ The text showing the proportion of the target or goal met each year can be suppr
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', text = F)
 ```
 
-The matrix can also be produced as a plotly interactive plot by setting plotly = TRUE inside the function.
-
-```{r}
-show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', plotly = T, width = 750, height = 800)
-```
-
 The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan. 
 
 # References
