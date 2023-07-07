@@ -9,8 +9,7 @@ show_matrixplotly(
   family = NA,
   tooltip = "Result",
   width = NULL,
-  height = NULL,
-  hmp = FALSE
+  height = NULL
 )
 }
 \arguments{
@@ -23,8 +22,6 @@ show_matrixplotly(
 \item{width}{numeric for width of the plot in pixels}
 
 \item{height}{numeric for height of the plot in pixels}
-
-\item{hmp}{logical indicating if input is from \code{\link{show_hmpreport}}}
 }
 \value{
 A \code{\link[plotly]{plotly}} data object

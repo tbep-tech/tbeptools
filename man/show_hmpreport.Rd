@@ -35,8 +35,6 @@ show_hmpreport(
 
 \item{family}{optional chr string indicating font family for text labels}
 
-\item{plotly}{logical if matrix is created using plotly}
-
 \item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
 
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}

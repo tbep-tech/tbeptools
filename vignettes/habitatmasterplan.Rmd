@@ -107,13 +107,32 @@ The 2050 goals report card can be shown using `typ = "goals"`.
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'goals')
 ```
 
-The subtidal data in `subtacres` and the inter/supratidal data in `acres` are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets share the same y axis for year, where gaps are shown in years when each dataset was unavailable.  Use `yshr = FALSE` to create two separate plots with no gaps.
+The subtidal data in `subtacres` and the inter/supratidal data in `acres` are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match and each dataset is collected at approximate 2 to 3 year intervals.  By default, year on the y-axis is shown as a continuous variable, where gaps are shown in years when each dataset was unavailable.  Use `ycollapse = TRUE` to remove years without data.
 
-```{r, fig.height = 6, fig.width = 8}
-show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', yshr = F)
+```{r, fig.height = 7, fig.width = 8}
+show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', ycollapse = T)
 ```
 
-The text showing the proportion of the target or goal met each year can be suppressed using `text = F`.
+Different strata can also be selected using the `strata` argument.  Note the use of `ycollapse = T` to remove years without data.
+
+```{r, fig.height = 5, fig.width = 8}
+show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', 
+               strata = c('Intertidal', 'Supratidal'), ycollapse = T)
+```
+
+All strata can be combined in a single plot with collapsed years using the patchwork library. 
+```{r, fig.height = 7, fig.width = 8}
+library(patchwork)
+
+p1 <- show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', 
+               strata = 'Subtidal', ycollapse = T)
+p2 <- show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', 
+               strata = c('Intertidal', 'Supratidal'), ycollapse = T) + labs(title = NULL)
+
+p1 + p2 + plot_layout(ncol = 2, guides = 'collect')
+```
+
+Finally, the text showing the proportion of the target or goal met each year can be suppressed using `text = F`.
 
 ```{r, fig.height = 8, fig.width = 8}
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', text = F)
