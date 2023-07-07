@@ -19,9 +19,9 @@ test_that("Checking show_hmpreport class, plotly output", {
 
 })
 
-test_that("Checking show_hmpreport class, yshr = F", {
+test_that("Checking show_hmpreport class, ycollapse = T", {
 
-  result <- expect_warning(show_hmpreport(acres, subtacres, hmptrgs, typ = 'targets', yshr = F, plotly = T))
+  result <- expect_warning(show_hmpreport(acres, subtacres, hmptrgs, typ = 'targets', ycollapse = T, plotly = T))
   expect_is(result, 'ggplot')
 
 })

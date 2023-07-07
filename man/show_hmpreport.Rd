@@ -9,7 +9,8 @@ show_hmpreport(
   subtacres,
   hmptrgs,
   typ,
-  yshr = TRUE,
+  strata = c("Subtidal", "Intertidal", "Supratidal"),
+  ycollapse = FALSE,
   text = TRUE,
   family = NA,
   plotly = FALSE,
@@ -26,7 +27,9 @@ show_hmpreport(
 
 \item{typ}{character string indicating \code{"targets"} or \code{"goals"}}
 
-\item{yshr}{logical indicating if subtidal and inter/supratidal habitat types are plotted with the same y-axis, see details}
+\item{strata}{character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}}
+
+\item{ycollapse}{logical indicating if the y-axis is collapsed to year with data, see details}
 
 \item{text}{logical indicating if proportion of target or goal met for habitat types is shown in each cell types}
 
@@ -49,7 +52,7 @@ Colors indicate target or goal not met, trending below (red), target or goal met
 
 The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.
 
-The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets share the same y-axis for year, where gaps are shown in years when each dataset was unavailable.  Use \code{yshr = FALSE} to create two separate plots with no gaps.
+The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match and each dataset is collected at approximate 2 to 3 year intervals.  By default, year on the y-axis is shown as a continuous variable, where gaps are shown in years when each dataset was unavailable.  Use \code{ycollapse = TRUE} to remove years without data.
 }
 \examples{
 # view summarized data for report card, targets

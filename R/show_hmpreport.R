@@ -6,7 +6,8 @@
 #' @param subtacres \code{data.frame} for subtidal cover of habitat types for each year of data
 #' @param hmptrgs \code{data.frame} of Habitat Master Plan targets and goals
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
-#' @param yshr logical indicating if subtidal and inter/supratidal habitat types are plotted with the same y-axis, see details
+#' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
+#' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
 #' @param text logical indicating if proportion of target or goal met for habitat types is shown in each cell types
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
@@ -19,7 +20,7 @@
 #'
 #' The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.
 #'
-#' The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match.  By default, results for both datasets share the same y-axis for year, where gaps are shown in years when each dataset was unavailable.  Use \code{yshr = FALSE} to create two separate plots with no gaps.
+#' The subtidal data in \code{subtacres} and the inter/supratidal data in \code{acres} are provided as different datasets by the Southwest Florida Water Management District.  The years in each dataset typically do not match and each dataset is collected at approximate 2 to 3 year intervals.  By default, year on the y-axis is shown as a continuous variable, where gaps are shown in years when each dataset was unavailable.  Use \code{ycollapse = TRUE} to remove years without data.
 #'
 #' @concept show
 #'
@@ -36,26 +37,48 @@
 #'
 #' # keep subtidal separate from inter/supratidal
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", yshr = FALSE)
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, yshr = TRUE, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = TRUE, family = NA, plotly = FALSE, width = NULL, height = NULL){
 
+  strat <- c('Subtidal', 'Intertidal', 'Supratidal')
   typ <- match.arg(typ, choices = c('targets', 'goals'))
+  strata <- match.arg(strata, choices = strat, several.ok = TRUE)
+  strata <- factor(strata, levels = strat[strat %in% strata])
+
+  rm <- c('Restorable', 'Developed', 'Open Water', 'Living Shorelines', 'Hard Bottom',
+          'Artificial Reefs', 'Tidal Tributaries')
+  hmprm <- hmptrgs %>%
+    dplyr::filter(!HMPU_TARGETS %in% rm)
+  totcats <- hmprm %>%
+    pull(Category) %>%
+    table()
+  metcats <- hmprm %>%
+    pull(HMPU_TARGETS) %>%
+    droplevels() %>%
+    levels()
 
   hmpsum <- anlz_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs)
 
+  yrrng <- range(hmpsum$year)
   toplo <- hmpsum %>%
-    dplyr::select(year, metric, Acres, category, Target, Goal, targetprop, goalprop, targeteval, goaleval) %>%
-    dplyr::filter(!metric %in% c('Restorable', 'Developed', 'Open Water')) %>%
+    dplyr::filter(!metric %in% rm) %>%
+    dplyr::filter(category %in% strata) %>%
+    tidyr::complete(year = yrrng[1]:yrrng[2], metric) %>%
     dplyr::mutate(
-      year = as.numeric(year),
+      yearfac = factor(year, levels = rev(yrrng[1]:yrrng[2])),
+      year = as.numeric(yearfac),
       targeteval = as.character(targeteval),
       goaleval = as.character(goaleval),
-      metric = factor(metric,
-                      levels = c("Tidal Flats", "Seagrasses", "Oyster Bars",
-                                 "Total Intertidal", "Mangrove Forests", "Salt Barrens",
-                                 "Salt Marshes", "Coastal Uplands", "Non-Forested Freshwater Wetlands",
-                                 "Forested Freshwater Wetlands", "Native Uplands")
-      )
+      metric = factor(metric, levels = metcats)
     )
+
+  if(ycollapse)
+    toplo <- na.omit(toplo) %>%
+      dplyr::mutate(
+        metric = droplevels(metric),
+        yearfac = factor(yearfac)
+      ) %>%
+      tidyr::complete(yearfac, metric) %>%
+      dplyr::mutate(year = as.numeric(yearfac))
 
   # -1, 0, 0.5, 1
   cols <- c('#CC3231', '#E9C318', '#AEFA2F', '#2DC938')
@@ -99,97 +122,46 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, yshr = TRUE, text = T
       plot.margin = ggplot2::margin(0, 5, 14, 2, "pt")
     )
 
-  if(yshr){
+  # x axis locations of strata labels
+  botlabs <- totcats[levels(strata)]
+  botlabs <- c(0, cumsum(botlabs))
+  botlabs <- as.numeric(0.5 + botlabs[-length(botlabs)] + diff(botlabs) / 2)
 
-      p <- ggplot2::ggplot(toplo, ggplot2::aes(y = year, x = metric, fill = fillv)) +
-        ggplot2::geom_tile(color = 'black') +
-        ggplot2::scale_y_reverse(breaks = seq(min(toplo$year), max(toplo$year)), expand = c(0, 0)) +
-        ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
-        ggplot2::scale_fill_manual(
-          values = cols,
-          labels = leglabs
-        ) +
-        thm +
-        ggplot2::geom_vline(xintercept = c(3.5, 7.5), linewidth = 0.5) +
-        ggplot2::labs(
-          x = NULL,
-          y = NULL,
-          fill = NULL,
-          title = ttl
-        ) +
-        ggplot2::annotate('text', x = 2, y = max(toplo$year) + 1, label = 'Subtidal', size = 3, family = family) +
-        ggplot2::annotate('text', x = 5.5, y = max(toplo$year) + 1, label = 'Intertidal', size = 3, family = family) +
-        ggplot2::annotate('text', x = 9.5, y = max(toplo$year) + 1, label = 'Supratidal', size = 3, family = family) +
-        ggplot2::coord_cartesian(ylim = c(max(toplo$year) + 1, min(toplo$year)) - 0.5, clip = "off")
+  # x axis locations of vertical lines
+  xvec <- totcats[levels(strata)]
+  xvec <- cumsum(xvec) + 0.5
+  xvec <- xvec[-length(xvec)]
 
-    if(text)
-      p <- p +
-        ggplot2::geom_text(ggplot2::aes(label = textv), size = 2.5, family = family)
+  p <- ggplot2::ggplot(toplo, aes(y = yearfac, x = metric)) +
+    ggplot2::geom_tile(ggplot2::aes(fill = fillv), color = 'black') +
+    ggplot2::scale_y_discrete(expand = c(0, 0)) +
+    ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
+    ggplot2::scale_fill_manual(
+      values = cols,
+      labels = leglabs,
+      breaks = leglabs,
+      na.value = 'white'
+    ) +
+    thm +
+    ggplot2::geom_vline(xintercept = xvec, linewidth = 0.75) +
+    ggplot2::labs(
+      x = NULL,
+      y = NULL,
+      fill = NULL,
+      title = ttl
+    ) +
+    ggplot2::annotate('text', x = botlabs, y = 0.5, vjust = 1.2, label = levels(strata), size = 3, family = family) +
+    ggplot2::coord_cartesian(
+      ylim = c(max(toplo$year) + 1, min(toplo$year)) - 0.5,
+      clip = "off"
+    )
 
-    if(plotly)
-      p <- show_matrixplotly(p, family = family, hmp = TRUE, width = width, height = height)
+  if(text)
+    p <- p +
+      ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = 2.5, family = family)
 
-  }
-
-  if(!yshr){
-
-    toploa <- toplo %>%
-      dplyr::filter(category == 'Sub') %>%
-      dplyr::mutate(
-        year = factor(year, levels = rev(unique(year)))
-      )
-    toplob <- toplo %>%
-      dplyr::filter(category != 'Sub') %>%
-      dplyr::mutate(
-        year = factor(year, levels = rev(unique(year)))
-      )
-
-    pa <- ggplot2::ggplot(toploa, ggplot2::aes(y = year, x = metric, fill = fillv)) +
-      ggplot2::geom_tile(color = 'black') +
-      ggplot2::scale_y_discrete(expand = c(0, 0)) +
-      ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
-      ggplot2::scale_fill_manual(
-        values = cols,
-        labels = leglabs
-      ) +
-      ggplot2::annotate('text', x = 2, y = min(as.numeric(toploa$year)) - 1, label = 'Subtidal', size = 3, family = family) +
-      ggplot2::coord_cartesian(ylim = c(min(as.numeric(toploa$year)) - 1, max(as.numeric(toploa$year))) + 0.5, clip = "off")
-
-    pb <- ggplot2::ggplot(toplob, ggplot2::aes(y = year, x = metric, fill = fillv)) +
-      ggplot2::geom_tile(color = 'black') +
-      ggplot2::scale_y_discrete(expand = c(0, 0)) +
-      ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
-      ggplot2::scale_fill_manual(
-        values = cols,
-        labels = leglabs
-      ) +
-      ggplot2::geom_vline(xintercept = c(4.5), linewidth = 0.75) +
-      ggplot2::annotate('text', x = 2.5, y = min(as.numeric(toplob$year)) - 0.75, label = 'Intertidal', size = 3, family = family) +
-      ggplot2::annotate('text', x = 6.5, y = min(as.numeric(toplob$year)) - 0.75, label = 'Supratidal', size = 3, family = family) +
-      ggplot2::coord_cartesian(ylim = c(min(as.numeric(toplob$year)) - 1, max(as.numeric(toplob$year))) + 0.5, clip = "off")
-
-    if(text){
-      pa <- pa +
-        ggplot2::geom_text(ggplot2::aes(label = textv), size = 2.5, family = family)
-      pb <- pb +
-        ggplot2::geom_text(ggplot2::aes(label = textv), size = 2.5, family = family)
-    }
-
-    if(plotly)
-      warning("Plotly not possible if yshr is FALSE")
-
-    p <- pa + pb + plot_layout(ncol = 2, guides = 'collect') +
-      plot_annotation(
-        title = ttl
-      ) &
-      thm &
-      ggplot2::labs(
-        x = NULL,
-        y = NULL,
-        fill = NULL
-      )
-
-  }
+  if(plotly)
+    p <- show_matrixplotly(p, family = family, hmp = TRUE, width = width, height = height)
 
   return(p)
 

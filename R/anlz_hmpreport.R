@@ -77,8 +77,7 @@ anlz_hmpreport <- function(acres, subtacres, hmptrgs){
       Goal = Goal2050
     ) %>%
     dplyr::mutate(
-      metric = as.character(metric),
-      category = gsub('tidal$', '', category)
+      metric = as.character(metric)
     ) %>%
     dplyr::filter(
       !metric %in% c('Living Shoreline', 'Hard Bottom', 'Artificial Reefs')
@@ -126,7 +125,8 @@ anlz_hmpreport <- function(acres, subtacres, hmptrgs){
         Acres > Goal & !is.na(changerate) & changerate < goalrate ~ 0,
         Acres < Goal & changerate > goalrate ~ 0.5,
         Acres < Goal & !is.na(changerate) & changerate < goalrate ~ -1
-      )
+      ),
+      year = as.numeric(year)
     ) %>%
     dplyr::filter(!is.na(changerate))%>%
     dplyr::arrange(category, year, metric) %>%
