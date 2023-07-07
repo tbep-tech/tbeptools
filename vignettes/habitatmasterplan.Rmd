@@ -123,6 +123,7 @@ show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 't
 All strata can be combined in a single plot with collapsed years using the patchwork library. 
 ```{r, fig.height = 7, fig.width = 8}
 library(patchwork)
+library(ggplot2) 
 
 p1 <- show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', 
                strata = 'Subtidal', ycollapse = T)
