@@ -12,8 +12,12 @@
 #' @export
 #'
 #' @examples
-#' show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Hillsborough')
-show_fibmap <- function(fibdata, yrsel, mosel, areasel){
+#' # show selected year, month
+#' show_fibmap(fibdata, yrsel = 2022, mosel = 8)
+#'
+#' # show selected year, month, and area
+#' show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia')
+show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
 
   # get categories
   fibmap <- anlz_fibmap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel)

@@ -4,7 +4,7 @@
 \alias{show_fibmap}
 \title{Map Fecal Indicator Bacteria (FIB) results by month, year, and location}
 \usage{
-show_fibmap(fibdata, yrsel, mosel, areasel)
+show_fibmap(fibdata, yrsel, mosel, areasel = NULL)
 }
 \arguments{
 \item{fibdata}{input FIB \code{data.frame} as returned by \code{\link{read_importfib}}}
@@ -25,7 +25,11 @@ Map Fecal Indicator Bacteria (FIB) results by month, year, and location
 Placing the mouse cursor over an item on the map will reveal additional information about a station.
 }
 \examples{
-show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Hillsborough')
+# show selected year, month
+show_fibmap(fibdata, yrsel = 2022, mosel = 8)
+
+# show selected year, month, and area
+show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia')
 }
 \seealso{
 \code{\link{anlz_fibmap}} for details on the categories

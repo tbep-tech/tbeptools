@@ -52,7 +52,7 @@ A data object called `fibdata` is also provided with the package, although it ma
 fibdata
 ```
 
-The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin. Some stations include samples beginning in 1972. The default output for `read_importwq()` returns only stations with `AreaName` in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.  Use `all = TRUE` to return all stations. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Values shown are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix. Qualifier codes can be interpreted from the source spreadsheet. Concentrations noted with `<` or `>` in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
+The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin. Some stations include samples beginning in 1972. The default output for `read_importwq()` returns all stations with FIB data from EPC.  If `all = F` for `read_importfib()`, only stations with `AreaName` in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Values shown are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix. Qualifier codes can be interpreted from the source spreadsheet. Concentrations noted with `<` or `>` in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
 
 The `fibdata` object can be used for the remaining FIB functions. 
 
@@ -82,7 +82,7 @@ The `yrsel` and `mosel` arguments can be used to filter results by year and mont
 anlz_fibmap(fibdata, yrsel = 2022, mosel = 7)
 ```
 
-The `areasel` argument can indicate either `"Alafia"` or `"Hillsborough"` to select data for the corresponding river basins, where rows in `fibdata` are filtered based on the the selection.  All areas are returned if this argument is not specified. The Alafia River basin includes values in the `area` column of `fibdata` as `"Alafia River"` and `"Alafia River Tributary"`.  The Hillsborough River basin includes values in the `area` column of `fibdat` as `"Hillsborough River"`, `"Hillsborough River Tributary"`, `"Lake Thonotosassa"`, `"Lake Thonotosassa Tributary"`, and `"Lake Roberta"`.  Not all areas may be present based on the selection for `yrsel` and `mosel`.
+The `areasel` argument can indicate either `"Alafia"` or `"Hillsborough"` to select data for the corresponding river basins, where rows in `fibdata` are filtered based on the the selection.  All stations are returned if this argument is set as `NULL` (default). The Alafia River basin includes values in the `area` column of `fibdata` as `"Alafia River"` and `"Alafia River Tributary"`.  The Hillsborough River basin includes values in the `area` column of `fibdat` as `"Hillsborough River"`, `"Hillsborough River Tributary"`, `"Lake Thonotosassa"`, `"Lake Thonotosassa Tributary"`, and `"Lake Roberta"`.  Not all areas may be present based on the selection for `yrsel` and `mosel`.
 
 ```{r}
 anlz_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough')
@@ -96,7 +96,13 @@ anlz_fibmatrix(fibdata)
 
 ## Show
 
-The `show_fibmap()` function creates a map of FIB sites and thresholds based on output from `anlz_fibmap()`.  The same arguments that apply to `anlz_fibmap()` also apply to `show_fibmap()` such that freshwater and marine stations categorized by relevant thresholds are plotted by a selected year, month, and area.  Unlike `anlz_fibmap()`, all arguments are required
+The `show_fibmap()` function creates a map of FIB sites and thresholds based on output from `anlz_fibmap()`.  The same arguments that apply to `anlz_fibmap()` also apply to `show_fibmap()` such that freshwater and marine stations categorized by relevant thresholds are plotted by a selected year, month, and area.  Unlike `anlz_fibmap()`, the `yrsel` and `mosel` arguments are required.
+
+```{r, out.width="100%"}
+show_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = NULL)
+```
+
+Sites for the Hillsborough or Alafia river basins can be shown using `areasel` argument.
 
 ```{r, out.width="100%"}
 show_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough')

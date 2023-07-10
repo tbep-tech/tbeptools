@@ -4,19 +4,14 @@
 \alias{anlz_fibmatrix}
 \title{Analyze Fecal Indicator Bacteria categories over time by station}
 \usage{
-anlz_fibmatrix(
-  fibdata,
-  yrrng = NULL,
-  stas = c(143, 108, 107, 135, 118, 148, 105, 152, 137),
-  lagyr = 3
-)
+anlz_fibmatrix(fibdata, yrrng = NULL, stas = NULL, lagyr = 3)
 }
 \arguments{
 \item{fibdata}{input data frame as returned by \code{\link{read_importfib}}}
 
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in \code{epcdata}}
 
-\item{stas}{numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan, see details}
+\item{stas}{optional numeric vector of stations to include, see details}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
 }

@@ -23,7 +23,7 @@ show_fibmatrix(
 
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in \code{epcdata}}
 
-\item{stas}{numeric vector of stations to include, default as those relevant for the Hillsborough River Basin Management Action Plan, see details}
+\item{stas}{optional numeric vector of stations to include, see details}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
 
