@@ -31,10 +31,31 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL,
   if(is.null(yrrng))
     yrrng <- c(1985, max(fibdata$yr, na.rm = T))
 
+  # valid stations with sufficient data for lagyr
+  stasval <- fibdata %>%
+    dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
+    dplyr::filter(!is.na(fcolif) | fcolif < 0) %>%
+    summarise(
+      nyrs = length(unique(yr)),
+      .by = 'epchc_station'
+    ) %>%
+    dplyr::filter(nyrs >= lagyr) %>%
+    dplyr::pull(epchc_station) %>%
+    unique()
+
+  # all valid statsions if stas is NULL
+  if(is.null(stas))
+    stas <- stasval
+
   # check stations
   chk <- stas %in% fibdata$epchc_station
   if(any(!chk))
     stop('Station(s) not found in fibdata: ', paste(stas[!chk], collapse = ', '))
+
+  # check stations include enough years
+  chk <- !stas %in% stasval
+  if(any(chk))
+    stop('Stations with insufficient data for lagyr: ', paste(stas[chk], collapse = ', '))
 
   # get geomean, proportion of sites > 400 cfu / 100mL, and prob of exceedence
   # handles lagged calculations
