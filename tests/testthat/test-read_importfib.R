@@ -2,7 +2,7 @@ test_that("Checking read_importfib", {
   xlsx <- 'exdatatmp.xlsx'
 
   # load and assign to object
-  fibdata <- read_importfib(xlsx)
+  fibdata <- read_importfib(xlsx, all = F)
 
   # check if number of columns is equal to 18
   result <- ncol(fibdata)

@@ -34,6 +34,7 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
 
   toplo <- anlz_fibmatrix(fibdata, yrrng = yrrng, stas = stas, lagyr = lagyr)
+  yrrng <- range(toplo$yr)
 
   # reactable object
   if(asreact){
@@ -63,10 +64,14 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
 
   }
 
+  toplo <- toplo %>%
+    dplyr::filter(!is.na(cat))
+
   p <- ggplot2::ggplot(toplo, ggplot2::aes(x = epchc_station, y = yr, fill = cat)) +
     ggplot2::geom_tile(color = 'black') +
-    ggplot2::scale_fill_manual(values = cols, na.value = 'lightgrey') +
-    ggplot2::scale_y_reverse(expand = c(0, 0), breaks = toplo$yr) +
+    ggplot2::scale_fill_manual(values = cols, na.value = 'white') +
+    ggplot2::scale_y_reverse(expand = c(0, 0), limits = c(yrrng[2] + 0.5, yrrng[1] - 0.5),
+                             breaks = c(yrrng[1]:yrrng[2])) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
     ggplot2::theme_bw() +
     ggplot2::theme(

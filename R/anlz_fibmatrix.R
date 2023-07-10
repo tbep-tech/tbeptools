@@ -35,7 +35,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL,
   stasval <- fibdata %>%
     dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
     dplyr::filter(!is.na(fcolif) | fcolif < 0) %>%
-    summarise(
+    dplyr::summarise(
       nyrs = length(unique(yr)),
       .by = 'epchc_station'
     ) %>%
