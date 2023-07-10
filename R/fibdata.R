@@ -1,8 +1,8 @@
-#' All Fecal Indicator Bacteria (FIB) data as of 20230615
+#' All Fecal Indicator Bacteria (FIB) data as of 20230710
 #'
-#' All Fecal Indicator Bacteria (FIB) data as of 20230615
+#' All Fecal Indicator Bacteria (FIB) data as of 20230710
 #'
-#' @format A data frame with 20225 rows and 18 variables:
+#' @format A data frame with 74872 rows and 18 variables:
 #' \describe{
 #'   \item{area}{chr}
 #'   \item{epchc_station}{num}
@@ -28,7 +28,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' xlsx <- '~/Desktop/epcdata.xlsx'
+#' xlsx <- tempfile(fileext = '.xlsx')
 #' fibdata <- read_importfib(xlsx, download_latest = TRUE)
 #'
 #' nrow(fibdata)

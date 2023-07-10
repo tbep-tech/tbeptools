@@ -3,7 +3,7 @@
 \docType{data}
 \name{fibdata}
 \alias{fibdata}
-\title{All Fecal Indicator Bacteria (FIB) data as of 20230615}
+\title{All Fecal Indicator Bacteria (FIB) data as of 20230710}
 \format{
 A data frame with 20225 rows and 18 variables:
 \describe{
@@ -31,7 +31,7 @@ A data frame with 20225 rows and 18 variables:
 fibdata
 }
 \description{
-All Fecal Indicator Bacteria (FIB) data as of 20230615
+All Fecal Indicator Bacteria (FIB) data as of 20230710
 }
 \examples{
 \dontrun{

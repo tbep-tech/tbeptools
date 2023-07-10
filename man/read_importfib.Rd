@@ -4,7 +4,7 @@
 \alias{read_importfib}
 \title{Load local water quality file for Fecal Indicator Bacteria (FIB)}
 \usage{
-read_importfib(xlsx, download_latest = FALSE, na = c("", "NULL"), all = FALSE)
+read_importfib(xlsx, download_latest = FALSE, na = c("", "NULL"), all = TRUE)
 }
 \arguments{
 \item{xlsx}{chr string path for local excel file, to overwrite if not current}
@@ -13,7 +13,7 @@ read_importfib(xlsx, download_latest = FALSE, na = c("", "NULL"), all = FALSE)
 
 \item{na}{chr vector of strings to interpret as \code{NA}, passed to \code{\link[readxl]{read_xlsx}}}
 
-\item{all}{logical indicating if all stations with FIB data are returned, default is \code{FALSE}, see details}
+\item{all}{logical indicating if all stations with FIB data are returned, default is \code{TRUE}, see details}
 }
 \value{
 A \code{data.frame} of formatted FIB data.
@@ -30,7 +30,7 @@ Values are returned for E. coli (\code{ecoli}), Enterococcus (\code{ecocci}), Fe
 
 Concentrations noted with \code{<} or \code{>} in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
 
-The default output returns only stations with AreaName in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.  Use \code{all = TRUE} to return all stations.
+If \code{all = FALSE}, only stations with AreaName in the source data as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta.
 }
 \examples{
 \dontrun{
