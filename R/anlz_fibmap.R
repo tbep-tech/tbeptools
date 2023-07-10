@@ -78,10 +78,10 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL){
       `Tampa Bypass Canal` = c('Tampa Bypass Canal', 'Tampa Bypass Canal Tributary'),
       `Valrico Lake` = 'Valrico Lake'
     )
-    areasel <- match.arg(areasel, names(areasls))
+    areasel <- match.arg(areasel, names(areasls), several.ok = TRUE)
 
     out <- out %>%
-      dplyr::filter(area %in% areasls[[areasel]])
+      dplyr::filter(area %in% unlist(areasls[areasel]))
   }
 
   # check empty data
