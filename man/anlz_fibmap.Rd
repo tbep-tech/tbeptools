@@ -13,7 +13,7 @@ anlz_fibmap(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL)
 
 \item{mosel}{optional numeric value to filter output by month in \code{fibdata}}
 
-\item{areasel}{optional character string to filter output by stations in the \code{"Alafia"} or \code{"Hillsborough"} River basins, see details}
+\item{areasel}{optional character string to filter output by stations in the \code{area} column of \code{fibdata}, see details}
 }
 \value{
 A \code{data.frame} similar to \code{fibdata} with additional columns describing station categories and optionally filtered by arguments passed to the function
@@ -24,13 +24,13 @@ Assign threshold categories to Fecal Indicator Bacteria (FIB) data
 \details{
 This function is used to create FIB categories for mapping using \code{\link{show_fibmap}}.  Categories based on relevant thresholds are assigned to each observation.  The categories are specific to E. coli or Enterococcus and are assigned based on the station class as freshwater (\code{class} as 1 or 3F) or marine (\code{class} as 2 or 3M), respectively.  A station is categorized into one of four ranges defined by the thresholds as noted in the \code{cat} column of the output, with corresponding colors appropriate for each range as noted in the \code{col} column of the output.
 
-The \code{areasel} argument can indicate either \code{"Alafia"} or \code{"Hillsborough"} for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection.  All stations are returned if this argument is set as \code{NULL} (default). The Alafia River basin includes values in the \code{area} column of \code{fibdata} as \code{"Alafia River"} and \code{"Alafia River Tributary"}.  The Hillsborough River basin includes values in the \code{area} column of \code{fibdat} as \code{"Hillsborough River"}, \code{"Hillsborough River Tributary"}, \code{"Lake Thonotosassa"}, \code{"Lake Thonotosassa Tributary"}, and \code{"Lake Roberta"}.  Not all areas may be present based on the selection.
+The \code{areasel} argument can indicate valid entries in the \code{area} column of \code{fibdata}.  For example, use either \code{"Alafia River"} or \code{"Hillsborough River"} for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection.  All stations are returned if this argument is set as \code{NULL} (default). The Alafia River basin includes values in the \code{area} column of \code{fibdata} as \code{"Alafia River"} and \code{"Alafia River Tributary"}.  The Hillsborough River basin includes values in the \code{area} column of \code{fibdat} as \code{"Hillsborough River"}, \code{"Hillsborough River Tributary"}, \code{"Lake Thonotosassa"}, \code{"Lake Thonotosassa Tributary"}, and \code{"Lake Roberta"}.  Not all areas may be present based on the selection.  All valid options for \code{areasel} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Big Bend"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}.
 }
 \examples{
 # assign categories to all
 anlz_fibmap(fibdata)
 
 # filter by year, month, and area
-anlz_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia')
+anlz_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
 }
 \concept{anlz}

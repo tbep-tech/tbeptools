@@ -13,7 +13,7 @@ show_fibmap(fibdata, yrsel, mosel, areasel = NULL)
 
 \item{mosel}{optional numeric value to filter output by month in \code{fibdata}}
 
-\item{areasel}{optional character string to filter output by stations in the \code{"Alafia"} or \code{"Hillsborough"} River basins, see details}
+\item{areasel}{optional character string to filter output by stations in the \code{area} column of \code{fibdata}, see details}
 }
 \value{
 A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
@@ -29,7 +29,7 @@ Placing the mouse cursor over an item on the map will reveal additional informat
 show_fibmap(fibdata, yrsel = 2022, mosel = 8)
 
 # show selected year, month, and area
-show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia')
+show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
 }
 \seealso{
 \code{\link{anlz_fibmap}} for details on the categories

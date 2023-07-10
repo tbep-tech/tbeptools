@@ -16,7 +16,7 @@
 #' show_fibmap(fibdata, yrsel = 2022, mosel = 8)
 #'
 #' # show selected year, month, and area
-#' show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia')
+#' show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
 show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
 
   # get categories
