@@ -1,14 +1,14 @@
-#' Format water quality and station metadata from the Water Quality Portal
+#' Format data and station metadata from the Water Quality Portal
 #'
-#' @param res A data frame containing water quality results obtained from the API
+#' @param res A data frame containing results obtained from the API
 #' @param sta A data frame containing station metadata obtained from the API
-#' @param org chr string indicating either \code{"Manatee"} or \code{"Pinellas"}
-#' @param orgin chr string indicating either \code{"21FLMANA_WQX"} or \code{"21FLPDEM_WQX"}
+#' @param org chr string indicating the organization identifier
+#' @param type chr string indicating data type to download, one of \code{"wq"} or \code{"fib"}
 #' @param trace Logical indicating whether to display progress messages, default is \code{FALSE}
 #'
 #' @return A data frame containing formatted water quality and station metadata
 #'
-#' @details This function is used by \code{\link{read_importwqp}} to combine, format, and process water quality data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Data Exchange API for the selected county. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.
+#' @details This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.
 #'
 #' @concept read
 #'
@@ -50,26 +50,18 @@
 #'   read.csv(text = .)
 #'
 #' # combine and format
-#' read_formwqp(res, sta, 'Manatee', '21FLMANA_WQX')
+#' read_formwqp(res, sta, '21FLMANA_WQX', type = 'wq')
 #'}
-read_formwqp <- function(res, sta, org, orgin, trace = F){
+read_formwqp <- function(res, sta, org, type, trace = F){
+
+  # get type
+  type <- match.arg(type, c('fib', 'wq'))
 
   # get station column name based on county input
-  org <- match.arg(org, c('Manatee', 'Pinellas'))
-  stanm <- list(
-      Manatee = 'manco_station',
-      Pinellas = 'pinco_station'
-    ) %>%
-    .[[org]]
+  stanm <- util_orgin(org, stanm = T)
 
   if(trace)
     cat('Combining and formatting output...\n')
-
-  # format water quality
-  resfrm <- res %>%
-    dplyr::select(date = ActivityStartDate, type = ActivityTypeCode, time = ActivityStartTime.Time,
-                  ident = MonitoringLocationIdentifier, var = CharacteristicName, val = ResultMeasureValue,
-                  uni = ResultMeasure.MeasureUnitCode)
 
   # format station metadata
   stafrm <- sta %>%
@@ -85,41 +77,71 @@ read_formwqp <- function(res, sta, org, orgin, trace = F){
       )
     )
 
-  # combine and process
-  out <- resfrm %>%
+  # get relevant results columns, combine with stafrm
+  resfrm <- res %>%
+    dplyr::select(date = ActivityStartDate, type = ActivityTypeCode, time = ActivityStartTime.Time,
+                  ident = MonitoringLocationIdentifier, var = CharacteristicName, val = ResultMeasureValue,
+                  uni = ResultMeasure.MeasureUnitCode) %>%
     dplyr::left_join(stafrm, by = 'ident') %>%
     dplyr::filter(type %in% c('Field Msr/Obs', 'Sample-Routine')) %>%
-    dplyr::filter(!var %in% c('Nitrate', 'Depth')) %>% # only kept no23
     dplyr::filter(!val %in% c('*Not Reported', 'Not Reported')) %>%
-    dplyr::filter(!uni %in% 'ft') %>%
     dplyr::mutate(
       time = ifelse(time == '', '00:00:00', time)
     ) %>%
     unite('SampleTime', date, time, sep = ' ') %>%
     dplyr::mutate(
-      station = gsub(paste0('^', orgin, '\\-'), '', ident),
+      station = gsub(paste0('^', org, '\\-'), '', ident),
       SampleTime = lubridate::ymd_hms(SampleTime, tz = 'America/Jamaica'),
       yr = lubridate::year(SampleTime),
       mo = lubridate::month(SampleTime),
-      var = dplyr::case_when(
-        grepl('Nitri|Nitra', var) ~ 'no23',
-        grepl('Ammonia', var) ~ 'nh34',
-        grepl('^Chlorophyll a, corrected', var) ~ 'chla_corr',
-        grepl('^Chlorophyll a, free', var) ~ 'chla_uncorr',
-        grepl('Secchi', var) ~ 'secchi',
-        grepl('Kjeldahl', var) ~ 'tkn',
-        grepl('Phosphorus', var) ~ 'tp',
-        grepl('Orthophosphate', var) ~ 'orthop'
-      ),
-      uni = case_when(
-        uni == 'mg/m3' ~ 'ugl',
-        uni == 'mg/L' ~ 'mgl',
-        T ~ uni
-      ),
       qual = ifelse(val %in% c('*Non-detect', '*Present <QL'), 'U', NA_character_),
       val = ifelse(val %in% c('*Non-detect', '*Present <QL'), '', val),
       val = as.numeric(val)
-    ) %>%
+    )
+
+  # format and combine data if wq
+  if(type == 'wq'){
+
+    # combine and process
+    out <- resfrm %>%
+      dplyr::filter(!var %in% c('Nitrate', 'Depth')) %>% # only kept no23
+      dplyr::filter(!uni %in% 'ft') %>%
+      dplyr::mutate(
+        var = dplyr::case_when(
+          grepl('Nitri|Nitra', var) ~ 'no23',
+          grepl('Ammonia', var) ~ 'nh34',
+          grepl('^Chlorophyll a, corrected', var) ~ 'chla_corr',
+          grepl('^Chlorophyll a, free', var) ~ 'chla_uncorr',
+          grepl('Secchi', var) ~ 'secchi',
+          grepl('Kjeldahl', var) ~ 'tkn',
+          grepl('Phosphorus', var) ~ 'tp',
+          grepl('Orthophosphate', var) ~ 'orthop'
+        ),
+        uni = case_when(
+          uni == 'mg/m3' ~ 'ugl',
+          uni == 'mg/L' ~ 'mgl',
+          T ~ uni
+        )
+      )
+
+  }
+
+  # format and combine data if wq
+  if(type == 'fib'){
+
+    # combine and process
+    out <- resfrm %>%
+      dplyr::filter(!is.na(uni)) %>%
+      dplyr::mutate(
+        var = dplyr::case_when(
+          grepl('^Eschericia', var) ~ 'E. coli'
+        )
+      )
+
+  }
+
+  # final formatting
+  out <- out %>%
     tidyr::nest(.by = datum) %>%
     dplyr::mutate(
       data = purrr::map(data, function(x){

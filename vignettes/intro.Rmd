@@ -128,14 +128,14 @@ These data are highly summarized from the raw data file available online.  Cell 
 
 Most of the water quality functions in tbeptools were developed to work with the long-term monitoring data from the Environmental Protection Commission of Hillsborough County.  Additional monitoring programs in Tampa Bay can also be used to develop a more complete description of water quality.  
 
-The `import_readwqp()` function can be used to retrieve data from the USEPA Water Quality Portal for monitoring data from Pinellas and Manatee County.  The function retrieves nutrient, chlorophyll, and secchi data for all available estuarine stations monitored by each county.  The data can be retrieved as follows and will typically take less than one minute to download. 
+The `import_readwqp()` function can be used to retrieve data from the USEPA Water Quality Portal for monitoring data from counties in and around the Tampa Bay watershed.  The function retrieves nutrient, chlorophyll, and secchi data for all available estuarine stations monitored by each county if `type = 'wq'`.  The data can be retrieved as follows and will typically take less than one minute to download. 
 
 ```{r, eval=FALSE}
 # get Manatee County data
-mancodata <- read_importwqp(org = 'Manatee', trace = T)
+mancodata <- read_importwqp(org = '21FLMANA_WQX', type = 'wq', trace = T)
 
 # get Pinellas County data
-pincodata <- read_importwqp(org = 'Pinellas', trace = T)
+pincodata <- read_importwqp(org = '21FLPDEM_WQX', type = 'wq', trace = T)
 ```
 
 ## Analyze {.tabset}

@@ -1,13 +1,18 @@
-#' Import water quality data from the Water Quality Portal
+#' Import data from the Water Quality Portal
 #'
-#' Import water quality data from the Water Quality Portal
+#' Import data from the Water Quality Portal
 #'
-#' @param org chr string indicating either \code{"Manatee"} or \code{"Pinellas"}
+#' @param org chr string indicating the organization identifier, see details
+#' @param type chr string indicating data type to download, one of \code{"wq"} or \code{"fib"}
 #' @param trace logical indicating whether to display progress messages, default \code{FALSE}
 #'
-#' @return A data frame containing the imported water quality data for Manatee or Pinellas County.
+#' @return A data frame containing the imported data for the selected county
 #'
-#' @details This function retrieves water quality data from the Water Quality Data Exchange API for Manatee or Pinellas County. Based on the input to the \code{org} argument, data for the organization defined as \code{"21FLMANA_WQX"} or \code{"21FLPDEM_WQX"} for Manatee or Pinellas County are returned. It fetches results and station metadata, combines and formats them using the \code{read_formwqmp} function, and returns the processed data as a data frame.  Parameters included are nutrients, chlorophyll, and Secchi depth.
+#' @details This function retrieves data from the Water Quality Portal API (\url{https://www.waterqualitydata.us/}) for selected counties in or around the Tampa Bay watershed. The type of data returned are defined by the \code{type} argument as either \code{"wq"} or \code{"fib"} for water quality of Fecal Indicator Bacteria data, respectively.
+#'
+#' The \code{org} argument retrieves data for the specific organization. See the details for \code{\link{util_orgin}}.
+#'
+#' The function fetches results and station metadata, combines and formats them using the \code{read_formwqmp} function, and returns the processed data as a data frame.  Parameters are specific to the \code{type} argument.
 #'
 #' @concept read
 #'
@@ -19,21 +24,19 @@
 #'
 #' @examples
 #' \dontrun{
-#' # get Manatee County data
-#' mancodata <- read_importwqp(org = 'Manatee', trace = T)
+#' # get Manatee County water quality data
+#' mancodata <- read_importwqp(org = '21FLMANA_WQX', type = 'wq', trace = T)
 #'
-#' # get Pinellas County data
-#' pincodata <- read_importwqp(org = 'Pinellas', trace = T)
+#' # get Pinellas County FIB data
+#' pincodata <- read_importwqp(org = '21FLPDEM_WQX', type = 'fib', trace = T)
 #' }
-read_importwqp <- function(org, trace = F){
+read_importwqp <- function(org, type, trace = F){
+
+  # get type
+  type <- match.arg(type, c('fib', 'wq'))
 
   # get org identifier based on county input
-  org <- match.arg(org, c('Manatee', 'Pinellas'))
-  orgin <- list(
-      Manatee = '21FLMANA_WQX',
-      Pinellas = '21FLPDEM_WQX'
-    ) %>%
-    .[[org]]
+  county <- util_orgin(org)
 
   url <- list(
     Result = "https://www.waterqualitydata.us/data/Result/search?mimeType=csv&zip=no",
@@ -47,15 +50,26 @@ read_importwqp <- function(org, trace = F){
 
   # https://www.epa.gov/waterdata/storage-and-retrieval-and-water-quality-exchange-domain-services-and-downloads
   body <- list(
-    organization = orgin,
-    sampleMedia = c("Water"),
-    characteristicType = c("Information", "Nutrient", "Biological, Algae, Phytoplankton, Photosynthetic Pigments"),
-    providers = c("STORET"),
-    siteType = c("Estuary")
+    organization = org,
+    providers = "STORET"
   )
 
+  if(type == 'wq')
+    body <- c(
+      body,
+      sampleMedia = "Water",
+      characteristicType = c("Information", "Nutrient", "Biological, Algae, Phytoplankton, Photosynthetic Pigments"),
+      siteType = "Estuary"
+    )
+
+  if(type == 'fib')
+    body <- c(
+      body,
+      characteristicType = 'Microbiological'
+    )
+
   if(trace)
-    cat('Retrieving water quality data...\n')
+    cat('Retrieving data...\n')
 
   res <- url[['Result']] %>%
     httr::POST(httr::add_headers(headers), body = jsonlite::toJSON(body)) %>%
@@ -71,7 +85,7 @@ read_importwqp <- function(org, trace = F){
     read.csv(text = .)
 
   # combine and format
-  out <- read_formwqp(res, sta, org, orgin, trace)
+  out <- read_formwqp(res, sta, org, type, trace)
 
   return(out)
 

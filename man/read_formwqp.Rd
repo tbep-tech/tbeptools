@@ -2,18 +2,18 @@
 % Please edit documentation in R/read_formwqp.R
 \name{read_formwqp}
 \alias{read_formwqp}
-\title{Format water quality and station metadata from the Water Quality Portal}
+\title{Format data and station metadata from the Water Quality Portal}
 \usage{
-read_formwqp(res, sta, org, orgin, trace = F)
+read_formwqp(res, sta, org, type, trace = F)
 }
 \arguments{
-\item{res}{A data frame containing water quality results obtained from the API}
+\item{res}{A data frame containing results obtained from the API}
 
 \item{sta}{A data frame containing station metadata obtained from the API}
 
-\item{org}{chr string indicating either \code{"Manatee"} or \code{"Pinellas"}}
+\item{org}{chr string indicating the organization identifier}
 
-\item{orgin}{chr string indicating either \code{"21FLMANA_WQX"} or \code{"21FLPDEM_WQX"}}
+\item{type}{chr string indicating data type to download, one of \code{"wq"} or \code{"fib"}}
 
 \item{trace}{Logical indicating whether to display progress messages, default is \code{FALSE}}
 }
@@ -21,10 +21,10 @@ read_formwqp(res, sta, org, orgin, trace = F)
 A data frame containing formatted water quality and station metadata
 }
 \description{
-Format water quality and station metadata from the Water Quality Portal
+Format data and station metadata from the Water Quality Portal
 }
 \details{
-This function is used by \code{\link{read_importwqp}} to combine, format, and process water quality data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Data Exchange API for the selected county. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.
+This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.
 }
 \examples{
 \dontrun{
@@ -58,7 +58,7 @@ sta <- url[['Station']] \%>\%
   read.csv(text = .)
 
 # combine and format
-read_formwqp(res, sta, 'Manatee', '21FLMANA_WQX')
+read_formwqp(res, sta, '21FLMANA_WQX', type = 'wq')
 }
 }
 \seealso{

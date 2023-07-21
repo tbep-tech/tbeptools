@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @concept util
-
+#'
 #' @examples
 #' tomap <- tibble::tibble(
 #'   lon = -82.6365,
