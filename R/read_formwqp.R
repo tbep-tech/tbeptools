@@ -70,7 +70,8 @@ read_formwqp <- function(res, sta, org, type, trace = F){
   stafrm <- sta %>%
     dplyr::select(ident = MonitoringLocationIdentifier,
                   lat = LatitudeMeasure, lon = LongitudeMeasure,
-                  datum = HorizontalCoordinateReferenceSystemDatumName
+                  datum = HorizontalCoordinateReferenceSystemDatumName,
+                  class = MonitoringLocationTypeName
     ) %>%
     dplyr::mutate(
       epsg = case_when(
@@ -78,6 +79,10 @@ read_formwqp <- function(res, sta, org, type, trace = F){
         datum == 'NAD83' ~ 4269,
         datum == 'NAD27' ~ 4267,
         datum %in% misdatum ~ 4326
+      ),
+      class = case_when(
+        class != 'Estuary' ~ 'Fresh',
+        T ~ 'Estuary'
       )
     )
 
@@ -89,12 +94,19 @@ read_formwqp <- function(res, sta, org, type, trace = F){
   resfrm <- res %>%
     dplyr::select(date = ActivityStartDate, type = ActivityTypeCode, time = ActivityStartTime.Time,
                   ident = MonitoringLocationIdentifier, var = CharacteristicName, val = ResultMeasureValue,
-                  uni = ResultMeasure.MeasureUnitCode) %>%
+                  uni = ResultMeasure.MeasureUnitCode,
+                  Sample_Depth_m = ActivityDepthHeightMeasure.MeasureValue,
+                  depth_uni = ActivityDepthHeightMeasure.MeasureUnitCode
+                  ) %>%
     dplyr::left_join(stafrm, by = 'ident') %>%
     dplyr::filter(type %in% c('Field Msr/Obs', 'Sample-Routine')) %>%
     dplyr::filter(!val %in% c('*Not Reported', 'Not Reported')) %>%
     dplyr::mutate(
-      time = ifelse(time == '', '00:00:00', time)
+      time = ifelse(time == '', '00:00:00', time),
+      Sample_Depth_m = case_when(
+        depth_uni == 'ft' ~ Sample_Depth_m / 3.281,
+        T ~ Sample_Depth_m
+      )
     ) %>%
     unite('SampleTime', date, time, sep = ' ') %>%
     dplyr::mutate(
@@ -169,7 +181,8 @@ read_formwqp <- function(res, sta, org, type, trace = F){
     tidyr::unnest('data') %>%
     sf::st_as_sf() %>%
     sf::st_set_geometry(NULL) %>%
-    select(station, SampleTime, yr, mo, Latitude = lat, Longitude = lon, var, val, uni, qual) %>%
+    select(station, SampleTime, class, yr, mo, Latitude = lat, Longitude = lon,
+           Sample_Depth_m, var, val, uni, qual) %>%
     unique()
 
   # rename station column based on org
