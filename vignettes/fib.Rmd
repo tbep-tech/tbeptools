@@ -56,6 +56,20 @@ The `fibdata` object includes monthly samples for FIB data at select stations in
 
 The `fibdata` object can be used for the remaining FIB functions. 
 
+### Retrieving additional FIB data
+
+Most of the FIB functions in tbeptools were developed to work with the long-term monitoring data from the Environmental Protection Commission of Hillsborough County.  Additional monitoring programs in Tampa Bay can also be used to develop a more complete description of FIB data.  
+
+The `import_readwqp()` function can be used to retrieve data from the USEPA Water Quality Portal for monitoring data from counties in and around the Tampa Bay watershed.  The function retrieves additional FIB data using `type = 'fib'` with the specified organization identified.  The data can be retrieved as follows and will typically take less than one minute to download. 
+
+```{r, eval=FALSE}
+# get Manatee County data
+mancodata <- read_importwqp(org = '21FLMANA_WQX', type = 'fib', trace = T)
+
+# get Pinellas County data
+pincodata <- read_importwqp(org = '21FLPDEM_WQX', type = 'fib', trace = T)
+```
+
 ## Analyze
 
 The `anlz_fibmap()` function assigns categories to each observation in `fibdata` for a selected month and year.  These results are then mapped using `anlz_fibmap()` (see below). The categories are specific to *E. coli* or *Enterococcus* and are assigned based on the station class as freshwater (`class` as 1 or 3F) or marine (`class` as 2 or 3M), respectively.  A station is categorized into one of four ranges defined by the thresholds as noted in the `cat` column of the output, with corresponding colors appropriate for each range as noted in the `col` column of the output.
