@@ -60,6 +60,9 @@ read_formwqp <- function(res, sta, org, type, trace = F){
   # get station column name based on county input
   stanm <- util_orgin(org, stanm = T)
 
+  # entries for missing horizontal datums
+  misdatum <- c('OTHER', 'UNKWN')
+
   if(trace)
     cat('Combining and formatting output...\n')
 
@@ -73,9 +76,14 @@ read_formwqp <- function(res, sta, org, type, trace = F){
       epsg = case_when(
         datum == 'WGS84' ~ 4326,
         datum == 'NAD83' ~ 4269,
-        datum == 'NAD27' ~ 4267
+        datum == 'NAD27' ~ 4267,
+        datum %in% misdatum ~ 4326
       )
     )
+
+  # warning for missing datum
+  if(any(stafrm$datum %in% misdatum))
+    warning('Missing datum information present for some stations, converted to EPSG 4326')
 
   # get relevant results columns, combine with stafrm
   resfrm <- res %>%
@@ -95,8 +103,8 @@ read_formwqp <- function(res, sta, org, type, trace = F){
       yr = lubridate::year(SampleTime),
       mo = lubridate::month(SampleTime),
       qual = ifelse(val %in% c('*Non-detect', '*Present <QL'), 'U', NA_character_),
-      val = ifelse(val %in% c('*Non-detect', '*Present <QL'), '', val),
-      val = as.numeric(val)
+      qual = ifelse(val %in% '*Present >QL', 'I', NA_character_),
+      val = ifelse(val %in% c('*Non-detect', '*Present <QL', '*Present >QL'), '', val)
     )
 
   # format and combine data if wq
@@ -134,7 +142,10 @@ read_formwqp <- function(res, sta, org, type, trace = F){
       dplyr::filter(!is.na(uni)) %>%
       dplyr::mutate(
         var = dplyr::case_when(
-          grepl('^Eschericia', var) ~ 'E. coli'
+          grepl('^Escherichia', var) ~ 'ecoli',
+          grepl('^Fecal', var) ~ 'fcolif',
+          grepl('^Entero', var) ~ 'ecocci',
+          grepl('^Total', var) ~ 'totcol'
         )
       )
 
@@ -142,6 +153,10 @@ read_formwqp <- function(res, sta, org, type, trace = F){
 
   # final formatting
   out <- out %>%
+    dplyr::filter(!is.na(var)) %>%
+    dplyr::mutate(
+      val = as.numeric(val)
+    ) %>%
     tidyr::nest(.by = datum) %>%
     dplyr::mutate(
       data = purrr::map(data, function(x){

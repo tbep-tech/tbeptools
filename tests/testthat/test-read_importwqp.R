@@ -14,3 +14,17 @@ test_that("Check output class from read_importwqp, fib", {
 
 })
 
+test_that("Error no data for a location", {
+
+  expect_error(read_importwqp(org = '21FLPASC_WQX', type = 'wq', trace = F), "No data")
+
+})
+
+test_that("Warning for no specified datum", {
+
+  expect_warning(read_importwqp(org = '21FLPOLK_WQX', type = 'fib', trace = F),
+                 "Missing datum information present for some stations, converted to EPSG 4326"
+                 )
+
+})
+
