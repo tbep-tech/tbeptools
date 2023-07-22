@@ -18,7 +18,7 @@ A character string of the county name that correspond to the organization identi
 Get county name from organization identifier
 }
 \details{
-Valid entries for \code{arg} include \code{"21FLHILL_WQX"} (Hillsborough County), \code{"21FLMANA_WQX"} (Manatee County), \code{"21FLPASC_WQX"} (Pasco County), \code{"21FLPDEM_WQX"} (Pinellas County), or \code{"21FLPOLK_WQX} (Polk County).  The naming convention follows the Organization ID in the Water Quality Portal.
+Valid entries for \code{org} include \code{"21FLHILL_WQX"} (Hillsborough County), \code{"21FLMANA_WQX"} (Manatee County), \code{"21FLPASC_WQX"} (Pasco County), \code{"21FLPDEM_WQX"} (Pinellas County), or \code{"21FLPOLK_WQX"} (Polk County).  The naming convention follows the Organization ID in the Water Quality Portal.
 }
 \examples{
 util_orgin('21FLHILL_WQX')
