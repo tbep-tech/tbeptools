@@ -7,7 +7,7 @@
 util_orgin(org, stanm = FALSE)
 }
 \arguments{
-\item{org}{chr string indicating the organization identifier}
+\item{org}{chr string indicating the organization identifier, see \code{\link{read_importwqp}} for valid entries}
 
 \item{stanm}{logical indicating if a character string for a column name specific to the county is returned}
 }
@@ -16,9 +16,6 @@ A character string of the county name that correspond to the organization identi
 }
 \description{
 Get county name from organization identifier
-}
-\details{
-Valid entries for \code{org} include \code{"21FLHILL_WQX"} (Hillsborough County), \code{"21FLMANA_WQX"} (Manatee County), \code{"21FLPASC_WQX"} (Pasco County), \code{"21FLPDEM_WQX"} (Pinellas County), or \code{"21FLPOLK_WQX"} (Polk County).  The naming convention follows the Organization ID in the Water Quality Portal.
 }
 \examples{
 util_orgin('21FLHILL_WQX')
