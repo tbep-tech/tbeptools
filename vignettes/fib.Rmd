@@ -60,7 +60,7 @@ The `fibdata` object can be used for the remaining FIB functions.
 
 Most of the FIB functions in tbeptools were developed to work with the long-term monitoring data from the Environmental Protection Commission of Hillsborough County.  Additional monitoring programs in Tampa Bay can also be used to develop a more complete description of FIB data.  
 
-The `import_readwqp()` function can be used to retrieve data from the USEPA Water Quality Portal for monitoring data from counties in and around the Tampa Bay watershed.  The function retrieves additional FIB data using `type = 'fib'` with the specified organization identified.  The data can be retrieved as follows and will typically take less than one minute to download. 
+The `read_importwqp()` function can be used to retrieve data from the USEPA Water Quality Portal for monitoring data from counties in and around the Tampa Bay watershed.  The function retrieves additional FIB data using `type = 'fib'` with the specified organization identified.  The data can be retrieved as follows and will typically take less than one minute to download. 
 
 ```{r, eval=FALSE}
 # get Manatee County data

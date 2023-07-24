@@ -88,10 +88,6 @@ read_importwqp <- function(org, type, trace = F){
     httr::content('text') %>%
     read.csv(text = .)
 
-  # stop if no station data
-  if(nrow(sta) == 0)
-    stop("No station metadata")
-
   # combine and format
   out <- read_formwqp(res, sta, org, type, trace)
 
