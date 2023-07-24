@@ -86,8 +86,8 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function retrieves data from the Water Quality Portal API (<a href="https://www.waterqualitydata.us/" class="external-link">https://www.waterqualitydata.us/</a>) for selected counties in or around the Tampa Bay watershed. The type of data returned are defined by the <code>type</code> argument as either <code>"wq"</code> or <code>"fib"</code> for water quality of Fecal Indicator Bacteria data, respectively.</p>
-<p>The <code>org</code> argument retrieves data for the specific organization. See the details for <code><a href="util_orgin.html">util_orgin</a></code>.</p>
-<p>The function fetches results and station metadata, combines and formats them using the <code>read_formwqmp</code> function, and returns the processed data as a data frame.  Parameters are specific to the <code>type</code> argument.</p>
+<p>The <code>org</code> argument retrieves data for the specific organization. Valid entries for <code>org</code> include <code>"21FLHILL_WQX"</code> (Hillsborough County), <code>"21FLMANA_WQX"</code> (Manatee County), <code>"21FLPASC_WQX"</code> (Pasco County), <code>"21FLPDEM_WQX"</code> (Pinellas County), or <code>"21FLPOLK_WQX"</code> (Polk County).  The naming convention follows the Organization ID in the Water Quality Portal.</p>
+<p>The function fetches results and station metadata, combines and formats them using the <code>read_formwqp</code> function, and returns the processed data as a data frame.  Parameters are specific to the <code>type</code> argument.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
