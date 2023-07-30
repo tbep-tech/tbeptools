@@ -8,7 +8,7 @@
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
-#' @param text logical indicating if proportion of target or goal met for habitat types is shown in each cell types
+#' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types, use \code{NULL} to suppress
 #' @param family optional chr string indicating font family for text labels
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
@@ -39,7 +39,7 @@
 #'
 #' # select only subtidal
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = TRUE, family = NA, width = NULL, height = NULL){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = 2.5, family = NA, width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
   typ <- match.arg(typ, choices = c('targets', 'goals'))
@@ -158,9 +158,9 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal'
       clip = "off"
     )
 
-  if(text)
+  if(!is.null(text))
     p <- p +
-      ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = 2.5, family = family)
+      ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = text, family = family)
 
   return(p)
 

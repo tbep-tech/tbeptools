@@ -11,7 +11,7 @@ show_hmpreport(
   typ,
   strata = c("Subtidal", "Intertidal", "Supratidal"),
   ycollapse = FALSE,
-  text = TRUE,
+  text = 2.5,
   family = NA,
   width = NULL,
   height = NULL
@@ -30,7 +30,7 @@ show_hmpreport(
 
 \item{ycollapse}{logical indicating if the y-axis is collapsed to year with data, see details}
 
-\item{text}{logical indicating if proportion of target or goal met for habitat types is shown in each cell types}
+\item{text}{numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types, use \code{NULL} to suppress}
 
 \item{family}{optional chr string indicating font family for text labels}
 
