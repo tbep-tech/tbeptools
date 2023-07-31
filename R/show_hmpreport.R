@@ -9,6 +9,7 @@
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
 #' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types, use \code{NULL} to suppress
+#' @param xang numeric for angle of habitat labels on the x-axis (top)
 #' @param family optional chr string indicating font family for text labels
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
@@ -39,7 +40,7 @@
 #'
 #' # select only subtidal
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = 2.5, family = NA, width = NULL, height = NULL){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = 2.5, xang = 25, family = NA, width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
   typ <- match.arg(typ, choices = c('targets', 'goals'))
@@ -120,7 +121,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal'
     ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
       text = element_text(family = family),
-      axis.text.x = ggplot2::element_text(angle = 25, hjust = 0, size = 8, family = family),
+      axis.text.x = ggplot2::element_text(angle = xang, hjust = 0, size = 8, family = family),
       plot.margin = ggplot2::margin(0, 5, 14, 2, "pt")
     )
 
@@ -145,7 +146,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal'
       na.value = 'white'
     ) +
     thm +
-    ggplot2::geom_vline(xintercept = xvec, linewidth = 0.75) +
+    ggplot2::geom_vline(xintercept = xvec, linewidth = 1) +
     ggplot2::labs(
       x = NULL,
       y = NULL,
