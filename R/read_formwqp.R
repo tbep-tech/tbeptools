@@ -135,11 +135,15 @@ read_formwqp <- function(res, sta, org, type, trace = F){
           grepl('Secchi', var) ~ 'secchi',
           grepl('Kjeldahl', var) ~ 'tkn',
           grepl('Phosphorus', var) ~ 'tp',
-          grepl('Orthophosphate', var) ~ 'orthop'
+          grepl('Orthophosphate', var) ~ 'orthop',
+          grepl('Salinity', var) ~ 'sal',
+          grepl('Temperature, water', var) ~ 'temp',
+          grepl('Turbidity', var) ~ 'turb'
         ),
         uni = case_when(
           uni == 'mg/m3' ~ 'ugl',
           uni == 'mg/L' ~ 'mgl',
+          uni == 'ppt' ~ 'ppth',
           T ~ uni
         )
       )
@@ -166,6 +170,7 @@ read_formwqp <- function(res, sta, org, type, trace = F){
   # final formatting
   out <- out %>%
     dplyr::filter(!is.na(var)) %>%
+    dplyr::filter(!is.na(val)) %>%
     dplyr::mutate(
       val = as.numeric(val)
     ) %>%

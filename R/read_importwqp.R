@@ -58,7 +58,7 @@ read_importwqp <- function(org, type, trace = F){
     body <- c(
       body,
       sampleMedia = "Water",
-      characteristicType = c("Information", "Nutrient", "Biological, Algae, Phytoplankton, Photosynthetic Pigments"),
+      characteristicType = c("Information", "Nutrient", "Biological, Algae, Phytoplankton, Photosynthetic Pigments, Physical"),
       siteType = "Estuary"
     )
 
