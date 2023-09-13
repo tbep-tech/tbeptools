@@ -17,6 +17,9 @@
 #' util_map(tomap)
 util_map <- function(tomap, minimap = 'bottomleft'){
 
+  if(!requireNamespace('htmlwidgets', quietly = TRUE))
+    stop("Package \"htmlwidgets\" needed for this function to work. Please install it.", call. = FALSE)
+
   bnds <- sf::st_bbox(tomap)
 
   esri <- rev(grep("^Esri", leaflet::providers, value = TRUE))
