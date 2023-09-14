@@ -4,7 +4,14 @@
 \alias{show_annualassess}
 \title{Create a table for the annual management outcome assessments}
 \usage{
-show_annualassess(epcdata, yrsel, partialyr = F, caption = F, family = "Arial")
+show_annualassess(
+  epcdata,
+  yrsel,
+  partialyr = F,
+  caption = F,
+  family = "Arial",
+  txtsz = 12
+)
 }
 \arguments{
 \item{epcdata}{data frame of epc data returned by \code{\link{read_importwq}}}
@@ -15,7 +22,9 @@ show_annualassess(epcdata, yrsel, partialyr = F, caption = F, family = "Arial")
 
 \item{caption}{logical indicating if a caption is added using \code{\link[flextable]{set_caption}}}
 
-\item{family}{optional chr string indicating font family for text labels}
+\item{family}{chr string indicating font family for text labels}
+
+\item{txtsz}{numeric indicating font size}
 }
 \value{
 A \code{\link[flextable]{flextable}} object showing the segment-averaged chlorophyll-a and light attenuation for the selected year, with bay segment names colored by the management outcome used in \code{\link{show_matrix}}.
