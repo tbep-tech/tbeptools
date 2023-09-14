@@ -67,7 +67,9 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "Fecal_Coliform", "Fecal_ColiformQ", "Total_Coliform", "Total_ColiformQ",
                   "ecocci", "ecoli", "fcolif", "totcol", "areasfib", "Var1", "Var2", "colnm",
                   "indnm", "brk", "cls", "conc", "exced", "gmean", "MWQA", "station_tot",
-                  "sumgt400", "yearfac", "nyrs"))
+                  "sumgt400", "yearfac", "nyrs", "ActivityDepthHeightMeasure.MeasureUnitCode",
+                  "ActivityDepthHeightMeasure.MeasureValue", "chla_target", "chla_val",
+                  "la_target", "la_val", "MonitoringLocationTypeName"))
 
 #' @importFrom grDevices rgb
 NULL

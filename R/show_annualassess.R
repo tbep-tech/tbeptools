@@ -18,7 +18,7 @@
 #'
 #' @examples
 #' show_annualassess(epcdata, yrsel = 2022)
-#' show_annualassess(epcdata, yrsel = 2022, caption = T)
+#' show_annualassess(epcdata, yrsel = 2022, caption = TRUE)
 show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family = 'Arial', txtsz = 12, width = NULL){
 
   totab <- anlz_yrattain(epcdata, yrsel = yrsel, partialyr = partialyr) %>%
@@ -38,7 +38,7 @@ show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family
   totab <- totab %>%
     dplyr::select(-outcome)
 
-  tab <- flextable::flextable(totab) %>%
+  out <- flextable::flextable(totab) %>%
     flextable::bg(j = 'bay_segment', bg = outcome) %>%
     flextable::add_header_row(colwidths = c(1, 2, 2), values = c('Segment', 'Chl-a (ug/L)', 'light')) %>%
     flextable::compose(
@@ -51,7 +51,7 @@ show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family
   if(caption){
 
     cap.val <- paste0('Water quality outcomes for ', yrsel , '.')
-    tab <- tab %>%
+    out <- out %>%
       flextable::set_caption(
         flextable::as_paragraph(
           flextable::as_chunk(cap.val,
@@ -63,13 +63,13 @@ show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family
   }
 
   if(!is.null(width))
-    tab <- tab %>%
+    out <- out %>%
       flextable::width(width = width)
 
-  tab <- tab %>%
+  out <- out %>%
     flextable::font(fontname = family, part = 'all') %>%
     flextable::fontsize(size = txtsz, part = 'all')
 
-  return(tab)
+  return(out)
 
 }

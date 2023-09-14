@@ -1,6 +1,6 @@
 test_that("Function returns a valid flextable object", {
   yrsel <- 2022
-  result <- show_annualassess(epcdata, yrsel)
+  result <- show_annualassess(epcdata, yrsel, width = 7)
   expect_s3_class(result, "flextable")
 })
 
@@ -19,3 +19,12 @@ test_that("Check caption", {
   expected <- "Water quality outcomes for 1975."
   expect_equal(result, expected)
 })
+
+test_that("Check width", {
+  yrsel <- 2022
+  result <- show_annualassess(epcdata, yrsel, width = 7)
+  result <- result$body$colwidths %>% unique
+  expected <- 7
+  expect_equal(result, expected)
+})
+

@@ -37,6 +37,6 @@ Create a table for the annual management outcome assessments for chlorophyll-a a
 }
 \examples{
 show_annualassess(epcdata, yrsel = 2022)
-show_annualassess(epcdata, yrsel = 2022, caption = T)
+show_annualassess(epcdata, yrsel = 2022, caption = TRUE)
 }
 \concept{show}
