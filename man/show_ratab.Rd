@@ -8,6 +8,7 @@ show_ratab(
   epcdata,
   yrsel,
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  partialyr = F,
   outtxt1 = "All years below threshold so far, not necessary for NMC Actions 2-5",
   outtxt2 = "All years met threshold, not necessary for NMC Actions 3-5",
   outtxt3 =
@@ -23,6 +24,8 @@ show_ratab(
 \item{yrsel}{numeric indicating chosen year}
 
 \item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"}
+
+\item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 
 \item{outtxt1}{optional text for NMC action 1, added to the outcome column}
 
