@@ -10,7 +10,8 @@ show_annualassess(
   partialyr = F,
   caption = F,
   family = "Arial",
-  txtsz = 12
+  txtsz = 12,
+  width = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ show_annualassess(
 \item{family}{chr string indicating font family for text labels}
 
 \item{txtsz}{numeric indicating font size}
+
+\item{width}{optional numeric value indicating width in inches}
 }
 \value{
 A \code{\link[flextable]{flextable}} object showing the segment-averaged chlorophyll-a and light attenuation for the selected year, with bay segment names colored by the management outcome used in \code{\link{show_matrix}}.

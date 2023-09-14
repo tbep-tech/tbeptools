@@ -6,6 +6,7 @@
 #' @param caption logical indicating if a caption is added using \code{\link[flextable]{set_caption}}
 #' @param family chr string indicating font family for text labels
 #' @param txtsz numeric indicating font size
+#' @param width optional numeric value indicating width in inches
 #'
 #' @return A \code{\link[flextable]{flextable}} object showing the segment-averaged chlorophyll-a and light attenuation for the selected year, with bay segment names colored by the management outcome used in \code{\link{show_matrix}}.
 #'
@@ -18,7 +19,7 @@
 #' @examples
 #' show_annualassess(epcdata, yrsel = 2022)
 #' show_annualassess(epcdata, yrsel = 2022, caption = T)
-show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family = 'Arial', txtsz = 12){
+show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family = 'Arial', txtsz = 12, width = NULL){
 
   totab <- anlz_yrattain(epcdata, yrsel = yrsel, partialyr = partialyr) %>%
     dplyr::mutate(
@@ -60,6 +61,10 @@ show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family
       )
 
   }
+
+  if(!is.null(width))
+    tab <- tab %>%
+      flextable::width(width = width)
 
   tab <- tab %>%
     flextable::font(fontname = family, part = 'all') %>%
