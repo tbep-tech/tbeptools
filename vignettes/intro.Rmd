@@ -325,7 +325,7 @@ From these plots, we can quickly view a summary of the environmental history of 
 
 The TBEP in collaboration with the Tampa Bay Nitrogen Management Consortium (NMC) reports annually on water quality conditions in Tampa Bay under the [Reasonable Assurance (RA)](https://tbep.org/reasonable-assurance-plans-updates-2002/){target="_blank"} plan with the Florida Department of Environmental Protection (FDEP). This plan is a comprehensive approach to managing nitrogen pollution in Tampa Bay that provides "reasonable assurance" that the designated uses of waterbody segments in the bay will be maintained or restored in response to potential nutrient impairments.  Annual reports to FDEP are a critical part of this plan and the tbeptools package includes functions to facilitate this reporting.  Some of these functions were previously described above (e.g., `show_wqmatrix()`). 
 
-First, the `show_annaulassess()` function can create a simple table for the annual management outcome assessments for chlorophyll-a and light attenuation by bay segment.  This provides a summary of results for a given year, including the segment-averaged chlorophyll-a and light attenuation and bay segment names colored by the management outcome.  The required inputs are the EPC dataset and the selected year. 
+First, the `show_annualassess()` function can create a simple table for the annual management outcome assessments for chlorophyll-a and light attenuation by bay segment.  This provides a summary of results for a given year, including the segment-averaged chlorophyll-a and light attenuation and bay segment names colored by the management outcome.  The required inputs are the EPC dataset and the selected year. 
 
 ```{r}
 show_annualassess(epcdata, yrsel = 2022)
