@@ -321,5 +321,28 @@ show_segplotly(epcdata, width = 1000, height = 600)
 
 From these plots, we can quickly view a summary of the environmental history of water quality in Tampa Bay.  Degraded conditions were common early in the period of record, particularly for Old Tampa Bay and Hillsborough Bay.  Conditions began to improve by the late 1980s and early 1990s, with good conditions persisting to present day. However, recent trends in Old Tampa Bay have shown conditions changing from "stay the course" to "caution".  
 
-# References
+### Reasonable Assurance reporting
 
+The TBEP in collaboration with the Tampa Bay Nitrogen Management Consortium (NMC) reports annually on water quality conditions in Tampa Bay under the [Reasonable Assurance (RA)](https://tbep.org/reasonable-assurance-plans-updates-2002/){target="_blank"} plan with the Florida Department of Environmental Protection (FDEP). This plan is a comprehensive approach to managing nitrogen pollution in Tampa Bay that provides "reasonable assurance" that the designated uses of waterbody segments in the bay will be maintained or restored in response to potential nutrient impairments.  Annual reports to FDEP are a critical part of this plan and the tbeptools package includes functions to facilitate this reporting.  Some of these functions were previously described above (e.g., `show_wqmatrix()`). 
+
+First, the `show_annaulassess()` function can create a simple table for the annual management outcome assessments for chlorophyll-a and light attenuation by bay segment.  This provides a summary of results for a given year, including the segment-averaged chlorophyll-a and light attenuation and bay segment names colored by the management outcome.  The required inputs are the EPC dataset and the selected year. 
+
+```{r}
+show_annualassess(epcdata, yrsel = 2022)
+```
+
+A default caption can also be included by setting `caption = TRUE`. 
+
+```{r}
+show_annualassess(epcdata, yrsel = 2022, caption = TRUE)
+```
+
+Second, the `show_ratab()` function provides a table of the annual water quality outcomes relative to the five-year RA reporting period.  The table includes the associated NMC actions that are followed based on the water quality outcomes, actions which provide reasonable assurance that water quality will be maintained or restored following the outcomes.  The results are specific to each of the four bay segments. 
+
+```{r}
+show_ratab(epcdata, yrsel = 2022, bay_segment = 'OTB')
+```
+
+The `show_ratab()` function was developed for the 2022-2026 RA period and currently does not work for previous RA periods.  The function may be updated in the future to accommodate different periods. 
+
+# References
