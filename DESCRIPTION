@@ -77,7 +77,7 @@ Suggests:
   ftExtra,
   ggmap,
   ggrepel,
-  ggsn,
+  ggspatial,
   htmlwidgets,
   knitr,
   mapview,
