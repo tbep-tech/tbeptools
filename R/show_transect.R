@@ -42,7 +42,7 @@
 #'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
 #'   varplo = 'Abundance', facet = TRUE)
 show_transect <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
-                          yrrng = c(1998, 2022), varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
+                          yrrng = c(1998, 2023), varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
                           facet = FALSE, ncol = NULL, plotly = FALSE, width = NULL, height = NULL, sppcol = NULL){
 
   # species pool

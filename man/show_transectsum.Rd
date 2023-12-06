@@ -8,7 +8,7 @@ show_transectsum(
   transectocc,
   site,
   species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia", "Caulerpa"),
-  yrrng = c(1998, 2022),
+  yrrng = c(1998, 2023),
   abund = FALSE,
   sppcol = NULL
 )
