@@ -173,7 +173,8 @@ show_sedimentalratio <- function(sedimentdata, param, yrrng = c(1993, 2021), bay
   }
 
   # plotly
-  if(plotly)
+  if(plotly){
+
     p <- plotly::ggplotly(p, width = width, height = height) %>%
       plotly::config(
         toImageButtonOptions = list(
@@ -181,6 +182,13 @@ show_sedimentalratio <- function(sedimentdata, param, yrrng = c(1993, 2021), bay
           filename = "myplot"
         )
       )
+
+    # remove extra text from legend
+    for(i in 1:length(p$x$data)){
+      p$x$data[[i]]$name <- gsub('^\\(|,1,NA\\)$|,1\\)$', '', p$x$data[[i]]$name)
+    }
+
+  }
 
   return(p)
 
