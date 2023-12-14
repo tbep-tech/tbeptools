@@ -60,6 +60,8 @@ read_formsediment <- function(pathin){
       FundingProject = gsub('\\s+$', '', FundingProject),
       Replicate = tolower(Replicate),
       Units = gsub('Kg$', 'kg', Units),
+      PEL = as.numeric(gsub('^NULL$', NA, PEL)),
+      TEL = as.numeric(gsub('^NULL$', NA, TEL)),
       BetweenTELPEL = ifelse(`ValueAdjusted` > TEL & `ValueAdjusted` <= PEL & !grepl('U|T', Qualifier), 'Yes', 'No'),
       ExceedsPEL = ifelse(`ValueAdjusted` > PEL & !grepl('U|T', Qualifier), 'Yes', 'No'),
       PELRatio = `ValueAdjusted` / PEL

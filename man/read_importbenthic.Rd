@@ -14,13 +14,15 @@ read_importbenthic(path, download_latest = FALSE, remove = FALSE)
 \item{remove}{logical if the downloaded folder is removed after unzipping}
 }
 \value{
-A nested \code{tibble} of station, taxa, and field sample data
+A nested \code{tibble} of station, taxa, and field sample data.
 }
 \description{
 Download and import benthic data for Tampa Bay
 }
 \details{
 This function downloads and unzips a folder of base tables used to calculate the benthic index from \url{https://epcbocc.sharepoint.com/:u:/s/Share/EQUCWBuwCNdGuMREYAyAD1gBKC98mYtCHMWX0FYLrbT4KA?e=nDfnnQ&download=1} (viewable at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ}).
+
+Index the corresponding list element in the \code{value} column to view each dataset. For example, the stations data in the first row can be viewed as \code{benthicdata$value[[1]]}.
 }
 \examples{
 \dontrun{

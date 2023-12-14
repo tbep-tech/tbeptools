@@ -7,7 +7,7 @@
 show_sedimentmap(
   sedimentdata,
   param,
-  yrrng = c(1993, 2021),
+  yrrng = c(1993, 2022),
   funding_proj = "TBEP",
   weight = 1.5
 )

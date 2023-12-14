@@ -1,6 +1,6 @@
-#' Sediment data for the Tampa Bay current as of 01062023
+#' Sediment data for the Tampa Bay current as of 12142023
 #'
-#' Sediment data for the Tampa Bay current as of 01062023
+#' Sediment data for the Tampa Bay current as of 12142023
 #'
 #' @format A \code{data.frame} with 216627 rows and 24 variables:
 #' \describe{

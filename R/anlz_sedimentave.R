@@ -19,7 +19,7 @@
 #'
 #' @examples
 #' anlz_sedimentave(sedimentdata, param = 'Arsenic')
-anlz_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2021), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP'){
+anlz_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2022), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP'){
 
   # add totals
   sedimentdata <- anlz_sedimentaddtot(sedimentdata, yrrng = yrrng, bay_segment = bay_segment,

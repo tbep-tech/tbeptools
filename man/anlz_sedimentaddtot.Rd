@@ -6,7 +6,7 @@
 \usage{
 anlz_sedimentaddtot(
   sedimentdata,
-  yrrng = c(1993, 2021),
+  yrrng = c(1993, 2022),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
   funding_proj = "TBEP",
   param = NULL,

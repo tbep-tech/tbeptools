@@ -11,11 +11,11 @@ test_that("Checking show_sedimentalratio sanity checks", {
 
 
 test_that("Checking show_sedimentalratio class", {
-  result <- show_sedimentalratio(sedimentdata, param = 'Arsenic', yrrng = 2021)
+  result <- show_sedimentalratio(sedimentdata, param = 'Arsenic', yrrng = 2022)
   expect_is(result, 'ggplot')
 })
 
 test_that("Checking show_sedimentalratio plotly class", {
-  result <- show_sedimentalratio(sedimentdata, param = 'Arsenic', yrrng = 2021, plotly = T)
+  result <- show_sedimentalratio(sedimentdata, param = 'Arsenic', yrrng = 2022, plotly = T)
   expect_is(result, 'plotly')
 })

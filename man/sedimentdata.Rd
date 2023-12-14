@@ -3,7 +3,7 @@
 \docType{data}
 \name{sedimentdata}
 \alias{sedimentdata}
-\title{Sediment data for the Tampa Bay current as of 01062023}
+\title{Sediment data for the Tampa Bay current as of 12142023}
 \format{
 A \code{data.frame} with 216627 rows and 24 variables:
 \describe{
@@ -37,7 +37,7 @@ A \code{data.frame} with 216627 rows and 24 variables:
 sedimentdata
 }
 \description{
-Sediment data for the Tampa Bay current as of 01062023
+Sediment data for the Tampa Bay current as of 12142023
 }
 \examples{
 \dontrun{

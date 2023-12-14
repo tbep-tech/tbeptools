@@ -145,79 +145,79 @@ sedimentdata
 The `show_sedimentmap()` function can be used to create maps of selected parameters relative to TEL and PEL values. Green points show concentrations below the TEL, yellow points show concentrations between the TEL and PEL, and red points show concentrations above the PEL. The applicable TEL and PEL values for the parameter are indicated in the legend.  The selected stations are those that are sampled in the years within the `yrrng` argument.
 
 ```{r, out.width = '100%'}
-show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
+show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2022))
 ```
 
 A single year of data can be shown as well.  
 
 ```{r, out.width = '100%'}
-show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2021)
+show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2022)
 ```
 
 A map showing only the concentrations is returned if TEL and PEL values are not available for a parameter.
 
 ```{r, warning = FALSE, out.width = '100%'}
-show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2021))
+show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2022))
 ```
 
 Maps for total contaminant values (e.g., Total DDT, Total PAH, Total PCB, Total LMW PAH, Total HMW PAH) can also be returned.  Although the totals are not included in the `sedimentdata` object, they are calculated by tbeptools using the `anlz_sedimentaddtot()` function. Simply entering the name of the total parameter in the `show_sedimentmap()` function will produce the summary map. 
 
 ```{r, out.width = '100%'}
-show_sedimentmap(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2021))
+show_sedimentmap(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2022))
 ```
 
 The PEL ratio can also be used to assess relative sediment quality given the measured contaminants.  The `show_sedimentpelmap()` function creates a map of average PEL ratios graded from A to F for benthic stations monitored in Tampa Bay. The PEL ratio is the contaminant concentration divided by the Potential Effects Levels (PEL) that applies to a contaminant, if available. Higher ratios and lower grades indicate sediment conditions that are likely unfavorable for invertebrates. The station average combines the PEL ratios across all contaminants measured at a station.
 
 ```{r, out.width = '100%'}
-show_sedimentpelmap(sedimentdata, yrrng = c(1993, 2021))
+show_sedimentpelmap(sedimentdata, yrrng = c(1993, 2022))
 ```
 
 The average PEL ratios and grades used to create the map can also be returned as a data frame using `anlz_sedimentpel()`.
 
 ```{r}
-anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2021))
+anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2022))
 ```
 
 Plots of bay segment averages of sediment concentrations for selected parameters can be created with `show_sedimentave()`.  The plot includes appropriate lines for the TEL and PEL values, as well the grand mean across all segments.  The former are omitted from the plot if unavailable for a selected parameter.
 
 ```{r, fig.height = 5, fig.width = 7}
-show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
+show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2022))
 ```
 
 The same plot can be returned as an interactive [plotly](https://plotly.com/r/) object using `plotly = T`.
 
 ```{r, fig.height = 5, fig.width = 7}
-show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021), plotly = T)
+show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2022), plotly = T)
 ```
 
 The values used in the plot can be returned with `anlz_sedimentave()`. 
 
 ```{r}
-anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2021))
+anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2022))
 ```
 
 As before, the total contaminant values (e.g., Total DDT, Total PAH, Total PCB, Total LMW PAH, Total HMW PAH) can also be returned even though they are not included in the `sedimentdata` object. The `anlz_sedimentaddtot()` function is used to calculate the totals within `anlz_sedimentave()`.
 
 ```{r}
-anlz_sedimentave(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2021))
+anlz_sedimentave(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2022))
 ```
 
 A similar plot of the bay segment averages for the average PEL ratios can be created with `show_sedimentpelave()`.  The colors indicate the grades for A (green) to F (red).
 
 ```{r, fig.height = 5, fig.width = 7}
-show_sedimentpelave(sedimentdata, yrrng = c(1993, 2021))
+show_sedimentpelave(sedimentdata, yrrng = c(1993, 2022))
 ```
 
 The same plot can be returned as an interactive [plotly](https://plotly.com/r/) object using `plotly = T`.
 
 ```{r, fig.height = 5, fig.width = 7}
-show_sedimentpelave(sedimentdata, yrrng = c(1993, 2021), plotly = T)
+show_sedimentpelave(sedimentdata, yrrng = c(1993, 2022), plotly = T)
 ```
 
 The values used in the plot can be returned with `anlz_sedimentpelave()`. 
 
 ```{r}
-anlz_sedimentpelave(sedimentdata, yrrng = c(1993, 2021))
+anlz_sedimentpelave(sedimentdata, yrrng = c(1993, 2022))
 ```
 
 The `show_sedimentalratio()` function creates a plot of a selected metal parameter against Aluminum.  This plot provides information on the concentration of the parameter relative to background levels, where Aluminum is present as a common metal in the Earth's crust.  An elevated ratio of a metal parameter relative to aluminum suggests it is higher than background concentrations [@Schropp90].  The linear fit of a log-log model is shown as a solid black line, with 95% prediction intervals.  The TEL/PEL values, if available, are also shown as horizontal red lines. 

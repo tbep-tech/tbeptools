@@ -1,12 +1,14 @@
-#' Benthic data for the Tampa Bay Benthic Index current as of 12092022
+#' Benthic data for the Tampa Bay Benthic Index current as of 12142023
 #'
-#' Benthic data for the Tampa Bay Benthic Index current as of 12092022
+#' Benthic data for the Tampa Bay Benthic Index current as of 12142023
 #'
 #' @format A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 #' \describe{
-#'   \item{name}{chr}
-#'   \item{value}{list}
+#'   \item{name}{chr identifying the dataset as stations, fieldsamples, or taxacounts}
+#'   \item{value}{list of dataframes for each dataset}
 #'   }
+#'
+#' @details Index the corresponding list element in the \code{value} column to view each dataset. For example, the stations data in the first row can be viewed as \code{benthicdata$value[[1]]}.
 #'
 #' @concept data
 #'
