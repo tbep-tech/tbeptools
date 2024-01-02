@@ -131,7 +131,7 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
   names(cols)[1] <- case_when(
     yrsel == yrrng[1] ~ paste(yrrng[1] + 1, yrrng[2], sep = '-'),
     yrsel == yrrng[2] ~ paste(yrrng[1], yrrng[2] - 1, sep = '-'),
-    yrsel > yrrng[1] & yrsel < yrrng[2] ~ paste(paste(yrrng[1], yrsel - 1, sep = '-'), paste(yrsel + 1, yrrng[2], sep = '-'), sep = ', '),
+    yrsel > yrrng[1] & yrsel < yrrng[2] ~ paste(paste(unique(c(yrrng[1], yrsel - 1)), collapse = '-'), paste(unique(c(yrsel + 1, yrrng[2])), collapse = '-'), sep = ', '),
     T ~ paste(yrrng, collapse = '-')
   )
   names(cols)[2] <- as.character(yrsel)
