@@ -100,33 +100,33 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">anlz_tdlcrkindic</span><span class="op">(</span><span class="va">tidalcreeks</span>, <span class="va">iwrraw</span>, yr <span class="op">=</span> <span class="fl">2022</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   id       name  JEI wbid class year    CHLAC     COLOR COND       DO    DOSAT</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  2 Rock Creek CC01 2052    3M 2012 2.281227 15.159408   NA 2.800000 48.48755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  2 Rock Creek CC01 2052    3M 2013 2.725391  9.607368   NA 6.819091 73.50770</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2 Rock Creek CC01 2052    3M 2014 2.380249 14.694735   NA 3.308289 60.31523</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  2 Rock Creek CC01 2052    3M 2015 2.647817 21.911128   NA 4.034172 55.41609</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  2 Rock Creek CC01 2052    3M 2016 2.265462 19.130797   NA 3.980251 55.96637</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  2 Rock Creek CC01 2052    3M 2017 2.851726 15.395763   NA 4.157777 60.18017</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  2 Rock Creek CC01 2052    3M 2013 2.725391  9.607368   NA 6.819091 73.50770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  2 Rock Creek CC01 2052    3M 2014 2.380249 14.694735   NA 3.308289 60.31523</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2 Rock Creek CC01 2052    3M 2015 2.647817 21.911128   NA 4.034172 55.41609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  2 Rock Creek CC01 2052    3M 2016 2.265462 19.130797   NA 3.980251 55.96637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  2 Rock Creek CC01 2052    3M 2017 2.851726 15.395763   NA 4.157777 60.18017</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  2 Rock Creek CC01 2052    3M 2018 1.934899 11.655004   NA 4.219790 63.32630</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          NO23 ORGN    SALIN       TKN        TN         TP TSS     TURB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.009742973   NA 26.49843 0.6707901 0.6803095 0.06762831  NA 2.085028</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.009781633   NA 30.90561 0.6510575 0.7108146 0.06842811  NA 1.698004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 0.007575792   NA 26.63714 0.6161702 0.6228782 0.06938150  NA 2.044623</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.009361504   NA 19.10494 0.6465161 0.5678241 0.07602770  NA 1.814818</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 0.008532522   NA 25.84531 0.5813818 0.5408161 0.08330509  NA 2.082253</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 0.007447260   NA 24.86909 0.6255197 0.6326848 0.07566682  NA 1.802161</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.009781633   NA 30.90561 0.6510575 0.7108146 0.06842811  NA 1.698004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.007575792   NA 26.63714 0.6161702 0.6228782 0.06938150  NA 2.044623</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 0.009361504   NA 19.10494 0.6465161 0.5678241 0.07602770  NA 1.814818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.008532522   NA 25.84531 0.5813818 0.5408161 0.08330509  NA 2.082253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 0.007447260   NA 24.86909 0.6255197 0.6326848 0.07566682  NA 1.802161</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 0.006994714   NA 31.32419 0.5668727 0.5734574 0.07432007  NA 2.454007</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   chla_tn_ratio tn_tp_ratio chla_tsi   tn_tsi  tn2_tsi   tp_tsi  tp2_tsi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      3.353220   10.059537 28.67587 48.37289 51.32120 59.98090 75.65103</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      3.834180   10.387756 31.23761 49.24140 52.26414 60.19958 75.92850</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      3.821371    8.977584 29.28775 46.62660 49.42526 60.45694 76.25504</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      4.663093    7.468648 30.82179 44.79432 47.43600 62.15842 78.41391</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      4.188970    6.491994 28.57601 43.82942 46.38844 63.85868 80.57123</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      4.507341    8.361456 31.89011 46.93590 49.76107 62.06992 78.30162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      3.834180   10.387756 31.23761 49.24140 52.26414 60.19958 75.92850</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      3.821371    8.977584 29.28775 46.62660 49.42526 60.45694 76.25504</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      4.663093    7.468648 30.82179 44.79432 47.43600 62.15842 78.41391</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      4.188970    6.491994 28.57601 43.82942 46.38844 63.85868 80.57123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      4.507341    8.361456 31.89011 46.93590 49.76107 62.06992 78.30162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      3.374095    7.716050 26.30480 44.98978 47.64821 61.73589 77.87779</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    nut_tsi      tsi no23_source no23_tidal no23_ratio do_bnml do_prop</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 54.17690 41.42638          NA         NA         NA       1       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 54.72049 42.97905          NA         NA         NA       0       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 49.42526 39.35651          NA         NA         NA       0       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 47.43600 39.12890          NA         NA         NA       0       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 46.38844 37.48223          NA         NA         NA       0       1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 49.76107 40.82559          NA         NA         NA       0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 54.72049 42.97905          NA         NA         NA       0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 49.42526 39.35651          NA         NA         NA       0       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 47.43600 39.12890          NA         NA         NA       0       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 46.38844 37.48223          NA         NA         NA       0       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 49.76107 40.82559          NA         NA         NA       0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 47.64821 36.97650          NA         NA         NA       0       1</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
