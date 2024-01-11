@@ -2,7 +2,7 @@
 #'
 #' @param epcdata data frame of epc data returned by \code{\link{read_importwq}}
 #' @param yrsel numeric indicating chosen year
-#' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"
+#' @param bay_segment chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB", "RALTB"
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
 #' @param outtxt1 optional text for NMC action 1, added to the outcome column
 #' @param outtxt2 optional text for NMC action 2, added to the outcome column
@@ -10,6 +10,8 @@
 #' @param outtxt45 optional text for NMC actions 4 and 5, added to the outcome column
 #' @param txtsz numeric indicating font size
 #' @param width optional numeric value indicating width in inches
+#'
+#' @details Choosing \code{bay_segment = 'RALTB'} will not work with \code{\link{epcdata}} and additional data are needed to use this option.
 #'
 #' @return A \code{\link[flextable]{flextable}} object showing the reasonable assurance compliance of the bay segment for the selected year within the five-year period.
 #'
@@ -21,7 +23,7 @@
 #'
 #' @examples
 #' show_ratab(epcdata, yrsel = 2022, bay_segment = 'OTB')
-show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), partialyr = F, outtxt1 = 'All years below threshold so far, not necessary for NMC Actions 2-5', outtxt2 = "All years met threshold, not necessary for NMC Actions 3-5", outtxt3 = "Not necessary due to observed water quality and seagrass conditions in the bay segment", outtxt45 = "Not necessary when chlorophyll-*a* threshold met", txtsz = 13, width = NULL){
+show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'RALTB'), partialyr = F, outtxt1 = 'All years below threshold so far, not necessary for NMC Actions 2-5', outtxt2 = "All years met threshold, not necessary for NMC Actions 3-5", outtxt3 = "Not necessary due to observed water quality and seagrass conditions in the bay segment", outtxt45 = "Not necessary when chlorophyll-*a* threshold met", txtsz = 13, width = NULL){
 
   if(!requireNamespace('ftExtra', quietly = TRUE))
     stop("Package \"ftExtra\" needed for this function to work. Please install it.", call. = FALSE)
@@ -43,8 +45,8 @@ show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'
     dplyr::pull(name)
 
   hydroload <- tibble::tibble(
-      bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
-      loadest = c(486, 1451, 799, 349)
+      bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'RALTB'),
+      loadest = c(486, 1451, 799, 349, 629)
     ) %>%
     dplyr::filter(bay_segment %in% !!bay_segment) %>%
     dplyr::pull(loadest)

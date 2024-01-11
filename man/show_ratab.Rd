@@ -7,7 +7,7 @@
 show_ratab(
   epcdata,
   yrsel,
-  bay_segment = c("OTB", "HB", "MTB", "LTB"),
+  bay_segment = c("OTB", "HB", "MTB", "LTB", "RALTB"),
   partialyr = F,
   outtxt1 = "All years below threshold so far, not necessary for NMC Actions 2-5",
   outtxt2 = "All years met threshold, not necessary for NMC Actions 3-5",
@@ -23,7 +23,7 @@ show_ratab(
 
 \item{yrsel}{numeric indicating chosen year}
 
-\item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB"}
+\item{bay_segment}{chr string for the bay segment, one of "OTB", "HB", "MTB", "LTB", "RALTB"}
 
 \item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 
@@ -44,6 +44,9 @@ A \code{\link[flextable]{flextable}} object showing the reasonable assurance com
 }
 \description{
 Create a bay segment assessment table for the 2022-2026 reasonable assurance period
+}
+\details{
+Choosing \code{bay_segment = 'RALTB'} will not work with \code{\link{epcdata}} and additional data are needed to use this option.
 }
 \examples{
 show_ratab(epcdata, yrsel = 2022, bay_segment = 'OTB')
