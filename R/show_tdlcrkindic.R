@@ -29,13 +29,14 @@ show_tdlcrkindic <- function(id, cntdat, yr = 2022, thrsel = FALSE, pal = c('#5C
   pal_yrs <- leaflet::colorFactor(
     palette = pal,
     na.color = 'yellow',
-    levels = as.character(seq(yr - 10, yr - 1))
+    levels = as.character(seq(yr - 9, yr))
   )
 
+  browser()
   # data to plot
   toplo <- cntdat %>%
     dplyr::filter(id %in% !!id) %>%
-    dplyr::mutate(year = factor(year, levels = seq(yr - 10, yr - 1))) %>%
+    dplyr::mutate(year = factor(year, levels = seq(yr - 9, yr))) %>%
     tidyr::complete(id, wbid, JEI, class, year, fill = list(CHLAC = 0, DO = 0, TN = 0, chla_tn_ratio = 0, tsi = 0, no23_ratio = 0)) %>%
     dplyr::mutate(color = pal_yrs(year))
 

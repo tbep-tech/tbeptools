@@ -11,7 +11,7 @@ anlz_iwrraw(iwrraw, tidalcreeks, yr = 2022)
 
 \item{tidalcreeks}{\code{\link[sf]{sf}} object for population of tidal creeks}
 
-\item{yr}{numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date}
+\item{yr}{numeric for reference year to evaluate, scores are based on ten years of data using \code{yr} as the last year}
 }
 \value{
 A \code{\link{data.frame}} with the formatted data
@@ -20,7 +20,7 @@ A \code{\link{data.frame}} with the formatted data
 Format raw IWR data
 }
 \details{
-The function subsets the raw IWR data for the selected value in \code{yr} and the ten years prior to \code{yr} and subsets by the creek population in \code{\link{tidalcreeks}}. Select water quality parameters in \code{masterCode} are filtered and some of the names are combined for continuity.
+The function subsets the raw IWR data for ten years starting at the value in \code{yr} and subsets by the creek population in \code{\link{tidalcreeks}}. Select water quality parameters in \code{masterCode} are filtered and some of the names are combined for continuity.
 }
 \examples{
 anlz_iwrraw(iwrraw, tidalcreeks, yr = 2022)

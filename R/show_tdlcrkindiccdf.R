@@ -32,7 +32,7 @@ show_tdlcrkindiccdf <- function(id, cntdat, yr = 2022, thrsel = FALSE, pal = c('
   # data to plot
   seldat <- cntdat %>%
     dplyr::filter(id %in% !!id) %>%
-    dplyr::mutate(year = factor(year, levels = seq(yr - 10, yr - 1))) %>%
+    dplyr::mutate(year = factor(year, levels = seq(yr - 9, yr))) %>%
     tidyr::complete(id, wbid, JEI, class, year)
 
   if(nrow(seldat) == 0)
@@ -55,7 +55,7 @@ show_tdlcrkindiccdf <- function(id, cntdat, yr = 2022, thrsel = FALSE, pal = c('
         pal_yrs <- leaflet::colorFactor(
           palette = pal,
           na.color = 'yellow',
-          levels = as.character(seq(yr - 10, yr - 1))
+          levels = as.character(seq(yr - 9, yr))
         )
 
         ecdfdat <- cntdat[, var]

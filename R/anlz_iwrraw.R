@@ -4,9 +4,9 @@
 #'
 #' @param iwrraw FDEP impaired waters rule data base as \code{\link{data.frame}}
 #' @param tidalcreeks \code{\link[sf]{sf}} object for population of tidal creeks
-#' @param yr numeric for reference year to evaluate, scores are based on the planning period beginning ten years prior to this date
+#' @param yr numeric for reference year to evaluate, scores are based on ten years of data using \code{yr} as the last year
 #'
-#' @details The function subsets the raw IWR data for the selected value in \code{yr} and the ten years prior to \code{yr} and subsets by the creek population in \code{\link{tidalcreeks}}. Select water quality parameters in \code{masterCode} are filtered and some of the names are combined for continuity.
+#' @details The function subsets the raw IWR data for ten years starting at the value in \code{yr} and subsets by the creek population in \code{\link{tidalcreeks}}. Select water quality parameters in \code{masterCode} are filtered and some of the names are combined for continuity.
 #'
 #' @return A \code{\link{data.frame}} with the formatted data
 #' @export
@@ -22,8 +22,8 @@ anlz_iwrraw <- function(iwrraw, tidalcreeks, yr = 2022) {
   # format iwr data
   out <- iwrraw %>%
    # dplyr::filter(wbid %in% unique(tidalcreeks$wbid) & JEI %in% unique(tidalcreeks$JEI)) %>%
-    dplyr::filter(year > yr - 11) %>%
-    dplyr::filter(year < yr) %>%
+    dplyr::filter(year > yr - 10) %>%
+    dplyr::filter(year <= yr) %>%
     dplyr::filter(masterCode %in% mcodes) %>%
     dplyr::filter(!is.na(result) & result > 0) %>%
     tidyr::unite('date', month, day, year, remove = F, sep = '-') %>%
