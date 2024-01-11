@@ -32,7 +32,6 @@ show_tdlcrkindic <- function(id, cntdat, yr = 2022, thrsel = FALSE, pal = c('#5C
     levels = as.character(seq(yr - 9, yr))
   )
 
-  browser()
   # data to plot
   toplo <- cntdat %>%
     dplyr::filter(id %in% !!id) %>%
