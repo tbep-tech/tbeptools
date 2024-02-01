@@ -12,7 +12,7 @@ show_segmatrix(
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   abbrev = FALSE,
   family = NA,
-  historic = FALSE,
+  historic = TRUE,
   plotly = FALSE,
   partialyr = FALSE,
   width = NULL,

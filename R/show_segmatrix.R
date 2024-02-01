@@ -32,7 +32,7 @@
 #' @examples
 #' show_segmatrix(epcdata, bay_segment = 'OTB')
 show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2022), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
-                           abbrev = FALSE, family = NA, historic = FALSE, plotly = FALSE, partialyr = FALSE, width = NULL,
+                           abbrev = FALSE, family = NA, historic = TRUE, plotly = FALSE, partialyr = FALSE, width = NULL,
                            height = NULL) {
 
   bay_segment <- match.arg(bay_segment)

@@ -14,7 +14,7 @@ show_matrix(
   nrows = 10,
   abbrev = FALSE,
   family = NA,
-  historic = FALSE,
+  historic = TRUE,
   plotly = FALSE,
   partialyr = FALSE,
   width = NULL,
