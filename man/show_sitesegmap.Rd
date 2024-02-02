@@ -10,7 +10,9 @@ show_sitesegmap(
   param = c("chla", "la"),
   trgs = NULL,
   thrs = FALSE,
-  partialyr = FALSE
+  partialyr = FALSE,
+  base_size = 12,
+  family = NA
 )
 }
 \arguments{
@@ -25,6 +27,10 @@ show_sitesegmap(
 \item{thrs}{logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}}
 
 \item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
+
+\item{base_size}{numeric indicating text scaling size for plot}
+
+\item{family}{optional chr string indicating font family for text labels}
 }
 \value{
 A static \code{ggplot} object is returned

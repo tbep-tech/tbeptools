@@ -8,6 +8,8 @@
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#' @param base_size numeric indicating text scaling size for plot
+#' @param family optional chr string indicating font family for text labels
 #'
 #' @details The map is similar to that returned by \code{\link{show_sitemap}} with the addition of polygons for each bay segment colored by the annual attainment category and the site points are sized relative to the selected parameter in \code{param}.
 #'
@@ -21,7 +23,8 @@
 #'
 #' @examples
 #' show_sitesegmap(epcdata, yrsel = 2022)
-show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL, thrs = FALSE, partialyr = FALSE){
+show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL, thrs = FALSE, partialyr = FALSE,
+                            base_size = 12, family = NA){
 
   # sanity check
   # default targets from data file
@@ -88,21 +91,13 @@ show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL
 
   # legend label for point size
   leglabsz <- dplyr::case_when(
-    param == 'chla' ~ "Annual ~ mean ~ Chl-a ~ (mu * g%.% L^-1)",
-    param == 'la' ~ "Annual ~ mean ~ light ~ att. ~(m^-1)"
+    param == 'chla' ~ "Annual mean Chl-a (ug/L)",
+    param == 'la' ~ "Annual mean light att. (m-1)"
   )
 
   # add station lat/lon
   tomap <- tomap %>%
     dplyr::left_join(stations, by = c('epchc_station', 'bay_segment')) %>%
-    st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
-
-  # segment labels
-  seglabs <- data.frame(
-      Longitude = c(-82.6, -82.64, -82.58, -82.42),
-      Latitude = c(27.55, 27.81, 28, 27.925),
-      bay_segment = c('LTB', 'MTB', 'OTB', 'HB')
-    ) %>%
     st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
 
   if(!requireNamespace('ggmap', quietly = TRUE))
@@ -118,7 +113,7 @@ show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL
     stop("Package \"ggnewscale\" needed for this function to work. Please install it.", call. = FALSE)
 
   p <- ggmap::ggmap(bsmap) +
-    geom_sf(data = segcat, aes(fill = outcome), colour = 'grey', alpha = 0.5, inherit.aes = F) +
+    geom_sf(data = segcat, aes(fill = outcome), colour = 'black', alpha = 0.5, inherit.aes = F) +
     ggplot2::scale_fill_manual(values = segcols, drop = F) +
     ggspatial::annotation_scale(unit_category = 'metric', location = 'br') +
     labs(fill = 'Bay segment outcomes')
@@ -131,14 +126,18 @@ show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL
       geom_sf(data = tomap, aes(colour = met, fill = met, size = val), colour = 'black', inherit.aes = F, pch = 21) +
       scale_fill_manual(leglab, values = ptcols, drop = F) +
       scale_colour_manual(leglab, values = ptcols, drop = F) +
+      theme_bw(base_family = family, base_size = base_size) +
       theme(
         axis.title = element_blank(),
         axis.text = element_text(size = 7),
         legend.background = element_blank(),
-        legend.key = element_blank()
+        legend.key = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        text = ggplot2::element_text(family = family)
       ) +
       labs(
-        size = parse(text = leglabsz)
+        size = leglabsz
       ) +
       guides(
         # colour = guide_legend(override.aes = list(colour = ptcols)),
