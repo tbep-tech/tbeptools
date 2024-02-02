@@ -295,6 +295,12 @@ The `show_sitemap()` function also includes an argument to specify a particular 
 show_sitemap(epcdata, yrsel = 2018, mosel = c(7, 9))
 ```
 
+Another map can be created with `show_sitesesgmap()`, that is similar to `show_sitemap()`, except the bay segments are shown and colored by the annual outcome. This map is useful to understand how the site data correspond to each bay segment. 
+
+```{r, fig.height = 7, fig.width = 8}
+show_sitesegmap(epcdata, yrsel = 2018)
+```
+
 Bay segment exceedances can also be viewed in a matrix using `show_wqmatrix()`.  The thresholds for these values correspond to the Florida DEP criteria (or a large exceedance defined as +2 standard errors above the segment target).  
 
 ```{r, fig.height = 8, fig.width = 3}
