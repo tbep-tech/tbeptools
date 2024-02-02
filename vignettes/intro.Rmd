@@ -295,7 +295,7 @@ The `show_sitemap()` function also includes an argument to specify a particular 
 show_sitemap(epcdata, yrsel = 2018, mosel = c(7, 9))
 ```
 
-Another map can be created with `show_sitesesgmap()`, that is similar to `show_sitemap()`, except the bay segments are shown and colored by the annual outcome. This map is useful to understand how the site data correspond to each bay segment. 
+Another map can be created with `show_sitesegmap()` that is similar to `show_sitemap()`, except the bay segments are shown and colored by the annual outcome. This map is useful to understand how the site data correspond to each bay segment. 
 
 ```{r, fig.height = 7, fig.width = 8}
 show_sitesegmap(epcdata, yrsel = 2018)
