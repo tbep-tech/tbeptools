@@ -10,7 +10,7 @@
 #'
 #' @details This function retrieves data from the Water Quality Portal API (\url{https://www.waterqualitydata.us/}) for selected counties in or around the Tampa Bay watershed. The type of data returned are defined by the \code{type} argument as either \code{"wq"} or \code{"fib"} for water quality of Fecal Indicator Bacteria data, respectively.
 #'
-#' The \code{org} argument retrieves data for the specific organization. Valid entries for \code{org} include \code{"21FLHILL_WQX"} (Hillsborough County), \code{"21FLMANA_WQX"} (Manatee County), \code{"21FLPASC_WQX"} (Pasco County), \code{"21FLPDEM_WQX"} (Pinellas County), or \code{"21FLPOLK_WQX"} (Polk County).  The naming convention follows the Organization ID in the Water Quality Portal.
+#' The \code{org} argument retrieves data for the specific organization. Valid entries for \code{org} include \code{"21FLDOH_WQX} (Florida Department of Health), \code{"21FLHILL_WQX"} (Hillsborough County), \code{"21FLMANA_WQX"} (Manatee County), \code{"21FLPASC_WQX"} (Pasco County), \code{"21FLPDEM_WQX"} (Pinellas County), or \code{"21FLPOLK_WQX"} (Polk County).  The naming convention follows the Organization ID in the Water Quality Portal.
 #'
 #' The function fetches results and station metadata, combines and formats them using the \code{read_formwqp} function, and returns the processed data as a data frame.  Parameters are specific to the \code{type} argument.
 #'
@@ -35,8 +35,8 @@ read_importwqp <- function(org, type, trace = F){
   # get type
   type <- match.arg(type, c('fib', 'wq'))
 
-  # get org identifier based on county input
-  county <- util_orgin(org)
+  # get org name based on org id
+  orgname <- util_orgin(org)
 
   url <- list(
     Result = "https://www.waterqualitydata.us/data/Result/search?mimeType=csv&zip=no",

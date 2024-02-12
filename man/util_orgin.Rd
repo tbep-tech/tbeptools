@@ -2,20 +2,20 @@
 % Please edit documentation in R/util_orgin.R
 \name{util_orgin}
 \alias{util_orgin}
-\title{Get county name from organization identifier}
+\title{Get organization name from organization identifier}
 \usage{
 util_orgin(org, stanm = FALSE)
 }
 \arguments{
 \item{org}{chr string indicating the organization identifier, see \code{\link{read_importwqp}} for valid entries}
 
-\item{stanm}{logical indicating if a character string for a column name specific to the county is returned}
+\item{stanm}{logical indicating if a character string for a column name specific to the organization is returned}
 }
 \value{
-A character string of the county name that correspond to the organization identifier or a column name for the station identfier specific to the county if \code{stanm = TRUE}
+A character string of the organization name that corresponds to the organization identifier or a column name for the station identifier specific to the organization if \code{stanm = TRUE}
 }
 \description{
-Get county name from organization identifier
+Get organization name from organization identifier
 }
 \examples{
 util_orgin('21FLHILL_WQX')
