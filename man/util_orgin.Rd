@@ -2,7 +2,7 @@
 % Please edit documentation in R/util_orgin.R
 \name{util_orgin}
 \alias{util_orgin}
-\title{Get organization name from organization identifier}
+\title{Get organization name from organization identifier in USEPA Water Quality Portal}
 \usage{
 util_orgin(org, stanm = FALSE)
 }
@@ -15,7 +15,7 @@ util_orgin(org, stanm = FALSE)
 A character string of the organization name that corresponds to the organization identifier or a column name for the station identifier specific to the organization if \code{stanm = TRUE}
 }
 \description{
-Get organization name from organization identifier
+Get organization name from organization identifier in USEPA Water Quality Portal
 }
 \examples{
 util_orgin('21FLHILL_WQX')
