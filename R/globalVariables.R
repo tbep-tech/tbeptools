@@ -69,7 +69,7 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "indnm", "brk", "cls", "conc", "exced", "gmean", "MWQA", "station_tot",
                   "sumgt400", "yearfac", "nyrs", "ActivityDepthHeightMeasure.MeasureUnitCode",
                   "ActivityDepthHeightMeasure.MeasureValue", "chla_target", "chla_val",
-                  "la_target", "la_val", "MonitoringLocationTypeName"))
+                  "la_target", "la_val", "MonitoringLocationTypeName", "loadest", "out1"))
 
 #' @importFrom grDevices rgb
 NULL
