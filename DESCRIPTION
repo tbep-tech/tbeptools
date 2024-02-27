@@ -67,6 +67,7 @@ Imports:
   purrr,
   reactable,
   readxl,
+  rnoaa,
   sf,
   tibble,
   tidyr,
