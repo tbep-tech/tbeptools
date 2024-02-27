@@ -82,9 +82,10 @@ Suggests:
   knitr,
   mapview,
   rmarkdown,
-  rnoaa,
   testthat (>= 2.1.0),
   covr
+Remotes:
+  ropensci/rnoaa
 License: MIT + file LICENSE
 Encoding: UTF-8
 VignetteBuilder: knitr
