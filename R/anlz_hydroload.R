@@ -34,6 +34,9 @@
 #' }
 anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
 
+  if(!requireNamespace('rnoaa', quietly = TRUE))
+    stop("Package \"noaa\" needed for this function to work. Please install it.", call. = FALSE)
+
   res <- yrs %>%
     tibble::enframe('name', 'year') %>%
     dplyr::group_by(name) %>%
