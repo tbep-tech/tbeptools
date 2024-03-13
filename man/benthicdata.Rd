@@ -3,7 +3,7 @@
 \docType{data}
 \name{benthicdata}
 \alias{benthicdata}
-\title{Benthic data for the Tampa Bay Benthic Index current as of 12142023}
+\title{Benthic data for the Tampa Bay Benthic Index current as of 03132024}
 \format{
 A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 \describe{
@@ -15,7 +15,7 @@ A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 benthicdata
 }
 \description{
-Benthic data for the Tampa Bay Benthic Index current as of 12142023
+Benthic data for the Tampa Bay Benthic Index current as of 03132024
 }
 \details{
 Index the corresponding list element in the \code{value} column to view each dataset. For example, the stations data in the first row can be viewed as \code{benthicdata$value[[1]]}.
