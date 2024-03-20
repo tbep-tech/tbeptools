@@ -49,6 +49,6 @@ Create a bay segment assessment table for the 2022-2026 reasonable assurance per
 Choosing \code{bay_segment = 'RALTB'} will not work with \code{\link{epcdata}} and additional data are needed to use this option.
 }
 \examples{
-show_ratab(epcdata, yrsel = 2022, bay_segment = 'OTB')
+show_ratab(epcdata, yrsel = 2023, bay_segment = 'OTB')
 }
 \concept{show}

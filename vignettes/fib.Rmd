@@ -93,13 +93,13 @@ fibdata %>%
 The `yrsel` and `mosel` arguments can be used to filter results by year and month.  Not specifying these arguments will return results for the entire period of record. 
 
 ```{r}
-anlz_fibmap(fibdata, yrsel = 2022, mosel = 7)
+anlz_fibmap(fibdata, yrsel = 2023, mosel = 7)
 ```
 
 The `areasel` argument can indicate either `"Alafia"` or `"Hillsborough"` to select data for the corresponding river basins, where rows in `fibdata` are filtered based on the the selection.  All stations are returned if this argument is set as `NULL` (default). The Alafia River basin includes values in the `area` column of `fibdata` as `"Alafia River"` and `"Alafia River Tributary"`.  The Hillsborough River basin includes values in the `area` column of `fibdat` as `"Hillsborough River"`, `"Hillsborough River Tributary"`, `"Lake Thonotosassa"`, `"Lake Thonotosassa Tributary"`, and `"Lake Roberta"`.  Not all areas may be present based on the selection for `yrsel` and `mosel`. All valid options for `areasel` include `"Alafia River"`, `"Hillsborough River"`, `"Big Bend"`, `"Cockroach Bay"`, `"East Lake Outfall"`, `"Hillsborough Bay"`, `"Little Manatee"`, `"Lower Tampa Bay"`, `"McKay Bay"`, `"Middle Tampa Bay"`, `"Old Tampa Bay"`, `"Palm River"`, `"Tampa Bypass Canal"`, or `"Valrico Lake"`.
 
 ```{r}
-anlz_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough River')
+anlz_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = 'Hillsborough River')
 ```
 
 The `anlz_fibmatrix()` function creates a summary of FIB categories by station and year as output for the `show_fibmatrix()` function described below.  The function assigns Microbial Water Quality Assessment (MWQA) letter categories for each station and year based on the likelihood that fecal coliform concentrations will exceed 400 CFU / 100 mL for a given year.  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (`lagyr = 3`).  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (`gmean`) and a category indicating a letter outcome based on the likelihood of exceedences (`cat`).
@@ -113,14 +113,14 @@ anlz_fibmatrix(fibdata)
 The `show_fibmap()` function creates a map of FIB sites and thresholds based on output from `anlz_fibmap()`.  The same arguments that apply to `anlz_fibmap()` also apply to `show_fibmap()` such that freshwater and marine stations categorized by relevant thresholds are plotted by a selected year, month, and area.  Unlike `anlz_fibmap()`, the `yrsel` and `mosel` arguments are required.
 
 ```{r, out.width="100%"}
-show_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = NULL)
+show_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = NULL)
 ```
 
 Sites for the Hillsborough or Alafia river basins can be shown using `areasel` argument.
 
 ```{r, out.width="100%"}
-show_fibmap(fibdata, yrsel = 2022, mosel = 7, areasel = 'Hillsborough River')
-show_fibmap(fibdata, yrsel = 2021, mosel = 6, areasel = 'Alafia River')
+show_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = 'Hillsborough River')
+show_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = 'Alafia River')
 ```
 
 Additional information about a site can be seen by placing the cursor over a location.  A map inset can also be seen by clicking the arrow in the button left.  

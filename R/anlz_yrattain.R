@@ -15,7 +15,7 @@
 #' @examples
 #'
 #' # defaults to current year
-#' anlz_yrattain(epcdata, yrsel = 2022)
+#' anlz_yrattain(epcdata, yrsel = 2023)
 anlz_yrattain <- function(epcdata, yrsel, partialyr = FALSE){
 
   # segment averages

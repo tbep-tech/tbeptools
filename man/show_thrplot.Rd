@@ -9,7 +9,7 @@ show_thrplot(
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   thr = c("chla", "la"),
   trgs = NULL,
-  yrrng = c(1975, 2022),
+  yrrng = c(1975, 2023),
   family = NA,
   labelexp = TRUE,
   txtlab = TRUE,

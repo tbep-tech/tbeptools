@@ -121,7 +121,7 @@ transectavespp
 There is one plotting function for the training data.  The `show_compplot()` function is used to compare training data between crews for a selected species (`species` argument) and variable (`varplo` argument). 
 
 ```{r, fig.height = 5, fig.width = 7}
-show_compplot(traindat, yr = 2022, site = '2', species = 'Halodule', varplo = 'Abundance', base_size = 14)
+show_compplot(traindat, yr = 2023, site = '2', species = 'Halodule', varplo = 'Abundance', base_size = 14)
 ```
 
 The rest of the plotting functions work with the complete transect data. Data for an individual transect can be viewed with the `show_transect()` function by entering the transect (site) number, species (one to many), and variable to plot.  The plot shows relative values for the selected species and variable by distance along the transect (x-axis) and year of sampling (y-axis).  The plots provide an overall summary of temporal and spatial changes in the selected seagrass metric for an individual location.  

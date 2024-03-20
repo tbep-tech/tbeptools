@@ -8,7 +8,7 @@ show_segmatrix(
   epcdata,
   txtsz = 3,
   trgs = NULL,
-  yrrng = c(1975, 2022),
+  yrrng = c(1975, 2023),
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   abbrev = FALSE,
   family = NA,

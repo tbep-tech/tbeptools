@@ -36,7 +36,7 @@ A \code{\link[flextable]{flextable}} object showing the segment-averaged chlorop
 Create a table for the annual management outcome assessments for chlorophyll-a and light attenuation by bay segment
 }
 \examples{
-show_annualassess(epcdata, yrsel = 2022)
-show_annualassess(epcdata, yrsel = 2022, caption = TRUE)
+show_annualassess(epcdata, yrsel = 2023)
+show_annualassess(epcdata, yrsel = 2023, caption = TRUE)
 }
 \concept{show}

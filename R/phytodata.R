@@ -1,8 +1,8 @@
-#' Phytoplankton data current as of 05192022
+#' Phytoplankton data current as of 03202024
 #'
-#' Phytoplankton data current as of 05192022
+#' Phytoplankton data current as of 03202024
 #'
-#' @format A nested \code{\link[tibble]{tibble}} with 23848 rows and 8 variables:
+#' @format A nested \code{\link[tibble]{tibble}} with 21143 rows and 8 variables:
 #' \describe{
 #'   \item{epchc_station}{chr}
 #'   \item{Date}{Date}
@@ -19,12 +19,16 @@
 #' @examples
 #' \dontrun{
 #' # location to download data
-#' path <- '~/Desktop/phyto_data.xlsx'
+#' path <- tempfile(fileext = '.xlsx')
 #'
 #' # load and assign to object
 #' phytodata <- read_importphyto(path, download_latest = TRUE)
 #'
+#' nrow(phytodata)
+#' ncol(phytodata)
+#'
 #' save(phytodata, file = 'data/phytodata.RData', compress = 'xz')
 #'
+#' file.remove(path)
 #' }
 "phytodata"

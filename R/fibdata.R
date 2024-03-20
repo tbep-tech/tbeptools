@@ -1,8 +1,8 @@
-#' All Fecal Indicator Bacteria (FIB) data as of 20230710
+#' All Fecal Indicator Bacteria (FIB) data as of 20240320
 #'
-#' All Fecal Indicator Bacteria (FIB) data as of 20230710
+#' All Fecal Indicator Bacteria (FIB) data as of 20240320
 #'
-#' @format A data frame with 74872 rows and 18 variables:
+#' @format A data frame with 76502 rows and 18 variables:
 #' \describe{
 #'   \item{area}{chr}
 #'   \item{epchc_station}{num}
@@ -35,5 +35,7 @@
 #' ncol(fibdata)
 #'
 #' save(fibdata, file = 'data/fibdata.RData', compress = 'xz')
+#'
+#' file.remove(xlsx)
 #' }
 "fibdata"

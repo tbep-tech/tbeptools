@@ -26,7 +26,7 @@ Placing the mouse cursor over an item on the map will reveal additional informat
 }
 \examples{
 # show selected year, month
-show_fibmap(fibdata, yrsel = 2022, mosel = 8)
+show_fibmap(fibdata, yrsel = 2023, mosel = 8)
 
 # show selected year, month, and area
 show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')

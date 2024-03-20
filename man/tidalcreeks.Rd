@@ -3,7 +3,7 @@
 \docType{data}
 \name{tidalcreeks}
 \alias{tidalcreeks}
-\title{Spatial data object of tidal creeks in Impaired Waters Rule, Run 64}
+\title{Spatial data object of tidal creeks in Impaired Waters Rule, Run 65}
 \format{
 A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 615 features and  fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
@@ -19,7 +19,7 @@ A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 615 feature
 tidalcreeks
 }
 \description{
-Spatial data object of tidal creeks in Impaired Waters Rule, Run 64
+Spatial data object of tidal creeks in Impaired Waters Rule, Run 65
 }
 \details{
 File was created using workflow at <https://tbep-tech.github.io/tidalcreek-stats/Creek_select_tbeptools>, example below is old and for Run 61.
