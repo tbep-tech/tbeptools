@@ -121,7 +121,7 @@ head(results)
 Individual creek indicators are summarized using a multivariate response plot called a "radar plot" that indicates the percentage of years where each indicator exceeded its respective threshold value. These plots are created by using the `radar = TRUE` argument with `anlz_tdlcrkindic()` function and then using those results with the `show_tdlcrkradar()` function. The radar plots only apply to the marine WBIDs of the tidal creeks (Florida DEP class 2, 3M). Indicators without data for the creek do not have a point on the plot.
 
 ```{r, fig.width = 5, fig.height = 5}
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022, radar = T)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2023, radar = T)
 
 # get random creek id
 set.seed(123)
@@ -134,7 +134,7 @@ General descriptive plots of the annual outcomes are provided with interactive [
 The `show_tdlcrindic()` function produces bar plots of annual outcomes at the selected creek. The creek to plot is selected with the `id` argument as an integer that is used to filter results from the `anlz_tdlcrkindic()` function, where the latter is passed to the `cntdat` argument.  The `thrsel` argument plots dotted red lines based on the threshold values.  Each year has its own unique color.  
 
 ```{r}
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2023)
 show_tdlcrkindic(id = id, cntdat = cntdat, thrsel = TRUE)
 ```
 

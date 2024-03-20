@@ -18,12 +18,12 @@
 #' @export
 #'
 #' @examples
-#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2022)
+#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2023)
 #'
 #' set.seed(123)
 #' id <- sample(unique(cntdat$id), 1)
 #' show_tdlcrkindiccdf(id, cntdat, thrsel = TRUE)
-show_tdlcrkindiccdf <- function(id, cntdat, yr = 2022, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
+show_tdlcrkindiccdf <- function(id, cntdat, yr = 2023, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
 
   # variables to plot
   labs <- c('Chla (ug/L)', 'TN (mg/L)', 'Chla:TN', 'DO (mg/L)', 'Florida TSI', 'Nitrate ratio')
