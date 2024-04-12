@@ -6,11 +6,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9021</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9022</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">show_transect</span><span class="op">(</span></span>
 <span>  <span class="va">transect</span>,</span>
 <span>  <span class="va">site</span>,</span>
-<span>  species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Halodule"</span>, <span class="st">"Syringodium"</span>, <span class="st">"Thalassia"</span>, <span class="st">"Halophila"</span>, <span class="st">"Ruppia"</span>, <span class="st">"Caulerpa"</span><span class="op">)</span>,</span>
+<span>  species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Halodule"</span>, <span class="st">"Syringodium"</span>, <span class="st">"Thalassia"</span>, <span class="st">"Halophila"</span>, <span class="st">"Ruppia"</span>, <span class="st">"Caulerpa"</span>,</span>
+<span>    <span class="st">"Dapis"</span><span class="op">)</span>,</span>
 <span>  yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1998</span>, <span class="fl">2023</span><span class="op">)</span>,</span>
 <span>  varplo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Abundance"</span>, <span class="st">"Blade Length"</span>, <span class="st">"Short Shoot Density"</span><span class="op">)</span>,</span>
 <span>  base_size <span class="op">=</span> <span class="fl">12</span>,</span>
@@ -134,7 +135,7 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, Ruppia, and/or Caulerpa.</p>
+    <p>All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, Ruppia, Caulerpa (attached macroalgae), and/or Dapis (cyanobacteria). Drift or attached macroalgae and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.</p>
 <p>Note that if <code>plotly = TRUE</code>, the size legend is not shown.</p>
     </div>
 
@@ -150,13 +151,15 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># multiple species, one plot</span></span></span>
 <span class="r-in"><span><span class="fu">show_transect</span><span class="op">(</span><span class="va">transect</span>, site <span class="op">=</span> <span class="st">'S3T10'</span>,</span></span>
-<span class="r-in"><span>  species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Halodule'</span>, <span class="st">'Syringodium'</span>, <span class="st">'Thalassia'</span>, <span class="st">'Halophila'</span>, <span class="st">'Ruppia'</span>, <span class="st">'Caulerpa'</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Halodule'</span>, <span class="st">'Syringodium'</span>, <span class="st">'Thalassia'</span>, <span class="st">'Halophila'</span>, <span class="st">'Ruppia'</span>,</span></span>
+<span class="r-in"><span>    <span class="st">'Caulerpa'</span>, <span class="st">'Dapis'</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  varplo <span class="op">=</span> <span class="st">'Abundance'</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="show_transect-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># multiple species, multiple plots</span></span></span>
 <span class="r-in"><span><span class="fu">show_transect</span><span class="op">(</span><span class="va">transect</span>, site <span class="op">=</span> <span class="st">'S3T10'</span>,</span></span>
-<span class="r-in"><span>  species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Halodule'</span>, <span class="st">'Syringodium'</span>, <span class="st">'Thalassia'</span>, <span class="st">'Halophila'</span>, <span class="st">'Ruppia'</span>, <span class="st">'Caulerpa'</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Halodule'</span>, <span class="st">'Syringodium'</span>, <span class="st">'Thalassia'</span>, <span class="st">'Halophila'</span>, <span class="st">'Ruppia'</span>,</span></span>
+<span class="r-in"><span>    <span class="st">'Caulerpa'</span>, <span class="st">'Dapis'</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  varplo <span class="op">=</span> <span class="st">'Abundance'</span>, facet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="show_transect-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
@@ -170,7 +173,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
 </div>
 
     </footer></div>
