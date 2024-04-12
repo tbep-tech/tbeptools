@@ -10,7 +10,7 @@
 #' @return A \code{\link[plotly]{plotly}} object
 #' @export
 #'
-#' @details This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect.
+#' @details This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect. Drift or attached macroalgae (e.g., Caulerpa) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
 #'
 #' @importFrom dplyr %>%
 #'
@@ -22,11 +22,11 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectsum(transectocc, site = 'S3T10')
-show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa'),
+show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis'),
                              yrrng = c(1998, 2023), abund = FALSE, sppcol = NULL){
 
   # species pool
-  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa')
+  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis')
 
   # sanity checks
   if(!site %in% transectocc$Transect)
@@ -41,7 +41,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
   # check correct length of optional color vector
   if(!is.null(sppcol))
     if(length(sppcol) != length(spp))
-      stop('sppcol required length is six')
+      stop('sppcol required length is seven')
 
   # sort out variable names and labels
   val <- 'foest'
@@ -67,7 +67,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
 
   # sort color palette so its the same regardless of species selected
   if(is.null(sppcol))
-    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF')
+    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF', '#8B2323')
   names(sppcol) <- spp
   sppcol <- sppcol[levels(toplo$Savspecies)]
 

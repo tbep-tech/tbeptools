@@ -3,7 +3,7 @@
 \docType{data}
 \name{transect}
 \alias{transect}
-\title{Seagrass transect data for Tampa Bay current as of 12062023}
+\title{Seagrass transect data for Tampa Bay current as of 04122024}
 \format{
 A data frame with 152580 rows and 11 variables:
 \describe{
@@ -24,7 +24,7 @@ A data frame with 152580 rows and 11 variables:
 transect
 }
 \description{
-Seagrass transect data for Tampa Bay current as of 12062023
+Seagrass transect data for Tampa Bay current as of 04122024
 }
 \examples{
 \dontrun{

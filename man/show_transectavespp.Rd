@@ -8,7 +8,8 @@ show_transectavespp(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   yrrng = c(1998, 2023),
-  species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia", "Caulerpa"),
+  species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia", "Caulerpa",
+    "Dapis"),
   total = TRUE,
   alph = 1,
   family = NA,
@@ -26,7 +27,7 @@ show_transectavespp(
 
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
-\item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa"}
+\item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis"}
 
 \item{total}{logical indicating if total frequency occurrence for all species is also returned, only applies if \code{asreact = FALSE}}
 
@@ -51,7 +52,7 @@ If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{pl
 Show annual averages of seagrass frequency occurrence by bay segments, year, and species
 }
 \details{
-Results are based on averages across species by date and transect in each bay segment
+Results are based on averages across species by date and transect in each bay segment. Drift or attached macroalgae (e.g., Caulerpa) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
 }
 \examples{
 \dontrun{
