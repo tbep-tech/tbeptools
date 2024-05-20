@@ -7,7 +7,7 @@
 read_importsealevels(
   path_csv,
   download_latest = TRUE,
-  df_stations = sealevelstations,
+  df_stations = dplyr::select(sealevelstations, station_id, station_name),
   api_url = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
   beg_int = 19010101,
   end_int = as.integer(format(lubridate::today(), "\%Y\%m\%d")),
@@ -24,8 +24,9 @@ read_importsealevels(
 \item{download_latest}{logical to download latest. (Overwrites existing
 file.)}
 
-\item{df_stations}{data frame of stations with columns \code{station_id} (integer)
-and \code{station_name} (character). Defaults to \link{sealevelstations}.}
+\item{df_stations}{data frame of stations with column \code{station_id} (integer).
+Defaults to \link{sealevelstations}, subset to columns \code{station_id} and
+\code{station_name}.}
 
 \item{api_url}{chr string URL for NOAA Center for Operational Oceanographic
 Products and Services (CO-OPS) API. Defaults to the CO-OPS API for data
@@ -59,24 +60,25 @@ Given the default arguments in (and especially \code{product = "monthly_mean"}),
 \itemize{
 \item \code{station_id}: integer column from input argument \code{df_stations}
 \item \code{station_name}: character column from input argument \code{df_stations}
-\item \code{Year}: year of the data
-\item \code{Month}: month of the data
-\item \code{MHHW}: Mean Higher-High Water
-\item \code{MHW}: Mean High Water
-\item \code{MSL}: Mean Sea Level
-\item \code{MTL}: Mean Tide Level
-\item \code{MLW}: Mean Low Water
-\item \code{MLLW}: Mean Lower-Low Water
-\item \code{DTL}: Mean Diurnal Tide Level
-\item \code{GT}: Great Diurnal Range
-\item \code{MN}: Mean Range of Tide
-\item \code{DHQ}: Mean Diurnal High Water Inequality
-\item \code{DLQ}: Mean Diurnal Low Water Inequality
-\item \code{HWI}: Greenwich High Water Interval (in Hours)
-\item \code{LWI}: Greenwich Low Water Interval (in Hours)
-\item \code{Highest}: Highest Tide
-\item \code{Lowest}: Lowest Tide
-\item \code{Inferred}: A flag that when set to 1 indicates that the water level value has been inferred
+\item \code{date}: first of the month given by \code{year} and \code{month} from API output
+\item \code{year}: year of the data
+\item \code{month}: month of the data
+\item \code{mhhw}: Mean Higher-High Water
+\item \code{mhw}: Mean High Water
+\item \code{msl}: Mean Sea Level
+\item \code{mtl}: Mean Tide Level
+\item \code{mlw}: Mean Low Water
+\item \code{mllw}: Mean Lower-Low Water
+\item \code{dtl}: Mean Diurnal Tide Level
+\item \code{gt}: Great Diurnal Range
+\item \code{mn}: Mean Range of Tide
+\item \code{dhq}: Mean Diurnal High Water Inequality
+\item \code{dlq}: Mean Diurnal Low Water Inequality
+\item \code{hwi}: Greenwich High Water Interval (in Hours)
+\item \code{lwi}: Greenwich Low Water Interval (in Hours)
+\item \code{highest}: Highest Tide
+\item \code{lowest}: Lowest Tide
+\item \code{inferred}: A flag that when set to 1 indicates that the water level value has been inferred
 }
 
 For more details on these output data columns, see \href{https://tidesandcurrents.noaa.gov/datum_options.html}{About Tidal Datums | NOAA Tides & Currents}.

@@ -10,8 +10,9 @@
 #'   (Overwrites existing file.)
 #' @param download_latest logical to download latest. (Overwrites existing
 #'   file.)
-#' @param df_stations data frame of stations with columns `station_id` (integer)
-#'   and `station_name` (character). Defaults to [sealevelstations].
+#' @param df_stations data frame of stations with column `station_id` (integer).
+#'   Defaults to [sealevelstations], subset to columns `station_id` and
+#'   `station_name`.
 #' @param api_url chr string URL for NOAA Center for Operational Oceanographic
 #'   Products and Services (CO-OPS) API. Defaults to the CO-OPS API for data
 #'   retrieval: https://api.tidesandcurrents.noaa.gov/api/prod/datagetter.
@@ -41,24 +42,25 @@
 #'   `path_csv` does not exist) having the following fields:
 #' - `station_id`: integer column from input argument `df_stations`
 #' - `station_name`: character column from input argument `df_stations`
-#' - `Year`: year of the data
-#' - `Month`: month of the data
-#' - `MHHW`: Mean Higher-High Water
-#' - `MHW`: Mean High Water
-#' - `MSL`: Mean Sea Level
-#' - `MTL`: Mean Tide Level
-#' - `MLW`: Mean Low Water
-#' - `MLLW`: Mean Lower-Low Water
-#' - `DTL`: Mean Diurnal Tide Level
-#' - `GT`: Great Diurnal Range
-#' - `MN`: Mean Range of Tide
-#' - `DHQ`: Mean Diurnal High Water Inequality
-#' - `DLQ`: Mean Diurnal Low Water Inequality
-#' - `HWI`: Greenwich High Water Interval (in Hours)
-#' - `LWI`: Greenwich Low Water Interval (in Hours)
-#' - `Highest`: Highest Tide
-#' - `Lowest`: Lowest Tide
-#' - `Inferred`: A flag that when set to 1 indicates that the water level value has been inferred
+#' - `date`: first of the month given by `year` and `month` from API output
+#' - `year`: year of the data
+#' - `month`: month of the data
+#' - `mhhw`: Mean Higher-High Water
+#' - `mhw`: Mean High Water
+#' - `msl`: Mean Sea Level
+#' - `mtl`: Mean Tide Level
+#' - `mlw`: Mean Low Water
+#' - `mllw`: Mean Lower-Low Water
+#' - `dtl`: Mean Diurnal Tide Level
+#' - `gt`: Great Diurnal Range
+#' - `mn`: Mean Range of Tide
+#' - `dhq`: Mean Diurnal High Water Inequality
+#' - `dlq`: Mean Diurnal Low Water Inequality
+#' - `hwi`: Greenwich High Water Interval (in Hours)
+#' - `lwi`: Greenwich Low Water Interval (in Hours)
+#' - `highest`: Highest Tide
+#' - `lowest`: Lowest Tide
+#' - `inferred`: A flag that when set to 1 indicates that the water level value has been inferred
 #'
 #' For more details on these output data columns, see [About Tidal Datums |
 #' NOAA Tides &
@@ -81,7 +83,8 @@
 read_importsealevels <- function(
     path_csv,
     download_latest = TRUE,
-    df_stations     = sealevelstations,
+    df_stations     = sealevelstations |>
+      dplyr::select(station_id, station_name),
     api_url         = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
     beg_int         = 19010101,
     end_int         = lubridate::today() |>
@@ -118,10 +121,15 @@ read_importsealevels <- function(
 
   if (!file.exists(path_csv) | download_latest)
     df_stations |>
-      dplyr::mutate(
-        data = purrr::map(station_id, get_station_data)) |>
-      tidyr::unnest(data) |>
-      readr::write_csv(path_csv)
+    dplyr::mutate(
+      data = purrr::map(station_id, get_station_data)) |>
+    tidyr::unnest(data) |>
+    dplyr::rename_with(tolower) |>
+    mutate(
+      date = sprintf("%d-%02d-01", year, month) |>
+        as.Date()) |>
+    dplyr::relocate(date, .before = year) |>
+    readr::write_csv(path_csv)
 
   readr::read_csv(path_csv, show_col_types = F)
 }

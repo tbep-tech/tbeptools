@@ -5,10 +5,13 @@
 \alias{sealevelstations}
 \title{Sea level stations in Tampa Bay}
 \format{
-A data frame with 4 rows and 2 variables:
+A data frame with 4 rows and 5 columns:
 \itemize{
 \item \code{station_id} integer station identifier
 \item \code{station_name} character station name
+\item \code{longitude} double longitude
+\item \code{latitude} double latitude
+\item \code{date_est} date established
 }
 }
 \usage{

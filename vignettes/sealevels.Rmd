@@ -6,8 +6,10 @@ output:
     toc: true
 vignette: >
   %\VignetteIndexEntry{Sea Levels}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -18,14 +20,43 @@ knitr::opts_chunk$set(
 # devtools::load_all()
 ```
 
-```{r setup}
+```{r setup, message=F}
+library(dplyr)
+library(mapview)
+library(sf)
 library(tbeptools)
 ```
+
+## `sealevelstations`
+
+```{r}
+sealevelstations
+
+pts_sl <- sealevelstations |> 
+  st_as_sf(
+    coords = c("longitude", "latitude"), 
+    crs    = 4326)
+
+mapView(tbsegshed, zcol = "long_name") +
+  mapView(pts_sl, zcol = "station_name")
+```
+
+## `read_importsealevels()`
 
 ```{r}
 path_csv <- tempfile("sealevels", fileext=".csv")
 
-(df_sl <- read_importsealevels(path_csv))
+df_sl <- read_importsealevels(path_csv)
+df_sl
 ```
 
+
+```{r}
+df_sl |> 
+  group_by(station_id, station_name) |> 
+  summarise(
+    date_min = min(date), 
+    date_max = max(date), 
+    .groups = "drop")
+```
 
