@@ -28,7 +28,4 @@ path_csv <- tempfile("sealevels", fileext=".csv")
 (df_sl <- read_importsealevels(path_csv))
 ```
 
-```{r}
-
-```
 

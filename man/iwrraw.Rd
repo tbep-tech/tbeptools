@@ -14,7 +14,7 @@ iwrraw
 Florida Department of Environmental Protection, Impaired Waters Rule, Run 65
 }
 \details{
-File was created using workflow at <https://tbep-tech.github.io/tidalcreek-stats/Creek_select_tbeptools>, example below is old and for Run 61.
+File was created using workflow at \url{https://tbep-tech.github.io/tidalcreek-stats/Creek_select_tbeptools}, example below is old and for Run 61.
 }
 \examples{
 \dontrun{

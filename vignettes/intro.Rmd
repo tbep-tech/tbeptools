@@ -33,6 +33,18 @@ sf_use_s2(FALSE)
 # spelling::spell_check_files("vignettes/intro.Rmd")
 ```
 
+```{r, eval=FALSE, echo=FALSE}
+# Consider adding to package these dependencies,
+#   which I had to install to compile this vignette
+#   -- @bbest 2024-05-20
+install.packages("bookdown")
+install.packages("ggmap")
+install.packages("ggspatial")
+install.packages("ggrepel")
+install.packages("ggnewscale")
+install.packages("ftExtra")
+```
+
 ## Background
 
 Dashboard: https://shiny.tbep.org/wq-dash

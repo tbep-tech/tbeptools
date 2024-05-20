@@ -45,7 +45,7 @@ show_sedimentpelave(
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing PEL averages (average of the averages) and 95% confidence intervals for each bay segment
+A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing PEL averages (average of the averages) and 95\% confidence intervals for each bay segment
 }
 \description{
 Plot summary of PEL averages by bay segment

@@ -7,7 +7,7 @@
 \format{
 A simple features \code{\link[sf]{sf}} object (MULTIPOLYGON) with 30 features and 1 field, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
-  \item{areas}{int}
+\item{areas}{int}
 }
 }
 \usage{

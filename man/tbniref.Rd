@@ -7,18 +7,18 @@
 \format{
 A data frame with 16 rows and 12 variables:
 \describe{
-  \item{bay_segment}{chr}
-  \item{Season}{chr}
-  \item{NumTaxa_P5}{num}
-  \item{NumTaxa_P95}{num}
-  \item{BenthicTaxa_P5}{num}
-  \item{BenthicTaxa_P95}{num}
-  \item{TaxaSelect_P5}{num}
-  \item{TaxaSelect_P95}{num}
-  \item{NumGuilds_P5}{num}
-  \item{NumGuilds_P95}{num}
-  \item{Shannon_P5}{num}
-  \item{Shannon_P95}{num}
+\item{bay_segment}{chr}
+\item{Season}{chr}
+\item{NumTaxa_P5}{num}
+\item{NumTaxa_P95}{num}
+\item{BenthicTaxa_P5}{num}
+\item{BenthicTaxa_P95}{num}
+\item{TaxaSelect_P5}{num}
+\item{TaxaSelect_P95}{num}
+\item{NumGuilds_P5}{num}
+\item{NumGuilds_P95}{num}
+\item{Shannon_P5}{num}
+\item{Shannon_P95}{num}
 }
 }
 \usage{
