@@ -19,42 +19,49 @@ read_importsealevels(
 )
 }
 \arguments{
-\item{path_csv}{chr string path of CSV file to store tabular output. (Overwrites existing file.)}
+\item{path_csv}{chr string path of CSV file to store tabular output.
+(Overwrites existing file.)}
 
-\item{download_latest}{logical to download latest. (Overwrites existing file.)}
+\item{download_latest}{logical to download latest. (Overwrites existing
+file.)}
 
-\item{df_stations}{data frame of stations with columns `station_id` (integer) and
-`station_name` (character). Defaults to stations within Tampa Bay.}
+\item{df_stations}{data frame of stations with columns `station_id` (integer)
+and `station_name` (character). Defaults to stations within Tampa Bay.}
 
 \item{api_url}{chr string URL for NOAA Center for Operational Oceanographic
 Products and Services (CO-OPS) API. Defaults to the CO-OPS API for data
 retrieval: https://api.tidesandcurrents.noaa.gov/api/prod/datagetter.}
 
-\item{beg_int}{int integer of beginning date in YYYYMMDD format. Defaults to `19010101`.}
+\item{beg_int}{int integer of beginning date in YYYYMMDD format. Defaults to
+`19010101`.}
 
-\item{end_int}{int integer of ending date in YYYYMMDD format. Defaults to `lubridate::today()`.}
+\item{end_int}{int integer of ending date in YYYYMMDD format. Defaults to
+`lubridate::today()`.}
 
-\item{product}{chr string of product type. For options, see
-[Data Products | CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/#products).
-Defaults to `"monthly_mean"`: "verified monthly mean water level data for the station."}
+\item{product}{chr string of product type. For options, see [Data Products |
+CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/#products).
+Defaults to `"monthly_mean"`: "verified monthly mean water level data for
+the station."}
 
 \item{datum}{chr string of datum. Defaults to `"stnd"`: "station datum -
-original reference that all data is collected to, uniquely defined for each station." For options,
-see [Datum | CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/#datum)}
+original reference that all data is collected to, uniquely defined for each
+station." For options, see [Datum | CO-OPS
+API](https://api.tidesandcurrents.noaa.gov/api/prod/#datum)}
 
-\item{time_zone}{Time zone. Defaults to `"lst"`: "local standard time." However,
-this does not get used with the `monthly_mean` product. For options, see
-[Time Zone | CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/#timezone).}
+\item{time_zone}{Time zone. Defaults to `"lst"`: "local standard time."
+However, this does not get used with the `monthly_mean` product. For
+options, see [Time Zone | CO-OPS
+API](https://api.tidesandcurrents.noaa.gov/api/prod/#timezone).}
 
-\item{units}{chr string of units. Defaults to `"metric"` (i.e., meters). For other
-options (i.e., `"english"`), see
-[Units | CO-OPS API](https://api.tidesandcurrents.noaa.gov/api/prod/#units).}
+\item{units}{chr string of units. Defaults to `"metric"` (i.e., meters). For
+other options (i.e., `"english"`), see [Units | CO-OPS
+API](https://api.tidesandcurrents.noaa.gov/api/prod/#units).}
 }
 \value{
-Given the default arguments in (and especially `product = "monthly_mean"`),
-this function returns a data frame from reading `path_csv`
-(updated if `download_latest = TRUE` or newly written if `path_csv` does not exist)
-having the following fields:
+Given the default arguments in (and especially `product =
+  "monthly_mean"`), this function returns a data frame from reading
+  `path_csv` (updated if `download_latest = TRUE` or newly written if
+  `path_csv` does not exist) having the following fields:
 - `station_id`: integer column from input argument `df_stations`
 - `station_name`: character column from input argument `df_stations`
 - `Year`: year of the data
@@ -76,14 +83,16 @@ having the following fields:
 - `Lowest`: Lowest Tide
 - `Inferred`: A flag that when set to 1 indicates that the water level value has been inferred
 
-For more details on these output data columns, see
-[About Tidal Datums | NOAA Tides & Currents](https://tidesandcurrents.noaa.gov/datum_options.html).
+For more details on these output data columns, see [About Tidal Datums |
+NOAA Tides &
+Currents](https://tidesandcurrents.noaa.gov/datum_options.html).
 }
 \description{
 Under [NOAA Tides and Currents](https://tidesandcurrents.noaa.gov/), there is
 the NOAA Center for Operational Oceanographic Products and Services (CO-OPS).
-This function uses the [CO-OPS Data Retrieval API](https://api.tidesandcurrents.noaa.gov/api/prod/)
-to extract see level data by station.
+This function uses the [CO-OPS Data Retrieval
+API](https://api.tidesandcurrents.noaa.gov/api/prod/) to extract see level
+data by station.
 }
 \examples{
 read_importsealevels(tempfile("sealevels", fileext=".csv"))
