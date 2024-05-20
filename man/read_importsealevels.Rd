@@ -7,8 +7,7 @@
 read_importsealevels(
   path_csv,
   download_latest = TRUE,
-  df_stations = tibble::tribble(~station_id, ~station_name, 8726724, "Clearwater Beach",
-    8726674, "East Bay", 8726384, "Port Manatee", 8726520, "St. Petersburg"),
+  df_stations = sealevelstations,
   api_url = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
   beg_int = 19010101,
   end_int = as.integer(format(lubridate::today(), "\%Y\%m\%d")),
@@ -26,7 +25,7 @@ read_importsealevels(
 file.)}
 
 \item{df_stations}{data frame of stations with columns \code{station_id} (integer)
-and \code{station_name} (character). Defaults to stations within Tampa Bay.}
+and \code{station_name} (character). Defaults to \link{sealevelstations}.}
 
 \item{api_url}{chr string URL for NOAA Center for Operational Oceanographic
 Products and Services (CO-OPS) API. Defaults to the CO-OPS API for data

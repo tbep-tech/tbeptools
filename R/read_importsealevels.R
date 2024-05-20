@@ -11,7 +11,7 @@
 #' @param download_latest logical to download latest. (Overwrites existing
 #'   file.)
 #' @param df_stations data frame of stations with columns `station_id` (integer)
-#'   and `station_name` (character). Defaults to stations within Tampa Bay.
+#'   and `station_name` (character). Defaults to [sealevelstations].
 #' @param api_url chr string URL for NOAA Center for Operational Oceanographic
 #'   Products and Services (CO-OPS) API. Defaults to the CO-OPS API for data
 #'   retrieval: https://api.tidesandcurrents.noaa.gov/api/prod/datagetter.
@@ -81,12 +81,7 @@
 read_importsealevels <- function(
     path_csv,
     download_latest = TRUE,
-    df_stations     = tibble::tribble(
-      ~station_id, ~station_name,
-      8726724    , "Clearwater Beach",
-      8726674    , "East Bay",
-      8726384    , "Port Manatee",
-      8726520    , "St. Petersburg"),
+    df_stations     = sealevelstations,
     api_url         = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
     beg_int         = 19010101,
     end_int         = lubridate::today() |>
