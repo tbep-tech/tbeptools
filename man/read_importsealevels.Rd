@@ -19,42 +19,44 @@ read_importsealevels(
 )
 }
 \arguments{
-\item{path_csv}{chr string path of CSV file to store tabular output. (Overwrites existing file.)}
+\item{path_csv}{chr string path of CSV file to store tabular output.
+(Overwrites existing file.)}
 
-\item{download_latest}{logical to download latest. (Overwrites existing file.)}
+\item{download_latest}{logical to download latest. (Overwrites existing
+file.)}
 
-\item{df_stations}{data frame of stations with columns \code{station_id} (integer) and
-\code{station_name} (character). Defaults to stations within Tampa Bay.}
+\item{df_stations}{data frame of stations with columns \code{station_id} (integer)
+and \code{station_name} (character). Defaults to stations within Tampa Bay.}
 
 \item{api_url}{chr string URL for NOAA Center for Operational Oceanographic
 Products and Services (CO-OPS) API. Defaults to the CO-OPS API for data
 retrieval: https://api.tidesandcurrents.noaa.gov/api/prod/datagetter.}
 
-\item{beg_int}{int integer of beginning date in YYYYMMDD format. Defaults to \code{19010101}.}
+\item{beg_int}{int integer of beginning date in YYYYMMDD format. Defaults to
+\code{19010101}.}
 
-\item{end_int}{int integer of ending date in YYYYMMDD format. Defaults to \code{lubridate::today()}.}
+\item{end_int}{int integer of ending date in YYYYMMDD format. Defaults to
+\code{lubridate::today()}.}
 
-\item{product}{chr string of product type. For options, see
-\href{https://api.tidesandcurrents.noaa.gov/api/prod/#products}{Data Products | CO-OPS API}.
-Defaults to \code{"monthly_mean"}: "verified monthly mean water level data for the station."}
+\item{product}{chr string of product type. For options, see \href{https://api.tidesandcurrents.noaa.gov/api/prod/#products}{Data Products | CO-OPS API}.
+Defaults to \code{"monthly_mean"}: "verified monthly mean water level data for
+the station."}
 
 \item{datum}{chr string of datum. Defaults to \code{"stnd"}: "station datum -
-original reference that all data is collected to, uniquely defined for each station." For options,
-see \href{https://api.tidesandcurrents.noaa.gov/api/prod/#datum}{Datum | CO-OPS API}}
+original reference that all data is collected to, uniquely defined for each
+station." For options, see \href{https://api.tidesandcurrents.noaa.gov/api/prod/#datum}{Datum | CO-OPS API}}
 
-\item{time_zone}{Time zone. Defaults to \code{"lst"}: "local standard time." However,
-this does not get used with the \code{monthly_mean} product. For options, see
-\href{https://api.tidesandcurrents.noaa.gov/api/prod/#timezone}{Time Zone | CO-OPS API}.}
+\item{time_zone}{Time zone. Defaults to \code{"lst"}: "local standard time."
+However, this does not get used with the \code{monthly_mean} product. For
+options, see \href{https://api.tidesandcurrents.noaa.gov/api/prod/#timezone}{Time Zone | CO-OPS API}.}
 
-\item{units}{chr string of units. Defaults to \code{"metric"} (i.e., meters). For other
-options (i.e., \code{"english"}), see
-\href{https://api.tidesandcurrents.noaa.gov/api/prod/#units}{Units | CO-OPS API}.}
+\item{units}{chr string of units. Defaults to \code{"metric"} (i.e., meters). For
+other options (i.e., \code{"english"}), see \href{https://api.tidesandcurrents.noaa.gov/api/prod/#units}{Units | CO-OPS API}.}
 }
 \value{
-Given the default arguments in (and especially \code{product = "monthly_mean"}),
-this function returns a data frame from reading \code{path_csv}
-(updated if \code{download_latest = TRUE} or newly written if \code{path_csv} does not exist)
-having the following fields:
+Given the default arguments in (and especially \code{product = "monthly_mean"}), this function returns a data frame from reading
+\code{path_csv} (updated if \code{download_latest = TRUE} or newly written if
+\code{path_csv} does not exist) having the following fields:
 \itemize{
 \item \code{station_id}: integer column from input argument \code{df_stations}
 \item \code{station_name}: character column from input argument \code{df_stations}
@@ -78,14 +80,13 @@ having the following fields:
 \item \code{Inferred}: A flag that when set to 1 indicates that the water level value has been inferred
 }
 
-For more details on these output data columns, see
-\href{https://tidesandcurrents.noaa.gov/datum_options.html}{About Tidal Datums | NOAA Tides & Currents}.
+For more details on these output data columns, see \href{https://tidesandcurrents.noaa.gov/datum_options.html}{About Tidal Datums | NOAA Tides & Currents}.
 }
 \description{
 Under \href{https://tidesandcurrents.noaa.gov/}{NOAA Tides and Currents}, there is
 the NOAA Center for Operational Oceanographic Products and Services (CO-OPS).
-This function uses the \href{https://api.tidesandcurrents.noaa.gov/api/prod/}{CO-OPS Data Retrieval API}
-to extract see level data by station.
+This function uses the \href{https://api.tidesandcurrents.noaa.gov/api/prod/}{CO-OPS Data Retrieval API} to extract see level
+data by station.
 }
 \examples{
 read_importsealevels(tempfile("sealevels", fileext=".csv"))
