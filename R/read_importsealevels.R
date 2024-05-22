@@ -72,7 +72,6 @@
 #' @importFrom tidyr unnest
 #' @importFrom purrr map
 #' @importFrom lubridate today
-#' @importFrom tibble tribble
 #'
 #' @export
 #'
@@ -83,8 +82,7 @@
 read_importsealevels <- function(
     path_csv,
     download_latest = TRUE,
-    df_stations     = sealevelstations |>
-      dplyr::select(station_id, station_name),
+    df_stations     = sealevelstations[,c("station_id", "station_name")],
     api_url         = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
     beg_int         = 19010101,
     end_int         = lubridate::today() |>
