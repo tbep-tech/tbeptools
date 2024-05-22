@@ -7,7 +7,7 @@
 read_importsealevels(
   path_csv,
   download_latest = TRUE,
-  df_stations = dplyr::select(sealevelstations, station_id, station_name),
+  df_stations = sealevelstations[, c("station_id", "station_name")],
   api_url = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
   beg_int = 19010101,
   end_int = as.integer(format(lubridate::today(), "\%Y\%m\%d")),
