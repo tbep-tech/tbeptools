@@ -5,43 +5,20 @@
 \title{Import PRISM daily weather data}
 \usage{
 read_importprism(
-  sf_zones,
-  fld_zones,
-  zonal_csv,
-  zonal_fun = "mean",
-  bbox = sf::st_bbox(sf_zones),
-  dir_tif = fs::path_ext_remove(zonal_csv),
   vars = c("tmin", "tmax", "tdmean", "ppt"),
   date_beg = as.Date("1981-01-01"),
   date_end = Sys.Date(),
-  redo = F,
+  bbox = sf::st_bbox(sf_zones),
+  dir_tif = fs::path_ext_remove(zonal_csv),
+  sf_zones,
+  fld_zones,
+  zonal_fun = "mean",
+  zonal_csv,
+  redo_zonal = F,
   verbose = F
 )
 }
 \arguments{
-\item{sf_zones}{spatial feature object ([`sf`]) with zones to extract zonal
-statistics from PRISM daily weather data}
-
-\item{fld_zones}{unique field name in `sf_zones` to include in extracted
-zonal statistics}
-
-\item{zonal_csv}{path to output of zonal statistics (`terra::zonal()`) as
-table in CSV format}
-
-\item{zonal_fun}{function to apply to the `terra::zonal()` function. Defaults
-to "mean".}
-
-\item{bbox}{bounding box of the spatial extent to crop PRISM daily rasters,
-which could be bigger than `st_bbox(sf_zones)`.}
-
-\item{dir_tif}{directory path to store downloaded and cropped PRISM daily
-rasters (as GeoTIFF) across years with file name of format
-`prism_daily_%m-%d.tif`. The default path is
-`fs::path_ext_remove(zonal_csv)`.  Date and version in the raster layers
-will be compared with the [update
-schedule](https://prism.oregonstate.edu/calendar/list.php) to determine if
-it should be updated, otherwise will be skipped.}
-
 \item{vars}{character vector of PRISM variables to download and crop. The
 default is `c("tmin", "tmax", "tdmean", "ppt")`. See Details for others and
 details.}
@@ -50,19 +27,54 @@ details.}
 
 \item{date_end}{defaults to today's date, but will be adjusted to the most
 recently available data, per [update
-schedule](https://prism.oregonstate.edu/calendar/list.php)}
+schedule](https://prism.oregonstate.edu/calendar/list.php). CAUTION: If you
+try to request the same date-variable in a given day, you will get an error
+from the PRISM service with a message like "You have tried to download the
+file PRISM_tdmean_stable_4kmD2_19810101_bil.zip more than twice in one day
+(Pacific local time).  Note that repeated offenses may result in your IP
+address being blocked."}
 
-\item{redo}{logical whether to recalculate the zonal statistics. Defaults to
-False.}
+\item{bbox}{bounding box of the spatial extent to crop PRISM daily rasters,
+which could be bigger than `st_bbox(sf_zones)`.}
+
+\item{dir_tif}{directory path to store downloaded and cropped PRISM daily
+rasters (as GeoTIFF) across years with file name of format
+`prism_daily_{month}-{day}.tif`. The default path is
+`fs::path_ext_remove(zonal_csv)`.  Date and version in the raster layers
+will be compared with the [update
+schedule](https://prism.oregonstate.edu/calendar/list.php) to determine if
+it should be updated, otherwise will be skipped.}
+
+\item{sf_zones}{spatial feature object ([`sf`]) with zones to extract zonal
+statistics from PRISM daily weather data}
+
+\item{fld_zones}{character vector of unique field name(s) in `sf_zones` to
+include in extracted zonal statistics}
+
+\item{zonal_fun}{function to apply to the `terra::zonal()` function. Defaults
+to `"mean"`. Other options are `"min"`, `"max"`, `"sum"`, `"isNA"`, and
+`"notNA"`.}
+
+\item{zonal_csv}{path to output of zonal statistics (`terra::zonal()`) as
+table in CSV format}
+
+\item{redo_zonal}{logical whether to recalculate the zonal statistics.
+Defaults to False.}
 
 \item{verbose}{logical whether to show informative messages on processing}
 }
 \value{
 data frame with the following columns:
-- ...
+- `{fld_zones}` column(s) specified from input `sf_zones`
+- `{zonal_fun}`: value of input function (e.g. `"mean"`) summarizing raster to zone
+- `date`: date of PRISM daily raster
+- `variable`: PRISM variable
+- `version`: PRISM version
+- `date_updated`: date of PRISM daily raster update
 }
 \description{
-Download and crop PRISM daily weather data.
+Download and crop PRISM daily weather data. Summarize by zone and save as
+CSV.
 }
 \details{
 The [Parameter-elevation Relationship on Independent Slopes Model
@@ -90,6 +102,24 @@ schedule](https://prism.oregonstate.edu/calendar/list.php):
 - `provisional`: data is considered final but may be updated (previous 6 months)
 - `early`: data is preliminary and may be updated (this month)
 
+### Processing details
+
+1. The PRISM [update
+schedule](https://prism.oregonstate.edu/calendar/list.php) is downloaded and
+processed to understand the most recently available date and variable
+available by version and date updated.
+
+1. Any existing rasters in `dir_tif` are fetched based on a common naming
+structure for the raster file name (`prism_daily_{month}-{day}.tif`) and
+layer names (`{date}_{variable}_v{version}-{date_updated}`).
+
+1. Any missing or more recently updated variable-date PRISM rasters are
+downloaded and cropped to the bounding box (`bbox`) converting from
+band-interleaved (BIL) format to GeoTIFF. Layers are renamed to include extra
+information on `{version}` (1-8) and `{date_udpated}`.
+
+1. Zonal statistics are calculated on the cropped PRISM daily rasters.
+
 ### More on PRISM
 
 For more on [Parameter-elevation Relationship on Independent Slopes Model
@@ -99,16 +129,32 @@ For more on [Parameter-elevation Relationship on Independent Slopes Model
  -   [PRISM download methods](https://prism.oregonstate.edu/downloads) information (FTP, web services)
 }
 \examples{
-dir_tmp <- tempdir()
-tmp_csv <- file.path(dir_tmp, "prism.csv")
+# setup output directory and table
+dir_tif   <- here::here("inst/prism")
+zonal_csv <- file.path(dir_tif, "_zones.csv")
 
+# run function for Tampa Bay watersheds for first 3 days and 4 variables
 d <- read_importprism(
-  sf_zones  = tbsegshed,
-  fld_zones = "bay_segment",
-  zonal_csv = tmp_csv,
+  vars      = c("tmin", "tmax", "tdmean", "ppt"),
   date_beg  = as.Date("1981-01-01"),
   date_end  = as.Date("1981-01-03"),
-  verbose   = T)
+  dir_tif   = dir_tif,
+  sf_zones  = tbsegshed,
+  fld_zones = "bay_segment",
+  zonal_csv = zonal_csv)
 
+# show raster files, layers and plot
+tifs <- list.files(dir_tif, pattern = ".tif$", full.names = T)
+basename(tifs)
+r <- terra::rast(tifs[1])
+r
+names(r)
+terra::plet(
+  r[[3]],
+  main  = names(r)[3],
+  col   = "Spectral",
+  tiles = "CartoDB.DarkMatter")
+
+# show summary by zone
 d
 }
