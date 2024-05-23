@@ -73,8 +73,9 @@ data frame with the following columns:
 }
 }
 \description{
-Download and crop PRISM daily weather data. Summarize by zone and save as
-CSV.
+Download and crop the latest weather rasters from Parameter-elevation
+Relationship on Independent Slopes Model (PRISM). Summarize by zone and save
+as CSV.
 }
 \details{
 The \href{https://prism.oregonstate.edu/}{Parameter-elevation Relationship on Independent Slopes Model (PRISM)} is a combined dataset consisting of
@@ -108,16 +109,18 @@ given by the \href{https://prism.oregonstate.edu/calendar/list.php}{update sched
 \subsection{Processing details}{
 \enumerate{
 \item The PRISM \href{https://prism.oregonstate.edu/calendar/list.php}{update schedule} is downloaded and
-processed to understand the most recently available date and variable
-available by version and date updated.
+processed in a data frame to understand the latest date and variable
+available, along with version and date updated.
 \item Any existing rasters in \code{dir_tif} are fetched based on a common naming
 structure for the raster file name (\verb{prism_daily_\{month\}-\{day\}.tif}) and
-layer names (\verb{\{date\}_\{variable\}_v\{version\}-\{date_updated\}}).
-\item Any missing or more recently updated variable-date PRISM rasters are
-downloaded and cropped to the bounding box (\code{bbox}) converting from
-band-interleaved (BIL) format to GeoTIFF. Layers are renamed to include extra
-information on \code{{version}} (1-8) and \code{{date_udpated}}.
-\item Zonal statistics are calculated on the cropped PRISM daily rasters.
+layer names (\verb{\{date\}_\{variable\}_v\{version\}-\{date_updated\}}) into a data
+frame.
+\item Based on intersecting above with the requested dates, any missing or more
+recently updated variable-date PRISM rasters are downloaded and cropped to
+the bounding box (\code{bbox}) and written as GeoTIFFs (*.tif). Layers are renamed
+to include extra information on \code{{version}} (1-8) and \code{{date_udpated}}.
+\item Summary statistics (based on \code{sf_zones} and \code{zonal_fun}) are calculated on
+the cropped PRISM daily rasters.
 }
 }
 
@@ -161,3 +164,4 @@ terra::plet(
 # show summary by zone
 d
 }
+\concept{read}
