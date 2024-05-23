@@ -32,19 +32,21 @@
 #'
 #' 1. The PRISM [update
 #' schedule](https://prism.oregonstate.edu/calendar/list.php) is downloaded and
-#' processed to understand the most recently available date and variable
-#' available by version and date updated.
+#' processed in a data frame to understand the latest date and variable
+#' available, along with version and date updated.
 #'
 #' 1. Any existing rasters in `dir_tif` are fetched based on a common naming
 #' structure for the raster file name (`prism_daily_{month}-{day}.tif`) and
-#' layer names (`{date}_{variable}_v{version}-{date_updated}`).
+#' layer names (`{date}_{variable}_v{version}-{date_updated}`) into a data
+#' frame.
 #'
-#' 1. Any missing or more recently updated variable-date PRISM rasters are
-#' downloaded and cropped to the bounding box (`bbox`) converting from
-#' band-interleaved (BIL) format to GeoTIFF. Layers are renamed to include extra
-#' information on `{version}` (1-8) and `{date_udpated}`.
+#' 1. Based on intersecting above with the requested dates, any missing or more
+#' recently updated variable-date PRISM rasters are downloaded and cropped to
+#' the bounding box (`bbox`) and written as GeoTIFFs (*.tif). Layers are renamed
+#' to include extra information on `{version}` (1-8) and `{date_udpated}`.
 #'
-#' 1. Zonal statistics are calculated on the cropped PRISM daily rasters.
+#' 1. Summary statistics (based on `sf_zones` and `zonal_fun`) are calculated on
+#' the cropped PRISM daily rasters.
 #'
 #' ### More on PRISM
 #'
@@ -96,8 +98,8 @@
 #' - `version`: PRISM version
 #' - `date_updated`: date of PRISM daily raster update
 #'
-#' @importFrom dplyr bind_rows case_when group_by mutate select summarise tibble
-#'   ungroup
+#' @importFrom dplyr any_of bind_rows case_when group_by mutate select summarise
+#'   tibble ungroup
 #' @importFrom fs dir_create dir_delete path_ext_remove
 #' @importFrom glue glue
 #' @importFrom here here
@@ -348,7 +350,7 @@ read_importprism <- function(
       sf::st_as_sf() |>
       sf::st_drop_geometry() |>
       tidyr::pivot_longer(
-        cols = -any_of(fld_zones), names_to = "lyr", values_to = zonal_fun)  |>
+        cols = -dplyr::any_of(fld_zones), names_to = "lyr", values_to = zonal_fun)  |>
       dplyr::mutate(
         date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
           as.Date(),
