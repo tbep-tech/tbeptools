@@ -358,8 +358,10 @@ read_importprism <- function(
         date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
           as.Date()) |>
       dplyr::select(-lyr)
+
     readr::write_csv(d_z, zonal_csv)
-    readr::read_csv(show_col_types = F)
+
+    readr::read_csv(d_z, show_col_types = F)
   }
 
   # variables ----
