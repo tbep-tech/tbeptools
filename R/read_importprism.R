@@ -1,7 +1,8 @@
 #' Import PRISM daily weather data
 #'
-#' Download and crop PRISM daily weather data. Summarize by zone and save as
-#' CSV.
+#' Download and crop the latest weather rasters from Parameter-elevation
+#' Relationship on Independent Slopes Model (PRISM). Summarize by zone and save
+#' as CSV.
 #'
 #' The [Parameter-elevation Relationship on Independent Slopes Model
 #' (PRISM)](https://prism.oregonstate.edu/) is a combined dataset consisting of
