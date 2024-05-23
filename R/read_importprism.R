@@ -361,7 +361,8 @@ read_importprism <- function(
 
     readr::write_csv(d_z, zonal_csv)
 
-    readr::read_csv(zonal_csv, show_col_types = F)
+    readr::read_csv(d_z, show_col_types = F)
+
   }
 
   # variables ----
