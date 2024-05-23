@@ -73,8 +73,9 @@ data frame with the following columns:
 - `date_updated`: date of PRISM daily raster update
 }
 \description{
-Download and crop PRISM daily weather data. Summarize by zone and save as
-CSV.
+Download and crop the latest weather rasters from Parameter-elevation
+Relationship on Independent Slopes Model (PRISM). Summarize by zone and save
+as CSV.
 }
 \details{
 The [Parameter-elevation Relationship on Independent Slopes Model
@@ -106,19 +107,21 @@ schedule](https://prism.oregonstate.edu/calendar/list.php):
 
 1. The PRISM [update
 schedule](https://prism.oregonstate.edu/calendar/list.php) is downloaded and
-processed to understand the most recently available date and variable
-available by version and date updated.
+processed in a data frame to understand the latest date and variable
+available, along with version and date updated.
 
 1. Any existing rasters in `dir_tif` are fetched based on a common naming
 structure for the raster file name (`prism_daily_{month}-{day}.tif`) and
-layer names (`{date}_{variable}_v{version}-{date_updated}`).
+layer names (`{date}_{variable}_v{version}-{date_updated}`) into a data
+frame.
 
-1. Any missing or more recently updated variable-date PRISM rasters are
-downloaded and cropped to the bounding box (`bbox`) converting from
-band-interleaved (BIL) format to GeoTIFF. Layers are renamed to include extra
-information on `{version}` (1-8) and `{date_udpated}`.
+1. Based on intersecting above with the requested dates, any missing or more
+recently updated variable-date PRISM rasters are downloaded and cropped to
+the bounding box (`bbox`) and written as GeoTIFFs (*.tif). Layers are renamed
+to include extra information on `{version}` (1-8) and `{date_udpated}`.
 
-1. Zonal statistics are calculated on the cropped PRISM daily rasters.
+1. Summary statistics (based on `sf_zones` and `zonal_fun`) are calculated on
+the cropped PRISM daily rasters.
 
 ### More on PRISM
 
@@ -158,3 +161,4 @@ terra::plet(
 # show summary by zone
 d
 }
+\concept{read}

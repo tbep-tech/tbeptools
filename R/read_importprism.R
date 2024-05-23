@@ -116,6 +116,8 @@
 #'
 #' @export
 #'
+#' @concept read
+#'
 #' @examples
 #' # setup output directory and table
 #' dir_tif   <- here::here("inst/prism")
@@ -218,23 +220,7 @@ read_importprism <- function(
   }
 
   get_done <- function(){
-
-    d_done <- dplyr::tibble(
-      path_tif = list.files(dir_tif, ".*\\.tif$", full.names = T) ) |>
-      dplyr::mutate(
-        lyr = purrr::map(path_tif, \(path_tif) terra::rast(path_tif) |> names() ) ) |>
-      tidyr::unnest(lyr) |>
-      dplyr::mutate(
-        date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
-          as.Date(),
-        md           = sprintf("%02d-%02d", lubridate::month(date), lubridate::day(date)),
-        variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
-        version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
-          as.integer(),
-        date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
-          as.Date()) |>
-      dplyr::arrange(md, date, variable, version) # order by: month-day, date, variable
-    d_done
+    read_prism_rasters(dir_tif)
   }
 
   get_todo <- function(){
