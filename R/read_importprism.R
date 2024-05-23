@@ -335,7 +335,34 @@ read_importprism <- function(
     return(T)
   }
 
-  # input variables ----
+  get_zonal <- function(){
+    d_z <- terra::zonal(
+      x     = r,
+      z     = terra::vect(
+        sf_zones |>
+          select(dplyr::all_of(fld_zones)) ),
+      fun   = zonal_fun,
+      exact = T,
+      na.rm = T,
+      as.polygons = T) |>
+      sf::st_as_sf() |>
+      sf::st_drop_geometry() |>
+      tidyr::pivot_longer(
+        cols = -any_of(fld_zones), names_to = "lyr", values_to = zonal_fun)  |>
+      dplyr::mutate(
+        date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
+          as.Date(),
+        variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
+        version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
+          as.integer(),
+        date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
+          as.Date()) |>
+      dplyr::select(-lyr)
+    readr::write_csv(d_z, zonal_csv)
+    readr::read_csv(show_col_types = F)
+  }
+
+  # variables ----
   crs_prism  = "+proj=longlat +datum=NAD83 +no_defs"
 
   # * bounding box for PRISM daily data trimming
@@ -349,7 +376,7 @@ read_importprism <- function(
     sf::st_as_sf() |>
     st_transform(crs_prism)
 
-  # regular expressions ----
+  # * regular expressions ----
   rx_tif    <- "prism_daily_([0-9]{2})-([0-9]{2}).tif"
   rx_lyr    <- "([-0-9]{10})_([A-z]+)_v([1-8]{1})-([-0-9]{10})"
 
@@ -375,7 +402,7 @@ read_importprism <- function(
     message(msg)
   }
 
-  # iterate over variables and dates, fetching and cropping PRISM rasters
+  # * iterate over variable-dates, fetching and cropping PRISM rasters ----
   d_todo |>
     select(var = variable, date, version, date_updated) |>
     pwalk(prism_get_var_date)
@@ -389,31 +416,8 @@ read_importprism <- function(
   if (verbose)
     message(glue::glue("Summarizing rasters by zone to csv"))
 
-  d_z <- terra::zonal(
-    x     = r,
-    z     = terra::vect(
-      sf_zones |>
-        select(dplyr::all_of(fld_zones)) ),
-    fun   = zonal_fun,
-    exact = T,
-    na.rm = T,
-    as.polygons = T) |>
-    sf::st_as_sf() |>
-    sf::st_drop_geometry() |>
-    tidyr::pivot_longer(
-      cols = -any_of(fld_zones), names_to = "lyr", values_to = zonal_fun)  |>
-    dplyr::mutate(
-      date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
-        as.Date(),
-      variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
-      version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
-        as.integer(),
-      date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
-        as.Date()) |>
-    dplyr::select(-lyr)
-  readr::write_csv(d_z, zonal_csv) # 24 MB
-
-  readr::read_csv(zonal_csv, show_col_types = F)
+  d_z <- get_zonal()
+  d_z
 }
 
 
