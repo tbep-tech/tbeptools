@@ -1,6 +1,7 @@
 #' Import PRISM daily weather data
 #'
-#' Download and crop PRISM daily weather data.
+#' Download and crop PRISM daily weather data. Summarize by zone and save as
+#' CSV.
 #'
 #' The [Parameter-elevation Relationship on Independent Slopes Model
 #' (PRISM)](https://prism.oregonstate.edu/) is a combined dataset consisting of
@@ -27,6 +28,24 @@
 #' - `provisional`: data is considered final but may be updated (previous 6 months)
 #' - `early`: data is preliminary and may be updated (this month)
 #'
+#' ### Processing details
+#'
+#' 1. The PRISM [update
+#' schedule](https://prism.oregonstate.edu/calendar/list.php) is downloaded and
+#' processed to understand the most recently available date and variable
+#' available by version and date updated.
+#'
+#' 1. Any existing rasters in `dir_tif` are fetched based on a common naming
+#' structure for the raster file name (`prism_daily_{month}-{day}.tif`) and
+#' layer names (`{date}_{variable}_v{version}-{date_updated}`).
+#'
+#' 1. Any missing or more recently updated variable-date PRISM rasters are
+#' downloaded and cropped to the bounding box (`bbox`) converting from
+#' band-interleaved (BIL) format to GeoTIFF. Layers are renamed to include extra
+#' information on `{version}` (1-8) and `{date_udpated}`.
+#'
+#' 1. Zonal statistics are calculated on the cropped PRISM daily rasters.
+#'
 #' ### More on PRISM
 #'
 #' For more on [Parameter-elevation Relationship on Independent Slopes Model
@@ -35,36 +54,47 @@
 #'  -   [PRISM dataset descriptions](https://prism.oregonstate.edu/documents/PRISM_datasets.pdf)
 #'  -   [PRISM download methods](https://prism.oregonstate.edu/downloads) information (FTP, web services)
 #'
-#' @param sf_zones spatial feature object ([`sf`]) with zones to extract zonal
-#'   statistics from PRISM daily weather data
-#' @param fld_zones unique field name in `sf_zones` to include in extracted
-#'   zonal statistics
-#' @param zonal_csv path to output of zonal statistics (`terra::zonal()`) as
-#'   table in CSV format
+#' @param vars character vector of PRISM variables to download and crop. The
+#'   default is `c("tmin", "tmax", "tdmean", "ppt")`. See Details for others and
+#'   details.
+#' @param date_beg defaults to the start of PRISM daily availability 1981-01-01.
+#' @param date_end defaults to today's date, but will be adjusted to the most
+#'   recently available data, per [update
+#'   schedule](https://prism.oregonstate.edu/calendar/list.php). CAUTION: If you
+#'   try to request the same date-variable in a given day, you will get an error
+#'   from the PRISM service with a message like "You have tried to download the
+#'   file PRISM_tdmean_stable_4kmD2_19810101_bil.zip more than twice in one day
+#'   (Pacific local time).  Note that repeated offenses may result in your IP
+#'   address being blocked."
+#' @param bbox bounding box of the spatial extent to crop PRISM daily rasters,
+#'   which could be bigger than `st_bbox(sf_zones)`.
 #' @param dir_tif directory path to store downloaded and cropped PRISM daily
 #'   rasters (as GeoTIFF) across years with file name of format
-#'   `prism_daily_%m-%d.tif`. The default path is
+#'   `prism_daily_{month}-{day}.tif`. The default path is
 #'   `fs::path_ext_remove(zonal_csv)`.  Date and version in the raster layers
 #'   will be compared with the [update
 #'   schedule](https://prism.oregonstate.edu/calendar/list.php) to determine if
 #'   it should be updated, otherwise will be skipped.
-#' @param vars character vector of PRISM variables to download and crop. The
-#'   default is `c("tmin", "tmax", "tdmean", "ppt")`. See Details for others and
-#'   details.
-#' @param bbox bounding box of the spatial extent to crop PRISM daily rasters,
-#'   which could be bigger than `st_bbox(sf_zones)`.
-#' @param date_beg defaults to the start of PRISM daily availability 1981-01-01.
-#' @param date_end defaults to today's date, but will be adjusted to the most
-#'   recently available data, per [update
-#'   schedule](https://prism.oregonstate.edu/calendar/list.php)
-#' @param redo logical whether to recalculate the zonal statistics. Defaults to
-#'   False.
-#' @param verbose logical whether to show informative messages on processing
+#' @param sf_zones spatial feature object ([`sf`]) with zones to extract zonal
+#'   statistics from PRISM daily weather data
+#' @param fld_zones character vector of unique field name(s) in `sf_zones` to
+#'   include in extracted zonal statistics
 #' @param zonal_fun function to apply to the `terra::zonal()` function. Defaults
-#'   to "mean".
+#'   to `"mean"`. Other options are `"min"`, `"max"`, `"sum"`, `"isNA"`, and
+#'   `"notNA"`.
+#' @param zonal_csv path to output of zonal statistics (`terra::zonal()`) as
+#'   table in CSV format
+#' @param redo_zonal logical whether to recalculate the zonal statistics.
+#'   Defaults to False.
+#' @param verbose logical whether to show informative messages on processing
 #'
 #' @return data frame with the following columns:
-#' - ...
+#' - `{fld_zones}` column(s) specified from input `sf_zones`
+#' - `{zonal_fun}`: value of input function (e.g. `"mean"`) summarizing raster to zone
+#' - `date`: date of PRISM daily raster
+#' - `variable`: PRISM variable
+#' - `version`: PRISM version
+#' - `date_updated`: date of PRISM daily raster update
 #'
 #' @importFrom dplyr bind_rows case_when group_by mutate select summarise tibble
 #'   ungroup
@@ -77,55 +107,68 @@
 #' @importFrom rvest html_node html_table read_html
 #' @importFrom sf st_as_sfc st_as_sf st_bbox st_crs
 #' @importFrom stringr str_replace
-#' @importFrom terra crs nlyr rast subset trim varnames writeRaster zonal
+#' @importFrom terra crs nlyr plet rast subset trim varnames writeRaster zonal
 #' @importFrom tidyr unnest pivot_longer
 #' @importFrom utils download.file
 #'
 #' @export
 #'
 #' @examples
-#' dir_tmp <- tempdir()
-#' tmp_csv <- file.path(dir_tmp, "prism.csv")
+#' # setup output directory and table
+#' dir_tif   <- here::here("inst/prism")
+#' zonal_csv <- file.path(dir_tif, "_zones.csv")
 #'
+#' # run function for Tampa Bay watersheds for first 3 days and 4 variables
 #' d <- read_importprism(
-#'   sf_zones  = tbsegshed,
-#'   fld_zones = "bay_segment",
-#'   zonal_csv = tmp_csv,
+#'   vars      = c("tmin", "tmax", "tdmean", "ppt"),
 #'   date_beg  = as.Date("1981-01-01"),
 #'   date_end  = as.Date("1981-01-03"),
-#'   verbose   = T)
+#'   dir_tif   = dir_tif,
+#'   sf_zones  = tbsegshed,
+#'   fld_zones = "bay_segment",
+#'   zonal_csv = zonal_csv)
 #'
+#' # show raster files, layers and plot
+#' tifs <- list.files(dir_tif, pattern = ".tif$", full.names = T)
+#' basename(tifs)
+#' r <- terra::rast(tifs[1])
+#' r
+#' names(r)
+#' terra::plet(
+#'   r[[3]],
+#'   main  = names(r)[3],
+#'   col   = "Spectral",
+#'   tiles = "CartoDB.DarkMatter")
+#'
+#' # show summary by zone
 #' d
 read_importprism <- function(
+    vars       = c("tmin", "tmax", "tdmean", "ppt"),
+    date_beg   = as.Date("1981-01-01"),
+    date_end   = Sys.Date(),
+    bbox       = sf::st_bbox(sf_zones),
+    dir_tif    = fs::path_ext_remove(zonal_csv),
     sf_zones,
     fld_zones,
+    zonal_fun  = "mean",
     zonal_csv,
-    zonal_fun = "mean",
-    bbox      = sf::st_bbox(sf_zones), # c(xmin = -82.9, ymin = 27.2, xmax = -81.7, ymax = 28.6),
-    dir_tif   = fs::path_ext_remove(zonal_csv),
-    vars      = c("tmin", "tmax", "tdmean", "ppt"),
-    date_beg  = as.Date("1981-01-01"),
-    date_end  = Sys.Date(),
-    redo      = F,
-    verbose   = F ){
+    redo_zonal = F,
+    verbose    = F ){
 
-  # TODO: apply zonal outputs to tbshed + tbsegshed
-  # terra::zonal()
-  # librarian::shelf(
-  #   dplyr, fs, glue, here, lubridate, purrr, sf, stringr, terra, tibble, tidyr)
+  # TODO: consider reading zonal_csv without fetching missing PRISM rasters
 
-  # zonal_csv <- here::here("../climate-change-indicators/data/prism.csv")
-  # dir_tif   <- here::here("../climate-change-indicators/data/prism")
+  # check input arguments ----
 
-  # https://services.nacse.org/prism/data/public/4km/ppt/20240512
-  # vars      <- c("tmin", "tmax", "tdmean", "ppt")
-  # prism_beg <- lubridate::date("1981-01-01")
-  # yesterday <- lubridate::today(tzone = "UTC") - lubridate::days(1)
-  # accommodate up to 12 hrs to publish yesterday
-  # yesterday_tz <- "Etc/GMT+12"
-  # yesterday <- lubridate::today(tzone = yesterday_tz) - lubridate::days(1)
-  # dates_all <- (prism_beg:(yesterday)) |> as.Date()
+  stopifnot("sf" %in% class(sf_zones))
+  stopifnot(fld_zones %in% names(sf_zones))
+  stopifnot(class(c(date_beg, date_end)) == "Date")
+  stopifnot(class(bbox) %in% c("bbox", "numeric"))
+  stopifnot(zonal_fun %in% c("mean", "min", "max", "sum", "isNA", "notNA"))
 
+  if (!dir.exists(dir_tif))
+    dir.create(dir_tif, recursive = T)
+
+  # helper functions ----
   get_updates <- function(){
     prism_beg   <- as.Date("1981-01-01")
     url_udpates <- "https://prism.oregonstate.edu/calendar/list.php"
@@ -170,180 +213,42 @@ read_importprism <- function(
 
     d_updates
   }
-  d_updates <- get_updates()
 
-  # OLD d_done ----
-  #
-  #   # dates_all <- (date_beg:date_end) |> as.Date()
-  #   dates_all <- d_updates$date_obs
-  #   rx_tif    <- "prism_daily_([0-9]{2})-([0-9]{2}).tif"
-  #   rx_lyr    <- "PRISM_(.*)_(.*)_(.*)_(.*)_bil"
-  #
-  #   d_done <- tibble::tibble(
-  #     path_tif = list.files(dir_tif, ".*\\.tif$", full.names = T),
-  #     tif      = basename(path_tif),
-  #     tif_md   = stringr::str_replace(tif, rx_tif, "\\1-\\2"),
-  #     tif_mo   = stringr::str_replace(tif, rx_tif, "\\1"),
-  #     tif_day  = stringr::str_replace(tif, rx_tif, "\\2") ) |>
-  #     dplyr::mutate(
-  #       lyr = purrr::map(path_tif, \(path_tif) terra::rast(path_tif) |> names() ) ) |>
-  #     tidyr::unnest(lyr) |>
-  #     dplyr::mutate(
-  #       lyr_var       = stringr::str_replace(lyr, rx_lyr, "\\1"),
-  #       lyr_stability = stringr::str_replace(lyr, rx_lyr, "\\2"),
-  #       lyr_scale     = stringr::str_replace(lyr, rx_lyr, "\\3"),
-  #       lyr_date      = stringr::str_replace(lyr, rx_lyr, "\\4") |>
-  #         as.Date(format = "%Y%m%d")) |>
-  #     dplyr::arrange(tif_md, lyr_date, lyr_var) # order by: month-day, date, variable
+  get_done <- function(){
 
-  # DEBUG: rename PRISM layers {date}_{var}_v{ver} ----
-  #   librarian::shelf(
-  #     dplyr, fs, glue, here, lubridate, purrr, sf, stringr, terra, tibble, tidyr)
-  #
-  #   d_done2 <- d_done |>
-  #     left_join(
-  #       d_updates |>
-  #         arrange(date_obs),
-  #       by = c("lyr_date" = "date_obs")) |>
-  #     mutate(
-  #       lyr_yr  = year(lyr_date),
-  #       lyr_new = glue("{lyr_date}_{lyr_var}_v{ver}")) |>
-  #     arrange(lyr_new) |>
-  #     group_by(path_tif) |>
-  #     nest()
-  #
-  #
-  #   d_done2 |>
-  #     ungroup() |>
-  #     dplyr::slice(-1) |>
-  #     pwalk(\(path_tif, data){
-  #       r <- terra::rast(path_tif)
-  #       x <- data
-  #
-  #       stopifnot(nlyr(r) == length(x$lyr_new))
-  #       x <- x |>
-  #         left_join(
-  #           tibble(
-  #             name_r = names(r),
-  #             i_r    = 1:terra::nlyr(r)),
-  #           by = c("lyr" = "name_r") )
-  #       stopifnot(any(!is.na(x$i_r)))
-  #
-  #       r2 <- terra::subset(r, x$i_r)
-  #       names(r2) <- x$lyr_new
-  #
-  #       tmp <- tempfile(fileext = ".tif")
-  #       terra::writeRaster(
-  #         r2, tmp, gdal = c("COMPRESS=DEFLATE"))
-  #       fs::file_move(tmp, path_tif)
-  #     })
+    d_done <- dplyr::tibble(
+      path_tif = list.files(dir_tif, ".*\\.tif$", full.names = T) ) |>
+      dplyr::mutate(
+        lyr = purrr::map(path_tif, \(path_tif) terra::rast(path_tif) |> names() ) ) |>
+      tidyr::unnest(lyr) |>
+      dplyr::mutate(
+        date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
+          as.Date(),
+        md           = sprintf("%02d-%02d", lubridate::month(date), lubridate::day(date)),
+        variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
+        version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
+          as.integer(),
+        date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
+          as.Date()) |>
+      dplyr::arrange(md, date, variable, version) # order by: month-day, date, variable
+    d_done
+  }
 
-  # DEBUG: rename PRISM layers {date}_{var}_v{ver}-{date_updated} ----
-  # librarian::shelf(
-  #   dplyr, fs, glue, here, lubridate, purrr, sf, stringr, terra, tibble, tidyr)
-  #
-  # d_done2 <- d_done |>
-  #   left_join(
-  #     d_updates,
-  #     by = c("date","version")) |>
-  #   mutate(
-  #     lyr_new = glue("{date}_{variable}_v{version}-{date_updated}")) |>
-  #   arrange(lyr_new) |>
-  #   group_by(path_tif) |>
-  #   nest()
-  #
-  # d_done2 |>
-  #   ungroup() |>
-  #   # dplyr::slice(-1) |>
-  #   pwalk(\(path_tif, data){
-  #     r <- terra::rast(path_tif)
-  #     x <- data
-  #
-  #     stopifnot(nlyr(r) == length(x$lyr_new))
-  #     x <- x |>
-  #       left_join(
-  #         tibble(
-  #           name_r = names(r),
-  #           i_r    = 1:terra::nlyr(r)),
-  #         by = c("lyr" = "name_r") )
-  #     stopifnot(any(!is.na(x$i_r)))
-  #
-  #     r2 <- terra::subset(r, x$i_r)
-  #     names(r2) <- x$lyr_new
-  #
-  #     tmp <- tempfile(fileext = ".tif")
-  #     terra::writeRaster(
-  #       r2, tmp, gdal = c("COMPRESS=DEFLATE"))
-  #     fs::file_move(tmp, path_tif)
-  #   })
-
-  # d_done ----
-
-  rx_tif    <- "prism_daily_([0-9]{2})-([0-9]{2}).tif"
-  rx_lyr    <- "([-0-9]{10})_([A-z]+)_v([1-8]{1})-([-0-9]{10})"
-
-  d_done <- dplyr::tibble(
-    path_tif = list.files(dir_tif, ".*\\.tif$", full.names = T) ) |>
-    dplyr::mutate(
-      lyr = purrr::map(path_tif, \(path_tif) terra::rast(path_tif) |> names() ) ) |>
-    tidyr::unnest(lyr) |>
-    dplyr::mutate(
-      date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
-        as.Date(),
-      md           = sprintf("%02d-%02d", lubridate::month(date), lubridate::day(date)),
-      variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
-      version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
-        as.integer(),
-      date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
-        as.Date()) |>
-    dplyr::arrange(md, date, variable, version) # order by: month-day, date, variable
-
-  # OLD d_todo ----
-  # # define expected stability by date
-  # early_end  <- lubridate::today(tzone = "UTC") - lubridate::days(1)
-  # early_beg  <- lubridate::ym(glue::glue("{lubridate::year(early_end)}-{lubridate::month(early_end)}"))
-  # prov_end   <- early_beg - days(1)
-  # prov_beg   <- early_beg - months(6)
-  # stable_end <- prov_beg - days(1)
-  # stable_beg <- prism_beg
-  # # early:       2024-05-01 to 2024-05-06 (this month)
-  # # provisional: 2023-11-01	to 2024-04-30 (previous 6 months)
-  # # stable:      1981-01-01 to 2023-10-31 (before 6 months)
-  #
-  # # 2023-11-01
-  #
-  # d_todo <- tibble::tibble(
-  #   lyr_var = vars |> sort()) |>
-  #   dplyr::cross_join(
-  #     tibble::tibble(
-  #       lyr_date = dates_all) |>
-  #       dplyr::mutate(
-  #         lyr_stability = cut(
-  #           lyr_date,
-  #           breaks = c(stable_beg, stable_end, prov_beg, prov_end, early_beg, early_end),
-  #           labels = c("stable", "stable", "provisional", "provisional", "early"),
-  #           include.lowest = T) ) ) |>
-  #   dplyr::anti_join(
-  #     d_done |>
-  #       dplyr::select(lyr_date, lyr_var, lyr_stability) |>
-  #       dplyr::arrange(lyr_date, lyr_var, lyr_stability),
-  #     by = c("lyr_date", "lyr_var", "lyr_stability")) |>
-  #   dplyr::arrange(lyr_date, lyr_var, lyr_stability)
-
-  # d_todo ----
-
-  d_todo <- d_updates |>
-    filter(
-      date >= !!date_beg,
-      date <= !!date_end) |>
-    cross_join(
-      tibble(
-        variable = vars)) |>
-    dplyr::anti_join(
-      d_done |>
-        dplyr::select(date, variable, version),
-      by = c("date", "variable", "version")) |>
-    dplyr::arrange(date, variable, version)
+  get_todo <- function(){
+    d_todo <- d_updates |>
+      filter(
+        date >= !!date_beg,
+        date <= !!date_end) |>
+      cross_join(
+        tibble(
+          variable = vars)) |>
+      dplyr::anti_join(
+        d_done |>
+          dplyr::select(date, variable, version),
+        by = c("date", "variable", "version")) |>
+      dplyr::arrange(date, variable, version)
+    d_todo
+  }
 
   get_lyrs <- function(r){
     tibble::tibble(
@@ -359,30 +264,11 @@ read_importprism <- function(
           as.Date())
   }
 
-  crs_proj  = "+proj=longlat +datum=NAD83 +no_defs"
-  ply_bb <- sf::st_bbox(bbox, crs = "epsg:4326") |>
-    sf::st_as_sfc() |>
-    sf::st_as_sf() |>
-    st_transform(crs_proj)
-
-  prism_get_daily <- function(
+  prism_get_var_date <- function(
     var, date, version, date_updated){
-    # dir_tif = here::here("data/prism"),
-    # crs_proj  = "+proj=longlat +datum=NAD83 +no_defs",
-    # bb        = c(xmin = -82.9, ymin = 27.2, xmax = -81.7, ymax = 28.6)){
-    # TODO: + sf_aoi spatial feature area of interest. Expecting `sf::st_crs(tbeptools::tbshed) == sf::st_crs(4326)`
-
-    # DEBUG
-    # var          = "ppt"
-    # date         = as.Date("2024-05-13")
-    # version      = 2
-    # date_updated = as.Date("2024-05-18")
 
     u <- sprintf("https://services.nacse.org/prism/data/public/4km/%s/%s", var, format(date, "%Y%m%d"))
-    # https://services.nacse.org/prism/data/public/4km/ppt/20231211
-    # https://services.nacse.org/prism/data/public/4km/tdmean/20231211
 
-    # date = as.Date("1981-01-01"); var = "tdmean"
     z <- glue::glue("{dir_tif}/temp_{date}_{var}.zip")
     dir_z <- fs::path_ext_remove(z)
 
@@ -402,11 +288,10 @@ read_importprism <- function(
     unlink(z)
 
     r_new <- list.files(dir_z, "PRISM_.*_bil\\.bil$", full.names = T) |>
-      # file.exists()
       terra::rast() |>
       terra::crop(ply_bb, mask = T, touches = T) |>
       terra::trim()
-    terra::crs(r_new) <- crs_proj
+    terra::crs(r_new) <- crs_prism
 
     names(r_new) <- glue::glue("{date}_{var}_v{version}-{date_updated}")
     terra::varnames(r_new) <- ""
@@ -450,31 +335,64 @@ read_importprism <- function(
     return(T)
   }
 
-  msg <- ifelse(
-    nrow(d_todo) > 0,
-    glue::glue("read_importprism(): {nrow(d_todo)} variable-dates {paste(range(d_todo$date), collapse=' to ')} to download and crop "),
-    glue::glue("read_importprism(): `dir_tif` already has all available data {date_beg} to {date_end}"))
-  if (verbose)
-    message(msg)
+  # input variables ----
+  crs_prism  = "+proj=longlat +datum=NAD83 +no_defs"
 
-  # browser()
+  # * bounding box for PRISM daily data trimming
+  if (class(bbox) == "numeric"){
+    ply_bb <- sf::st_bbox(bbox, crs = "epsg:4326")
+  } else {
+    ply_bb <- bbox
+  }
+  ply_bb <- ply_bb |>
+    sf::st_as_sfc() |>
+    sf::st_as_sf() |>
+    st_transform(crs_prism)
+
+  # regular expressions ----
+  rx_tif    <- "prism_daily_([0-9]{2})-([0-9]{2}).tif"
+  rx_lyr    <- "([-0-9]{10})_([A-z]+)_v([1-8]{1})-([-0-9]{10})"
+
+  # evaluate requested, updated, done and todo PRISM rasters ----
+  d_req <- dplyr::tibble(
+    date = as.Date(date_beg:date_end) ) |>
+    dplyr::cross_join(
+      dplyr::tibble(
+        variable = vars))
+  d_updates <- get_updates()
+  d_done    <- get_done()
+  d_todo    <- get_todo()
+
+  if (verbose){
+    msg <- ifelse(
+      nrow(d_todo) > 0,
+      glue::glue(
+        "Of {nrow(d_req)} variable-dates requested, {nrow(d_todo)} are newer or
+           missing so will be downloaded and cropped to the bounding box."),
+      glue::glue(
+        "All {nrow(d_req)} variable-dates requested already exist in `dir_tif`
+           and are up-to-date."))
+    message(msg)
+  }
+
+  # iterate over variables and dates, fetching and cropping PRISM rasters
   d_todo |>
     select(var = variable, date, version, date_updated) |>
-    pwalk(prism_get_daily)
+    pwalk(prism_get_var_date)
 
-  # TODO: return zonal stats ----
+  # summarize rasters by zone ----
   tifs <- list.files(dir_tif, ".*\\.tif$", full.names = T)
   r <- rast(tifs)
-  # mapview::mapView(tbeptools::tbsegshed) +
-  #   mapview::mapView(tbeptools::tbshed)
 
-
-  # TODO: skip zonal stats on already done
+  # TODO: skip zonal stats on already done if redo_zonal = F
   # TODO: consider parquet format (with duckdb) or compressed since 24 MB
+  if (verbose)
+    message(glue::glue("Summarizing rasters by zone to csv"))
+
   d_z <- terra::zonal(
     x     = r,
     z     = terra::vect(
-      sf_zonal |>
+      sf_zones |>
         select(dplyr::all_of(fld_zones)) ),
     fun   = zonal_fun,
     exact = T,
@@ -495,7 +413,7 @@ read_importprism <- function(
     dplyr::select(-lyr)
   readr::write_csv(d_z, zonal_csv) # 24 MB
 
-  readr::read_csv(zonal_csv)
+  readr::read_csv(zonal_csv, show_col_types = F)
 }
 
 
