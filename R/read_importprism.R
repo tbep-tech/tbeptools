@@ -12,11 +12,11 @@
 #' ### Variables
 #'
 #' The available variables (`vars`) are:
-#' - `tmin`: minimum temperature
-#' - `tmax`: maximum temperature
-#' - `tmean`: mean temperature (`tmean = mean(tmin, tmax)`)
-#' - `tdmean`: mean dew point temperature
-#' - `ppt`: total precipitation (rain and snow)
+#' - `tmin`: minimum temperature (ºC)
+#' - `tmax`: maximum temperature (ºC)
+#' - `tmean`: mean temperature (ºC; `tmean = mean(tmin, tmax)`)
+#' - `tdmean`: mean dew point temperature (ºC)
+#' - `ppt`: total precipitation (mm; rain and snow)
 #' - `vpdmin`: daily minimum vapor pressure deficit
 #' - `vpdmax`: daily maximum vapor pressure deficit
 #'
