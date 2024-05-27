@@ -39,9 +39,6 @@
 #' dir_tif <- here::here("inst/prism")
 #' read_prism_rasters(dir_tif)
 read_prism_rasters <- function(dir_tif){
-  # read a PRISM tif file
-  # tif: path to a PRISM tif file
-  # return: a raster object
 
   rx_lyr    <- "([-0-9]{10})_([A-z]+)_v([1-8]{1})-([-0-9]{10})"
 
