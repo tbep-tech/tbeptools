@@ -329,15 +329,16 @@ read_importprism <- function(
       x     = r,
       z     = terra::vect(
         sf_zones |>
-          select(dplyr::all_of(fld_zones)) ),
+          dplyr::select(dplyr::all_of(fld_zones)) ),
       fun   = zonal_fun,
       exact = T,
       na.rm = T,
       as.polygons = T) |>
-      sf::st_as_sf() |>
       sf::st_drop_geometry() |>
       tidyr::pivot_longer(
-        cols = -dplyr::any_of(fld_zones), names_to = "lyr", values_to = zonal_fun)  |>
+        cols      = -dplyr::any_of(fld_zones),
+        names_to  = "lyr",
+        values_to = zonal_fun)  |>
       dplyr::mutate(
         date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
           as.Date(),
