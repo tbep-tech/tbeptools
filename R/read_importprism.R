@@ -334,6 +334,7 @@ read_importprism <- function(
       exact = T,
       na.rm = T,
       as.polygons = T) |>
+      sf::st_as_sf() |>
       sf::st_drop_geometry() |>
       tidyr::pivot_longer(
         cols      = -dplyr::any_of(fld_zones),
