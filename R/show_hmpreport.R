@@ -6,6 +6,7 @@
 #' @param subtacres \code{data.frame} for subtidal cover of habitat types for each year of data
 #' @param hmptrgs \code{data.frame} of Habitat Master Plan targets and goals
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
+#' @param twocol logical indicating only two colors show if target or goals are met and arrows indicate the likelihood of attaining targets or goals, see details
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
 #' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types, use \code{NULL} to suppress
@@ -16,7 +17,7 @@
 #'
 #' @return A \code{\link[ggplot2]{ggplot2}} object showing overall progress in attaining Habitat Master Plan targets or goals.
 #'
-#' @details Colors indicate target or goal not met, trending below (red), target or goal met, trending below (yellow), target or goal not met, trending above (light green), and target or goal  met, trending above (green).  Numbers in cell show the proportion of the target or goal met at each year where data are available.
+#' @details If \code{twocol = F}, colors indicate both if the target/goal is met and the likelihood of attaining the target/goal by 2030/2050.  Red indicates the target/goal is not met and will likely not be met by 2030/2050 (trending below target/goal), yellow indicates the target/goal is met although it likely will not be met by 2030/2050 (trending below target/goal), light green indicates the target/goal is not met although it will likely be met by 2030/2050 (trending above target/goal), and green indicates the target/goal is met and will likely be met by 2030/2050 (trending above target/goal).  Numbers in each cell show the proportion of the target or goal met at each year where data are available.  If \code{twocol = T}, the colors indicate if the goal is met (green) or not met (red) and the arrows in each cell indicate if the goal is likely to be met (up) or not (down) by 2030/2050.  In both cases, the colors and trends are relative to the 2030 targets or 2050 goals using the \code{typ} argument.
 #'
 #' The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.
 #'
@@ -40,7 +41,7 @@
 #'
 #' # select only subtidal
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = 2.5, xang = 25, family = NA, width = NULL, height = NULL){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = 2.5, xang = 25, family = NA, width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
   typ <- match.arg(typ, choices = c('targets', 'goals'))
@@ -112,16 +113,38 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal'
 
   }
 
-  toplo <- toplo %>%
-    dplyr::mutate(
-      fillv = factor(fillv, levels = c("-1", "0", "0.5", "1"), labels = leglabs)
-    )
+  if(twocol){
+
+    cols <- cols[c(1, 4)]
+    leglabs <- unique(gsub('\\,\ntrending\\sbelow$|\\,\ntrending\\sabove$', '', leglabs))
+
+    toplo <- toplo %>%
+      dplyr::mutate(
+        shapv = dplyr::case_when(
+          fillv %in% c('-1', '0') ~ 'Trending below',
+          fillv %in% c('0.5', '1') ~ 'Trending above'
+        ),
+        fillv = dplyr::case_when(
+          fillv %in% c('0', '1') ~ '1',
+          fillv %in% c('-1', '0.5') ~ '-1'
+        ),
+        fillv = factor(fillv, levels = c('-1', '1'), labels = leglabs)
+      )
+
+  } else {
+
+    toplo <- toplo %>%
+      dplyr::mutate(
+        fillv = factor(fillv, levels = c("-1", "0", "0.5", "1"), labels = leglabs)
+      )
+
+  }
 
   thm <- ggplot2::theme_bw(base_family = family) +
     ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
       text = element_text(family = family),
-      axis.text.x = ggplot2::element_text(angle = xang, hjust = 0, size = 8, family = family),
+      axis.text.x = ggplot2::element_text(angle = xang, hjust = 0, size = 8),
       plot.margin = ggplot2::margin(0, 5, 14, 2, "pt")
     )
 
@@ -159,9 +182,15 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, strata = c('Subtidal'
       clip = "off"
     )
 
-  if(!is.null(text))
+  if(!is.null(text) & !twocol)
     p <- p +
       ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = text, family = family)
+
+  if(twocol)
+    p <- p +
+      ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv), fill = 'black', size = 1.5, family = family) +
+      ggplot2::scale_shape_manual(values = c('Trending below' = 25, 'Trending above' = 24)) +
+      ggplot2::labs(shape = NULL)
 
   return(p)
 

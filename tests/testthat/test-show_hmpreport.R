@@ -18,3 +18,10 @@ test_that("Checking show_hmpreport class, ycollapse = T", {
   expect_is(result, 'ggplot')
 
 })
+
+test_that("Checking show_hmpreport class, twocol = T", {
+
+  result <- show_hmpreport(acres, subtacres, hmptrgs, typ = 'targets', twocol = T)
+  expect_is(result, 'ggplot')
+
+})
