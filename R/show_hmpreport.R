@@ -9,7 +9,7 @@
 #' @param twocol logical indicating only two colors show if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
-#' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types, use \code{NULL} to suppress
+#' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbols if \code{twocol = T}, use \code{NULL} to suppress
 #' @param xang numeric for angle of habitat labels on the x-axis (top)
 #' @param family optional chr string indicating font family for text labels
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
@@ -186,9 +186,8 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
     p <- p +
       ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = text, family = family)
 
-  if(twocol)
+  if(!is.null(text) & twocol)
     p <- p +
-      # ggplot2::annotate('text', x = 1, y = 2, label = sprintf("\u2191"), size = 8)
       ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv), size = 3, color = 'black', fill = 'black', alpha = 0) +
       ggplot2::geom_text(data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
                          label = '+', size = text + 2.5) +

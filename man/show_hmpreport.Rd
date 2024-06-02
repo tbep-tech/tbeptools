@@ -34,7 +34,7 @@ show_hmpreport(
 
 \item{ycollapse}{logical indicating if the y-axis is collapsed to year with data, see details}
 
-\item{text}{numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types, use \code{NULL} to suppress}
+\item{text}{numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbols if \code{twocol = T}, use \code{NULL} to suppress}
 
 \item{xang}{numeric for angle of habitat labels on the x-axis (top)}
 
