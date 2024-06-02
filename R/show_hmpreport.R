@@ -6,7 +6,7 @@
 #' @param subtacres \code{data.frame} for subtidal cover of habitat types for each year of data
 #' @param hmptrgs \code{data.frame} of Habitat Master Plan targets and goals
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
-#' @param twocol logical indicating only two colors show if target or goals are met and arrows indicate the likelihood of attaining targets or goals, see details
+#' @param twocol logical indicating only two colors show if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
 #' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types, use \code{NULL} to suppress
@@ -17,7 +17,7 @@
 #'
 #' @return A \code{\link[ggplot2]{ggplot2}} object showing overall progress in attaining Habitat Master Plan targets or goals.
 #'
-#' @details If \code{twocol = F}, colors indicate both if the target/goal is met and the likelihood of attaining the target/goal by 2030/2050.  Red indicates the target/goal is not met and will likely not be met by 2030/2050 (trending below target/goal), yellow indicates the target/goal is met although it likely will not be met by 2030/2050 (trending below target/goal), light green indicates the target/goal is not met although it will likely be met by 2030/2050 (trending above target/goal), and green indicates the target/goal is met and will likely be met by 2030/2050 (trending above target/goal).  Numbers in each cell show the proportion of the target or goal met at each year where data are available.  If \code{twocol = T}, the colors indicate if the goal is met (green) or not met (red) and the arrows in each cell indicate if the goal is likely to be met (up) or not (down) by 2030/2050.  In both cases, the colors and trends are relative to the 2030 targets or 2050 goals using the \code{typ} argument.
+#' @details If \code{twocol = F}, colors indicate both if the target/goal is met and the likelihood of attaining the target/goal by 2030/2050.  Red indicates the target/goal is not met and will likely not be met by 2030/2050 (trending below target/goal), yellow indicates the target/goal is met although it likely will not be met by 2030/2050 (trending below target/goal), light green indicates the target/goal is not met although it will likely be met by 2030/2050 (trending above target/goal), and green indicates the target/goal is met and will likely be met by 2030/2050 (trending above target/goal).  Numbers in each cell show the proportion of the target or goal met at each year where data are available.  If \code{twocol = T}, the colors indicate if the goal is met (green) or not met (red) and the symbols in each cell indicate if the goal is likely to be met (+) or not (-) by 2030/2050.  In both cases, the colors and trends are relative to the 2030 targets or 2050 goals using the \code{typ} argument.
 #'
 #' The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan.
 #'
@@ -188,8 +188,14 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
   if(twocol)
     p <- p +
-      ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv), fill = 'black', size = 1.5, family = family) +
+      # ggplot2::annotate('text', x = 1, y = 2, label = sprintf("\u2191"), size = 8)
+      ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv), size = 3, color = 'black', fill = 'black', alpha = 0) +
+      ggplot2::geom_text(data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
+                         label = '+', size = text + 2.5) +
+      ggplot2::geom_text(data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending below'),
+                       label = '-', size = text + 2.5) +
       ggplot2::scale_shape_manual(values = c('Trending below' = 25, 'Trending above' = 24)) +
+      ggplot2::guides(shape = ggplot2::guide_legend(override.aes = list(shape = c('+', '-'), alpha = 1, size = text + 2.5))) +
       ggplot2::labs(shape = NULL)
 
   return(p)

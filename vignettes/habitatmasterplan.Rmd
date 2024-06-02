@@ -139,7 +139,7 @@ The text showing the proportion of the target or goal met each year can be suppr
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', text = NULL)
 ```
 
-An alternative form of the report card can be returned where the attainment of targets or goals and the likelihood of attainment are shown differently using colors and shapes, respectively.  This is plotted using `twocol = T`, where red shows the target or goal is not met, green shows the target or goal is met, an up arrow shows the target or goal is likely to be met, and a down arrow shows the target or goal is not likely to be met.
+An alternative form of the report card can be returned where the attainment of targets or goals and the likelihood of attainment are shown differently using colors and shapes, respectively.  This is plotted using `twocol = T`, where red shows the target or goal is not met, green shows the target or goal is met, a plus symbol shows the target or goal is likely to be met, and a negative symbols shows the target or goal is not likely to be met.
 
 ```{r, fig.height = 8, fig.width = 8}
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', twocol = T)
