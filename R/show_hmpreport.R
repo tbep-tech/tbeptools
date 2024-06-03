@@ -188,6 +188,26 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
   if(!is.null(text) & twocol)
     p <- p +
+      # ggplot2::geom_segment(
+      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
+      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) - 0.15, yend = as.numeric(yearfac) + 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
+      #   color = 'black', size = 3
+      # ) +
+      # ggplot2::geom_segment(
+      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
+      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) - 0.15, yend = as.numeric(yearfac) + 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
+      #   color = 'white', size = 1
+      # ) +
+      # ggplot2::geom_segment(
+      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending below'),
+      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) + 0.15, yend = as.numeric(yearfac) - 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
+      #   color = 'black', size = 3
+      # ) +
+      # ggplot2::geom_segment(
+      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending below'),
+      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) + 0.15, yend = as.numeric(yearfac) - 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
+      #   color = 'white', size = 1
+      # )
       ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv), size = 3, color = 'black', fill = 'black', alpha = 0) +
       ggplot2::geom_text(data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
                          label = '+', size = text + 2.5) +
