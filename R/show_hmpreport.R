@@ -158,8 +158,24 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
   xvec <- cumsum(xvec) + 0.5
   xvec <- xvec[-length(xvec)]
 
-  p <- ggplot2::ggplot(toplo, aes(y = yearfac, x = metric)) +
-    ggplot2::geom_tile(ggplot2::aes(fill = fillv), color = 'black') +
+  p <- ggplot2::ggplot(toplo, aes(y = yearfac, x = metric))
+
+  if(!twocol)
+    p <- p +
+      ggplot2::geom_tile(ggplot2::aes(fill = fillv), color = 'black')
+
+  if(!is.null(text) & !twocol)
+    p <- p +
+      ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = text, family = family)
+
+  if(twocol)
+    p <- p  +
+      ggplot2::geom_tile(fill = NA, color = NA) +
+      ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv, fill = fillv), color = 'black', size = 5) +
+      ggplot2::scale_shape_manual(values = c('Trending below' = 25, 'Trending above' = 24)) +
+      ggplot2::guides(fill = ggplot2::guide_legend(override.aes = list(color = cols, shape = 15, size = 5)))
+
+  p <- p +
     ggplot2::scale_y_discrete(expand = c(0, 0)) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
     ggplot2::scale_fill_manual(
@@ -174,48 +190,14 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       x = NULL,
       y = NULL,
       fill = NULL,
-      title = ttl
+      title = ttl,
+      shape = NULL
     ) +
     ggplot2::annotate('text', x = botlabs, y = 0.5, vjust = 1.5, label = levels(strata), size = 3, family = family) +
     ggplot2::coord_cartesian(
       ylim = c(max(toplo$year) + 1, min(toplo$year)) - 0.5,
       clip = "off"
     )
-
-  if(!is.null(text) & !twocol)
-    p <- p +
-      ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = text, family = family)
-
-  if(!is.null(text) & twocol)
-    p <- p +
-      # ggplot2::geom_segment(
-      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
-      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) - 0.15, yend = as.numeric(yearfac) + 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
-      #   color = 'black', size = 3
-      # ) +
-      # ggplot2::geom_segment(
-      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
-      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) - 0.15, yend = as.numeric(yearfac) + 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
-      #   color = 'white', size = 1
-      # ) +
-      # ggplot2::geom_segment(
-      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending below'),
-      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) + 0.15, yend = as.numeric(yearfac) - 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
-      #   color = 'black', size = 3
-      # ) +
-      # ggplot2::geom_segment(
-      #   data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending below'),
-      #   ggplot2::aes(x = metric, xend = metric, y = as.numeric(yearfac) + 0.15, yend = as.numeric(yearfac) - 0.15), lineend = 'round', linejoin = 'mitre', arrow = arrow(length = unit(0.1, 'inches')),
-      #   color = 'white', size = 1
-      # )
-      ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv), size = 3, color = 'black', fill = 'black', alpha = 0) +
-      ggplot2::geom_text(data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending above'),
-                         label = '+', size = text + 2.5) +
-      ggplot2::geom_text(data = na.omit(toplo) %>% dplyr::filter(shapv == 'Trending below'),
-                       label = '-', size = text + 2.5) +
-      ggplot2::scale_shape_manual(values = c('Trending below' = 25, 'Trending above' = 24)) +
-      ggplot2::guides(shape = ggplot2::guide_legend(override.aes = list(shape = c('+', '-'), alpha = 1, size = text + 2.5))) +
-      ggplot2::labs(shape = NULL)
 
   return(p)
 
