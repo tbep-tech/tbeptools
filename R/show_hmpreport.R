@@ -162,28 +162,155 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
   if(!twocol)
     p <- p +
-      ggplot2::geom_tile(ggplot2::aes(fill = fillv), color = 'black')
+      ggplot2::geom_tile(ggplot2::aes(fill = fillv), color = 'black') +
+      ggplot2::scale_fill_manual(
+        values = cols,
+        labels = leglabs,
+        breaks = leglabs,
+        na.value = 'white'
+      )
 
   if(!is.null(text) & !twocol)
     p <- p +
       ggplot2::geom_text(data = na.omit(toplo), ggplot2::aes(label = textv), size = text, family = family)
 
-  if(twocol)
-    p <- p  +
+  if(twocol){
+
+    # Custom arrow grob function up
+    my_custom_grob_up <- function(x, y, size, color) {
+      length <- grid::unit(size, "mm")  # Fixed length
+      dx <- length * cos(pi / 4)  # x-component of length at 45 degrees
+      dy <- length * sin(pi / 4)  # y-component of length at 45 degrees
+
+      grid::segmentsGrob(
+        x0 = grid::unit(x, "npc") - dx, y0 = grid::unit(y, "npc") - dy,
+        x1 = grid::unit(x, "npc") + dx, y1 = grid::unit(y, "npc") + dy,
+        gp = grid::gpar(col = color, fill = color, lwd = 4),
+        arrow = grid::arrow(type = "open", length = grid::unit(size, "mm"), angle = 45)
+      )
+    }
+
+    geom_custom_up <- function(mapping = NULL, data = NULL, stat = "identity",
+                               position = "identity", na.rm = FALSE, show.legend = NA,
+                               inherit.aes = TRUE, ...) {
+      ggplot2::layer(
+        geom = GeomCustomUp,
+        mapping = mapping,
+        data = data,
+        stat = stat,
+        position = position,
+        show.legend = show.legend,
+        inherit.aes = inherit.aes,
+        params = list(na.rm = na.rm, ...)
+      )
+    }
+
+    GeomCustomUp <- ggplot2::ggproto("GeomCustom", Geom,
+      required_aes = c("x", "y"),
+      default_aes = ggplot2::aes(size = 3, color = "black"),
+      draw_panel = function(data, panel_scales, coord) {
+        coords <- coord$transform(data, panel_scales)
+        grobs <- mapply(my_custom_grob_up, coords$x, coords$y, coords$size, coords$colour, SIMPLIFY = FALSE)
+        grid::grobTree(do.call(gList, grobs))
+      },
+      draw_key = draw_key_point
+    )
+
+    # Custom arrow grob function down
+    my_custom_grob_down <- function(x, y, size, color) {
+      length <- grid::unit(size, "mm")  # Fixed length
+      dx <- length * cos(pi / 4)  # x-component of length at 45 degrees
+      dy <- length * sin(pi / 4)  # y-component of length at 45 degrees
+
+      grid::segmentsGrob(
+        x0 = grid::unit(x, "npc") - dx, y0 = grid::unit(y, "npc") + dy,
+        x1 = grid::unit(x, "npc") + dx, y1 = grid::unit(y, "npc") - dy,
+        gp = grid::gpar(col = color, fill = color, lwd = 4),
+        arrow = grid::arrow(type = "open", length = grid::unit(size, "mm"), angle = 45)
+      )
+    }
+
+    geom_custom_down <- function(mapping = NULL, data = NULL, stat = "identity",
+                                 position = "identity", na.rm = FALSE, show.legend = NA,
+                                 inherit.aes = TRUE, ...) {
+      ggplot2::layer(
+        geom = GeomCustomDown,
+        mapping = mapping,
+        data = data,
+        stat = stat,
+        position = position,
+        show.legend = show.legend,
+        inherit.aes = inherit.aes,
+        params = list(na.rm = na.rm, ...)
+      )
+    }
+
+    GeomCustomDown <- ggplot2::ggproto("GeomCustom", Geom,
+      required_aes = c("x", "y"),
+      default_aes = ggplot2::aes(size = 3, color = "black"),
+      draw_panel = function(data, panel_scales, coord) {
+        coords <- coord$transform(data, panel_scales)
+        grobs <- mapply(my_custom_grob_down, coords$x, coords$y, coords$size, coords$colour, SIMPLIFY = FALSE)
+        grid::grobTree(do.call(gList, grobs))
+      },
+      draw_key = draw_key_point
+    )
+
+    # legend drawing function up arrow
+    draw_key_up <- function(data, params, size){
+      params$arrow$length <- grid::unit(0.35, 'cm')
+      grid::segmentsGrob(0.1, 0.1, 0.9, 0.9,
+                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 2, lineend = "butt"),
+                   arrow = params$arrow
+      )
+    }
+
+    # legend drawing function down arrow
+    draw_key_down<- function(data, params, size){
+      params$arrow$length <- grid::unit(0.35, 'cm')
+      grid::segmentsGrob(0.1, 0.9, 0.9, 0.1,
+                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 2, lineend = "butt"),
+                   arrow = params$arrow
+      )
+    }
+
+    toplo <- toplo %>%
+      dplyr::mutate(
+        z = rep('Trending above', nrow(.)),
+        v = rep('Trending below', nrow(.))
+      ) %>%
+      dplyr::filter(!is.na(fillv))
+
+    p <- p +
       ggplot2::geom_tile(fill = NA, color = NA) +
-      ggplot2::geom_point(data = na.omit(toplo), ggplot2::aes(shape = shapv, fill = fillv), color = 'black', size = 5) +
-      ggplot2::scale_shape_manual(values = c('Trending below' = 25, 'Trending above' = 24)) +
-      ggplot2::guides(fill = ggplot2::guide_legend(override.aes = list(color = cols, shape = 15, size = 5)))
+      ggplot2::geom_point(data = toplo, ggplot2::aes(x = metric, y = yearfac, color = fillv), alpha = 0) +
+      geom_custom_up(data = toplo[toplo$shapv == 'Trending above', ], ggplot2::aes(x = metric, y = yearfac, color = fillv), show.legend = F) +
+      geom_custom_down(data = toplo[toplo$shapv == 'Trending below', ], ggplot2::aes(x = metric, y = yearfac, color = fillv), show.legend = F) +
+      ggplot2::scale_colour_manual(values = cols) +
+      ggplot2::guides(color = ggplot2::guide_legend(override.aes = list(alpha = 1, shape = 15, size = 6))) +
+      ggplot2::geom_segment(data = toplo,
+      ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = z),
+                 arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
+                 size = 0.7, alpha = 0,
+                 key_glyph = "up"
+          ) +
+      ggplot2::geom_segment(data = toplo,
+            ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = v),
+                       arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
+                       size = 0.7, alpha = 0,
+                       key_glyph = "down"
+      ) +
+      labs(
+        linetype = NULL,
+        color = NULL,
+        fill = NULL
+      )
+
+  }
 
   p <- p +
     ggplot2::scale_y_discrete(expand = c(0, 0)) +
     ggplot2::scale_x_discrete(expand = c(0, 0), position = 'top') +
-    ggplot2::scale_fill_manual(
-      values = cols,
-      labels = leglabs,
-      breaks = leglabs,
-      na.value = 'white'
-    ) +
     thm +
     ggplot2::geom_vline(xintercept = xvec, linewidth = 1) +
     ggplot2::labs(
