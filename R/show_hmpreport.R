@@ -186,7 +186,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
         x0 = grid::unit(x, "npc") - dx, y0 = grid::unit(y, "npc") - dy,
         x1 = grid::unit(x, "npc") + dx, y1 = grid::unit(y, "npc") + dy,
         gp = grid::gpar(col = color, fill = color, lwd = 4),
-        arrow = grid::arrow(type = "open", length = grid::unit(size, "mm"), angle = 45)
+        arrow = grid::arrow(type = "closed", length = grid::unit(size, "mm"), angle = 45)
       )
     }
 
@@ -226,7 +226,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
         x0 = grid::unit(x, "npc") - dx, y0 = grid::unit(y, "npc") + dy,
         x1 = grid::unit(x, "npc") + dx, y1 = grid::unit(y, "npc") - dy,
         gp = grid::gpar(col = color, fill = color, lwd = 4),
-        arrow = grid::arrow(type = "open", length = grid::unit(size, "mm"), angle = 45)
+        arrow = grid::arrow(type = "closed", length = grid::unit(size, "mm"), angle = 45)
       )
     }
 
@@ -258,18 +258,20 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
     # legend drawing function up arrow
     draw_key_up <- function(data, params, size){
-      params$arrow$length <- grid::unit(0.35, 'cm')
-      grid::segmentsGrob(0.1, 0.1, 0.9, 0.9,
-                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 2, lineend = "butt"),
+      params$arrow$length <- grid::unit(0.3, 'cm')
+      params$arrow$type <- 2L
+      grid::segmentsGrob(0.15, 0.15, 0.85, 0.85,
+                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 3.5, lineend = "round"),
                    arrow = params$arrow
       )
     }
 
     # legend drawing function down arrow
     draw_key_down <- function(data, params, size){
-      params$arrow$length <- grid::unit(0.35, 'cm')
-      grid::segmentsGrob(0.1, 0.9, 0.9, 0.1,
-                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 2, lineend = "butt"),
+      params$arrow$length <- grid::unit(0.3, 'cm')
+      params$arrow$type <- 2L
+      grid::segmentsGrob(0.15, 0.85, 0.85, 0.15,
+                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 3.5, lineend = "round"),
                    arrow = params$arrow
       )
     }
