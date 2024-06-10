@@ -9,11 +9,10 @@ show_ratab(
   yrsel,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "RALTB"),
   partialyr = F,
-  outtxt1 = "All years below threshold so far, not necessary for NMC Actions 2-5",
-  outtxt2 = "All years met threshold, not necessary for NMC Actions 3-5",
-  outtxt3 =
-    "Not necessary due to observed water quality and seagrass conditions in the bay segment",
-  outtxt45 = "Not necessary when chlorophyll-*a* threshold met",
+  outtxt1 = NULL,
+  outtxt2 = NULL,
+  outtxt3 = NULL,
+  outtxt45 = NULL,
   txtsz = 13,
   width = NULL
 )

@@ -24,7 +24,7 @@ Load local water quality file
 \details{
 Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&download=1}.  The files can be viewed at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU}.
 
-Water quality parameters returned by default are total nitrogen (\code{tn}), Secchi depth (\code{sd}), chlorophyll-a (\code{chla}), salinity (top, mid, and bottom depths, \code{Sal_} prefix), water temperature (top, mid, and bottom depths, {\code{Temp_Water_} prefix}), turbidity (\code{Turbidity_JTU-NTU}), and water color (\code{Color_345_F45}).  Additional qualifier columns for each that include the \code{_Q} suffix are also returned, excluding salinity and water temperature.  All other water quality parameters and qualifiers can be returned by setting \code{all = T}.
+Water quality parameters returned by default are total nitrogen (\code{tn}), Secchi depth (\code{sd}), chlorophyll-a (\code{chla}), salinity (top, mid, and bottom depths, \code{Sal_} prefix), water temperature (top, mid, and bottom depths, \code{Temp_Water_} prefix), turbidity (\code{Turbidity_JTU-NTU}), and water color (\code{Color_345_F45}).  Additional qualifier columns for each that include the \code{_Q} suffix are also returned, excluding salinity and water temperature.  All other water quality parameters and qualifiers can be returned by setting \code{all = T}.
 }
 \examples{
 \dontrun{

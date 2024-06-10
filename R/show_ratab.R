@@ -23,10 +23,20 @@
 #'
 #' @examples
 #' show_ratab(epcdata, yrsel = 2023, bay_segment = 'OTB')
-show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'RALTB'), partialyr = F, outtxt1 = 'All years below threshold so far, not necessary for NMC Actions 2-5', outtxt2 = "All years met threshold, not necessary for NMC Actions 3-5", outtxt3 = "Not necessary due to observed water quality and seagrass conditions in the bay segment", outtxt45 = "Not necessary when chlorophyll-*a* threshold met", txtsz = 13, width = NULL){
+show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'RALTB'), partialyr = F, outtxt1 = NULL, outtxt2 = NULL, outtxt3 = NULL, outtxt45 = NULL, txtsz = 13, width = NULL){
 
   if(!requireNamespace('ftExtra', quietly = TRUE))
     stop("Package \"ftExtra\" needed for this function to work. Please install it.", call. = FALSE)
+
+  # defaults for text
+  if(is.null(outtxt1))
+    outtxt1 <- 'All years below threshold so far, not necessary for NMC Actions 2-5'
+  if(is.null(outtxt2))
+    outtxt2 <- "All years met threshold, not necessary for NMC Actions 3-5"
+  if(is.null(outtxt3))
+    outtxt3 <- "Not necessary due to observed water quality and seagrass conditions in the bay segment"
+  if(is.null(outtxt45))
+    outtxt45 <- "Not necessary when chlorophyll-*a* threshold met"
 
   # segment
   bay_segment <- match.arg(bay_segment)
