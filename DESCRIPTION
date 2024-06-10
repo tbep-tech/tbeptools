@@ -1,7 +1,7 @@
 Package: tbeptools
 Title: Data and Indicators for the Tampa Bay Estuary Program
-Version: 2.0.1.9023
-Date: 2024-05-31
+Version: 2.0.1.9024
+Date: 2024-06-10
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
@@ -57,7 +57,7 @@ Imports:
   dataRetrieval,
   dplyr,
   flextable,
-  ggplot2,
+  ggplot2 (>= 3.2.0),
   httr,
   jsonlite,
   leaflet,

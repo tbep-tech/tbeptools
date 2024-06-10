@@ -211,7 +211,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       draw_panel = function(data, panel_scales, coord) {
         coords <- coord$transform(data, panel_scales)
         grobs <- mapply(my_custom_grob_up, coords$x, coords$y, coords$size, coords$colour, SIMPLIFY = FALSE)
-        grid::grobTree(do.call(gList, grobs))
+        grid::grobTree(do.call(grid::gList, grobs))
       },
       draw_key = draw_key_point
     )
@@ -251,13 +251,13 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       draw_panel = function(data, panel_scales, coord) {
         coords <- coord$transform(data, panel_scales)
         grobs <- mapply(my_custom_grob_down, coords$x, coords$y, coords$size, coords$colour, SIMPLIFY = FALSE)
-        grid::grobTree(do.call(gList, grobs))
+        grid::grobTree(do.call(grid::gList, grobs))
       },
       draw_key = draw_key_point
     )
 
     # legend drawing function up arrow
-    draw_key_up <- function(data, params, size){
+    draw_key_up <<- function(data, params, size){
       params$arrow$length <- grid::unit(0.35, 'cm')
       grid::segmentsGrob(0.1, 0.1, 0.9, 0.9,
                    gp = grid::gpar(col = 'black', fill = 'black', lwd = 2, lineend = "butt"),
@@ -266,7 +266,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
     }
 
     # legend drawing function down arrow
-    draw_key_down<- function(data, params, size){
+    draw_key_down <<- function(data, params, size){
       params$arrow$length <- grid::unit(0.35, 'cm')
       grid::segmentsGrob(0.1, 0.9, 0.9, 0.1,
                    gp = grid::gpar(col = 'black', fill = 'black', lwd = 2, lineend = "butt"),
@@ -289,16 +289,16 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       ggplot2::scale_colour_manual(values = cols) +
       ggplot2::guides(color = ggplot2::guide_legend(override.aes = list(alpha = 1, shape = 15, size = 6))) +
       ggplot2::geom_segment(data = toplo,
-      ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = z),
-                 arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
-                 size = 0.7, alpha = 0,
-                 key_glyph = "up"
-          ) +
+        ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = z),
+        arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
+        size = 0.7, alpha = 0,
+        key_glyph = "up"
+        ) +
       ggplot2::geom_segment(data = toplo,
-            ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = v),
-                       arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
-                       size = 0.7, alpha = 0,
-                       key_glyph = "down"
+        ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = v),
+        arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
+        size = 0.7, alpha = 0,
+        key_glyph = "down"
       ) +
       labs(
         linetype = NULL,
