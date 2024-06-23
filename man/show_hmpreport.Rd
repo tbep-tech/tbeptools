@@ -28,7 +28,7 @@ show_hmpreport(
 
 \item{typ}{character string indicating \code{"targets"} or \code{"goals"}}
 
-\item{twocol}{logical indicating only two colors show if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details}
+\item{twocol}{logical indicating only two colors are shown if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details}
 
 \item{strata}{character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}}
 

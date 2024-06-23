@@ -6,7 +6,7 @@
 #' @param subtacres \code{data.frame} for subtidal cover of habitat types for each year of data
 #' @param hmptrgs \code{data.frame} of Habitat Master Plan targets and goals
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
-#' @param twocol logical indicating only two colors show if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details
+#' @param twocol logical indicating only two colors are shown if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
 #' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbols if \code{twocol = T}, use \code{NULL} to suppress
