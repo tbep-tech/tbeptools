@@ -6,7 +6,7 @@ test_that("Checking read_formphyto", {
                               col_types = c("text", "text", "text", "text", "text", "text", "date", "text",
                                                            "text", "text", "text", "text", "text", "text", "text", "text",
                                                            "text", "text", "text", "text", "text", "text", "text", "text",
-                                                           "text", "text", "text")
+                                                           "text", "text")
   )
 
   # format
