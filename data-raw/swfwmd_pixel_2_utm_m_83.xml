@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>OneRain Inc.</origin>
+				<pubdate>20020722</pubdate>
+				<title>swfwmd_pixel_2_utm_m_83</title>
+				<pubinfo>
+					<pubplace>9267 Greenback Lane, Suite C-4, Orangevale, CA 95662</pubplace>
+					<publish>OneRain Inc.</publish>
+				</pubinfo>
+				<ftname Sync="TRUE">AcquiredFee</ftname><geoform Sync="TRUE">vector digital data</geoform></citeinfo>
+		</citation>
+		<descript>
+			<abstract>Polygon shapefile of approximately 2-km radar rainfall pixels created by OneRain Inc.</abstract>
+			<purpose>The shapefile is used to display gage-adjusted radar rainfall estimates from OneRain Inc.</purpose>
+			<supplinf>Pixel numbering is for the entire state of Florida.</supplinf><langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates><begdate>19950101</begdate><enddate>Present</enddate></rngdates></timeinfo>
+			<current>ground condition</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>None planned</update>
+		</status>
+		<keywords>
+			<place>
+				<placekt>none</placekt>
+				<placekey>Southwest Florida Water Management District</placekey>
+				<placekey>SWFWMD</placekey>
+			</place>
+			<theme><themekey>radar</themekey><themekey>pixels</themekey><themekt>none</themekt><themekey>OneRain</themekey><themekey>NEXRAIN</themekey></theme></keywords>
+		<accconst>None</accconst>
+		<useconst>These data were not collected under the supervision of a licensed Professional Surveyor and Mapper. Use of these data requires a general understanding of GIS.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Southwest Florida Water Management District</cntorg>
+					<cntper>Mapping and GIS Section</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>2379 Broad Street (U.S. 41 South)</address>
+					<city>Brooksville</city>
+					<state>FL</state>
+					<postal>34604-6899</postal>
+				</cntaddr>
+				<cntvoice>(352) 796-7211</cntvoice>
+				<cntfax>(352) 540-6018</cntfax>
+				<hours>8:00 a.m. to 5:00 p.m.</hours>
+			</cntinfo>
+		</ptcontac>
+		<native Sync="TRUE">Microsoft Windows 2000 Version 5.0 (Build 2195) Service Pack 2; ESRI ArcCatalog 8.3.0.800</native><spdom><bounding><westbc Sync="TRUE">-82.755046</westbc><eastbc Sync="TRUE">-81.406379</eastbc><northbc Sync="TRUE">29.059717</northbc><southbc Sync="TRUE">26.822446</southbc></bounding><lboundng><leftbc Sync="TRUE">329124.929649</leftbc><rightbc Sync="TRUE">459621.243892</rightbc><bottombc Sync="TRUE">2967926.878699</bottombc><topbc Sync="TRUE">3214672.749459</topbc></lboundng></spdom><natvform>Shapefile</natvform></idinfo>
+	<dataqual>
+		<attracc>
+			<attraccr>The SWFWMD pixel numbering were compared to teh numbering for the shapefile of radar pixels for the entire state of Florida.</attraccr>
+		</attracc>
+		<logic>The shapefile was created using an Avenue script from OneRain to create a shapefile from OneRain's 2-km dataset. </logic>
+		<complete>Shapefile is complete and includes all pixels within 30 miles of the SWFWMD bounday over land and 2 miles over ocean.</complete>
+		<posacc>
+			<horizpa>
+				<horizpar>The shapefile of radar pixels over Florida was verified against the positional attributes of OneRain's radar pixel shapefile for the entire country.  Accuracy is within +/- 0.000001 degrees.</horizpar>
+			</horizpa>
+		</posacc>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>REQUIRED:originator of source1</origin>
+						<pubinfo>
+							<pubplace>REQUIRED:full address for source1</pubplace>
+							<publish>REQUIRED:source1 publisher</publish>
+						</pubinfo>
+						<pubdate>REQUIRED:date of publication YYYYMMDD</pubdate><othercit>Additional Information: phone number of originator.
+Example: "Additional Information: 1-800-ASK-USGS"</othercit><onlink>Source linkage if applicable</onlink></citeinfo>
+				</srccite>
+				<typesrc>REQUIRED: source1 media type</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>YYYYMMDD</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>REQUIRED:time reference for source1</srccurr>
+				</srctime>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>originator of source2</origin>
+						<title>Title of source2</title>
+						<pubinfo>
+							<pubplace>full address of source2</pubplace>
+							<publish>source2</publish>
+						</pubinfo>
+						<pubdate>YYYYMMDD</pubdate><othercit>Additional Information: phone number of originator.
+Example: "Additional Information: 1-800-ASK-USGS"</othercit><onlink>Source linkage if applicable</onlink></citeinfo>
+				</srccite>
+				<srcscale>source2 scale</srcscale>
+				<typesrc>source2 media type</typesrc>
+				<srctime>
+					<timeinfo>
+						<sngdate>
+							<caldate>YYYYMMDD</caldate>
+						</sngdate>
+					</timeinfo>
+					<srccurr>time reference for source2</srccurr>
+				</srctime>
+				<srccitea>source2 citation abbreviation</srccitea>
+			</srcinfo>
+			<procstep>
+				<procdesc>REQUIRED:How was source1 and source2 processed? Process1 (Pre-automated methods)
+Example: District Politcal Basins - "District Rules Chapter 40D-1.107 legal descriptions for the Basin Board Boundaries was used to delineate basin boundaries onto a USGS 1:100,000 paper topographic map."</procdesc>
+				<srcused>source1</srcused>
+				<srcused>source2</srcused>
+				<procdate>process1 date</procdate>
+				<srcprod>sourceproduced1 = source3</srcprod>
+				<proccont>
+					<cntinfo>
+						<cntorgp>
+							<cntorg>Southwest Florida Water Management District</cntorg>
+							<cntper>Mapping and GIS Section</cntper>
+						</cntorgp>
+						<cntaddr>
+							<addrtype>mailing and physical address</addrtype>
+							<address>2379 Broad Street (U.S. 41 South)</address>
+							<city>Brooksville</city>
+							<state>FL</state>
+							<postal>34604-6899</postal>
+						</cntaddr>
+						<cntvoice>(352) 796-7211</cntvoice>
+						<cntfax>(352) 540-6018</cntfax>
+						<hours>8:00 a.m. to 5:00 p.m.</hours>
+					</cntinfo>
+				</proccont>
+			</procstep>
+			<procstep>
+				<procdesc>NOT REQUIRED:Process2: (Automation methods)
+How was source3 processed?
+Example: District Political Basins - "Using the legal description and the UGSG 1:100,000 topographic maps as a guide, basin boundary information was extracted from the District's PLSS (Public Land Survey System), county and hydrography data layers using ArcEdit.  Where additional features, such as the thread of a water body, were required the USGS digital orthophotos quarter quadrangles (doqqs) were used as a back image.
+
+Topology was generated using the ArcInfo BUILD command.  Attribute items were generated for the feature attribute table and the appropriate attribute assigned to each feature.  Any additional edits were performed using ArcEdit."</procdesc>
+				<srcused>source3</srcused>
+				<procdate>process2 date</procdate>
+				<proccont>
+					<cntinfo>
+						<cntorgp>
+							<cntorg>Southwest Florida Water Management District</cntorg>
+							<cntper>Mapping and GIS Section</cntper>
+						</cntorgp>
+						<cntaddr>
+							<addrtype>mailing and physical address</addrtype>
+							<address>2379 Broad Street (U.S. 41 South)</address>
+							<city>Brooksville</city>
+							<state>FL</state>
+							<postal>34604</postal>
+						</cntaddr>
+						<cntvoice>(352) 796-7211</cntvoice>
+						<cntfax>(352) 540-6018</cntfax>
+						<hours>8:00 a.m. to 5:00 p.m.</hours>
+					</cntinfo>
+				</proccont>
+			</procstep>
+			<srcinfo><srccite><citeinfo><origin>source3</origin><pubdate>date of source3(process1 date)</pubdate><title>Title for source3</title><pubinfo><pubplace>full address for publisher of source3</pubplace><publish>source3</publish></pubinfo><othercit>Additional Information: phone number of originator.
+Example: "Additional Information: 1-800-ASK-USGS"</othercit><onlink>Source linkage if applicable</onlink></citeinfo></srccite><srcscale>source3 scale</srcscale><typesrc>source3 media type</typesrc><srctime><timeinfo><sngdate><caldate>YYYYMMDD</caldate></sngdate></timeinfo><srccurr>time reference for source3</srccurr></srctime><srccitea>source3 citation abbreviation</srccitea></srcinfo><procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">D:\Meta-Related\contractor_template</srcused><date Sync="TRUE">20031229</date><time Sync="TRUE">13544900</time></procstep></lineage>
+	</dataqual>
+	<eainfo>
+		<detailed Name="AcquiredFee"><enttyp><enttypl>Entity Label</enttypl><enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">50</enttypc></enttyp><attr><attrlabl Sync="TRUE">OBJECTID</attrlabl><attalias Sync="TRUE">OBJECTID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr><attrlabl Sync="TRUE">SHAPE</attrlabl><attalias Sync="TRUE">SHAPE</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Feature geometry.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Coordinates defining the features.</udom></attrdomv></attr><attr><attrlabl>Attribute Label - repeat for each attribute</attrlabl><attalias Sync="TRUE">ACQFEENAME</attalias><attrtype Sync="TRUE">String</attrtype><attwidth Sync="TRUE">35</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdomv><edom><edomv>value</edomv><edomvd>definition of value</edomvd></edom></attrdomv><attrdef>Definition of attribute</attrdef><attrdefs>source of attribute; i.e User Defined</attrdefs><attrdomv><rdom><rdommin>min range</rdommin><rdommax>max range</rdommax><attrunit>units</attrunit></rdom></attrdomv></attr><attr><attrdomv><codesetd><codesetn>codeset name; FLUCCS code</codesetn><codesets>FDOT</codesets></codesetd></attrdomv></attr><attr><attrdomv><udom>unrepresentable information here</udom></attrdomv></attr></detailed></eainfo>
+	<metainfo>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>Name of Contractor, if writing metadata, else use: Southwest Florida Water Management District</cntorg>
+					<cntper>department of contractor, else use: Mapping and GIS Section</cntper>
+				</cntorgp>
+				<cntaddr>
+					<addrtype>mailing and physical address</addrtype>
+					<address>address of contractor,else use: 2379 Broad Street (U.S. 41 South)</address>
+					<city>city of contractor, else use: Brooksville</city>
+					<state>state of contractor, else use: FL</state>
+					<postal>zip code of contractor, else use: 34604-6899</postal>
+				</cntaddr>
+				<cntvoice>Phone of Contractor</cntvoice>
+				<hours>8:00 a.m. to 5:00 p.m.</hours>
+			</cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<metd Sync="TRUE">20040324</metd><langmeta Sync="TRUE">en</langmeta><metextns><onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink><metprof Sync="TRUE">ESRI Metadata Profile</metprof></metextns></metainfo>
+	<Esri><ModDate>20040324</ModDate><ModTime>11342300</ModTime><CreaDate>20031229</CreaDate><CreaTime>13544900</CreaTime><SyncOnce>FALSE</SyncOnce><SyncDate>20030403</SyncDate><SyncTime>09264100</SyncTime><MetaID>{D1A47827-A595-4BBB-A3AB-73B3B7DAD726}</MetaID></Esri><mdDateSt Sync="TRUE">20040324</mdDateSt><distinfo><resdesc>The data are being provided on an 'as is' basis. The District specifically disclaims any warranty, expressed or implied, including, but not limited to, the implied warranties or merchantability and fitness for a particular use. The entire risk as to quality and performance is with the user. In no event will the District or its staff be liable for any direct, indirect, incidental, special, consequential, or other damages, including loss of profit, arising out of the use of these data even if the District has been advised of the possibility of such damages. All data are intended for resource management use.</resdesc><distliab>Translation of files to formats other than those described here is the sole responsibility of individuals downloading the data.</distliab><distrib><cntinfo><cntorgp><cntorg>Southwest Florida Water Management District</cntorg><cntper>Mapping and GIS Section</cntper></cntorgp><cntaddr><addrtype>mailing and physical address</addrtype><address>2379 Broad Street (U.S. 41 South)</address><city>Brooksville</city><state>FL</state><postal>34604-6899</postal></cntaddr><cntvoice>(352) 796-7211</cntvoice><cntfax>(352) 540-6018</cntfax><hours>8:00 a.m. to 5:00 p.m.</hours></cntinfo></distrib></distinfo><dataIdInfo><envirDesc Sync="TRUE">Microsoft Windows 2000 Version 5.0 (Build 2195) Service Pack 2; ESRI ArcCatalog 8.3.0.800</envirDesc><dataLang><languageCode Sync="TRUE" value="en"></languageCode></dataLang><idCitation><resTitle Sync="TRUE">AcquiredFee</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">329124.929649</westBL><eastBL Sync="TRUE">459621.243892</eastBL><northBL Sync="TRUE">3214672.749459</northBL><southBL Sync="TRUE">2967926.878699</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-82.755046</westBL><eastBL Sync="TRUE">-81.406379</eastBL><northBL Sync="TRUE">29.059717</northBL><southBL Sync="TRUE">26.822446</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="en"></languageCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="004"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\BKVFS01\MAN\Res Mgmt\MGIS\MGIS Standards\contractor_template</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc></distorTran><distorFormat><formatName Sync="TRUE">Personal GeoDatabase Feature Class</formatName></distorFormat></distributor></distInfo><spdoinfo><direct Sync="TRUE">Vector</direct><ptvctinf><esriterm Name="AcquiredFee"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom Sync="TRUE">Polygon</efeageom><esritopo Sync="TRUE">TRUE</esritopo><efeacnt Sync="TRUE">50</efeacnt><spindex Sync="TRUE">TRUE</spindex><linrefer Sync="TRUE">FALSE</linrefer><XYRank Sync="TRUE">2</XYRank><ZRank Sync="TRUE">1</ZRank><topoWeight Sync="TRUE">5.000000</topoWeight><validateEvents Sync="TRUE">FALSE</validateEvents><partTopoRules><topoRuleID Sync="TRUE">1</topoRuleID></partTopoRules><partTopoRules><topoRuleID Sync="TRUE">5</topoRuleID></partTopoRules></esriterm><sdtsterm Name="AcquiredFee"><sdtstype Sync="TRUE">G-polygon</sdtstype><ptvctcnt Sync="TRUE">50</ptvctcnt></sdtsterm></ptvctinf></spdoinfo><spref><horizsys><cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983_HARN</geogcsn><projcsn Sync="TRUE">NAD_1983_HARN_UTM_Zone_17N</projcsn></cordsysn><planar><mapproj><mapprojn Sync="TRUE">Transverse Mercator</mapprojn><transmer><sfctrmer Sync="TRUE">0.999600</sfctrmer><longcm Sync="TRUE">-81.000000</longcm><latprjo Sync="TRUE">0.000000</latprjo><feast Sync="TRUE">500000.000000</feast><fnorth Sync="TRUE">0.000000</fnorth></transmer></mapproj><planci><plance Sync="TRUE">coordinate pair</plance><plandu Sync="TRUE">meters</plandu><coordrep><absres Sync="TRUE">0.000502</absres><ordres Sync="TRUE">0.000502</ordres></coordrep></planci></planar><geodetic><horizdn Sync="TRUE">D_North_American_1983_HARN</horizdn><ellips Sync="TRUE">Geodetic Reference System 80</ellips><semiaxis Sync="TRUE">6378137.000000</semiaxis><denflat Sync="TRUE">298.257222</denflat></geodetic></horizsys><vertdef><altsys><altenc Sync="TRUE">Explicit elevation coordinate included with horizontal coordinates</altenc><altres Sync="TRUE">1.000000</altres></altsys></vertdef></spref><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE">NAD_1983_HARN_UTM_Zone_17N</identCode></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><topLvl><TopoLevCd Sync="TRUE" value="001"></TopoLevCd></topLvl><geometObjs Name="AcquiredFee"><geoObjTyp><GeoObjTypCd Sync="TRUE" value="001"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">50</geoObjCnt></geometObjs></VectSpatRep></spatRepInfo></metadata>
