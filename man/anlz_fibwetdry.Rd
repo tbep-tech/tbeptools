@@ -25,7 +25,5 @@ Identify Fecal Indicator Bacteria samples as coming from a 'wet' or 'dry' time p
 This function allows the user to specify a threshold for declaring a sample to be taken after an important amount of rain over an important amount of days, and declaring it to be 'wet'. This is of interest because samples taken after significant precipitation (definitions of this vary, which is why the user can specify desired thresholds) are more likely to exceed relevant bacterial thresholds. Identifying samples as 'wet' or not allows for calculation of further indices for wet and dry subsets of samples.
 }
 \examples{
-\dontrun{
 entero_wetdry <- anlz_fibwetdry(enterodata, catch_precip)
-}
 }

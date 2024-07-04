@@ -14,9 +14,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' entero_wetdry <- anlz_fibwetdry(enterodata, catch_precip)
-#' }
 anlz_fibwetdry <- function(fibdata,
                            precipdata,
                            temporal_window = 2,
