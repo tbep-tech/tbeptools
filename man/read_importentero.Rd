@@ -15,3 +15,27 @@ a data frame
 \description{
 Download Enterococcus data from the Water Quality Portal
 }
+\examples{
+\dontrun{
+# set up list of args
+stations <- c('21FLHILL_WQX-101',
+'21FLHILL_WQX-102',
+'21FLHILL_WQX-103')
+entero_names <- c('Enterococci',
+                  'Enterococcus')
+startDate <- as.Date('2023-01-01')
+endDate <- as.Date('2023-12-31')
+
+args <- list(
+  siteid = stations,
+  characteristicName = entero_names,
+  startDateLo = format(startDate, '\%m-\%d-\%Y'),
+  startDateHi = format(endDate, '\%m-\%d-\%Y')
+)
+
+# download and read the data
+entero_in <- read_importentero(args = args)
+head(entero_in)
+
+}
+}

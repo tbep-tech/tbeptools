@@ -7,6 +7,7 @@
 #'
 #' @details Data from the Southwest Florida Water Management District's (SWFWMD) ftp site: ftp://ftp.swfwmd.state.fl.us/pub/radar_rainfall/Daily_Data/
 #' @return data.frame with station, date, rain columns as a daily average (inches) for all pixels in a catchment
+#' @importFrom dplyr %>%
 #'
 #' @examples
 #' \dontrun{
@@ -28,12 +29,12 @@ read_importrain <- function(curyr, catch_pixels, mos = 1:12, quiet = T){
       cat(basename(fl), '\n')
 
     # get the name of the file that will be in the zipped download
-    txtflnm <- paste0(stringr::str_remove(basename(fl), "_txt.zip"), ".txt")
+    txtflnm <- gsub('_txt.zip', '.txt', basename(fl))
 
     # download daily month data
     dl <- try({
 
-      tmp1 <- tempfile(fileext = ".zip")
+      tmp1 <- tempfile(fileext = '.zip')
       download.file(url = fl, destfile = tmp1, method = 'curl', quiet = quiet)
 
     }, silent = quiet)
@@ -48,19 +49,21 @@ read_importrain <- function(curyr, catch_pixels, mos = 1:12, quiet = T){
     }
 
     # import from the zipped file
-    datall <- read.table(unz(tmp1, txtflnm),
-                         sep = ',', header = F) |>
-      dplyr::rename(pixel = V1, date = V2, rain = V3)
+    datall <- utils::read.table(unz(tmp1, txtflnm),
+                         sep = ',', header = F)  %>%
+      dplyr::rename(pixel = .data$V1, date = .data$V2, rain = .data$V3)
 
     unlink(tmp1, recursive = T)
 
 
     # join with grd cells, average by date, station
-    dat <- dplyr::left_join(catch_pixels, datall, by = 'pixel', relationship = 'many-to-many') |>
+    dat <- dplyr::left_join(catch_pixels, datall, by = 'pixel',
+                            relationship = 'many-to-many')  %>%
+      dplyr::group_by(.data$station, .data$date) %>%
       dplyr::summarise(
-        rain = mean(rain, na.rm = T),
-        .by = c(station, date)
-      )
+        rain = mean(.data$rain, na.rm = T)
+      ) %>%
+      dplyr::ungroup()
 
     # append to output
     out <- dplyr::bind_rows(out, dat)
@@ -70,7 +73,7 @@ read_importrain <- function(curyr, catch_pixels, mos = 1:12, quiet = T){
 
   # date as date
   out <- out |>
-    dplyr::mutate(date = as.Date(date, format = '%m/%d/%Y')) |>
+    dplyr::mutate(date = as.Date(date, format = '%m/%d/%Y')) %>%
     dplyr::arrange(station, date)
 
   return(out)

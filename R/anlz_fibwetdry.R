@@ -7,13 +7,16 @@
 #'
 #' @return a data frame; the original fibdata data frame with an additional column. wet_sample is logical, indicating whether the rainfall for that station's catchment exceeded the amount over the time period specified in args.
 #'
-#' @details
+#' @details This function allows the user to specify a threshold for declaring a sample to be taken after an important amount of rain over an important amount of days, and declaring it to be 'wet'. This is of interest because samples taken after significant precipitation (definitions of this vary, which is why the user can specify desired thresholds) are more likely to exceed relevant bacterial thresholds. Identifying samples as 'wet' or not allows for calculation of further indices for wet and dry subsets of samples.
 #'
-#' @import dplyr
+#' @importFrom dplyr %>%
 #'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' entero_wetdry <- anlz_fibwetdry(enterodata, catch_precip)
+#' }
 anlz_fibwetdry <- function(fibdata,
                            precipdata,
                            temporal_window = 2,
@@ -38,18 +41,18 @@ anlz_fibwetdry <- function(fibdata,
 
 
   # now calculate
-  prcp_calcd <- precipdata |>
-    dplyr::group_by(station) |>
-    dplyr::mutate(rain_total = eval(formula_obj)) |>
-    dplyr::rename(rain_sampleDay = rain) |>
+  prcp_calcd <- precipdata %>%
+    dplyr::group_by(.data$station) %>%
+    dplyr::mutate(rain_total = eval(formula_obj)) %>%
+    dplyr::rename(rain_sampleDay = .data$rain) %>%
     dplyr::ungroup()
 
 
   # left join, fibdata = left, prcipdata = right; on station and date
   # use threshold to show wet or dry
   out <- dplyr::left_join(fibdata, prcp_calcd,
-                   by = c("station", "date")) |>
-    dplyr::mutate(wet_sample = rain_total >= wet_threshold)
+                   by = c("station", "date")) %>%
+    dplyr::mutate(wet_sample = .data$rain_total >= wet_threshold)
 
   return(out)
 }
