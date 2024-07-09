@@ -86,6 +86,7 @@ read_formfim <- function(datin, locs = FALSE){
   # join catch data with species classifications
   out <- frmdat %>%
     dplyr::left_join(tbnispp, by = "NODCCODE") %>%
+    dplyr::select(-TSN) %>%
     dplyr::filter(Include_TB_Index == "Y") %>%
     dplyr::arrange(Reference, NODCCODE) %>%
     dplyr::ungroup() %>%

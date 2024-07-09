@@ -1,8 +1,8 @@
-#' FIM data for Tampa Bay Nekton Index current as of 08232023
+#' FIM data for Tampa Bay Nekton Index current as of 07092024
 #'
-#' FIM data for Tampa Bay Nekton Index current as of 08232023
+#' FIM data for Tampa Bay Nekton Index current as of 07092024
 #'
-#' @format A data frame with 49874 rows and 19 variables:
+#' @format A data frame with 52042 rows and 19 variables:
 #' \describe{
 #'   \item{Reference}{chr}
 #'   \item{Sampling_Date}{Date}
@@ -31,7 +31,7 @@
 #' \dontrun{
 #' csv <- '~/Desktop/fimdata.csv'
 #'
-#' fimdata <- read_importfim(csv, download_latest = TRUE)
+#' fimdata <- read_importfim(csv, download_latest = FALSE)
 #'
 #' save(fimdata, file = 'data/fimdata.RData', compress = 'xz')
 #'

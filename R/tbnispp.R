@@ -2,8 +2,9 @@
 #'
 #' Reference table for Tampa Bay Nekton Index species classifications
 #'
-#' @format A data frame with 196 rows and 9 variables:
+#' @format A data frame with 196 rows and 10 variables:
 #' \describe{
+#'   \item{TSN}{int}
 #'   \item{NODCCODE}{chr}
 #'   \item{ScientificName}{chr}
 #'   \item{Include_TB_Index}{chr}
