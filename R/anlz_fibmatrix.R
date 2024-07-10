@@ -25,10 +25,14 @@
 #' anlz_fibmatrix(fibdata)
 #' # same result:
 #' anlz_fibmatrix(fibdata, indic = 'fcolif')
+#'
 #' # use different indicator:
 #' anlz_fibmatrix(fibdata, indic = 'ecocci')
+#'
 #' # use different dataset; does not contain an 'fcolif' column so we must specify indic:
 #' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1)
+#' # same ecocci data; lower threshold - changes 'cat' scores
+#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, threshold = 30)
 anlz_fibmatrix <- function(fibdata,
                            yrrng = NULL,
                            stas = NULL,

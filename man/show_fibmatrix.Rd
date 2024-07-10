@@ -8,6 +8,8 @@ show_fibmatrix(
   fibdata,
   yrrng = NULL,
   stas = NULL,
+  indic = NULL,
+  threshold = NULL,
   lagyr = 3,
   txtsz = 3,
   asreact = FALSE,
@@ -24,6 +26,10 @@ show_fibmatrix(
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data}
 
 \item{stas}{optional vector of stations to include, see details}
+
+\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} (default) for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.}
+
+\item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
 
@@ -54,5 +60,11 @@ The default stations for fecal coliform data are those used in TBEP report #05-1
 }
 \examples{
 show_fibmatrix(fibdata)
+
+# change the threshold
+show_fibmatrix(fibdata, threshold = 200)
+
+# change the indicator
+show_fibmatrix(fibdata, indic = 'ecocci')
 }
 \concept{show}

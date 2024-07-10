@@ -26,8 +26,14 @@
 #'
 #' @examples
 #' show_fibmatrix(fibdata)
+#'
+#' # change the threshold
+#' show_fibmatrix(fibdata, threshold = 200)
+#'
+#' # change the indicator
+#' show_fibmatrix(fibdata, indic = 'ecocci')
 show_fibmatrix <- function(fibdata, yrrng = NULL,
-                           stas = NULL, lagyr = 3,
+                           stas = NULL, indic = NULL, threshold = NULL, lagyr = 3,
                            txtsz = 3, asreact = FALSE, nrows = 10, family = NA, plotly = FALSE,
                            width = NULL, height = NULL){
 
@@ -43,7 +49,8 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
     }
   }
 
-  toplo <- anlz_fibmatrix(fibdata, yrrng = yrrng, stas = stas, lagyr = lagyr)
+  toplo <- anlz_fibmatrix(fibdata, yrrng = yrrng, stas = stas,
+                          indic = indic, threshold = threshold, lagyr = lagyr)
   yrrng <- range(toplo$yr)
 
   # reactable object
