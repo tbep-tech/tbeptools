@@ -9,8 +9,9 @@
 #'
 #' @return A \code{data.frame} similar to \code{fibdata} with additional columns describing station categories and optionally filtered by arguments passed to the function
 #'
+#' @export
+#'
 #' @examples
-#' \dontrun{
 #' anlz_enteromap(enterodata, yrsel = 2020, mosel = 9)
 #'
 #' # wet/dry samples
@@ -19,7 +20,6 @@
 #'
 #' # this will give the same output as the first example
 #' anlz_enteromap(entero_wetdry, yrsel = 2020, mosel = 9, wetdry = FALSE)
-#' }
 anlz_enteromap <- function (fibdata, yrsel = NULL, mosel = NULL, wetdry = FALSE)
 {
   levs <- util_fiblevs()

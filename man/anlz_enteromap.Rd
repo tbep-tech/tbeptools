@@ -25,7 +25,6 @@ Assign threshold categories to Enterococcus data
 This function is based on \code{\link{anlz_fibmap}}, but is specific to Enterococcus data downloaded via \code{\link{read_importentero}}. It creates categories for mapping using \code{\link{show_enteromap}}. Optionally, if samples have been defined as 'wet' or not via \code{\link{anlz_fibwetdry}}, this can be represented via symbols on the map.  Categories based on relevant thresholds are assigned to each observation.  The categories are specific to Enterococcus in marine waters (\code{class} of 2 or 3M). A station is categorized into one of four ranges defined by the thresholds as noted in the \code{cat} column of the output, with corresponding colors appropriate for each range as noted in the \code{col} column of the output.
 }
 \examples{
-\dontrun{
 anlz_enteromap(enterodata, yrsel = 2020, mosel = 9)
 
 # wet/dry samples
@@ -34,5 +33,4 @@ anlz_enteromap(entero_wetdry, yrsel = 2020, mosel = 9, wetdry = TRUE)
 
 # this will give the same output as the first example
 anlz_enteromap(entero_wetdry, yrsel = 2020, mosel = 9, wetdry = FALSE)
-}
 }
