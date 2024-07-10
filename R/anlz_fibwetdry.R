@@ -40,9 +40,9 @@ anlz_fibwetdry <- function(fibdata,
 
   # now calculate
   prcp_calcd <- precipdata %>%
-    dplyr::group_by(.data$station) %>%
+    dplyr::group_by(station) %>%
     dplyr::mutate(rain_total = eval(formula_obj)) %>%
-    dplyr::rename(rain_sampleDay = .data$rain) %>%
+    dplyr::rename(rain_sampleDay = rain) %>%
     dplyr::ungroup()
 
 
@@ -50,7 +50,7 @@ anlz_fibwetdry <- function(fibdata,
   # use threshold to show wet or dry
   out <- dplyr::left_join(fibdata, prcp_calcd,
                    by = c("station", "date")) %>%
-    dplyr::mutate(wet_sample = .data$rain_total >= wet_threshold)
+    dplyr::mutate(wet_sample = rain_total >= wet_threshold)
 
   return(out)
 }

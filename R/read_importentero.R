@@ -32,7 +32,6 @@
 
 read_importentero <- function(args){
   # args should be a list of sites, characteristic names, and start/end dates
-  # should probably figure out how to make that flexible, e.g. no end date
 
   # generate the parts
   # a weakness here is building the '&' into everything but siteid -
@@ -63,27 +62,27 @@ read_importentero <- function(args){
 
   # select columns
   dat2 <- dat %>%
-    dplyr::select(station = .data$MonitoringLocationIdentifier,
-                  Latitude = .data$ActivityLocation.LatitudeMeasure,
-                  Longitude = .data$ActivityLocation.LongitudeMeasure,
-                  ecocci = .data$ResultMeasureValue, # - the result (has characters in here too - 'Not Reported')
-                  ecocci_units = .data$ResultMeasure.MeasureUnitCode,
-                  qualifier = .data$MeasureQualifierCode,
-                  date = .data$ActivityStartDate,
-                  time = .data$ActivityStartTime.Time, # local time
-                  time_zone = .data$ActivityStartTime.TimeZoneCode,
-                  MDL = .data$DetectionQuantitationLimitMeasure.MeasureValue,
-                  LabComments = .data$ResultLaboratoryCommentText) %>%
+    dplyr::select(station = MonitoringLocationIdentifier,
+                  Latitude = ActivityLocation.LatitudeMeasure,
+                  Longitude = ActivityLocation.LongitudeMeasure,
+                  ecocci = ResultMeasureValue, # - the result (has characters in here too - 'Not Reported')
+                  ecocci_units = ResultMeasure.MeasureUnitCode,
+                  qualifier = MeasureQualifierCode,
+                  date = ActivityStartDate,
+                  time = ActivityStartTime.Time, # local time
+                  time_zone = ActivityStartTime.TimeZoneCode,
+                  MDL = DetectionQuantitationLimitMeasure.MeasureValue,
+                  LabComments = ResultLaboratoryCommentText) %>%
     dplyr::filter(ecocci != 'Not Reported') %>%
-    dplyr::mutate(ecocci = as.numeric(.data$ecocci),
-                  ecocci_censored = dplyr::case_when(.data$ecocci <= .data$MDL ~ TRUE,
+    dplyr::mutate(ecocci = as.numeric(ecocci),
+                  ecocci_censored = dplyr::case_when(ecocci <= MDL ~ TRUE,
                                                      .default = FALSE),
-                  date = as.Date(.data$date),
-                  yr = lubridate::year(.data$date),
-                  mo = lubridate::month(.data$date)) %>%
-    dplyr::relocate(.data$date, .data$station, .data$ecocci) %>%
-    dplyr::relocate(.data$ecocci_censored, .after = ecocci) %>%
-    dplyr::arrange(.data$station, .data$date)
+                  date = as.Date(date),
+                  yr = lubridate::year(date),
+                  mo = lubridate::month(date)) %>%
+    dplyr::relocate(date, station, ecocci) %>%
+    dplyr::relocate(ecocci_censored, .after = ecocci) %>%
+    dplyr::arrange(station, date)
 
   return(dat2)
 }

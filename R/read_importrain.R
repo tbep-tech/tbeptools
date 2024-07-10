@@ -51,7 +51,7 @@ read_importrain <- function(curyr, catch_pixels, mos = 1:12, quiet = T){
     # import from the zipped file
     datall <- utils::read.table(unz(tmp1, txtflnm),
                          sep = ',', header = F)  %>%
-      dplyr::rename(pixel = .data$V1, date = .data$V2, rain = .data$V3)
+      dplyr::rename(pixel = V1, date = V2, rain = V3)
 
     unlink(tmp1, recursive = T)
 
@@ -59,9 +59,9 @@ read_importrain <- function(curyr, catch_pixels, mos = 1:12, quiet = T){
     # join with grd cells, average by date, station
     dat <- dplyr::left_join(catch_pixels, datall, by = 'pixel',
                             relationship = 'many-to-many')  %>%
-      dplyr::group_by(.data$station, .data$date) %>%
+      dplyr::group_by(station, date) %>%
       dplyr::summarise(
-        rain = mean(.data$rain, na.rm = T)
+        rain = mean(rain, na.rm = T)
       ) %>%
       dplyr::ungroup()
 
