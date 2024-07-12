@@ -73,7 +73,8 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "v", "z", "ActivityLocation.LatitudeMeasure", "ActivityLocation.LongitudeMeasure",
                   "ActivityStartTime.TimeZoneCode", "DetectionQuantitationLimitMeasure.MeasureValue",
                   "MeasureQualifierCode", "ResultLaboratoryCommentText", "V1", "V2", "V3", "Var3",
-                  "ecocci_censored", "rain", "rain_total", "sumgt", "wet_sample")
+                  "ecocci_censored", "rain", "rain_total", "sumgt", "wet_sample",
+                  "LabComments", "ecocci_units", "qualifier")
 )
 
 #' @importFrom grDevices rgb
