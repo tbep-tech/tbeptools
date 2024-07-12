@@ -1,8 +1,33 @@
 #' Download Enterococcus data from the Water Quality Portal
 #'
-#' @param args a list with the following fields:
+#' @param args a list of arguments to pass to Water Quality Portal. See \code{examples} for detail on how to use. Must contain the following fields:
+#' \describe{
+#'  \item{\code{siteid}}{character, vector of stations}
+#'  \item{\code{characteristicName}}{character, vector to select 'Characteristic Names' from WQP}
+#'  \item{\code{startDateLo}}{date, start date for data to download}
+#'  \item{\code{startDateHi}}{date, end date for data to download}
+#' }
 #'
-#' @return a data frame
+#' @details Retrieves Enterococcus sample data from selected stations and date range from the Water Quality Portal, \url{https://www.waterqualitydata.us}
+#'
+#' @return a data frame containing one row for each sample. Columns returned are:
+#' \describe{
+#'  \item{\code{date}}{date, sample date}
+#'  \item{\code{station}}{character, sample station}
+#'  \item{\code{ecocci}}{numeric, Enterococcus concentration}
+#'  \item{\code{ecocci_censored}}{logical, whether \code{ecocci} value was below the laboratory \code{MDL}, minimum detection limit}
+#'  \item{\code{ecocci_units}}{character, units of measurement for \code{ecocci}}
+#'  \item{\code{qualifier}}{qualifier codes associated with sample}
+#'  \item{\code{LabComments}}{lab comments on sample}
+#'  \item{\code{Latitude}}{numeric, latitude in decimal degrees}
+#'  \item{\code{Longitude}}{numeric, longitude in decimal degrees}
+#'  \item{\code{time}}{character, sample time}
+#'  \item{\code{time_zone}}{character, sample time zone}
+#'  \item{\code{MDL}}{numeric, minimum detection limit for the lab and time the sample was analyzed}
+#'  \item{\code{yr}}{numeric, year of sample date}
+#'  \item{\code{mo}}{numeric, month of sample date}
+#'  }
+#'
 #' @importFrom dplyr %>%
 #' @export
 #'
@@ -80,8 +105,7 @@ read_importentero <- function(args){
                   date = as.Date(date),
                   yr = lubridate::year(date),
                   mo = lubridate::month(date)) %>%
-    dplyr::relocate(date, station, ecocci) %>%
-    dplyr::relocate(ecocci_censored, .after = ecocci) %>%
+    dplyr::relocate(date, station, ecocci, ecocci_censored, ecocci_units, qualifier, LabComments) %>%
     dplyr::arrange(station, date)
 
   return(dat2)
