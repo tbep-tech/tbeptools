@@ -39,10 +39,12 @@
 #' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, threshold = 30)
 #'
 #' # subset to only wet samples
-#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "wet", temporal_window = 2, wet_threshold = 0.5)
+#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "wet",
+#'                temporal_window = 2, wet_threshold = 0.5)
 #'
 #' # subset to only dry samples
-#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry", temporal_window = 2, wet_threshold = 0.5)
+#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry",
+#'                temporal_window = 2, wet_threshold = 0.5)
 anlz_fibmatrix <- function(fibdata,
                            yrrng = NULL,
                            stas = NULL,

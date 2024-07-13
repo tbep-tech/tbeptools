@@ -16,17 +16,18 @@
 #' show_enteromap(enterodata, yrsel = 2020, mosel = 9)
 #'
 #' # wet/dry samples
-#' entero_wetdry <- anlz_fibwetdry(enterodata, catch_precip)
-#' show_enteromap(entero_wetdry, yrsel = 2020, mosel = 9, wetdry = TRUE)
-#'
-#' # this will give the same output as anlz_enteromap(enterodata)
-#' show_enteromap(entero_wetdry, yrsel = 2020, mosel = 9, wetdry = FALSE)
+#' show_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
+#'                temporal_window = 2, wet_threshold = 0.5)
 #' }
 
-show_enteromap <- function(fibdata, yrsel, mosel, wetdry = FALSE){
+show_enteromap <- function(fibdata, yrsel, mosel, wetdry = FALSE,
+                           precipdata = NULL, temporal_window = NULL,
+                           wet_threshold = NULL){
 
   # get categories
-  fibmap <- anlz_enteromap(fibdata, yrsel = yrsel, mosel = mosel, wetdry = wetdry)
+  fibmap <- anlz_enteromap(fibdata, yrsel = yrsel, mosel = mosel, wetdry = wetdry,
+                           precipdata = precipdata, temporal_window = temporal_window,
+                           wet_threshold = wet_threshold)
 
   # make a column even if wetdry wasn't selected
   # and if it was, give it something other than true/false

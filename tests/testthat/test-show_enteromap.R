@@ -7,3 +7,9 @@ test_that("show_enteromap correctly creates a leaflet map", {
   expect_s3_class(result, "leaflet")
 
 })
+
+
+test_that("show_enteromap errors if wetdry info is not provided", {
+  expect_error(show_enteromap(enterodata, wetdry = TRUE, temporal_window = 2),
+               regxp = 'temporal_window and wet_threshold must both be provided in order to differentiate wet vs. dry samples')
+})

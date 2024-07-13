@@ -80,6 +80,7 @@ show_fibmatrix(fibdata, threshold = 200)
 show_fibmatrix(fibdata, indic = 'ecocci')
 
 # show matrix for only dry samples
-show_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry", temporal_window = 2, wet_threshold = 0.5)
+show_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry",
+               temporal_window = 2, wet_threshold = 0.5)
 }
 \concept{show}

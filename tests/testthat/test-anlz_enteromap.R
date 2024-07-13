@@ -36,3 +36,29 @@ test_that("Checking error for no data with anlz_enteromap", {
 
 })
 
+
+# Test wet/dry subsetting
+test_that("anlz_enteromap errors if wetdry info is not provided", {
+  expect_error(anlz_enteromap(enterodata, wetdry = TRUE, temporal_window = 2),
+               regxp = 'temporal_window and wet_threshold must both be provided in order to in order to differentiate wet vs. dry samples')
+})
+
+test_that("FALSE default for wetdry works", {
+
+  result_a <- anlz_enteromap(enterodata)
+  result_b <- anlz_enteromap(enterodata, wetdry = FALSE)
+
+  expect_equivalent(result_a, result_b)
+
+})
+
+test_that("wet/dry subsetting does lead to different data frames", {
+
+  result_a <- anlz_enteromap(enterodata)
+  result_b <- anlz_enteromap(enterodata, wetdry = TRUE, temporal_window = 2, wet_threshold = 0.5)
+
+  expect_failure(expect_equivalent(result_a, result_b))
+})
+
+
+
