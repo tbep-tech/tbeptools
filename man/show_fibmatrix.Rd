@@ -11,6 +11,10 @@ show_fibmatrix(
   indic = NULL,
   threshold = NULL,
   lagyr = 3,
+  subset_wetdry = c("all", "wet", "dry"),
+  precipdata = NULL,
+  temporal_window = NULL,
+  wet_threshold = NULL,
   txtsz = 3,
   asreact = FALSE,
   nrows = 10,
@@ -32,6 +36,14 @@ show_fibmatrix(
 \item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
+
+\item{subset_wetdry}{character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.}
+
+\item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select Enterococcus stations.}
+
+\item{temporal_window}{numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
+
+\item{wet_threshold}{numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
 
 \item{txtsz}{numeric for size of text in the plot, applies only if \code{tab = FALSE}.  Use \code{txtsz = NULL} to suppress.}
 
@@ -66,5 +78,8 @@ show_fibmatrix(fibdata, threshold = 200)
 
 # change the indicator
 show_fibmatrix(fibdata, indic = 'ecocci')
+
+# show matrix for only dry samples
+show_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry", temporal_window = 2, wet_threshold = 0.5)
 }
 \concept{show}

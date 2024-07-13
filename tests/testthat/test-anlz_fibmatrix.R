@@ -50,3 +50,39 @@ test_that("anlz_fibmatrix respects custom thresholds", {
   result <- anlz_fibmatrix(fibdata, threshold = 200)
   expect_true(nrow(result) > 0)
 })
+
+# Test wet/dry subsetting
+test_that("anlz_fibmatrix errors if wetdry info is not provided", {
+  expect_error(anlz_fibmatrix(enterodata, indic = 'ecocci',
+                              lagyr = 1, subset_wetdry = "dry", temporal_window = 2),
+               regxp = 'temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples')
+})
+
+test_that("wet/dry subsetting inside function works the same as the longer workflow", {
+  result_a <- anlz_fibmatrix(enterodata, indic = 'ecocci',
+                             lagyr = 1, subset_wetdry = "dry",
+                             temporal_window = 2, wet_threshold = 0.5)
+
+  sub_b <- anlz_fibwetdry(enterodata, precipdata = catch_precip,
+                          temporal_window = 2, wet_threshold = 0.5) %>%
+    dplyr::filter(wet_sample == FALSE)
+  result_b <- anlz_fibmatrix(sub_b, indic = 'ecocci', lagyr = 1)
+
+  expect_equivalent(result_a, result_b)
+  })
+
+test_that("wet/dry subsetting does lead to different data frames", {
+  result_a <- anlz_fibmatrix(enterodata, indic = 'ecocci',
+                             lagyr = 1, subset_wetdry = "dry",
+                             temporal_window = 2, wet_threshold = 0.5)
+
+  result_b <- anlz_fibmatrix(enterodata, indic = 'ecocci',
+                             lagyr = 1, subset_wetdry = "wet",
+                             temporal_window = 2, wet_threshold = 0.5)
+
+  result_c <- anlz_fibmatrix(enterodata, indic = 'ecocci',
+                             lagyr = 1)
+
+  expect_failure(expect_equivalent(result_a, result_b))
+  expect_failure(expect_equivalent(result_a, result_c))
+})

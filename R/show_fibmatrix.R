@@ -32,8 +32,13 @@
 #'
 #' # change the indicator
 #' show_fibmatrix(fibdata, indic = 'ecocci')
+#'
+#' # show matrix for only dry samples
+#' show_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry", temporal_window = 2, wet_threshold = 0.5)
 show_fibmatrix <- function(fibdata, yrrng = NULL,
                            stas = NULL, indic = NULL, threshold = NULL, lagyr = 3,
+                           subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
+                           temporal_window = NULL, wet_threshold = NULL,
                            txtsz = 3, asreact = FALSE, nrows = 10, family = NA, plotly = FALSE,
                            width = NULL, height = NULL){
 
@@ -50,7 +55,9 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
   }
 
   toplo <- anlz_fibmatrix(fibdata, yrrng = yrrng, stas = stas,
-                          indic = indic, threshold = threshold, lagyr = lagyr)
+                          indic = indic, threshold = threshold, lagyr = lagyr,
+                          subset_wetdry = subset_wetdry, precipdata = precipdata,
+                          temporal_window = temporal_window, wet_threshold = wet_threshold)
   yrrng <- range(toplo$yr)
 
   # reactable object

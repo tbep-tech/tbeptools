@@ -10,7 +10,11 @@ anlz_fibmatrix(
   stas = NULL,
   indic = c("fcolif", "ecocci"),
   threshold = NULL,
-  lagyr = 3
+  lagyr = 3,
+  subset_wetdry = c("all", "wet", "dry"),
+  precipdata = NULL,
+  temporal_window = NULL,
+  wet_threshold = NULL
 )
 }
 \arguments{
@@ -25,6 +29,14 @@ anlz_fibmatrix(
 \item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
+
+\item{subset_wetdry}{character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.}
+
+\item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select Enterococcus stations.}
+
+\item{temporal_window}{numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
+
+\item{wet_threshold}{numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
 }
 \value{
 A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station, including columns for the estimated geometric mean of fecal coliform or Enterococcus concentrations (\code{gmean}), the proportion of samples exceeding 400 CFU / 100 mL (fecal coliform) or 130 CFU / 100 mL (Enterococcus) (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).
@@ -47,6 +59,12 @@ anlz_fibmatrix(fibdata, indic = 'ecocci')
 anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1)
 # same ecocci data; lower threshold - changes 'cat' scores
 anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, threshold = 30)
+
+# subset to only wet samples
+anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "wet", temporal_window = 2, wet_threshold = 0.5)
+
+# subset to only dry samples
+anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry", temporal_window = 2, wet_threshold = 0.5)
 }
 \seealso{
 \code{\link{show_fibmatrix}}

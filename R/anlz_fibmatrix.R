@@ -8,6 +8,10 @@
 #' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} (default) for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.
 #' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.
 #' @param lagyr numeric for year lag to calculate categories, see details
+#' @param subset_wetdry character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.
+#' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select Enterococcus stations.
+#' @param temporal_window numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
+#' @param wet_threshold  numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
 #'
 #' @concept show
 #'
@@ -33,14 +37,49 @@
 #' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1)
 #' # same ecocci data; lower threshold - changes 'cat' scores
 #' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, threshold = 30)
+#'
+#' # subset to only wet samples
+#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "wet", temporal_window = 2, wet_threshold = 0.5)
+#'
+#' # subset to only dry samples
+#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry", temporal_window = 2, wet_threshold = 0.5)
 anlz_fibmatrix <- function(fibdata,
                            yrrng = NULL,
                            stas = NULL,
                            indic = c("fcolif", "ecocci"),
                            threshold = NULL,
-                           lagyr = 3){
+                           lagyr = 3,
+                           subset_wetdry = c("all", "wet", "dry"),
+                           precipdata = NULL,
+                           temporal_window = NULL,
+                           wet_threshold = NULL){
 
   geomean <- function(x){prod(x)^(1/length(x))}
+
+
+  # subset to wet or dry samples, if specified
+  subset_wetdry <- match.arg(subset_wetdry)
+  if(subset_wetdry != "all"){
+        # make sure necessary info is provided
+    stopifnot("temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples" = !is.null(temporal_window) & !is.null(wet_threshold)
+              )
+    # if precip data isn't specified, use the catch_precip object
+    if(is.null(precipdata)){
+      precipdata <- catch_precip
+      message("precipdata not specified; defaulting to tbeptools catch_precip object")
+    }
+    # run the anlz_fibwetdry function
+    dat <- anlz_fibwetdry(fibdata = fibdata,
+                          precipdata = precipdata,
+                          temporal_window = temporal_window,
+                          wet_threshold = wet_threshold) %>%
+      dplyr::mutate(wetdry = dplyr::case_when(wet_sample == TRUE ~ "wet",
+                                              wet_sample == FALSE ~ "dry",
+                                              .default = NA_character_))
+    # filter the data frame
+    fibdata <- dat %>%
+      dplyr::filter(wetdry == subset_wetdry)
+  }
 
 
   # get year range from data if not provided
