@@ -4,9 +4,9 @@
 #' @param yrsel optional numeric to filter data by year
 #' @param mosel optional numeric to filter data by month
 #' @param wetdry logical; if \code{TRUE}, incorporate wet/dry differences (this will result in a call to \code{\link{anlz_fibwetdry}}, in which case \code{temporal_window} and \code{wet_threshold} are required). if \code{FALSE} (default), do not differentiate between wet and dry samples.
-#' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select Enterococcus stations.
-#' @param temporal_window numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
-#' @param wet_threshold  numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
+#' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catch_precip}}.
+#' @param temporal_window numeric; required if \code{wetdry} is \code{TRUE}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
+#' @param wet_threshold  numeric; required if \code{wetdry} is \code{TRUE}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
 #'
 #' @details This function is based on \code{\link{anlz_fibmap}}, but is specific to Enterococcus data downloaded via \code{\link{read_importentero}}. It creates categories for mapping using \code{\link{show_enteromap}}. Optionally, if samples have been defined as 'wet' or not via \code{\link{anlz_fibwetdry}}, this can be represented via symbols on the map.  Categories based on relevant thresholds are assigned to each observation.  The categories are specific to Enterococcus in marine waters (\code{class} of 2 or 3M). A station is categorized into one of four ranges defined by the thresholds as noted in the \code{cat} column of the output, with corresponding colors appropriate for each range as noted in the \code{col} column of the output.
 #'
@@ -41,7 +41,6 @@ anlz_enteromap <- function (fibdata, yrsel = NULL, mosel = NULL, wetdry = FALSE,
       # if precip data isn't specified, use the catch_precip object
       if(is.null(precipdata)){
         precipdata <- catch_precip
-        message("precipdata not specified; defaulting to tbeptools catch_precip object")
       }
       # run the anlz_fibwetdry function
       wetdry <- anlz_fibwetdry(fibdata = fibdata,

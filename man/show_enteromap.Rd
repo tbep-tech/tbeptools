@@ -23,11 +23,11 @@ show_enteromap(
 
 \item{wetdry}{logical; if \code{TRUE}, incorporate wet/dry differences (this will result in a call to \code{\link{anlz_fibwetdry}}, in which case \code{temporal_window} and \code{wet_threshold} are required). if \code{FALSE} (default), do not differentiate between wet and dry samples.}
 
-\item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select Enterococcus stations.}
+\item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catch_precip}}.}
 
-\item{temporal_window}{numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
+\item{temporal_window}{numeric; required if \code{wetdry} is \code{TRUE}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
 
-\item{wet_threshold}{numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
+\item{wet_threshold}{numeric; required if \code{wetdry} is \code{TRUE}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
 }
 \value{
 A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category

@@ -1,7 +1,8 @@
 library(tidyverse)
+library(here)
 
 # load the catch_pixels data file
-load('data/catch_pixels.RData')
+load(here('data/catch_pixels.RData'))
 
 
 # set up function to loop through several years
@@ -40,4 +41,4 @@ catch_precip <- dplyr::bind_rows(prcp_1995.2004,
                              prcp_2015.2023)
 
 
-save(catch_precip, file = 'data/catch_precip.RData', compress = 'xz')
+save(catch_precip, file = here('data/catch_precip.RData'), compress = 'xz')

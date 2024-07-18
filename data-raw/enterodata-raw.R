@@ -1,3 +1,5 @@
+library(here)
+
 stations <- c('21FLHILL_WQX-101',
               '21FLHILL_WQX-102',
               '21FLHILL_WQX-501',
@@ -20,4 +22,4 @@ enterodata <- read_importentero(args = args) %>%
   dplyr::select(-qualifier,
                 -LabComments)
 
-save(enterodata, file = 'data/enterodata.RData', compress = 'xz')
+save(enterodata, file = here('data/enterodata.RData'), compress = 'xz')

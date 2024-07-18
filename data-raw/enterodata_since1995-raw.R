@@ -1,5 +1,6 @@
 # all data from key Enterococcus stations, 1995-2023
 # although apparently data collection only started in 2000 at the earliest of these stations
+library(here)
 
 stations <- unique(catch_precip$station)
 entero_names <- c('Enterococci',
@@ -19,4 +20,4 @@ enterodata_since1995 <- read_importentero(args = args) %>%
   dplyr::select(-qualifier,
                 -LabComments)
 
-save(enterodata_since1995, file = 'data/enterodata_since1995.RData', compress = 'xz')
+save(enterodata_since1995, file = here('data/enterodata_since1995.RData'), compress = 'xz')

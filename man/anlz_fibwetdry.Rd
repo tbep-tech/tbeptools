@@ -16,7 +16,7 @@ anlz_fibwetdry(fibdata, precipdata, temporal_window = 2, wet_threshold = 0.5)
 \item{wet_threshold}{numeric, inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
 }
 \value{
-a data frame; the original fibdata data frame with an additional column. wet_sample is logical, indicating whether the rainfall for that station's catchment exceeded the amount over the time period specified in args.
+a data frame; the original fibdata data frame with three additional columns. \code{rain_sampleDay} is the total rain (inches) on the day of sampling, \code{rain_total} is the total rain (inches) for the period of time defined by \code{temporal_window}, and \code{wet_sample} is logical, indicating whether the rainfall for that station's catchment exceeded the amount over the time period specified in args.
 }
 \description{
 Identify Fecal Indicator Bacteria samples as coming from a 'wet' or 'dry' time period
@@ -26,4 +26,5 @@ This function allows the user to specify a threshold for declaring a sample to b
 }
 \examples{
 entero_wetdry <- anlz_fibwetdry(enterodata, catch_precip)
+head(entero_wetdry)
 }

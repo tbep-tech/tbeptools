@@ -2,13 +2,14 @@
 
 library(tidyverse)
 library(sf)
+library(here)
 
 # station, catchment data
-catchments <- read_sf('data-raw/TB_Select_Fib_Catchments_Dissolved.shp')
+catchments <- read_sf(here('data-raw/TB_Select_Fib_Catchments_Dissolved.shp'))
 
 # SWFWMD pixel data
 # this will need to be saved to tbeptools
-pixels <- read_sf('data-raw/swfwmd_pixel_2_utm_m_83.shp')
+pixels <- read_sf(here('data-raw/swfwmd_pixel_2_utm_m_83.shp'))
 
 # put into same crs and join
 catch2 <- st_transform(catchments,
@@ -38,4 +39,4 @@ catch_pixels <- st_intersection(pixels, catch2) |>
   ) |>
   select(station, pixel = PIXEL)
 
-save(catch_pixels, file = 'data/catch_pixels.RData', compress = 'xz')
+save(catch_pixels, file = here('data/catch_pixels.RData'), compress = 'xz')
