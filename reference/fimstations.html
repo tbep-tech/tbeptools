@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9025</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.1.9026</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A simple features <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object (POINT) with 7450 features and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p><dl><dt>Reference</dt>
+    <p>A simple features <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object (POINT) with 7771 features and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</p><dl><dt>Reference</dt>
 <dd><p>num</p></dd>
 
   <dt>bay_segment</dt>
@@ -65,10 +65,10 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="co"># file path</span></span></span>
-<span class="r-in"><span><span class="va">csv</span> <span class="op">&lt;-</span> <span class="st">'~/Desktop/fimraw.csv'</span></span></span>
+<span class="r-in"><span><span class="va">csv</span> <span class="op">&lt;-</span> <span class="st">'~/Desktop/fimdata.csv'</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># load and assign to object</span></span></span>
-<span class="r-in"><span><span class="va">fimstations</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_importfim.html">read_importfim</a></span><span class="op">(</span><span class="va">csv</span>, download_latest <span class="op">=</span> <span class="cn">TRUE</span>, locs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fimstations</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_importfim.html">read_importfim</a></span><span class="op">(</span><span class="va">csv</span>, download_latest <span class="op">=</span> <span class="cn">FALSE</span>, locs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html" class="external-link">save</a></span><span class="op">(</span><span class="va">fimstations</span>, file <span class="op">=</span> <span class="st">'data/fimstations.RData'</span>, compress <span class="op">=</span> <span class="st">'xz'</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
