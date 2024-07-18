@@ -15,7 +15,9 @@ jobs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      NOAA_KEY: ${{ secrets.NOAA_KEY}}
+      NOAA_KEY: ${{ secrets.NOAA_KEY }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
     steps:
       - uses: actions/checkout@v2
 
