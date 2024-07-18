@@ -19,8 +19,10 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_attainsite.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_avedat.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_avedatsite.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_enteromap.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_fibmap.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_fibmatrix.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_fibwetdry.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_hmpreport.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_hydroload.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_iwrraw.html</loc></url>
@@ -42,6 +44,11 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_yrattain.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/benthicdata.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/bsmap.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/catch_pixels.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/catch_precip.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/entero_stationdata.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/enterodata.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/enterodata_since1995.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/epcdata.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/fibdata.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/fimdata.html</loc></url>
@@ -60,10 +67,12 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_formwq.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_formwqp.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importbenthic.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importentero.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importepc.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importfib.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importfim.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importphyto.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importrain.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importsediment.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importwq.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importwqp.html</loc></url>
@@ -75,6 +84,7 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_annualassess.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_boxplot.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_compplot.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/show_enteromap.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_fibmap.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_fibmatrix.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_hmpreport.html</loc></url>
