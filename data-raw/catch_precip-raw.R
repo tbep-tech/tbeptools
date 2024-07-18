@@ -1,0 +1,44 @@
+library(tidyverse)
+library(here)
+
+# load the catch_pixels data file
+load(here('data/catch_pixels.RData'))
+
+
+# set up function to loop through several years
+read_importrain_many <- function(yrs,
+                                 quiet = FALSE){
+  yrs <- yrs
+  prcp_out <- list()
+
+  for(i in seq_along(yrs)){
+    yr = yrs[[i]]
+    prcptmp <- read_importrain(curyr = yr,
+                               catch_pixels = catch_pixels,
+                               quiet = quiet)
+    prcp_out[[i]] <- prcptmp
+    rm(prcptmp)
+    # pause for 5 seconds between years
+    Sys.sleep(5)
+  }
+
+  prcpdat <- dplyr::bind_rows(prcp_out)
+  return(prcpdat)
+}
+
+# loop through 10 years at a time, pausing for a few seconds in between
+
+prcp_1995.2004 <- read_importrain_many(yrs = 1995:2004, quiet = FALSE)
+Sys.sleep(5)
+prcp_2005.2014 <- read_importrain_many(yrs = 2005:2014, quiet = FALSE)
+Sys.sleep(5)
+prcp_2015.2023 <- read_importrain_many(yrs = 2015:2023, quiet = FALSE)
+
+
+# bind it all together
+catch_precip <- dplyr::bind_rows(prcp_1995.2004,
+                             prcp_2005.2014,
+                             prcp_2015.2023)
+
+
+save(catch_precip, file = here('data/catch_precip.RData'), compress = 'xz')

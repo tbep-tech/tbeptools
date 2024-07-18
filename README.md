@@ -58,7 +58,9 @@ Suffix descriptions:
 
 * `attain`: Analyze functions that summarize data relative to attainment categories specific to bay segments
 * `ave`, `med`: Analyze functions that summarize data into averages or medians
-* `benthic`: Applies to benthic monitoring data used for the Tampa Bay Benthic Index
+* `benthic`: Applies to benthic monitoring data used for the Tampa Bay Benthic Index  
+* `entero`: Applies to Enterococcus, a specific type of Fecal Indicator Bacteria, when `fib` functions are not applicable
+* `fib`: Applies generally to Fecal Indicator Bacteria
 * `fim`: Applies to data from the Fisheries Independent Monitoring program used for the Tampa Bay Nekton Index
 * `form`: An intermediate function for formatting imported data for downstream analysis
 * `hmp`: Functions that work with Habitat Master Plan data

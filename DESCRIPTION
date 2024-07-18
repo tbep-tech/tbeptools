@@ -1,7 +1,7 @@
 Package: tbeptools
 Title: Data and Indicators for the Tampa Bay Estuary Program
-Version: 2.0.1.9024
-Date: 2024-06-10
+Version: 2.0.1.9025
+Date: 2024-07-11
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
@@ -43,7 +43,12 @@ Authors@R: c(
       role = c("aut"),
       email = "ben@ecoquants.com",
       comment = c(ORCID = "0000-0002-2686-0784")
-    )
+    ),
+    person(given = "Kim",
+      family = "Cressman",
+      role = c("aut"),
+      email = "kim@catbirdstats.com",
+      comment = c(ORCID = "0000-0002-8083-2434"))
   )
 Description: Several functions are provided for working with Tampa Bay Estuary 
   Program data and indicators, including the water quality report card, tidal creek
