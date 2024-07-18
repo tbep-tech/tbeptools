@@ -1,13 +1,11 @@
+# all data from key Enterococcus stations, 1995-2023
+# although apparently data collection only started in 2000 at the earliest of these stations
 library(here)
 
-stations <- c('21FLHILL_WQX-101',
-              '21FLHILL_WQX-102',
-              '21FLHILL_WQX-501',
-              '21FLDOH_WQX-MANATEE152',
-              '21FLPDEM_WQX-19-02')
+stations <- unique(catch_precip$station)
 entero_names <- c('Enterococci',
                   'Enterococcus')
-startDate <- as.Date('2019-01-01')
+startDate <- as.Date('1995-01-01')
 endDate <- as.Date('2023-12-31')
 
 args <- list(
