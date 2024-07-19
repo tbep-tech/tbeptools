@@ -20,7 +20,7 @@ show_fibmatrix(
   nrows = 10,
   family = NA,
   angle = 90,
-  size = 8,
+  size = 10,
   hjust = 0,
   plotly = FALSE,
   width = NULL,
