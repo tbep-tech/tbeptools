@@ -40,7 +40,7 @@
 #' entero_names <- c('Enterococci',
 #'                   'Enterococcus')
 #' startDate <- as.Date('2023-01-01')
-#' endDate <- as.Date('2023-12-31')
+#' endDate <- as.Date('2023-02-01')
 #'
 #' args <- list(
 #'   siteid = stations,
