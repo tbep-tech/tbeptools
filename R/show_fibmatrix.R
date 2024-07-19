@@ -7,6 +7,9 @@
 #' @param asreact logical indicating if a \code{\link[reactable]{reactable}} object is returned
 #' @param nrows if \code{asreact = TRUE}, a numeric specifying number of rows in the table
 #' @param family optional chr string indicating font family for text labels
+#' @param angle numeric for angle of x-axis text labels
+#' @param hjust numeric for horizontal justification of x-axis text labels
+#' @param size numeric for size of the x-axis text labels
 #' @param plotly logical if matrix is created using plotly
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
@@ -40,8 +43,8 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
                            stas = NULL, indic = NULL, threshold = NULL, lagyr = 3,
                            subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
                            temporal_window = NULL, wet_threshold = NULL,
-                           txtsz = 3, asreact = FALSE, nrows = 10, family = NA, plotly = FALSE,
-                           width = NULL, height = NULL){
+                           txtsz = 3, asreact = FALSE, nrows = 10, family = NA, angle = 90,
+                           size = 10, hjust = 0, plotly = FALSE, width = NULL, height = NULL){
 
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
 
@@ -102,7 +105,8 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
     ggplot2::theme(
       axis.title = ggplot2::element_blank(),
       legend.position = 'none',
-      panel.grid = ggplot2::element_blank()
+      panel.grid = ggplot2::element_blank(),
+      axis.text.x = ggplot2::element_text(angle = angle, hjust = hjust, size = size)
     )
 
   if(!is.null(txtsz))

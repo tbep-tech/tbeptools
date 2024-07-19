@@ -19,6 +19,9 @@ show_fibmatrix(
   asreact = FALSE,
   nrows = 10,
   family = NA,
+  angle = 90,
+  size = 8,
+  hjust = 0,
   plotly = FALSE,
   width = NULL,
   height = NULL
@@ -52,6 +55,12 @@ show_fibmatrix(
 \item{nrows}{if \code{asreact = TRUE}, a numeric specifying number of rows in the table}
 
 \item{family}{optional chr string indicating font family for text labels}
+
+\item{angle}{numeric for angle of x-axis text labels}
+
+\item{size}{numeric for size of the x-axis text labels}
+
+\item{hjust}{numeric for horizontal justification of x-axis text labels}
 
 \item{plotly}{logical if matrix is created using plotly}
 
