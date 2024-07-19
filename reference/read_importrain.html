@@ -47,7 +47,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_importrain</span><span class="op">(</span><span class="va">curyr</span>, <span class="va">catch_pixels</span>, mos <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, quiet <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_importrain</span><span class="op">(</span><span class="va">curyr</span>, <span class="va">catchpixels</span>, mos <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, quiet <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -58,8 +58,8 @@
 <dd><p>numeric for year</p></dd>
 
 
-<dt id="arg-catch-pixels">catch_pixels<a class="anchor" aria-label="anchor" href="#arg-catch-pixels"></a></dt>
-<dd><p>data.frame with columns named 'station' and 'pixel'. A data frame has been created for key Enterococcus stations, associating each station with all pixels in that station's catchment layer. This is the tbeptools object 'catch_pixels'.</p></dd>
+<dt id="arg-catchpixels">catchpixels<a class="anchor" aria-label="anchor" href="#arg-catchpixels"></a></dt>
+<dd><p>data.frame with columns named 'station' and 'pixel'. A data frame has been created for key Enterococcus stations, associating each station with all pixels in that station's catchment layer. This is the tbeptools object 'catchpixels'.</p></dd>
 
 
 <dt id="arg-mos">mos<a class="anchor" aria-label="anchor" href="#arg-mos"></a></dt>
@@ -82,7 +82,7 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu">read_importrain</span><span class="op">(</span><span class="fl">2021</span>, <span class="va">catch_pixels</span>, quiet <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">read_importrain</span><span class="op">(</span><span class="fl">2021</span>, <span class="va">catchpixels</span>, quiet <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

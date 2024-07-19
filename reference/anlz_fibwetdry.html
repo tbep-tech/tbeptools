@@ -59,7 +59,7 @@
 
 
 <dt id="arg-precipdata">precipdata<a class="anchor" aria-label="anchor" href="#arg-precipdata"></a></dt>
-<dd><p>input data frame as returned by <code><a href="read_importrain.html">read_importrain</a></code>. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object <code><a href="catch_precip.html">catch_precip</a></code> has this data from 1995-2023 for select stations.</p></dd>
+<dd><p>input data frame as returned by <code><a href="read_importrain.html">read_importrain</a></code>. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object <code><a href="catchprecip.html">catchprecip</a></code> has this data from 1995-2023 for select stations.</p></dd>
 
 
 <dt id="arg-temporal-window">temporal_window<a class="anchor" aria-label="anchor" href="#arg-temporal-window"></a></dt>
@@ -81,7 +81,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">entero_wetdry</span> <span class="op">&lt;-</span> <span class="fu">anlz_fibwetdry</span><span class="op">(</span><span class="va">enterodata</span>, <span class="va">catch_precip</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">entero_wetdry</span> <span class="op">&lt;-</span> <span class="fu">anlz_fibwetdry</span><span class="op">(</span><span class="va">enterodata</span>, <span class="va">catchprecip</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">entero_wetdry</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         date            station ecocci ecocci_censored ecocci_units Latitude</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 2013-06-27 21FLCOSP_WQX-32-03    740           FALSE    cfu/100mL 27.80869</span>
