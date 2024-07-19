@@ -1,7 +1,7 @@
 #' Download daily precip data and summarise by station catchment
 #'
 #' @param curyr numeric for year
-#' @param catch_pixels data.frame with columns named 'station' and 'pixel'. A data frame has been created for key Enterococcus stations, associating each station with all pixels in that station's catchment layer. This is the tbeptools object 'catch_pixels'.
+#' @param catchpixels data.frame with columns named 'station' and 'pixel'. A data frame has been created for key Enterococcus stations, associating each station with all pixels in that station's catchment layer. This is the tbeptools object 'catchpixels'.
 #' @param mos numeric vector for months to download
 #' @param quiet logical for messages
 #'
@@ -11,9 +11,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' read_importrain(2021, catch_pixels, quiet = F)
+#' read_importrain(2021, catchpixels, quiet = F)
 #' }
-read_importrain <- function(curyr, catch_pixels, mos = 1:12, quiet = T){
+read_importrain <- function(curyr, catchpixels, mos = 1:12, quiet = T){
 
   ftp <- 'ftp://ftp.swfwmd.state.fl.us/pub/radar_rainfall/Daily_Data/'
 
@@ -57,7 +57,7 @@ read_importrain <- function(curyr, catch_pixels, mos = 1:12, quiet = T){
 
 
     # join with grd cells, average by date, station
-    dat <- dplyr::left_join(catch_pixels, datall, by = 'pixel',
+    dat <- dplyr::left_join(catchpixels, datall, by = 'pixel',
                             relationship = 'many-to-many')  %>%
       dplyr::group_by(station, date) %>%
       dplyr::summarise(

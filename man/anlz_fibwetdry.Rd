@@ -9,7 +9,7 @@ anlz_fibwetdry(fibdata, precipdata, temporal_window = 2, wet_threshold = 0.5)
 \arguments{
 \item{fibdata}{input data frame}
 
-\item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select stations.}
+\item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select stations.}
 
 \item{temporal_window}{numeric, number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
 
@@ -25,6 +25,6 @@ Identify Fecal Indicator Bacteria samples as coming from a 'wet' or 'dry' time p
 This function allows the user to specify a threshold for declaring a sample to be taken after an important amount of rain over an important amount of days, and declaring it to be 'wet'. This is of interest because samples taken after significant precipitation (definitions of this vary, which is why the user can specify desired thresholds) are more likely to exceed relevant bacterial thresholds. Identifying samples as 'wet' or not allows for calculation of further indices for wet and dry subsets of samples.
 }
 \examples{
-entero_wetdry <- anlz_fibwetdry(enterodata, catch_precip)
+entero_wetdry <- anlz_fibwetdry(enterodata, catchprecip)
 head(entero_wetdry)
 }

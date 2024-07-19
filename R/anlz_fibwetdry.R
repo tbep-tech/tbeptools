@@ -1,7 +1,7 @@
 #' Identify Fecal Indicator Bacteria samples as coming from a 'wet' or 'dry' time period
 #'
 #' @param fibdata input data frame
-#' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catch_precip}} has this data from 1995-2023 for select stations.
+#' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select stations.
 #' @param temporal_window numeric, number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
 #' @param wet_threshold  numeric, inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
 #'
@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' entero_wetdry <- anlz_fibwetdry(enterodata, catch_precip)
+#' entero_wetdry <- anlz_fibwetdry(enterodata, catchprecip)
 #' head(entero_wetdry)
 anlz_fibwetdry <- function(fibdata,
                            precipdata,

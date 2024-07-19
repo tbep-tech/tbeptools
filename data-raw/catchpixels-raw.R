@@ -15,7 +15,7 @@ pixels <- read_sf(here('data-raw/swfwmd_pixel_2_utm_m_83.shp'))
 catch2 <- st_transform(catchments,
                        crs = st_crs(pixels))
 
-catch_pixels <- st_intersection(pixels, catch2) |>
+catchpixels <- st_intersection(pixels, catch2) |>
   sf::st_drop_geometry() |>
   select(PIXEL, StationNam) |>
   separate_wider_delim(StationNam, delim = " + ", names = c('a','b', 'c','d'),
@@ -39,4 +39,4 @@ catch_pixels <- st_intersection(pixels, catch2) |>
   ) |>
   select(station, pixel = PIXEL)
 
-save(catch_pixels, file = here('data/catch_pixels.RData'), compress = 'xz')
+save(catchpixels, file = here('data/catchpixels.RData'), compress = 'xz')

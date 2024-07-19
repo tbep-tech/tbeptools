@@ -2,7 +2,7 @@
 # although apparently data collection only started in 2000 at the earliest of these stations
 library(here)
 
-stations <- unique(catch_precip$station)
+stations <- unique(catchprecip$station)
 entero_names <- c('Enterococci',
                   'Enterococcus')
 startDate <- as.Date('1995-01-01')

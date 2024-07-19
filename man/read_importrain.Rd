@@ -4,12 +4,12 @@
 \alias{read_importrain}
 \title{Download daily precip data and summarise by station catchment}
 \usage{
-read_importrain(curyr, catch_pixels, mos = 1:12, quiet = T)
+read_importrain(curyr, catchpixels, mos = 1:12, quiet = T)
 }
 \arguments{
 \item{curyr}{numeric for year}
 
-\item{catch_pixels}{data.frame with columns named 'station' and 'pixel'. A data frame has been created for key Enterococcus stations, associating each station with all pixels in that station's catchment layer. This is the tbeptools object 'catch_pixels'.}
+\item{catchpixels}{data.frame with columns named 'station' and 'pixel'. A data frame has been created for key Enterococcus stations, associating each station with all pixels in that station's catchment layer. This is the tbeptools object 'catchpixels'.}
 
 \item{mos}{numeric vector for months to download}
 
@@ -26,6 +26,6 @@ Data from the Southwest Florida Water Management District's (SWFWMD) ftp site: f
 }
 \examples{
 \dontrun{
-read_importrain(2021, catch_pixels, quiet = F)
+read_importrain(2021, catchpixels, quiet = F)
 }
 }

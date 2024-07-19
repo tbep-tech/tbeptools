@@ -63,7 +63,7 @@ test_that("wet/dry subsetting inside function works the same as the longer workf
                              lagyr = 1, subset_wetdry = "dry",
                              temporal_window = 2, wet_threshold = 0.5)
 
-  sub_b <- anlz_fibwetdry(enterodata, precipdata = catch_precip,
+  sub_b <- anlz_fibwetdry(enterodata, precipdata = catchprecip,
                           temporal_window = 2, wet_threshold = 0.5) %>%
     dplyr::filter(wet_sample == FALSE)
   result_b <- anlz_fibmatrix(sub_b, indic = 'ecocci', lagyr = 1)
