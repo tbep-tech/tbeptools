@@ -39,7 +39,7 @@ show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodi
   toplo <- transect %>%
     dplyr::filter(yr %in% !!yr) %>%
     dplyr::filter(Site %in% site) %>%
-    dplyr::filter(Savspecies %in% species) %>%
+    dplyr::filter(Species %in% species) %>%
     dplyr::filter(var %in% varplo)
 
   # get summary stats

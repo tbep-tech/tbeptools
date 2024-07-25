@@ -42,7 +42,7 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
       return(out)
 
     out <- out %>%
-      dplyr::select(yr = AssessmentYear, Crew, MonitoringAgency, Site, Depth, Savspecies = Species, Abundance = SpeciesAbundance,
+      dplyr::select(yr = AssessmentYear, Crew, MonitoringAgency, Site, Depth, Species, Abundance = SpeciesAbundance,
                     matches('BladeLength_|ShootDensity_')) %>%
       dplyr::select(-BladeLength_Avg, -BladeLength_StdDev, -ShootDensity_Avg, -ShootDensity_StdDev) %>%
       dplyr::mutate(
@@ -51,9 +51,10 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
           grepl('[a-z,A-Z]', Abundance) ~ NA_character_,
           T ~ Abundance
         ),
-        Abundance = as.numeric(Abundance)
+        Abundance = as.numeric(Abundance),
+        Species = gsub('\\r\\n', '', Species)
       ) %>%
-      tidyr::gather('var', 'val', -yr, -Crew, -MonitoringAgency, -Site, -Depth, -Savspecies) %>%
+      tidyr::gather('var', 'val', -yr, -Crew, -MonitoringAgency, -Site, -Depth, -Species) %>%
       dplyr::group_by(yr) %>%
       dplyr::mutate(
         rep = gsub('.*([0-9])$', '\\1', var),
@@ -76,13 +77,12 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
         grp = as.character(grp)
       ) %>%
       dplyr::ungroup() %>%
-      dplyr::group_by(yr, grp, grpact, Crew, MonitoringAgency, Site, Depth, Savspecies, var) %>%
+      dplyr::group_by(yr, grp, grpact, Crew, MonitoringAgency, Site, Depth, Species, var) %>%
       dplyr::summarise(
         aveval = mean(val, na.rm = T),
         sdval = sd(val, na.rm = T)
       ) %>%
-      dplyr::ungroup() %>%
-      dplyr::filter(Savspecies %in% c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'))
+      dplyr::ungroup()
 
     }
 
