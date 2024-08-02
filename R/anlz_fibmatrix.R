@@ -5,7 +5,7 @@
 #' @param fibdata input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}
 #' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in data
 #' @param stas optional vector of stations to include, see details
-#' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} (default) for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.
+#' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.
 #' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.
 #' @param lagyr numeric for year lag to calculate categories, see details
 #' @param subset_wetdry character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.
@@ -26,8 +26,6 @@
 #' @seealso \code{\link{show_fibmatrix}}
 #'
 #' @examples
-#' anlz_fibmatrix(fibdata)
-#' # same result:
 #' anlz_fibmatrix(fibdata, indic = 'fcolif')
 #'
 #' # use different indicator:
@@ -48,7 +46,7 @@
 anlz_fibmatrix <- function(fibdata,
                            yrrng = NULL,
                            stas = NULL,
-                           indic = c("fcolif", "ecocci"),
+                           indic,
                            threshold = NULL,
                            lagyr = 3,
                            subset_wetdry = c("all", "wet", "dry"),
@@ -58,6 +56,7 @@ anlz_fibmatrix <- function(fibdata,
 
   geomean <- function(x){prod(x)^(1/length(x))}
 
+  indic <- match.arg(indic, c('fcolif', 'ecocci'))
 
   # subset to wet or dry samples, if specified
   subset_wetdry <- match.arg(subset_wetdry)
@@ -92,7 +91,6 @@ anlz_fibmatrix <- function(fibdata,
 
 
   # make a generic column for the indicator
-  indic <- match.arg(indic)
   fibdata$indic <- fibdata[[which(names(fibdata) == indic)]]
 
   # if threshold wasn't assigned, assign one based on the indicator of choice

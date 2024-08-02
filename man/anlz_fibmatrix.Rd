@@ -8,7 +8,7 @@ anlz_fibmatrix(
   fibdata,
   yrrng = NULL,
   stas = NULL,
-  indic = c("fcolif", "ecocci"),
+  indic,
   threshold = NULL,
   lagyr = 3,
   subset_wetdry = c("all", "wet", "dry"),
@@ -24,7 +24,7 @@ anlz_fibmatrix(
 
 \item{stas}{optional vector of stations to include, see details}
 
-\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} (default) for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.}
+\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.}
 
 \item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.}
 
@@ -48,8 +48,6 @@ Analyze Fecal Indicator Bacteria categories over time by station
 This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding some threshold in a given year.  For fecal coliform, the default threshold is 400 CFU / 100 mL in a given year (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  For Enterococcus, the default threshold is 130 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
 }
 \examples{
-anlz_fibmatrix(fibdata)
-# same result:
 anlz_fibmatrix(fibdata, indic = 'fcolif')
 
 # use different indicator:
