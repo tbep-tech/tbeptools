@@ -47,28 +47,23 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_importentero</span><span class="op">(</span><span class="va">args</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_importentero</span><span class="op">(</span>stas <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">startDate</span>, <span class="va">endDate</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-args">args<a class="anchor" aria-label="anchor" href="#arg-args"></a></dt>
-<dd><p>a list of arguments to pass to Water Quality Portal. See <code>examples</code> for detail on how to use. Must contain the following fields:</p><dl><dt><code>siteid</code></dt>
-<dd><p>character, vector of stations</p></dd>
-
- <dt><code>characteristicName</code></dt>
-<dd><p>character, vector to select 'Characteristic Names' from WQP</p></dd>
-
- <dt><code>startDateLo</code></dt>
-<dd><p>date, start date for data to download</p></dd>
-
- <dt><code>startDateHi</code></dt>
-<dd><p>date, end date for data to download</p></dd>
+<dl><dt id="arg-stas">stas<a class="anchor" aria-label="anchor" href="#arg-stas"></a></dt>
+<dd><p>character, a vector of stations.  If <code>NULL</code>, defaults to all stations in <code><a href="catchprecip.html">catchprecip</a></code>.</p></dd>
 
 
-</dl></dd>
+<dt id="arg-startdate">startDate<a class="anchor" aria-label="anchor" href="#arg-startdate"></a></dt>
+<dd><p>character, starting date of observations as YYYY-MM-DD</p></dd>
+
+
+<dt id="arg-enddate">endDate<a class="anchor" aria-label="anchor" href="#arg-enddate"></a></dt>
+<dd><p>character, ending date of observations as YYYY-MM-DD</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -125,24 +120,14 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="co"># set up list of args</span></span></span>
+<span class="r-in"><span><span class="co"># stations to download</span></span></span>
 <span class="r-in"><span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'21FLHILL_WQX-101'</span>,</span></span>
 <span class="r-in"><span><span class="st">'21FLHILL_WQX-102'</span>,</span></span>
 <span class="r-in"><span><span class="st">'21FLHILL_WQX-103'</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">entero_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Enterococci'</span>,</span></span>
-<span class="r-in"><span>                  <span class="st">'Enterococcus'</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">startDate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">'2023-01-01'</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">endDate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">'2023-02-01'</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">args</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  siteid <span class="op">=</span> <span class="va">stations</span>,</span></span>
-<span class="r-in"><span>  characteristicName <span class="op">=</span> <span class="va">entero_names</span>,</span></span>
-<span class="r-in"><span>  startDateLo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">startDate</span>, <span class="st">'%m-%d-%Y'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  startDateHi <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">endDate</span>, <span class="st">'%m-%d-%Y'</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># download and read the data</span></span></span>
-<span class="r-in"><span><span class="va">entero_in</span> <span class="op">&lt;-</span> <span class="fu">read_importentero</span><span class="op">(</span>args <span class="op">=</span> <span class="va">args</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">entero_in</span> <span class="op">&lt;-</span> <span class="fu">read_importentero</span><span class="op">(</span>stas <span class="op">=</span> <span class="va">stations</span>, startDate <span class="op">=</span> <span class="st">'2023-01-01'</span>, endDate <span class="op">=</span> <span class="st">'2023-02-01'</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">entero_in</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
