@@ -51,7 +51,7 @@
 <span>  <span class="va">fibdata</span>,</span>
 <span>  yrrng <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  stas <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  indic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"fcolif"</span>, <span class="st">"ecocci"</span><span class="op">)</span>,</span>
+<span>  <span class="va">indic</span>,</span>
 <span>  threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  lagyr <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>  subset_wetdry <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"wet"</span>, <span class="st">"dry"</span><span class="op">)</span>,</span>
@@ -78,7 +78,7 @@
 
 
 <dt id="arg-indic">indic<a class="anchor" aria-label="anchor" href="#arg-indic"></a></dt>
-<dd><p>character for choice of fecal indicator. Allowable options are <code>fcolif</code> (default) for fecal coliform, or <code>ecocci</code> for Enterococcus. A numeric column in the data frame must have this name.</p></dd>
+<dd><p>character for choice of fecal indicator. Allowable options are <code>fcolif</code> for fecal coliform, or <code>ecocci</code> for Enterococcus. A numeric column in the data frame must have this name.</p></dd>
 
 
 <dt id="arg-threshold">threshold<a class="anchor" aria-label="anchor" href="#arg-threshold"></a></dt>
@@ -120,23 +120,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 11,660 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       yr station gmean cat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">1</span>972 2          <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">1</span>972 6          <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">1</span>972 7          <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">1</span>972 8          <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">1</span>972 9          <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">1</span>972 11         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">1</span>972 13         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>972 14         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>972 16         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>972 19         <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 11,650 more rows</span></span>
-<span class="r-in"><span><span class="co"># same result:</span></span></span>
-<span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span>, indic <span class="op">=</span> <span class="st">'fcolif'</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span>, indic <span class="op">=</span> <span class="st">'fcolif'</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 11,660 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       yr station gmean cat  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
