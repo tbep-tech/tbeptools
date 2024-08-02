@@ -21,7 +21,7 @@ show_enteromap(
 
 \item{mosel}{optional numeric to filter data by month}
 
-\item{wetdry}{logical; if \code{TRUE}, incorporate wet/dry differences (this will result in a call to \code{\link{anlz_fibwetdry}}, in which case \code{temporal_window} and \code{wet_threshold} are required). if \code{FALSE} (default), do not differentiate between wet and dry samples.}
+\item{wetdry}{logical; if \code{TRUE}, incorporate wet/dry differences (this will result in a call to \code{\link{anlz_fibwetdry}}, in which case \code{temporal_window} and \code{wet_threshold} are required). If \code{FALSE} (default), do not differentiate between wet and dry samples.}
 
 \item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.}
 
@@ -39,13 +39,11 @@ Map Enterococcus results by month, year, and location
 Placing the mouse cursor over an item on the map will reveal additional information about a station.
 }
 \examples{
-\dontrun{
 show_enteromap(enterodata, yrsel = 2020, mosel = 9)
 
 # wet/dry samples
 show_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
                temporal_window = 2, wet_threshold = 0.5)
-}
 }
 \seealso{
 \code{\link{anlz_enteromap}} for details on the categories

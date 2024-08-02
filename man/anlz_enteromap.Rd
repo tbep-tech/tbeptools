@@ -21,7 +21,7 @@ anlz_enteromap(
 
 \item{mosel}{optional numeric to filter data by month}
 
-\item{wetdry}{logical; if \code{TRUE}, incorporate wet/dry differences (this will result in a call to \code{\link{anlz_fibwetdry}}, in which case \code{temporal_window} and \code{wet_threshold} are required). if \code{FALSE} (default), do not differentiate between wet and dry samples.}
+\item{wetdry}{logical; if \code{TRUE}, incorporate wet/dry differences (this will result in a call to \code{\link{anlz_fibwetdry}}, in which case \code{temporal_window} and \code{wet_threshold} are required). If \code{FALSE} (default), do not differentiate between wet and dry samples.}
 
 \item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.}
 

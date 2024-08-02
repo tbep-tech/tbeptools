@@ -12,14 +12,11 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' show_enteromap(enterodata, yrsel = 2020, mosel = 9)
 #'
 #' # wet/dry samples
 #' show_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
 #'                temporal_window = 2, wet_threshold = 0.5)
-#' }
-
 show_enteromap <- function(fibdata, yrsel, mosel, wetdry = FALSE,
                            precipdata = NULL, temporal_window = NULL,
                            wet_threshold = NULL){
