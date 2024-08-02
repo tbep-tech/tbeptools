@@ -25,16 +25,10 @@ test_that("read_importentero works correctly", {
   mock_read_csv <- mock(return_value = mock_data)
   stub(read_importentero, "read.csv", mock_read_csv)
 
-  # Prepare arguments
-  args <- list(
-    siteid = c("21FLHILL_WQX-101", "21FLHILL_WQX-102"),
-    characteristicName = c("Enterococci", "Enterococcus"),
-    startDateLo = "01-01-2023",
-    startDateHi = "12-31-2023"
-  )
+  stations <- c("21FLHILL_WQX-101", "21FLHILL_WQX-102")
 
   # Call the function with mocked dependencies
-  result <- read_importentero(args)
+  result <- read_importentero(stas = stations, startDate = "2023-01-01", endDate = "2023-12-31")
 
   # Define expected output
   expected_output <- data.frame(

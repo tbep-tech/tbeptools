@@ -4,16 +4,14 @@
 \alias{read_importentero}
 \title{Download Enterococcus data from the Water Quality Portal}
 \usage{
-read_importentero(args)
+read_importentero(stas = NULL, startDate, endDate)
 }
 \arguments{
-\item{args}{a list of arguments to pass to Water Quality Portal. See \code{examples} for detail on how to use. Must contain the following fields:
-\describe{
- \item{\code{siteid}}{character, vector of stations}
- \item{\code{characteristicName}}{character, vector to select 'Characteristic Names' from WQP}
- \item{\code{startDateLo}}{date, start date for data to download}
- \item{\code{startDateHi}}{date, end date for data to download}
-}}
+\item{stas}{character, a vector of stations.  If \code{NULL}, defaults to all stations in \code{\link{catchprecip}}.}
+
+\item{startDate}{character, starting date of observations as YYYY-MM-DD}
+
+\item{endDate}{character, ending date of observations as YYYY-MM-DD}
 }
 \value{
 a data frame containing one row for each sample. Columns returned are:
@@ -42,24 +40,14 @@ Retrieves Enterococcus sample data from selected stations and date range from th
 }
 \examples{
 \dontrun{
-# set up list of args
+# stations to download
 stations <- c('21FLHILL_WQX-101',
 '21FLHILL_WQX-102',
 '21FLHILL_WQX-103')
-entero_names <- c('Enterococci',
-                  'Enterococcus')
-startDate <- as.Date('2023-01-01')
-endDate <- as.Date('2023-02-01')
-
-args <- list(
-  siteid = stations,
-  characteristicName = entero_names,
-  startDateLo = format(startDate, '\%m-\%d-\%Y'),
-  startDateHi = format(endDate, '\%m-\%d-\%Y')
-)
 
 # download and read the data
-entero_in <- read_importentero(args = args)
+entero_in <- read_importentero(stas = stations, startDate = '2023-01-01', endDate = '2023-02-01')
+
 head(entero_in)
 
 }
