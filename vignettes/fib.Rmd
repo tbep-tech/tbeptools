@@ -316,7 +316,7 @@ The `yrrng` argument can also be used to select a year range, where the default 
 show_fibmatrix(enterodata, indic = 'ecocci', yrrng = c(2015, 2020))
 ```
 
-Note that the `subset_wetdry` argument can be used with `show_fibmatrix()` to show only wet or dry samples based on the thresholds provided by `temporal_window` and `wet_threshold`.  However, this is not recommended because the scores are probability-based and comparisons between wet or dry samples may be misleading due to different sample sizes, and therefore, power to detect the likelihood of exceeding the threshold.  Specifically, there are far fewer wet samples than dry and these sites will generally receive higher grades due to lower power of the statistical tests.
+Note that the `subset_wetdry` argument can be used with `show_fibmatrix()` to show only wet or dry samples based on the thresholds provided by `temporal_window` and `wet_threshold`.  However, this is not recommended because the scores are probability-based and comparisons between wet or dry samples may be misleading due to different sample sizes, and therefore, power to detect the likelihood of exceeding the threshold.  Specifically, there are far fewer wet samples than dry and these samples will generally receive higher grades due to lower power of the statistical tests.
 
 As for the EPC data, an HTML table can be returned with `show_fibmatrix()` using `asreact = TRUE` and a plotly object can be returned using `plotly = TRUE`.  See the above section for examples of these outputs.
 
