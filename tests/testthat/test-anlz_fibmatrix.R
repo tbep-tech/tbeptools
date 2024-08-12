@@ -14,7 +14,7 @@ test_that("Checking anlz_fibmatrix station warning some insufficient data", {
 })
 
 test_that("Checking anlz_fibmatrix station error all insufficient data", {
-  expect_warning(anlz_fibmatrix(fibdata, indic = 'fcolif', stas = '616'), regexp = 'No stations with sufficient data for lagyr',
+  expect_error(anlz_fibmatrix(fibdata, indic = 'fcolif', stas = '616'), regexp = 'No stations with sufficient data for lagyr',
                  fixed = T)
 })
 
