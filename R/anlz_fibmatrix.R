@@ -137,7 +137,7 @@ anlz_fibmatrix <- function(fibdata,
   # get geomean, proportion of sites > 400 cfu / 100mL, and prob of exceedence
   # handles lagged calculations
   dat <- fibdata %>%
-    dplyr::filter(station %in% stasval) %>%
+    dplyr::filter(station %in% stas) %>%
     dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
     dplyr::filter(!is.na(indic) | indic < 0) %>%
     summarise(
