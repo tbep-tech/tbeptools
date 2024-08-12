@@ -30,7 +30,7 @@ show_fibmatrix(
 \arguments{
 \item{fibdata}{input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}}
 
-\item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data}
+\item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data, see details}
 
 \item{stas}{optional vector of stations to include, see details}
 

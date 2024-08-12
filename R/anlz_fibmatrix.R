@@ -3,7 +3,7 @@
 #' Analyze Fecal Indicator Bacteria categories over time by station
 #'
 #' @param fibdata input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}
-#' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in data
+#' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in data, see details
 #' @param stas optional vector of stations to include, see details
 #' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.
 #' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.
@@ -18,6 +18,8 @@
 #' @return A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station, including columns for the estimated geometric mean of fecal coliform or Enterococcus concentrations (\code{gmean}), the proportion of samples exceeding 400 CFU / 100 mL (fecal coliform) or 130 CFU / 100 mL (Enterococcus) (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).
 #'
 #' @details This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding some threshold in a given year.  For fecal coliform, the default threshold is 400 CFU / 100 mL in a given year (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  For Enterococcus, the default threshold is 130 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
+#'
+#' \code{yrrng} can be specified several ways.  If \code{yrrng = NULL}, the year range of the data for the selected changes is chosen.  User-defined values for the minimum and maximum years can also be used, or only a minimum or maximum can be specified, e.g., \code{yrrng = c(2000, 2010)} or \code{yrrng = c(2000, NA)}.  In the latter case, the maximum year will be defined by the data.
 #'
 #' @export
 #'
@@ -81,17 +83,42 @@ anlz_fibmatrix <- function(fibdata,
       dplyr::filter(wetdry == subset_wetdry)
   }
 
-
-  # get year range from data if not provided
-  if(is.null(yrrng))
-    yrrng <- c(min(fibdata$yr, na.rm = T), max(fibdata$yr, na.rm = T))
-
   # if dealing with epchc data, make a simple 'station' column
   if(exists("epchc_station", fibdata)){fibdata$station <- fibdata$epchc_station}
 
+  # all stations if stas is NULL
+  if(is.null(stas))
+    stas <- fibdata %>%
+      dplyr::pull(station) %>%
+      unique() %>%
+      sort()
+
+  # check stations
+  chk <- stas %in% fibdata$station
+  if(any(!chk))
+    stop('Station(s) not found in fibdata: ', paste(stas[!chk], collapse = ', '))
 
   # make a generic column for the indicator
   fibdata$indic <- fibdata[[which(names(fibdata) == indic)]]
+
+  # get year range from data if not provided
+  if(any(is.na(yrrng)) | is.null(yrrng)){
+    valyrs <- fibdata %>%
+      dplyr::filter(station %in% stas) %>%
+      dplyr::filter(!is.na(indic) | indic < 0) %>%
+      dplyr::pull(yr) %>%
+      range(na.rm = T)
+
+    if(is.null(yrrng))
+      yrrng <- valyrs
+
+    if(is.na(yrrng[1]))
+      yrrng[1] <- valyrs[1]
+
+    if(is.na(yrrng[2]))
+      yrrng[2] <- valyrs[2]
+
+  }
 
   # if threshold wasn't assigned, assign one based on the indicator of choice
   if(is.null(threshold)){
@@ -104,6 +131,7 @@ anlz_fibmatrix <- function(fibdata,
 
   # valid stations with sufficient data for lagyr
   stasval <- fibdata %>%
+    dplyr::filter(station %in% stas) %>%
     dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
     dplyr::filter(!is.na(indic) | indic < 0) %>%
     dplyr::summarise(
@@ -113,15 +141,6 @@ anlz_fibmatrix <- function(fibdata,
     dplyr::filter(nyrs >= lagyr) %>%
     dplyr::pull(station) %>%
     unique()
-
-  # all valid stations if stas is NULL
-  if(is.null(stas))
-    stas <- stasval
-
-  # check stations
-  chk <- stas %in% fibdata$station
-  if(any(!chk))
-    stop('Station(s) not found in fibdata: ', paste(stas[!chk], collapse = ', '))
 
   chk <- !stas %in% stasval
 

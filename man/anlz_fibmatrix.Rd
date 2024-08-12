@@ -20,7 +20,7 @@ anlz_fibmatrix(
 \arguments{
 \item{fibdata}{input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}}
 
-\item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data}
+\item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data, see details}
 
 \item{stas}{optional vector of stations to include, see details}
 
@@ -46,6 +46,8 @@ Analyze Fecal Indicator Bacteria categories over time by station
 }
 \details{
 This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding some threshold in a given year.  For fecal coliform, the default threshold is 400 CFU / 100 mL in a given year (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  For Enterococcus, the default threshold is 130 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
+
+\code{yrrng} can be specified several ways.  If \code{yrrng = NULL}, the year range of the data for the selected changes is chosen.  User-defined values for the minimum and maximum years can also be used, or only a minimum or maximum can be specified, e.g., \code{yrrng = c(2000, 2010)} or \code{yrrng = c(2000, NA)}.  In the latter case, the maximum year will be defined by the data.
 }
 \examples{
 anlz_fibmatrix(fibdata, indic = 'fcolif')
