@@ -17,19 +17,21 @@ read_importentero(stas = NULL, startDate, endDate)
 a data frame containing one row for each sample. Columns returned are:
 \describe{
  \item{\code{date}}{date, sample date}
+ \item{\code{yr}}{numeric, year of sample date}
+ \item{\code{mo}}{numeric, month of sample date}
+ \item{\code{time}}{character, sample time}
+ \item{\code{time_zone}}{character, sample time zone}
+ \item{\code{long_name}}{character, long name of bay segment subwatershed}
+ \item{\code{bay_segment}}{character, short name of bay segment subwatershed}
  \item{\code{station}}{character, sample station}
  \item{\code{ecocci}}{numeric, Enterococcus concentration}
  \item{\code{ecocci_censored}}{logical, whether \code{ecocci} value was below the laboratory \code{MDL}, minimum detection limit}
+ \item{\code{MDL}}{numeric, minimum detection limit at the time of processing}
  \item{\code{ecocci_units}}{character, units of measurement for \code{ecocci}}
  \item{\code{qualifier}}{qualifier codes associated with sample}
  \item{\code{LabComments}}{lab comments on sample}
  \item{\code{Latitude}}{numeric, latitude in decimal degrees}
  \item{\code{Longitude}}{numeric, longitude in decimal degrees}
- \item{\code{time}}{character, sample time}
- \item{\code{time_zone}}{character, sample time zone}
- \item{\code{MDL}}{numeric, minimum detection limit for the lab and time the sample was analyzed}
- \item{\code{yr}}{numeric, year of sample date}
- \item{\code{mo}}{numeric, month of sample date}
  }
 }
 \description{
@@ -41,12 +43,12 @@ Retrieves Enterococcus sample data from selected stations and date range from th
 \examples{
 \dontrun{
 # stations to download
-stations <- c('21FLHILL_WQX-101',
+stas <- c('21FLHILL_WQX-101',
 '21FLHILL_WQX-102',
 '21FLHILL_WQX-103')
 
 # download and read the data
-entero_in <- read_importentero(stas = stations, startDate = '2023-01-01', endDate = '2023-02-01')
+entero_in <- read_importentero(stas = stas, startDate = '2023-01-01', endDate = '2023-02-01')
 
 head(entero_in)
 

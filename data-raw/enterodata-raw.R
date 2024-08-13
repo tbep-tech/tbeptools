@@ -2,8 +2,6 @@
 # although apparently data collection only started in 2000 at the earliest of these stations
 library(here)
 
-enterodata <- read_importentero(startDate = '1995-01-01', endDate = '2023-12-31') %>%
-  dplyr::select(-qualifier,
-                -LabComments)
+enterodata <- read_importentero(startDate = '1995-01-01', endDate = '2023-12-31')
 
 save(enterodata, file = here('data/enterodata.RData'), compress = 'xz')
