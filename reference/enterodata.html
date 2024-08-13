@@ -52,41 +52,53 @@
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A data frame with 6207 rows and 12 columns:</p><dl><dt>date</dt>
-<dd><p>data, sample date</p></dd>
+    <p>A data frame with 6266 rows and 16 columns:</p><dl><dt><code>date</code></dt>
+<dd><p>date, sample date</p></dd>
 
- <dt>station</dt>
-<dd><p>character, sample station, as named in the Water Quality Portal</p></dd>
+ <dt><code>yr</code></dt>
+<dd><p>numeric, year of sample date</p></dd>
 
- <dt>ecocci</dt>
-<dd><p>numeric, sample's Enterococcus concentration</p></dd>
+ <dt><code>mo</code></dt>
+<dd><p>numeric, month of sample date</p></dd>
 
- <dt>ecocci_censored</dt>
-<dd><p>logical, whether sample concentration was censored (below detection limit)</p></dd>
+ <dt><code>time</code></dt>
+<dd><p>character, sample time</p></dd>
 
- <dt>Latitude</dt>
+ <dt><code>time_zone</code></dt>
+<dd><p>character, sample time zone</p></dd>
+
+ <dt><code>long_name</code></dt>
+<dd><p>character, long name of bay segment subwatershed</p></dd>
+
+ <dt><code>bay_segment</code></dt>
+<dd><p>character, short name of bay segment subwatershed</p></dd>
+
+ <dt><code>station</code></dt>
+<dd><p>character, sample station</p></dd>
+
+ <dt><code>ecocci</code></dt>
+<dd><p>numeric, Enterococcus concentration</p></dd>
+
+ <dt><code>ecocci_censored</code></dt>
+<dd><p>logical, whether <code>ecocci</code> value was below the laboratory <code>MDL</code>, minimum detection limit</p></dd>
+
+ <dt><code>MDL</code></dt>
+<dd><p>numeric, minimum detection limit at the time of processing</p></dd>
+
+ <dt><code>ecocci_units</code></dt>
+<dd><p>character, units of measurement for <code>ecocci</code></p></dd>
+
+ <dt><code>qualifier</code></dt>
+<dd><p>qualifier codes associated with sample</p></dd>
+
+ <dt><code>LabComments</code></dt>
+<dd><p>lab comments on sample</p></dd>
+
+ <dt><code>Latitude</code></dt>
 <dd><p>numeric, latitude in decimal degrees</p></dd>
 
- <dt>Longitude</dt>
+ <dt><code>Longitude</code></dt>
 <dd><p>numeric, longitude in decimal degrees</p></dd>
-
- <dt>ecocci_units</dt>
-<dd><p>character, units of measurement of Enterococcus</p></dd>
-
- <dt>time</dt>
-<dd><p>character, time sample was obtained, in 24hr format</p></dd>
-
- <dt>time_zone</dt>
-<dd><p>character, time zone of sample time</p></dd>
-
- <dt>MDL</dt>
-<dd><p>numeric, minimum detection limit of laboratory for Enterococcus</p></dd>
-
- <dt>yr</dt>
-<dd><p>numeric year of sample date</p></dd>
-
- <dt>mo</dt>
-<dd><p>numeric month of sample date</p></dd>
 
 
 </dl></div>

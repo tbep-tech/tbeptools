@@ -158,6 +158,7 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># use different dataset; does not contain an 'fcolif' column so we must specify indic:</span></span></span>
 <span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, indic <span class="op">=</span> <span class="st">'ecocci'</span>, lagyr <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,224 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       yr station                    gmean cat  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
@@ -174,6 +175,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1,214 more rows</span></span>
 <span class="r-in"><span><span class="co"># same ecocci data; lower threshold - changes 'cat' scores</span></span></span>
 <span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, indic <span class="op">=</span> <span class="st">'ecocci'</span>, lagyr <span class="op">=</span> <span class="fl">1</span>, threshold <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,224 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       yr station                    gmean cat  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
@@ -210,6 +212,7 @@
 <span class="r-in"><span><span class="co"># subset to only dry samples</span></span></span>
 <span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, indic <span class="op">=</span> <span class="st">'ecocci'</span>, lagyr <span class="op">=</span> <span class="fl">1</span>, subset_wetdry <span class="op">=</span> <span class="st">"dry"</span>,</span></span>
 <span class="r-in"><span>               temporal_window <span class="op">=</span> <span class="fl">2</span>, wet_threshold <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,224 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       yr station                    gmean cat  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>

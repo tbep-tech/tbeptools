@@ -83,20 +83,27 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">entero_wetdry</span> <span class="op">&lt;-</span> <span class="fu">anlz_fibwetdry</span><span class="op">(</span><span class="va">enterodata</span>, <span class="va">catchprecip</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">entero_wetdry</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         date            station ecocci ecocci_censored ecocci_units Latitude</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2013-06-27 21FLCOSP_WQX-32-03    740           FALSE    cfu/100mL 27.80869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2013-06-27 21FLCOSP_WQX-32-03    740           FALSE    cfu/100mL 27.80869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2013-08-05 21FLCOSP_WQX-32-03     60           FALSE    cfu/100mL 27.80869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2013-08-05 21FLCOSP_WQX-32-03     60           FALSE    cfu/100mL 27.80869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2013-09-11 21FLCOSP_WQX-32-03     28           FALSE    cfu/100mL 27.80869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2013-09-11 21FLCOSP_WQX-32-03     28           FALSE    cfu/100mL 27.80869</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Longitude     time time_zone MDL   yr mo rain_sampleDay rain_total wet_sample</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 -82.61622 08:01:00       EST  20 2013  6     0.20445455 0.90536364       TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 -82.61622 08:23:00       EST  20 2013  6     0.20445455 0.90536364       TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 -82.61622 08:01:00       EST  20 2013  8     0.05845455 0.05954545      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 -82.61622 08:16:00       EST  20 2013  8     0.05845455 0.05954545      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 -82.61622 08:01:00       EST   2 2013  9     0.00000000 0.00000000      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 -82.61622 08:40:00       EST   2 2013  9     0.00000000 0.00000000      FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         date   yr mo time time_zone     long_name bay_segment          station</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2001-01-16 2001  1                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2001-02-20 2001  2                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2001-03-20 2001  3                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2001-04-17 2001  4                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2001-05-15 2001  5                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2001-06-19 2001  6                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ecocci ecocci_censored MDL ecocci_units qualifier LabComments Latitude</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     80           FALSE  NA      #/100mL        NA          NA  28.0248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    360           FALSE  NA      #/100mL        NA          NA  28.0248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   3900           FALSE  NA      #/100mL        NA          NA  28.0248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     20           FALSE  NA      #/100mL        NA          NA  28.0248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     NA           FALSE  20                     NA          NA  28.0248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     NA           FALSE  20                     NA          NA  28.0248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Longitude rain_sampleDay   rain_total wet_sample</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  -82.6316     0.00000000 0.0000000000      FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  -82.6316     0.00000000 0.0000000000      FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  -82.6316     0.02021212 1.5295151515       TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  -82.6316     0.00000000 0.0008787879      FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  -82.6316     0.00000000 0.0000000000      FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  -82.6316     0.32075758 0.4173939394      FALSE</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
