@@ -51,6 +51,7 @@
 <span>  <span class="va">fibdata</span>,</span>
 <span>  yrsel <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  mosel <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  areasel <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  wetdry <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  precipdata <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  temporal_window <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -72,6 +73,10 @@
 
 <dt id="arg-mosel">mosel<a class="anchor" aria-label="anchor" href="#arg-mosel"></a></dt>
 <dd><p>optional numeric to filter data by month</p></dd>
+
+
+<dt id="arg-areasel">areasel<a class="anchor" aria-label="anchor" href="#arg-areasel"></a></dt>
+<dd><p>optional character string to filter output by stations in the <code>long_name</code> column of <code>enterodata</code>, see details</p></dd>
 
 
 <dt id="arg-wetdry">wetdry<a class="anchor" aria-label="anchor" href="#arg-wetdry"></a></dt>
@@ -97,175 +102,46 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function is based on <code><a href="anlz_fibmap.html">anlz_fibmap</a></code>, but is specific to Enterococcus data downloaded via <code><a href="read_importentero.html">read_importentero</a></code>. It creates categories for mapping using <code><a href="show_enteromap.html">show_enteromap</a></code>. Optionally, if samples have been defined as 'wet' or not via <code><a href="anlz_fibwetdry.html">anlz_fibwetdry</a></code>, this can be represented via symbols on the map.  Categories based on relevant thresholds are assigned to each observation.  The categories are specific to Enterococcus in marine waters (<code>class</code> of 2 or 3M). A station is categorized into one of four ranges defined by the thresholds as noted in the <code>cat</code> column of the output, with corresponding colors appropriate for each range as noted in the <code>col</code> column of the output.</p>
+<p>The <code>areasel</code> argument can indicate valid entries in the <code>long_name</code> column of <code>enterodata</code>.  For example, use <code>"Old Tampa Bay"</code> for stations in the subwatershed of Old Tampa Bay, where rows in  <code>enterodata</code> are filtered based on the the selection.  All stations are returned if this argument is set as <code>NULL</code> (default). All valid options for <code>areasel</code> include <code>"Old Tampa Bay"</code>, <code>"Hillsborough Bay"</code>, <code>"Middle Tampa Bay"</code>, <code>"Lower Tampa Bay"</code>, <code>"Boca Ciega Bay"</code>, or <code>"Manatee River"</code>.  One to any of the options can be used.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">anlz_enteromap</span><span class="op">(</span><span class="va">enterodata</span>, yrsel <span class="op">=</span> <span class="fl">2020</span>, mosel <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       station   yr mo Latitude Longitude ecocci       cat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            21FLHILL_WQX-101 2020  9 28.02571 -82.63164    380 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            21FLHILL_WQX-102 2020  9 28.01060 -82.60780    380 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            21FLHILL_WQX-103 2020  9 27.99741 -82.58651    490 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            21FLHILL_WQX-104 2020  9 27.98187 -82.56260    725 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5          21FLPDEM_WQX-12-02 2020  9 28.02048 -82.68955    703 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6          21FLPDEM_WQX-19-02 2020  9 27.92840 -82.74575     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7          21FLPDEM_WQX-22-01 2020  9 27.92346 -82.71765   1990     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8          21FLPDEM_WQX-24-02 2020  9 27.91209 -82.70025    171 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9        21FLTPA_WQX-G1SW0099 2020  9 27.86294 -82.61633    908 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10           21FLHILL_WQX-109 2020  9 27.94581 -82.40167      1      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11           21FLHILL_WQX-133 2020  9 27.91501 -82.40210   3100     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12           21FLHILL_WQX-144 2020  9 27.83802 -82.38191    620 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13             21FLHILL_WQX-2 2020  9 27.94183 -82.45854    280 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14           21FLHILL_WQX-560 2020  9 27.90522 -82.40163    600 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15           21FLHILL_WQX-561 2020  9 27.93162 -82.39926   3500     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16           21FLHILL_WQX-594 2020  9 27.81923 -82.38252    300 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17           21FLHILL_WQX-595 2020  9 27.82610 -82.38168   6100     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18           21FLHILL_WQX-596 2020  9 27.87821 -82.39036    580 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19           21FLHILL_WQX-597 2020  9 27.88509 -82.39170   1350     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20           21FLHILL_WQX-598 2020  9 27.89004 -82.39709    525 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21            21FLHILL_WQX-74 2020  9 27.85909 -82.38334     85  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22         21FLCOSP_WQX-32-03 2020  9 27.80869 -82.61622     20      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23         21FLCOSP_WQX-44-02 2020  9 27.79258 -82.62640     41  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24         21FLCOSP_WQX-SC-01 2020  9 27.75198 -82.63928    480 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25           21FLHILL_WQX-112 2020  9 27.70443 -82.44828    220 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26           21FLHILL_WQX-180 2020  9 27.71599 -82.47044     56  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27           21FLHILL_WQX-264 2020  9 27.68253 -82.49677     40  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28           21FLHILL_WQX-592 2020  9 27.77489 -82.38808    320 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29     21FLDOH_WQX-MANATEE152 2020  9 27.53593 -82.73678     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30     21FLDOH_WQX-MANATEE152 2020  9 27.53593 -82.73678     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31     21FLDOH_WQX-MANATEE152 2020  9 27.53593 -82.73678     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32            21FLHILL_WQX-22 2020  9 27.60810 -82.57120      2      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33         21FLCOSP_WQX-48-03 2020  9 27.71173 -82.68386     31      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 21FLCOSP_WQX-CENTRAL CANAL 2020  9 27.72590 -82.68354     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35       21FLCOSP_WQX-COSP580 2020  9 27.73746 -82.69376     41  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36   21FLCOSP_WQX-NORTH CANAL 2020  9 27.72983 -82.68853     41  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37   21FLCOSP_WQX-SOUTH CANAL 2020  9 27.72461 -82.68794    360 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38         21FLPDEM_WQX-39-01 2020  9 27.75798 -82.73151    717 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39         21FLPDEM_WQX-39-05 2020  9 27.76021 -82.72979    727 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        col          ind  indnm conc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  #EE7600 Enterococcus ecocci  380</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  #EE7600 Enterococcus ecocci  380</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  #EE7600 Enterococcus ecocci  490</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  #EE7600 Enterococcus ecocci  725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  #EE7600 Enterococcus ecocci  703</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  #2DC938 Enterococcus ecocci   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  #CC3231 Enterococcus ecocci 1990</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  #EE7600 Enterococcus ecocci  171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  #EE7600 Enterococcus ecocci  908</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 #2DC938 Enterococcus ecocci    1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 #CC3231 Enterococcus ecocci 3100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 #EE7600 Enterococcus ecocci  620</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 #EE7600 Enterococcus ecocci  280</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 #EE7600 Enterococcus ecocci  600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 #CC3231 Enterococcus ecocci 3500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 #EE7600 Enterococcus ecocci  300</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 #CC3231 Enterococcus ecocci 6100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 #EE7600 Enterococcus ecocci  580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 #CC3231 Enterococcus ecocci 1350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 #EE7600 Enterococcus ecocci  525</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 #E9C318 Enterococcus ecocci   85</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 #2DC938 Enterococcus ecocci   20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 #E9C318 Enterococcus ecocci   41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 #EE7600 Enterococcus ecocci  480</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 #EE7600 Enterococcus ecocci  220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 #E9C318 Enterococcus ecocci   56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 #E9C318 Enterococcus ecocci   40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 #EE7600 Enterococcus ecocci  320</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 #2DC938 Enterococcus ecocci   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 #2DC938 Enterococcus ecocci   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 #2DC938 Enterococcus ecocci   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 #2DC938 Enterococcus ecocci    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 #2DC938 Enterococcus ecocci   31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 #2DC938 Enterococcus ecocci   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 #E9C318 Enterococcus ecocci   41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 #E9C318 Enterococcus ecocci   41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 #EE7600 Enterococcus ecocci  360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 #EE7600 Enterococcus ecocci  717</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 #EE7600 Enterococcus ecocci  727</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 39 × 12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    station     long_name    yr    mo Latitude Longitude ecocci cat   col   ind  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    490 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    725 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.7</span>    703 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.7</span>     10 &lt; 35  #2DC… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.7</span>   <span style="text-decoration: underline;">1</span>990 &gt; 999 #CC3… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.7</span>    171 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 21FLTPA_WQ… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.6</span>    908 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 21FLHILL_W… Hillsbor…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.4</span>      1 &lt; 35  #2DC… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 29 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: indnm &lt;chr&gt;, conc &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># differentiate wet/dry samples in that time frame</span></span></span>
 <span class="r-in"><span><span class="fu">anlz_enteromap</span><span class="op">(</span><span class="va">enterodata</span>, yrsel <span class="op">=</span> <span class="fl">2020</span>, mosel <span class="op">=</span> <span class="fl">9</span>, wetdry <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>               temporal_window <span class="op">=</span> <span class="fl">2</span>, wet_threshold <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       station   yr mo Latitude Longitude ecocci       cat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            21FLHILL_WQX-101 2020  9 28.02571 -82.63164    380 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            21FLHILL_WQX-102 2020  9 28.01060 -82.60780    380 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            21FLHILL_WQX-103 2020  9 27.99741 -82.58651    490 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            21FLHILL_WQX-104 2020  9 27.98187 -82.56260    725 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5          21FLPDEM_WQX-12-02 2020  9 28.02048 -82.68955    703 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6          21FLPDEM_WQX-19-02 2020  9 27.92840 -82.74575     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7          21FLPDEM_WQX-22-01 2020  9 27.92346 -82.71765   1990     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8          21FLPDEM_WQX-24-02 2020  9 27.91209 -82.70025    171 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9        21FLTPA_WQX-G1SW0099 2020  9 27.86294 -82.61633    908 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10           21FLHILL_WQX-109 2020  9 27.94581 -82.40167      1      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11           21FLHILL_WQX-133 2020  9 27.91501 -82.40210   3100     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12           21FLHILL_WQX-144 2020  9 27.83802 -82.38191    620 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13             21FLHILL_WQX-2 2020  9 27.94183 -82.45854    280 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14           21FLHILL_WQX-560 2020  9 27.90522 -82.40163    600 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15           21FLHILL_WQX-561 2020  9 27.93162 -82.39926   3500     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16           21FLHILL_WQX-594 2020  9 27.81923 -82.38252    300 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17           21FLHILL_WQX-595 2020  9 27.82610 -82.38168   6100     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18           21FLHILL_WQX-596 2020  9 27.87821 -82.39036    580 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19           21FLHILL_WQX-597 2020  9 27.88509 -82.39170   1350     &gt; 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20           21FLHILL_WQX-598 2020  9 27.89004 -82.39709    525 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21            21FLHILL_WQX-74 2020  9 27.85909 -82.38334     85  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22         21FLCOSP_WQX-32-03 2020  9 27.80869 -82.61622     20      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23         21FLCOSP_WQX-44-02 2020  9 27.79258 -82.62640     41  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24         21FLCOSP_WQX-SC-01 2020  9 27.75198 -82.63928    480 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25           21FLHILL_WQX-112 2020  9 27.70443 -82.44828    220 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26           21FLHILL_WQX-180 2020  9 27.71599 -82.47044     56  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27           21FLHILL_WQX-264 2020  9 27.68253 -82.49677     40  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28           21FLHILL_WQX-592 2020  9 27.77489 -82.38808    320 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29     21FLDOH_WQX-MANATEE152 2020  9 27.53593 -82.73678     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30     21FLDOH_WQX-MANATEE152 2020  9 27.53593 -82.73678     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31     21FLDOH_WQX-MANATEE152 2020  9 27.53593 -82.73678     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32            21FLHILL_WQX-22 2020  9 27.60810 -82.57120      2      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33         21FLCOSP_WQX-48-03 2020  9 27.71173 -82.68386     31      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 21FLCOSP_WQX-CENTRAL CANAL 2020  9 27.72590 -82.68354     10      &lt; 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35       21FLCOSP_WQX-COSP580 2020  9 27.73746 -82.69376     41  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36   21FLCOSP_WQX-NORTH CANAL 2020  9 27.72983 -82.68853     41  35 - 129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37   21FLCOSP_WQX-SOUTH CANAL 2020  9 27.72461 -82.68794    360 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38         21FLPDEM_WQX-39-01 2020  9 27.75798 -82.73151    717 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39         21FLPDEM_WQX-39-05 2020  9 27.76021 -82.72979    727 130 - 999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        col          ind  indnm conc wet_sample</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  #EE7600 Enterococcus ecocci  380      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  #EE7600 Enterococcus ecocci  380       TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  #EE7600 Enterococcus ecocci  490       TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  #EE7600 Enterococcus ecocci  725      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  #EE7600 Enterococcus ecocci  703      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  #2DC938 Enterococcus ecocci   10      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  #CC3231 Enterococcus ecocci 1990      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  #EE7600 Enterococcus ecocci  171      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  #EE7600 Enterococcus ecocci  908      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 #2DC938 Enterococcus ecocci    1      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 #CC3231 Enterococcus ecocci 3100      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 #EE7600 Enterococcus ecocci  620      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 #EE7600 Enterococcus ecocci  280       TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 #EE7600 Enterococcus ecocci  600      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 #CC3231 Enterococcus ecocci 3500      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 #EE7600 Enterococcus ecocci  300      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 #CC3231 Enterococcus ecocci 6100      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 #EE7600 Enterococcus ecocci  580      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 #CC3231 Enterococcus ecocci 1350      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 #EE7600 Enterococcus ecocci  525      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 #E9C318 Enterococcus ecocci   85       TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 #2DC938 Enterococcus ecocci   20      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 #E9C318 Enterococcus ecocci   41      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 #EE7600 Enterococcus ecocci  480      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 #EE7600 Enterococcus ecocci  220      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 #E9C318 Enterococcus ecocci   56      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 #E9C318 Enterococcus ecocci   40      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 #EE7600 Enterococcus ecocci  320      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 #2DC938 Enterococcus ecocci   10      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 #2DC938 Enterococcus ecocci   10      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 #2DC938 Enterococcus ecocci   10      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 #2DC938 Enterococcus ecocci    2      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 #2DC938 Enterococcus ecocci   31      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 #2DC938 Enterococcus ecocci   10      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 #E9C318 Enterococcus ecocci   41      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 #E9C318 Enterococcus ecocci   41      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 #EE7600 Enterococcus ecocci  360      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 #EE7600 Enterococcus ecocci  717      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 #EE7600 Enterococcus ecocci  727      FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 39 × 13</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    station     long_name    yr    mo Latitude Longitude ecocci cat   col   ind  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    490 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    725 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.7</span>    703 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.7</span>     10 &lt; 35  #2DC… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.7</span>   <span style="text-decoration: underline;">1</span>990 &gt; 999 #CC3… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 21FLPDEM_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.7</span>    171 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 21FLTPA_WQ… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.6</span>    908 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 21FLHILL_W… Hillsbor…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.4</span>      1 &lt; 35  #2DC… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 29 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: indnm &lt;chr&gt;, conc &lt;dbl&gt;, wet_sample &lt;lgl&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

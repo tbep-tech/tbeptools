@@ -83,27 +83,18 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">entero_wetdry</span> <span class="op">&lt;-</span> <span class="fu">anlz_fibwetdry</span><span class="op">(</span><span class="va">enterodata</span>, <span class="va">catchprecip</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">entero_wetdry</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         date   yr mo time time_zone     long_name bay_segment          station</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2001-01-16 2001  1                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2001-02-20 2001  2                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2001-03-20 2001  3                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2001-04-17 2001  4                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 2001-05-15 2001  5                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 2001-06-19 2001  6                Old Tampa Bay         OTB 21FLHILL_WQX-101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ecocci ecocci_censored MDL ecocci_units qualifier LabComments Latitude</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     80           FALSE  NA      #/100mL        NA          NA  28.0248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    360           FALSE  NA      #/100mL        NA          NA  28.0248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   3900           FALSE  NA      #/100mL        NA          NA  28.0248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     20           FALSE  NA      #/100mL        NA          NA  28.0248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     NA           FALSE  20                     NA          NA  28.0248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     NA           FALSE  20                     NA          NA  28.0248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Longitude rain_sampleDay   rain_total wet_sample</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  -82.6316     0.00000000 0.0000000000      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  -82.6316     0.00000000 0.0000000000      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  -82.6316     0.02021212 1.5295151515       TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  -82.6316     0.00000000 0.0008787879      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  -82.6316     0.00000000 0.0000000000      FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  -82.6316     0.32075758 0.4173939394      FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 19</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   date          yr    mo time  time_zone long_name    bay_segment station ecocci</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 2001-01-16  <span style="text-decoration: underline;">2</span>001     1 <span style="color: #949494;">""</span>    <span style="color: #949494;">""</span>        Old Tampa B… OTB         21FLHI…     80</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 2001-02-20  <span style="text-decoration: underline;">2</span>001     2 <span style="color: #949494;">""</span>    <span style="color: #949494;">""</span>        Old Tampa B… OTB         21FLHI…    360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 2001-03-20  <span style="text-decoration: underline;">2</span>001     3 <span style="color: #949494;">""</span>    <span style="color: #949494;">""</span>        Old Tampa B… OTB         21FLHI…   <span style="text-decoration: underline;">3</span>900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> 2001-04-17  <span style="text-decoration: underline;">2</span>001     4 <span style="color: #949494;">""</span>    <span style="color: #949494;">""</span>        Old Tampa B… OTB         21FLHI…     20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> 2001-05-15  <span style="text-decoration: underline;">2</span>001     5 <span style="color: #949494;">""</span>    <span style="color: #949494;">""</span>        Old Tampa B… OTB         21FLHI…     <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> 2001-06-19  <span style="text-decoration: underline;">2</span>001     6 <span style="color: #949494;">""</span>    <span style="color: #949494;">""</span>        Old Tampa B… OTB         21FLHI…     <span style="color: #BB0000;">NA</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: ecocci_censored &lt;lgl&gt;, MDL &lt;int&gt;, ecocci_units &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   qualifier &lt;lgl&gt;, LabComments &lt;lgl&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   rain_sampleDay &lt;dbl&gt;, rain_total &lt;dbl&gt;, wet_sample &lt;lgl&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
