@@ -220,8 +220,7 @@ Each `anlz` function has optional arguments that define the `temporal_window` an
 The `anlz_fibwetdry()` function defines "wet" or "dry" samples as described above and returns the original input dataset with three additional columns describing the total rain (inches) on the day of sampling (`rain_sampleDay`), the total rain in the period defined by the `temporal_window` argument (`rain_total`), and whether the sample is "wet" or not as a logical value (`wet_sample`).
 
 ```{r}
-wetdry <- anlz_fibwetdry(enterodata, catchprecip, temporal_window = 2, wet_threshold = 0.5)
-head(wetdry)
+anlz_fibwetdry(enterodata, catchprecip, temporal_window = 2, wet_threshold = 0.5)
 ```
 
 The remaining `anlz` functions are `anlz_enteromap()` to prepare data for mapping and `anlz_fibmatrix()` to prepare data for a score card.  Both can optionally use `anlz_fibwetdry()` to plot "wet" or "dry" samples, described further in the `show` section. 
@@ -229,8 +228,7 @@ The remaining `anlz` functions are `anlz_enteromap()` to prepare data for mappin
 The `anlz_enteromap()` function is an *Enterococcus*-specific analogue to the `anlz_fibmap()` fecal coliform function described in the EPC section above. The function assigns categories to each observation in the *Enterococcus* data frame, which can be viewed for a given month and year using `show_enteromap()` (analagous to `show_fibmap()`). The categories are specific to *Enterococcus* in marine waters, and are noted in the `cat` column of the output. Corresponding colors are in the `col` column of the output.  
 
 ```{r}
-enteromap <- anlz_enteromap(enterodata)
-head(enteromap)
+anlz_enteromap(enterodata)
 ```
 
 The ranges (number of samples / 100 mL) are from EPC and are as follows for *Enterococcus*:  
@@ -257,16 +255,20 @@ fibdata %>%
 The `yrsel` and `mosel` arguments can be used to filter results by year and month.  Not specifying these arguments will return results for the entire period of record. 
 
 ```{r}
-enteromap <- anlz_enteromap(enterodata, yrsel = 2020, mosel = 8)
-head(enteromap)
+anlz_enteromap(enterodata, yrsel = 2020, mosel = 8)
 ```
 
 The `wetdry` argument can be used to determine whether a sample was taken after a rain event (logical `wet_sample` column in output), based on user-specified thresholds and a provided precipitation data object (`catchprecip`). Below shows how to identify wet samples based on at least 0.5 inches of rain occurring two days prior to and including the sample date.
 
 ```{r}
-enteromap <- anlz_enteromap(enterodata, wetdry = TRUE, precipdata = catchprecip,
+anlz_enteromap(enterodata, wetdry = TRUE, precipdata = catchprecip,
                temporal_window = 2, wet_threshold = 0.5)
-head(enteromap)
+```
+
+The `areasel` argument can indicate one or any of the major subwatersheds in Tampa Bay (excluding Terra Ceia Bay where no data exist). For example, use `Old Tampa Bay` for stations in the subwatershed of Old Tampa Bay, where rows in `enterodata` are filtered based on the selection.  All stations are returned if this argument is set as `NULL` (default). All valid options for `areasel` include `"Old Tampa Bay"`, `"Hillsborough Bay"`, `"Middle Tampa Bay"`, `"Lower Tampa Bay"`, `"Boca Ciega Bay"`, or `"Manatee River"`.
+
+```{r}
+anlz_enteromap(enterodata, yrsel = 2023, mosel = 7, areasel = 'Old Tampa Bay')
 ```
 
 The `anlz_fibmatrix()` function is used with the `show_fibmatrix()` function and is used similarly as for the EPC workflow described above. The function assigns Microbial Water Quality Assessment (MWQA) letter categories for each station and year based on the likelihood that *Enterococcus* concentrations will exceed 130 CFU / 100 mL.  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (`lagyr = 3`).  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (`gmean`) and a category indicating a letter outcome based on the likelihood of exceedences (`cat`).  The `indic` argument must be set explicitly as `'ecocci'` to select the indicator as *Enterococcus*.
@@ -279,15 +281,21 @@ anlz_fibmatrix(enterodata, indic = 'ecocci')
 
 The `show_enteromap()` function creates a map of *Enterococcus* sites and thresholds based on output from `anlz_enteromap()`. The same arguments that apply to `anlz_enteromap()` also apply to `show_enteromap()`, including classification of samples as 'wet' or not depending on specified thresholds. Wet and dry samples are differentiated on the map by their shapes.  Unlike `anlz_enteromap()`, the `yrsel` and `mosel` arguments are required.
 
-Additional information about a site can be seen by placing the cursor over a location.  A map inset can also be seen by clicking the arrow on the bottom left of the map.
-
-```{r}
+```{r, out.width="100%"}
 show_enteromap(enterodata, yrsel = 2020, mosel = 9)
 ```
 
-```{r}
+```{r, out.width="100%"}
 show_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
                temporal_window = 2, wet_threshold = 0.5)
+```
+
+Additional information about a site can be seen by placing the cursor over a location.  A map inset can also be seen by clicking the arrow on the bottom left of the map.
+
+Sites for specific areas can be shown using the `areasel` argument. 
+
+```{r, out.width="100%"}
+show_enteromap(enterodata, yrsel = 2023, mosel = 7, areasel = 'Old Tampa Bay')
 ```
 
 The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data.  The function was primarily designed for fecal coliform data, but has been adapted to work with *Enterococcus* data.  The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 130 CFU / 100 mL for *Enterococcus* (`ecocci` in both `fibdata` and `enterodata`). The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08 and @Morrison09.  All stations are shown by default.

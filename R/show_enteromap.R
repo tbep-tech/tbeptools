@@ -17,14 +17,17 @@
 #' # wet/dry samples
 #' show_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
 #'                temporal_window = 2, wet_threshold = 0.5)
-show_enteromap <- function(fibdata, yrsel, mosel, wetdry = FALSE,
+#'
+#' # Old Tampa Bay only
+#' show_enteromap(enterodata, yrsel = 2020, mosel = 9, areasel = "Old Tampa Bay")
+show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE,
                            precipdata = NULL, temporal_window = NULL,
                            wet_threshold = NULL){
 
   # get categories
-  fibmap <- anlz_enteromap(fibdata, yrsel = yrsel, mosel = mosel, wetdry = wetdry,
-                           precipdata = precipdata, temporal_window = temporal_window,
-                           wet_threshold = wet_threshold)
+  fibmap <- anlz_enteromap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel,
+                           wetdry = wetdry, precipdata = precipdata,
+                           temporal_window = temporal_window, wet_threshold = wet_threshold)
 
   # make a column even if wetdry wasn't selected
   # and if it was, give it something other than true/false
@@ -115,8 +118,6 @@ show_enteromap <- function(fibdata, yrsel, mosel, wetdry = FALSE,
     grep('ecoli', ., value = T) %>%
     paste(collapse = '<br/>') %>%
     paste0('<b>All samples</b><br/>#/100mL<br/>', .)
-  title <- paste0('<b><em>Enterococcus</em><br/>', yrsel, '-', mosel, '</b')
-
 
   # create map
   out <- util_map(tomap) %>%
@@ -126,8 +127,7 @@ show_enteromap <- function(fibdata, yrsel, mosel, wetdry = FALSE,
       lat = ~Latitude,
       icon = ~icons[as.numeric(grp)],
       label = ~lapply(as.list(lab), util_html)
-    ) %>%
-    leaflet::addControl(html = title, position = 'topright')
+    )
 
   # add appropriate legends
   if(wetdry == TRUE){
@@ -138,8 +138,6 @@ show_enteromap <- function(fibdata, yrsel, mosel, wetdry = FALSE,
     out <- out %>%
       leaflet::addControl(html = ecocciallleg, position = 'topright')
   }
-
-
 
   return(out)
 

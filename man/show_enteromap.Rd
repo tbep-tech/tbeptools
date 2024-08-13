@@ -8,6 +8,7 @@ show_enteromap(
   fibdata,
   yrsel,
   mosel,
+  areasel = NULL,
   wetdry = FALSE,
   precipdata = NULL,
   temporal_window = NULL,
@@ -20,6 +21,8 @@ show_enteromap(
 \item{yrsel}{optional numeric to filter data by year}
 
 \item{mosel}{optional numeric to filter data by month}
+
+\item{areasel}{optional character string to filter output by stations in the \code{long_name} column of \code{enterodata}, see details}
 
 \item{wetdry}{logical; if \code{TRUE}, incorporate wet/dry differences (this will result in a call to \code{\link{anlz_fibwetdry}}, in which case \code{temporal_window} and \code{wet_threshold} are required). If \code{FALSE} (default), do not differentiate between wet and dry samples.}
 
@@ -44,6 +47,9 @@ show_enteromap(enterodata, yrsel = 2020, mosel = 9)
 # wet/dry samples
 show_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
                temporal_window = 2, wet_threshold = 0.5)
+
+# Old Tampa Bay only
+show_enteromap(enterodata, yrsel = 2020, mosel = 9, areasel = "Old Tampa Bay")
 }
 \seealso{
 \code{\link{anlz_enteromap}} for details on the categories

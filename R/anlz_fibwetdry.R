@@ -50,7 +50,8 @@ anlz_fibwetdry <- function(fibdata,
   # use threshold to show wet or dry
   out <- dplyr::left_join(fibdata, prcp_calcd,
                    by = c("station", "date")) %>%
-    dplyr::mutate(wet_sample = rain_total >= wet_threshold)
+    dplyr::mutate(wet_sample = rain_total >= wet_threshold) %>%
+    tibble::tibble()
 
   return(out)
 
