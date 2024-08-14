@@ -1,8 +1,8 @@
-#' All Fecal Indicator Bacteria (FIB) data as of 20240320
+#' All Fecal Indicator Bacteria (FIB) data as of 20240814
 #'
-#' All Fecal Indicator Bacteria (FIB) data as of 20240320
+#' All Fecal Indicator Bacteria (FIB) data as of 20240814
 #'
-#' @format A data frame with 76502 rows and 18 variables:
+#' @format A data frame with 77526 rows and 18 variables:
 #' \describe{
 #'   \item{area}{chr}
 #'   \item{epchc_station}{num}
@@ -16,8 +16,8 @@
 #'   \item{Sample_Depth_m}{num}
 #'   \item{ecoli}{num}
 #'   \item{ecoli_q}{chr}
-#'   \item{ecocci}{num}
-#'   \item{ecocci_q}{chr}
+#'   \item{entero}{num}
+#'   \item{entero_q}{chr}
 #'   \item{fcolif}{num}
 #'   \item{fcolif_q}{chr}
 #'   \item{totcol}{num}

@@ -39,22 +39,22 @@ show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE
   levs <- util_fiblevs()
   leg <- tibble::tibble(
     src = paste0('https://github.com/tbep-tech/tbeptools/blob/master/inst/', basename(sapply(icons, `[[`, 1)), '?raw=true'),
-    brk = rep(levs$ecoccilbs, times = 2)
+    brk = rep(levs$enterolbs, times = 2)
   ) %>%
     tidyr::unite('val', src, brk, sep = "' style='width:10px;height:10px;'> ") %>%
     dplyr::mutate(
       val = paste0("<img src='", val)
     ) %>%
     dplyr::pull(val)
-  ecoccidryleg <- leg %>%
+  enterodryleg <- leg %>%
     grep('ecoli', ., value = T) %>%
     paste(collapse = '<br/>') %>%
     paste0('<b>Dry samples</b><br/>#/100mL<br/>', .)
-  ecocciwetleg <- leg %>%
-    grep('ecocci', ., value = T) %>%
+  enterowetleg <- leg %>%
+    grep('entero', ., value = T) %>%
     paste(collapse = '<br/>') %>%
     paste0('<b>Wet samples</b><br/>#/100mL<br/>', .)
-  ecocciallleg <- leg %>%
+  enteroallleg <- leg %>%
     grep('ecoli', ., value = T) %>%
     paste(collapse = '<br/>') %>%
     paste0('<b>All samples</b><br/>#/100mL<br/>', .)
@@ -72,11 +72,11 @@ show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE
   # add appropriate legends
   if(wetdry == TRUE){
     out <- out %>%
-      leaflet::addControl(html = ecoccidryleg, position = 'topright') %>%
-      leaflet::addControl(html = ecocciwetleg, position = 'topright')
+      leaflet::addControl(html = enterodryleg, position = 'topright') %>%
+      leaflet::addControl(html = enterowetleg, position = 'topright')
   } else {
     out <- out %>%
-      leaflet::addControl(html = ecocciallleg, position = 'topright')
+      leaflet::addControl(html = enteroallleg, position = 'topright')
   }
 
   return(out)

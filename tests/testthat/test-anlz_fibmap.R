@@ -3,7 +3,7 @@ test_that("Output has the expected columns for anlz_fibmap", {
 
   result <- anlz_fibmap(fibdata)
   expected_columns <- c("area", "epchc_station", "class", "yr", "mo",
-                        "Latitude", "Longitude", "ecoli", "ecocci", "ind",
+                        "Latitude", "Longitude", "ecoli", "entero", "ind",
                         "cat", "col")
   expect_equal(colnames(result), expected_columns)
 

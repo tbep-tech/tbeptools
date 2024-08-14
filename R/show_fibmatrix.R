@@ -34,10 +34,10 @@
 #' show_fibmatrix(fibdata, threshold = 200)
 #'
 #' # change the indicator
-#' show_fibmatrix(fibdata, indic = 'ecocci')
+#' show_fibmatrix(fibdata, indic = 'entero')
 #'
 #' # show matrix for only dry samples
-#' show_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry",
+#' show_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "dry",
 #'                temporal_window = 2, wet_threshold = 0.5)
 show_fibmatrix <- function(fibdata, yrrng = NULL,
                            stas = NULL, indic = NULL, threshold = NULL, lagyr = 3,

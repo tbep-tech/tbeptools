@@ -5,7 +5,7 @@ test_that("Output has the expected columns for anlz_enteromap", {
 
   result <- anlz_enteromap(enterodata)
   expected_columns <- c("station", "long_name", "yr", "mo",
-                        "Latitude", "Longitude", "ecocci",
+                        "Latitude", "Longitude", "entero",
                         "cat", "col", "ind", "indnm", "conc")
   expect_equal(colnames(result), expected_columns)
 

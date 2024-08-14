@@ -29,7 +29,7 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
   levs <- util_fiblevs()
   leg <- tibble::tibble(
     src = paste0('https://github.com/tbep-tech/tbeptools/blob/master/inst/', basename(sapply(icons, `[[`, 1)), '?raw=true'),
-    brk = c(levs$ecolilbs, levs$ecoccilbs)
+    brk = c(levs$ecolilbs, levs$enterolbs)
     ) %>%
     tidyr::unite('val', src, brk, sep = "' style='width:10px;height:10px;'> ") %>%
     dplyr::mutate(
@@ -40,21 +40,21 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
     grep('ecoli', ., value = T) %>%
     paste(collapse = '<br/>') %>%
     paste0('<b>Freshwater (<em>E. Coli</em>)</b><br/>#/100mL<br/>', .)
-  ecoccileg <- leg %>%
-    grep('ecocci', ., value = T) %>%
+  enteroleg <- leg %>%
+    grep('entero', ., value = T) %>%
     paste(collapse = '<br/>') %>%
     paste0('<b>Marine (<em>Enterococcus</em>)</b><br/>#/100mL<br/>', .)
 
   # create map
   out <- util_map(fibmap) %>%
     leaflet::addMarkers(
-      data = tomap,
+      data = fibmap,
       lng = ~Longitude,
       lat = ~Latitude,
       icon = ~icons[as.numeric(grp)],
       label = ~lapply(as.list(lab), util_html)
       ) %>%
-    leaflet::addControl(html = ecoccileg, position = 'topright') %>%
+    leaflet::addControl(html = enteroleg, position = 'topright') %>%
     leaflet::addControl(html = ecolileg, position = 'topright')
 
   return(out)

@@ -10,8 +10,8 @@ util_fiblevs <- function(){
   out <- list(
     ecolilev = c(-Inf, 126, 410, 1e3, Inf),
     ecolilbs = c('< 126', '126 - 409', '410 - 999', '> 999'),
-    ecoccilev = c(-Inf, 35, 130, 1e3, Inf),
-    ecoccilbs = c('< 35', '35 - 129', '130 - 999', '> 999')
+    enterolev = c(-Inf, 35, 130, 1e3, Inf),
+    enterolbs = c('< 35', '35 - 129', '130 - 999', '> 999')
   )
 
   return(out)

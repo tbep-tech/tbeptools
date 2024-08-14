@@ -160,7 +160,7 @@ read_formwqp <- function(res, sta, org, type, trace = F){
         var = dplyr::case_when(
           grepl('^Escherichia', var) ~ 'ecoli',
           grepl('^Fecal', var) ~ 'fcolif',
-          grepl('^Entero', var) ~ 'ecocci',
+          grepl('^Entero', var) ~ 'entero',
           grepl('^Total', var) ~ 'totcol'
         )
       )

@@ -65,7 +65,7 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "datum", "lat", "lon", "qual", "sd_check", "sd_q", "sd_raw_m", "station", "time",
                   "tn_q", "uni", "E_Coliform", "E_ColiformQ", "Enterococci", "EnterococciQ",
                   "Fecal_Coliform", "Fecal_ColiformQ", "Total_Coliform", "Total_ColiformQ",
-                  "ecocci", "ecoli", "fcolif", "totcol", "areasfib", "Var1", "Var2", "colnm",
+                  "entero", "ecoli", "fcolif", "totcol", "areasfib", "Var1", "Var2", "colnm",
                   "indnm", "brk", "cls", "conc", "exced", "gmean", "MWQA", "station_tot",
                   "sumgt400", "yearfac", "nyrs", "ActivityDepthHeightMeasure.MeasureUnitCode",
                   "ActivityDepthHeightMeasure.MeasureValue", "chla_target", "chla_val",
@@ -73,8 +73,8 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "v", "z", "ActivityLocation.LatitudeMeasure", "ActivityLocation.LongitudeMeasure",
                   "ActivityStartTime.TimeZoneCode", "DetectionQuantitationLimitMeasure.MeasureValue",
                   "MeasureQualifierCode", "ResultLaboratoryCommentText", "V1", "V2", "V3", "Var3",
-                  "ecocci_censored", "rain", "rain_total", "sumgt", "wet_sample",
-                  "LabComments", "ecocci_units", "qualifier", "catchprecip", "wetdry", "TSN")
+                  "entero_censored", "rain", "rain_total", "sumgt", "wet_sample",
+                  "LabComments", "entero_units", "qualifier", "catchprecip", "wetdry", "TSN")
 )
 
 #' @importFrom grDevices rgb

@@ -16,21 +16,21 @@ util_fibicons <- function(indic){
 
   if(indic == 'entero')
     out <- leaflet::iconList(
-      ecocci_green_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_green.png', package = 'tbeptools'),
+      entero_green_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_green.png', package = 'tbeptools'),
                                             iconWidth = 18, iconHeight = 18),
-      ecocci_yellow_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_yellow.png', package = 'tbeptools'),
+      entero_yellow_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_yellow.png', package = 'tbeptools'),
                                              iconWidth = 18, iconHeight = 18),
-      ecocci_orange_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_orange.png', package = 'tbeptools'),
+      entero_orange_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_orange.png', package = 'tbeptools'),
                                              iconWidth = 18, iconHeight = 18),
-      ecocci_red_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_red.png', package = 'tbeptools'),
+      entero_red_wet = leaflet::makeIcon(iconUrl = system.file('ecoli_red.png', package = 'tbeptools'),
                                           iconWidth = 18, iconHeight = 18),
-      ecocci_green_dry = leaflet::makeIcon(iconUrl = system.file('ecocci_green.png', package = 'tbeptools'),
+      entero_green_dry = leaflet::makeIcon(iconUrl = system.file('entero_green.png', package = 'tbeptools'),
                                             iconWidth = 18, iconHeight = 18),
-      ecocci_yellow_dry = leaflet::makeIcon(iconUrl = system.file('ecocci_yellow.png', package = 'tbeptools'),
+      entero_yellow_dry = leaflet::makeIcon(iconUrl = system.file('entero_yellow.png', package = 'tbeptools'),
                                              iconWidth = 18, iconHeight = 18),
-      ecocci_orange_dry = leaflet::makeIcon(iconUrl = system.file('ecocci_orange.png', package = 'tbeptools'),
+      entero_orange_dry = leaflet::makeIcon(iconUrl = system.file('entero_orange.png', package = 'tbeptools'),
                                              iconWidth = 18, iconHeight = 18),
-      ecocci_red_dry = leaflet::makeIcon(iconUrl = system.file('ecocci_red.png', package = 'tbeptools'),
+      entero_red_dry = leaflet::makeIcon(iconUrl = system.file('entero_red.png', package = 'tbeptools'),
                                           iconWidth = 18, iconHeight = 18)
 
     )
@@ -45,13 +45,13 @@ util_fibicons <- function(indic){
                                         iconWidth = 18, iconHeight = 18),
       ecoli_red = leaflet::makeIcon(iconUrl = system.file('ecoli_red.png', package = 'tbeptools'),
                                      iconWidth = 18, iconHeight = 18),
-      ecocci_green = leaflet::makeIcon(iconUrl = system.file('ecocci_green.png', package = 'tbeptools'),
+      entero_green = leaflet::makeIcon(iconUrl = system.file('entero_green.png', package = 'tbeptools'),
                                         iconWidth = 18, iconHeight = 18),
-      ecocci_yellow = leaflet::makeIcon(iconUrl = system.file('ecocci_yellow.png', package = 'tbeptools'),
+      entero_yellow = leaflet::makeIcon(iconUrl = system.file('entero_yellow.png', package = 'tbeptools'),
                                          iconWidth = 18, iconHeight = 18),
-      ecocci_orange = leaflet::makeIcon(iconUrl = system.file('ecocci_orange.png', package = 'tbeptools'),
+      entero_orange = leaflet::makeIcon(iconUrl = system.file('entero_orange.png', package = 'tbeptools'),
                                          iconWidth = 18, iconHeight = 18),
-      ecocci_red = leaflet::makeIcon(iconUrl = system.file('ecocci_red.png', package = 'tbeptools'),
+      entero_red = leaflet::makeIcon(iconUrl = system.file('entero_red.png', package = 'tbeptools'),
                                       iconWidth = 18, iconHeight = 18)
     )
 

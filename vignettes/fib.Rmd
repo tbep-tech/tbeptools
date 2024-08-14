@@ -61,7 +61,7 @@ A data object called `fibdata` is also provided with the package, although it ma
 fibdata
 ```
 
-The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin. Some stations include samples beginning in 1972. The default output for `read_importfib()` returns all stations with FIB data from EPC.  If `all = F` for `read_importfib()`, only stations with `AreaName` as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta are returned. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`ecocci`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Units are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix.  Consult the source spreadsheet for interpretation of these codes. Concentrations noted with `<` (below detection) or `>` (above detection) in the raw data are reported as the detection limit. 
+The `fibdata` object includes monthly samples for FIB data at select stations in the Hillsborough River basin. Some stations include samples beginning in 1972. The default output for `read_importfib()` returns all stations with FIB data from EPC.  If `all = F` for `read_importfib()`, only stations with `AreaName` as Hillsborough River, Hillsborough River Tributary, Alafia River, Alafia River Tributary, Lake Thonotosassa, Lake Thonotosassa Tributary, and Lake Roberta are returned. Values are returned for *E. coli* (`ecoli`), *Enterococcus* (`entero`), Fecal Coliform (`fcolif`), and Total Coliform (`totcol`).  Units are # of colonies per 100 mL of water (`#/100mL`). Qualifier columns for each are also returned with the `_q` suffix.  Consult the source spreadsheet for interpretation of these codes. Concentrations noted with `<` (below detection) or `>` (above detection) in the raw data are reported as the detection limit. 
 
 The `fibdata` object can be used for the remaining FIB functions. 
 
@@ -271,10 +271,10 @@ The `areasel` argument can indicate one or any of the major subwatersheds in Tam
 anlz_enteromap(enterodata, yrsel = 2023, mosel = 7, areasel = 'Old Tampa Bay')
 ```
 
-The `anlz_fibmatrix()` function is used with the `show_fibmatrix()` function and is used similarly as for the EPC workflow described above. The function assigns Microbial Water Quality Assessment (MWQA) letter categories for each station and year based on the likelihood that *Enterococcus* concentrations will exceed 130 CFU / 100 mL.  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (`lagyr = 3`).  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (`gmean`) and a category indicating a letter outcome based on the likelihood of exceedences (`cat`).  The `indic` argument must be set explicitly as `'ecocci'` to select the indicator as *Enterococcus*.
+The `anlz_fibmatrix()` function is used with the `show_fibmatrix()` function and is used similarly as for the EPC workflow described above. The function assigns Microbial Water Quality Assessment (MWQA) letter categories for each station and year based on the likelihood that *Enterococcus* concentrations will exceed 130 CFU / 100 mL.  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (`lagyr = 3`).  The columns for each station and year include the estimated geometric mean of fecal coliform concentrations (`gmean`) and a category indicating a letter outcome based on the likelihood of exceedences (`cat`).  The `indic` argument must be set explicitly as `'entero'` to select the indicator as *Enterococcus*.
 
 ```{r}
-anlz_fibmatrix(enterodata, indic = 'ecocci')
+anlz_fibmatrix(enterodata, indic = 'entero')
 ```
 
 ### Show  
@@ -298,30 +298,30 @@ Sites for specific areas can be shown using the `areasel` argument.
 show_enteromap(enterodata, yrsel = 2023, mosel = 7, areasel = 'Old Tampa Bay')
 ```
 
-The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data.  The function was primarily designed for fecal coliform data, but has been adapted to work with *Enterococcus* data.  The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 130 CFU / 100 mL for *Enterococcus* (`ecocci` in both `fibdata` and `enterodata`). The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08 and @Morrison09.  All stations are shown by default.
+The `show_fibmatrix()` function creates a stoplight graphic of summarized FIB data at selected stations for each year of available data.  The function was primarily designed for fecal coliform data, but has been adapted to work with *Enterococcus* data.  The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 130 CFU / 100 mL for *Enterococcus* (`entero` in both `fibdata` and `enterodata`). The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10%, 10-30%, 30-50%, 50-75%, and >75% (right-closed). Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in @pbsj08 and @Morrison09.  All stations are shown by default.
 
 ```{r, fig.height = 8, fig.width = 9}
-show_fibmatrix(enterodata, indic = 'ecocci')
+show_fibmatrix(enterodata, indic = 'entero')
 ```
 
 By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (`lagyr = 3`).  This example shows results using only the monthly observations in each year.
 
 ```{r, fig.height = 8, fig.width = 9}
-show_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1)
+show_fibmatrix(enterodata, indic = 'entero', lagyr = 1)
 ```
 
 Individual stations can be selectd using the `stas` argument.
 
 ```{r, fig.height = 8, fig.width = 1.5}
 show_fibmatrix(enterodata,
-               indic = 'ecocci',
+               indic = 'entero',
                stas = c('21FLHILL_WQX-101', '21FLHILL_WQX-102', '21FLHILL_WQX-103'))
 ```
 
 The `yrrng` argument can also be used to select a year range, where the default is the date range contained in the data.
 
 ```{r, fig.height = 5, fig.width = 9}
-show_fibmatrix(enterodata, indic = 'ecocci', yrrng = c(2015, 2020))
+show_fibmatrix(enterodata, indic = 'entero', yrrng = c(2015, 2020))
 ```
 
 Note that the `subset_wetdry` argument can be used with `show_fibmatrix()` to show only wet or dry samples based on the thresholds provided by `temporal_window` and `wet_threshold`.  However, this is not recommended because the scores are probability-based and comparisons between wet or dry samples may be misleading due to different sample sizes, and therefore, power to detect the likelihood of exceeding the threshold.  Specifically, there are far fewer wet samples than dry and these samples will generally receive higher grades due to lower power of the statistical tests.

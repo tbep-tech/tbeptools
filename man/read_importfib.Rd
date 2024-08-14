@@ -26,7 +26,7 @@ Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  
 
 Returns FIB data including E. coli, Enterococcus, Fecal Coliform, and Total Coliform concentrations and waterbody class (freshwater as 1 or 3F, marine as 2 or 3M) for stations and sample dates, function is used internally within \code{\link{read_importfib}}
 
-Values are returned for E. coli (\code{ecoli}), Enterococcus (\code{ecocci}), Fecal Coliform (\code{fcolif}), and Total Coliform (\code{totcol}).  Values shown are # of colonies per 100 mL of water (\code{#/100mL}). Qualifier columns for each are also returned with the \code{_q} suffix. Qualifier codes can be interpreted from the source spreadsheet.
+Values are returned for E. coli (\code{ecoli}), Enterococcus (\code{entero}), Fecal Coliform (\code{fcolif}), and Total Coliform (\code{totcol}).  Values shown are # of colonies per 100 mL of water (\code{#/100mL}). Qualifier columns for each are also returned with the \code{_q} suffix. Qualifier codes can be interpreted from the source spreadsheet.
 
 Concentrations noted with \code{<} or \code{>} in the raw data are reported as is, with only the numeric value shown.  Samples with this notation can be determined from the qualifier columns.
 

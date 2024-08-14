@@ -16,10 +16,10 @@
 #'  \item{\code{long_name}}{character, long name of bay segment subwatershed}
 #'  \item{\code{bay_segment}}{character, short name of bay segment subwatershed}
 #'  \item{\code{station}}{character, sample station}
-#'  \item{\code{ecocci}}{numeric, Enterococcus concentration}
-#'  \item{\code{ecocci_censored}}{logical, whether \code{ecocci} value was below the laboratory \code{MDL}, minimum detection limit}
+#'  \item{\code{entero}}{numeric, Enterococcus concentration}
+#'  \item{\code{entero_censored}}{logical, whether \code{entero} value was below the laboratory \code{MDL}, minimum detection limit}
 #'  \item{\code{MDL}}{numeric, minimum detection limit at the time of processing}
-#'  \item{\code{ecocci_units}}{character, units of measurement for \code{ecocci}}
+#'  \item{\code{entero_units}}{character, units of measurement for \code{entero}}
 #'  \item{\code{qualifier}}{qualifier codes associated with sample}
 #'  \item{\code{LabComments}}{lab comments on sample}
 #'  \item{\code{Latitude}}{numeric, latitude in decimal degrees}
@@ -92,8 +92,8 @@ read_importentero <- function(stas = NULL, startDate, endDate){
       station = MonitoringLocationIdentifier,
       Latitude = ActivityLocation.LatitudeMeasure,
       Longitude = ActivityLocation.LongitudeMeasure,
-      ecocci = ResultMeasureValue, # - the result (has characters in here too - 'Not Reported')
-      ecocci_units = ResultMeasure.MeasureUnitCode,
+      entero = ResultMeasureValue, # - the result (has characters in here too - 'Not Reported')
+      entero_units = ResultMeasure.MeasureUnitCode,
       qualifier = MeasureQualifierCode,
       date = ActivityStartDate,
       time = ActivityStartTime.Time, # local time
@@ -102,13 +102,13 @@ read_importentero <- function(stas = NULL, startDate, endDate){
       LabComments = ResultLaboratoryCommentText
     ) %>%
     dplyr::mutate(
-      ecocci = dplyr::case_when(
-        ecocci %in% c('*Non-detect', '*Not Reported', 'Not Reported', '*Present >QL') ~ NA_character_,
-        TRUE ~ ecocci
+      entero = dplyr::case_when(
+        entero %in% c('*Non-detect', '*Not Reported', 'Not Reported', '*Present >QL') ~ NA_character_,
+        TRUE ~ entero
       ),
-      ecocci = as.numeric(ecocci),
-      ecocci_censored = dplyr::case_when(
-        ecocci <= MDL ~ TRUE,
+      entero = as.numeric(entero),
+      entero_censored = dplyr::case_when(
+        entero <= MDL ~ TRUE,
         .default = FALSE
       ),
       date = as.Date(date),
@@ -123,7 +123,7 @@ read_importentero <- function(stas = NULL, startDate, endDate){
   out <- suppressWarnings(sf::st_intersection(out, tbsegshed))
   out <- out %>%
     sf::st_set_geometry(NULL) %>%
-    dplyr::relocate(date, yr, mo, time, time_zone, long_name, bay_segment, station, ecocci, ecocci_censored, MDL, ecocci_units, qualifier, LabComments)
+    dplyr::relocate(date, yr, mo, time, time_zone, long_name, bay_segment, station, entero, entero_censored, MDL, entero_units, qualifier, LabComments)
 
   return(out)
 

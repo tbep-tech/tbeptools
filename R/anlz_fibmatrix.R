@@ -5,8 +5,8 @@
 #' @param fibdata input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}
 #' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in data, see details
 #' @param stas optional vector of stations to include, see details
-#' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.
-#' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.
+#' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.
+#' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.
 #' @param lagyr numeric for year lag to calculate categories, see details
 #' @param subset_wetdry character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.
 #' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.
@@ -31,19 +31,19 @@
 #' anlz_fibmatrix(fibdata, indic = 'fcolif')
 #'
 #' # use different indicator:
-#' anlz_fibmatrix(fibdata, indic = 'ecocci')
+#' anlz_fibmatrix(fibdata, indic = 'entero')
 #'
 #' # use different dataset; does not contain an 'fcolif' column so we must specify indic:
-#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1)
-#' # same ecocci data; lower threshold - changes 'cat' scores
-#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, threshold = 30)
+#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1)
+#' # same entero data; lower threshold - changes 'cat' scores
+#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, threshold = 30)
 #'
 #' # subset to only wet samples
-#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "wet",
+#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "wet",
 #'                temporal_window = 2, wet_threshold = 0.5)
 #'
 #' # subset to only dry samples
-#' anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry",
+#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "dry",
 #'                temporal_window = 2, wet_threshold = 0.5)
 anlz_fibmatrix <- function(fibdata,
                            yrrng = NULL,
@@ -58,7 +58,7 @@ anlz_fibmatrix <- function(fibdata,
 
   geomean <- function(x){prod(x)^(1/length(x))}
 
-  indic <- match.arg(indic, c('fcolif', 'ecocci'))
+  indic <- match.arg(indic, c('fcolif', 'entero'))
 
   # subset to wet or dry samples, if specified
   subset_wetdry <- match.arg(subset_wetdry)
@@ -124,7 +124,7 @@ anlz_fibmatrix <- function(fibdata,
   if(is.null(threshold)){
     thrsh <- switch(indic,
                     'fcolif' = 400,
-                    'ecocci' = 130)
+                    'entero' = 130)
   } else {
     thrsh <- threshold
   }

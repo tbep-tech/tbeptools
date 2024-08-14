@@ -34,9 +34,9 @@ show_fibmatrix(
 
 \item{stas}{optional vector of stations to include, see details}
 
-\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.}
+\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.}
 
-\item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.}
+\item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
 
@@ -86,10 +86,10 @@ show_fibmatrix(fibdata)
 show_fibmatrix(fibdata, threshold = 200)
 
 # change the indicator
-show_fibmatrix(fibdata, indic = 'ecocci')
+show_fibmatrix(fibdata, indic = 'entero')
 
 # show matrix for only dry samples
-show_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry",
+show_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "dry",
                temporal_window = 2, wet_threshold = 0.5)
 }
 \concept{show}

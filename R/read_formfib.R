@@ -38,18 +38,18 @@ read_formfib <- function(datin, all = FALSE){
       epchc_station = as.numeric(StationNumber),
       area = AreaName,
       ecoli = E_Coliform,
-      ecocci = Enterococci,
+      entero = Enterococci,
       fcolif = Fecal_Coliform,
       totcol = Total_Coliform,
       yr = lubridate::year(SampleTime),
       mo = lubridate::month(SampleTime)
     ) %>%
-    dplyr::mutate_at(dplyr::vars('ecoli', 'ecocci', 'fcolif', 'totcol'),
+    dplyr::mutate_at(dplyr::vars('ecoli', 'entero', 'fcolif', 'totcol'),
               function(x) as.numeric(gsub('^NULL$|^>|^<', '', x))
     ) %>%
     dplyr::select(area = AreaName, epchc_station, class = Class, SampleTime, yr, mo, Latitude, Longitude, SampleTime,
                   Total_Depth_m = TotalDepth, Sample_Depth_m = SampleDepth, ecoli, ecoli_q = E_ColiformQ,
-                  ecocci, ecocci_q = EnterococciQ, fcolif, fcolif_q = Fecal_ColiformQ,
+                  entero, entero_q = EnterococciQ, fcolif, fcolif_q = Fecal_ColiformQ,
                   totcol, totcol_q = Total_ColiformQ
     )
 

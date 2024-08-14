@@ -32,7 +32,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231')
 
   out <- fibdata %>%
-    select(area, epchc_station, class, yr, mo, Latitude, Longitude, ecoli, ecocci) %>%
+    select(area, epchc_station, class, yr, mo, Latitude, Longitude, ecoli, entero) %>%
     dplyr::mutate(
       ind = dplyr::case_when(
         class %in% c('1', '3F') ~ 'E. coli',
@@ -40,11 +40,11 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
       ),
       cat = dplyr::case_when(
         ind == 'E. coli' ~ cut(ecoli, breaks = levs$ecolilev, right = F, labels = levs$ecolilbs),
-        ind == 'Enterococcus' ~ cut(ecocci, breaks = levs$ecoccilev, right = F, levs$ecoccilbs)
+        ind == 'Enterococcus' ~ cut(entero, breaks = levs$enterolev, right = F, levs$enterolbs)
       ),
       col = dplyr::case_when(
         ind == 'E. coli' ~ cut(ecoli, breaks = levs$ecolilev, right = F, labels = cols),
-        ind == 'Enterococcus' ~ cut(ecocci, breaks = levs$ecoccilev, right = F, cols)
+        ind == 'Enterococcus' ~ cut(entero, breaks = levs$enterolev, right = F, cols)
       ),
       col = as.character(col)
     )
@@ -110,16 +110,16 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
         ),
         indnm = factor(ind,
                        levels = c('E. coli', 'Enterococcus'),
-                       labels = c('ecoli', 'ecocci')
+                       labels = c('ecoli', 'entero')
         ),
         conc = dplyr::case_when(
           indnm == 'ecoli' ~ ecoli,
-          indnm == 'ecocci' ~ ecocci
+          indnm == 'entero' ~ entero
         ),
         conc = round(conc, 1),
         cls = dplyr::case_when(
           indnm == 'ecoli' ~ 'Freshwater',
-          indnm == 'ecocci' ~ 'Marine'
+          indnm == 'entero' ~ 'Marine'
         )
       ) %>%
       tidyr::unite('grp', indnm, colnm, remove = F)

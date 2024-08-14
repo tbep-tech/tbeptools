@@ -24,9 +24,9 @@ anlz_fibmatrix(
 
 \item{stas}{optional vector of stations to include, see details}
 
-\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{ecocci} for Enterococcus. A numeric column in the data frame must have this name.}
+\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.}
 
-\item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{ecocci}.}
+\item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
 
@@ -53,19 +53,19 @@ This function is used to create output for plotting a matrix stoplight graphic f
 anlz_fibmatrix(fibdata, indic = 'fcolif')
 
 # use different indicator:
-anlz_fibmatrix(fibdata, indic = 'ecocci')
+anlz_fibmatrix(fibdata, indic = 'entero')
 
 # use different dataset; does not contain an 'fcolif' column so we must specify indic:
-anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1)
-# same ecocci data; lower threshold - changes 'cat' scores
-anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, threshold = 30)
+anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1)
+# same entero data; lower threshold - changes 'cat' scores
+anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, threshold = 30)
 
 # subset to only wet samples
-anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "wet",
+anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "wet",
                temporal_window = 2, wet_threshold = 0.5)
 
 # subset to only dry samples
-anlz_fibmatrix(enterodata, indic = 'ecocci', lagyr = 1, subset_wetdry = "dry",
+anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "dry",
                temporal_window = 2, wet_threshold = 0.5)
 }
 \seealso{

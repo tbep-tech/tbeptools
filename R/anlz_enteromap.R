@@ -36,13 +36,13 @@ anlz_enteromap <- function (fibdata, yrsel = NULL, mosel = NULL, areasel = NULL,
   cols <- c("#2DC938", "#E9C318", "#EE7600", "#CC3231")
 
   out <- fibdata %>%
-    select(station, long_name, yr, mo, Latitude, Longitude, ecocci) %>%
-    dplyr::mutate(cat = cut(ecocci, breaks = levs$ecoccilev, right = F, levs$ecoccilbs),
-                  col = cut(ecocci, breaks = levs$ecoccilev, right = F, cols),
+    select(station, long_name, yr, mo, Latitude, Longitude, entero) %>%
+    dplyr::mutate(cat = cut(entero, breaks = levs$enterolev, right = F, levs$enterolbs),
+                  col = cut(entero, breaks = levs$enterolev, right = F, cols),
                   col = as.character(col),
                   ind = "Enterococcus",
-                  indnm = "ecocci",
-                  conc = ecocci)
+                  indnm = "entero",
+                  conc = entero)
 
   if (wetdry == TRUE){
 

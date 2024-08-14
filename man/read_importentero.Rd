@@ -24,10 +24,10 @@ a data frame containing one row for each sample. Columns returned are:
  \item{\code{long_name}}{character, long name of bay segment subwatershed}
  \item{\code{bay_segment}}{character, short name of bay segment subwatershed}
  \item{\code{station}}{character, sample station}
- \item{\code{ecocci}}{numeric, Enterococcus concentration}
- \item{\code{ecocci_censored}}{logical, whether \code{ecocci} value was below the laboratory \code{MDL}, minimum detection limit}
+ \item{\code{entero}}{numeric, Enterococcus concentration}
+ \item{\code{entero_censored}}{logical, whether \code{entero} value was below the laboratory \code{MDL}, minimum detection limit}
  \item{\code{MDL}}{numeric, minimum detection limit at the time of processing}
- \item{\code{ecocci_units}}{character, units of measurement for \code{ecocci}}
+ \item{\code{entero_units}}{character, units of measurement for \code{entero}}
  \item{\code{qualifier}}{qualifier codes associated with sample}
  \item{\code{LabComments}}{lab comments on sample}
  \item{\code{Latitude}}{numeric, latitude in decimal degrees}
