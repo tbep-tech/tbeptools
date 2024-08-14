@@ -20,67 +20,10 @@
 show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
 
   # get categories
-  fibmap <- anlz_fibmap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel)
-
-  # create the object to map
-  tomap <- fibmap %>%
-    dplyr::filter(!is.na(Longitude)) %>%
-    dplyr::filter(!is.na(Latitude)) %>%
-    dplyr::filter(!is.na(cat)) %>%
-    sf::st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326, remove = F) %>%
-    dplyr::mutate(
-      colnm = factor(col,
-                                  levels = c('#2DC938', '#E9C318', '#EE7600', '#CC3231'),
-                                  labels = c('green', 'yellow', 'orange', 'red')
-                                  ),
-      indnm = factor(ind,
-                                  levels = c('E. coli', 'Enterococcus'),
-                                  labels = c('ecoli', 'ecocci')
-                           ),
-      conc = dplyr::case_when(
-        indnm == 'ecoli' ~ ecoli,
-        indnm == 'ecocci' ~ ecocci
-      ),
-      conc = round(conc, 1),
-      cls = dplyr::case_when(
-        indnm == 'ecoli' ~ 'Freshwater',
-        indnm == 'ecocci' ~ 'Marine'
-      )
-    ) %>%
-    tidyr::unite('grp', indnm, colnm, remove = F)
-
-  # create levels for group, must match order of icons list
-  levs <- expand.grid(levels(tomap$colnm), levels(tomap$indnm)) %>%
-    unite('levs', Var2, Var1) %>%
-    pull(levs)
-
-  # get correct levels
-  tomap <- tomap %>%
-    dplyr::mutate(
-      grp = factor(grp, levels = levs),
-      lab = paste0('<html>Station Number: ', epchc_station, '<br>Class: ', cls, ' (<i>', ind, '</i>)<br> Category: ', cat, ' (', conc, '/100mL)</html>')
-    ) %>%
-    dplyr::select(-colnm, -indnm)
+  fibmap <- anlz_fibmap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel, assf = TRUE)
 
   # create custom icon list for fib categories
-  icons <- leaflet::iconList(
-    ecoli_green <- leaflet::makeIcon(iconUrl = system.file('ecoli_green.png', package = 'tbeptools'),
-                            iconWidth = 18, iconHeight = 18),
-    ecoli_yellow <- leaflet::makeIcon(iconUrl = system.file('ecoli_yellow.png', package = 'tbeptools'),
-                             iconWidth = 18, iconHeight = 18),
-    ecoli_orange <- leaflet::makeIcon(iconUrl = system.file('ecoli_orange.png', package = 'tbeptools'),
-                           iconWidth = 18, iconHeight = 18),
-    ecoli_red <- leaflet::makeIcon(iconUrl = system.file('ecoli_red.png', package = 'tbeptools'),
-                            iconWidth = 18, iconHeight = 18),
-    ecocci_green <- leaflet::makeIcon(iconUrl = system.file('ecocci_green.png', package = 'tbeptools'),
-                             iconWidth = 18, iconHeight = 18),
-    ecocci_yellow <- leaflet::makeIcon(iconUrl = system.file('ecocci_yellow.png', package = 'tbeptools'),
-                           iconWidth = 18, iconHeight = 18),
-    ecocci_orange <- leaflet::makeIcon(iconUrl = system.file('ecocci_orange.png', package = 'tbeptools'),
-                              iconWidth = 18, iconHeight = 18),
-    ecocci_red <- leaflet::makeIcon(iconUrl = system.file('ecocci_red.png', package = 'tbeptools'),
-                               iconWidth = 18, iconHeight = 18)
-  )
+  icons <- util_fibicons(indic = 'fcolif')
 
   # legend as HTML string
   levs <- util_fiblevs()
@@ -103,7 +46,7 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
     paste0('<b>Marine (<em>Enterococcus</em>)</b><br/>#/100mL<br/>', .)
 
   # create map
-  out <- util_map(tomap) %>%
+  out <- util_map(fibmap) %>%
     leaflet::addMarkers(
       data = tomap,
       lng = ~Longitude,

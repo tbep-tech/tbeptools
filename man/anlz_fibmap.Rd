@@ -4,7 +4,7 @@
 \alias{anlz_fibmap}
 \title{Assign threshold categories to Fecal Indicator Bacteria (FIB) data}
 \usage{
-anlz_fibmap(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL)
+anlz_fibmap(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, assf = FALSE)
 }
 \arguments{
 \item{fibdata}{input FIB \code{data.frame} as returned by \code{\link{read_importfib}}}
@@ -14,9 +14,11 @@ anlz_fibmap(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL)
 \item{mosel}{optional numeric value to filter output by month in \code{fibdata}}
 
 \item{areasel}{optional character string to filter output by stations in the \code{area} column of \code{fibdata}, see details}
+
+\item{assf}{logical indicating if the data are further processed as a simple features object with additional columns for \code{\link{show_fibmap}}}
 }
 \value{
-A \code{data.frame} similar to \code{fibdata} with additional columns describing station categories and optionally filtered by arguments passed to the function
+A \code{data.frame} if similar to \code{fibdata} if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function.  A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_fibmap}}.
 }
 \description{
 Assign threshold categories to Fecal Indicator Bacteria (FIB) data
@@ -32,5 +34,8 @@ anlz_fibmap(fibdata)
 
 # filter by year, month, and area
 anlz_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
+
+# as sf object
+anlz_fibmap(fibdata, assf = TRUE)
 }
 \concept{anlz}

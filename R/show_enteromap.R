@@ -27,71 +27,11 @@ show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE
   # get categories
   fibmap <- anlz_enteromap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel,
                            wetdry = wetdry, precipdata = precipdata,
-                           temporal_window = temporal_window, wet_threshold = wet_threshold)
-
-  # make a column even if wetdry wasn't selected
-  # and if it was, give it something other than true/false
-  if (wetdry == FALSE) {
-    fibmap$wet_sample = factor("all",
-                               levels = "all",
-                               labels = "all")
-  } else {
-    fibmap <- fibmap %>%
-      dplyr::mutate(wet_sample = factor(dplyr::case_when(wet_sample == TRUE ~ "wet",
-                                                         .default = "dry"),
-                                        levels = c("dry", "wet"),
-                                        labels = c("dry", "wet")))
-  }
-
-  # create the object to map
-  tomap <- fibmap %>%
-    dplyr::filter(!is.na(Longitude)) %>%
-    dplyr::filter(!is.na(Latitude)) %>%
-    dplyr::filter(!is.na(cat)) %>%
-    sf::st_as_sf(coords = c('Longitude', 'Latitude'), crs = 4326, remove = F) %>%
-    dplyr::mutate(
-      colnm = factor(col,
-                     levels = c('#2DC938', '#E9C318', '#EE7600', '#CC3231'),
-                     labels = c('green', 'yellow', 'orange', 'red')
-      ),
-      conc = round(conc, 1),
-      cls = 'Marine'
-    ) %>%
-    tidyr::unite('grp', indnm, colnm, wet_sample, remove = F)
-
-  # create levels for group, must match order of icons list
-  levs <- expand.grid(levels(tomap$colnm), unique(tomap$indnm), levels(tomap$wet_sample)) %>%
-    unite('levs', Var2, Var1, Var3) %>%
-    pull(levs)
-
-  # get correct levels
-  tomap <- tomap %>%
-    dplyr::mutate(
-      grp = factor(grp, levels = levs),
-      lab = paste0('<html>Station Number: ', station, '<br>Class: ', cls, ' (<i>', ind, '</i>)<br> Category: ', cat, ' (', conc, '/100mL)</html>')
-    ) %>%
-    dplyr::select(-colnm, -indnm)
+                           temporal_window = temporal_window, wet_threshold = wet_threshold,
+                           assf = TRUE)
 
   # create custom icon list for fib categories
-  icons <- leaflet::iconList(
-    ecocci_green_wet <- leaflet::makeIcon(iconUrl = system.file('ecoli_green.png', package = 'tbeptools'),
-                                          iconWidth = 18, iconHeight = 18),
-    ecocci_yellow_wet <- leaflet::makeIcon(iconUrl = system.file('ecoli_yellow.png', package = 'tbeptools'),
-                                           iconWidth = 18, iconHeight = 18),
-    ecocci_orange_wet <- leaflet::makeIcon(iconUrl = system.file('ecoli_orange.png', package = 'tbeptools'),
-                                           iconWidth = 18, iconHeight = 18),
-    ecocci_red_wet <- leaflet::makeIcon(iconUrl = system.file('ecoli_red.png', package = 'tbeptools'),
-                                        iconWidth = 18, iconHeight = 18),
-    ecocci_green_dry <- leaflet::makeIcon(iconUrl = system.file('ecocci_green.png', package = 'tbeptools'),
-                                          iconWidth = 18, iconHeight = 18),
-    ecocci_yellow_dry <- leaflet::makeIcon(iconUrl = system.file('ecocci_yellow.png', package = 'tbeptools'),
-                                           iconWidth = 18, iconHeight = 18),
-    ecocci_orange_dry <- leaflet::makeIcon(iconUrl = system.file('ecocci_orange.png', package = 'tbeptools'),
-                                           iconWidth = 18, iconHeight = 18),
-    ecocci_red_dry <- leaflet::makeIcon(iconUrl = system.file('ecocci_red.png', package = 'tbeptools'),
-                                        iconWidth = 18, iconHeight = 18)
-
-  )
+  icons <- util_fibicons(indic = 'entero')
 
   # legend as HTML string
   # using previously created code and icons that have ecoli in the name -
@@ -120,9 +60,9 @@ show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE
     paste0('<b>All samples</b><br/>#/100mL<br/>', .)
 
   # create map
-  out <- util_map(tomap) %>%
+  out <- util_map(fibmap) %>%
     leaflet::addMarkers(
-      data = tomap,
+      data = fibmap,
       lng = ~Longitude,
       lat = ~Latitude,
       icon = ~icons[as.numeric(grp)],

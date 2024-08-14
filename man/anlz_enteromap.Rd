@@ -12,7 +12,8 @@ anlz_enteromap(
   wetdry = FALSE,
   precipdata = NULL,
   temporal_window = NULL,
-  wet_threshold = NULL
+  wet_threshold = NULL,
+  assf = FALSE
 )
 }
 \arguments{
@@ -31,9 +32,11 @@ anlz_enteromap(
 \item{temporal_window}{numeric; required if \code{wetdry} is \code{TRUE}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
 
 \item{wet_threshold}{numeric; required if \code{wetdry} is \code{TRUE}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
+
+\item{assf}{logical indicating if the data are further processed as a simple features object with additional columns for \code{\link{show_enteromap}}}
 }
 \value{
-A \code{data.frame} similar to \code{fibdata} with additional columns describing station categories and optionally filtered by arguments passed to the function
+A \code{data.frame} similar to \code{fibdata} if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function. A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_enteromap}}.
 }
 \description{
 Assign threshold categories to Enterococcus data
@@ -49,4 +52,7 @@ anlz_enteromap(enterodata, yrsel = 2020, mosel = 9)
 # differentiate wet/dry samples in that time frame
 anlz_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
                temporal_window = 2, wet_threshold = 0.5)
+
+# as sf object
+anlz_enteromap(enterodata, assf = TRUE)
 }

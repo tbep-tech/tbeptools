@@ -69,5 +69,13 @@ test_that("wet/dry subsetting does lead to different data frames", {
   expect_failure(expect_equivalent(result_a, result_b))
 })
 
+test_that("Checking sf outoput", {
+
+  result <- anlz_enteromap(enterodata, assf = TRUE)
+
+  expect_s3_class(result, "sf")
+  expect_equal(ncol(result), 16)
+
+})
 
 

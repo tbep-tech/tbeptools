@@ -45,3 +45,13 @@ test_that("Checking error for no data with anlz_fibmap", {
 
 })
 
+# Test case 6: Check sf output
+test_that("Checking sf outoput for anlz_fibmap", {
+
+  result <- anlz_fibmap(fibdata, assf = TRUE)
+
+  expect_s3_class(result, "sf")
+  expect_equal(ncol(result), 17)
+
+})
+
