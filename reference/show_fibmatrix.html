@@ -88,11 +88,11 @@
 
 
 <dt id="arg-indic">indic<a class="anchor" aria-label="anchor" href="#arg-indic"></a></dt>
-<dd><p>character for choice of fecal indicator. Allowable options are <code>fcolif</code> for fecal coliform, or <code>ecocci</code> for Enterococcus. A numeric column in the data frame must have this name.</p></dd>
+<dd><p>character for choice of fecal indicator. Allowable options are <code>fcolif</code> for fecal coliform, or <code>entero</code> for Enterococcus. A numeric column in the data frame must have this name.</p></dd>
 
 
 <dt id="arg-threshold">threshold<a class="anchor" aria-label="anchor" href="#arg-threshold"></a></dt>
-<dd><p>optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for <code>fcolif</code> and 130 for <code>ecocci</code>.</p></dd>
+<dd><p>optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for <code>fcolif</code> and 130 for <code>entero</code>.</p></dd>
 
 
 <dt id="arg-lagyr">lagyr<a class="anchor" aria-label="anchor" href="#arg-lagyr"></a></dt>
@@ -175,11 +175,11 @@
 <span class="r-plt img"><img src="show_fibmatrix-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># change the indicator</span></span></span>
-<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span>, indic <span class="op">=</span> <span class="st">'ecocci'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span>, indic <span class="op">=</span> <span class="st">'entero'</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="show_fibmatrix-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># show matrix for only dry samples</span></span></span>
-<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, indic <span class="op">=</span> <span class="st">'ecocci'</span>, lagyr <span class="op">=</span> <span class="fl">1</span>, subset_wetdry <span class="op">=</span> <span class="st">"dry"</span>,</span></span>
+<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, indic <span class="op">=</span> <span class="st">'entero'</span>, lagyr <span class="op">=</span> <span class="fl">1</span>, subset_wetdry <span class="op">=</span> <span class="st">"dry"</span>,</span></span>
 <span class="r-in"><span>               temporal_window <span class="op">=</span> <span class="fl">2</span>, wet_threshold <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06</span>
 <span class="r-plt img"><img src="show_fibmatrix-4.png" alt="" width="700" height="433"></span>

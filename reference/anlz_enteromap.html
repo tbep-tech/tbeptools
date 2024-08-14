@@ -55,7 +55,8 @@
 <span>  wetdry <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  precipdata <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  temporal_window <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  wet_threshold <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  wet_threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  assf <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -94,10 +95,14 @@
 <dt id="arg-wet-threshold">wet_threshold<a class="anchor" aria-label="anchor" href="#arg-wet-threshold"></a></dt>
 <dd><p>numeric; required if <code>wetdry</code> is <code>TRUE</code>. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period</p></dd>
 
+
+<dt id="arg-assf">assf<a class="anchor" aria-label="anchor" href="#arg-assf"></a></dt>
+<dd><p>logical indicating if the data are further processed as a simple features object with additional columns for <code><a href="show_enteromap.html">show_enteromap</a></code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>data.frame</code> similar to <code>fibdata</code> with additional columns describing station categories and optionally filtered by arguments passed to the function</p>
+    <p>A <code>data.frame</code> similar to <code>fibdata</code> if <code>assf = FALSE</code> with additional columns describing station categories and optionally filtered by arguments passed to the function. A <code>sf</code> object if <code>assf = TRUE</code> with additional columns for <code><a href="show_enteromap.html">show_enteromap</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -109,7 +114,7 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">anlz_enteromap</span><span class="op">(</span><span class="va">enterodata</span>, yrsel <span class="op">=</span> <span class="fl">2020</span>, mosel <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 39 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    station     long_name    yr    mo Latitude Longitude ecocci cat   col   ind  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
@@ -128,7 +133,7 @@
 <span class="r-in"><span><span class="fu">anlz_enteromap</span><span class="op">(</span><span class="va">enterodata</span>, yrsel <span class="op">=</span> <span class="fl">2020</span>, mosel <span class="op">=</span> <span class="fl">9</span>, wetdry <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
 <span class="r-in"><span>               temporal_window <span class="op">=</span> <span class="fl">2</span>, wet_threshold <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 39 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    station     long_name    yr    mo Latitude Longitude ecocci cat   col   ind  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>020     9     28.0     -<span style="color: #BB0000;">82.6</span>    380 130 … #EE7… Ente…</span>
@@ -142,6 +147,30 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 21FLHILL_W… Hillsbor…  <span style="text-decoration: underline;">2</span>020     9     27.9     -<span style="color: #BB0000;">82.4</span>      1 &lt; 35  #2DC… Ente…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 29 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: indnm &lt;chr&gt;, conc &lt;dbl&gt;, wet_sample &lt;lgl&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># as sf object</span></span></span>
+<span class="r-in"><span><span class="fu">anlz_enteromap</span><span class="op">(</span><span class="va">enterodata</span>, assf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 5596 features and 15 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -82.74598 ymin: 27.49433 xmax: -82.38168 ymax: 28.02571</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,596 × 16</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001     1     28.0     -<span style="color: #BB0000;">82.6</span>     80 35 -… #E9C… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001     2     28.0     -<span style="color: #BB0000;">82.6</span>    360 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001     3     28.0     -<span style="color: #BB0000;">82.6</span>   <span style="text-decoration: underline;">3</span>900 &gt; 999 #CC3… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001     4     28.0     -<span style="color: #BB0000;">82.6</span>     20 &lt; 35  #2DC… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001     7     28.0     -<span style="color: #BB0000;">82.6</span>   <span style="text-decoration: underline;">1</span>300 &gt; 999 #CC3… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001     8     28.0     -<span style="color: #BB0000;">82.6</span>    260 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001     9     28.0     -<span style="color: #BB0000;">82.6</span>    420 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001    10     28.0     -<span style="color: #BB0000;">82.6</span>    520 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001    11     28.0     -<span style="color: #BB0000;">82.6</span>     60 35 -… #E9C… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 21FLHILL_W… Old Tamp…  <span style="text-decoration: underline;">2</span>001    12     28.0     -<span style="color: #BB0000;">82.6</span>    340 130 … #EE7… Ente…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 5,586 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: grp &lt;fct&gt;, conc &lt;dbl&gt;, wet_sample &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   geometry &lt;POINT [°]&gt;, cls &lt;chr&gt;, lab &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
