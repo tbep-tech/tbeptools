@@ -15,13 +15,13 @@
 #' @seealso \code{\link{read_importfim}}
 #'
 #' @examples
-#' \dontrun{
 #' # file path
-#' csv <- '~/Desktop/fimraw.csv'
+#' csv <- url('https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/TampaBay_NektonIndexData.csv')
+#'
+#' datin <- read.csv(csv)
 #'
 #' # load and assign to object
-#' fimdata <- read_importfim(csv)
-#' }
+#' fimdata <- read_formfim(datin)
 read_formfim <- function(datin, locs = FALSE){
 
   # make data sf to get bay segments

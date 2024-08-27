@@ -29,9 +29,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' csv <- '~/Desktop/fimdata.csv'
+#' csv <- '~/Desktop/TampaBay_NektonIndexData.csv'
 #'
-#' fimdata <- read_importfim(csv, download_latest = FALSE)
+#' fimdata <- read_importfim(csv, download_latest = TRUE)
 #'
 #' save(fimdata, file = 'data/fimdata.RData', compress = 'xz')
 #'

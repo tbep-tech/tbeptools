@@ -21,13 +21,13 @@ Format FIM data for the Tampa Bay Nekton Index
 Function is used internally within \code{\link{read_importfim}}
 }
 \examples{
-\dontrun{
 # file path
-csv <- '~/Desktop/fimraw.csv'
+csv <- url('https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/TampaBay_NektonIndexData.csv')
+
+datin <- read.csv(csv)
 
 # load and assign to object
-fimdata <- read_importfim(csv)
-}
+fimdata <- read_formfim(datin)
 }
 \seealso{
 \code{\link{read_importfim}}

@@ -24,7 +24,7 @@
 read_importfim <- function(csv, download_latest = FALSE, locs = FALSE){
 
   # download latest and compare with current if exists
-  urlin <- 'ftp://ftp.floridamarine.org/users/fim/tmac/NektonIndex/TampaBay_NektonIndexData.csv'
+  urlin <- 'https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/TampaBay_NektonIndexData.csv'
   read_dlcurrent(csv, download_latest, urlin = urlin)
 
   # sanity checks
