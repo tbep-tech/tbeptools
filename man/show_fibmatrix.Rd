@@ -2,12 +2,13 @@
 % Please edit documentation in R/show_fibmatrix.R
 \name{show_fibmatrix}
 \alias{show_fibmatrix}
-\title{Plot a matrix of Fecal Indicator Bacteria categories over time by station}
+\title{Plot a matrix of Fecal Indicator Bacteria categories over time by station or bay segment}
 \usage{
 show_fibmatrix(
   fibdata,
   yrrng = NULL,
   stas = NULL,
+  bay_segment = NULL,
   indic = NULL,
   threshold = NULL,
   lagyr = 3,
@@ -33,6 +34,8 @@ show_fibmatrix(
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data, see details}
 
 \item{stas}{optional vector of stations to include, see details}
+
+\item{bay_segment}{optional vector of bay segment names to include, supercedes \code{stas} if provided, see details}
 
 \item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.}
 
@@ -72,12 +75,12 @@ show_fibmatrix(
 A static \code{\link[ggplot2]{ggplot}} object is returned by default. A \code{\link[reactable]{reactable}} table is returned if \code{asreact = TRUE}.  An interactive \code{\link[plotly]{plotly}} object is returned if \code{plotly = TRUE}.
 }
 \description{
-Plot a matrix of Fecal Indicator Bacteria categories over time by station
+Plot a matrix of Fecal Indicator Bacteria categories over time by station or bay segment
 }
 \details{
-The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 400 CFU / 100 mL for Fecal Coliform or 130 CFU / 100 mL for Enterococcus.  The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed). By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (\code{lagyr = 3}).  Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at \url{http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST\%20Report/Fecal\%20BMAP\%20DST\%20Final\%20Report\%20--\%20June\%202008.pdf} and Morrison et al. 2009 in the \href{https://drive.google.com/file/d/1vaoAKkwSLlIS2RzeBeCTjQST1dUmo0rr/view}{BASIS 5 proceedings}.
+The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 400 CFU / 100 mL for Fecal Coliform or 130 CFU / 100 mL for Enterococcus.  Bay segments are used instead of stations if \code{bay_segment} is not \code{NULL} and the input data are from \code{\link{read_importentero}}.  The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed). By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (\code{lagyr = 3}).  Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at \url{http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST\%20Report/Fecal\%20BMAP\%20DST\%20Final\%20Report\%20--\%20June\%202008.pdf} and Morrison et al. 2009 in the \href{https://drive.google.com/file/d/1vaoAKkwSLlIS2RzeBeCTjQST1dUmo0rr/view}{BASIS 5 proceedings}.
 
-The default stations for fecal coliform data are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in \code{fibdata} can be plotted using the \code{stas} argument.
+The default stations for fecal coliform data are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if \code{bay_segment} is \code{NULL} and the input data are from \code{\link{read_importfib}}.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the \code{stas} argument.
 }
 \examples{
 show_fibmatrix(fibdata)

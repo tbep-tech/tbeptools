@@ -1,10 +1,11 @@
-#' Analyze Fecal Indicator Bacteria categories over time by station
+#' Analyze Fecal Indicator Bacteria categories over time by station or bay segment
 #'
-#' Analyze Fecal Indicator Bacteria categories over time by station
+#' Analyze Fecal Indicator Bacteria categories over time by station or bay segment
 #'
 #' @param fibdata input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}
 #' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in data, see details
 #' @param stas optional vector of stations to include, see details
+#' @param bay_segment optional vector of bay segment names to include, supercedes \code{stas} if provided, see details
 #' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.
 #' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.
 #' @param lagyr numeric for year lag to calculate categories, see details
@@ -15,11 +16,13 @@
 #'
 #' @concept show
 #'
-#' @return A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station, including columns for the estimated geometric mean of fecal coliform or Enterococcus concentrations (\code{gmean}), the proportion of samples exceeding 400 CFU / 100 mL (fecal coliform) or 130 CFU / 100 mL (Enterococcus) (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).
+#' @return A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station including columns for the estimated geometric mean of fecal coliform or Enterococcus concentrations (\code{gmean}), the proportion of samples exceeding 400 CFU / 100 mL (fecal coliform) or 130 CFU / 100 mL (Enterococcus) (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).  Results can be summarized by bay segment if \code{bay_segment} is not \code{NULL} and the input data is from \code{\link{read_importentero}}.
 #'
-#' @details This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station and year.  Each station and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding some threshold in a given year.  For fecal coliform, the default threshold is 400 CFU / 100 mL in a given year (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  For Enterococcus, the default threshold is 130 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
+#' @details This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station.  The output can also be summarized by bay segment if \code{bay_segment} is not \code{NULL} and the input data is from \code{\link{read_importentero}}. In the latter case, the \code{stas} argument is ignored and all stations within each subsegment watershed are used to evaluate the FIB categories. Each station (or bay segment) and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding some threshold in a given year.  For fecal coliform, the default threshold is 400 CFU / 100 mL in a given year (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  For Enterococcus, the default threshold is 130 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
 #'
 #' \code{yrrng} can be specified several ways.  If \code{yrrng = NULL}, the year range of the data for the selected changes is chosen.  User-defined values for the minimum and maximum years can also be used, or only a minimum or maximum can be specified, e.g., \code{yrrng = c(2000, 2010)} or \code{yrrng = c(2000, NA)}.  In the latter case, the maximum year will be defined by the data.
+#'
+#' The default stations for fecal coliform data are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if \code{bay_segment} is \code{NULL} and the input data are from \code{\link{read_importfib}}.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the \code{stas} argument.
 #'
 #' @export
 #'
@@ -48,6 +51,7 @@
 anlz_fibmatrix <- function(fibdata,
                            yrrng = NULL,
                            stas = NULL,
+                           bay_segment = NULL,
                            indic,
                            threshold = NULL,
                            lagyr = 3,
@@ -58,18 +62,62 @@ anlz_fibmatrix <- function(fibdata,
 
   geomean <- function(x){prod(x)^(1/length(x))}
 
+  subset_wetdry <- match.arg(subset_wetdry)
   indic <- match.arg(indic, c('fcolif', 'entero'))
 
+  # check if epchc data
+  isepchc <- exists("epchc_station", fibdata)
+
+  # checks for epc data
+  if(isepchc){
+
+    fibdata$station <- fibdata$epchc_station
+
+    # assign default stations from TBEP report #05-13
+    if(is.null(stas))
+      stas <- c(143, 108, 107, 135, 118, 148, 105, 152, 137)
+
+    # error if subset_wetdry attempted with epchc
+    if(subset_wetdry %in% c('wet', 'dry'))
+      stop('Subset to wet or dry samples not supported for epchc data')
+
+    # error if user tries to subset by bay segment for epchc
+    if(!is.null(bay_segment))
+      stop('Bay segment subsetting not applicable for epchc data')
+
+  }
+
+  # checks for non-epc data
+  if(!isepchc){
+
+    # check if user tries indic fcolif for enterodata
+    if(indic == 'fcolif')
+      stop('fcolif not a valid indicator for non-epchc data')
+
+    # check bay segments
+    if(!is.null(bay_segment)){
+
+      segs <- c("OTB", "HB", "MTB", "LTB", "BCB", "MR")
+      chk <- !bay_segment %in% segs
+      if(any(chk)){
+        stop('Invalid bay_segment(s): ', paste(bay_segment[chk], collapse = ', '))
+      }
+    }
+
+  }
+
   # subset to wet or dry samples, if specified
-  subset_wetdry <- match.arg(subset_wetdry)
   if(subset_wetdry != "all"){
-        # make sure necessary info is provided
-    stopifnot("temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples" = !is.null(temporal_window) & !is.null(wet_threshold)
-              )
+
+    # make sure necessary info is provided
+    if(is.null(temporal_window) | is.null(wet_threshold))
+      stop("temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples")
+
     # if precip data isn't specified, use the catchprecip object
     if(is.null(precipdata)){
       precipdata <- catchprecip
     }
+
     # run the anlz_fibwetdry function
     dat <- anlz_fibwetdry(fibdata = fibdata,
                           precipdata = precipdata,
@@ -81,14 +129,20 @@ anlz_fibmatrix <- function(fibdata,
     # filter the data frame
     fibdata <- dat %>%
       dplyr::filter(wetdry == subset_wetdry)
+
   }
 
-  # if dealing with epchc data, make a simple 'station' column
-  if(exists("epchc_station", fibdata)){fibdata$station <- fibdata$epchc_station}
-
   # all stations if stas is NULL
-  if(is.null(stas))
+  if(is.null(stas) & is.null(bay_segment))
     stas <- fibdata %>%
+      dplyr::pull(station) %>%
+      unique() %>%
+      sort()
+
+  # all stations in a bay segment if bay_segment is not NULL
+  if(!is.null(bay_segment))
+    stas <- fibdata %>%
+      dplyr::filter(bay_segment %in% !!bay_segment) %>%
       dplyr::pull(station) %>%
       unique() %>%
       sort()
@@ -121,13 +175,9 @@ anlz_fibmatrix <- function(fibdata,
   }
 
   # if threshold wasn't assigned, assign one based on the indicator of choice
-  if(is.null(threshold)){
-    thrsh <- switch(indic,
-                    'fcolif' = 400,
-                    'entero' = 130)
-  } else {
-    thrsh <- threshold
-  }
+  thrsh <- threshold
+  if(is.null(thrsh))
+    thrsh <- switch(indic, 'fcolif' = 400, 'entero' = 130)
 
   # valid stations with sufficient data for lagyr
   stasval <- fibdata %>%
@@ -145,39 +195,47 @@ anlz_fibmatrix <- function(fibdata,
   chk <- !stas %in% stasval
 
   # check if some stations valid for lagyr
-  if(sum(chk) > 0 & sum(chk) < length(chk)){
+  if(sum(chk) > 0 & sum(chk) < length(chk) & is.null(bay_segment)){
     warning('Stations with insufficient data for lagyr: ', paste(stas[chk], collapse = ', '))
     stas <- stas[!chk]
   }
 
   # check if all stations invalid for lagyr
   if(sum(chk) == length(chk)){
-    stop('No stations with sufficient data for lagyr')
+    stop('Insufficient data for lagyr')
   }
 
-  # get geomean, proportion of sites > 400 cfu / 100mL, and prob of exceedence
+  grp <- 'station'
+  levs <- stas
+  if(!is.null(bay_segment)){
+    grp <- 'bay_segment'
+    levs <- segs
+  }
+
+  # get geomean, proportion of sites/bay segments > 400 cfu / 100mL, and prob of exceedence
   # handles lagged calculations
   dat <- fibdata %>%
     dplyr::filter(station %in% stas) %>%
     dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
     dplyr::filter(!is.na(indic) | indic < 0) %>%
+    dplyr::rename(grp = !!grp) %>%
     summarise(
       gmean = geomean(indic),
       sumgt = sum(indic > thrsh),
-      station_tot = dplyr::n(),
-      .by = c('station', 'yr')
+      tot = dplyr::n(),
+      .by = c('grp', 'yr')
     ) %>%
-    dplyr::arrange(station, yr) %>%
+    dplyr::arrange(grp, yr) %>%
     dplyr::mutate(
       sumgt = stats::filter(sumgt, rep(1, lagyr), sides = 1, method = 'convolution'),
-      station_tot = stats::filter(station_tot, rep(1, lagyr), sides = 1, method = 'convolution'),
-      .by = 'station'
+      tot = stats::filter(tot, rep(1, lagyr), sides = 1, method = 'convolution'),
+      .by = 'grp'
     ) %>%
     dplyr::mutate(
-      exceed_10_prob = pbinom(sumgt - 1, station_tot, 0.10, lower.tail = FALSE),
-      exceed_30_prob = pbinom(sumgt - 1, station_tot, 0.30, lower.tail = FALSE),
-      exceed_50_prob = pbinom(sumgt - 1, station_tot, 0.50, lower.tail = FALSE),
-      exceed_75_prob = pbinom(sumgt - 1, station_tot, 0.75, lower.tail = FALSE)
+      exceed_10_prob = pbinom(sumgt - 1, tot, 0.10, lower.tail = FALSE),
+      exceed_30_prob = pbinom(sumgt - 1, tot, 0.30, lower.tail = FALSE),
+      exceed_50_prob = pbinom(sumgt - 1, tot, 0.50, lower.tail = FALSE),
+      exceed_75_prob = pbinom(sumgt - 1, tot, 0.75, lower.tail = FALSE)
     )
 
   # Put stations into binomial test groups based on significant exceedances of 400cfu criteria
@@ -189,12 +247,12 @@ anlz_fibmatrix <- function(fibdata,
   dat$MWQA[dat$exceed_75_prob < 0.10] <- 'E'
 
   out <- dat %>%
-    dplyr::select(yr, station, gmean, cat = MWQA) %>%
+    dplyr::select(yr, grp, gmean, cat = MWQA) %>%
     dplyr::mutate(
-      station = factor(station, levels = stas)
+      grp = factor(grp, levels = levs)
     ) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    tidyr::complete(yr = yrrng[1]:yrrng[2], station)
+    tidyr::complete(yr = yrrng[1]:yrrng[2], grp)
 
   return(out)
 

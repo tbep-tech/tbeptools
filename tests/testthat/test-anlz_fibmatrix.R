@@ -14,7 +14,7 @@ test_that("Checking anlz_fibmatrix station warning some insufficient data", {
 })
 
 test_that("Checking anlz_fibmatrix station error all insufficient data", {
-  expect_error(anlz_fibmatrix(fibdata, indic = 'fcolif', stas = '616'), regexp = 'No stations with sufficient data for lagyr',
+  expect_error(anlz_fibmatrix(fibdata, indic = 'fcolif', stas = '616'), regexp = 'Insufficient data for lagyr',
                  fixed = T)
 })
 
@@ -87,4 +87,32 @@ test_that("wet/dry subsetting does lead to different data frames", {
                              lagyr = 1)
 
   expect_failure(expect_equivalent(result_a, result_b))
+})
+
+test_that("Check correct error if incorrect bay segment entry", {
+
+  expect_error(anlz_fibmatrix(enterodata, indic = 'entero', bay_segment = c('HB', 'OTB', '999')), regexp = 'Invalid bay_segment(s): 999',
+               fixed = T)
+
+})
+
+test_that("Check error if wet/dry is used for epchc data",{
+
+  expect_error(anlz_fibmatrix(fibdata, indic = 'fcolif', subset_wetdry = 'wet'), regexp = 'Subset to wet or dry samples not supported for epchc data',
+               fixed = T)
+
+})
+
+test_that("Check error if indic is fcolif for non-epchc data",{
+
+  expect_error(anlz_fibmatrix(enterodata, indic = 'fcolif'), regexp = 'fcolif not a valid indicator for non-epchc data',
+               fixed = T)
+
+})
+
+test_that("Check error if bay segment is not null for epchc data", {
+
+  expect_error(anlz_fibmatrix(fibdata, indic = 'fcolif', bay_segment = 'HB'), regexp = 'Bay segment subsetting not applicable for epchc data',
+               fixed = T)
+
 })
