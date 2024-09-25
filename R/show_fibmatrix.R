@@ -47,6 +47,7 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
                            size = 10, hjust = 0, plotly = FALSE, width = NULL, height = NULL){
 
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
+  names(cols) <- c('A', 'B', 'C', 'D', 'E')
 
   toplo <- anlz_fibmatrix(fibdata, yrrng = yrrng, stas = stas, bay_segment = bay_segment,
                           indic = indic, threshold = threshold, lagyr = lagyr,
