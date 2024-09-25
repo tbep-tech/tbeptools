@@ -116,3 +116,23 @@ test_that("Check error if bay segment is not null for epchc data", {
                fixed = T)
 
 })
+
+test_that("Checking anlz_fibmatrix if bay segment is not null for non-epchc data", {
+  result <- anlz_fibmatrix(enterodata, indic = 'entero', bay_segment = 'HB')
+  expect_true('HB' %in% result$grp)
+})
+
+test_that("Checking anlz_fibmatrix if bay segment is null and stas is null for non-epchc data", {
+  result <- anlz_fibmatrix(enterodata, indic = 'entero')
+  expect_true(any(grepl('FLHILL', result$grp)))
+})
+
+test_that("Checking anlz_fibmatrix yrrng[1] as NA", {
+  result <- anlz_fibmatrix(fibdata, indic = 'fcolif', yrrng = c(NA, 2010))
+  expect_true(min(result$yr) < 2010)
+})
+
+test_that("Checking anlz_fibmatrix yrrng[2] as NA", {
+  result <- anlz_fibmatrix(fibdata, indic = 'fcolif', yrrng = c(2010, NA))
+  expect_true(max(result$yr) > 2010)
+})
