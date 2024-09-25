@@ -1,5 +1,5 @@
 test_that("Checking anlz_fibmatrix tibble class", {
-  result <- expect_warning(anlz_fibmatrix(fibdata, indic = 'fcolif'))
+  result <- anlz_fibmatrix(fibdata, indic = 'fcolif')
   expect_is(result, 'tbl')
 })
 
@@ -27,13 +27,13 @@ fibdatatst <- data.frame(
 )
 
 test_that("anlz_fibmatrix returns correct structure", {
-  result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif')
+  result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif', stas = c("a", "b", "c"))
   expect_s3_class(result, "tbl_df")
-  expect_true(all(c("yr", "station", "gmean", "cat") %in% names(result)))
+  expect_true(all(c("yr", "grp", "gmean", "cat") %in% names(result)))
 })
 
 test_that("anlz_fibmatrix handles default parameters", {
-  result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif')
+  result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif', stas = c("a", "b", "c"))
   expect_true(nrow(result) > 0)
   expect_true(all(result$yr >= 2000 & result$yr <= 2005))
 })
@@ -41,18 +41,18 @@ test_that("anlz_fibmatrix handles default parameters", {
 test_that("anlz_fibmatrix respects custom year range and stations", {
   result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif', yrrng = c(2001, 2004), stas = c("a", "b"))
   expect_true(all(result$yr >= 2001 & result$yr <= 2004))
-  expect_true(all(result$station %in% c("a", "b")))
+  expect_true(all(result$grp %in% c("a", "b")))
 })
 
 test_that("anlz_fibmatrix works with different indicators", {
-  result_fcolif <- anlz_fibmatrix(fibdatatst, indic = "fcolif")
-  result_entero <- anlz_fibmatrix(fibdatatst, indic = "entero")
+  result_fcolif <- anlz_fibmatrix(fibdatatst, indic = "fcolif", stas = c('a', 'b', 'c'))
+  result_entero <- anlz_fibmatrix(fibdatatst, indic = "entero", stas = c('a', 'b', 'c'))
   expect_true(nrow(result_fcolif) > 0)
   expect_true(nrow(result_entero) > 0)
 })
 
 test_that("anlz_fibmatrix respects custom thresholds", {
-  result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif', threshold = 200)
+  result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif', threshold = 200, stas = c('a', 'b', 'c'))
   expect_true(nrow(result) > 0)
 })
 
