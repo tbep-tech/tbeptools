@@ -223,6 +223,8 @@ anlz_fibmatrix <- function(fibdata,
       gmean = geomean(indic),
       sumgt = sum(indic > thrsh),
       tot = dplyr::n(),
+      Latitude = mean(Latitude, na.rm = TRUE),
+      Longitude = mean(Longitude, na.rm = TRUE),
       .by = c('grp', 'yr')
     ) %>%
     dplyr::arrange(grp, yr) %>%
@@ -247,7 +249,7 @@ anlz_fibmatrix <- function(fibdata,
   dat$MWQA[dat$exceed_75_prob < 0.10] <- 'E'
 
   out <- dat %>%
-    dplyr::select(yr, grp, gmean, cat = MWQA) %>%
+    dplyr::select(yr, grp, gmean, Latitude, Longitude, cat = MWQA) %>%
     dplyr::mutate(
       grp = factor(grp, levels = levs)
     ) %>%

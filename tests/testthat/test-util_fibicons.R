@@ -21,3 +21,16 @@ test_that("util_fibicons returns correct fecal coliform icon list for fcolif", {
   expect_true(all(grepl("green|yellow|orange|red", names(result))))
 
 })
+
+test_that("util_fibicons returns correct FIB matrix score icon list for fibmat", {
+
+  result <- util_fibicons('fibmat')
+
+  expect_true(is.list(result))
+  expect_equal(length(result), 5)  # Check if it returns 8 icons
+
+  expect_true(all(grepl("fibmat", names(result))))
+  expect_true(all(grepl("green|yellow|orange|red|purple", names(result))))
+
+})
+

@@ -177,6 +177,12 @@ A plotly (interactive, dynamic plot) object can be returned by setting the `plot
 show_fibmatrix(fibdata, plotly = TRUE)
 ```
 
+Finally, a map of station categories for a given year can be plotted using `show_fibmatrixmap()`. The `yrsel` argument is required, and the `areasel` argument can be used to select a specific area. The values shown on the map are the same as those for the respective year in the `show_fibmatrix()` function.
+
+```{r, out.width="100%"}
+show_fibmatmap(fibdata, indic = 'fcolif', yrsel = 2020, areasel = c('Hillsborough River', 'Alafia River'))
+```
+ 
 ## Baywide reporting
 
 The second workflow uses a baywide approach to summarize FIB data.  Select stations were identified at downstream locations that drain into Tampa Bay and considered important watershed endpoints for FIB monitoring.  *Enterococcus* is the primary indicator because these stations are located at terminal downstream locations that are tidally influenced.  The functions are organized similarly as the EPC reporting workflow, with some unique functions for working with data from these locations and other functions repeated from the EPC workflow that differ in the output depending on the data inputs. 
@@ -327,6 +333,18 @@ show_fibmatrix(enterodata, indic = 'entero', yrrng = c(2015, 2020))
 Note that the `subset_wetdry` argument can be used with `show_fibmatrix()` to show only wet or dry samples based on the thresholds provided by `temporal_window` and `wet_threshold`.  However, this is not recommended because the scores are probability-based and comparisons between wet or dry samples may be misleading due to different sample sizes, and therefore, power to detect the likelihood of exceeding the threshold.  Specifically, there are far fewer wet samples than dry and these samples will generally receive higher grades due to lower power of the statistical tests.
 
 As for the EPC data, an HTML table can be returned with `show_fibmatrix()` using `asreact = TRUE` and a plotly object can be returned using `plotly = TRUE`.  See the above section for examples of these outputs.
+
+The `show_fibmatrix()` function also supports baywide reporting by bay segment, unlike the EPC data.  The stations for the baywide reporting were selected specifically as endpoints that drain directly into each bay segment and an aggregate summary of the stations by bay segment can indicate the MWQA category.  The calculations are the same as by station, but the data are aggregated by bay segment. 
+
+```{r, fig.height = 5, fig.width = 9}
+show_fibmatrix(enterodata, indic = 'entero', bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))
+```
+
+Finally, a map of station and bay segment categories for a given year can be plotted using `show_fibmatrixmap()`. The `yrsel` argument is required, and the `areasel` argument can be used to select a specific area. The values shown on the map are the same as those for the respective year in the `show_fibmatrix()` function.
+
+```{r, out.width="100%"}
+show_fibmatmap(enterodata, indic = 'entero', yrsel = 2020, areasel = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))
+```
 
 ## Retrieving additional FIB data
 

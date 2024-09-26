@@ -1,0 +1,159 @@
+#' Map Fecal Indicator Bacteria matrix results by year
+#'
+#' @param fibdata input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}
+#' @param yrsel numeric value indicating the year to map
+#' @param areasel vector of bay segment or area names to include, see details
+#' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.
+#' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.
+#' @param lagyr numeric for year lag to calculate categories, see details
+#' @param subset_wetdry character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.
+#' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.
+#' @param temporal_window numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
+#' @param wet_threshold  numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
+#'
+#' @return A \code{leaflet} map for the selected year and area showing station matrix scores.  Bay segment scores are also shown if the input data are not from EPCHC.
+#'
+#' @details Placing the mouse cursor over an item on the map will reveal additional information about a segment or station.
+#'
+#' If the input to \code{fibdata} is from EPCHC (from \code{\link{read_importfib}}), valid entries for \code{areasel} include 'Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay', 'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay', 'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal', and 'Valrico Lake'.  If the input data is not from EPCHC (from \code{\link{read_importentero}}), valid entries for \code{areasel} include 'OTB', 'HB', 'MTB', 'LTB', 'BCB', and 'MR'.
+#'
+#' Bay segment matrix categories are shown in addition to stations if \code{fibsel} input is not from EPCHC (from \code{\link{read_importentero}}).  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the EPCHC data are not appropriate for estimating bay segment outcomes.
+#'
+#' @concept show
+#'
+#' @seealso \code{\link{anlz_fibmatrix}} for details on the categories
+#' @export
+#'
+#' @examples
+#' show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero')
+#'
+#' # wet/dry samples
+#' show_fibmatmap(enterodata, yrsel = 2020, wetdry = TRUE, indic = 'entero',
+#'                temporal_window = 2, wet_threshold = 0.5)
+#'
+#' # Old Tampa Bay only
+#' show_fibmatmap(enterodata, yrsel = 2020, areasel = "OTB", indic = 'entero')
+#'
+#' # EPCHC data
+#' show_fibmatmap(fibdata, yrsel = 2016, indic = 'fcolif',
+#'    areasel = c("Hillsborough River", "Alafia River"))
+show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
+                           lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
+                           temporal_window = NULL, wet_threshold = NULL){
+
+  # get categories
+  cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
+  names(cols) <- c('A', 'B', 'C', 'D', 'E')
+
+  # check if epchc data
+  isepchc <- exists("epchc_station", fibdata)
+
+  if(!isepchc){
+
+    # includes bay segment check
+    tomapseg <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = NULL, bay_segment = areasel,
+                             indic = indic, threshold = threshold, lagyr = lagyr,
+                             subset_wetdry = subset_wetdry, precipdata = precipdata,
+                             temporal_window = temporal_window, wet_threshold = wet_threshold) %>%
+      dplyr::filter(!is.na(cat)) %>%
+      dplyr::filter(yr == !!yrsel) %>%
+      dplyr::inner_join(tbsegdetail, ., by = c('bay_segment' = 'grp')) %>%
+      dplyr::mutate(
+        lab = paste0('<html>', long_name, '<br>Category: ', cat),
+        col = as.character(cols[cat])
+      )
+
+    stas <- fibdata %>%
+      dplyr::filter(bay_segment %in% !!areasel) %>%
+      dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
+      dplyr::pull(station) %>%
+      unique()
+
+    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas, bay_segment = NULL,
+                             indic = indic, threshold = threshold, lagyr = lagyr,
+                             subset_wetdry = subset_wetdry, precipdata = precipdata,
+                             temporal_window = temporal_window, wet_threshold = wet_threshold)
+
+  }
+
+  if(isepchc){
+
+    # check bay segment
+    areas <- c('Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay',
+                'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay',
+                'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal',
+                'Valrico Lake')
+
+    chk <- !areasel %in% areas
+    if(any(chk)){
+      stop('Invalid value(s) for areasel: ', paste(areasel[chk], collapse = ', '))
+    }
+
+    stas <- fibdata %>%
+      dplyr::filter(area %in% !!areasel) %>%
+      dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
+      dplyr::pull(epchc_station) %>%
+      unique()
+
+    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas, bay_segment = NULL,
+                             indic = indic, threshold = threshold, lagyr = lagyr,
+                             subset_wetdry = subset_wetdry, precipdata = precipdata,
+                             temporal_window = temporal_window, wet_threshold = wet_threshold)
+
+  }
+
+  # create custom icon list for fib matrix categories
+  icons <- util_fibicons('fibmat')
+
+  # legend as HTML string
+  levs <- util_fiblevs()
+  leg <- tibble::tibble(
+    src = paste0('https://github.com/tbep-tech/tbeptools/blob/master/inst/', basename(sapply(icons, `[[`, 1)), '?raw=true'),
+    brk = levs$fibmatlbs
+  ) %>%
+    tidyr::unite('val', src, brk, sep = "' style='width:10px;height:10px;'> ") %>%
+    dplyr::mutate(
+      val = paste0("<img src='", val)
+    ) %>%
+    dplyr::pull(val) %>%
+    paste(collapse = '<br/>') %>%
+    paste0('<b>FIB matrix<br/>categories</b><br/>', .)
+
+  tomapsta <- tomapsta %>%
+    dplyr::filter(!is.na(cat)) %>%
+    dplyr::filter(yr == !!yrsel) %>%
+    sf::st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+    dplyr::mutate(
+      cat = factor(cat, levels = levs$fibmatlev),
+      lab = paste0('<html>Station Number: ', grp, '<br>Category: ', cat)
+    )
+
+  # create map
+  out <- util_map(tomapsta) %>%
+    leaflet::addMarkers(
+      data = tomapsta,
+      lng = ~Longitude,
+      lat = ~Latitude,
+      icon = ~icons[as.numeric(cat)],
+      label = ~lapply(as.list(lab), util_html)
+    ) %>%
+    leaflet::addControl(html = leg, position = 'topright')
+
+  # add bay segments if not epchc
+  if(!isepchc){
+
+    out <- out %>%
+      leaflet::addPolygons(
+        data = tomapseg,
+        fillColor = ~I(col),
+        fillOpacity = 0.5,
+        color = 'black',
+        weight = 1,
+        label = ~lapply(as.list(lab), util_html)
+      )
+
+  }
+
+  return(out)
+
+}

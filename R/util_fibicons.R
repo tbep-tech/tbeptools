@@ -1,18 +1,19 @@
 #' Return leaflet icon set for FIB maps
 #'
-#' @param indic character indicating \code{"entero"} or \code{"fcolif"} for \emph{Enterococcus} or Fecal Coliform
+#' @param indic character indicating \code{"entero"}, \code{"fcolif"}, or \code{"fibmat"} for \emph{Enterococcus}, Fecal Coliform, or FIB matrix maps, respectively
 #'
 #' @return A leaflet icon set as returned by \code{\link[leaflet]{iconList}}.
 #' @export
 #'
-#' @details Used internally with \code{\link{show_enteromap}} and \code{\link{show_fibmap}}, former uses wet/dry icons for \emph{Enterococcus} and latter uses \emph{E. Coli}/\emph{Enterococcus} icons
+#' @details Used internally with \code{\link{show_enteromap}} for wet/dry icons for \emph{Enterococcus}, with \code{\link{show_fibmap}} for \emph{E. Coli}/\emph{Enterococcus} icons (EPCHC data), and with \code{\link{show_fibmatmap}} for matrix annual score category icons for EPCHC and non-EPCHC data.
 #'
 #' @examples
 #' util_fibicons(indic = 'entero')
 #' util_fibicons(indic = 'fcolif')
+#' util_fibicons(indic = 'fibmat')
 util_fibicons <- function(indic){
 
-  indic <- match.arg(indic, c('entero', 'fcolif'))
+  indic <- match.arg(indic, c('entero', 'fcolif', 'fibmat'))
 
   if(indic == 'entero')
     out <- leaflet::iconList(
@@ -53,6 +54,20 @@ util_fibicons <- function(indic){
                                          iconWidth = 18, iconHeight = 18),
       entero_red = leaflet::makeIcon(iconUrl = system.file('entero_red.png', package = 'tbeptools'),
                                       iconWidth = 18, iconHeight = 18)
+    )
+
+  if(indic == 'fibmat')
+    out <- leaflet::iconList(
+      fibmat_green = leaflet::makeIcon(iconUrl = system.file('fibmat_green.png', package = 'tbeptools'),
+                                       iconWidth = 18, iconHeight = 18),
+      fibmat_yellow = leaflet::makeIcon(iconUrl = system.file('fibmat_yellow.png', package = 'tbeptools'),
+                                        iconWidth = 18, iconHeight = 18),
+      fibmat_orange = leaflet::makeIcon(iconUrl = system.file('fibmat_orange.png', package = 'tbeptools'),
+                                        iconWidth = 18, iconHeight = 18),
+      fibmat_red = leaflet::makeIcon(iconUrl = system.file('fibmat_red.png', package = 'tbeptools'),
+                                     iconWidth = 18, iconHeight = 18),
+      fibmat_purple = leaflet::makeIcon(iconUrl = system.file('fibmat_purple.png', package = 'tbeptools'),
+                                        iconWidth = 18, iconHeight = 18)
     )
 
   return(out)
