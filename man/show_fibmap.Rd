@@ -34,4 +34,4 @@ show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
 \seealso{
 \code{\link{anlz_fibmap}} for details on the categories
 }
-\concept{anlz}
+\concept{show}

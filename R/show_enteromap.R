@@ -6,7 +6,7 @@
 #'
 #' @details Placing the mouse cursor over an item on the map will reveal additional information about a station.
 #'
-#' @concept anlz
+#' @concept show
 #'
 #' @seealso \code{\link{anlz_enteromap}} for details on the categories
 #' @export

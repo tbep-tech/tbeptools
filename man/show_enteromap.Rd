@@ -54,4 +54,4 @@ show_enteromap(enterodata, yrsel = 2020, mosel = 9, areasel = "Old Tampa Bay")
 \seealso{
 \code{\link{anlz_enteromap}} for details on the categories
 }
-\concept{anlz}
+\concept{show}
