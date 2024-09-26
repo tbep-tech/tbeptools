@@ -23,7 +23,9 @@ fibdatatst <- data.frame(
   yr = rep(2000:2005, each = 3),
   epchc_station = rep(letters[1:3], times = 6),
   fcolif = runif(18, 0, 500),
-  entero = runif(18, 0, 200)
+  entero = runif(18, 0, 200),
+  Latitude = runif(18, 27, 28),
+  Longitude = runif(18, -82, -81)
 )
 
 test_that("anlz_fibmatrix returns correct structure", {
@@ -123,7 +125,7 @@ test_that("Checking anlz_fibmatrix if bay segment is not null for non-epchc data
 })
 
 test_that("Checking anlz_fibmatrix if bay segment is null and stas is null for non-epchc data", {
-  result <- anlz_fibmatrix(enterodata, indic = 'entero')
+  result <- suppressWarnings(anlz_fibmatrix(enterodata, indic = 'entero'))
   expect_true(any(grepl('FLHILL', result$grp)))
 })
 

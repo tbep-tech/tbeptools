@@ -25,14 +25,8 @@
 #' @export
 #'
 #' @examples
-#' show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero')
-#'
-#' # wet/dry samples
-#' show_fibmatmap(enterodata, yrsel = 2020, wetdry = TRUE, indic = 'entero',
-#'                temporal_window = 2, wet_threshold = 0.5)
-#'
-#' # Old Tampa Bay only
-#' show_fibmatmap(enterodata, yrsel = 2020, areasel = "OTB", indic = 'entero')
+#' # non-EPCHC data
+#' show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero', areasel = 'OTB')
 #'
 #' # EPCHC data
 #' show_fibmatmap(fibdata, yrsel = 2016, indic = 'fcolif',

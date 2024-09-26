@@ -52,14 +52,8 @@ If the input to \code{fibdata} is from EPCHC (from \code{\link{read_importfib}})
 Bay segment matrix categories are shown in addition to stations if \code{fibsel} input is not from EPCHC (from \code{\link{read_importentero}}).  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the EPCHC data are not appropriate for estimating bay segment outcomes.
 }
 \examples{
-show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero')
-
-# wet/dry samples
-show_fibmatmap(enterodata, yrsel = 2020, wetdry = TRUE, indic = 'entero',
-               temporal_window = 2, wet_threshold = 0.5)
-
-# Old Tampa Bay only
-show_fibmatmap(enterodata, yrsel = 2020, areasel = "OTB", indic = 'entero')
+# non-EPCHC data
+show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero', areasel = 'OTB')
 
 # EPCHC data
 show_fibmatmap(fibdata, yrsel = 2016, indic = 'fcolif',
