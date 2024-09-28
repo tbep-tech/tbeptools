@@ -40,6 +40,11 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
   names(cols) <- c('A', 'B', 'C', 'D', 'E')
 
+  data(tbesegdetail)
+
+  if(is.null(precipdata))
+    data(precipdata)
+
   # check if epchc data
   isepchc <- exists("epchc_station", fibdata)
 
