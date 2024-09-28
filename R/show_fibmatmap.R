@@ -10,8 +10,9 @@
 #' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.
 #' @param temporal_window numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
 #' @param wet_threshold  numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
+#' @param listout logical to return a list of simple feature objects for the data used in the \code{leaflet} map, default \code{FALSE}
 #'
-#' @return A \code{leaflet} map for the selected year and area showing station matrix scores.  Bay segment scores are also shown if the input data are not from EPCHC.
+#' @return A \code{leaflet} map for the selected year and area showing station matrix scores if \code{listout = FALSE} (default).  Bay segment scores are also shown if the input data are not from EPCHC. A list of simple feature objects is returned if \code{listout = TRUE}.
 #'
 #' @details Placing the mouse cursor over an item on the map will reveal additional information about a segment or station.
 #'
@@ -33,7 +34,7 @@
 #'    areasel = c("Hillsborough River", "Alafia River"))
 show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
                            lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
-                           temporal_window = NULL, wet_threshold = NULL){
+                           temporal_window = NULL, wet_threshold = NULL, listout = FALSE){
 
   # get categories
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
@@ -94,13 +95,40 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold)
 
+    tomapseg <- NULL
+
   }
 
   # create custom icon list for fib matrix categories
   icons <- util_fibicons('fibmat')
 
-  # legend as HTML string
+  # FIB levels
   levs <- util_fiblevs()
+
+  # subset year, remove NA cat, add labels
+  tomapsta <- tomapsta %>%
+    dplyr::filter(!is.na(cat)) %>%
+    dplyr::filter(yr == !!yrsel) %>%
+    sf::st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+    dplyr::mutate(
+      cat = factor(cat, levels = levs$fibmatlev),
+      lab = paste0('<html>Station Number: ', grp, '<br>Category: ', cat)
+    )
+
+  # return data instead of leaflet
+  if(listout){
+
+    out <- list(
+      icons = icons,
+      tomapsta = tomapsta,
+      tomapseg = tomapseg
+    )
+
+    return(out)
+
+  }
+
+  # legend
   leg <- tibble::tibble(
     src = paste0('https://github.com/tbep-tech/tbeptools/blob/master/inst/', basename(sapply(icons, `[[`, 1)), '?raw=true'),
     brk = levs$fibmatlbs
@@ -113,14 +141,6 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     paste(collapse = '<br/>') %>%
     paste0('<b>FIB matrix<br/>categories</b><br/>', .)
 
-  tomapsta <- tomapsta %>%
-    dplyr::filter(!is.na(cat)) %>%
-    dplyr::filter(yr == !!yrsel) %>%
-    sf::st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
-    dplyr::mutate(
-      cat = factor(cat, levels = levs$fibmatlev),
-      lab = paste0('<html>Station Number: ', grp, '<br>Category: ', cat)
-    )
 
   # create map
   out <- util_map(tomapsta) %>%

@@ -3,6 +3,13 @@ test_that("show_fibmatmap returns a leaflet map for non-EPCHC", {
   expect_s3_class(map, "leaflet")
 })
 
+test_that("show_fibmatmap returns list of data used if listout is TRUE", {
+  dat <- expect_warning(show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB'), indic = 'entero',
+                                       listout = T))
+  expect_equal(class(dat), "list")
+  expect_equal(names(dat), c('icons', 'tomapsta', 'tomapseg'))
+})
+
 test_that("show_fibmatmap returns a leaflet map for EPCHC", {
   map <- expect_warning(show_fibmatmap(fibdata, yrsel = 2020, areasel = c('Hillsborough River'), indic = 'fcolif'))
   expect_s3_class(map, "leaflet")
@@ -16,7 +23,6 @@ test_that("show_fibmatmap errors on invalid areasel for EPCHC data", {
   )
 })
 
-# Test 5: Handles wet/dry sample subset with correct parameters
 test_that("show_fibmatmap subsets data for wet or dry samples", {
   map_wet <- expect_warning(show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB'), indic = 'entero', subset_wetdry = "wet", temporal_window = 2, wet_threshold = 0.3))
   map_dry <- expect_warning(show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB'), indic = 'entero', subset_wetdry = "dry", temporal_window = 2, wet_threshold = 0.3))
