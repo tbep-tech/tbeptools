@@ -13,6 +13,7 @@
 #' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.
 #' @param temporal_window numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
 #' @param wet_threshold  numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
+#' @param warn logical to print warnings about stations with insufficient data, default \code{TRUE}
 #'
 #' @concept show
 #'
@@ -48,17 +49,10 @@
 #' # subset to only dry samples
 #' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "dry",
 #'                temporal_window = 2, wet_threshold = 0.5)
-anlz_fibmatrix <- function(fibdata,
-                           yrrng = NULL,
-                           stas = NULL,
-                           bay_segment = NULL,
-                           indic,
-                           threshold = NULL,
-                           lagyr = 3,
-                           subset_wetdry = c("all", "wet", "dry"),
-                           precipdata = NULL,
-                           temporal_window = NULL,
-                           wet_threshold = NULL){
+anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NULL, indic,
+                           threshold = NULL, lagyr = 3, subset_wetdry = c("all", "wet", "dry"),
+                           precipdata = NULL, temporal_window = NULL, wet_threshold = NULL,
+                           warn = TRUE){
 
   geomean <- function(x){prod(x)^(1/length(x))}
 
@@ -195,7 +189,7 @@ anlz_fibmatrix <- function(fibdata,
   chk <- !stas %in% stasval
 
   # check if some stations valid for lagyr
-  if(sum(chk) > 0 & sum(chk) < length(chk) & is.null(bay_segment)){
+  if(sum(chk) > 0 & sum(chk) < length(chk) & is.null(bay_segment) & warn){
     warning('Stations with insufficient data for lagyr: ', paste(stas[chk], collapse = ', '))
     stas <- stas[!chk]
   }

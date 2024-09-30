@@ -15,7 +15,8 @@ anlz_fibmatrix(
   subset_wetdry = c("all", "wet", "dry"),
   precipdata = NULL,
   temporal_window = NULL,
-  wet_threshold = NULL
+  wet_threshold = NULL,
+  warn = TRUE
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ anlz_fibmatrix(
 \item{temporal_window}{numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
 
 \item{wet_threshold}{numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
+
+\item{warn}{logical to print warnings about stations with insufficient data, default \code{TRUE}}
 }
 \value{
 A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station including columns for the estimated geometric mean of fecal coliform or Enterococcus concentrations (\code{gmean}), the proportion of samples exceeding 400 CFU / 100 mL (fecal coliform) or 130 CFU / 100 mL (Enterococcus) (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).  Results can be summarized by bay segment if \code{bay_segment} is not \code{NULL} and the input data is from \code{\link{read_importentero}}.
