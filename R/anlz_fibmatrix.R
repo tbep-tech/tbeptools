@@ -34,11 +34,12 @@
 #' @examples
 #' anlz_fibmatrix(fibdata, indic = 'fcolif')
 #'
-#' # use different indicator:
+#' # use different indicator
 #' anlz_fibmatrix(fibdata, indic = 'entero')
 #'
-#' # use different dataset; does not contain an 'fcolif' column so we must specify indic:
+#' # use different dataset
 #' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1)
+#'
 #' # same entero data; lower threshold - changes 'cat' scores
 #' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, threshold = 30)
 #'
