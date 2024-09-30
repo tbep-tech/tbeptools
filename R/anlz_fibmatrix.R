@@ -189,8 +189,9 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
   chk <- !stas %in% stasval
 
   # check if some stations valid for lagyr
-  if(sum(chk) > 0 & sum(chk) < length(chk) & is.null(bay_segment) & warn){
-    warning('Stations with insufficient data for lagyr: ', paste(stas[chk], collapse = ', '))
+  if(sum(chk) > 0 & sum(chk) < length(chk) & is.null(bay_segment)){
+    if(warn)
+      warning('Stations with insufficient data for lagyr: ', paste(stas[chk], collapse = ', '))
     stas <- stas[!chk]
   }
 
