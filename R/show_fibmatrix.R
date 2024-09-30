@@ -13,6 +13,7 @@
 #' @param plotly logical if matrix is created using plotly
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
+#' @param warn logical to print warnings about stations with insufficient data, default \code{TRUE}
 #'
 #' @concept show
 #'
@@ -44,7 +45,8 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
                            lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
                            temporal_window = NULL, wet_threshold = NULL,
                            txtsz = 3, asreact = FALSE, nrows = 10, family = NA, angle = 90,
-                           size = 10, hjust = 0, plotly = FALSE, width = NULL, height = NULL){
+                           size = 10, hjust = 0, plotly = FALSE, width = NULL, height = NULL,
+                           warn = TRUE){
 
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231', '#800080')
   names(cols) <- c('A', 'B', 'C', 'D', 'E')
@@ -52,7 +54,8 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
   toplo <- anlz_fibmatrix(fibdata, yrrng = yrrng, stas = stas, bay_segment = bay_segment,
                           indic = indic, threshold = threshold, lagyr = lagyr,
                           subset_wetdry = subset_wetdry, precipdata = precipdata,
-                          temporal_window = temporal_window, wet_threshold = wet_threshold)
+                          temporal_window = temporal_window, wet_threshold = wet_threshold,
+                          warn = warn)
   yrrng <- range(toplo$yr)
 
   # reactable object

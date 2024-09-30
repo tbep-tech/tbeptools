@@ -25,7 +25,8 @@ show_fibmatrix(
   hjust = 0,
   plotly = FALSE,
   width = NULL,
-  height = NULL
+  height = NULL,
+  warn = TRUE
 )
 }
 \arguments{
@@ -70,6 +71,8 @@ show_fibmatrix(
 \item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
 
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{warn}{logical to print warnings about stations with insufficient data, default \code{TRUE}}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned by default. A \code{\link[reactable]{reactable}} table is returned if \code{asreact = TRUE}.  An interactive \code{\link[plotly]{plotly}} object is returned if \code{plotly = TRUE}.

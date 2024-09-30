@@ -15,7 +15,8 @@ show_fibmatmap(
   precipdata = NULL,
   temporal_window = NULL,
   wet_threshold = NULL,
-  listout = FALSE
+  listout = FALSE,
+  warn = TRUE
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ show_fibmatmap(
 \item{wet_threshold}{numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
 
 \item{listout}{logical to return a list of simple feature objects for the data used in the \code{leaflet} map, default \code{FALSE}}
+
+\item{warn}{logical to print warnings about stations with insufficient data, default \code{TRUE}}
 }
 \value{
 A \code{leaflet} map for the selected year and area showing station matrix scores if \code{listout = FALSE} (default).  Bay segment scores are also shown if the input data are not from EPCHC. A list of simple feature objects is returned if \code{listout = TRUE}.
