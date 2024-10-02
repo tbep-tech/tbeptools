@@ -74,7 +74,7 @@ test_that("Checking sf outoput", {
   result <- anlz_enteromap(enterodata, assf = TRUE)
 
   expect_s3_class(result, "sf")
-  expect_equal(ncol(result), 16)
+  expect_equal(ncol(result), 15)
 
 })
 
