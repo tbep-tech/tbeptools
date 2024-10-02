@@ -121,8 +121,7 @@ anlz_enteromap <- function (fibdata, yrsel = NULL, mosel = NULL, areasel = NULL,
                        levels = c('#2DC938', '#E9C318', '#EE7600', '#CC3231'),
                        labels = c('green', 'yellow', 'orange', 'red')
         ),
-        conc = round(conc, 1),
-        cls = 'Marine'
+        conc = round(conc, 1)
       ) %>%
       tidyr::unite('grp', indnm, colnm, wet_sample, remove = F)
 
@@ -135,7 +134,7 @@ anlz_enteromap <- function (fibdata, yrsel = NULL, mosel = NULL, areasel = NULL,
     out <- tomap %>%
       dplyr::mutate(
         grp = factor(grp, levels = levs),
-        lab = paste0('<html>Station Number: ', station, '<br>Class: ', cls, ' (<i>', ind, '</i>)<br> Category: ', cat, ' (', conc, '/100mL)</html>')
+        lab = paste0('<html>Station Number: ', station, '<br>Sample Condition: ', wet_sample, '<br> Category: ', cat, ' (', conc, '/100mL)</html>')
       ) %>%
       dplyr::select(-colnm, -indnm)
 

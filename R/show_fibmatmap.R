@@ -57,7 +57,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
       dplyr::filter(yr == !!yrsel) %>%
       dplyr::inner_join(tbsegdetail, ., by = c('bay_segment' = 'grp')) %>%
       dplyr::mutate(
-        lab = paste0('<html>', long_name, '<br>Category: ', cat),
+        lab = paste0('<html>Bay segment: ', long_name, '<br>Category: ', cat),
         col = as.character(cols[cat])
       )
 
@@ -144,7 +144,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     ) %>%
     dplyr::pull(val) %>%
     paste(collapse = '<br/>') %>%
-    paste0('<b>FIB matrix<br/>categories</b><br/>', .)
+    paste0('<b>Report card<br/>categories</b><br/>', .)
 
 
   # create map
