@@ -6,10 +6,12 @@
 \usage{
 read_importprism(
   vars = c("tmin", "tmax", "tdmean", "ppt"),
+  vars_ytd = c("ppt"),
   date_beg = as.Date("1981-01-01"),
   date_end = Sys.Date(),
   bbox = sf::st_bbox(sf_zones),
   dir_tif = fs::path_ext_remove(zonal_csv),
+  pfx_tif = "prism_daily_",
   sf_zones,
   fld_zones,
   zonal_fun = "mean",
@@ -20,8 +22,12 @@ read_importprism(
 }
 \arguments{
 \item{vars}{character vector of PRISM variables to download and crop. The
-default is \code{c("tmin", "tmax", "tdmean", "ppt")}. See Details for others and
-details.}
+default is \code{c("tmin", "tmax", "tdmean", "ppt")}. See Details for more.}
+
+\item{vars_ytd}{character vector of PRISM variables to be summed for the
+year to date, which gets recorded as a new layer with the suffix \code{"ytd"}. The
+default is for precipitation \code{c("ppt")}, so a layer \code{"pptytd"} gets added to
+PRISM daily rasters.}
 
 \item{date_beg}{defaults to the start of PRISM daily availability 1981-01-01.}
 
@@ -42,6 +48,8 @@ rasters (as GeoTIFF) across years with file name of format
 \code{fs::path_ext_remove(zonal_csv)}.  Date and version in the raster layers
 will be compared with the \href{https://prism.oregonstate.edu/calendar/list.php}{update schedule} to determine if
 it should be updated, otherwise will be skipped.}
+
+\item{pfx_tif}{prefix for the PRISM daily raster files, appended by the month-day. Defaults to \code{"prism_daily_"}.}
 
 \item{sf_zones}{spatial feature object (\code{\link{sf}}) with zones to extract zonal
 statistics from PRISM daily weather data}
@@ -85,11 +93,11 @@ the contiguous United States from 1981 to present.
 
 The available variables (\code{vars}) are:
 \itemize{
-\item \code{tmin}: minimum temperature
-\item \code{tmax}: maximum temperature
-\item \code{tmean}: mean temperature (\code{tmean = mean(tmin, tmax)})
-\item \code{tdmean}: mean dew point temperature
-\item \code{ppt}: total precipitation (rain and snow)
+\item \code{tmin}: minimum temperature (ºC)
+\item \code{tmax}: maximum temperature (ºC)
+\item \code{tmean}: mean temperature (ºC; \code{tmean = mean(tmin, tmax)})
+\item \code{tdmean}: mean dew point temperature (ºC)
+\item \code{ppt}: total precipitation (mm; rain and snow)
 \item \code{vpdmin}: daily minimum vapor pressure deficit
 \item \code{vpdmax}: daily maximum vapor pressure deficit
 }

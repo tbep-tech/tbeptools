@@ -72,7 +72,6 @@ Imports:
     reactable,
     readr,
     readxl,
-    rnoaa,
     rvest,
     sf,
     stringr,
@@ -101,7 +100,7 @@ Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: true
 LazyDataCompression: xz
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/tbep-tech/tbeptools
 BugReports: https://github.com/tbep-tech/tbeptools/issues
