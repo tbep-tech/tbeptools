@@ -7,8 +7,8 @@
 \format{
 A simple features \code{\link[sf]{sf}} object (POINT) with 7771 features and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
-  \item{Reference}{num}
-  \item{bay_segment}{chr}
+\item{Reference}{num}
+\item{bay_segment}{chr}
 }
 }
 \usage{

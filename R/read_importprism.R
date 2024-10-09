@@ -58,8 +58,11 @@
 #'  -   [PRISM download methods](https://prism.oregonstate.edu/downloads) information (FTP, web services)
 #'
 #' @param vars character vector of PRISM variables to download and crop. The
-#'   default is `c("tmin", "tmax", "tdmean", "ppt")`. See Details for others and
-#'   details.
+#'   default is `c("tmin", "tmax", "tdmean", "ppt")`. See Details for more.
+#' @param vars_ytd character vector of PRISM variables to be summed for the
+#'   year to date, which gets recorded as a new layer with the suffix `"ytd"`. The
+#'   default is for precipitation `c("ppt")`, so a layer `"pptytd"` gets added to
+#'   PRISM daily rasters.
 #' @param date_beg defaults to the start of PRISM daily availability 1981-01-01.
 #' @param date_end defaults to today's date, but will be adjusted to the most
 #'   recently available data, per [update
@@ -78,6 +81,7 @@
 #'   will be compared with the [update
 #'   schedule](https://prism.oregonstate.edu/calendar/list.php) to determine if
 #'   it should be updated, otherwise will be skipped.
+#' @param pfx_tif prefix for the PRISM daily raster files, appended by the month-day. Defaults to `"prism_daily_"`.
 #' @param sf_zones spatial feature object ([`sf`]) with zones to extract zonal
 #'   statistics from PRISM daily weather data
 #' @param fld_zones character vector of unique field name(s) in `sf_zones` to
@@ -149,10 +153,12 @@
 #' d
 read_importprism <- function(
     vars       = c("tmin", "tmax", "tdmean", "ppt"),
+    vars_ytd   = c("ppt"),
     date_beg   = as.Date("1981-01-01"),
     date_end   = Sys.Date(),
     bbox       = sf::st_bbox(sf_zones),
     dir_tif    = fs::path_ext_remove(zonal_csv),
+    pfx_tif    = "prism_daily_",
     sf_zones,
     fld_zones,
     zonal_fun  = "mean",
@@ -285,7 +291,7 @@ read_importprism <- function(
     names(r_new) <- glue::glue("{date}_{var}_v{version}-{date_updated}")
     terra::varnames(r_new) <- ""
 
-    md_tif <- sprintf("%s/prism_daily_%02d-%02d.tif", dir_tif, month(date), lubridate::day(date))
+    md_tif <- sprintf("%s/%s%02d-%02d.tif", dir_tif, pfx_tif, lubridate::month(date), lubridate::day(date))
 
     if (!file.exists(md_tif)){
       terra::writeRaster(
@@ -293,19 +299,19 @@ read_importprism <- function(
         datatype = "FLT4S",
         filetype = "GTiff", gdal = c("COMPRESS=DEFLATE"),
         overwrite = T)
-      dir_delete(dir_z)
+      fs::dir_delete(dir_z)
       return(T)
     }
 
-    r_md  <- rast(md_tif)
+    r_md  <- terra::rast(md_tif)
     df_md <- get_lyrs(r_md)
 
     # remove old date-var, eg for stability improved
     i_lyr_rm <- df_md |>
-      filter(
+      dplyr::filter(
         date     == !!date,
         variable == !!var) |>
-      pull(idx)
+      dplyr::pull(idx)
     if (length(i_lyr_rm) > 0)
       r_md <- terra::subset(r_md, i_lyr_rm, negate = T)
 
@@ -321,6 +327,65 @@ read_importprism <- function(
       overwrite = T)
     fs::file_move(tmp, md_tif)
     fs::dir_delete(dir_z)
+    return(T)
+  }
+
+  sum_var_ytd <- function(date_calc, var, d_r){
+    # DEBUG
+    # date_calc = as.Date("1981-01-03")
+    # var       = "ppt"
+
+    # DEBUG
+    message(glue("var_ytd {date_calc} ~ {Sys.time()}"))
+
+    varytd <- glue::glue("{var}ytd")
+
+    d <- d_r |>
+      filter(
+        year(date) == lubridate::year(date_calc),
+        date       <= date_calc,
+        variable   == var) |>
+      mutate(
+        r = purrr::map2(path_tif, lyr, \(x,y) terra::rast(x, lyrs = y) ))
+
+    r_ytd <- sum(rast(d$r), na.rm = T)
+
+    # data for calculated date
+    d_c <- d |>
+      dplyr::filter(date == date_calc)
+
+    names(r_ytd) <- d_c |>
+      dplyr::pull(r) |>
+      purrr::pluck(1) |>
+      names() |>
+      stringr::str_replace(var, varytd)
+
+    md_tif <- d_c$path_tif
+
+    r_md  <- terra::rast(md_tif)
+    df_md <- get_lyrs(r_md)
+
+    # remove old date-var, eg for stability improved
+    i_lyr_rm <- df_md |>
+      dplyr::filter(
+        date     == !!date_calc,
+        variable == varytd) |>  # TODO: switch to var as input argument
+      dplyr::pull(idx)
+    if (length(i_lyr_rm) > 0)
+      r_md <- terra::subset(r_md, i_lyr_rm, negate = T)
+
+    # combine old and new
+    r_md <- c(r_md, r_ytd)
+
+    # write out
+    tmp <- tempfile(fileext = ".tif")
+    terra::writeRaster(
+      r_md, tmp,
+      datatype = "FLT4S",
+      filetype = "GTiff", gdal = c("COMPRESS=DEFLATE"),
+      overwrite = T)
+    fs::file_move(tmp, md_tif)
+
     return(T)
   }
 
@@ -368,7 +433,7 @@ read_importprism <- function(
   ply_bb <- ply_bb |>
     sf::st_as_sfc() |>
     sf::st_as_sf() |>
-    st_transform(crs_prism)
+    sf::st_transform(crs_prism)
 
   # * regular expressions ----
   rx_tif    <- "prism_daily_([0-9]{2})-([0-9]{2}).tif"
@@ -400,6 +465,30 @@ read_importprism <- function(
   d_todo |>
     select(var = variable, date, version, date_updated) |>
     pwalk(prism_get_var_date)
+
+  # * iterate over variable-dates for calculating year-to-date sums ----
+
+  # DEBUG
+  # dir_tif  = "../climate-change-indicators/data/prism"
+  # vars_ytd = c("ppt")
+
+  d_lyrs <- read_prism_rasters(dir_tif)
+  stopifnot(all(vars_ytd %in% unique(d_lyrs$variable)))
+
+  d_ytd_done <- d_lyrs |>
+    dplyr::filter(variable %in% glue::glue("{vars_ytd}ytd")) |>
+    mutate(
+      variable = str_replace(variable, "ytd", ""))
+  d_ytd_todo <- d_lyrs |>
+    dplyr::filter(variable %in% vars_ytd) |>
+    dplyr::anti_join(
+      d_ytd_done |>
+        dplyr::select(date, variable, version),
+      by = c("date", "variable", "version"))
+
+  d_ytd_todo |>
+    select(var = variable, date_calc = date) |>
+    pwalk(sum_var_ytd, d_r = d_lyrs)
 
   # summarize rasters by zone ----
   tifs <- list.files(dir_tif, ".*\\.tif$", full.names = T)

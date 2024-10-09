@@ -6,10 +6,12 @@
 \usage{
 read_importprism(
   vars = c("tmin", "tmax", "tdmean", "ppt"),
+  vars_ytd = c("ppt"),
   date_beg = as.Date("1981-01-01"),
   date_end = Sys.Date(),
   bbox = sf::st_bbox(sf_zones),
   dir_tif = fs::path_ext_remove(zonal_csv),
+  pfx_tif = "prism_daily_",
   sf_zones,
   fld_zones,
   zonal_fun = "mean",
@@ -20,14 +22,17 @@ read_importprism(
 }
 \arguments{
 \item{vars}{character vector of PRISM variables to download and crop. The
-default is `c("tmin", "tmax", "tdmean", "ppt")`. See Details for others and
-details.}
+default is \code{c("tmin", "tmax", "tdmean", "ppt")}. See Details for more.}
+
+\item{vars_ytd}{character vector of PRISM variables to be summed for the
+year to date, which gets recorded as a new layer with the suffix \code{"ytd"}. The
+default is for precipitation \code{c("ppt")}, so a layer \code{"pptytd"} gets added to
+PRISM daily rasters.}
 
 \item{date_beg}{defaults to the start of PRISM daily availability 1981-01-01.}
 
 \item{date_end}{defaults to today's date, but will be adjusted to the most
-recently available data, per [update
-schedule](https://prism.oregonstate.edu/calendar/list.php). CAUTION: If you
+recently available data, per \href{https://prism.oregonstate.edu/calendar/list.php}{update schedule}. CAUTION: If you
 try to request the same date-variable in a given day, you will get an error
 from the PRISM service with a message like "You have tried to download the
 file PRISM_tdmean_stable_4kmD2_19810101_bil.zip more than twice in one day
@@ -35,27 +40,28 @@ file PRISM_tdmean_stable_4kmD2_19810101_bil.zip more than twice in one day
 address being blocked."}
 
 \item{bbox}{bounding box of the spatial extent to crop PRISM daily rasters,
-which could be bigger than `st_bbox(sf_zones)`.}
+which could be bigger than \code{st_bbox(sf_zones)}.}
 
 \item{dir_tif}{directory path to store downloaded and cropped PRISM daily
 rasters (as GeoTIFF) across years with file name of format
-`prism_daily_{month}-{day}.tif`. The default path is
-`fs::path_ext_remove(zonal_csv)`.  Date and version in the raster layers
-will be compared with the [update
-schedule](https://prism.oregonstate.edu/calendar/list.php) to determine if
+\verb{prism_daily_\{month\}-\{day\}.tif}. The default path is
+\code{fs::path_ext_remove(zonal_csv)}.  Date and version in the raster layers
+will be compared with the \href{https://prism.oregonstate.edu/calendar/list.php}{update schedule} to determine if
 it should be updated, otherwise will be skipped.}
 
-\item{sf_zones}{spatial feature object ([`sf`]) with zones to extract zonal
+\item{pfx_tif}{prefix for the PRISM daily raster files, appended by the month-day. Defaults to \code{"prism_daily_"}.}
+
+\item{sf_zones}{spatial feature object (\code{\link{sf}}) with zones to extract zonal
 statistics from PRISM daily weather data}
 
-\item{fld_zones}{character vector of unique field name(s) in `sf_zones` to
+\item{fld_zones}{character vector of unique field name(s) in \code{sf_zones} to
 include in extracted zonal statistics}
 
-\item{zonal_fun}{function to apply to the `terra::zonal()` function. Defaults
-to `"mean"`. Other options are `"min"`, `"max"`, `"sum"`, `"isNA"`, and
-`"notNA"`.}
+\item{zonal_fun}{function to apply to the \code{terra::zonal()} function. Defaults
+to \code{"mean"}. Other options are \code{"min"}, \code{"max"}, \code{"sum"}, \code{"isNA"}, and
+\code{"notNA"}.}
 
-\item{zonal_csv}{path to output of zonal statistics (`terra::zonal()`) as
+\item{zonal_csv}{path to output of zonal statistics (\code{terra::zonal()}) as
 table in CSV format}
 
 \item{redo_zonal}{logical whether to recalculate the zonal statistics.
@@ -65,12 +71,14 @@ Defaults to False.}
 }
 \value{
 data frame with the following columns:
-- `{fld_zones}` column(s) specified from input `sf_zones`
-- `{zonal_fun}`: value of input function (e.g. `"mean"`) summarizing raster to zone
-- `date`: date of PRISM daily raster
-- `variable`: PRISM variable
-- `version`: PRISM version
-- `date_updated`: date of PRISM daily raster update
+\itemize{
+\item \code{{fld_zones}} column(s) specified from input \code{sf_zones}
+\item \code{{zonal_fun}}: value of input function (e.g. \code{"mean"}) summarizing raster to zone
+\item \code{date}: date of PRISM daily raster
+\item \code{variable}: PRISM variable
+\item \code{version}: PRISM version
+\item \code{date_updated}: date of PRISM daily raster update
+}
 }
 \description{
 Download and crop the latest weather rasters from Parameter-elevation
@@ -78,58 +86,61 @@ Relationship on Independent Slopes Model (PRISM). Summarize by zone and save
 as CSV.
 }
 \details{
-The [Parameter-elevation Relationship on Independent Slopes Model
-(PRISM)](https://prism.oregonstate.edu/) is a combined dataset consisting of
+The \href{https://prism.oregonstate.edu/}{Parameter-elevation Relationship on Independent Slopes Model (PRISM)} is a combined dataset consisting of
 ground gauge station and RADAR products, at a 4km grid resolution covering
 the contiguous United States from 1981 to present.
+\subsection{Variables}{
 
-### Variables
+The available variables (\code{vars}) are:
+\itemize{
+\item \code{tmin}: minimum temperature (ºC)
+\item \code{tmax}: maximum temperature (ºC)
+\item \code{tmean}: mean temperature (ºC; \code{tmean = mean(tmin, tmax)})
+\item \code{tdmean}: mean dew point temperature (ºC)
+\item \code{ppt}: total precipitation (mm; rain and snow)
+\item \code{vpdmin}: daily minimum vapor pressure deficit
+\item \code{vpdmax}: daily maximum vapor pressure deficit
+}
+}
 
-The available variables (`vars`) are:
-- `tmin`: minimum temperature
-- `tmax`: maximum temperature
-- `tmean`: mean temperature (`tmean = mean(tmin, tmax)`)
-- `tdmean`: mean dew point temperature
-- `ppt`: total precipitation (rain and snow)
-- `vpdmin`: daily minimum vapor pressure deficit
-- `vpdmax`: daily maximum vapor pressure deficit
-
-### Updates
+\subsection{Updates}{
 
 The daily PRISM data is available over three stability levels, or 8 versions
-given by the [update
-schedule](https://prism.oregonstate.edu/calendar/list.php):
-- `stable`: data is considered final and will not change (before 6 months)
-- `provisional`: data is considered final but may be updated (previous 6 months)
-- `early`: data is preliminary and may be updated (this month)
+given by the \href{https://prism.oregonstate.edu/calendar/list.php}{update schedule}:
+\itemize{
+\item \code{stable}: data is considered final and will not change (before 6 months)
+\item \code{provisional}: data is considered final but may be updated (previous 6 months)
+\item \code{early}: data is preliminary and may be updated (this month)
+}
+}
 
-### Processing details
-
-1. The PRISM [update
-schedule](https://prism.oregonstate.edu/calendar/list.php) is downloaded and
+\subsection{Processing details}{
+\enumerate{
+\item The PRISM \href{https://prism.oregonstate.edu/calendar/list.php}{update schedule} is downloaded and
 processed in a data frame to understand the latest date and variable
 available, along with version and date updated.
-
-1. Any existing rasters in `dir_tif` are fetched based on a common naming
-structure for the raster file name (`prism_daily_{month}-{day}.tif`) and
-layer names (`{date}_{variable}_v{version}-{date_updated}`) into a data
+\item Any existing rasters in \code{dir_tif} are fetched based on a common naming
+structure for the raster file name (\verb{prism_daily_\{month\}-\{day\}.tif}) and
+layer names (\verb{\{date\}_\{variable\}_v\{version\}-\{date_updated\}}) into a data
 frame.
-
-1. Based on intersecting above with the requested dates, any missing or more
+\item Based on intersecting above with the requested dates, any missing or more
 recently updated variable-date PRISM rasters are downloaded and cropped to
-the bounding box (`bbox`) and written as GeoTIFFs (*.tif). Layers are renamed
-to include extra information on `{version}` (1-8) and `{date_udpated}`.
-
-1. Summary statistics (based on `sf_zones` and `zonal_fun`) are calculated on
+the bounding box (\code{bbox}) and written as GeoTIFFs (*.tif). Layers are renamed
+to include extra information on \code{{version}} (1-8) and \code{{date_udpated}}.
+\item Summary statistics (based on \code{sf_zones} and \code{zonal_fun}) are calculated on
 the cropped PRISM daily rasters.
+}
+}
 
-### More on PRISM
+\subsection{More on PRISM}{
 
-For more on [Parameter-elevation Relationship on Independent Slopes Model
-(PRISM)](https://prism.oregonstate.edu/), see:
- -   [PRISM model methods (Daly et al., 2008)](https://prism.oregonstate.edu/documents/pubs/2008intjclim_physiographicMapping_daly.pdf)
- -   [PRISM dataset descriptions](https://prism.oregonstate.edu/documents/PRISM_datasets.pdf)
- -   [PRISM download methods](https://prism.oregonstate.edu/downloads) information (FTP, web services)
+For more on \href{https://prism.oregonstate.edu/}{Parameter-elevation Relationship on Independent Slopes Model (PRISM)}, see:
+\itemize{
+\item \href{https://prism.oregonstate.edu/documents/pubs/2008intjclim_physiographicMapping_daly.pdf}{PRISM model methods (Daly et al., 2008)}
+\item \href{https://prism.oregonstate.edu/documents/PRISM_datasets.pdf}{PRISM dataset descriptions}
+\item \href{https://prism.oregonstate.edu/downloads}{PRISM download methods} information (FTP, web services)
+}
+}
 }
 \examples{
 # setup output directory and table

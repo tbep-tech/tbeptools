@@ -7,20 +7,20 @@
 \format{
 A data frame with 209 rows and 13 variables:
 \describe{
-  \item{pasco_station}{chr, Station name}
-  \item{SampleTime}{POSIXct, Date/time of sampling}
-  \item{class}{chr, Waterbody class (\code{Fresh}, \code{Marine})}
-  \item{yr}{num, Year of sampling}
-  \item{mo}{num, Month of sampling}
-  \item{Latitude}{num, Latitude, WGS84}
-  \item{Longitude}{num, Latitude, WGS84}
-  \item{Sample_Depth_m}{num, Depth of sample, meters}
-  \item{var}{chr, Variable name (\code{ecoli}, \code{entero}}
-  \item{val}{num, Value of variable}
-  \item{uni}{num, Units of variable}
-  \item{qual}{num, Qualifier code}
-  \item{area}{chr, Location name}
-  }
+\item{pasco_station}{chr, Station name}
+\item{SampleTime}{POSIXct, Date/time of sampling}
+\item{class}{chr, Waterbody class (\code{Fresh}, \code{Marine})}
+\item{yr}{num, Year of sampling}
+\item{mo}{num, Month of sampling}
+\item{Latitude}{num, Latitude, WGS84}
+\item{Longitude}{num, Latitude, WGS84}
+\item{Sample_Depth_m}{num, Depth of sample, meters}
+\item{var}{chr, Variable name (\code{ecoli}, \code{entero}}
+\item{val}{num, Value of variable}
+\item{uni}{num, Units of variable}
+\item{qual}{num, Qualifier code}
+\item{area}{chr, Location name}
+}
 }
 \usage{
 pascofibdata

@@ -42,7 +42,7 @@ show_sedimentalratio(
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing the ratio of the selected parameter plotted against aluminum concentrations collected at the same site. Black lines show the linear fit of a log-log model and the 95% prediction intervals.
+A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing the ratio of the selected parameter plotted against aluminum concentrations collected at the same site. Black lines show the linear fit of a log-log model and the 95\% prediction intervals.
 }
 \description{
 Plot metal concentrations against aluminum

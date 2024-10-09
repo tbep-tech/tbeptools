@@ -8,30 +8,31 @@ read_prism_rasters(dir_tif)
 }
 \arguments{
 \item{dir_tif}{directory path PRISM daily rasters were downloaded and cropped
-using [`read_importprism()`].}
+using \code{\link[=read_importprism]{read_importprism()}}.}
 }
 \value{
 A data frame with columns for:
-- `path_tif` path to GeoTIFF
-- `lyr` layer name
-- `date` date of modeled weather data
-- `md` month-day
-- `variable` variable of modeled weather data
-- `version` version (1-8)
-- `date_updated` date the model was updated
+\itemize{
+\item \code{path_tif} path to GeoTIFF
+\item \code{lyr} layer name
+\item \code{date} date of modeled weather data
+\item \code{md} month-day
+\item \code{variable} variable of modeled weather data
+\item \code{version} version (1-8)
+\item \code{date_updated} date the model was updated
+}
 }
 \description{
 Scan directory for rasters (*.tif) and parse PRISM layer names into columns of
 a data frame.
 }
 \details{
-Any existing rasters in `dir_tif` are scanned based on a common naming
-structure for the raster file name (`prism_daily_{month}-{day}.tif`) and
-layer names (`{date}_{variable}_v{version}-{date_updated}`) into a data
+Any existing rasters in \code{dir_tif} are scanned based on a common naming
+structure for the raster file name (\verb{prism_daily_\{month\}-\{day\}.tif}) and
+layer names (\verb{\{date\}_\{variable\}_v\{version\}-\{date_updated\}}) into a data
 frame.
 
-For more on the [Parameter-elevation Relationship on Independent Slopes Model
-(PRISM)](https://prism.oregonstate.edu/), see [`read_importprism()`].
+For more on the \href{https://prism.oregonstate.edu/}{Parameter-elevation Relationship on Independent Slopes Model (PRISM)}, see \code{\link[=read_importprism]{read_importprism()}}.
 }
 \examples{
 dir_tif <- here::here("inst/prism")

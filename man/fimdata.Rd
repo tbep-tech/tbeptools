@@ -7,26 +7,26 @@
 \format{
 A data frame with 52042 rows and 19 variables:
 \describe{
-  \item{Reference}{chr}
-  \item{Sampling_Date}{Date}
-  \item{Latitude}{num}
-  \item{Longitude}{num}
-  \item{Zone}{chr}
-  \item{Grid}{int}
-  \item{NODCCODE}{chr}
-  \item{Year}{num}
-  \item{Month}{num}
-  \item{Total_N}{num}
-  \item{ScientificName}{chr}
-  \item{Include_TB_Index}{chr}
-  \item{Hab_Cat}{chr}
-  \item{Est_Cat}{chr}
-  \item{Est_Use}{chr}
-  \item{Feeding_Cat}{chr}
-  \item{Feeding_Guild}{chr}
-  \item{Selected_Taxa}{chr}
-  \item{bay_segment}{chr}
-  }
+\item{Reference}{chr}
+\item{Sampling_Date}{Date}
+\item{Latitude}{num}
+\item{Longitude}{num}
+\item{Zone}{chr}
+\item{Grid}{int}
+\item{NODCCODE}{chr}
+\item{Year}{num}
+\item{Month}{num}
+\item{Total_N}{num}
+\item{ScientificName}{chr}
+\item{Include_TB_Index}{chr}
+\item{Hab_Cat}{chr}
+\item{Est_Cat}{chr}
+\item{Est_Use}{chr}
+\item{Feeding_Cat}{chr}
+\item{Feeding_Guild}{chr}
+\item{Selected_Taxa}{chr}
+\item{bay_segment}{chr}
+}
 }
 \usage{
 fimdata

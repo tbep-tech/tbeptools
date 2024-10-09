@@ -7,12 +7,12 @@
 \format{
 A simple features \code{\link[sf]{sf}} object (MULTILINESTRING) with 620 features and 6 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 \describe{
-  \item{id}{num}
-  \item{wbid}{chr}
-  \item{JEI}{chr}
-  \item{class}{chr}
-  \item{name}{chr}
-  \item{Creek_Length_m}{num}
+\item{id}{num}
+\item{wbid}{chr}
+\item{JEI}{chr}
+\item{class}{chr}
+\item{name}{chr}
+\item{Creek_Length_m}{num}
 }
 }
 \usage{
@@ -22,7 +22,7 @@ tidalcreeks
 Spatial data object of tidal creeks in Impaired Waters Rule, Run 66
 }
 \details{
-File was created using workflow at <https://tbep-tech.github.io/tidalcreek-stats/Creek_select_tbeptools>, example below is old and for Run 61.
+File was created using workflow at \url{https://tbep-tech.github.io/tidalcreek-stats/Creek_select_tbeptools}, example below is old and for Run 61.
 }
 \examples{
 \dontrun{
