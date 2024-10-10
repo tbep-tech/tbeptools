@@ -224,6 +224,10 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
       .by = c('grp', 'yr')
     ) %>%
     dplyr::arrange(grp, yr) %>%
+    dplyr::filter(
+      length(unique(yr)) >= lagyr,
+      .by = 'grp'
+    ) %>%
     dplyr::mutate(
       sumgt = stats::filter(sumgt, rep(1, lagyr), sides = 1, method = 'convolution'),
       tot = stats::filter(tot, rep(1, lagyr), sides = 1, method = 'convolution'),
