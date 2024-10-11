@@ -105,6 +105,13 @@ test_that("Check error if wet/dry is used for epchc data",{
 
 })
 
+test_that("Check error if wet/dry is used for Manatee county data",{
+
+  expect_error(anlz_fibmatrix(mancofibdata, indic = 'fcolif', subset_wetdry = 'wet'), regexp = 'Subset to wet or dry samples not supported for Manatee County data',
+               fixed = T)
+
+})
+
 test_that("Check error if indic is fcolif for non-epchc data",{
 
   expect_error(anlz_fibmatrix(enterodata, indic = 'fcolif'), regexp = 'fcolif not a valid indicator for non-epchc data',
@@ -115,6 +122,13 @@ test_that("Check error if indic is fcolif for non-epchc data",{
 test_that("Check error if bay segment is not null for epchc data", {
 
   expect_error(anlz_fibmatrix(fibdata, indic = 'fcolif', bay_segment = 'HB'), regexp = 'Bay segment subsetting not applicable for epchc data',
+               fixed = T)
+
+})
+
+test_that("Check error if bay segment is not null for Manatee County data", {
+
+  expect_error(anlz_fibmatrix(mancofibdata, indic = 'fcolif', bay_segment = 'Lower Manatee River'), regexp = 'Bay segment subsetting not applicable for Manatee County data',
                fixed = T)
 
 })

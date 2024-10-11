@@ -2,7 +2,7 @@
 #'
 #' Analyze Fecal Indicator Bacteria categories over time by station or bay segment
 #'
-#' @param fibdata input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}
+#' @param fibdata input data frame as returned by \code{\link{read_importfib}}, \code{\link{read_importentero}}, or \code{\link{read_importwqp}}, see details
 #' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in data, see details
 #' @param stas optional vector of stations to include, see details
 #' @param bay_segment optional vector of bay segment names to include, supercedes \code{stas} if provided, see details
@@ -24,6 +24,8 @@
 #' \code{yrrng} can be specified several ways.  If \code{yrrng = NULL}, the year range of the data for the selected changes is chosen.  User-defined values for the minimum and maximum years can also be used, or only a minimum or maximum can be specified, e.g., \code{yrrng = c(2000, 2010)} or \code{yrrng = c(2000, NA)}.  In the latter case, the maximum year will be defined by the data.
 #'
 #' The default stations for fecal coliform data are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if \code{bay_segment} is \code{NULL} and the input data are from \code{\link{read_importfib}}.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the \code{stas} argument.
+#'
+#' Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX) FIB data can also be used.  The function has not been tested for other organizations.
 #'
 #' @export
 #'
@@ -47,9 +49,8 @@
 #' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "wet",
 #'                temporal_window = 2, wet_threshold = 0.5)
 #'
-#' # subset to only dry samples
-#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "dry",
-#'                temporal_window = 2, wet_threshold = 0.5)
+#' # Manatee County data
+#' anlz_fibmatrix(mancofibdata, indic = 'fcolif', lagyr = 1)
 anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NULL, indic,
                            threshold = NULL, lagyr = 3, subset_wetdry = c("all", "wet", "dry"),
                            precipdata = NULL, temporal_window = NULL, wet_threshold = NULL,
@@ -62,6 +63,9 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
 
   # check if epchc data
   isepchc <- exists("epchc_station", fibdata)
+
+  # check if manco data
+  ismanco <- exists('manco_station', fibdata)
 
   # checks for epc data
   if(isepchc){
@@ -82,12 +86,36 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
 
   }
 
+  # checks for manco data
+  if(ismanco){
+
+    # # assign default stations from TBEP report #05-13
+    # if(is.null(stas))
+    #   stas <- c(143, 108, 107, 135, 118, 148, 105, 152, 137)
+
+    # error if subset_wetdry attempted with manco data
+    if(subset_wetdry %in% c('wet', 'dry'))
+      stop('Subset to wet or dry samples not supported for Manatee County data')
+
+    # error if user tries to subset by bay segment for epchc
+    if(!is.null(bay_segment))
+      stop('Bay segment subsetting not applicable for Manatee County data')
+
+    fibdata <- fibdata %>%
+      dplyr::filter(!is.na(val)) %>%
+      dplyr::filter(var %in% indic) %>%
+      dplyr::rename(station = manco_station) %>%
+      dplyr::select(-qual, -uni, -Sample_Depth_m, -class, -var)
+    names(fibdata)[names(fibdata) == 'val'] <- indic
+
+  }
+
   # checks for non-epc data
-  if(!isepchc){
+  if(!isepchc & !ismanco){
 
     # check if user tries indic fcolif for enterodata
     if(indic == 'fcolif')
-      stop('fcolif not a valid indicator for non-epchc data')
+      stop('fcolif not a valid indicator for these data')
 
     # check bay segments
     if(!is.null(bay_segment)){

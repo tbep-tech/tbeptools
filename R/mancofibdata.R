@@ -2,7 +2,7 @@
 #'
 #' Manatee County FIB data as of 20241011
 #'
-#' @format A data frame with 12765 rows and 12 variables:
+#' @format A data frame with 12765 rows and 13 variables:
 #' \describe{
 #'   \item{manco_station}{chr, Station name}
 #'   \item{SampleTime}{POSIXct, Date/time of sampling}
@@ -16,6 +16,7 @@
 #'   \item{val}{num, Value of variable}
 #'   \item{uni}{num, Units of variable}
 #'   \item{qual}{num, Qualifier code}
+#'   \item{area}{chr, Location name based on USF Water Alas waterbody name}
 #'   }
 #'
 #' @concept data

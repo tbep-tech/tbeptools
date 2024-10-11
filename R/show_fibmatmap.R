@@ -1,6 +1,6 @@
 #' Map Fecal Indicator Bacteria matrix results by year
 #'
-#' @param fibdata input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}
+#' @param fibdata input data frame as returned by \code{\link{read_importfib}},  \code{\link{read_importentero}}, or \code{\link{read_importwqp}}, see details
 #' @param yrsel numeric value indicating the year to map
 #' @param areasel vector of bay segment or area names to include, see details
 #' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.
@@ -19,7 +19,9 @@
 #'
 #' If the input to \code{fibdata} is from EPCHC (from \code{\link{read_importfib}}), valid entries for \code{areasel} include 'Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay', 'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay', 'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal', and 'Valrico Lake'.  If the input data is not from EPCHC (from \code{\link{read_importentero}}), valid entries for \code{areasel} include 'OTB', 'HB', 'MTB', 'LTB', 'BCB', and 'MR'.
 #'
-#' Bay segment matrix categories are shown in addition to stations if \code{fibsel} input is not from EPCHC (from \code{\link{read_importentero}}).  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the EPCHC data are not appropriate for estimating bay segment outcomes.
+#' Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX) FIB data can also be used.  The function has not been tested for other organizations.  Valid entries for \code{areasel} include 'Big Slough', 'Bowlees Creek', 'Braden River', 'Bud Slough',  'Cedar Creek', 'Clay Gully', 'Cooper Creek', 'Curiosity Creek', 'Frog Creek', 'Gamble Creek', 'Gap Creek', 'Gates Creek', 'Gilley Creek', 'Hickory Hammock Creek', 'Lake Manatee', 'Little Manatee River', 'Lower Manatee River', 'Lower Tampa Bay', 'Manatee River Estuary', 'Mcmullen Creek', 'Mill Creek', 'Mud Lake Slough', 'Myakka River', 'Nonsense Creek', 'Palma Sola Bay', 'Piney Point Creek', 'Rattlesnake Slough', 'Sugarhouse Creek', 'Upper Manatee River', 'Ward Lake', or 'Williams Creek'
+#'
+#' Bay segment matrix categories can be shown if input data are from \code{\link{read_importentero}}).  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the other datasets are not appropriate for estimating bay segment outcomes.
 #'
 #' @concept show
 #'
@@ -27,12 +29,15 @@
 #' @export
 #'
 #' @examples
-#' # non-EPCHC data
+#' # non-EPCHC, non Manatee County data
 #' show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero', areasel = 'OTB')
 #'
 #' # EPCHC data
 #' show_fibmatmap(fibdata, yrsel = 2016, indic = 'fcolif',
 #'    areasel = c("Hillsborough River", "Alafia River"))
+#'
+#' # Manatee County data
+#' show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Lower Manatee River')
 show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
                            lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
                            temporal_window = NULL, wet_threshold = NULL, listout = FALSE,
@@ -45,7 +50,10 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
   # check if epchc data
   isepchc <- exists("epchc_station", fibdata)
 
-  if(!isepchc){
+  # check if manco data
+  ismanco <- exists("manco_station", fibdata)
+
+  if(!isepchc & !ismanco){
 
     # includes bay segment check
     tomapseg <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = NULL, bay_segment = areasel,
@@ -99,6 +107,39 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold,
                              warn = warn)
+
+    tomapseg <- NULL
+
+  }
+
+  if(ismanco){
+
+    # check areas
+    areas <- c("Big Slough", "Bowlees Creek", "Braden River", "Bud Slough",
+               "Cedar Creek", "Clay Gully", "Cooper Creek", "Curiosity Creek",
+               "Frog Creek", "Gamble Creek", "Gap Creek", "Gates Creek", "Gilley Creek",
+               "Hickory Hammock Creek", "Lake Manatee", "Little Manatee River",
+               "Lower Manatee River", "Lower Tampa Bay", "Manatee River Estuary",
+               "Mcmullen Creek", "Mill Creek", "Mud Lake Slough", "Myakka River",
+               "Nonsense Creek", "Palma Sola Bay", "Piney Point Creek", "Rattlesnake Slough",
+               "Sugarhouse Creek", "Upper Manatee River", "Ward Lake", "Williams Creek")
+
+    chk <- !areasel %in% areas
+    if(any(chk)){
+      stop('Invalid value(s) for areasel: ', paste(areasel[chk], collapse = ', '))
+    }
+
+    stas <- fibdata %>%
+      dplyr::filter(area %in% !!areasel) %>%
+      dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
+      dplyr::pull(manco_station) %>%
+      unique()
+
+    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas, bay_segment = NULL,
+                               indic = indic, threshold = threshold, lagyr = lagyr,
+                               subset_wetdry = subset_wetdry, precipdata = precipdata,
+                               temporal_window = temporal_window, wet_threshold = wet_threshold,
+                               warn = warn)
 
     tomapseg <- NULL
 
@@ -159,7 +200,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     leaflet::addControl(html = leg, position = 'topright')
 
   # add bay segments if not epchc
-  if(!isepchc){
+  if(!isepchc & !ismanco){
 
     out <- out %>%
       leaflet::addPolygons(

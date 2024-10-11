@@ -30,7 +30,7 @@ show_fibmatrix(
 )
 }
 \arguments{
-\item{fibdata}{input data frame as returned by \code{\link{read_importfib}} or \code{\link{read_importentero}}}
+\item{fibdata}{input data frame as returned by \code{\link{read_importfib}}, \code{\link{read_importentero}}, or \code{\link{read_importwqp}}, see details}
 
 \item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data, see details}
 
