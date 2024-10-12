@@ -114,7 +114,7 @@ test_that("Check error if wet/dry is used for Manatee county data",{
 
 test_that("Check error if indic is fcolif for non-epchc data",{
 
-  expect_error(anlz_fibmatrix(enterodata, indic = 'fcolif'), regexp = 'fcolif not a valid indicator for non-epchc data',
+  expect_error(anlz_fibmatrix(enterodata, indic = 'fcolif'), regexp = 'fcolif not a valid indicator for these data',
                fixed = T)
 
 })
