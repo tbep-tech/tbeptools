@@ -17,6 +17,9 @@
 #'
 #' # show selected year, month, and area
 #' show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
+#'
+#' # Manatee County data
+#' show_fibmap(mancofibdata, yrsel = 2020, mosel = 7, areasel = 'Little Manatee River')
 show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
 
   # get categories

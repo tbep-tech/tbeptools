@@ -8,7 +8,7 @@
 #'
 #' @details This function is used to create FIB categories for mapping using \code{\link{show_fibmap}}.  Categories based on relevant thresholds are assigned to each observation.  The categories are specific to E. coli or Enterococcus and are assigned based on the station class as freshwater (\code{class} as 1 or 3F) or marine (\code{class} as 2 or 3M), respectively.  A station is categorized into one of four ranges defined by the thresholds as noted in the \code{cat} column of the output, with corresponding colors appropriate for each range as noted in the \code{col} column of the output.
 #'
-#' Data from Manatee County (21FLMANA_WQX) returned by \code{\link{read_importwqp}} can be used with this function.  Data from other organization have returned by this function have not been tested.
+#' Data from Manatee County (21FLMANA_WQX) returned by \code{\link{read_importwqp}} can be used with this function.  Data from other organizations returned by this function have not been tested.
 #'
 #' The \code{areasel} argument can indicate valid entries in the \code{area} column of \code{fibdata} (from \code{\link{read_importfib}}) or \code{mancofibdata} (from \code{\link{read_importwqp}}).  For example, use either \code{"Alafia River"} or \code{"Hillsborough River"} for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection.  All stations are returned if this argument is set as \code{NULL} (default). The Alafia River basin includes values in the \code{area} column of \code{fibdata} as \code{"Alafia River"} and \code{"Alafia River Tributary"}.  The Hillsborough River basin includes values in the \code{area} column of \code{fibdata} as \code{"Hillsborough River"}, \code{"Hillsborough River Tributary"}, \code{"Lake Thonotosassa"}, \code{"Lake Thonotosassa Tributary"}, and \code{"Lake Roberta"}.  Not all areas may be present based on the selection.
 #'
@@ -66,8 +66,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
     out <- fibdata %>%
       dplyr::select(area, station = manco_station, class, yr, mo, Latitude, Longitude, var, val) %>%
       dplyr::filter(var %in% c('ecoli', 'entero')) %>%
-      dplyr::select(-uni, -qual, -Sample_Depth_m) %>%
-      dplyr::pivot_wider(names_from = 'var', values_from = 'val')
+      tidyr::pivot_wider(names_from = 'var', values_from = 'val', values_fn = ~ mean(.x, na.rm = TRUE)) %>%
       dplyr::mutate(
         ind = dplyr::case_when(
           class %in% 'Fresh' ~ 'E. coli',
@@ -83,6 +82,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
         ),
         col = as.character(col)
       )
+
   # filter by year
   if(!is.null(yrsel)){
     yrsel <- match.arg(as.character(yrsel), unique(out$yr))
@@ -97,7 +97,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
       dplyr::filter(mo %in% mosel)
   }
 
-  # filter by area
+  # filter by area, epchc
   if(!is.null(areasel) & isepchc){
     areasls <- list(
       `Alafia River` = c('Alafia River', 'Alafia River Tributary'),
@@ -120,6 +120,17 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
 
     out <- out %>%
       dplyr::filter(area %in% unlist(areasls[areasel]))
+
+  }
+
+  # filter by area, manatee county
+  if(!is.null(areasel) & ismanco){
+    areas <- sort(unique(mancofibdata$area))
+
+    areasel <- match.arg(areasel, areas, several.ok = TRUE)
+
+    out <- out %>%
+      dplyr::filter(area %in% areasel)
 
   }
 
