@@ -199,7 +199,7 @@ Similar workflows as for the EPCHC data can be used. Examples of the functions u
 show_fibmap(mancofibdata, yrsel = 2023, mosel = 7, areasel = NULL)
 ```
 
-```{r, fig.height = 8, fig.width = 3}
+```{r, fig.height = 6, fig.width = 7}
 show_fibmatrix(mancofibdata, plotly = TRUE)
 ```
 
