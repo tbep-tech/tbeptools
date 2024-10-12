@@ -182,7 +182,31 @@ Finally, a map of station categories for a given year can be plotted using `show
 ```{r, out.width="100%"}
 show_fibmatmap(fibdata, indic = 'fcolif', yrsel = 2020, areasel = c('Hillsborough River', 'Alafia River'))
 ```
- 
+
+## Manatee County reporting
+
+FIB data from the Manatee County Natural Resources Department can also be used with the above functions.  These data can be downloaded as follows: 
+
+```{r, eval = F}
+mancofibdata <- read_importwqp('21FLMANA_WQX', type = 'fib')
+```
+
+For convenience, a data object with same name as the above is included with tbeptools for use with all FIB functions. Note that `read_importwqp()` can be used to download FIB data from other organizations, although the FIB functions will only work with data from Manatee County. 
+
+Similar workflows as for the EPCHC data can be used. Examples of the functions using Manatee County data:
+
+```{r, out.width="100%"}
+show_fibmap(mancofibdata, yrsel = 2023, mosel = 7, areasel = NULL)
+```
+
+```{r, fig.height = 8, fig.width = 3}
+show_fibmatrix(mancofibdata, plotly = TRUE)
+```
+
+```{r, out.width="100%"}
+show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Lower Manatee River')
+```
+
 ## Baywide reporting
 
 The second workflow uses a baywide approach to summarize FIB data.  Select stations were identified at downstream locations that drain into Tampa Bay and considered important watershed endpoints for FIB monitoring.  *Enterococcus* is the primary indicator because these stations are located at terminal downstream locations that are tidally influenced.  The functions are organized similarly as the EPC reporting workflow, with some unique functions for working with data from these locations and other functions repeated from the EPC workflow that differ in the output depending on the data inputs. 
