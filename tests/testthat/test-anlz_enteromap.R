@@ -69,7 +69,13 @@ test_that("wet/dry subsetting does lead to different data frames", {
   expect_failure(expect_equivalent(result_a, result_b))
 })
 
-test_that("Checking sf outoput", {
+test_that("Checking error for no data for selected month, year", {
+
+  expect_error(anlz_enteromap(enterodata, yrsel = 2020, mosel = 4), regxp = 'No FIB data for Apr 2020')
+
+})
+
+test_that("Checking sf output", {
 
   result <- anlz_enteromap(enterodata, assf = TRUE)
 
@@ -78,4 +84,12 @@ test_that("Checking sf outoput", {
 
 })
 
+
+test_that("Checking sf output, wetdry T", {
+
+  result <- anlz_enteromap(enterodata, assf = TRUE, wetdry = TRUE, temporal_window = 2, wet_threshold = 0.5)
+
+  expect_equal(levels(result$wet_sample), c('dry', 'wet'))
+
+})
 
