@@ -24,7 +24,7 @@ A data frame containing formatted water quality and station metadata
 Format data and station metadata from the Water Quality Portal
 }
 \details{
-This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.  Manatee County FIB data (21FLMANA_WQX) will also include an \code{area} column indicating the waterbody name as used by the USF Water Atlas.
+This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.  Manatee County FIB data (21FLMANA_WQX) will also include an \code{area} column indicating the waterbody name as used by the USF Water Atlas, with some area aggregations.
 }
 \examples{
 \dontrun{

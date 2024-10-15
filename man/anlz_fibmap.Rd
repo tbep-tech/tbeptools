@@ -32,7 +32,7 @@ The \code{areasel} argument can indicate valid entries in the \code{area} column
 
 All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Big Bend"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. One to any of the options can be used.
 
-Valid entries for \code{areasel} for \code{mancofibdata} include 'Big Slough', 'Bowlees Creek', 'Braden River', 'Bud Slough',  'Cedar Creek', 'Clay Gully', 'Cooper Creek', 'Curiosity Creek', 'Frog Creek', 'Gamble Creek', 'Gap Creek', 'Gates Creek', 'Gilley Creek', 'Hickory Hammock Creek', 'Lake Manatee', 'Little Manatee River', 'Lower Manatee River', 'Lower Tampa Bay', 'Manatee River Estuary', 'Mcmullen Creek', 'Mill Creek', 'Mud Lake Slough', 'Myakka River', 'Nonsense Creek', 'Palma Sola Bay', 'Piney Point Creek', 'Rattlesnake Slough', 'Sugarhouse Creek', 'Upper Manatee River', 'Ward Lake', or 'Williams Creek'. One to any of the options can be used.
+Valid entries for \code{areasel} for \code{mancofibdata} include \code{"Big Slough"}, \code{"Bowlees Creek"}, \code{"Braden River"}, \code{"Bud Slough"}, \code{"Clay Gully"}, \code{"Frog Creek"}, \code{"Gap Creek"}, \code{"Little Manatee River"}, \code{"Lower Tampa Bay"}, \code{"Manatee River"}, \code{"Mcmullen Creek"}, \code{"Mud Lake Slough"}, \code{"Myakka River"}, \code{"Palma Sola Bay"}, or \code{"Piney Point Creek"}. One to any of the options can be used.
 }
 \examples{
 # assign categories to all

@@ -8,7 +8,7 @@
 #'
 #' @return A data frame containing formatted water quality and station metadata
 #'
-#' @details This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.  Manatee County FIB data (21FLMANA_WQX) will also include an \code{area} column indicating the waterbody name as used by the USF Water Atlas.
+#' @details This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.  Manatee County FIB data (21FLMANA_WQX) will also include an \code{area} column indicating the waterbody name as used by the USF Water Atlas, with some area aggregations.
 #'
 #' @concept read
 #'
@@ -194,13 +194,13 @@ read_formwqp <- function(res, sta, org, type, trace = F){
   if(type == 'fib' & org == '21FLMANA_WQX'){
 
     tomtch <- data.frame(
-      station = c("396", "BC1", "BC2", "BC41",
-        "BL01", "BL201", "BR1", "BR2", "BR3", "BU01A", "CC1", "CH1",
-        "D1", "D3", "ER1", "ER2", "FC1", "GA1", "GC1", "GC2", "GP", "LL1",
-        "LM3", "LM4", "LM5", "LM6", "MC1", "MC2", "MM", "MR1", "MR2",
-        "MS01", "MS02", "MY01", "MY02A", "MY04", "PP1", "SC1", "TS1",
-        "TS2", "TS3", "TS4", "TS5", "TS6", "TS7", "UM1", "UM2", "UM3",
-        "UM4", "WC1"),
+      station = c("396", "BC1", "BC2", "BC41", "BL01",
+        "BL201", "BR1", "BR2", "BR3", "BU01A", "CC1", "CH1", "D1", "D3",
+        "ER1", "ER2", "FC1", "GA1", "GC1", "GC2", "GP", "LL1", "LM3",
+        "LM4", "LM5", "LM6", "MC1", "MC2", "MM", "MR1", "MR2", "MS01",
+        "MS02", "MY01", "MY02A", "MY04", "PP1", "SC1", "TS1", "TS2",
+        "TS3", "TS4", "TS5", "TS6", "TS7", "UM1", "UM2", "UM3", "UM4",
+        "WC1"),
       area = c("Lower Tampa Bay", "Bowlees Creek", "Bowlees Creek",
         "Bowlees Creek", "Big Slough", "Big Slough", "Braden River",
         "Braden River", "Braden River", "Bud Slough", "Curiosity Creek",
@@ -213,10 +213,26 @@ read_formwqp <- function(res, sta, org, type, trace = F){
         "Myakka River", "Piney Point Creek", "Sugarhouse Creek", "Rattlesnake Slough",
         "Cedar Creek", "Cooper Creek", "Cooper Creek", "Hickory Hammock Creek",
         "Braden River", "Nonsense Creek", "Lower Manatee River", "Lake Manatee",
-        "Gilley Creek", "Upper Manatee River", "Williams Creek")
+        "Gilley Creek", "Upper Manatee River", "Williams Creek"),
+      areacmb = c("Lower Tampa Bay",
+        "Bowlees Creek", "Bowlees Creek", "Bowlees Creek", "Big Slough",
+        "Big Slough", "Braden River", "Braden River", "Braden River",
+        "Bud Slough", "Little Manatee River", "Palma Sola Bay", "Little Manatee River",
+        "Little Manatee River", "Braden River", "Braden River", "Frog Creek",
+        "Manatee River", "Manatee River", "Manatee River", "Gap Creek",
+        "Braden River", "Braden River", "Manatee River", "Manatee River",
+        "Manatee River", "Manatee River", "Manatee River", "Mcmullen Creek",
+        "Clay Gully", "Myakka River", "Mud Lake Slough", "Mud Lake Slough",
+        "Myakka River", "Myakka River", "Myakka River", "Piney Point Creek",
+        "Braden River", "Braden River", "Braden River", "Braden River",
+        "Braden River", "Braden River", "Braden River", "Braden River",
+        "Manatee River", "Manatee River", "Manatee River", "Manatee River",
+        "Braden River")
       )
 
-    out <- dplyr::left_join(out, tomtch, by = 'station', relationship = 'many-to-one')
+    out <- dplyr::left_join(out, tomtch, by = 'station', relationship = 'many-to-one') %>%
+      dplyr::select(-area) %>%
+      dplyr::rename(area = areacmb)
 
   }
 

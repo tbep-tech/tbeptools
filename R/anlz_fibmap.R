@@ -14,7 +14,7 @@
 #'
 #' All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Big Bend"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. One to any of the options can be used.
 #'
-#' Valid entries for \code{areasel} for \code{mancofibdata} include 'Big Slough', 'Bowlees Creek', 'Braden River', 'Bud Slough',  'Cedar Creek', 'Clay Gully', 'Cooper Creek', 'Curiosity Creek', 'Frog Creek', 'Gamble Creek', 'Gap Creek', 'Gates Creek', 'Gilley Creek', 'Hickory Hammock Creek', 'Lake Manatee', 'Little Manatee River', 'Lower Manatee River', 'Lower Tampa Bay', 'Manatee River Estuary', 'Mcmullen Creek', 'Mill Creek', 'Mud Lake Slough', 'Myakka River', 'Nonsense Creek', 'Palma Sola Bay', 'Piney Point Creek', 'Rattlesnake Slough', 'Sugarhouse Creek', 'Upper Manatee River', 'Ward Lake', or 'Williams Creek'. One to any of the options can be used.
+#' Valid entries for \code{areasel} for \code{mancofibdata} include \code{"Big Slough"}, \code{"Bowlees Creek"}, \code{"Braden River"}, \code{"Bud Slough"}, \code{"Clay Gully"}, \code{"Frog Creek"}, \code{"Gap Creek"}, \code{"Little Manatee River"}, \code{"Lower Tampa Bay"}, \code{"Manatee River"}, \code{"Mcmullen Creek"}, \code{"Mud Lake Slough"}, \code{"Myakka River"}, \code{"Palma Sola Bay"}, or \code{"Piney Point Creek"}. One to any of the options can be used.
 #'
 #' @return A \code{data.frame} if similar to \code{fibdata} or \code{mancofibdata} if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function.  A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_fibmap}}.
 #'
@@ -97,40 +97,41 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
       dplyr::filter(mo %in% mosel)
   }
 
-  # filter by area, epchc
-  if(!is.null(areasel) & isepchc){
-    areasls <- list(
-      `Alafia River` = c('Alafia River', 'Alafia River Tributary'),
-      `Hillsborough River` = c('Hillsborough River', 'Hillsborough River Tributary',  'Lake Thonotosassa',
-                       'Lake Thonotosassa Tributary', 'Lake Roberta'),
-      `Big Bend` = 'Big Bend',
-      `Cockroach Bay` = c('Cockroach Bay', 'Cockroach Bay Tributary'),
-      `East Lake Outfall` = 'East Lake Outfall',
-      `Hillsborough Bay` = c('Hillsborough Bay', 'Hillsborough Bay Tributary'),
-      `Little Manatee River` = c('Little Manatee River', 'Little Manatee River Tributary'),
-      `Lower Tampa Bay` = 'Lower Tampa Bay',
-      `McKay Bay` = c('McKay Bay', 'McKay Bay Tributary'),
-      `Middle Tampa Bay` = c('Middle Tampa Bay', 'Middle Tampa Bay Tributary'),
-      `Old Tampa Bay` = c('Old Tampa Bay', 'Old Tampa Bay Tributary'),
-      `Palm River` = c('Palm River', 'Palm River Tributary'),
-      `Tampa Bypass Canal` = c('Tampa Bypass Canal', 'Tampa Bypass Canal Tributary'),
-      `Valrico Lake` = 'Valrico Lake'
-    )
+  # filter by area, epchc or manco
+  if(!is.null(areasel)){
+
+    if(isepchc)
+      areasls <- list(
+        `Alafia River` = c('Alafia River', 'Alafia River Tributary'),
+        `Hillsborough River` = c('Hillsborough River', 'Hillsborough River Tributary',  'Lake Thonotosassa',
+                         'Lake Thonotosassa Tributary', 'Lake Roberta'),
+        `Big Bend` = 'Big Bend',
+        `Cockroach Bay` = c('Cockroach Bay', 'Cockroach Bay Tributary'),
+        `East Lake Outfall` = 'East Lake Outfall',
+        `Hillsborough Bay` = c('Hillsborough Bay', 'Hillsborough Bay Tributary'),
+        `Little Manatee River` = c('Little Manatee River', 'Little Manatee River Tributary'),
+        `Lower Tampa Bay` = 'Lower Tampa Bay',
+        `McKay Bay` = c('McKay Bay', 'McKay Bay Tributary'),
+        `Middle Tampa Bay` = c('Middle Tampa Bay', 'Middle Tampa Bay Tributary'),
+        `Old Tampa Bay` = c('Old Tampa Bay', 'Old Tampa Bay Tributary'),
+        `Palm River` = c('Palm River', 'Palm River Tributary'),
+        `Tampa Bypass Canal` = c('Tampa Bypass Canal', 'Tampa Bypass Canal Tributary'),
+        `Valrico Lake` = 'Valrico Lake'
+      )
+
+    if(ismanco){
+      areasls <- c("Big Slough", "Bowlees Creek", "Braden River", "Bud Slough",
+                   "Clay Gully", "Frog Creek", "Gap Creek", "Little Manatee River",
+                   "Lower Tampa Bay", "Manatee River", "Mcmullen Creek", "Mud Lake Slough",
+                   "Myakka River", "Palma Sola Bay", "Piney Point Creek")
+      names(areasls) <- areasls
+      areasls <- as.list(areasls)
+    }
+
     areasel <- match.arg(areasel, names(areasls), several.ok = TRUE)
 
     out <- out %>%
       dplyr::filter(area %in% unlist(areasls[areasel]))
-
-  }
-
-  # filter by area, manatee county
-  if(!is.null(areasel) & ismanco){
-    areas <- sort(unique(mancofibdata$area))
-
-    areasel <- match.arg(areasel, areas, several.ok = TRUE)
-
-    out <- out %>%
-      dplyr::filter(area %in% areasel)
 
   }
 
