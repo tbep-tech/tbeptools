@@ -56,7 +56,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
                            precipdata = NULL, temporal_window = NULL, wet_threshold = NULL,
                            warn = TRUE){
 
-  geomean <- function(x){prod(x)^(1/length(x))}
+  geomean <- function(x){prod(x, na.rm = T)^(1/length(na.omit(x)))}
 
   subset_wetdry <- match.arg(subset_wetdry)
   indic <- match.arg(indic, c('fcolif', 'entero'))
@@ -207,11 +207,27 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     dplyr::filter(station %in% stas) %>%
     dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
     dplyr::filter(!is.na(indic) | indic < 0) %>%
-    dplyr::summarise(
-      nyrs = length(unique(yr)),
-      .by = 'station'
+    tidyr::complete(
+      yr = tidyr::full_seq(c(min(yr) - (lagyr - 1), yr), 1),
+      tidyr::nesting(station)
     ) %>%
-    dplyr::filter(nyrs >= lagyr) %>%
+    dplyr::summarise(
+      hasdat = sum(any(!is.na(indic))),
+      .by = c('station', 'yr')
+    ) %>%
+    arrange(station, yr) %>%
+    dplyr::mutate(
+      chkyr = stats::filter(hasdat, rep(1, lagyr), sides = 1, method = 'convolution'),
+      .by = station
+    ) %>%
+    dplyr::filter(any(chkyr >= lagyr), .by = station)
+
+  # check if all stations invalid for lagyr
+  if(nrow(stasval) == 0){
+    stop('Insufficient data for lagyr')
+  }
+
+  stasval <- stasval %>%
     dplyr::pull(station) %>%
     unique()
 
@@ -222,11 +238,6 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     if(warn)
       warning('Stations with insufficient data for lagyr: ', paste(stas[chk], collapse = ', '))
     stas <- stas[!chk]
-  }
-
-  # check if all stations invalid for lagyr
-  if(sum(chk) == length(chk)){
-    stop('Insufficient data for lagyr')
   }
 
   grp <- 'station'
@@ -243,6 +254,10 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
     dplyr::filter(!is.na(indic) | indic < 0) %>%
     dplyr::rename(grp = !!grp) %>%
+    tidyr::complete(
+      yr = tidyr::full_seq(yr, 1),
+      tidyr::nesting(grp)
+    ) %>%
     summarise(
       gmean = geomean(indic),
       sumgt = sum(indic > thrsh),

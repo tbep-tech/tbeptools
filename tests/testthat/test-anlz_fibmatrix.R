@@ -20,13 +20,26 @@ test_that("Checking anlz_fibmatrix station error all insufficient data", {
 
 # Example data
 fibdatatst <- data.frame(
-  yr = rep(2000:2005, each = 3),
-  epchc_station = rep(letters[1:3], times = 6),
-  fcolif = runif(18, 0, 500),
-  entero = runif(18, 0, 200),
-  Latitude = runif(18, 27, 28),
-  Longitude = runif(18, -82, -81)
-)
+  epchc_station = c('a', 'b', 'c'),
+  Latitude = runif(3, 27, 28),
+  Longitude = runif(3, -82, -81),
+  area = 'FL'
+  ) %>%
+  tidyr::crossing(
+    yr = rep(2000:2005),
+    mo = rep(1:12)
+  ) %>%
+  mutate(
+    fcolif = runif(n(), 0, 500),
+    entero = runif(n(), 0, 200)
+  )
+
+test_that("Checking anlz_fibmatrix station warning for insufficient data", {
+  datchk <- fibdatatst %>%
+    filter(!(epchc_station == 'a' & yr %in% c(2000:2003)))
+  expect_warning(anlz_fibmatrix(datchk, indic = 'fcolif', stas = c('a', 'b', 'c')), regexp = 'Stations with insufficient data for lagyr: a',
+               fixed = T)
+})
 
 test_that("anlz_fibmatrix returns correct structure", {
   result <- anlz_fibmatrix(fibdatatst, indic = 'fcolif', stas = c("a", "b", "c"))
