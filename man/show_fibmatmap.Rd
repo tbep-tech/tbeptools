@@ -68,7 +68,7 @@ show_fibmatmap(fibdata, yrsel = 2016, indic = 'fcolif',
    areasel = c("Hillsborough River", "Alafia River"))
 
 # Manatee County data
-show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Lower Manatee River')
+show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Manatee River')
 }
 \seealso{
 \code{\link{anlz_fibmatrix}} for details on the categories

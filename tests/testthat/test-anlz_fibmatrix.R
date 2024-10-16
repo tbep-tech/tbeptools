@@ -141,7 +141,7 @@ test_that("Check error if bay segment is not null for epchc data", {
 
 test_that("Check error if bay segment is not null for Manatee County data", {
 
-  expect_error(anlz_fibmatrix(mancofibdata, indic = 'fcolif', bay_segment = 'Lower Manatee River'), regexp = 'Bay segment subsetting not applicable for Manatee County data',
+  expect_error(anlz_fibmatrix(mancofibdata, indic = 'fcolif', bay_segment = 'Manatee River'), regexp = 'Bay segment subsetting not applicable for Manatee County data',
                fixed = T)
 
 })

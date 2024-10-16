@@ -37,7 +37,7 @@
 #'    areasel = c("Hillsborough River", "Alafia River"))
 #'
 #' # Manatee County data
-#' show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Lower Manatee River')
+#' show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Manatee River')
 show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
                            lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
                            temporal_window = NULL, wet_threshold = NULL, listout = FALSE,

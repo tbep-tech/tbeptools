@@ -16,7 +16,7 @@ test_that("show_fibmatmap returns a leaflet map for EPCHC", {
 })
 
 test_that("show_fibmatmap returns a leaflet map for Manatee County", {
-  map <- show_fibmatmap(mancofibdata, yrsel = 2020, areasel = c('Lower Manatee River'), indic = 'fcolif')
+  map <- show_fibmatmap(mancofibdata, yrsel = 2020, areasel = c('Manatee River'), indic = 'fcolif')
   expect_s3_class(map, "leaflet")
 })
 
@@ -51,7 +51,7 @@ test_that("show_fibmatmap errors for wet or dry samples with EPCHC data", {
 
 test_that("show_fibmatmap errors for wet or dry samples with Manatee County data", {
   expect_error(
-    show_fibmatmap(mancofibdata, yrsel = 2020, areasel = "Lower Manatee River", indic = 'fcolif',
+    show_fibmatmap(mancofibdata, yrsel = 2020, areasel = "Manatee River", indic = 'fcolif',
                    subset_wetdry = "wet", temporal_window = 7, wet_threshold = 2),
     regxp = "Subset to wet or dry samples not supported for Manatee County data"
   )
