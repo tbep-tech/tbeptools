@@ -204,7 +204,7 @@ show_fibmatrix(mancofibdata, plotly = TRUE)
 ```
 
 ```{r, out.width="100%"}
-show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Lower Manatee River')
+show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Manatee River')
 ```
 
 ## Baywide reporting
