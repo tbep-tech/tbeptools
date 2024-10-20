@@ -281,7 +281,8 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
       exceed_30_prob = pbinom(sumgt - 1, tot, 0.30, lower.tail = FALSE),
       exceed_50_prob = pbinom(sumgt - 1, tot, 0.50, lower.tail = FALSE),
       exceed_75_prob = pbinom(sumgt - 1, tot, 0.75, lower.tail = FALSE)
-    )
+    ) %>%
+    dplyr::filter(!is.na(sumgt))
 
   # Put stations into binomial test groups based on significant exceedances of 400cfu criteria
   dat$MWQA <- NA
