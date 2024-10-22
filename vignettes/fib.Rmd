@@ -32,12 +32,13 @@ library(dplyr)
 
 Fecal Indicator Bacteria (FIB) are used to track concentrations of pathogens in surface waters that may be detrimental to human health and the environment.  Exposure risk is commonly measured with select indicators that are present in the human gut and can enter the environment through wastewater discharges, stormwater, or other illicit sources.  Common indicators include concentrations of *E. coli*, *Enterococcus*, or Fecal Coliform as the number of colony forming units (CFU) per 100 mL of water.
 
-Many monitoring programs routinely measure FIB concentrations at select locations. The tbeptools package has several functions for importing and reporting these data. Two workflows are available:
+Many monitoring programs routinely measure FIB concentrations at select locations. The tbeptools package has several functions for importing and reporting these data. Three workflows are available:
 
 1) Functions that use data exclusively from the Environmental Protection Commission (EPC) of Hillsborough County
-2) Functions that use data from several monitoring programs for baywide reporting focusing exclusively on *Enterococcus*
+2) Functions that use data exclusively from Manatee County Natural Resources Department
+3) Functions that use data from several monitoring programs for baywide reporting focusing exclusively on *Enterococcus*
 
-This vignette is organized around these two workflows.  For both, the assessments are meant to inform progress remediating fecal impairments or to support prioritization of areas for further investigation.  They are not meant to support beach monitoring efforts or closures for recreational uses - alternative reporting products are available for that purpose (see [FLDOH Healthy Beaches](https://www.floridahealth.gov/environmental-health/beach-water-quality/county-detail.html?County=Pinellas&Zip=33701-3109){target="_blank"}). 
+This vignette is organized around these three workflows.  For all, the assessments are meant to inform progress remediating fecal impairments or to support prioritization of areas for further investigation.  They are not meant to support beach monitoring efforts or closures for recreational uses - alternative reporting products are available for that purpose (see [FLDOH Healthy Beaches](https://www.floridahealth.gov/environmental-health/beach-water-quality/county-detail.html?County=Pinellas&Zip=33701-3109){target="_blank"}). 
 
 ## EPC reporting
 
