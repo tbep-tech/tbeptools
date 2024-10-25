@@ -179,7 +179,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
     out <- tomap %>%
       dplyr::mutate(
         grp = factor(grp, levels = levs),
-        lab = paste0('<html>Station Number: ', station, '<br>Class: ', cls, ' (<i>', ind, '</i>)<br> Category: ', cat, ' (', conc, '/100mL)</html>')
+        lab = paste0('<html>Station Number: ', station, '<br>Area: ', area, '<br>Class: ', cls, ' (<i>', ind, '</i>)<br> Category: ', cat, ' (', conc, '/100mL)</html>')
       ) %>%
       dplyr::select(-colnm, -indnm)
 

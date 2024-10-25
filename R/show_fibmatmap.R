@@ -65,17 +65,17 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
       dplyr::filter(yr == !!yrsel) %>%
       dplyr::inner_join(tbsegdetail, ., by = c('bay_segment' = 'grp')) %>%
       dplyr::mutate(
-        lab = paste0('<html>Bay segment: ', long_name, '<br>Category: ', cat),
+        lab = paste0('<html>Area: ', long_name, '<br>Category: ', cat),
         col = as.character(cols[cat])
       )
 
     stas <- fibdata %>%
       dplyr::filter(bay_segment %in% !!areasel) %>%
       dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
-      dplyr::pull(station) %>%
-      unique()
+      dplyr::select(grp = station, area = long_name) %>%
+      dplyr::distinct()
 
-    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas, bay_segment = NULL,
+    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas$grp, bay_segment = NULL,
                              indic = indic, threshold = threshold, lagyr = lagyr,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold,
@@ -99,10 +99,10 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     stas <- fibdata %>%
       dplyr::filter(area %in% !!areasel) %>%
       dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
-      dplyr::pull(epchc_station) %>%
-      unique()
+      dplyr::select(grp = epchc_station, area) %>%
+      dplyr::distinct()
 
-    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas, bay_segment = NULL,
+    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas$grp, bay_segment = NULL,
                              indic = indic, threshold = threshold, lagyr = lagyr,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold,
@@ -128,10 +128,10 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     stas <- fibdata %>%
       dplyr::filter(area %in% !!areasel) %>%
       dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
-      dplyr::pull(manco_station) %>%
-      unique()
+      dplyr::select(grp = manco_station, area) %>%
+      dplyr::distinct()
 
-    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas, bay_segment = NULL,
+    tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas$grp, bay_segment = NULL,
                                indic = indic, threshold = threshold, lagyr = lagyr,
                                subset_wetdry = subset_wetdry, precipdata = precipdata,
                                temporal_window = temporal_window, wet_threshold = wet_threshold,
@@ -147,14 +147,22 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
   # FIB levels
   levs <- util_fiblevs()
 
+  # make character to join
+  stas <- stas %>%
+    dplyr::mutate(
+      grp = as.character(grp)
+    )
+
   # subset year, remove NA cat, add labels
   tomapsta <- tomapsta %>%
     dplyr::filter(!is.na(cat)) %>%
     dplyr::filter(yr == !!yrsel) %>%
+    dplyr::mutate(grp = as.character(grp)) %>%
+    dplyr::left_join(stas, by = 'grp') %>%
     sf::st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
     dplyr::mutate(
       cat = factor(cat, levels = levs$fibmatlev),
-      lab = paste0('<html>Station Number: ', grp, '<br>Category: ', cat)
+      lab = paste0('<html>Station Number: ', grp, '<br>Area: ', area, '<br>Category: ', cat)
     )
 
   # return data instead of leaflet

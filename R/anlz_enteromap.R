@@ -134,7 +134,7 @@ anlz_enteromap <- function (fibdata, yrsel = NULL, mosel = NULL, areasel = NULL,
     out <- tomap %>%
       dplyr::mutate(
         grp = factor(grp, levels = levs),
-        lab = paste0('<html>Station Number: ', station, '<br>Sample Condition: ', wet_sample, '<br> Category: ', cat, ' (', conc, '/100mL)</html>')
+        lab = paste0('<html>Station Number: ', station, '<br>Area: ', long_name, '<br>Sample Condition: ', wet_sample, '<br> Category: ', cat, ' (', conc, '/100mL)</html>')
       ) %>%
       dplyr::select(-colnm, -indnm)
 
