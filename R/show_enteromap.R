@@ -66,7 +66,8 @@ show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE
       lng = ~Longitude,
       lat = ~Latitude,
       icon = ~icons[as.numeric(grp)],
-      label = ~lapply(as.list(lab), util_html)
+      label = ~lapply(as.list(lab), util_html),
+      layerId = ~station
     )
 
   # add appropriate legends
