@@ -16,7 +16,7 @@ A formatted \code{data.frame} with phytoplankton count data
 Format phytoplankton data
 }
 \details{
-Only seven taxonomic groups are summarized. Pyrodinium bahamense, Karenia brevis, Tripos hircus, Pseudo-nitzschia sp., and Pseudo-nitzschia pungens are retained at the species level.  Bacillariophyta and Cyanobacteria are retained at the phylum level.  All other taxa are grouped into an "other" category.
+Only seven taxonomic groups are summarized. Pyrodinium bahamense, Karenia brevis, Tripos hircus, Pseudo-nitzschia sp., and Pseudo-nitzschia pungens are retained at the species level. Diatoms are summarized at the class level using Bacillariophyceae, Coscinodiscophyceae, and Mediophyceae and Cyanobacteria are summarized at the phylum level using Cyanobacteriota. All other taxa are grouped into an "other" category.
 }
 \examples{
 \dontrun{
@@ -24,7 +24,7 @@ Only seven taxonomic groups are summarized. Pyrodinium bahamense, Karenia brevis
 xlsx <- '~/Desktop/phyto_data.xlsx'
 
 # load and assign to object
-phytodata <- read_importphyto(xlsx)
+phytodata <- read_importphyto(xlsx, download_latest = TRUE)
 }
 }
 \seealso{
