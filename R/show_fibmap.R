@@ -55,7 +55,8 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
       lng = ~Longitude,
       lat = ~Latitude,
       icon = ~icons[as.numeric(grp)],
-      label = ~lapply(as.list(lab), util_html)
+      label = ~lapply(as.list(lab), util_html),
+      layerId = ~station
       ) %>%
     leaflet::addControl(html = enteroleg, position = 'topright') %>%
     leaflet::addControl(html = ecolileg, position = 'topright')
