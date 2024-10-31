@@ -3,9 +3,9 @@
 \docType{data}
 \name{phytodata}
 \alias{phytodata}
-\title{Phytoplankton data current as of 03202024}
+\title{Phytoplankton data current as of 10312024}
 \format{
-A nested \code{\link[tibble]{tibble}} with 21143 rows and 8 variables:
+A nested \code{\link[tibble]{tibble}} with 40521 rows and 8 variables:
 \describe{
   \item{epchc_station}{chr}
   \item{Date}{Date}
@@ -21,7 +21,7 @@ A nested \code{\link[tibble]{tibble}} with 21143 rows and 8 variables:
 phytodata
 }
 \description{
-Phytoplankton data current as of 03202024
+Phytoplankton data current as of 10312024
 }
 \examples{
 \dontrun{
