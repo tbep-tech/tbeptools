@@ -7,7 +7,7 @@
 anlz_transectavespp(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
-  yrrng = c(1998, 2023),
+  yrrng = c(1998, 2024),
   species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa",
     "Dapis"),
   total = TRUE,
