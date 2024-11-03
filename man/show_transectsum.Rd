@@ -8,7 +8,7 @@ show_transectsum(
   transectocc,
   site,
   species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia", "Caulerpa",
-    "Dapis"),
+    "Dapis", "Chaetomorpha"),
   yrrng = c(1998, 2024),
   abund = FALSE,
   sppcol = NULL
@@ -34,7 +34,7 @@ A \code{\link[plotly]{plotly}} object
 Plot frequency occurrence for a seagrass transect by time for all species
 }
 \details{
-This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect. Drift or attached macroalgae (e.g., Caulerpa) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
+This plot provides a quick visual assessment of how frequency occurrence or abundance for multiple species has changed over time at a selected transect. Drift or attached macroalgae (e.g., Caulerpa, Chaetomorpha) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
 }
 \examples{
 \dontrun{

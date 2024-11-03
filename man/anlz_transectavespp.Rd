@@ -9,7 +9,7 @@ anlz_transectavespp(
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   yrrng = c(1998, 2024),
   species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa",
-    "Dapis"),
+    "Dapis", "Chaetomorpha"),
   total = TRUE,
   by_seg = FALSE
 )
@@ -21,7 +21,7 @@ anlz_transectavespp(
 
 \item{yrrng}{numeric indicating year ranges to evaluate}
 
-\item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis"}
+\item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"}
 
 \item{total}{logical indicating if total frequency occurrence for all species is also returned}
 
