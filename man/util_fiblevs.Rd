@@ -2,15 +2,15 @@
 % Please edit documentation in R/util_fiblevs.R
 \name{util_fiblevs}
 \alias{util_fiblevs}
-\title{A list of Fecal Indicator Bacteria (FIB) category breakpoints and labels}
+\title{A list of Fecal Indicator Bacteria (FIB) factor levels and labels}
 \usage{
 util_fiblevs()
 }
 \value{
-A \code{list} showing cut points and labels for FIB categories
+A \code{list} with levels (often cutpoints) and labels for FIB categories
 }
 \description{
-A list of Fecal Indicator Bacteria (FIB) category breakpoints and labels
+A list of Fecal Indicator Bacteria (FIB) factor levels and labels
 }
 \examples{
 util_fiblevs()

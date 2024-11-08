@@ -36,7 +36,7 @@ read_importphyto <- function(xlsx, download_latest = FALSE, na = c('', 'NULL')){
   rawdat <- readxl::read_xlsx(xlsx, na = na, col_types = c("text", "text", "text", "text", "text", "text", "date", "text",
                                                            "text", "text", "text", "text", "text", "text", "text", "text",
                                                            "text", "text", "text", "text", "text", "text", "text", "text",
-                                                           "text", "text", "text")
+                                                           "text", "text")
   )
 
   # format

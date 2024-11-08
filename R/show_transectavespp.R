@@ -3,7 +3,7 @@
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
 #' @param yrrng numeric indicating year ranges to evaluate
-#' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis"
+#' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"
 #' @param total logical indicating if total frequency occurrence for all species is also returned, only applies if \code{asreact = FALSE}
 #' @param alph numeric indicating alpha value for score category colors
 #' @param family optional chr string indicating font family for text labels
@@ -13,7 +13,7 @@
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param sppcol character vector of alternative colors to use for each species, must have length of six
 #'
-#' @details Results are based on averages across species by date and transect in each bay segment. Drift or attached macroalgae (e.g., Caulerpa) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
+#' @details Results are based on averages across species by date and transect in each bay segment. Drift or attached macroalgae (e.g., Caulerpa, Chaetomorpha) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
 #'
 #' @return If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{plotly}} (if \code{plotly = T}) object is returned showing trends over time by species for selected bay segments.  If \code{asreact = T}, a \code{\link[reactable]{reactable}} table showing results by year, segment, and species is returned.
 #' @export
@@ -33,15 +33,15 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectavespp(transectocc)
-show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2023),
-                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis'),
+show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2024),
+                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis', 'Chaetomorpha'),
                                 total = TRUE, alph = 1, family = NA, plotly = FALSE, asreact = FALSE, width = NULL,
                                 height = NULL, sppcol = NULL){
 
   # check correct length of optional color vector
   if(!is.null(sppcol)){
-    if(length(sppcol) != 7)
-      stop('sppcol required length is seven')
+    if(length(sppcol) != 8)
+      stop('sppcol required length is eight')
 
     sppcol <- c('#FFFFFF', sppcol)
 
@@ -58,8 +58,8 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
 
     # sort color palette so its the same regardless of species selected
     if(is.null(sppcol))
-      sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF', '#8B2323')
-    names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis')
+      sppcol <- c('#FFFFFF', '#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF', '#8B2323', '#6AF427')
+    names(sppcol) <- c('total', 'Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis', 'Chaetomorpha')
     sppcol <- sppcol[levels(toplo$Savspecies)]
 
     p <- ggplot2::ggplot(toplo, ggplot2::aes(x = yr, y = fo, fill = Savspecies)) +

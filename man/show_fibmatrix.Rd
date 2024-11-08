@@ -2,31 +2,55 @@
 % Please edit documentation in R/show_fibmatrix.R
 \name{show_fibmatrix}
 \alias{show_fibmatrix}
-\title{Plot a matrix of Fecal Indicator Bacteria categories over time by station}
+\title{Plot a matrix of Fecal Indicator Bacteria categories over time by station or bay segment}
 \usage{
 show_fibmatrix(
   fibdata,
   yrrng = NULL,
-  stas = c(143, 108, 107, 135, 118, 148, 105, 152, 137),
+  stas = NULL,
+  bay_segment = NULL,
+  indic = NULL,
+  threshold = NULL,
   lagyr = 3,
+  subset_wetdry = c("all", "wet", "dry"),
+  precipdata = NULL,
+  temporal_window = NULL,
+  wet_threshold = NULL,
   txtsz = 3,
   asreact = FALSE,
   nrows = 10,
   family = NA,
+  angle = 90,
+  size = 10,
+  hjust = 0,
   plotly = FALSE,
   width = NULL,
-  height = NULL
+  height = NULL,
+  warn = TRUE
 )
 }
 \arguments{
-\item{fibdata}{input data frame as returned by \code{\link{read_importfib}}}
+\item{fibdata}{input data frame as returned by \code{\link{read_importfib}}, \code{\link{read_importentero}}, or \code{\link{read_importwqp}}, see details}
 
-\item{yrrng}{numeric vector indicating min, max years to include, defaults to
-range of years in \code{epcdata}}
+\item{yrrng}{numeric vector indicating min, max years to include, defaults to range of years in data, see details}
 
-\item{stas}{optional numeric vector of stations to include, see details}
+\item{stas}{optional vector of stations to include, see details}
+
+\item{bay_segment}{optional vector of bay segment names to include, supercedes \code{stas} if provided, see details}
+
+\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.}
+
+\item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
+
+\item{subset_wetdry}{character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.}
+
+\item{precipdata}{input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.}
+
+\item{temporal_window}{numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
+
+\item{wet_threshold}{numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
 
 \item{txtsz}{numeric for size of text in the plot, applies only if \code{tab = FALSE}.  Use \code{txtsz = NULL} to suppress.}
 
@@ -36,24 +60,42 @@ range of years in \code{epcdata}}
 
 \item{family}{optional chr string indicating font family for text labels}
 
+\item{angle}{numeric for angle of x-axis text labels}
+
+\item{size}{numeric for size of the x-axis text labels}
+
+\item{hjust}{numeric for horizontal justification of x-axis text labels}
+
 \item{plotly}{logical if matrix is created using plotly}
 
 \item{width}{numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}}
 
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
+
+\item{warn}{logical to print warnings about stations with insufficient data, default \code{TRUE}}
 }
 \value{
 A static \code{\link[ggplot2]{ggplot}} object is returned by default. A \code{\link[reactable]{reactable}} table is returned if \code{asreact = TRUE}.  An interactive \code{\link[plotly]{plotly}} object is returned if \code{plotly = TRUE}.
 }
 \description{
-Plot a matrix of Fecal Indicator Bacteria categories over time by station
+Plot a matrix of Fecal Indicator Bacteria categories over time by station or bay segment
 }
 \details{
-The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 400 CFU / 100 mL (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\\%, 10-30\\%, 30-50\\%, 50-75\\%, and >75\\% (right-closed). By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (\code{lagyr = 3}).  Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at \url{http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST\%20Report/Fecal\%20BMAP\%20DST\%20Final\%20Report\%20--\%20June\%202008.pdf} and Morrison et al. 2009 in the \href{https://drive.google.com/file/d/1vaoAKkwSLlIS2RzeBeCTjQST1dUmo0rr/view}{BASIS 5 proceedings}.
+The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 400 CFU / 100 mL for Fecal Coliform or 130 CFU / 100 mL for Enterococcus.  Bay segments are used instead of stations if \code{bay_segment} is not \code{NULL} and the input data are from \code{\link{read_importentero}}.  The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\\%, 10-30\\%, 30-50\\%, 50-75\\%, and >75\\% (right-closed). By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (\code{lagyr = 3}).  Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at \url{http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST\%20Report/Fecal\%20BMAP\%20DST\%20Final\%20Report\%20--\%20June\%202008.pdf} and Morrison et al. 2009 in the \href{https://drive.google.com/file/d/1vaoAKkwSLlIS2RzeBeCTjQST1dUmo0rr/view}{BASIS 5 proceedings}.
 
-The default stations are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations in \code{fibdata} can be plotted using the \code{stas} argument.
+The default stations for fecal coliform data are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if \code{bay_segment} is \code{NULL} and the input data are from \code{\link{read_importfib}}.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the \code{stas} argument.
 }
 \examples{
 show_fibmatrix(fibdata)
+
+# change the threshold
+show_fibmatrix(fibdata, threshold = 200)
+
+# change the indicator
+show_fibmatrix(fibdata, indic = 'entero')
+
+# show matrix for only dry samples
+show_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "dry",
+               temporal_window = 2, wet_threshold = 0.5)
 }
 \concept{show}

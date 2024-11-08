@@ -8,8 +8,8 @@ show_transect(
   transect,
   site,
   species = c("Halodule", "Syringodium", "Thalassia", "Halophila", "Ruppia", "Caulerpa",
-    "Dapis"),
-  yrrng = c(1998, 2023),
+    "Dapis", "Chaetomorpha"),
+  yrrng = c(1998, 2024),
   varplo = c("Abundance", "Blade Length", "Short Shoot Density"),
   base_size = 12,
   facet = FALSE,
@@ -52,7 +52,7 @@ A \code{\link[ggplot2]{ggplot}} object
 Plot results for a seagrass transect by time and location
 }
 \details{
-All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, Ruppia, Caulerpa (attached macroalgae), and/or Dapis (cyanobacteria). Drift or attached macroalgae and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
+All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, Ruppia, Caulerpa (attached macroalgae), Dapis (cyanobacteria), and/or Chaetomorpha (drift green algae). Drift or attached macroalgae and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
 
 Note that if \code{plotly = TRUE}, the size legend is not shown.
 }
@@ -67,13 +67,13 @@ show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundanc
 # multiple species, one plot
 show_transect(transect, site = 'S3T10',
   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia',
-    'Caulerpa', 'Dapis'),
+    'Caulerpa', 'Dapis', 'Chaetomorpha'),
   varplo = 'Abundance')
 
 # multiple species, multiple plots
 show_transect(transect, site = 'S3T10',
   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia',
-    'Caulerpa', 'Dapis'),
+    'Caulerpa', 'Dapis', 'Chaetomorpha'),
   varplo = 'Abundance', facet = TRUE)
 }
 \concept{show}

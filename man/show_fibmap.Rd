@@ -7,7 +7,7 @@
 show_fibmap(fibdata, yrsel, mosel, areasel = NULL)
 }
 \arguments{
-\item{fibdata}{input FIB \code{data.frame} as returned by \code{\link{read_importfib}}}
+\item{fibdata}{input FIB \code{data.frame} as returned by \code{\link{read_importfib}} or \code{\link{read_importwqp}}, see details}
 
 \item{yrsel}{optional numeric value to filter output by years in \code{fibdata}}
 
@@ -30,8 +30,11 @@ show_fibmap(fibdata, yrsel = 2023, mosel = 8)
 
 # show selected year, month, and area
 show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
+
+# Manatee County data
+show_fibmap(mancofibdata, yrsel = 2020, mosel = 7, areasel = 'Little Manatee River')
 }
 \seealso{
 \code{\link{anlz_fibmap}} for details on the categories
 }
-\concept{anlz}
+\concept{show}

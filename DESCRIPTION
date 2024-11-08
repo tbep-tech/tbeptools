@@ -1,7 +1,7 @@
 Package: tbeptools
 Title: Data and Indicators for the Tampa Bay Estuary Program
-Version: 2.0.1.9022
-Date: 2024-04-12
+Version: 3.0.0.9004
+Date: 2024-11-03
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
@@ -43,7 +43,12 @@ Authors@R: c(
       role = c("aut"),
       email = "ben@ecoquants.com",
       comment = c(ORCID = "0000-0002-2686-0784")
-    )
+    ),
+    person(given = "Kim",
+      family = "Cressman",
+      role = c("aut"),
+      email = "kim@catbirdstats.com",
+      comment = c(ORCID = "0000-0002-8083-2434"))
   )
 Description: Several functions are provided for working with Tampa Bay Estuary 
   Program data and indicators, including the water quality report card, tidal creek
@@ -54,32 +59,32 @@ Depends:
   R (>= 3.6),
   methods
 Imports:
-    dataRetrieval,
-    dplyr,
-    flextable,
-    fs,
-    ggplot2,
-    glue,
-    here,
-    httr,
-    httr2,
-    jsonlite,
-    leaflet,
-    lubridate,
-    patchwork,
-    plotly,
-    purrr,
-    reactable,
-    readr,
-    readxl,
-    rvest,
-    sf,
-    stringr,
-    terra,
-    tibble,
-    tidyr,
-    tools,
-    utils
+  dataRetrieval,
+  dplyr,
+  flextable,
+  fs,
+  ggplot2 (>= 3.2.0),
+  glue,
+  here,
+  httr,
+  httr2,
+  jsonlite,
+  leaflet,
+  lubridate,
+  patchwork,
+  plotly,
+  purrr,
+  reactable,
+  readr,
+  readxl,
+  rvest,
+  sf,
+  stringr,
+  terra,
+  tibble,
+  tidyr,
+  tools,
+  utils
 Suggests: 
   bookdown,
   ftExtra,
@@ -90,6 +95,7 @@ Suggests:
   htmlwidgets,
   knitr,
   mapview,
+  mockery,
   rmarkdown,
   testthat (>= 2.1.0),
   covr

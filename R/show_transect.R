@@ -16,7 +16,7 @@
 #' @return A \code{\link[ggplot2]{ggplot}} object
 #' @export
 #'
-#' @details All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, Ruppia, Caulerpa (attached macroalgae), and/or Dapis (cyanobacteria). Drift or attached macroalgae and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
+#' @details All sites along a transect that were surveyed are shown in the plot, including those where the selected species were not found.  The latter is colored in grey hollow points.  Species options include Halodule, Syringodium, Thalassia, Halophila, Ruppia, Caulerpa (attached macroalgae), Dapis (cyanobacteria), and/or Chaetomorpha (drift green algae). Drift or attached macroalgae and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
 #'
 #' Note that if \code{plotly = TRUE}, the size legend is not shown.
 #'
@@ -35,20 +35,20 @@
 #' # multiple species, one plot
 #' show_transect(transect, site = 'S3T10',
 #'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia',
-#'     'Caulerpa', 'Dapis'),
+#'     'Caulerpa', 'Dapis', 'Chaetomorpha'),
 #'   varplo = 'Abundance')
 #'
 #' # multiple species, multiple plots
 #' show_transect(transect, site = 'S3T10',
 #'   species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia',
-#'     'Caulerpa', 'Dapis'),
+#'     'Caulerpa', 'Dapis', 'Chaetomorpha'),
 #'   varplo = 'Abundance', facet = TRUE)
-show_transect <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis'),
-                          yrrng = c(1998, 2023), varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
+show_transect <- function(transect, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis', 'Chaetomorpha'),
+                          yrrng = c(1998, 2024), varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 12,
                           facet = FALSE, ncol = NULL, plotly = FALSE, width = NULL, height = NULL, sppcol = NULL){
 
   # species pool
-  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis')
+  spp <- c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis', 'Chaetomorpha')
 
   # sanity checks
   if(!site %in% transect$Transect)
@@ -63,7 +63,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
   # check correct length of optional color vector
   if(!is.null(sppcol))
     if(length(sppcol) != length(spp))
-      stop('sppcol required length is seven')
+      stop('sppcol required length is eight')
 
   varplo <- match.arg(varplo)
 
@@ -76,6 +76,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
       Savspecies = dplyr::case_when(
         grepl('Caulerpa', Savspecies) ~ 'Caulerpa',
         grepl('Dapis', Savspecies) ~ 'Dapis',
+        grepl('Chaetomorpha', Savspecies) ~ 'Chaetomorpha',
         T ~ Savspecies
       )
     ) %>%
@@ -100,7 +101,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
 
   # sort color palette so its the same regardless of species selected
   if(is.null(sppcol))
-    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF', '#8B2323')
+    sppcol <- c('#ED90A4', '#CCA65A', '#7EBA68', '#6FB1E7', '#00C1B2', '#D400FF', '#8B2323', '#6AF427')
   names(sppcol) <- spp
   sppcol <- sppcol[levels(dat$name)]
 

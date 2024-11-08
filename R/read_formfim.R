@@ -15,13 +15,13 @@
 #' @seealso \code{\link{read_importfim}}
 #'
 #' @examples
-#' \dontrun{
 #' # file path
-#' csv <- '~/Desktop/fimraw.csv'
+#' csv <- url('https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/TampaBay_NektonIndexData.csv')
+#'
+#' datin <- read.csv(csv)
 #'
 #' # load and assign to object
-#' fimdata <- read_importfim(csv)
-#' }
+#' fimdata <- read_formfim(datin)
 read_formfim <- function(datin, locs = FALSE){
 
   # make data sf to get bay segments
@@ -86,6 +86,7 @@ read_formfim <- function(datin, locs = FALSE){
   # join catch data with species classifications
   out <- frmdat %>%
     dplyr::left_join(tbnispp, by = "NODCCODE") %>%
+    dplyr::select(-TSN) %>%
     dplyr::filter(Include_TB_Index == "Y") %>%
     dplyr::arrange(Reference, NODCCODE) %>%
     dplyr::ungroup() %>%

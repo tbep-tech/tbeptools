@@ -3,9 +3,9 @@
 \docType{data}
 \name{fimdata}
 \alias{fimdata}
-\title{FIM data for Tampa Bay Nekton Index current as of 08232023}
+\title{FIM data for Tampa Bay Nekton Index current as of 07092024}
 \format{
-A data frame with 49874 rows and 19 variables:
+A data frame with 52042 rows and 19 variables:
 \describe{
 \item{Reference}{chr}
 \item{Sampling_Date}{Date}
@@ -32,11 +32,11 @@ A data frame with 49874 rows and 19 variables:
 fimdata
 }
 \description{
-FIM data for Tampa Bay Nekton Index current as of 08232023
+FIM data for Tampa Bay Nekton Index current as of 07092024
 }
 \examples{
 \dontrun{
-csv <- '~/Desktop/fimdata.csv'
+csv <- '~/Desktop/TampaBay_NektonIndexData.csv'
 
 fimdata <- read_importfim(csv, download_latest = TRUE)
 

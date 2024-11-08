@@ -133,10 +133,16 @@ p2 <- show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, ty
 p1 + p2 + plot_layout(ncol = 2, guides = 'collect')
 ```
 
-Finally, the text showing the proportion of the target or goal met each year can be suppressed using `text = NULL`.  The size of the text can be changed by entering a numeric value (default `text = 2.5`).  
+The text showing the proportion of the target or goal met each year can be suppressed using `text = NULL`.  The size of the text can be changed by entering a numeric value (default `text = 2.5`).  
 
 ```{r, fig.height = 8, fig.width = 8}
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', text = NULL)
+```
+
+An alternative form of the report card can be returned where the attainment of targets or goals and the likelihood of attainment are shown differently using colors and shapes, respectively.  This is plotted using `twocol = T`, where red shows the target or goal is not met, green shows the target or goal is met, an up arrow shows the target or goal is likely to be met, and a down arrow shows the target or goal is not likely to be met.
+
+```{r, fig.height = 8, fig.width = 8}
+show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', twocol = T)
 ```
 
 The report card provides no information on artificial reefs, living shorelines, and hard bottom habitats.  These habitats are not assessed in routine data products from the Southwest Florida Water Management District, although targets and goals are provided in the Habitat Master Plan. 

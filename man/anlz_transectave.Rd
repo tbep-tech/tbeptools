@@ -8,7 +8,7 @@ anlz_transectave(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   total = TRUE,
-  yrrng = c(1998, 2023),
+  yrrng = c(1998, 2024),
   rev = FALSE
 )
 }

@@ -33,18 +33,6 @@ sf_use_s2(FALSE)
 # spelling::spell_check_files("vignettes/intro.Rmd")
 ```
 
-```{r, eval=FALSE, echo=FALSE}
-# Consider adding to package these dependencies,
-#   which I had to install to compile this vignette
-#   -- @bbest 2024-05-20
-install.packages("bookdown")
-install.packages("ggmap")
-install.packages("ggspatial")
-install.packages("ggrepel")
-install.packages("ggnewscale")
-install.packages("ftExtra")
-```
-
 ## Background
 
 Dashboard: https://shiny.tbep.org/wq-dash
@@ -134,7 +122,7 @@ After the phytoplankton data are successfully imported, you can view them from t
 phytodata
 ```
 
-These data are highly summarized from the raw data file available online.  Cell counts (as number of cells per 0.1mL) for selected taxa are summed for each station by quarters (i.e., Jan/Feb/Mar, Apr/May/Jun, etc.).  The quarter is indicated in the `yrqrt` column specified by the starting date of each quarter (e.g., `1975-07-01` is the quarter Jul/Aug/Sep for 1975).  These data are primarily used to support analyses in the water quality dashboard: <https://shiny.tbep.org/wq-dash/>
+These data are highly summarized from the raw data file available online.  Cell counts (as number of cells per 0.1mL) for selected taxa are shown by date and quarter (i.e., Jan/Feb/Mar, Apr/May/Jun, etc.) for each station.  The quarter is indicated in the `yrqrt` column specified by the starting date of each quarter (e.g., `1975-07-01` is the quarter Jul/Aug/Sep for 1975).  These data are primarily used to support analyses in the water quality dashboard: <https://shiny.tbep.org/wq-dash/>
 
 ### Retrieving additional water quality data
 

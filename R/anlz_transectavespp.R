@@ -3,7 +3,7 @@
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
 #' @param yrrng numeric indicating year ranges to evaluate
-#' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis"
+#' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"
 #' @param total logical indicating if total frequency occurrence for all species is also returned
 #' @param by_seg logical indicating if separate results by bay segments are retained
 #'
@@ -23,16 +23,16 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' anlz_transectavespp(transectocc)
-anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2023),
-                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa', 'Dapis'),
+anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2024),
+                                species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa', 'Dapis', 'Chaetomorpha'),
                                 total = TRUE, by_seg = FALSE){
 
   # sanity checks
   stopifnot(length(yrrng) == 2)
   stopifnot(yrrng[1] < yrrng[2])
 
-  if(!any(species %in% c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa', 'Dapis')))
-    stop('Incorrect species, must be one of Halodule, Syringodium, Thalassia, Ruppia, Halophila, Caulerpa, Dapis')
+  if(!any(species %in% c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa', 'Dapis', 'Chaetomorpha')))
+    stop('Incorrect species, must be one of Halodule, Syringodium, Thalassia, Ruppia, Halophila, Caulerpa, Dapis, Chaetomorpha')
 
   if(!any(bay_segment %in% c('OTB', 'HB', 'MTB', 'LTB', 'BCB')))
     stop('Incorrect bay_segment, must be one of OTB, HB, MTB, LTB, BCB')

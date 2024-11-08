@@ -1,8 +1,8 @@
-#' Phytoplankton data current as of 03202024
+#' Phytoplankton data current as of 10312024
 #'
-#' Phytoplankton data current as of 03202024
+#' Phytoplankton data current as of 10312024
 #'
-#' @format A nested \code{\link[tibble]{tibble}} with 21143 rows and 8 variables:
+#' @format A nested \code{\link[tibble]{tibble}} with 40521 rows and 8 variables:
 #' \describe{
 #'   \item{epchc_station}{chr}
 #'   \item{Date}{Date}

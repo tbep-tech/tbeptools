@@ -22,7 +22,7 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' anlz_transectave(transectocc)
-anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, yrrng = c(1998, 2023), rev = FALSE){
+anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), total = TRUE, yrrng = c(1998, 2024), rev = FALSE){
 
   # sanity checks
   stopifnot(length(yrrng) == 2)
