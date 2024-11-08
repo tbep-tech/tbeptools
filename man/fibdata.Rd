@@ -7,25 +7,25 @@
 \format{
 A data frame with 77526 rows and 18 variables:
 \describe{
-  \item{area}{chr}
-  \item{epchc_station}{num}
-  \item{class}{chr}
-  \item{SampleTime}{POSIXct}
-  \item{yr}{num}
-  \item{mo}{num}
-  \item{Latitude}{num}
-  \item{Longitude}{num}
-  \item{Total_Depth_m}{num}
-  \item{Sample_Depth_m}{num}
-  \item{ecoli}{num}
-  \item{ecoli_q}{chr}
-  \item{entero}{num}
-  \item{entero_q}{chr}
-  \item{fcolif}{num}
-  \item{fcolif_q}{chr}
-  \item{totcol}{num}
-  \item{totcol_q}{chr}
-  }
+\item{area}{chr}
+\item{epchc_station}{num}
+\item{class}{chr}
+\item{SampleTime}{POSIXct}
+\item{yr}{num}
+\item{mo}{num}
+\item{Latitude}{num}
+\item{Longitude}{num}
+\item{Total_Depth_m}{num}
+\item{Sample_Depth_m}{num}
+\item{ecoli}{num}
+\item{ecoli_q}{chr}
+\item{entero}{num}
+\item{entero_q}{chr}
+\item{fcolif}{num}
+\item{fcolif_q}{chr}
+\item{totcol}{num}
+\item{totcol_q}{chr}
+}
 }
 \usage{
 fibdata

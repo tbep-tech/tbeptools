@@ -7,15 +7,15 @@
 \format{
 A nested \code{\link[tibble]{tibble}} with 40521 rows and 8 variables:
 \describe{
-  \item{epchc_station}{chr}
-  \item{Date}{Date}
-  \item{name}{chr}
-  \item{units}{chr}
-  \item{count}{num}
-  \item{yrqrt}{Date}
-  \item{yr}{num}
-  \item{mo}{Ord.factor}
-  }
+\item{epchc_station}{chr}
+\item{Date}{Date}
+\item{name}{chr}
+\item{units}{chr}
+\item{count}{num}
+\item{yrqrt}{Date}
+\item{yr}{num}
+\item{mo}{Ord.factor}
+}
 }
 \usage{
 phytodata

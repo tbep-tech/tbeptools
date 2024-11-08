@@ -7,9 +7,9 @@
 \format{
 A nested \code{\link[tibble]{tibble}} with 3 rows and 2 variables:
 \describe{
-  \item{name}{chr identifying the dataset as stations, fieldsamples, or taxacounts}
-  \item{value}{list of dataframes for each dataset}
-  }
+\item{name}{chr identifying the dataset as stations, fieldsamples, or taxacounts}
+\item{value}{list of dataframes for each dataset}
+}
 }
 \usage{
 benthicdata

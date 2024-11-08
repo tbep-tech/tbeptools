@@ -16,23 +16,23 @@ read_importentero(stas = NULL, startDate, endDate)
 \value{
 a data frame containing one row for each sample. Columns returned are:
 \describe{
- \item{\code{date}}{date, sample date}
- \item{\code{yr}}{numeric, year of sample date}
- \item{\code{mo}}{numeric, month of sample date}
- \item{\code{time}}{character, sample time}
- \item{\code{time_zone}}{character, sample time zone}
- \item{\code{long_name}}{character, long name of bay segment subwatershed}
- \item{\code{bay_segment}}{character, short name of bay segment subwatershed}
- \item{\code{station}}{character, sample station}
- \item{\code{entero}}{numeric, Enterococcus concentration}
- \item{\code{entero_censored}}{logical, whether \code{entero} value was below the laboratory \code{MDL}, minimum detection limit}
- \item{\code{MDL}}{numeric, minimum detection limit at the time of processing}
- \item{\code{entero_units}}{character, units of measurement for \code{entero}}
- \item{\code{qualifier}}{qualifier codes associated with sample}
- \item{\code{LabComments}}{lab comments on sample}
- \item{\code{Latitude}}{numeric, latitude in decimal degrees}
- \item{\code{Longitude}}{numeric, longitude in decimal degrees}
- }
+\item{\code{date}}{date, sample date}
+\item{\code{yr}}{numeric, year of sample date}
+\item{\code{mo}}{numeric, month of sample date}
+\item{\code{time}}{character, sample time}
+\item{\code{time_zone}}{character, sample time zone}
+\item{\code{long_name}}{character, long name of bay segment subwatershed}
+\item{\code{bay_segment}}{character, short name of bay segment subwatershed}
+\item{\code{station}}{character, sample station}
+\item{\code{entero}}{numeric, Enterococcus concentration}
+\item{\code{entero_censored}}{logical, whether \code{entero} value was below the laboratory \code{MDL}, minimum detection limit}
+\item{\code{MDL}}{numeric, minimum detection limit at the time of processing}
+\item{\code{entero_units}}{character, units of measurement for \code{entero}}
+\item{\code{qualifier}}{qualifier codes associated with sample}
+\item{\code{LabComments}}{lab comments on sample}
+\item{\code{Latitude}}{numeric, latitude in decimal degrees}
+\item{\code{Longitude}}{numeric, longitude in decimal degrees}
+}
 }
 \description{
 Download Enterococcus data from the Water Quality Portal

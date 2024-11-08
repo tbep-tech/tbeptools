@@ -62,8 +62,12 @@ Imports:
   dataRetrieval,
   dplyr,
   flextable,
+  fs,
   ggplot2 (>= 3.2.0),
+  glue,
+  here,
   httr,
+  httr2,
   jsonlite,
   leaflet,
   lubridate,
@@ -71,12 +75,16 @@ Imports:
   plotly,
   purrr,
   reactable,
+  readr,
   readxl,
-  rnoaa,
+  rvest,
   sf,
+  stringr,
+  terra,
   tibble,
   tidyr,
-  tools
+  tools,
+  utils
 Suggests: 
   bookdown,
   ftExtra,
@@ -98,6 +106,7 @@ Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: true
 LazyDataCompression: xz
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
+Roxygen: list(markdown = TRUE)
 URL: https://github.com/tbep-tech/tbeptools
 BugReports: https://github.com/tbep-tech/tbeptools/issues

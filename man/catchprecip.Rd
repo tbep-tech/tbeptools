@@ -7,9 +7,9 @@
 \format{
 A data frame with three columns:
 \describe{
- \item{station}{a character string of the Water Quality Portal station name}
- \item{date}{a date}
- \item{rain}{a number; inches of rain for that date, averaged across all pixels in the station's catchment}
+\item{station}{a character string of the Water Quality Portal station name}
+\item{date}{a date}
+\item{rain}{a number; inches of rain for that date, averaged across all pixels in the station's catchment}
 }
 }
 \source{

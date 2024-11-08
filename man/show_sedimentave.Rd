@@ -42,7 +42,7 @@ show_sedimentave(
 \item{height}{numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing sediment averages and 95% confidence intervals of the selected parameter concentrations for each bay segment
+A \code{\link[ggplot2]{ggplot}} object or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE} showing sediment averages and 95\% confidence intervals of the selected parameter concentrations for each bay segment
 }
 \description{
 Plot sediment concentration averages by bay segment
