@@ -102,6 +102,11 @@ show_splitbarplot <- function(
     stop("label_points must be NULL or contain only 'min', 'max', or 'median'")
   }
 
+  valid_period_values <- c("before", "after")
+  if (!all(df[[period_col]] %in% valid_period_values)) {
+    stop("period_col must contain only 'before' and 'after'")
+  }
+
   # Create symbol objects for non-standard evaluation
   year_sym   <- dplyr::sym(year_col)
   value_sym  <- dplyr::sym(value_col)
@@ -116,7 +121,14 @@ show_splitbarplot <- function(
     dplyr::filter(!!period_sym == "after") |>
     dplyr::pull(!!year_sym) |>
     util_format_year_range(prefix = x_label_prefix)
+  df <- df |>
+    mutate(
+      {{period_col}} := recode(
+        !!period_sym,
+        before = lbl_before,
+        after  = lbl_after))
 
+  # summary_data_0 <- summary_data
   summary_data <- df |>
     dplyr::group_by(!!period_sym) |>
     dplyr::summarise(
