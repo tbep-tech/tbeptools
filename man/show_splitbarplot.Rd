@@ -40,9 +40,9 @@ show_splitbarplot(
 
 \item{exploded}{Logical; if TRUE, adds individual points with labels for min, max, and mean (default: FALSE)}
 
-\item{bars_fill}{Fill color for bars (default: "lightblue")}
+\item{bars_fill}{Fill color for bars (default: \code{c("#00BFC4", "#F8766D")}; teal and red)}
 
-\item{bars_alpha}{Alpha transparency for bars (default: \code{c("#00BFC4", "#F8766D")}; teal and red)}
+\item{bars_alpha}{Alpha transparency for bars (default: 0.7)}
 
 \item{label_points}{Character vector specifying which points to label in exploded view (default: c("min","max","median"))}
 

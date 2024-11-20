@@ -123,6 +123,7 @@ show_splitbarplot <- function(
     util_format_year_range(prefix = x_label_prefix)
   df <- df |>
     mutate(
+      {{value_col}}  := units::set_units(!!value_sym, NULL),
       {{period_col}} := recode(
         !!period_sym,
         before = lbl_before,
@@ -141,6 +142,8 @@ show_splitbarplot <- function(
       .groups = "drop") |>
     dplyr::mutate(
       sd_val = ifelse(n == 1, NA, sd_val))  # Remove SD for single-value groups
+
+  # Get range for y-axis
   y_rng <- with(
     summary_data,
     range(
