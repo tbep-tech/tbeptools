@@ -11,6 +11,7 @@ show_hmpreport(
   typ,
   twocol = FALSE,
   strata = c("Subtidal", "Intertidal", "Supratidal"),
+  totintertid = TRUE,
   ycollapse = FALSE,
   text = 2.5,
   xang = 25,
@@ -31,6 +32,8 @@ show_hmpreport(
 \item{twocol}{logical indicating only two colors are shown if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details}
 
 \item{strata}{character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}}
+
+\item{totintertid}{logical indicating if total intertidal (mangroves, salt marsh, salt barrens) is shown}
 
 \item{ycollapse}{logical indicating if the y-axis is collapsed to year with data, see details}
 

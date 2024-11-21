@@ -8,6 +8,7 @@
 #' @param typ character string indicating \code{"targets"} or \code{"goals"}
 #' @param twocol logical indicating only two colors are shown if target or goals are met and symbols indicate the likelihood of attaining targets or goals, see details
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
+#' @param totintertid logical indicating if total intertidal (mangroves, salt marsh, salt barrens) is shown
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
 #' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbols if \code{twocol = T}, use \code{NULL} to suppress
 #' @param xang numeric for angle of habitat labels on the x-axis (top)
@@ -41,7 +42,7 @@
 #'
 #' # select only subtidal
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strata = c('Subtidal', 'Intertidal', 'Supratidal'), ycollapse = FALSE, text = 2.5, xang = 25, family = NA, width = NULL, height = NULL){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strata = c('Subtidal', 'Intertidal', 'Supratidal'), totintertid = TRUE, ycollapse = FALSE, text = 2.5, xang = 25, family = NA, width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
   typ <- match.arg(typ, choices = c('targets', 'goals'))
@@ -74,6 +75,10 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       goaleval = as.character(goaleval),
       metric = factor(metric, levels = metcats)
     )
+
+  if(!totintertid)
+    toplo <- toplo %>%
+      dplyr::filter(!metric %in% c('Total Intertidal'))
 
   if(ycollapse)
     toplo <- na.omit(toplo) %>%
