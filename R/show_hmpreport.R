@@ -76,9 +76,11 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       metric = factor(metric, levels = metcats)
     )
 
-  if(!totintertid)
+  if(!totintertid){
     toplo <- toplo %>%
       dplyr::filter(!metric %in% c('Total Intertidal'))
+    totcats['Intertidal'] <- totcats['Intertidal'] - 1
+  }
 
   if(ycollapse)
     toplo <- na.omit(toplo) %>%
