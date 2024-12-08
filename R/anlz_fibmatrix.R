@@ -247,7 +247,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     levs <- segs
   }
 
-  # get geomean, proportion of sites/bay segments > 400 cfu / 100mL, and prob of exceedence
+  # get geomean, proportion of sites/bay segments > threshold, and prob of exceedence
   # handles lagged calculations
   dat <- fibdata %>%
     dplyr::filter(station %in% stas) %>%
@@ -284,7 +284,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     ) %>%
     dplyr::filter(!is.na(sumgt))
 
-  # Put stations into binomial test groups based on significant exceedances of 400cfu criteria
+  # Put stations into binomial test groups based on significant exceedances of threshold criteria
   dat$MWQA <- NA
   dat$MWQA[dat$exceed_10_prob >= 0.10] <- 'A'
   dat$MWQA[dat$exceed_10_prob < 0.10 & dat$exceed_30_prob >= 0.10] <- 'B'
