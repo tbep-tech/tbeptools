@@ -2,7 +2,7 @@
 #'
 #' Sediment data for the Tampa Bay current as of 20241212
 #'
-#' @format A \code{data.frame} with 226589 rows and 24 variables:
+#' @format A \code{data.frame} with 226536 rows and 24 variables:
 #' \describe{
 #'   \item{ProgramId}{int}
 #'   \item{ProgramName}{chr}

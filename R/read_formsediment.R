@@ -56,7 +56,7 @@ read_formsediment <- function(pathin){
                   -CASNumber, -NELACNumber, -DOHCertification, -WQMQCSignOff) %>%
     dplyr::rename(yr = Year) %>%
     dplyr::mutate(
-      PEL = ifelse(Parameter == 'DDE', 374, PEL), # see dk email 1/11/2023, should not be 37.4
+      PEL = ifelse(Parameter == 'DDE', 374, PEL),
       FundingProject = gsub('\\s+$', '', FundingProject),
       Replicate = tolower(Replicate),
       Units = gsub('Kg$', 'kg', Units),
@@ -66,6 +66,7 @@ read_formsediment <- function(pathin){
       ExceedsPEL = ifelse(`ValueAdjusted` > PEL & !grepl('U|T', Qualifier), 'Yes', 'No'),
       PELRatio = `ValueAdjusted` / PEL
     ) %>%
+    dplyr::filter(ValueAdjusted != 999999) %>% # several entries in 2023 as 999999, O qualifier meaning samples lost
     tibble::tibble()
 
   return(out)
