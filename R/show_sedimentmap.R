@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' show_sedimentmap(sedimentdata, param = 'Arsenic')
-show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2022), funding_proj = 'TBEP', weight = 1.5){
+show_sedimentmap <- function(sedimentdata, param, yrrng = c(1993, 2023), funding_proj = 'TBEP', weight = 1.5){
 
   # add totals
   sedimentdata <- anlz_sedimentaddtot(sedimentdata, yrrng = yrrng, funding_proj = funding_proj, param = param, pelave = FALSE)

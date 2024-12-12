@@ -3,9 +3,9 @@
 \docType{data}
 \name{sedimentdata}
 \alias{sedimentdata}
-\title{Sediment data for the Tampa Bay current as of 12142023}
+\title{Sediment data for the Tampa Bay current as of 20241212}
 \format{
-A \code{data.frame} with 216627 rows and 24 variables:
+A \code{data.frame} with 226589 rows and 24 variables:
 \describe{
   \item{ProgramId}{int}
   \item{ProgramName}{chr}
@@ -37,7 +37,7 @@ A \code{data.frame} with 216627 rows and 24 variables:
 sedimentdata
 }
 \description{
-Sediment data for the Tampa Bay current as of 12142023
+Sediment data for the Tampa Bay current as of 20241212
 }
 \examples{
 \dontrun{

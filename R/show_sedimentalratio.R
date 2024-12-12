@@ -28,7 +28,7 @@
 #'
 #' @examples
 #' show_sedimentalratio(sedimentdata, param = 'Arsenic')
-show_sedimentalratio <- function(sedimentdata, param, yrrng = c(1993, 2022), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
+show_sedimentalratio <- function(sedimentdata, param, yrrng = c(1993, 2023), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
 
   # check paramater is an available metal
   metals <- sedimentdata %>%

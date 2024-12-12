@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' show_sedimentpelave(sedimentdata)
-show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2022), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', alph = 1, ylim = c(0, 0.4), lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
+show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2023), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', alph = 1, ylim = c(0, 0.4), lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
 
   # get avg pel ratios by station, then get averages
   toplo <- anlz_sedimentpelave(sedimentdata, yrrng = yrrng, bay_segment = bay_segment, funding_proj = funding_proj)

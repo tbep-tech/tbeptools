@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' show_sedimentpelmap(sedimentdata)
-show_sedimentpelmap <- function(sedimentdata, yrrng = c(1993, 2022), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', weight = 1.5){
+show_sedimentpelmap <- function(sedimentdata, yrrng = c(1993, 2023), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', weight = 1.5){
 
   # map prep
   tomap <- anlz_sedimentpel(sedimentdata, yrrng = yrrng, bay_segment = bay_segment, funding_proj = funding_proj) %>%
