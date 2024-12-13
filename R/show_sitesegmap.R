@@ -114,7 +114,7 @@ show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL
 
   p <- ggmap::ggmap(bsmap) +
     geom_sf(data = segcat, aes(fill = outcome), colour = 'black', alpha = 0.5, inherit.aes = F) +
-    ggplot2::scale_fill_manual(values = segcols, drop = F) +
+    ggplot2::scale_fill_manual(values = segcols, drop = T) +
     ggspatial::annotation_scale(unit_category = 'metric', location = 'br') +
     labs(fill = 'Bay segment outcomes')
 
@@ -125,7 +125,6 @@ show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL
       ggnewscale::new_scale_fill() +
       geom_sf(data = tomap, aes(colour = met, fill = met, size = val), colour = 'black', inherit.aes = F, pch = 21) +
       scale_fill_manual(leglab, values = ptcols, drop = F) +
-      scale_colour_manual(leglab, values = ptcols, drop = F) +
       theme_bw(base_family = family, base_size = base_size) +
       theme(
         axis.title = element_blank(),
@@ -140,7 +139,6 @@ show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL
         size = leglabsz
       ) +
       guides(
-        # colour = guide_legend(override.aes = list(colour = ptcols)),
         fill = guide_legend(override.aes = list(colour = ptcols, size = 3))
       )
 
