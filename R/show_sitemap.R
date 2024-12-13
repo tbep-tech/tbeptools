@@ -130,6 +130,7 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
         theme(
           axis.title = element_blank(),
           axis.text = element_text(size = 7),
+          axis.text.x = element_text(size = 7, angle = 45, hjust = 1),
           legend.position = c(0.8, 0.2),
           legend.background = element_blank()
         ) +
@@ -161,6 +162,7 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
         theme(
           axis.title = element_blank(),
           axis.text = element_text(size = 7),
+          axis.text.x = element_text(size = 7, angle = 45, hjust = 1),
           legend.background = element_blank()
         ) +
         labs(subtitle = paste(molabs, yrsel))
