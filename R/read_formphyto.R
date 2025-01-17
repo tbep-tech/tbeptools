@@ -29,7 +29,7 @@ read_formphyto <- function(datin){
 
   # format
   out <- datin %>%
-    dplyr::select(epchc_station = StationNumber, Date = SampleTime, phylum = PHYLUM, class = CLASS, name = NAME, count = COUNT, units = Units) %>%
+    dplyr::select(epchc_station = StationNumber, Date = SampleTime, phylum = Phylum, class = Class, name = NAME, count = COUNT, units = Units) %>%
     dplyr::filter(epchc_station %in% !!stations) %>%
     dplyr::mutate(
       count = as.numeric(count),
