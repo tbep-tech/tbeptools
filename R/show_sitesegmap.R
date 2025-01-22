@@ -8,6 +8,7 @@
 #' @param trgs optional \code{data.frame} for annual bay segment water quality targets, defaults to \code{\link{targets}}
 #' @param thrs logical indicating if attainment category is relative to targets (default) or thresholds, passed to \code{\link{anlz_attainsite}}
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
+#' @param showseg logical indicating of bay segment labels are included
 #' @param base_size numeric indicating text scaling size for plot
 #' @param family optional chr string indicating font family for text labels
 #'
@@ -24,7 +25,7 @@
 #' @examples
 #' show_sitesegmap(epcdata, yrsel = 2023)
 show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL, thrs = FALSE, partialyr = FALSE,
-                            base_size = 12, family = NA){
+                            showseg = TRUE, base_size = 12, family = NA){
 
   # sanity check
   # default targets from data file
@@ -148,6 +149,24 @@ show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL
 
     p <- p +
       labs(caption = paste0('*Incomplete data for ', yrsel, ' estimated by five year average'))
+
+  }
+
+  # add bay segment labels
+  if(showseg){
+
+    transcol <- rgb(1, 1, 1, 0.5)
+
+    # segment labels
+    seglabs <- data.frame(
+      Longitude = c(-82.6, -82.64, -82.58, -82.42),
+      Latitude = c(27.55, 27.81, 28, 27.925),
+      bay_segment = c('LTB', 'MTB', 'OTB', 'HB')
+    ) %>%
+      st_as_sf(coords = c('Longitude', 'Latitude'), crs = prj)
+
+    p <- p +
+      geom_label(data = seglabs, aes(label = bay_segment, geometry = geometry), stat = "sf_coordinates", inherit.aes = F, fill = transcol)
 
   }
 
