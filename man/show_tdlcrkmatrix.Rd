@@ -33,7 +33,7 @@ Plot the tidal creek report card matrix
 The plot shows a matrix with rows for individual creeks and columns for overall creek score.  The columns show an overall creek score and the number of years in the prior ten years that nitrogen values at a creek were assigned to each of the four score categories.  Number of years is mapped to cell transparency.
 }
 \examples{
-dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2023)
+dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2024)
 show_tdlcrkmatrix(dat)
 }
 \concept{show}

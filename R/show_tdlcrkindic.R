@@ -16,12 +16,12 @@
 #' @importFrom plotly layout plot_ly subplot
 #'
 #' @examples
-#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2023)
+#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2024)
 #'
 #' set.seed(123)
 #' id <- sample(unique(cntdat$id), 1)
 #' show_tdlcrkindic(id, cntdat, thrsel = TRUE)
-show_tdlcrkindic <- function(id, cntdat, yr = 2023, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
+show_tdlcrkindic <- function(id, cntdat, yr = 2024, thrsel = FALSE, pal = c('#5C4A42', '#427355', '#004F7E')){
 
   labs <- c('Chla (ug/L)', 'TN (mg/L)', 'Chla:TN', 'DO (mg/L)', 'Florida TSI', 'Nitrate ratio')
   names(labs) <- c('CHLAC', 'TN', 'chla_tn_ratio', 'DO', 'tsi', 'no23_ratio')

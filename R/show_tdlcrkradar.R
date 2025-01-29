@@ -21,7 +21,7 @@
 #' @concept show
 #'
 #' @examples
-#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2023, radar = TRUE)
+#' cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2024, radar = TRUE)
 #'
 #' set.seed(123)
 #' id <- sample(unique(cntdat$id), 1)

@@ -4,7 +4,7 @@
 \alias{anlz_iwrraw}
 \title{Format raw IWR data}
 \usage{
-anlz_iwrraw(iwrraw, tidalcreeks, yr = 2023)
+anlz_iwrraw(iwrraw, tidalcreeks, yr = 2024)
 }
 \arguments{
 \item{iwrraw}{FDEP impaired waters rule data base as \code{\link{data.frame}}}
@@ -23,6 +23,6 @@ Format raw IWR data
 The function subsets the raw IWR data for ten years starting at the value in \code{yr} and subsets by the creek population in \code{\link{tidalcreeks}}. Select water quality parameters in \code{masterCode} are filtered and some of the names are combined for continuity.
 }
 \examples{
-anlz_iwrraw(iwrraw, tidalcreeks, yr = 2023)
+anlz_iwrraw(iwrraw, tidalcreeks, yr = 2024)
 }
 \concept{analyze}
