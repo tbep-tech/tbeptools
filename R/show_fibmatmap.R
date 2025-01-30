@@ -10,6 +10,7 @@
 #' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.
 #' @param temporal_window numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)
 #' @param wet_threshold  numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period
+#' @param addsta logical to add station labels to the map, default \code{FALSE}
 #' @param listout logical to return a list of simple feature objects for the data used in the \code{leaflet} map, default \code{FALSE}
 #' @param warn logical to print warnings about stations with insufficient data, default \code{TRUE}
 #'
@@ -40,7 +41,7 @@
 #' show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Manatee River')
 show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
                            lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
-                           temporal_window = NULL, wet_threshold = NULL, listout = FALSE,
+                           temporal_window = NULL, wet_threshold = NULL, addsta = FALSE, listout = FALSE,
                            warn = TRUE){
 
   # get categories
@@ -214,6 +215,20 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
         color = 'black',
         weight = 1,
         label = ~lapply(as.list(lab), util_html)
+      )
+
+  }
+
+  # add station labels
+  if(addsta){
+
+    out <- out %>%
+      leaflet::addLabelOnlyMarkers(
+        data = tomapsta,
+        lng = ~Longitude,
+        lat = ~Latitude,
+        label = ~grp,
+        labelOptions = leaflet::labelOptions(noHide = TRUE, textOnly = TRUE)
       )
 
   }

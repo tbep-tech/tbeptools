@@ -1,5 +1,5 @@
 test_that("show_fibmatmap returns a leaflet map for non-EPCHC, non-manco", {
-  map <- expect_warning(show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB'), indic = 'entero'))
+  map <- expect_warning(show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB'), indic = 'entero', addsta = T))
   expect_s3_class(map, "leaflet")
 })
 

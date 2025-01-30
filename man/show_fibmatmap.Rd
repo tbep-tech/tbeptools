@@ -15,6 +15,7 @@ show_fibmatmap(
   precipdata = NULL,
   temporal_window = NULL,
   wet_threshold = NULL,
+  addsta = FALSE,
   listout = FALSE,
   warn = TRUE
 )
@@ -39,6 +40,8 @@ show_fibmatmap(
 \item{temporal_window}{numeric; required if \code{subset_wetdry} is not \code{"all"}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
 
 \item{wet_threshold}{numeric; required if \code{subset_wetdry} is not \code{"all"}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
+
+\item{addsta}{logical to add station labels to the map, default \code{FALSE}}
 
 \item{listout}{logical to return a list of simple feature objects for the data used in the \code{leaflet} map, default \code{FALSE}}
 

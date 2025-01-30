@@ -4,7 +4,7 @@
 \alias{show_fibmap}
 \title{Map Fecal Indicator Bacteria (FIB) results by month, year, and location}
 \usage{
-show_fibmap(fibdata, yrsel, mosel, areasel = NULL)
+show_fibmap(fibdata, yrsel, mosel, areasel = NULL, addsta = FALSE)
 }
 \arguments{
 \item{fibdata}{input FIB \code{data.frame} as returned by \code{\link{read_importfib}} or \code{\link{read_importwqp}}, see details}
@@ -14,6 +14,8 @@ show_fibmap(fibdata, yrsel, mosel, areasel = NULL)
 \item{mosel}{optional numeric value to filter output by month in \code{fibdata}}
 
 \item{areasel}{optional character string to filter output by stations in the \code{area} column of \code{fibdata}, see details}
+
+\item{addsta}{logical to add station labels to the map, default \code{FALSE}}
 }
 \value{
 A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category

@@ -1,6 +1,7 @@
 #' Map Fecal Indicator Bacteria (FIB) results by month, year, and location
 #'
 #' @inheritParams anlz_fibmap
+#' @param addsta logical to add station labels to the map, default \code{FALSE}
 #'
 #' @return A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
 #'
@@ -20,7 +21,7 @@
 #'
 #' # Manatee County data
 #' show_fibmap(mancofibdata, yrsel = 2020, mosel = 7, areasel = 'Little Manatee River')
-show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
+show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL, addsta = FALSE){
 
   # get categories
   fibmap <- anlz_fibmap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel, assf = TRUE)
@@ -60,6 +61,20 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL){
       ) %>%
     leaflet::addControl(html = enteroleg, position = 'topright') %>%
     leaflet::addControl(html = ecolileg, position = 'topright')
+
+  # add station labels
+  if(addsta){
+
+    out <- out %>%
+      leaflet::addLabelOnlyMarkers(
+        data = fibmap,
+        lng = ~Longitude,
+        lat = ~Latitude,
+        label = ~station,
+        labelOptions = leaflet::labelOptions(noHide = TRUE, textOnly = TRUE)
+      )
+
+  }
 
   return(out)
 
