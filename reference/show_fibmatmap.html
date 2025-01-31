@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0.9009</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0.9010</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,6 +58,7 @@
 <span>  precipdata <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  temporal_window <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  wet_threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  addsta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  listout <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  warn <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -105,6 +106,10 @@
 
 <dt id="arg-wet-threshold">wet_threshold<a class="anchor" aria-label="anchor" href="#arg-wet-threshold"></a></dt>
 <dd><p>numeric; required if <code>subset_wetdry</code> is not <code>"all"</code>. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period</p></dd>
+
+
+<dt id="arg-addsta">addsta<a class="anchor" aria-label="anchor" href="#arg-addsta"></a></dt>
+<dd><p>logical to add station labels to the map, default <code>FALSE</code></p></dd>
 
 
 <dt id="arg-listout">listout<a class="anchor" aria-label="anchor" href="#arg-listout"></a></dt>
