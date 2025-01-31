@@ -12,7 +12,8 @@ show_enteromap(
   wetdry = FALSE,
   precipdata = NULL,
   temporal_window = NULL,
-  wet_threshold = NULL
+  wet_threshold = NULL,
+  addsta = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ show_enteromap(
 \item{temporal_window}{numeric; required if \code{wetdry} is \code{TRUE}. number of days precipitation should be summed over (1 = day of sample only; 2 = day of sample + day before; etc.)}
 
 \item{wet_threshold}{numeric; required if \code{wetdry} is \code{TRUE}. inches accumulated through the defined temporal window, above which a sample should be defined as being from a 'wet' time period}
+
+\item{addsta}{logical to add station labels to the map, default \code{FALSE}}
 }
 \value{
 A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category

@@ -1,6 +1,7 @@
 #' Map Enterococcus results by month, year, and location
 #'
 #' @inheritParams anlz_enteromap
+#' @param addsta logical to add station labels to the map, default \code{FALSE}
 #'
 #' @return A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
 #'
@@ -22,7 +23,7 @@
 #' show_enteromap(enterodata, yrsel = 2020, mosel = 9, areasel = "Old Tampa Bay")
 show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE,
                            precipdata = NULL, temporal_window = NULL,
-                           wet_threshold = NULL){
+                           wet_threshold = NULL, addsta = FALSE){
 
   # get categories
   fibmap <- anlz_enteromap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel,
@@ -78,6 +79,20 @@ show_enteromap <- function(fibdata, yrsel, mosel, areasel = NULL, wetdry = FALSE
   } else {
     out <- out %>%
       leaflet::addControl(html = enteroallleg, position = 'topright')
+  }
+
+  # add station labels
+  if(addsta){
+
+    out <- out %>%
+      leaflet::addLabelOnlyMarkers(
+        data = fibmap,
+        lng = ~Longitude,
+        lat = ~Latitude,
+        label = ~station,
+        labelOptions = leaflet::labelOptions(noHide = TRUE, textOnly = TRUE)
+      )
+
   }
 
   return(out)
