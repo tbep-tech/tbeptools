@@ -15,7 +15,8 @@ show_boxplot(
   family = NA,
   labelexp = TRUE,
   txtlab = TRUE,
-  partialyr = FALSE
+  partialyr = FALSE,
+  outliers = TRUE
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ show_boxplot(
 \item{txtlab}{logical indicating if a text label for the target value is shown in the plot}
 
 \item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
+
+\item{outliers}{logical indicating if outliers are shown in the plot}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object
