@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' show_seagrasscoverage(seagrass)
-show_seagrasscoverage <- function(seagrass, maxyr = 2022, family = NA, lastlab = 'acres', axsbrk = c(0.08, 0.1)){
+show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = NA, lastlab = 'acres', axsbrk = c(0.08, 0.1)){
 
   # check maxyr input
   chk <- !maxyr %in% seagrass$Year

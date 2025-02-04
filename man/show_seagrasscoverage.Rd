@@ -6,7 +6,7 @@
 \usage{
 show_seagrasscoverage(
   seagrass,
-  maxyr = 2022,
+  maxyr = 2024,
   family = NA,
   lastlab = "acres",
   axsbrk = c(0.08, 0.1)

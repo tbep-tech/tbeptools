@@ -27,7 +27,7 @@
 #'         10731.45, 10892.52, 10052.8, 10553.39, 10935.01, 11452.2,
 #'         11997.72, 13312.94, 14019.27, 16306.69, 16857.25, 16451.1,
 #'         13880, 12196, 12730)
-#'  ), class = "data.frame", row.names = c(NA, -19L))
+#'  ), class = "data.frame", row.names = c(NA, -20L))
 #'
 #' save(seagrass, file = 'data/seagrass.RData', compress = 'xz')
 #'
