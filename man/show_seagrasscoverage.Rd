@@ -8,7 +8,7 @@ show_seagrasscoverage(
   seagrass,
   maxyr = 2024,
   family = NA,
-  lastlab = "acres",
+  lastlab = T,
   axsbrk = c(0.08, 0.1)
 )
 }
@@ -19,7 +19,7 @@ show_seagrasscoverage(
 
 \item{family}{optional chr string indicating font family for text labels}
 
-\item{lastlab}{chr string of text to append to label in last bar of the barplot}
+\item{lastlab}{logical indicating if text label on \code{maxyr} should be included}
 
 \item{axsbrk}{numeric vector of length two indicating where the x-axis break occurs}
 }

@@ -3,7 +3,7 @@
 #' @param seagrass input \code{data.frame} included with the package as \code{\link{seagrass}}
 #' @param maxyr numeric for maximum year to plot
 #' @param family optional chr string indicating font family for text labels
-#' @param lastlab chr string of text to append to label in last bar of the barplot
+#' @param lastlab logical indicating if text label on \code{maxyr} should be included
 #' @param axsbrk numeric vector of length two indicating where the x-axis break occurs
 #'
 #' @details This function creates the flagship seagrass coverage graphic to report on coverage changes over time.  All data were pre-processed and included in the package as the \code{\link{seagrass}} dataset.  Original data are from the Southwest Florida Water Management District and available online at \link[https://data-swfwmd.opendata.arcgis.com/]{https://data-swfwmd.opendata.arcgis.com/}.  This function and the data used to create the plot are distinct from those used for the transect monitoring program.
@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' show_seagrasscoverage(seagrass)
-show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = NA, lastlab = 'acres', axsbrk = c(0.08, 0.1)){
+show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = NA, lastlab = T, axsbrk = c(0.08, 0.1)){
 
   # check maxyr input
   chk <- !maxyr %in% seagrass$Year
@@ -36,21 +36,6 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = NA, lastlab =
     ) %>%
     dplyr::filter(Year >= 1950 & Year <= maxyr)
 
-  # label for last bar
-  lastlab <- seagrass %>%
-    filter(Year == maxyr) %>%
-    pull(Acres) %>%
-    round(0) %>%
-    format(big.mark = ',') %>%
-    paste(., lastlab)
-
-  # y loc for last bar label
-  lasty <- seagrass %>%
-    filter(Year == maxyr) %>%
-    pull(Acres) %>%
-    `/`(1000) %>%
-    `-`(1)
-
   ##
   # base ggplot
 
@@ -67,7 +52,6 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = NA, lastlab =
     ggplot2::geom_segment(x = 4, xend = 42, y = 38, yend = 38, col = 'red', size = 2) +
     ggplot2::geom_segment(x = 42, xend = nrow(toplo) + 1, y = 40, yend = 40, col = 'red', size = 2) +
     ggplot2::annotate("text", label = "Seagrass Coverage Goal", x = 4, y = 40.5, color = 'red', size = 5, hjust = 0, family = family) +
-    ggplot2::annotate('text', x = nrow(toplo), y = lasty, label = lastlab, angle = 90, hjust = 1, vjust = 0.3, size = 3, family = family) +
     ggplot2::scale_x_continuous(breaks = brks, labels = lbs, expand = c(0.04, 0.04)) +
     ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, 1.1 * max(toplo$Acres, na.rm = T))) +
     ggplot2::theme_grey(base_family = family) +
@@ -83,6 +67,29 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = NA, lastlab =
     labs(
       y = 'Seagrass Coverage (x1,000 acres)'
     )
+
+  # add acreage label to last bar
+  if(lastlab){
+
+    # label for last bar
+    lastlab <- seagrass %>%
+      filter(Year == maxyr) %>%
+      pull(Acres) %>%
+      round(0) %>%
+      format(big.mark = ',') %>%
+      paste(., 'acres')
+
+    # y loc for last bar label
+    lasty <- seagrass %>%
+      filter(Year == maxyr) %>%
+      pull(Acres) %>%
+      `/`(1000) %>%
+      `-`(1)
+
+    p <- p +
+      ggplot2::annotate('text', x = nrow(toplo), y = lasty, label = lastlab, angle = 90, hjust = 1, vjust = 0.3, size = 3, family = family)
+
+  }
 
   ##
   # top, bottom axis line breaks
