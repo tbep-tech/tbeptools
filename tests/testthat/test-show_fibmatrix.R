@@ -13,7 +13,7 @@ test_that("Checking show_fibmatrix plotly class", {
 
 # Test wet/dry subsetting
 test_that("show_fibmatrix errors if wetdry info is not provided", {
-  expect_error(show_fibmatrix(enterodata, indic = 'entero',
+  expect_error(show_fibmatrix(enterodata,
                               lagyr = 1, subset_wetdry = "dry", temporal_window = 2),
                regxp = 'temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples')
 })

@@ -8,8 +8,6 @@ show_fibmatmap(
   fibdata,
   yrsel,
   areasel,
-  indic,
-  threshold = NULL,
   lagyr = 3,
   subset_wetdry = c("all", "wet", "dry"),
   precipdata = NULL,
@@ -26,10 +24,6 @@ show_fibmatmap(
 \item{yrsel}{numeric value indicating the year to map}
 
 \item{areasel}{vector of bay segment or area names to include, see details}
-
-\item{indic}{character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.}
-
-\item{threshold}{optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.}
 
 \item{lagyr}{numeric for year lag to calculate categories, see details}
 
@@ -64,14 +58,14 @@ Bay segment matrix categories can be shown if input data are from \code{\link{re
 }
 \examples{
 # non-EPCHC, non Manatee County data
-show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero', areasel = 'OTB')
+show_fibmatmap(enterodata, yrsel = 2020, areasel = 'OTB')
 
 # EPCHC data
-show_fibmatmap(fibdata, yrsel = 2016, indic = 'fcolif',
+show_fibmatmap(fibdata, yrsel = 2016,
    areasel = c("Hillsborough River", "Alafia River"))
 
 # Manatee County data
-show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Manatee River')
+show_fibmatmap(mancofibdata, yrsel = 2020,  areasel = 'Manatee River')
 }
 \seealso{
 \code{\link{anlz_fibmatrix}} for details on the categories

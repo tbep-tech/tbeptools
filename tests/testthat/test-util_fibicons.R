@@ -10,9 +10,9 @@ test_that("util_fibicons returns correct Enterococcus icon list for entero", {
 
 })
 
-test_that("util_fibicons returns correct fecal coliform icon list for fcolif", {
+test_that("util_fibicons returns correct Enterococcus and E. coli icon list for entero&ecoli", {
 
-  result <- util_fibicons('fcolif')
+  result <- util_fibicons('entero&ecoli')
 
   expect_true(is.list(result))
   expect_equal(length(result), 8)  # Check if it returns 8 icons

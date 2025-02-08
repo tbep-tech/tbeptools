@@ -7,7 +7,7 @@
 util_fibicons(indic)
 }
 \arguments{
-\item{indic}{character indicating \code{"entero"}, \code{"fcolif"}, or \code{"fibmat"} for \emph{Enterococcus}, Fecal Coliform, or FIB matrix maps, respectively}
+\item{indic}{character indicating \code{"entero"}, \code{"entero&ecoli"}, or \code{"fibmat"} for \emph{Enterococcus}, Fecal \emph{Enterococcus} and \emph{E. coli}, or FIB matrix maps, respectively}
 }
 \value{
 A leaflet icon set as returned by \code{\link[leaflet]{iconList}}.
@@ -20,6 +20,6 @@ Used internally with \code{\link{show_enteromap}} for wet/dry icons for \emph{En
 }
 \examples{
 util_fibicons(indic = 'entero')
-util_fibicons(indic = 'fcolif')
+util_fibicons(indic = 'entero&ecoli')
 util_fibicons(indic = 'fibmat')
 }

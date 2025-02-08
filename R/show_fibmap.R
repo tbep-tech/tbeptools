@@ -27,7 +27,7 @@ show_fibmap <- function(fibdata, yrsel, mosel, areasel = NULL, addsta = FALSE){
   fibmap <- anlz_fibmap(fibdata, yrsel = yrsel, mosel = mosel, areasel = areasel, assf = TRUE)
 
   # create custom icon list for fib categories
-  icons <- util_fibicons(indic = 'fcolif')
+  icons <- util_fibicons(indic = 'entero&ecoli')
 
   # legend as HTML string
   levs <- util_fiblevs()

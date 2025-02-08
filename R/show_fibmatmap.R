@@ -3,8 +3,6 @@
 #' @param fibdata input data frame as returned by \code{\link{read_importfib}},  \code{\link{read_importentero}}, or \code{\link{read_importwqp}}, see details
 #' @param yrsel numeric value indicating the year to map
 #' @param areasel vector of bay segment or area names to include, see details
-#' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.
-#' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.
 #' @param lagyr numeric for year lag to calculate categories, see details
 #' @param subset_wetdry character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.
 #' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.
@@ -31,15 +29,15 @@
 #'
 #' @examples
 #' # non-EPCHC, non Manatee County data
-#' show_fibmatmap(enterodata, yrsel = 2020, indic = 'entero', areasel = 'OTB')
+#' show_fibmatmap(enterodata, yrsel = 2020, areasel = 'OTB')
 #'
 #' # EPCHC data
-#' show_fibmatmap(fibdata, yrsel = 2016, indic = 'fcolif',
+#' show_fibmatmap(fibdata, yrsel = 2016,
 #'    areasel = c("Hillsborough River", "Alafia River"))
 #'
 #' # Manatee County data
-#' show_fibmatmap(mancofibdata, yrsel = 2020, indic = 'fcolif', areasel = 'Manatee River')
-show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
+#' show_fibmatmap(mancofibdata, yrsel = 2020,  areasel = 'Manatee River')
+show_fibmatmap <- function(fibdata, yrsel, areasel,
                            lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
                            temporal_window = NULL, wet_threshold = NULL, addsta = FALSE, listout = FALSE,
                            warn = TRUE){
@@ -58,7 +56,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
 
     # includes bay segment check
     tomapseg <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = NULL, bay_segment = areasel,
-                             indic = indic, threshold = threshold, lagyr = lagyr,
+                             lagyr = lagyr,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold ,
                              warn = warn) %>%
@@ -77,7 +75,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
       dplyr::distinct()
 
     tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas$grp, bay_segment = NULL,
-                             indic = indic, threshold = threshold, lagyr = lagyr,
+                             lagyr = lagyr,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold,
                              warn = warn)
@@ -100,11 +98,14 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     stas <- fibdata %>%
       dplyr::filter(area %in% !!areasel) %>%
       dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
+      dplyr::filter(
+        (class %in% c('3M', '2') & !is.na(entero)) | (class %in% c('3F', '1') & !is.na(ecoli))
+      ) %>%
       dplyr::select(grp = epchc_station, area) %>%
       dplyr::distinct()
 
     tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas$grp, bay_segment = NULL,
-                             indic = indic, threshold = threshold, lagyr = lagyr,
+                             lagyr = lagyr,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold,
                              warn = warn)
@@ -129,11 +130,14 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     stas <- fibdata %>%
       dplyr::filter(area %in% !!areasel) %>%
       dplyr::filter(yr <= !!yrsel & yr >= (!!yrsel - !!lagyr)) %>%
+      dplyr::filter(
+        (class == 'Fresh' & var == 'ecoli') | (class == 'Estuary' & var == 'entero')
+      ) %>%
       dplyr::select(grp = manco_station, area) %>%
       dplyr::distinct()
 
     tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas$grp, bay_segment = NULL,
-                               indic = indic, threshold = threshold, lagyr = lagyr,
+                               lagyr = lagyr,
                                subset_wetdry = subset_wetdry, precipdata = precipdata,
                                temporal_window = temporal_window, wet_threshold = wet_threshold,
                                warn = warn)
@@ -163,7 +167,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     sf::st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
     dplyr::mutate(
       cat = factor(cat, levels = levs$fibmatlev),
-      lab = paste0('<html>Station Number: ', grp, '<br>Area: ', area, '<br>Category: ', cat)
+      lab = paste0('<html>Station Number: ', grp, '<br>Class: ', class, '<br>Area: ', area, '<br>Category: ', cat)
     )
 
   # return data instead of leaflet
@@ -191,7 +195,6 @@ show_fibmatmap <- function(fibdata, yrsel, areasel, indic, threshold = NULL,
     dplyr::pull(val) %>%
     paste(collapse = '<br/>') %>%
     paste0('<b>Report card<br/>categories</b><br/>', .)
-
 
   # create map
   out <- util_map(tomapsta) %>%

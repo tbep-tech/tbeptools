@@ -6,8 +6,6 @@
 #' @param yrrng numeric vector indicating min, max years to include, defaults to range of years in data, see details
 #' @param stas optional vector of stations to include, see details
 #' @param bay_segment optional vector of bay segment names to include, supercedes \code{stas} if provided, see details
-#' @param indic character for choice of fecal indicator. Allowable options are \code{fcolif} for fecal coliform, or \code{entero} for Enterococcus. A numeric column in the data frame must have this name.
-#' @param threshold optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for \code{fcolif} and 130 for \code{entero}.
 #' @param lagyr numeric for year lag to calculate categories, see details
 #' @param subset_wetdry character, subset data frame to only wet or dry samples as defined by \code{wet_threshold} and \code{temporal_window}? Defaults to \code{"all"}, which will not subset. If \code{"wet"} or \code{"dry"} is specified, \code{\link{anlz_fibwetdry}} is called using the further specified parameters, and the data frame is subsetted accordingly.
 #' @param precipdata input data frame as returned by \code{\link{read_importrain}}. columns should be: station, date (yyyy-mm-dd), rain (in inches). The object \code{\link{catchprecip}} has this data from 1995-2023 for select Enterococcus stations. If \code{NULL}, defaults to \code{\link{catchprecip}}.
@@ -17,13 +15,13 @@
 #'
 #' @concept show
 #'
-#' @return A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station including columns for the estimated geometric mean of fecal coliform or Enterococcus concentrations (\code{gmean}), the proportion of samples exceeding 400 CFU / 100 mL (fecal coliform) or 130 CFU / 100 mL (Enterococcus) (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).  Results can be summarized by bay segment if \code{bay_segment} is not \code{NULL} and the input data is from \code{\link{read_importentero}}.
+#' @return A \code{\link[dplyr]{tibble}} object with FIB summaries by year and station including columns for the estimated geometric mean of Enterococcus (marine) or E. coli (fresh) concentrations (\code{gmean}), the proportion of samples exceeding 130 CFU / 100 mL (Enterococcus) or 410 CFU / 100 mL (\code{exced}), the count of samples (\code{cnt}), and a category indicating a letter outcome based on the proportion of exceedences (\code{cat}).  Results can be summarized by bay segment if \code{bay_segment} is not \code{NULL} and the input data is from \code{\link{read_importentero}}.
 #'
-#' @details This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station.  The output can also be summarized by bay segment if \code{bay_segment} is not \code{NULL} and the input data is from \code{\link{read_importentero}}. In the latter case, the \code{stas} argument is ignored and all stations within each subsegment watershed are used to evaluate the FIB categories. Each station (or bay segment) and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding some threshold in a given year.  For fecal coliform, the default threshold is 400 CFU / 100 mL in a given year (using Fecal Coliform, \code{fcolif} in \code{fibdata}).  For Enterococcus, the default threshold is 130 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
+#' @details This function is used to create output for plotting a matrix stoplight graphic for FIB categories by station.  The output can also be summarized by bay segment if \code{bay_segment} is not \code{NULL} and the input data is from \code{\link{read_importentero}}. In the latter case, the \code{stas} argument is ignored and all stations within each subsegment watershed are used to evaluate the FIB categories. Each station (or bay segment) and year combination is categorized based on the likelihood of fecal indicator bacteria concentrations exceeding some threshold in a given year.  For Enterococcus (marine), the default threshold is 130 CFU / 100 mL in a given year.  For E. coli (fresh), the default threshold is 410 CFU / 100 mL.  The proportions are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are <10\%, 10-30\%, 30-50\%, 50-75\%, and >75\% (right-closed).  By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities using the monthly samples (\code{lagyr = 3}). See \code{\link{show_fibmatrix}} for additional details.
 #'
 #' \code{yrrng} can be specified several ways.  If \code{yrrng = NULL}, the year range of the data for the selected changes is chosen.  User-defined values for the minimum and maximum years can also be used, or only a minimum or maximum can be specified, e.g., \code{yrrng = c(2000, 2010)} or \code{yrrng = c(2000, NA)}.  In the latter case, the maximum year will be defined by the data.
 #'
-#' The default stations for fecal coliform data are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if \code{bay_segment} is \code{NULL} and the input data are from \code{\link{read_importfib}}.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the \code{stas} argument.
+#' The default stations if the input is \code{fibdata} are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if \code{bay_segment} is \code{NULL} and the input data are from \code{\link{read_importfib}}.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the \code{stas} argument.
 #'
 #' Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX) FIB data can also be used.  The function has not been tested for other organizations.
 #'
@@ -34,32 +32,25 @@
 #' @seealso \code{\link{show_fibmatrix}}
 #'
 #' @examples
-#' anlz_fibmatrix(fibdata, indic = 'fcolif')
-#'
-#' # use different indicator
-#' anlz_fibmatrix(fibdata, indic = 'entero')
+#' anlz_fibmatrix(fibdata)
 #'
 #' # use different dataset
-#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1)
-#'
-#' # same entero data; lower threshold - changes 'cat' scores
-#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, threshold = 30)
+#' anlz_fibmatrix(enterodata, lagyr = 1)
 #'
 #' # subset to only wet samples
-#' anlz_fibmatrix(enterodata, indic = 'entero', lagyr = 1, subset_wetdry = "wet",
+#' anlz_fibmatrix(enterodata, lagyr = 1, subset_wetdry = "wet",
 #'                temporal_window = 2, wet_threshold = 0.5)
 #'
 #' # Manatee County data
-#' anlz_fibmatrix(mancofibdata, indic = 'fcolif', lagyr = 1)
-anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NULL, indic,
-                           threshold = NULL, lagyr = 3, subset_wetdry = c("all", "wet", "dry"),
+#' anlz_fibmatrix(mancofibdata, lagyr = 1)
+anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NULL,
+                           lagyr = 3, subset_wetdry = c("all", "wet", "dry"),
                            precipdata = NULL, temporal_window = NULL, wet_threshold = NULL,
                            warn = TRUE){
 
   geomean <- function(x){prod(x, na.rm = T)^(1/length(na.omit(x)))}
 
   subset_wetdry <- match.arg(subset_wetdry)
-  indic <- match.arg(indic, c('fcolif', 'entero'))
 
   # check if epchc data
   isepchc <- exists("epchc_station", fibdata)
@@ -70,7 +61,21 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
   # checks for epc data
   if(isepchc){
 
-    fibdata$station <- fibdata$epchc_station
+    fibdata <- fibdata %>%
+      dplyr::rename(
+        station = epchc_station
+      ) %>%
+      dplyr::mutate(
+        indic = dplyr::case_when(
+          !is.na(entero) & class %in% c('3M', '2') ~ entero,
+          !is.na(ecoli) & class %in% c('3F', '1') ~ ecoli
+        ),
+        class = dplyr::case_when(
+          class %in% c('3M', '2') ~ 'marine',
+          class %in% c('3F', '1') ~ 'fresh'
+        )
+      ) %>%
+      dplyr::filter(!is.na(indic))
 
     # assign default stations from TBEP report #05-13
     if(is.null(stas))
@@ -103,19 +108,23 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
 
     fibdata <- fibdata %>%
       dplyr::filter(!is.na(val)) %>%
-      dplyr::filter(var %in% indic) %>%
+      dplyr::filter(
+        (class == 'Fresh' & var %in% 'ecoli') | (class == 'Estuary' & var == 'entero')
+      ) %>%
+      dplyr::mutate(
+        class = dplyr::case_when(
+          class == 'Fresh' ~ 'fresh',
+          class == 'Estuary' ~ 'marine'
+        )
+      ) %>%
       dplyr::rename(station = manco_station) %>%
-      dplyr::select(-qual, -uni, -Sample_Depth_m, -class, -var)
-    names(fibdata)[names(fibdata) == 'val'] <- indic
+      dplyr::select(-qual, -uni, -Sample_Depth_m, -var) %>%
+      dplyr::rename(indic = val)
 
   }
 
   # checks for non-epc data
   if(!isepchc & !ismanco){
-
-    # check if user tries indic fcolif for enterodata
-    if(indic == 'fcolif')
-      stop('fcolif not a valid indicator for these data')
 
     # check bay segments
     if(!is.null(bay_segment)){
@@ -126,6 +135,10 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
         stop('Invalid bay_segment(s): ', paste(bay_segment[chk], collapse = ', '))
       }
     }
+
+    fibdata <- fibdata %>%
+      dplyr::rename(indic = entero) %>%
+      dplyr::mutate(class = 'marine')
 
   }
 
@@ -175,9 +188,6 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
   if(any(!chk))
     stop('Station(s) not found in fibdata: ', paste(stas[!chk], collapse = ', '))
 
-  # make a generic column for the indicator
-  fibdata$indic <- fibdata[[which(names(fibdata) == indic)]]
-
   # get year range from data if not provided
   if(any(is.na(yrrng)) | is.null(yrrng)){
     valyrs <- fibdata %>%
@@ -196,11 +206,6 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
       yrrng[2] <- valyrs[2]
 
   }
-
-  # if threshold wasn't assigned, assign one based on the indicator of choice
-  thrsh <- threshold
-  if(is.null(thrsh))
-    thrsh <- switch(indic, 'fcolif' = 400, 'entero' = 130)
 
   # valid stations with sufficient data for lagyr
   stasval <- fibdata %>%
@@ -247,6 +252,12 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     levs <- segs
   }
 
+  # thresholds
+  thrsh <- tibble::tibble(
+    class = c('marine', 'fresh'),
+    thrsh = c(130, 410)
+  )
+
   # get geomean, proportion of sites/bay segments > threshold, and prob of exceedence
   # handles lagged calculations
   dat <- fibdata %>%
@@ -254,6 +265,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     dplyr::filter(yr >= (yrrng[1] - (lagyr - 1)) & yr <= yrrng[2]) %>%
     dplyr::filter(!is.na(indic) | indic < 0) %>%
     dplyr::rename(grp = !!grp) %>%
+    dplyr::left_join(thrsh, by = 'class') %>%
     tidyr::complete(
       yr = tidyr::full_seq(yr, 1),
       tidyr::nesting(grp)
@@ -264,7 +276,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
       tot = dplyr::n(),
       Latitude = mean(Latitude, na.rm = TRUE),
       Longitude = mean(Longitude, na.rm = TRUE),
-      .by = c('grp', 'yr')
+      .by = c('grp', 'yr', 'class')
     ) %>%
     dplyr::arrange(grp, yr) %>%
     dplyr::filter(
@@ -293,12 +305,13 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
   dat$MWQA[dat$exceed_75_prob < 0.10] <- 'E'
 
   out <- dat %>%
-    dplyr::select(yr, grp, gmean, Latitude, Longitude, cat = MWQA) %>%
+    dplyr::select(yr, grp, class, gmean, Latitude, Longitude, cat = MWQA) %>%
     dplyr::mutate(
       grp = factor(grp, levels = levs)
     ) %>%
     dplyr::filter(yr >= yrrng[1] & yr <= yrrng[2]) %>%
-    tidyr::complete(yr = yrrng[1]:yrrng[2], grp)
+    tidyr::complete(yr = yrrng[1]:yrrng[2], grp) %>%
+    dplyr::filter(!is.na(gmean))
 
   return(out)
 

@@ -1,6 +1,6 @@
 #' Return leaflet icon set for FIB maps
 #'
-#' @param indic character indicating \code{"entero"}, \code{"fcolif"}, or \code{"fibmat"} for \emph{Enterococcus}, Fecal Coliform, or FIB matrix maps, respectively
+#' @param indic character indicating \code{"entero"}, \code{"entero&ecoli"}, or \code{"fibmat"} for \emph{Enterococcus}, Fecal \emph{Enterococcus} and \emph{E. coli}, or FIB matrix maps, respectively
 #'
 #' @return A leaflet icon set as returned by \code{\link[leaflet]{iconList}}.
 #' @export
@@ -9,11 +9,11 @@
 #'
 #' @examples
 #' util_fibicons(indic = 'entero')
-#' util_fibicons(indic = 'fcolif')
+#' util_fibicons(indic = 'entero&ecoli')
 #' util_fibicons(indic = 'fibmat')
 util_fibicons <- function(indic){
 
-  indic <- match.arg(indic, c('entero', 'fcolif', 'fibmat'))
+  indic <- match.arg(indic, c('entero', 'entero&ecoli', 'fibmat'))
 
   if(indic == 'entero')
     out <- leaflet::iconList(
@@ -36,7 +36,7 @@ util_fibicons <- function(indic){
 
     )
 
-  if(indic == 'fcolif')
+  if(indic == 'entero&ecoli')
     out <- leaflet::iconList(
       ecoli_green = leaflet::makeIcon(iconUrl = system.file('ecoli_green.png', package = 'tbeptools'),
                                        iconWidth = 18, iconHeight = 18),
