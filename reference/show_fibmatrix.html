@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0.9014</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0.9015</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,6 @@
 <span>  yrrng <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  stas <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  bay_segment <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  indic <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  threshold <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  lagyr <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>  subset_wetdry <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"all"</span>, <span class="st">"wet"</span>, <span class="st">"dry"</span><span class="op">)</span>,</span>
 <span>  precipdata <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -91,14 +89,6 @@
 
 <dt id="arg-bay-segment">bay_segment<a class="anchor" aria-label="anchor" href="#arg-bay-segment"></a></dt>
 <dd><p>optional vector of bay segment names to include, supercedes <code>stas</code> if provided, see details</p></dd>
-
-
-<dt id="arg-indic">indic<a class="anchor" aria-label="anchor" href="#arg-indic"></a></dt>
-<dd><p>character for choice of fecal indicator. Allowable options are <code>fcolif</code> for fecal coliform, or <code>entero</code> for Enterococcus. A numeric column in the data frame must have this name.</p></dd>
-
-
-<dt id="arg-threshold">threshold<a class="anchor" aria-label="anchor" href="#arg-threshold"></a></dt>
-<dd><p>optional numeric for threshold against which to calculate exceedances for the indicator bacteria of choice. If not provided, defaults to 400 for <code>fcolif</code> and 130 for <code>entero</code>.</p></dd>
 
 
 <dt id="arg-lagyr">lagyr<a class="anchor" aria-label="anchor" href="#arg-lagyr"></a></dt>
@@ -171,8 +161,8 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 400 CFU / 100 mL for Fecal Coliform or 130 CFU / 100 mL for Enterococcus.  Bay segments are used instead of stations if <code>bay_segment</code> is not <code>NULL</code> and the input data are from <code><a href="read_importentero.html">read_importentero</a></code>.  The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are &lt;10%, 10-30%, 30-50%, 50-75%, and &gt;75% (right-closed). By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (<code>lagyr = 3</code>).  Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at <a href="http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST%20Report/Fecal%20BMAP%20DST%20Final%20Report%20--%20June%202008.pdf" class="external-link">http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST%20Report/Fecal%20BMAP%20DST%20Final%20Report%20--%20June%202008.pdf</a> and Morrison et al. 2009 in the <a href="https://drive.google.com/file/d/1vaoAKkwSLlIS2RzeBeCTjQST1dUmo0rr/view" class="external-link">BASIS 5 proceedings</a>.</p>
-<p>The default stations for fecal coliform data are those used in TBEP report #05-13 (<a href="https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view" class="external-link">https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view</a>) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if <code>bay_segment</code> is <code>NULL</code> and the input data are from <code><a href="read_importfib.html">read_importfib</a></code>.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the <code>stas</code> argument.</p>
+    <p>The matrix color codes years and stations based on the likelihood of fecal indicator bacteria concentrations exceeding 410 CFU / 100 mL for E. coli (fresh) or 130 CFU / 100 mL for Enterococcus (marine).  Bay segments are used instead of stations if <code>bay_segment</code> is not <code>NULL</code> and the input data are from <code><a href="read_importentero.html">read_importentero</a></code>.  The likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality Assessment or MWQA categories) with corresponding colors, where the breakpoints for each category are &lt;10%, 10-30%, 30-50%, 50-75%, and &gt;75% (right-closed). By default, the results for each year are based on a right-centered window that uses the previous two years and the current year to calculate probabilities from the monthly samples (<code>lagyr = 3</code>).  Methods and rationale for this categorization scheme are provided by the Florida Department of Environmental Protection, Figure 8 in the document at <a href="http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST%20Report/Fecal%20BMAP%20DST%20Final%20Report%20--%20June%202008.pdf" class="external-link">http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST%20Report/Fecal%20BMAP%20DST%20Final%20Report%20--%20June%202008.pdf</a> and Morrison et al. 2009 in the <a href="https://drive.google.com/file/d/1vaoAKkwSLlIS2RzeBeCTjQST1dUmo0rr/view" class="external-link">BASIS 5 proceedings</a>.</p>
+<p>The default stations for <code>fibdata</code> are those used in TBEP report #05-13 (<a href="https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view" class="external-link">https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view</a>) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if <code>bay_segment</code> is <code>NULL</code> and the input data are from <code><a href="read_importfib.html">read_importfib</a></code>.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the <code>stas</code> argument.</p>
     </div>
 
     <div class="section level2">
@@ -180,19 +170,11 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="show_fibmatrix-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># change the threshold</span></span></span>
-<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span>, threshold <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="show_fibmatrix-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># change the indicator</span></span></span>
-<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">fibdata</span>, indic <span class="op">=</span> <span class="st">'entero'</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="show_fibmatrix-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># show matrix for only dry samples</span></span></span>
-<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, indic <span class="op">=</span> <span class="st">'entero'</span>, lagyr <span class="op">=</span> <span class="fl">1</span>, subset_wetdry <span class="op">=</span> <span class="st">"dry"</span>,</span></span>
+<span class="r-in"><span><span class="fu">show_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, lagyr <span class="op">=</span> <span class="fl">1</span>, subset_wetdry <span class="op">=</span> <span class="st">"dry"</span>,</span></span>
 <span class="r-in"><span>               temporal_window <span class="op">=</span> <span class="fl">2</span>, wet_threshold <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06</span>
-<span class="r-plt img"><img src="show_fibmatrix-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="show_fibmatrix-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
