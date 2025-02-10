@@ -30,7 +30,7 @@
 #'
 #' @examples
 #' show_wqmatrix(epcdata)
-show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2023), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
+show_wqmatrix <- function(epcdata, param = c('chla', 'la'), txtsz = 3, trgs = NULL, yrrng = c(1975, 2024), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
                           asreact = FALSE, nrows = 10, abbrev = FALSE, family = NA, plotly = FALSE, partialyr = FALSE, width = NULL,
                           height = NULL){
 

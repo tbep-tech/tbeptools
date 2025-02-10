@@ -30,7 +30,7 @@
 #'
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
-show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng = c(1975, 2023), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
+show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng = c(1975, 2024), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
                          trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE, partialyr = FALSE, outliers = TRUE){
 
   # parameter

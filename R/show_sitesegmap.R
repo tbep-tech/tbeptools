@@ -23,7 +23,7 @@
 #' @import ggplot2 sf
 #'
 #' @examples
-#' show_sitesegmap(epcdata, yrsel = 2023)
+#' show_sitesegmap(epcdata, yrsel = 2024)
 show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL, thrs = FALSE, partialyr = FALSE,
                             showseg = TRUE, base_size = 12, family = NA){
 

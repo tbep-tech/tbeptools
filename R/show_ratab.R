@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @examples
-#' show_ratab(epcdata, yrsel = 2023, bay_segment = 'OTB')
+#' show_ratab(epcdata, yrsel = 2024, bay_segment = 'OTB')
 show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'RALTB'), partialyr = F, outtxt1 = NULL, outtxt2 = NULL, outtxt3 = NULL, outtxt45 = NULL, txtsz = 13, width = NULL){
 
   if(!requireNamespace('ftExtra', quietly = TRUE))

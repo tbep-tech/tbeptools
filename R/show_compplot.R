@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' transect <- read_transect(training = TRUE)
-#' show_compplot(transect, yr = 2023, site = '2', species = 'Halodule', varplo = 'Abundance')
+#' show_compplot(transect, yr = 2024, site = '3', species = 'Halodule', varplo = 'Abundance')
 show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia'),
                           varplo = c('Abundance', 'Blade Length', 'Short Shoot Density'), base_size = 18, xtxt = 10, size = 1){
 
@@ -38,7 +38,7 @@ show_compplot <- function(transect, yr, site, species = c('Halodule', 'Syringodi
   # data to plot
   toplo <- transect %>%
     dplyr::filter(yr %in% !!yr) %>%
-    dplyr::filter(Site %in% site) %>%
+    dplyr::filter(Site %in% !!site) %>%
     dplyr::filter(Species %in% species) %>%
     dplyr::filter(var %in% varplo)
 
