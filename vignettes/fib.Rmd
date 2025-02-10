@@ -160,10 +160,10 @@ The default stations are those used in TBEP report #05-13 [@tbep0513] for the Hi
 show_fibmatrix(fibdata, stas = c(115, 116))
 ```
 
-The `yrrng` argument can also be used to select a year range, where the default is 1985 to the most current year of data in `fibdata`.  
+The `yrrng` argument can also be used to select a year range, where the default is years with sufficient data for Enterococcus at marine stations and E. coli for freshwater stations.
 
 ```{r, fig.height = 8, fig.width = 3}
-show_fibmatrix(fibdata, yrrng = c(1990, 2020))
+show_fibmatrix(fibdata, yrrng = c(2010, 2020))
 ```
 
 If preferred, the matrix can also be returned in an HTML table that can be sorted and scrolled. Only the first ten rows are shown by default.  The default number of rows (10) can be changed with the `nrows` argument.  Use a sufficiently large number to show all rows.
