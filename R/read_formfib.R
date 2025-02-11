@@ -48,7 +48,7 @@ read_formfib <- function(datin, all = FALSE){
               function(x) as.numeric(gsub('^NULL$|^>|^<', '', x))
     ) %>%
     dplyr::filter(
-      (Class %in% c('3M', '2') & !is.na('entero')) | (Class %in% c('3F', '`') & !is.na('ecoli'))
+      (Class %in% c('3M', '2') & !is.na(entero)) | (Class %in% c('3F', '1') & !is.na(ecoli))
     ) %>%
     dplyr::select(area = AreaName, epchc_station, class = Class, SampleTime, yr, mo, Latitude, Longitude, SampleTime,
                   Total_Depth_m = TotalDepth, Sample_Depth_m = SampleDepth, ecoli, ecoli_q = E_ColiformQ,
