@@ -82,7 +82,7 @@ read_formwqp <- function(res, sta, org, type, trace = F){
       ),
       class = case_when(
         class != 'Estuary' ~ 'Fresh',
-        T ~ 'Estuary'
+        T ~ 'Marine'
       )
     )
 
@@ -163,6 +163,10 @@ read_formwqp <- function(res, sta, org, type, trace = F){
           grepl('^Entero', var) ~ 'entero',
           grepl('^Total', var) ~ 'totcol'
         )
+      ) %>%
+      dplyr::filter(
+        (class == 'Fresh' & var == 'ecoli' & !is.na(val)) |
+        (class == 'Marine' & var == 'entero' & !is.na(val))
       )
 
   }
