@@ -6,7 +6,7 @@
 #' \describe{
 #'   \item{manco_station}{chr, Station name}
 #'   \item{SampleTime}{POSIXct, Date/time of sampling}
-#'   \item{class}{chr, Waterbody class (\code{Fresh}, \code{Estuary})}
+#'   \item{class}{chr, Waterbody class (\code{Fresh}, \code{Marine})}
 #'   \item{yr}{num, Year of sampling}
 #'   \item{mo}{num, Month of sampling}
 #'   \item{Latitude}{num, Latitude, WGS84}
@@ -21,7 +21,6 @@
 #'
 #' @concept data
 #'
-#' @details
 #' @details
 #' This dataset includes FIB data from Manatee County Department of Natural Resources where station class is marine (estuary) and Enterococcus data is present or the station class is freshwater (stream/river, reservoir) and E. coli data is present. The data is formatted from the raw data loaded from \code{\link{read_importwqp}}.
 #'

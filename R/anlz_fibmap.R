@@ -14,7 +14,7 @@
 #'
 #' All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Big Bend"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. One to any of the options can be used.
 #'
-#' Valid entries for \code{areasel} for \code{mancofibdata} include \code{"Big Slough"}, \code{"Bowlees Creek"}, \code{"Braden River"}, \code{"Bud Slough"}, \code{"Clay Gully"}, \code{"Frog Creek"}, \code{"Gap Creek"}, \code{"Little Manatee River"}, \code{"Lower Tampa Bay"}, \code{"Manatee River"}, \code{"Mcmullen Creek"}, \code{"Mud Lake Slough"}, \code{"Myakka River"}, \code{"Palma Sola Bay"}, or \code{"Piney Point Creek"}. One to any of the options can be used.
+#' Valid entries for \code{areasel} for \code{mancofibdata} include \code{"Bowlees Creek"}, \code{"Braden River"}, \code{"Clay Gully"}, \code{"Frog Creek"}, \code{"Gap Creek"}, \code{"Little Manatee River"}, \code{"Manatee River"}, \code{"Mcmullen Creek"}, \code{"Myakka River"}, or \code{"Palma Sola Bay"}. One to any of the options can be used.
 #'
 #' @return A \code{data.frame} if similar to \code{fibdata} or \code{mancofibdata} if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function.  A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_fibmap}}.
 #'
@@ -70,7 +70,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
       dplyr::mutate(
         ind = dplyr::case_when(
           class %in% 'Fresh' ~ 'E. coli',
-          class %in% 'Estuary' ~ 'Enterococcus'
+          class %in% 'Marine' ~ 'Enterococcus'
         ),
         cat = dplyr::case_when(
           ind == 'E. coli' ~ cut(ecoli, breaks = levs$ecolilev, right = F, labels = levs$ecolilbs),
@@ -120,10 +120,10 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
       )
 
     if(ismanco){
-      areasls <- c("Big Slough", "Bowlees Creek", "Braden River", "Bud Slough",
+      areasls <- c("Bowlees Creek", "Braden River",
                    "Clay Gully", "Frog Creek", "Gap Creek", "Little Manatee River",
-                   "Lower Tampa Bay", "Manatee River", "Mcmullen Creek", "Mud Lake Slough",
-                   "Myakka River", "Palma Sola Bay", "Piney Point Creek")
+                   "Manatee River", "Mcmullen Creek",
+                   "Myakka River", "Palma Sola Bay")
       names(areasls) <- areasls
       areasls <- as.list(areasls)
     }
@@ -138,7 +138,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
   # check empty data
   chk <- length(na.omit(out$cat)) == 0
   if(chk)
-    stop('No FIB data for ', paste(lubridate::month(mosel, label = T), yrsel, sep = ' '), ', ', areasel)
+    stop('No FIB data for ', paste(lubridate::month(mosel, label = T), yrsel, sep = ' '), ', ', paste(areasel, collapse = ', '))
 
   # convert to sf and add more columns to be used by leaflet
   if(assf){

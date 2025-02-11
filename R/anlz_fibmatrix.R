@@ -71,8 +71,8 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
           !is.na(ecoli) & class %in% c('3F', '1') ~ ecoli
         ),
         class = dplyr::case_when(
-          class %in% c('3M', '2') ~ 'marine',
-          class %in% c('3F', '1') ~ 'fresh'
+          class %in% c('3M', '2') ~ 'Marine',
+          class %in% c('3F', '1') ~ 'Fresh'
         )
       ) %>%
       dplyr::filter(!is.na(indic))
@@ -109,13 +109,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
     fibdata <- fibdata %>%
       dplyr::filter(!is.na(val)) %>%
       dplyr::filter(
-        (class == 'Fresh' & var %in% 'ecoli') | (class == 'Estuary' & var == 'entero')
-      ) %>%
-      dplyr::mutate(
-        class = dplyr::case_when(
-          class == 'Fresh' ~ 'fresh',
-          class == 'Estuary' ~ 'marine'
-        )
+        (class == 'Fresh' & var %in% 'ecoli') | (class == 'Marine' & var == 'entero')
       ) %>%
       dplyr::rename(station = manco_station) %>%
       dplyr::select(-qual, -uni, -Sample_Depth_m, -var) %>%
@@ -138,7 +132,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
 
     fibdata <- fibdata %>%
       dplyr::rename(indic = entero) %>%
-      dplyr::mutate(class = 'marine')
+      dplyr::mutate(class = 'Marine')
 
   }
 
@@ -254,7 +248,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
 
   # thresholds
   thrsh <- tibble::tibble(
-    class = c('marine', 'fresh'),
+    class = c('Marine', 'Fresh'),
     thrsh = c(130, 410)
   )
 

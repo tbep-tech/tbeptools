@@ -9,7 +9,7 @@ A data frame with 1616 rows and 13 variables:
 \describe{
   \item{manco_station}{chr, Station name}
   \item{SampleTime}{POSIXct, Date/time of sampling}
-  \item{class}{chr, Waterbody class (\code{Fresh}, \code{Estuary})}
+  \item{class}{chr, Waterbody class (\code{Fresh}, \code{Marine})}
   \item{yr}{num, Year of sampling}
   \item{mo}{num, Month of sampling}
   \item{Latitude}{num, Latitude, WGS84}
