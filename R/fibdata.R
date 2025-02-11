@@ -1,8 +1,8 @@
-#' All Fecal Indicator Bacteria (FIB) data as of 20240814
+#' All Fecal Indicator Bacteria (FIB) data as of 20250211
 #'
-#' All Fecal Indicator Bacteria (FIB) data as of 20240814
+#' All Fecal Indicator Bacteria (FIB) data as of 20250211
 #'
-#' @format A data frame with 77526 rows and 18 variables:
+#' @format A data frame with 77664 rows and 18 variables:
 #' \describe{
 #'   \item{area}{chr}
 #'   \item{epchc_station}{num}
