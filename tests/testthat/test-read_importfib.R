@@ -24,7 +24,7 @@ test_that("Checking read_importfib all parameters", {
 
   # check if number of columns is equal to 152
   result <- sort(unique(fibdata$area))
-  expect_equal(result, c("Alafia River", "Alafia River Tributary", "Big Bend", "Hillsborough Bay",
+  expect_equal(result, c("Alafia River", "Alafia River Tributary", "Hillsborough Bay",
                          "Hillsborough Bay Tributary", "Hillsborough River", "Hillsborough River Tributary",
                          "Lake Thonotosassa", "Lake Thonotosassa Tributary", "Little Manatee River",
                          "Lower Tampa Bay", "McKay Bay", "Middle Tampa Bay", "Old Tampa Bay",
