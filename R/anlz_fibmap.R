@@ -12,7 +12,7 @@
 #'
 #' The \code{areasel} argument can indicate valid entries in the \code{area} column of \code{fibdata} (from \code{\link{read_importfib}}) or \code{mancofibdata} (from \code{\link{read_importwqp}}).  For example, use either \code{"Alafia River"} or \code{"Hillsborough River"} for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection.  All stations are returned if this argument is set as \code{NULL} (default). The Alafia River basin includes values in the \code{area} column of \code{fibdata} as \code{"Alafia River"} and \code{"Alafia River Tributary"}.  The Hillsborough River basin includes values in the \code{area} column of \code{fibdata} as \code{"Hillsborough River"}, \code{"Hillsborough River Tributary"}, \code{"Lake Thonotosassa"}, \code{"Lake Thonotosassa Tributary"}, and \code{"Lake Roberta"}.  Not all areas may be present based on the selection.
 #'
-#' All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Big Bend"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. One to any of the options can be used.
+#' All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. One to any of the options can be used.
 #'
 #' Valid entries for \code{areasel} for \code{mancofibdata} include \code{"Bowlees Creek"}, \code{"Braden River"}, \code{"Clay Gully"}, \code{"Frog Creek"}, \code{"Gap Creek"}, \code{"Little Manatee River"}, \code{"Manatee River"}, \code{"Mcmullen Creek"}, \code{"Myakka River"}, or \code{"Palma Sola Bay"}. One to any of the options can be used.
 #'
@@ -105,7 +105,6 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
         `Alafia River` = c('Alafia River', 'Alafia River Tributary'),
         `Hillsborough River` = c('Hillsborough River', 'Hillsborough River Tributary',  'Lake Thonotosassa',
                          'Lake Thonotosassa Tributary', 'Lake Roberta'),
-        `Big Bend` = 'Big Bend',
         `Cockroach Bay` = c('Cockroach Bay', 'Cockroach Bay Tributary'),
         `East Lake Outfall` = 'East Lake Outfall',
         `Hillsborough Bay` = c('Hillsborough Bay', 'Hillsborough Bay Tributary'),

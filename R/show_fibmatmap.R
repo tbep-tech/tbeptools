@@ -85,7 +85,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
   if(isepchc){
 
     # check bay segment
-    areas <- c('Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay',
+    areas <- c('Alafia River', 'Hillsborough River', 'Cockroach Bay',
                 'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay',
                 'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal',
                 'Valrico Lake')
