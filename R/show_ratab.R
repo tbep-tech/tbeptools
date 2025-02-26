@@ -163,7 +163,7 @@ show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'
   )
 
   out <- flextable::flextable(totab) %>%
-    flextable::font(fontname = 'Lato light', part = 'all') %>%
+    flextable::font(fontname = 'Arial', part = 'all') %>%
     flextable::fontsize(size = txtsz) %>%
     flextable::delete_part('header') %>%
     flextable::border_inner() %>%
