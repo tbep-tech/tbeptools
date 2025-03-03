@@ -193,7 +193,7 @@ read_formwqp <- function(res, sta, org, type, trace = F){
     select(station, SampleTime, class, yr, mo, Latitude = lat, Longitude = lon,
            Sample_Depth_m, var, val, uni, qual) %>%
     unique()
-
+browser()
   # add station areas if fib and manatee county
   if(type == 'fib' & org == '21FLMANA_WQX'){
 

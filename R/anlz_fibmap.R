@@ -37,11 +37,12 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
 
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231')
 
-  # check if epchc data
+  # check if epchc, manco, pasco, or polco data
+  # must do separately for areasel
   isepchc <- exists("epchc_station", fibdata)
-
-  # check if manco data
   ismanco <- exists("manco_station", fibdata)
+  ispasco <- exists("pasco_station", fibdata)
+  ispolco <- exists("polco_station", fibdata)
 
   if(isepchc)
     out <- fibdata %>%
@@ -62,9 +63,10 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
         col = as.character(col)
       )
 
-  if(ismanco)
+  if(ismanco|ispasco|ispolco)
     out <- fibdata %>%
-      dplyr::select(area, station = manco_station, class, yr, mo, Latitude, Longitude, var, val) %>%
+      dplyr::rename_with(~ "station", dplyr::matches("^(manco|pasco|polco)_station$")) %>%
+      dplyr::select(area, station, class, yr, mo, Latitude, Longitude, var, val) %>%
       dplyr::filter(var %in% c('ecoli', 'entero')) %>%
       tidyr::pivot_wider(names_from = 'var', values_from = 'val', values_fn = ~ mean(.x, na.rm = TRUE)) %>%
       dplyr::mutate(
@@ -125,6 +127,16 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
                    "Myakka River", "Palma Sola Bay")
       names(areasls) <- areasls
       areasls <- as.list(areasls)
+    }
+
+    if(ispasco){
+
+
+    }
+
+    if(ispolco){
+
+
     }
 
     areasel <- match.arg(areasel, names(areasls), several.ok = TRUE)
