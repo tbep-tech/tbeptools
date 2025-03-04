@@ -14,7 +14,7 @@
 #'
 #' All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. One to any of the options can be used.
 #'
-#' Valid entries for \code{areasel} for \code{mancofibdata} include \code{"Bowlees Creek"}, \code{"Braden River"}, \code{"Clay Gully"}, \code{"Frog Creek"}, \code{"Gap Creek"}, \code{"Little Manatee River"}, \code{"Manatee River"}, \code{"Mcmullen Creek"}, \code{"Myakka River"}, or \code{"Palma Sola Bay"}. One to any of the options can be used.
+#' Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX), Pasco County (21FLPASC_WQX), or Polk County (21FLPOLK_WQX) FIB data can also be used.  Valid entries for \code{areasel} are any that are present in the \code{area} column for the respective input datasets.
 #'
 #' @return A \code{data.frame} if similar to \code{fibdata} or \code{mancofibdata} if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function.  A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_fibmap}}.
 #'
@@ -37,12 +37,11 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
 
   cols <- c('#2DC938', '#E9C318', '#EE7600', '#CC3231')
 
-  # check if epchc, manco, pasco, or polco data
-  # must do separately for areasel
+  # check if epchc
   isepchc <- exists("epchc_station", fibdata)
-  ismanco <- exists("manco_station", fibdata)
-  ispasco <- exists("pasco_station", fibdata)
-  ispolco <- exists("polco_station", fibdata)
+
+  # check if manco, pasco, or polco data
+  isother <- any(grepl('^manco|^pasco|^polco', names(fibdata)))
 
   if(isepchc)
     out <- fibdata %>%
@@ -63,12 +62,16 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
         col = as.character(col)
       )
 
-  if(ismanco|ispasco|ispolco)
+  if(isother)
     out <- fibdata %>%
       dplyr::rename_with(~ "station", dplyr::matches("^(manco|pasco|polco)_station$")) %>%
       dplyr::select(area, station, class, yr, mo, Latitude, Longitude, var, val) %>%
       dplyr::filter(var %in% c('ecoli', 'entero')) %>%
-      tidyr::pivot_wider(names_from = 'var', values_from = 'val', values_fn = ~ mean(.x, na.rm = TRUE)) %>%
+      dplyr::mutate(
+        var = factor(var, levels = c('ecoli', 'entero'))
+      ) %>%
+      tidyr::pivot_wider(names_from = 'var', values_from = 'val', values_fn = ~ mean(.x, na.rm = TRUE),
+                         names_expand = TRUE) %>%
       dplyr::mutate(
         ind = dplyr::case_when(
           class %in% 'Fresh' ~ 'E. coli',
@@ -120,23 +123,10 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
         `Valrico Lake` = 'Valrico Lake'
       )
 
-    if(ismanco){
-      areasls <- c("Bowlees Creek", "Braden River",
-                   "Clay Gully", "Frog Creek", "Gap Creek", "Little Manatee River",
-                   "Manatee River", "Mcmullen Creek",
-                   "Myakka River", "Palma Sola Bay")
+    if(isother){
+      areasls <- sort(unique(fibdata$area))
       names(areasls) <- areasls
       areasls <- as.list(areasls)
-    }
-
-    if(ispasco){
-
-
-    }
-
-    if(ispolco){
-
-
     }
 
     areasel <- match.arg(areasel, names(areasls), several.ok = TRUE)

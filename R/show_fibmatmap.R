@@ -18,7 +18,7 @@
 #'
 #' If the input to \code{fibdata} is from EPCHC (from \code{\link{read_importfib}}), valid entries for \code{areasel} include 'Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay', 'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay', 'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal', and 'Valrico Lake'.  If the input data is not from EPCHC (from \code{\link{read_importentero}}), valid entries for \code{areasel} include 'OTB', 'HB', 'MTB', 'LTB', 'BCB', and 'MR'.
 #'
-#' Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX) FIB data can also be used.  The function has not been tested for other organizations.  Valid entries for \code{areasel} include \code{"Bowlees Creek"}, \code{"Braden River"}, \code{"Clay Gully"}, \code{"Frog Creek"}, \code{"Gap Creek"}, \code{"Little Manatee River"}, \code{"Manatee River"}, \code{"Mcmullen Creek"}, \code{"Myakka River"}, or \code{"Palma Sola Bay"}.
+#' Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX), Pasco County (21FLPASC_WQX), or Polk County (21FLPOLK_WQX) FIB data can also be used.  Valid entries for \code{areasel} are any that are present in the \code{area} column for the respective input datasets.
 #'
 #' Bay segment matrix categories can be shown if input data are from \code{\link{read_importentero}}).  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the other datasets are not appropriate for estimating bay segment outcomes.
 #'
@@ -49,10 +49,10 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
   # check if epchc data
   isepchc <- exists("epchc_station", fibdata)
 
-  # check if manco data
-  ismanco <- exists("manco_station", fibdata)
+  # check if manco, pasco, or polco data
+  isother <- any(grepl('^manco|^pasco|^polco', names(fibdata)))
 
-  if(!isepchc & !ismanco){
+  if(!isepchc & !isother){
 
     # includes bay segment check
     tomapseg <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = NULL, bay_segment = areasel,
@@ -114,13 +114,10 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
 
   }
 
-  if(ismanco){
+  if(isother){
 
     # check areas
-    areas <- c("Bowlees Creek", "Braden River",
-               "Clay Gully", "Frog Creek", "Gap Creek", "Little Manatee River",
-               "Manatee River", "Mcmullen Creek",
-               "Myakka River", "Palma Sola Bay")
+    areas <- sort(unique(fibdata$area))
 
     chk <- !areasel %in% areas
     if(any(chk)){
@@ -133,7 +130,8 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
       dplyr::filter(
         (class == 'Fresh' & var == 'ecoli') | (class == 'Marine' & var == 'entero')
       ) %>%
-      dplyr::select(grp = manco_station, area) %>%
+      dplyr::rename_with(~ "grp", dplyr::matches("^(manco|pasco|polco)_station$")) %>%
+      dplyr::select(grp, area) %>%
       dplyr::distinct()
 
     tomapsta <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = stas$grp, bay_segment = NULL,

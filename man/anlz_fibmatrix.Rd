@@ -51,7 +51,7 @@ This function is used to create output for plotting a matrix stoplight graphic f
 
 The default stations if the input is \code{fibdata} are those used in TBEP report #05-13 (\url{https://drive.google.com/file/d/1MZnK3cMzV7LRg6dTbCKX8AOZU0GNurJJ/view}) for the Hillsborough River Basin Management Action Plan (BMAP) subbasins if \code{bay_segment} is \code{NULL} and the input data are from \code{\link{read_importfib}}.  These include Blackwater Creek (WBID 1482, EPC stations 143, 108), Baker Creek (WBID 1522C, EPC station 107), Lake Thonotosassa (WBID 1522B, EPC stations 135, 118), Flint Creek (WBID 1522A, EPC station 148), and the Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137).  Other stations can be plotted using the \code{stas} argument.
 
-Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX) FIB data can also be used.  The function has not been tested for other organizations.
+Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX), Pasco County (21FLPASC_WQX), or Polk County (21FLPOLK_WQX) FIB data can also be used.  The function has not been tested for other organizations.
 }
 \examples{
 anlz_fibmatrix(fibdata)

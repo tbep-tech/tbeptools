@@ -184,17 +184,17 @@ Finally, a map of station categories for a given year can be plotted using `show
 show_fibmatmap(fibdata, yrsel = 2020, areasel = c('Hillsborough River', 'Alafia River'))
 ```
 
-## Manatee County reporting
+## Manatee, Pasco, and Polk County reporting
 
-FIB data from the Manatee County Natural Resources Department can also be used with the above functions.  These data can be downloaded as follows: 
+FIB data from Manatee, Pasco, and Polk County can also be used with the above functions.  These data can be downloaded as follows, replacing the first argument with the appropriate organization identifier (i.e., Manatee County `21FLMANA_WQP`, Pasco County `21FLPASCO_WQP`, Polk County `21FLPOLK_WQP`). 
 
 ```{r, eval = F}
 mancofibdata <- read_importwqp('21FLMANA_WQX', type = 'fib')
 ```
 
-For convenience, a data object with same name as the above is included with tbeptools for use with all FIB functions. Note that `read_importwqp()` can be used to download FIB data from other organizations, although the FIB functions will only work with data from Manatee County. 
+For convenience, data objects with same naming convention as above are included with tbeptools for use with all FIB functions (`mancofibdata`, `pascofibdata`, `polcofibdata`). Note that `read_importwqp()` can be used to download FIB data from other organizations, although the FIB functions will only work with data from Manatee County. 
 
-Similar workflows as for the EPCHC data can be used. Examples of the functions using Manatee County data:
+Similar workflows as for the EPCHC data can be used. Examples of the functions using Manatee County data are below.  The same functionality can be used with the other county datasets.
 
 ```{r, out.width="100%"}
 show_fibmap(mancofibdata, yrsel = 2023, mosel = 7, areasel = NULL)

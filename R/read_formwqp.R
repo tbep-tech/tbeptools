@@ -195,48 +195,110 @@ read_formwqp <- function(res, sta, org, type, trace = F){
     unique()
 
   # add station areas if fib and manatee county
-  if(type == 'fib' & org == '21FLMANA_WQX'){
+  if(type == 'fib'){
 
-    tomtch <- data.frame(
-      station = c("396", "BC1", "BC2", "BC41", "BL01",
-        "BL201", "BR1", "BR2", "BR3", "BU01A", "CC1", "CH1", "D1", "D3",
-        "ER1", "ER2", "FC1", "GA1", "GC1", "GC2", "GP", "LL1", "LM3",
-        "LM4", "LM5", "LM6", "MC1", "MC2", "MM", "MR1", "MR2", "MS01",
-        "MS02", "MY01", "MY02A", "MY04", "PP1", "SC1", "TS1", "TS2",
-        "TS3", "TS4", "TS5", "TS6", "TS7", "UM1", "UM2", "UM3", "UM4",
-        "WC1"),
-      area = c("Lower Tampa Bay", "Bowlees Creek", "Bowlees Creek",
-        "Bowlees Creek", "Big Slough", "Big Slough", "Braden River",
-        "Braden River", "Braden River", "Bud Slough", "Curiosity Creek",
-        "Palma Sola Bay", "Little Manatee River", "Little Manatee River",
-        "Ward Lake", "Ward Lake", "Frog Creek", "Gates Creek", "Gamble Creek",
-        "Gamble Creek", "Gap Creek", "Braden River", "Braden River",
-        "Manatee River Estuary", "Lower Manatee River", "Mill Creek",
-        "Mill Creek", "Mill Creek", "Mcmullen Creek", "Clay Gully", "Myakka River",
-        "Mud Lake Slough", "Mud Lake Slough", "Myakka River", "Myakka River",
-        "Myakka River", "Piney Point Creek", "Sugarhouse Creek", "Rattlesnake Slough",
-        "Cedar Creek", "Cooper Creek", "Cooper Creek", "Hickory Hammock Creek",
-        "Braden River", "Nonsense Creek", "Lower Manatee River", "Lake Manatee",
-        "Gilley Creek", "Upper Manatee River", "Williams Creek"),
-      areacmb = c("Lower Tampa Bay",
-        "Bowlees Creek", "Bowlees Creek", "Bowlees Creek", "Big Slough",
-        "Big Slough", "Braden River", "Braden River", "Braden River",
-        "Bud Slough", "Little Manatee River", "Palma Sola Bay", "Little Manatee River",
-        "Little Manatee River", "Braden River", "Braden River", "Frog Creek",
-        "Manatee River", "Manatee River", "Manatee River", "Gap Creek",
-        "Braden River", "Braden River", "Manatee River", "Manatee River",
-        "Manatee River", "Manatee River", "Manatee River", "Mcmullen Creek",
-        "Clay Gully", "Myakka River", "Mud Lake Slough", "Mud Lake Slough",
-        "Myakka River", "Myakka River", "Myakka River", "Piney Point Creek",
-        "Braden River", "Braden River", "Braden River", "Braden River",
-        "Braden River", "Braden River", "Braden River", "Braden River",
-        "Manatee River", "Manatee River", "Manatee River", "Manatee River",
-        "Braden River")
+    if(org == '21FLMANA_WQX')
+      tomtch <- data.frame(
+        station = c("396", "BC1", "BC2", "BC41", "BL01",
+          "BL201", "BR1", "BR2", "BR3", "BU01A", "CC1", "CH1", "D1", "D3",
+          "ER1", "ER2", "FC1", "GA1", "GC1", "GC2", "GP", "LL1", "LM3",
+          "LM4", "LM5", "LM6", "MC1", "MC2", "MM", "MR1", "MR2", "MS01",
+          "MS02", "MY01", "MY02A", "MY04", "PP1", "SC1", "TS1", "TS2",
+          "TS3", "TS4", "TS5", "TS6", "TS7", "UM1", "UM2", "UM3", "UM4",
+          "WC1"),
+        area = c("Lower Tampa Bay", "Bowlees Creek", "Bowlees Creek",
+          "Bowlees Creek", "Big Slough", "Big Slough", "Braden River",
+          "Braden River", "Braden River", "Bud Slough", "Curiosity Creek",
+          "Palma Sola Bay", "Little Manatee River", "Little Manatee River",
+          "Ward Lake", "Ward Lake", "Frog Creek", "Gates Creek", "Gamble Creek",
+          "Gamble Creek", "Gap Creek", "Braden River", "Braden River",
+          "Manatee River Estuary", "Lower Manatee River", "Mill Creek",
+          "Mill Creek", "Mill Creek", "Mcmullen Creek", "Clay Gully", "Myakka River",
+          "Mud Lake Slough", "Mud Lake Slough", "Myakka River", "Myakka River",
+          "Myakka River", "Piney Point Creek", "Sugarhouse Creek", "Rattlesnake Slough",
+          "Cedar Creek", "Cooper Creek", "Cooper Creek", "Hickory Hammock Creek",
+          "Braden River", "Nonsense Creek", "Lower Manatee River", "Lake Manatee",
+          "Gilley Creek", "Upper Manatee River", "Williams Creek"),
+        areacmb = c("Lower Tampa Bay",
+          "Bowlees Creek", "Bowlees Creek", "Bowlees Creek", "Big Slough",
+          "Big Slough", "Braden River", "Braden River", "Braden River",
+          "Bud Slough", "Little Manatee River", "Palma Sola Bay", "Little Manatee River",
+          "Little Manatee River", "Braden River", "Braden River", "Frog Creek",
+          "Manatee River", "Manatee River", "Manatee River", "Gap Creek",
+          "Braden River", "Braden River", "Manatee River", "Manatee River",
+          "Manatee River", "Manatee River", "Manatee River", "Mcmullen Creek",
+          "Clay Gully", "Myakka River", "Mud Lake Slough", "Mud Lake Slough",
+          "Myakka River", "Myakka River", "Myakka River", "Piney Point Creek",
+          "Braden River", "Braden River", "Braden River", "Braden River",
+          "Braden River", "Braden River", "Braden River", "Braden River",
+          "Manatee River", "Manatee River", "Manatee River", "Manatee River",
+          "Braden River")
+        )
+
+    # areas from sta object, nothing to combine
+    if(org == '21FLPASC_WQX')
+      tomtch <- data.frame(
+        station = c("AR-3.28", "BC-0.00", "CC-1.39", "NR-0.57", "PR-0.18", "PR-3.73",
+                    "TC-0.00", "UH-1.16"),
+        area = c("Anclote River", "Bear Creek", "Cypress Creek", "New River", "Pithlachascotee River",
+                 "Pithlachascotee River", "Trout Creek", "Hillsborough River")
+        ) %>%
+        mutate(areacmb = area)
+
+    if(org == '21FLPOLK_WQX')
+      tomtch <- data.frame(
+        station = c("ALAFIA RVR1N", "ALAFIA RVR2N", "ALAFIA RVR2S", "BEAR CRK1",
+          "BLACKWATER CRK2", "BLACKWATER CRK3", "BOGGY BR1", "CHARLIE CRK1",
+          "ENGLISH CRK1", "FOX BR1", "GATOR CRK2", "HAMWET", "HORSE CRK2",
+          "ITCHEPACK CRK1", "ITCHEPACK CRK2", "LENA RUN1", "LENA RUN2",
+          "LENA RUN3", "LIVINGSTON CRK1", "MARION CRK1", "OLD TOWN CRK1",
+          "P.C. CANAL1", "PC CANAL11 - CREWS", "PC CANAL12 - BAR/LW", "PC CANAL13 - W HAM RD",
+          "PC CANAL1 - SR542", "P.C. CANAL2", "PC CANAL2 - THOMPSON", "P.C. CANAL8",
+          "PC CANAL8 - 91 MINE", "PEACE RVR10", "PEACE RVR10 - SR60", "PEACE RVR2",
+          "PEACE RVR2 - HERITAGE", "PEACE RVR3 - WABASH", "PEACE RVR4 - WHIDDEN",
+          "PEACE RVR5 - PISGAH", "PEACE RVR6 - SINK", "PEACE RVR78", "PEACE RVR78 - CO LINE",
+          "PEACE RVR7 - GILSHEY", "PEACE RVR8 - LTL PAYNE", "PEACE RVR9 - 6 MILE",
+          "POLEY CRK1N", "POLEY CRK2S", "POLEY CRK3", "PONY CRK1", "REEDY INFLOW",
+          "SADDLE CRK1", "SADDLE CRK10", "SADDLE CRK9", "SCENIC", "SIMMERS-YOUNG CNL1",
+          "SIMMERS-YOUNG CNL INFLOW", "THIRTYMILE CRK1", "TIGER CRK3",
+          "TIGER INFLOW SOUTH", "WAHNETA CANAL6", "WAHNETA CNL6", "W BOWLEGS CRK1",
+          "WEOHYAKAPKA CRK1", "WEOHYAKAPK CRK1", "WITHLACOO RVR1", "WITHLACOO RVR2"
+        ),
+        area = c(
+          "Alafia River", "Alafia River", "Alafia River",
+          "Bear Creek", "Blackwater Creek", "Blackwater Creek",
+          "Boggy Branch", "Charlie Creek", "English Creek",
+          "Fox Branch", "Gator Creek", "Hamwet",
+          "Horse Creek", "Itchepack Creek", "Itchepack Creek",
+          "Lena Run", "Lena Run", "Lena Run",
+          "Livingston Creek", "Marion Creek", "Old Town Creek",
+          "PC Canal", "PC Canal", "PC Canal",
+          "PC Canal", "PC Canal", "PC Canal",
+          "PC Canal", "PC Canal", "PC Canal",
+          "Peace River", "Peace River", "Peace River",
+          "Peace River", "Peace River", "Peace River",
+          "Peace River", "Peace River", "Peace River",
+          "Peace River", "Peace River", "Peace River",
+          "Peace River", "Poley Creek", "Poley Creek",
+          "Poley Creek", "Pony Creek", "Reedy Inflow",
+          "Saddle Creek", "Saddle Creek", "Saddle Creek",
+          "Scenic", "Simmers-Young Canal", "Simmers-Young Canal",
+          "Thirtymile Creek", "Tiger Creek", "Tiger Inflow",
+          "Wahneta Canal", "Wahneta Canal", "W Bowlegs Creek",
+          "Weohyakapka Creek", "Weohyakapka Creek", "Withlacoochee River",
+          "Withlacoochee River"
+        )
+      ) %>%
+      mutate(
+        areacmb = area
       )
 
     out <- dplyr::left_join(out, tomtch, by = 'station', relationship = 'many-to-one') %>%
       dplyr::select(-area) %>%
       dplyr::rename(area = areacmb)
+
+    if(any(is.na(out$area)))
+      stop('Missing area information for FIB stations')
 
   }
 
