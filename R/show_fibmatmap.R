@@ -206,7 +206,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
     leaflet::addControl(html = leg, position = 'topright')
 
   # add bay segments if not epchc
-  if(!isepchc & !ismanco){
+  if(!isepchc & !isother){
 
     out <- out %>%
       leaflet::addPolygons(
