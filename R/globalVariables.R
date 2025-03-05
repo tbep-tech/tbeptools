@@ -76,7 +76,7 @@ globalVariables(c("Chlorophyll_aQ", "Latitude", "Longitude", "SampleTime", "Samp
                   "entero_censored", "rain", "rain_total", "sumgt", "wet_sample",
                   "LabComments", "entero_units", "qualifier", "catchprecip", "wetdry", "TSN",
                   "MDL", "long_name", "tbsegdetail", "time_zone", "tot", "mancofibdata",
-                  "manco_station", "hasdat", "chkyr", "areacmb")
+                  "manco_station", "hasdat", "chkyr", "areacmb", "indic", "Phylum")
 )
 
 #' @importFrom grDevices rgb
