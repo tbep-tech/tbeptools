@@ -7,7 +7,7 @@
 #'
 #' @details Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{https://epcbocc.sharepoint.com/:x:/s/Share/EYXZ5t16UlFGk1rzIU91VogBa8U37lh8z_Hftf2KJISSHg?e=8r1SUL&download=1}.  The files can be viewed at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU}.
 #'
-#' Returns FIB data including E. coli, Enterococcus, Fecal Coliform, and Total Coliform concentrations and waterbody class (freshwater as 1 or 3F, marine as 2 or 3M) for stations and sample dates, function is used internally within \code{\link{read_importfib}}
+#' Returns FIB data including E. coli, Enterococcus, Fecal Coliform, and Total Coliform concentrations and waterbody class (freshwater as 1 or 3F, marine as 2 or 3M) for stations and sample dates.
 #'
 #' Values are returned for E. coli (\code{ecoli}), Enterococcus (\code{entero}), Fecal Coliform (\code{fcolif}), and Total Coliform (\code{totcol}).  Values shown are # of colonies per 100 mL of water (\code{#/100mL}). Qualifier columns for each are also returned with the \code{_q} suffix. Qualifier codes can be interpreted from the source spreadsheet.
 #'

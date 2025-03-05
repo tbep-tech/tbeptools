@@ -24,7 +24,7 @@ A \code{leaflet} map for the selected year, month, and area showing stations and
 Map Fecal Indicator Bacteria (FIB) results by month, year, and location
 }
 \details{
-Placing the mouse cursor over an item on the map will reveal additional information about a station.
+Placing the mouse cursor over an item on the map will reveal additional information about a station. See the help file for \code{\link{anlz_fibmap}} for details on the categories and additional arguments.
 }
 \examples{
 # show selected year, month
@@ -37,6 +37,6 @@ show_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
 show_fibmap(mancofibdata, yrsel = 2020, mosel = 7, areasel = 'Little Manatee River')
 }
 \seealso{
-\code{\link{anlz_fibmap}} for details on the categories
+\code{\link{anlz_fibmap}}
 }
 \concept{show}

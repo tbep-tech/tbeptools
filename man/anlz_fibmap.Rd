@@ -18,7 +18,7 @@ anlz_fibmap(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, assf = FALSE)
 \item{assf}{logical indicating if the data are further processed as a simple features object with additional columns for \code{\link{show_fibmap}}}
 }
 \value{
-A \code{data.frame} if similar to \code{fibdata} or \code{mancofibdata} if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function.  A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_fibmap}}.
+A \code{data.frame} similar to the input if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function.  A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_fibmap}}.
 }
 \description{
 Assign threshold categories to Fecal Indicator Bacteria (FIB) data
@@ -26,13 +26,9 @@ Assign threshold categories to Fecal Indicator Bacteria (FIB) data
 \details{
 This function is used to create FIB categories for mapping using \code{\link{show_fibmap}}.  Categories based on relevant thresholds are assigned to each observation.  The categories are specific to E. coli or Enterococcus and are assigned based on the station class as freshwater (\code{class} as 1 or 3F) or marine (\code{class} as 2 or 3M), respectively.  A station is categorized into one of four ranges defined by the thresholds as noted in the \code{cat} column of the output, with corresponding colors appropriate for each range as noted in the \code{col} column of the output.
 
-Data from Manatee County (21FLMANA_WQX) returned by \code{\link{read_importwqp}} can be used with this function.  Data from other organizations returned by this function have not been tested.
+The input \code{fibdata} object can be one returned by either \code{\link{read_importfib}} or \code{\link{read_importwqp}}.
 
-The \code{areasel} argument can indicate valid entries in the \code{area} column of \code{fibdata} (from \code{\link{read_importfib}}) or \code{mancofibdata} (from \code{\link{read_importwqp}}).  For example, use either \code{"Alafia River"} or \code{"Hillsborough River"} for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection.  All stations are returned if this argument is set as \code{NULL} (default). The Alafia River basin includes values in the \code{area} column of \code{fibdata} as \code{"Alafia River"} and \code{"Alafia River Tributary"}.  The Hillsborough River basin includes values in the \code{area} column of \code{fibdata} as \code{"Hillsborough River"}, \code{"Hillsborough River Tributary"}, \code{"Lake Thonotosassa"}, \code{"Lake Thonotosassa Tributary"}, and \code{"Lake Roberta"}.  Not all areas may be present based on the selection.
-
-All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. One to any of the options can be used.
-
-Input from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX), Pasco County (21FLPASC_WQX), or Polk County (21FLPOLK_WQX) FIB data can also be used.  Valid entries for \code{areasel} are any that are present in the \code{area} column for the respective input datasets.
+The \code{areasel} argument can indicate valid entries in the \code{area} column of \code{fibdata} from \code{\link{read_importfib}} or \code{\link{mancofibdata}}, \code{\link{pascofibdata}}, or \code{\link{polcofibdata}} from \code{\link{read_importwqp}}.  For example, use either \code{"Alafia River"} or \code{"Hillsborough River"} to show stations for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection. All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. Valid options for \code{areasel} if the input data are from \code{\link{read_importwqp}} are any that are present in the \code{area} column for the respective input datasets (\code{\link{mancofibdata}}, \code{\link{pascofibdata}}, or \code{\link{polcofibdata}}). One to any of the options can be used.All stations are returned if this argument is set as \code{NULL} (default). Not all areas may be present based on the year/month selection.
 }
 \examples{
 # assign categories to all

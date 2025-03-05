@@ -5,11 +5,11 @@
 #'
 #' @return A \code{leaflet} map for the selected year, month, and area showing stations and FIB concentration category
 #'
-#' @details Placing the mouse cursor over an item on the map will reveal additional information about a station.
+#' @details Placing the mouse cursor over an item on the map will reveal additional information about a station. See the help file for \code{\link{anlz_fibmap}} for details on the categories and additional arguments.
 #'
 #' @concept show
 #'
-#' @seealso \code{\link{anlz_fibmap}} for details on the categories
+#' @seealso \code{\link{anlz_fibmap}}
 #' @export
 #'
 #' @examples

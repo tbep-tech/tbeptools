@@ -6,9 +6,17 @@ test_that("Check output class from read_importwqp, water quality", {
 
 })
 
-test_that("Check output class from read_importwqp, fib", {
+test_that("Check output class from read_importwqp, FIB Manatee County", {
 
   result <- try({read_importwqp(org = '21FLMANA_WQX', type = 'fib', trace = T)})
+  skip_if(inherits(result, 'try-error'), message = 'Skipping read_importwqp test')
+  expect_s3_class(result, 'tbl_df')
+
+})
+
+test_that("Check output class from read_importwqp, FIB Pasco County", {
+
+  result <- try({read_importwqp(org = '21FLPASC_WQX', type = 'fib', trace = T)})
   skip_if(inherits(result, 'try-error'), message = 'Skipping read_importwqp test')
   expect_s3_class(result, 'tbl_df')
 
