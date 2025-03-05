@@ -7,7 +7,7 @@
 \format{
 A data frame with 833 rows and 13 variables:
 \describe{
-  \item{pasco_station}{chr, Station name}
+  \item{polco_station}{chr, Station name}
   \item{SampleTime}{POSIXct, Date/time of sampling}
   \item{class}{chr, Waterbody class (\code{Fresh}, \code{Marine})}
   \item{yr}{num, Year of sampling}
