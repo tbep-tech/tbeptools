@@ -14,9 +14,11 @@
 #' util_orgin('21FLPASC_WQX', stanm = TRUE)
 util_orgin <- function(org, stanm = FALSE){
 
-  orgids <- c('21FLCOSP_WQX', '21FLDOH_WQX', '21FLHILL_WQX', '21FLMANA_WQX', '21FLPASC_WQX', '21FLPDEM_WQX', '21FLPOLK_WQX', '21FLTPA_WQX')
-  orgname <- c('City of St. Petersburg', 'Florida DOH', 'Hillsborough', 'Manatee', 'Pasco', 'Pinellas', 'Polk', 'DEP Southwest')
-  stations <- c('stpet', 'fldoh', 'epchc', 'manco', 'pasco', 'pinco', 'polco', 'depsd')
+  orgids <- c('21FLCOSP_WQX', '21FLDOH_WQX', '21FLHILL_WQX', '21FLMANA_WQX', '21FLPASC_WQX', '21FLPDEM_WQX',
+              '21FLPOLK_WQX', '21FLTPA_WQX', '21FLHESD_WQX')
+  orgname <- c('City of St. Petersburg', 'Florida DOH', 'Hillsborough', 'Manatee', 'Pasco', 'Pinellas',
+               'Polk', 'DEP Southwest', 'Hillsborough ESD')
+  stations <- c('stpet', 'fldoh', 'epchc', 'manco', 'pasco', 'pinco', 'polco', 'depsd', 'hcesd')
   stations <- paste0(stations, '_station')
   names(stations) <- orgids
   names(orgname) <- orgids

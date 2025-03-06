@@ -10,7 +10,7 @@
 #'
 #' The input \code{fibdata} object can be one returned by either \code{\link{read_importfib}} or \code{\link{read_importwqp}}.
 #'
-#' The \code{areasel} argument can indicate valid entries in the \code{area} column of \code{fibdata} from \code{\link{read_importfib}} or \code{\link{mancofibdata}}, \code{\link{pascofibdata}}, or \code{\link{polcofibdata}} from \code{\link{read_importwqp}}.  For example, use either \code{"Alafia River"} or \code{"Hillsborough River"} to show stations for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection. All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. Valid options for \code{areasel} if the input data are from \code{\link{read_importwqp}} are any that are present in the \code{area} column for the respective input datasets (\code{\link{mancofibdata}}, \code{\link{pascofibdata}}, or \code{\link{polcofibdata}}). One to any of the options can be used.All stations are returned if this argument is set as \code{NULL} (default). Not all areas may be present based on the year/month selection.
+#' The \code{areasel} argument can indicate valid entries in the \code{area} column of \code{fibdata} from \code{\link{read_importfib}} or \code{\link{mancofibdata}}, \code{\link{pascofibdata}}, \code{\link{polcofibdata}}, or \code{\link{hcesdfibdata}} from \code{\link{read_importwqp}}.  For example, use either \code{"Alafia River"} or \code{"Hillsborough River"} to show stations for the corresponding river basins, where rows in  \code{fibdata} are filtered based on the the selection. All valid options for \code{areasel} for \code{fibdata} include \code{"Alafia River"}, \code{"Hillsborough River"}, \code{"Cockroach Bay"}, \code{"East Lake Outfall"}, \code{"Hillsborough Bay"}, \code{"Little Manatee"}, \code{"Lower Tampa Bay"}, \code{"McKay Bay"}, \code{"Middle Tampa Bay"}, \code{"Old Tampa Bay"}, \code{"Palm River"}, \code{"Tampa Bypass Canal"}, or \code{"Valrico Lake"}. Valid options for \code{areasel} if the input data are from \code{\link{read_importwqp}} are any that are present in the \code{area} column for the respective input datasets (\code{\link{mancofibdata}}, \code{\link{pascofibdata}}, \code{\link{polcofibdata}}, or \code{\link{polcofibdata}}). One to any of the options can be used.All stations are returned if this argument is set as \code{NULL} (default). Not all areas may be present based on the year/month selection.
 #'
 #' @return A \code{data.frame} similar to the input if \code{assf = FALSE} with additional columns describing station categories and optionally filtered by arguments passed to the function.  A \code{sf} object if \code{assf = TRUE} with additional columns for \code{\link{show_fibmap}}.
 #'
@@ -36,8 +36,8 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
   # check if epchc
   isepchc <- exists("epchc_station", fibdata)
 
-  # check if manco, pasco, or polco data
-  isother <- any(grepl('^manco|^pasco|^polco', names(fibdata)))
+  # check if manco, pasco, polco, or hcesd data
+  isother <- any(grepl('^manco|^pasco|^polco|^hcesd', names(fibdata)))
 
   if(isepchc)
     out <- fibdata %>%
@@ -60,7 +60,7 @@ anlz_fibmap <- function(fibdata, yrsel = NULL, mosel = NULL, areasel = NULL, ass
 
   if(isother)
     out <- fibdata %>%
-      dplyr::rename_with(~ "station", dplyr::matches("^(manco|pasco|polco)_station$")) %>%
+      dplyr::rename_with(~ "station", dplyr::matches("^(manco|pasco|polco|hcesd)_station$")) %>%
       dplyr::select(area, station, class, yr, mo, Latitude, Longitude, var, val) %>%
       dplyr::filter(var %in% c('ecoli', 'entero')) %>%
       dplyr::mutate(

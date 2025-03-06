@@ -35,7 +35,7 @@ Fecal Indicator Bacteria (FIB) are used to track concentrations of pathogens in 
 Many monitoring programs routinely measure FIB concentrations at select locations. The tbeptools package has several functions for importing and reporting these data. Three workflows are available:
 
 1) Functions that use data exclusively from the Environmental Protection Commission (EPC) of Hillsborough County
-2) Functions that use data from Manatee, Pasco, or Polk County
+2) Functions that use data from Manatee, Pasco, Polk County, or Hillsborough County (Environmental Services Division)
 3) Functions that use data from several monitoring programs for baywide reporting focusing exclusively on *Enterococcus*
 
 This vignette is organized around these three workflows.  For all, the assessments are meant to inform progress remediating fecal impairments or to support prioritization of areas for further investigation.  They are not meant to support beach monitoring efforts or closures for recreational uses - alternative reporting products are available for that purpose (see [FLDOH Healthy Beaches](https://www.floridahealth.gov/environmental-health/beach-water-quality/county-detail.html?County=Pinellas&Zip=33701-3109){target="_blank"} or the [Tampa Bay Recreational Water Quality Map](https://tampabay.wateratlas.usf.edu/maps/recreational-water-quality-map/){target="_blank"}). 
@@ -184,15 +184,15 @@ Finally, a map of station categories from the report card for a given year can b
 show_fibmatmap(fibdata, yrsel = 2020, areasel = c('Hillsborough River', 'Alafia River'))
 ```
 
-## Manatee, Pasco, and Polk County reporting
+## Manatee, Pasco, Polk, or Hillsborough County reporting
 
-FIB data from Manatee, Pasco, and Polk County can also be used with the above functions.  These data can be downloaded from the USEPA Water Quality Portal API as follows, replacing the first argument with the appropriate organization identifier (i.e., Manatee County `21FLMANA_WQP`, Pasco County `21FLPASCO_WQP`, Polk County `21FLPOLK_WQP`). 
+FIB data from Manatee, Pasco, Polk, and Hillsborough (Environmental Services Division) County can also be used with the above functions.  These data can be downloaded from the USEPA Water Quality Portal API as follows, replacing the first argument with the appropriate organization identifier (i.e., Manatee County `21FLMANA_WQP`, Pasco County `21FLPASCO_WQP`, Polk County `21FLPOLK_WQP`). 
 
 ```{r, eval = F}
 mancofibdata <- read_importwqp(org = '21FLMANA_WQX', type = 'fib')
 ```
 
-For convenience, data objects with the same naming convention as above are included with tbeptools for use with all FIB functions (`mancofibdata`, `pascofibdata`, `polcofibdata`). Note that `read_importwqp()` can be used to download FIB data from other organizations, although the FIB functions will only work with data from Manatee County. 
+For convenience, data objects with the same naming convention as above are included with tbeptools for use with all FIB functions (`mancofibdata`, `pascofibdata`, `polcofibdata`, `hcesdfibdata`). Note that `read_importwqp()` can be used to download FIB data from other organizations, although the FIB functions will only work with data from Manatee County. 
 
 Similar workflows as for the EPCHC data can be used. Examples of the functions using the Manatee County data are below.  The same functionality can be used with the other county datasets.
 

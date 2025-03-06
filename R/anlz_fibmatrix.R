@@ -57,8 +57,8 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
   # check if epchc data
   isepchc <- exists("epchc_station", fibdata)
 
-  # check if manco, pasco, or polco data
-  isother <- any(grepl('^manco|^pasco|^polco', names(fibdata)))
+  # check if manco, pasco, polco, or hcesd data
+  isother <- any(grepl('^manco|^pasco|^polco|^hcesd', names(fibdata)))
 
   # checks for epc data
   if(isepchc){
@@ -93,7 +93,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
 
   }
 
-  # checks for manco, pasco, or polco data
+  # checks for manco, pasco, polco, or hcesd data
   if(isother){
 
     # # assign default stations from TBEP report #05-13
@@ -113,7 +113,7 @@ anlz_fibmatrix <- function(fibdata, yrrng = NULL, stas = NULL, bay_segment = NUL
       dplyr::filter(
         (class == 'Fresh' & var %in% 'ecoli') | (class == 'Marine' & var == 'entero')
       ) %>%
-      dplyr::rename_with(~ "station", dplyr::matches("^(manco|pasco|polco)_station$")) %>%
+      dplyr::rename_with(~ "station", dplyr::matches("^(manco|pasco|polco|hcesd)_station$")) %>%
       dplyr::select(-qual, -uni, -Sample_Depth_m, -var) %>%
       dplyr::rename(indic = val)
 

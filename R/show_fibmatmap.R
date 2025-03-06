@@ -16,7 +16,7 @@
 #'
 #' @details Placing the mouse cursor over an item on the map will reveal additional information about a segment or station.
 #'
-#' If the input is from EPCHC (from \code{\link{read_importfib}}, i.e., \code{\link{fibdata}}), valid entries for \code{areasel} include 'Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay', 'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay', 'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal', and 'Valrico Lake'.  If the input data is from \code{\link{read_importentero}} (i.e., \code{\link{enterodata}})), valid entries for \code{areasel} include 'OTB', 'HB', 'MTB', 'LTB', 'BCB', and 'MR'.  If the input is from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX, \code{\link{mancofibdata}}), Pasco County (21FLPASC_WQX, \code{\link{pascofibdata}}), or Polk County (21FLPOLK_WQX, \code{\link{polcofibdata}}), valid entries for \code{areasel} are any that are present in the \code{area} column for the respective input datasets.
+#' If the input is from EPCHC (from \code{\link{read_importfib}}, i.e., \code{\link{fibdata}}), valid entries for \code{areasel} include 'Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay', 'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay', 'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal', and 'Valrico Lake'.  If the input data is from \code{\link{read_importentero}} (i.e., \code{\link{enterodata}})), valid entries for \code{areasel} include 'OTB', 'HB', 'MTB', 'LTB', 'BCB', and 'MR'.  If the input is from \code{\link{read_importwqp}} for Manatee County (21FLMANA_WQX, \code{\link{mancofibdata}}), Pasco County (21FLPASC_WQX, \code{\link{pascofibdata}}), Polk County (21FLPOLK_WQX, \code{\link{polcofibdata}}), or Hillsborough County Environmental Services Division (21FLHESD_WQX, \code{\link{hcesdfibdata}}) valid entries for \code{areasel} are any that are present in the \code{area} column for the respective input datasets.
 #'
 #' Bay segment matrix categories can be shown if input data are from \code{\link{read_importentero}}).  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the other datasets are not appropriate for estimating bay segment outcomes.
 #'
@@ -47,8 +47,8 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
   # check if epchc data
   isepchc <- exists("epchc_station", fibdata)
 
-  # check if manco, pasco, or polco data
-  isother <- any(grepl('^manco|^pasco|^polco', names(fibdata)))
+  # check if manco, pasco, polco, or hcesd data
+  isother <- any(grepl('^manco|^pasco|^polco|^hcesd', names(fibdata)))
 
   if(!isepchc & !isother){
 
@@ -128,7 +128,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
       dplyr::filter(
         (class == 'Fresh' & var == 'ecoli') | (class == 'Marine' & var == 'entero')
       ) %>%
-      dplyr::rename_with(~ "grp", dplyr::matches("^(manco|pasco|polco)_station$")) %>%
+      dplyr::rename_with(~ "grp", dplyr::matches("^(manco|pasco|polco|hcesd)_station$")) %>%
       dplyr::select(grp, area) %>%
       dplyr::distinct()
 

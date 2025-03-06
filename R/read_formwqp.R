@@ -8,7 +8,7 @@
 #'
 #' @return A data frame containing formatted water quality and station metadata
 #'
-#' @details This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.  Manatee County FIB data (21FLMANA_WQX) will also include an \code{area} column indicating the waterbody name as used by the USF Water Atlas, with some area aggregations.
+#' @details This function is used by \code{\link{read_importwqp}} to combine, format, and process data (\code{res}) and station metadata (\code{sta}) obtained from the Water Quality Portal for the selected county and data type. The resulting data frame includes the date, time, station identifier, latitude, longitude, variable name, value, unit, and quality flag.  Manatee County FIB data (21FLMANA_WQX) will also include an \code{area} column indicating the waterbody name as used by the USF Water Atlas, with some area aggregations.  Other county-level FIB  data will have a similar column.
 #'
 #' @concept read
 #'
@@ -292,6 +292,41 @@ read_formwqp <- function(res, sta, org, type, trace = F){
       mutate(
         areacmb = area
       )
+
+    if(org == '21FLHESD_WQX')
+      tomtch <- data.frame(
+        station = c(
+          "BEAUDETTE POND INLET", "BEAUDETTE POND MIDDLE", "BEAUDETTE POND OUTLET", "BEAUDETTE POND WEST",
+          "BLO CHELSEA", "BLO DANNY", "BLO MLK", "BLO ORIENT 1",
+          "BLO ORIENT 2", "BLO VETS", "CHANNEL G BRIDGE", "CHANNEL G WEIR",
+          "CYPRESS CREEK SCI", "DELANEY CREEK 1", "DELANEY CREEK 10", "DELANEY CREEK 12",
+          "DELANEY CREEK 13", "DELANEY CREEK 14", "DELANEY CREEK 15", "DELANEY CREEK 16",
+          "DELANEY CREEK 17", "DELANEY CREEK 3", "DELANEY CREEK 4", "DELANEY CREEK 5",
+          "DELANEY CREEK 6", "DELANEY CREEK 7", "DELANEY CREEK 8", "DELANEY CREEK 9",
+          "EAST LAKE MIDDLE", "EAST LAKE NORTH", "EAST LAKE NORTH CANAL", "EAST LAKE SOUTH",
+          "EAST LAKE SOUTH CANAL", "EAST LAKE WEST CANAL", "EGYPT LAKE EAST", "EGYPT LAKE MIDDLE",
+          "EGYPT LAKE WEST", "EGYPT LAKE WETLAND", "HENRY STREET CANAL", "LAKE CARROLL MIDDLE",
+          "LAKE DARBY MIDDLE", "LAKE GRADY MIDDLE", "LAKE MAGDALENE MIDDLE", "LAKE MANGO MIDDLE",
+          "LAKE VALRICO MIDDLE", "LAKE WEEKS MIDDLE", "MANGO DRAIN SCI", "TALIAFERRO EAST POND",
+          "TALIAFERRO WEST POND", "VALRICO CANAL"
+        ),
+        area = c(
+          "Beaudette Pond", "Beaudette Pond", "Beaudette Pond", "Beaudette Pond",
+          "BLO", "BLO", "BLO", "BLO",
+          "BLO", "BLO", "Channel G", "Channel G",
+          "Cypress Creek", "Delaney Creek", "Delaney Creek", "Delaney Creek",
+          "Delaney Creek", "Delaney Creek", "Delaney Creek", "Delaney Creek",
+          "Delaney Creek", "Delaney Creek", "Delaney Creek", "Delaney Creek",
+          "Delaney Creek", "Delaney Creek", "Delaney Creek", "Delaney Creek",
+          "East Lake", "East Lake", "East Lake", "East Lake",
+          "East Lake", "East Lake", "Egypt Lake", "Egypt Lake",
+          "Egypt Lake", "Egypt Lake", "Henry Street Canal", "Lake Carroll",
+          "Lake Darby", "Lake Grady", "Lake Magdalene", "Lake Mango",
+          "Lake Valrico", "Lake Weeks", "Mango Drain", "Taliaferro Pond",
+          "Taliaferro Pond", "Valrico Canal"
+        )
+      ) %>%
+      mutate(areacmb = area)
 
     out <- dplyr::left_join(out, tomtch, by = 'station', relationship = 'many-to-one') %>%
       dplyr::select(-area) %>%
