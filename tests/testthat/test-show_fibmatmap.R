@@ -61,3 +61,11 @@ test_that("show_fibmatmap includes bay segment polygons", {
   expect_s3_class(map, "leaflet")
   expect_true(length(map$x$calls) > 1)  # Checking multiple leaflet layers added
 })
+
+test_that("Check error if insufficient data for lag yr", {
+
+  expect_error(show_fibmatmap(mancofibdata, yrsel = 2019, areasel = 'Manatee River', warn = F),
+    regxp = "Insufficient data for lag year"
+  )
+
+})

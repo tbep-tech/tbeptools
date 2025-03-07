@@ -157,7 +157,14 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
   # subset year, remove NA cat, add labels
   tomapsta <- tomapsta %>%
     dplyr::filter(!is.na(cat)) %>%
-    dplyr::filter(yr == !!yrsel) %>%
+    dplyr::filter(yr == !!yrsel)
+
+  # stop if no data
+  if(nrow(tomapsta) == 0){
+    stop('Insufficient data for lagyr')
+  }
+
+  tomapsta <- tomapsta %>%
     dplyr::mutate(grp = as.character(grp)) %>%
     dplyr::left_join(stas, by = 'grp') %>%
     sf::st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
