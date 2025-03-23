@@ -31,6 +31,6 @@
 #' nrow(hcesdfibdata)
 #' ncol(hcesdfibdata)
 #'
-#' save(hcesdfibdata, file = 'data/hcesdfibdata.RData', compress = 'xz')
+#' save(hcesdfibdata, file = 'data/hcesdfibdata.RData')
 #' }
 "hcesdfibdata"

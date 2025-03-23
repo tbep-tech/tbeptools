@@ -38,7 +38,7 @@ hcesdfibdata <- read_importwqp('21FLHESD_WQX', type = 'fib')
 nrow(hcesdfibdata)
 ncol(hcesdfibdata)
 
-save(hcesdfibdata, file = 'data/hcesdfibdata.RData', compress = 'xz')
+save(hcesdfibdata, file = 'data/hcesdfibdata.RData')
 }
 }
 \concept{data}

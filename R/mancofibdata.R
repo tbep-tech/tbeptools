@@ -32,6 +32,6 @@
 #' nrow(mancofibdata)
 #' ncol(mancofibdata)
 #'
-#' save(mancofibdata, file = 'data/mancofibdata.RData', compress = 'xz')
+#' save(mancofibdata, file = 'data/mancofibdata.RData')
 #' }
 "mancofibdata"

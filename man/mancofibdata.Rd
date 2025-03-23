@@ -38,7 +38,7 @@ mancofibdata <- read_importwqp('21FLMANA_WQX', type = 'fib')
 nrow(mancofibdata)
 ncol(mancofibdata)
 
-save(mancofibdata, file = 'data/mancofibdata.RData', compress = 'xz')
+save(mancofibdata, file = 'data/mancofibdata.RData')
 }
 }
 \concept{data}

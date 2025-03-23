@@ -31,6 +31,6 @@
 #' nrow(pascofibdata)
 #' ncol(pascofibdata)
 #'
-#' save(pascofibdata, file = 'data/pascofibdata.RData', compress = 'xz')
+#' save(pascofibdata, file = 'data/pascofibdata.RData')
 #' }
 "pascofibdata"

@@ -1,7 +1,7 @@
 library(mockery)
 
 # Mock data for catchpixels
-catchpixels <- data.frame(
+catchpixelsmock <- data.frame(
   station = c("station1", "station1", "station2"),
   pixel = c(1, 2, 3)
 )
@@ -25,7 +25,7 @@ test_that("read_importrain works correctly", {
   stub(read_importrain, "utils::read.table", mock_read_table)
 
   # Call the function with mocked dependencies
-  result <- read_importrain(2021, catchpixels, mos = 1, quiet = FALSE)
+  result <- read_importrain(2021, catchpixelsmock, mos = 1, quiet = FALSE)
 
   # Define expected output
   expected_output <- tibble::tibble(

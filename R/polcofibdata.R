@@ -31,6 +31,6 @@
 #' nrow(polcofibdata)
 #' ncol(polcofibdata)
 #'
-#' save(polcofibdata, file = 'data/polcofibdata.RData', compress = 'xz')
+#' save(polcofibdata, file = 'data/polcofibdata.RData')
 #' }
 "polcofibdata"

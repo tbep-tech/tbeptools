@@ -38,7 +38,7 @@ polcofibdata <- read_importwqp('21FLPOLK_WQX', type = 'fib')
 nrow(polcofibdata)
 ncol(polcofibdata)
 
-save(polcofibdata, file = 'data/polcofibdata.RData', compress = 'xz')
+save(polcofibdata, file = 'data/polcofibdata.RData')
 }
 }
 \concept{data}

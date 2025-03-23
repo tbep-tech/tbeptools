@@ -38,7 +38,7 @@ pascofibdata <- read_importwqp('21FLPASC_WQX', type = 'fib')
 nrow(pascofibdata)
 ncol(pascofibdata)
 
-save(pascofibdata, file = 'data/pascofibdata.RData', compress = 'xz')
+save(pascofibdata, file = 'data/pascofibdata.RData')
 }
 }
 \concept{data}

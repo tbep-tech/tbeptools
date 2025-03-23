@@ -44,7 +44,7 @@ fibdata <- read_importfib(xlsx, download_latest = TRUE)
 nrow(fibdata)
 ncol(fibdata)
 
-save(fibdata, file = 'data/fibdata.RData', compress = 'xz')
+save(fibdata, file = 'data/fibdata.RData')
 
 file.remove(xlsx)
 }

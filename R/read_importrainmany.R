@@ -17,6 +17,7 @@
 #' read_importrainmany(c(2021, 2022), quiet = F)
 #' }
 read_importrainmany <- function(yrs, quiet = FALSE, sleep = 5){
+
   yrs <- yrs
   prcp_out <- list()
 
@@ -35,8 +36,8 @@ read_importrainmany <- function(yrs, quiet = FALSE, sleep = 5){
 
   }
 
-  prcpdat <- dplyr::bind_rows(prcp_out)
+  out <- dplyr::bind_rows(prcp_out)
 
-  return(prcpdat)
+  return(out)
 
 }
