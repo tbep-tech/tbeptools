@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0.9022</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.0.0.9023</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,7 +143,7 @@
 <span class="r-in"><span><span class="co"># use different dataset</span></span></span>
 <span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, lagyr <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 643 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 684 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       yr grp                    class  gmean Latitude Longitude cat  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">2</span>000 21FLDOH_WQX-MANATEE152 Marine  10.7     27.5     -<span style="color: #BB0000;">82.7</span> A    </span>
@@ -156,12 +156,12 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">2</span>001 21FLHILL_WQX-112       Marine  48.3     27.7     -<span style="color: #BB0000;">82.4</span> A    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">2</span>001 21FLHILL_WQX-133       Marine 747.      27.9     -<span style="color: #BB0000;">82.4</span> D    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">2</span>001 21FLHILL_WQX-136       Marine  26.1     27.7     -<span style="color: #BB0000;">82.5</span> A    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 633 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 674 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># subset to only wet samples</span></span></span>
 <span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">enterodata</span>, lagyr <span class="op">=</span> <span class="fl">1</span>, subset_wetdry <span class="op">=</span> <span class="st">"wet"</span>,</span></span>
 <span class="r-in"><span>               temporal_window <span class="op">=</span> <span class="fl">2</span>, wet_threshold <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 466 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 500 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       yr grp                    class   gmean Latitude Longitude cat  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">2</span>001 21FLDOH_WQX-MANATEE152 Marine   31.6     27.5     -<span style="color: #BB0000;">82.7</span> A    </span>
@@ -174,7 +174,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">2</span>001 21FLHILL_WQX-133       Marine <span style="text-decoration: underline;">3</span>286.      27.9     -<span style="color: #BB0000;">82.4</span> C    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">2</span>002 21FLDOH_WQX-MANATEE152 Marine   13.7     27.5     -<span style="color: #BB0000;">82.7</span> A    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">2</span>002 21FLHILL_WQX-101       Marine  531.      28.0     -<span style="color: #BB0000;">82.6</span> C    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 456 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 490 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Manatee County data</span></span></span>
 <span class="r-in"><span><span class="fu">anlz_fibmatrix</span><span class="op">(</span><span class="va">mancofibdata</span>, lagyr <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
