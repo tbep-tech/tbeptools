@@ -29,7 +29,7 @@ show_transectavespp(
 
 \item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"}
 
-\item{total}{logical indicating if total frequency occurrence for all species is also returned, only applies if \code{asreact = FALSE}}
+\item{total}{logical indicating if total frequency occurrence for all seagrass species is also returned, only applies if \code{asreact = FALSE}}
 
 \item{alph}{numeric indicating alpha value for score category colors}
 
@@ -52,7 +52,7 @@ If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{pl
 Show annual averages of seagrass frequency occurrence by bay segments, year, and species
 }
 \details{
-Results are based on averages across species by date and transect in each bay segment. Drift or attached macroalgae (e.g., Caulerpa, Chaetomorpha) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
+Results are based on averages across seagrass species (Halodule, Syringodium, Thalassia, Ruppia, Halophila) by date and transect in each bay segment. Drift or attached macroalgae (e.g., Caulerpa, Chaetomorpha) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.  If \code{total = TRUE}, a line showing the total frequency occurrence for all seagrass species is also shown (does not include macroalgae or cyanobacteria).
 }
 \examples{
 \dontrun{

@@ -4,7 +4,7 @@
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
 #' @param yrrng numeric indicating year ranges to evaluate
 #' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"
-#' @param total logical indicating if total frequency occurrence for all species is also returned, only applies if \code{asreact = FALSE}
+#' @param total logical indicating if total frequency occurrence for all seagrass species is also returned, only applies if \code{asreact = FALSE}
 #' @param alph numeric indicating alpha value for score category colors
 #' @param family optional chr string indicating font family for text labels
 #' @param plotly logical if matrix is created using plotly
@@ -13,7 +13,7 @@
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param sppcol character vector of alternative colors to use for each species, must have length of six
 #'
-#' @details Results are based on averages across species by date and transect in each bay segment. Drift or attached macroalgae (e.g., Caulerpa, Chaetomorpha) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
+#' @details Results are based on averages across seagrass species (Halodule, Syringodium, Thalassia, Ruppia, Halophila) by date and transect in each bay segment. Drift or attached macroalgae (e.g., Caulerpa, Chaetomorpha) and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.  If \code{total = TRUE}, a line showing the total frequency occurrence for all seagrass species is also shown (does not include macroalgae or cyanobacteria).
 #'
 #' @return If \code{asreact = F}, a \code{\link[ggplot2]{ggplot}} or \code{\link[plotly]{plotly}} (if \code{plotly = T}) object is returned showing trends over time by species for selected bay segments.  If \code{asreact = T}, a \code{\link[reactable]{reactable}} table showing results by year, segment, and species is returned.
 #' @export

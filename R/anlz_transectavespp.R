@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @details
-#' Frequency occurrence estimates are averaged across segments in \code{bay_segment} if \code{by_seg = F}, i.e., separate results by location are not returned.  Results are retained by bay segment if \code{by_seg = T}.  Also note that totals across species (\code{total = T}) are not returned if \code{by_seg = T}.
+#' Frequency occurrence estimates are averaged across segments in \code{bay_segment} if \code{by_seg = F}, i.e., separate results by location are not returned.  Results are retained by bay segment if \code{by_seg = T}.
 #'
 #' @concept analyze
 #'

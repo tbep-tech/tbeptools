@@ -16,7 +16,7 @@ A data frame with abundance and frequency occurrence estimates aggregated by spe
 Get seagrass average abundance and occurrence across transects
 }
 \details{
-Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2.  In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  The estimates are obtained for all seagrass species including Caulerpa (attached macroalgae), Dapis (cyanobacteria), and Chaetomorpha (drift green algea), whereas all other attached and drift algae species are aggregated. Drift or attached macroalgae and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.
+Abundance and frequency occurrence are estimated as in Sherwood et al. 2017, equations 1 and 2.  In short, frequency occurrence is estimated as the number of instances a species was observed along a transect divided by the number of placements along a transect and average abundance was estimated as the sum of species-specific Braun-Blanquet scores divided by the number of placements along a transect.  The estimates are obtained for all seagrass species including Caulerpa (attached macroalgae), Dapis (cyanobacteria), and Chaetomorpha (drift green algea), whereas all other attached and drift algae species are aggregated. Drift or attached macroalgae and cyanobacteria (Dapis) estimates may not be accurate prior to 2021.  Values for \code{total} include total frequency occurrence only for seagrass species (Halodule, Syringodium, Thalassia, Ruppia, Halophila).
 }
 \examples{
 \dontrun{

@@ -14,7 +14,7 @@
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
-#' @details Results are based on averages across species by date and transect in each bay segment
+#' @details Results are based on averages across seagrass species (Halodule, Syringodium, Thalassia, Ruppia, Halophila) by date and transect in each bay segment
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object showing trends over time for each bay segment if \code{plotly = FALSE}, otherwise a \code{\link[plotly]{plotly}} object
 #' @export

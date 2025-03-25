@@ -54,7 +54,7 @@ A \code{\link[ggplot2]{ggplot}} object showing trends over time for each bay seg
 Show matrix of seagrass frequency occurrence by bay segments and year
 }
 \details{
-Results are based on averages across species by date and transect in each bay segment
+Results are based on averages across seagrass species (Halodule, Syringodium, Thalassia, Ruppia, Halophila) by date and transect in each bay segment
 
 The color scheme is based on arbitrary breaks at 25, 50, and 75 percent frequency occurrence.  These don't necessarily translate to any ecological breakpoints.  Use \code{neutral = TRUE} to use a neutral and continuous color palette.
 }
