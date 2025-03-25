@@ -62,12 +62,12 @@ anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'L
     tots <- filtdat %>%
       dplyr::group_by(yr) %>%
       dplyr::summarise(foest = mean(foest, na.rm = T)) %>%
-      dplyr::mutate(bay_segment = 'Tampa Bay')
+      dplyr::mutate(bay_segment = 'All')
 
     segs <- bind_rows(segs, tots)
 
-    levs <- c('Tampa Bay', levs)
-    bay_segment <- c('Tampa Bay', bay_segment)
+    levs <- c('All', levs)
+    bay_segment <- c('All', bay_segment)
 
   }
 
