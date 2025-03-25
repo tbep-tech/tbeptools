@@ -23,6 +23,13 @@
 #'
 #' trnlns$bearing <- bearing
 #'
+#' # add bay segment using trnpts
+#' bayseg <- trnpts %>%
+#'   dplyr::select(TRAN_ID, bay_segment) %>%
+#'   sf::st_set_geometry(NULL)
+#' trnlns <- trnlns %>%
+#'   dplyr::left_join(bayseg, by = c('Site' = 'TRAN_ID'))
+#'
 #' save(trnlns, file = 'data/trnlns.RData', compress = 'xz')
 #' }
 "trnlns"
