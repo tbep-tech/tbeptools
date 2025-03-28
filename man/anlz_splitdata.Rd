@@ -9,7 +9,7 @@ anlz_splitdata(
   date_split,
   date_col = "date",
   value_col = "value",
-  stats = list(sum = sum, avg = mean, n = length)
+  stats = list(avg = mean)
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ anlz_splitdata(
 
 \item{value_col}{name of the value column}
 
-\item{stats}{list of functions to apply to values, default: sum, average and count}
+\item{stats}{list of functions to apply to values, default: \code{list(avg = mean)}}
 }
 \value{
 A tibble summarizing data for annual periods "before" and "after" the split date
