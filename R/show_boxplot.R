@@ -13,7 +13,7 @@
 #' @param labelexp logical indicating if y axis and target labels are plotted as expressions, default \code{TRUE}
 #' @param txtlab logical indicating if a text label for the target value is shown in the plot
 #' @param partialyr logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter
-#' @param outliers logical indicating if outliers are shown in the plot
+#' @param points logical indicating if jittered point observations, including outliers, are shown in the plot
 #'
 #' @concept show
 #'
@@ -31,7 +31,7 @@
 #' @examples
 #' show_boxplot(epcdata, bay_segment = 'OTB')
 show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng = c(1975, 2024), ptsz = 0.5, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
-                         trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE, partialyr = FALSE, outliers = TRUE){
+                         trgs = NULL, family = NA, labelexp = TRUE, txtlab = TRUE, partialyr = FALSE, points = TRUE){
 
   # parameter
   param <- match.arg(param)
@@ -138,7 +138,7 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
   names(cols)[2] <- as.character(yrsel)
 
   p <- ggplot() +
-    geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA, outliers = outliers) +
+    geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA, outliers = points) +
     geom_point(data = toplo2, aes(x = mo, y = val, group = yr, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
     geom_hline(aes(yintercept = thrnum, linetype = '+2 se (large exceedance)'), colour = 'blue') +
     labs(y = axlab, title = ttl) +
@@ -158,14 +158,14 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
     scale_linetype_manual(values = 'dotted') +
     guides(linetype = guide_legend(override.aes = list(colour = 'blue')))
 
-  if(outliers)
+  if(points)
     p <- p +
       geom_point(data = toplo1, aes(x = mo, y = val, group = yr, colour = names(cols)[1]), position = position_jitter(width = 0.2), size = ptsz)
 
   # show text as max observed value or 75th percentile
   if(txtlab){
     yval <- max(aves$val)
-    if(!outliers)
+    if(!points)
       yval <- toplo1 %>%
         dplyr::summarise(
           yval = graphics::boxplot(val, plot = F)$stats[5, ],

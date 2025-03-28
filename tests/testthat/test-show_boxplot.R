@@ -20,7 +20,7 @@ test_that("Checking show_boxplot year selection not in data range", {
   expect_error(show_boxplot(epcdata, labelexp = F, yrsel = 1900))
 })
 
-test_that("Checking show_boxplot outliers = F", {
-  result <- show_boxplot(epcdata, outliers = F)
+test_that("Checking show_boxplot points = F", {
+  result <- show_boxplot(epcdata, points = F)
   expect_is(result, 'ggplot')
 })

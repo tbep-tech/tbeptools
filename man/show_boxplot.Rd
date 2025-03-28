@@ -16,7 +16,7 @@ show_boxplot(
   labelexp = TRUE,
   txtlab = TRUE,
   partialyr = FALSE,
-  outliers = TRUE
+  points = TRUE
 )
 }
 \arguments{
@@ -42,7 +42,7 @@ show_boxplot(
 
 \item{partialyr}{logical indicating if incomplete annual data for the most recent year are approximated by five year monthly averages for each parameter}
 
-\item{outliers}{logical indicating if outliers are shown in the plot}
+\item{points}{logical indicating if jittered point observations, including outliers, are shown in the plot}
 }
 \value{
 A \code{\link[ggplot2]{ggplot}} object
