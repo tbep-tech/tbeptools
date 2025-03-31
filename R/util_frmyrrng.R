@@ -19,22 +19,22 @@
 #'
 #' @examples
 #' # Basic usage
-#' util_format_year_range(2023)  # Returns "2023"
-#' util_format_year_range(2020:2024)  # Returns "2020-24"
+#' util_frmyrrng(2023)  # Returns "2023"
+#' util_frmyrrng(2020:2024)  # Returns "2020-24"
 #'
 #' # Using prefix and suffix
-#' util_format_year_range(2023, prefix = "FY ")  # Returns "FY 2023"
-#' util_format_year_range(2020:2024, suffix = " AD")  # Returns "2020-24 AD"
-#' util_format_year_range(2020:2024, prefix = "Years ", suffix = " CE")  # Returns "Years 2020-24 CE"
+#' util_frmyrrng(2023, prefix = "FY ")  # Returns "FY 2023"
+#' util_frmyrrng(2020:2024, suffix = " AD")  # Returns "2020-24 AD"
+#' util_frmyrrng(2020:2024, prefix = "Years ", suffix = " CE")  # Returns "Years 2020-24 CE"
 #'
 #' # Other examples
-#' util_format_year_range(1998:2001)  # Returns "1998-2001"
-#' util_format_year_range(c(2020, 2022))  # Returns "2020-2022"
-#' util_format_year_range(c(2010, 2011, 2012), prefix = "c. ")  # Returns "c. 2010-12"
+#' util_frmyrrng(1998:2001)  # Returns "1998-2001"
+#' util_frmyrrng(c(2020, 2022))  # Returns "2020-2022"
+#' util_frmyrrng(c(2010, 2011, 2012), prefix = "c. ")  # Returns "c. 2010-12"
 #'
 #' # Empty input
-#' util_format_year_range(numeric(0))  # Returns character(0)
-util_format_year_range <- function(years, prefix = "", suffix = "") {
+#' util_frmyrrng(numeric(0))  # Returns character(0)
+util_frmyrrng <- function(years, prefix = "", suffix = "") {
   # Handle empty or NULL input
   if (is.null(years) || length(years) == 0) {
     return(character(0))
@@ -70,4 +70,5 @@ util_format_year_range <- function(years, prefix = "", suffix = "") {
   }
 
   return(result)
+
 }

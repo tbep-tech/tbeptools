@@ -42,7 +42,7 @@ read_prism_rasters <- function(dir_tif){
 
   rx_lyr    <- "([-0-9]{10})_([A-z]+)_v([1-8]{1})-([-0-9]{10})"
 
-  dplyr::tibble(
+  out <- dplyr::tibble(
     path_tif = list.files(dir_tif, ".*\\.tif$", full.names = T) ) |>
     dplyr::mutate(
       lyr = purrr::map(path_tif, \(path_tif) terra::rast(path_tif) |> names() ) ) |>
@@ -57,4 +57,7 @@ read_prism_rasters <- function(dir_tif){
       date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
         as.Date()) |>
     dplyr::arrange(md, date, variable, version) # order by: month-day, date, variable
+
+  return(out)
+
 }

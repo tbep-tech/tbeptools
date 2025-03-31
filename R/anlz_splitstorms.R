@@ -69,7 +69,7 @@ anlz_splitstorms <- function(df_hurricane, date_split,
     names(stats) <- sapply(stats, function(f) deparse(substitute(f)))
   }
 
-  df_hurricane |>
+  out <- df_hurricane |>
     # Extract period and year
     dplyr::mutate(
       period = factor(
@@ -83,4 +83,7 @@ anlz_splitstorms <- function(df_hurricane, date_split,
       dplyr::across(scale, stats, .names = "{.fn}"),
       .groups = "drop"
     )
+
+  return(out)
+
 }

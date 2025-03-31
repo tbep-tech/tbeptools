@@ -34,23 +34,29 @@
 #'
 #' @examples
 #' # Create example data
-#' df <- data.frame(
-#'   year = 2010:2020,
-#'   value = rnorm(11, mean = 10, sd = 2)
-#' )
+#' data <- data.frame(
+#'   date = seq.Date(as.Date("2010-01-01"), as.Date("2020-12-31"), by = "month"),
+#'   value = c(rnorm(66, mean = 10, sd = 4), rnorm(66, mean = 20, sd = 4))
+#'   )
+#'
+#' # Basic analysis with default statistics
+#' split_date <- as.Date("2015-06-15")
+#' df <- anlz_splitdata(data, split_date, "date", "value")
 #'
 #' # Basic interactive plot
-#' show_splitbarplot(df, "year", "value", 2015)
+#' show_splitbarplot(df, "period", "year", "avg")
 #'
 #' # Custom colors and labels with 1 decimal place
-#' show_splitbarplot(df, "year", "value", 2015,
-#'             bar_fill = "steelblue",
+#' show_splitbarplot(df, "period", "year", "avg",
+#'             bars_fill = c("steelblue", "darkorange"),
+#'             exploded = TRUE,
 #'             label_points = c("min", "max"),
 #'             label_color = "darkred",
 #'             value_round = 1)
 #'
 #' # Custom label templates
-#' show_splitbarplot(df, "year", "value", 2015,
+#' show_splitbarplot(df, "period", "year", "avg",
+#'             exploded = TRUE,
 #'             label_template = "{year} ({type})",
 #'             hover_template = "Year {year}",
 #'             value_round = 0)
@@ -116,11 +122,11 @@ show_splitbarplot <- function(
   lbl_before <- df |>
     dplyr::filter(!!period_sym == "before") |>
     dplyr::pull(!!year_sym) |>
-    util_format_year_range(prefix = x_label_prefix)
+    util_frmyrrng(prefix = x_label_prefix)
   lbl_after  <- df |>
     dplyr::filter(!!period_sym == "after") |>
     dplyr::pull(!!year_sym) |>
-    util_format_year_range(prefix = x_label_prefix)
+    util_frmyrrng(prefix = x_label_prefix)
   df <- df |>
     mutate(
       {{value_col}}  := units::set_units(!!value_sym, NULL),
@@ -243,7 +249,7 @@ show_splitbarplot <- function(
           data = labeled_data,
           ggplot2::aes(x = x, y = !!value_sym, label = label),
           check_overlap = T,
-          nudge_y = -0.5)
+          nudge_y = -0.25)
           # size = 2,
           # color = label_color)
     }
@@ -255,19 +261,5 @@ show_splitbarplot <- function(
   } else {
     return(p)
   }
-}
 
-# df <- data.frame(
-#   year = 1989:2020,
-#   value = rnorm(length(1989:2020), mean = 10, sd = 2))
-# show_splitbarplot(df, "year", "value", 2015)
-# show_splitbarplot(df, "year", "value", 2015, interactive = F)
-# show_splitbarplot(df, "year", "value", 2015, exploded = T)
-# show_splitbarplot(
-#   df, "year", "value", 2015)
-#
-# show_splitbarplot(
-#   df, "year", "value", 2018,
-#   exploded = T,
-#   label_color = "black",
-#   label_template = "{year}: {value}")
+}
