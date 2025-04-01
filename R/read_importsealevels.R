@@ -111,10 +111,9 @@ read_importsealevels <- function(
           name_repair    = "unique_quiet",
           show_col_types = F),
       httr2_error = function(cnd){
-        msg <- httr2::resp_body_string(cnd$resp) |> trimws()
-        stop(paste(
-          "Error in httr2::request to:\n  ", cnd$request$url,
-          "Response:\n  ", msg)) } )
+        stop(paste("Error in httr2::request"))
+        }
+      )
   }
 
   if (!file.exists(path_csv) | download_latest)
@@ -129,5 +128,8 @@ read_importsealevels <- function(
     dplyr::relocate(date, .before = year) |>
     readr::write_csv(path_csv)
 
-  readr::read_csv(path_csv, show_col_types = F)
+  out <- readr::read_csv(path_csv, show_col_types = F)
+
+  return(out)
+
 }

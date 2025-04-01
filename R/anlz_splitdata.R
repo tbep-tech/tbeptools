@@ -30,9 +30,7 @@ anlz_splitdata <- function(
     date_col = "date",
     value_col = "value",
     stats = list(
-      # sum = sum,
       avg = mean
-      #n = length
       )) {
 
   # Get reference year and day of year for split
@@ -64,38 +62,21 @@ anlz_splitdata <- function(
     }
   }
 
-  # Convert unnamed stats to named list if necessary
-  if (is.null(names(stats))) {
-    names(stats) <- sapply(stats, function(f) deparse(substitute(f)))
-  }
-
-  # # Get units from input data if present
-  # value_units <- if (inherits(df[[value_col]], "units")) {
-  #   units(df[[value_col]])
-  # } else {
-  #   NULL
-  # }
-
   # Process data
-  result <- df |>
+  out <- df |>
     # Extract period and year
     dplyr::mutate(
       period = factor(
         sapply(.data[[date_col]], assign_period, ref_year, yday_split),
         levels = c("before", "after"), ordered = T),
-      year = sapply(.data[[date_col]], assign_year, yday_split)) |>
+      year = sapply(.data[[date_col]], assign_year, yday_split)
+    ) |>
     # Group and summarize
     dplyr::group_by(year, period) |>
     dplyr::summarise(
       dplyr::across(dplyr::all_of(value_col), stats, .names = "{.fn}"),
       .groups = "drop")
 
-  # Reapply units if they were present in input
-  # if (!is.null(value_units)) {
-  #   for (stat_name in names(stats)) {
-  #     result[[stat_name]] <- set_units(result[[stat_name]], value_units)
-  #   }
-  # }
+  return(out)
 
-  return(result)
 }
