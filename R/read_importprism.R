@@ -123,15 +123,16 @@
 #' @concept read
 #'
 #' @examples
+#' \dontrun{
 #' # setup output directory and table
 #' dir_tif   <- here::here("inst/prism")
 #' zonal_csv <- file.path(dir_tif, "_zones.csv")
 #'
 #' # run function for Tampa Bay watersheds for first 3 days and 4 variables
 #' d <- read_importprism(
-#'   vars      = c("tmin", "tmax", "tdmean", "ppt"),
+#'   vars      = c("tdmean", "ppt"),
 #'   date_beg  = as.Date("1981-01-01"),
-#'   date_end  = as.Date("1981-01-03"),
+#'   date_end  = as.Date("1981-01-02"),
 #'   dir_tif   = dir_tif,
 #'   sf_zones  = tbsegshed,
 #'   fld_zones = "bay_segment",
@@ -151,6 +152,7 @@
 #'
 #' # show summary by zone
 #' d
+#' }
 read_importprism <- function(
     vars       = c("tmin", "tmax", "tdmean", "ppt"),
     vars_ytd   = c("ppt"),
