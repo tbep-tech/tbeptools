@@ -64,11 +64,6 @@ anlz_splitstorms <- function(df_hurricane, date_split,
     }
   }
 
-  # Convert unnamed stats to named list if necessary
-  if (is.null(names(stats))) {
-    names(stats) <- sapply(stats, function(f) deparse(substitute(f)))
-  }
-
   out <- df_hurricane |>
     # Extract period and year
     dplyr::mutate(

@@ -21,7 +21,7 @@ expected_output <- tibble(
 # Test default statistics
 expect_equal(anlz_splitstorms(hurricanes, split_date), expected_output)
 
-# Test with custom statistics
+# Test with custom statistics, includes unnamed
 custom_stats <- list(max = max, min = min)
 expected_output <- tibble(
   year = c(1981, 1982),
