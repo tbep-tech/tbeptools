@@ -90,23 +90,23 @@ with optional prefix and suffix. Returns an empty character vector if input is N
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fl">2023</span><span class="op">)</span>  <span class="co"># Returns "2023"</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2023"</span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fl">2020</span><span class="op">:</span><span class="fl">2024</span><span class="op">)</span>  <span class="co"># Returns "2020-24"</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2020–24"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2020-24"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Using prefix and suffix</span></span></span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fl">2023</span>, prefix <span class="op">=</span> <span class="st">"FY "</span><span class="op">)</span>  <span class="co"># Returns "FY 2023"</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "FY 2023"</span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fl">2020</span><span class="op">:</span><span class="fl">2024</span>, suffix <span class="op">=</span> <span class="st">" AD"</span><span class="op">)</span>  <span class="co"># Returns "2020-24 AD"</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2020–24 AD"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2020-24 AD"</span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fl">2020</span><span class="op">:</span><span class="fl">2024</span>, prefix <span class="op">=</span> <span class="st">"Years "</span>, suffix <span class="op">=</span> <span class="st">" CE"</span><span class="op">)</span>  <span class="co"># Returns "Years 2020-24 CE"</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Years 2020–24 CE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Years 2020-24 CE"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Other examples</span></span></span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fl">1998</span><span class="op">:</span><span class="fl">2001</span><span class="op">)</span>  <span class="co"># Returns "1998-2001"</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1998–2001"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1998-2001"</span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">2022</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Returns "2020-2022"</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2020–2022"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2020-2022"</span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2010</span>, <span class="fl">2011</span>, <span class="fl">2012</span><span class="op">)</span>, prefix <span class="op">=</span> <span class="st">"c. "</span><span class="op">)</span>  <span class="co"># Returns "c. 2010-12"</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "c. 2010–12"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "c. 2010-12"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Empty input</span></span></span>
 <span class="r-in"><span><span class="fu">util_frmyrrng</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Returns character(0)</span></span></span>
