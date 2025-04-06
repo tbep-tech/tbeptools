@@ -47,7 +47,6 @@ jobs:
           extra-packages: |
             any::pkgdown
             local::.
-            github::ropensci/rnoaa
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2

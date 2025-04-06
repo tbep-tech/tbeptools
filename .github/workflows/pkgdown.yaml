@@ -33,7 +33,6 @@ jobs:
           extra-packages: |
             any::pkgdown
             local::.
-            github::ropensci/rnoaa
           needs: website
 
       - name: Build site

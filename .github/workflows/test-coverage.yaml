@@ -29,7 +29,6 @@ jobs:
           extra-packages: |
             any::pkgdown
             local::.
-            github::ropensci/rnoaa
           needs: coverage
 
       - name: Test coverage
