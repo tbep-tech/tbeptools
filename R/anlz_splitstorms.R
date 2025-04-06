@@ -24,7 +24,7 @@
 #'   scale = c(6, 1, 3, 1, 2, 1))
 #'
 #' # Basic analysis with default statistics (sum, average and count)
-#' split_date <- Sys.Date() - years(1)
+#' split_date <- Sys.Date() - lubridate::years(1)
 #' anlz_splitstorms(hurricanes, split_date)
 #'
 #' # Analysis with custom statistics

@@ -48,7 +48,7 @@ util_frmyrrng <- function(years, prefix = "", suffix = "") {
     as.character(years)
   } else if (!all(diff(years) == 1)) {
     # Non-consecutive years, return first and last with full years
-    paste0(years[1], "–", years[length(years)])
+    paste0(years[1], "-", years[length(years)])
   } else {
     start_year <- years[1]
     end_year <- years[length(years)]
@@ -57,10 +57,10 @@ util_frmyrrng <- function(years, prefix = "", suffix = "") {
 
     if (start_century == end_century) {
       # Same century - use shortened end year
-      paste0(start_year, "–", end_year %% 100)
+      paste0(start_year, "-", end_year %% 100)
     } else {
       # Different centuries - use full end year
-      paste0(start_year, "–", end_year)
+      paste0(start_year, "-", end_year)
     }
   }
 

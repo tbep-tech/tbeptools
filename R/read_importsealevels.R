@@ -110,7 +110,7 @@ read_importsealevels <- function(
         readr::read_csv(
           name_repair    = "unique_quiet",
           show_col_types = F),
-      httr2_error = function(cnd){
+      error = function(e){
         stop(paste("Error in httr2::request"))
         }
       )

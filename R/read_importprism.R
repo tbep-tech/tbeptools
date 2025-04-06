@@ -425,9 +425,9 @@ read_importprism <- function(
 
   # variables ----
   crs_prism  = "+proj=longlat +datum=NAD83 +no_defs"
-
+browser()
   # * bounding box for PRISM daily data trimming
-  if (class(bbox) == "numeric"){
+  if (is.numeric(bbox)){
     ply_bb <- sf::st_bbox(bbox, crs = "epsg:4326")
   } else {
     ply_bb <- bbox
@@ -462,7 +462,7 @@ read_importprism <- function(
            and are up-to-date."))
     message(msg)
   }
-browser()
+
   # * iterate over variable-dates, fetching and cropping PRISM rasters ----
   d_todo |>
     select(var = variable, date, version, date_updated) |>

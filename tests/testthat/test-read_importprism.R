@@ -17,7 +17,5 @@ test_that("read_importprism returns correct structur", {
   expect_type(result, "list")
   expect_true(length(result) > 0)
 
-  unlink(dir_tiftmp, recursive = TRUE)
-
 })
 

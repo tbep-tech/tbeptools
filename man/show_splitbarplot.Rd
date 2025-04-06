@@ -48,9 +48,9 @@ show_splitbarplot(
 
 \item{label_color}{Color for labeled points in exploded view (default: "black")}
 
-\item{label_template}{Glue expression for point labels (default: "{year}: {value} ({type})")}
+\item{label_template}{Glue expression for point labels (default: "year: value (type)")}
 
-\item{hover_template}{Glue expression for hover text (default: "{year}: {value}")}
+\item{hover_template}{Glue expression for hover text (default: "year: value")}
 
 \item{value_round}{Integer indicating number of decimal places for rounding values (default: 2)}
 

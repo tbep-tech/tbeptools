@@ -15,8 +15,8 @@
 #' @param bars_alpha Alpha transparency for bars (default: 0.7)
 #' @param label_points Character vector specifying which points to label in exploded view (default: c("min","max","median"))
 #' @param label_color Color for labeled points in exploded view (default: "black")
-#' @param label_template Glue expression for point labels (default: "{year}: {value} ({type})")
-#' @param hover_template Glue expression for hover text (default: "{year}: {value}")
+#' @param label_template Glue expression for point labels (default: "year: value (type)")
+#' @param hover_template Glue expression for hover text (default: "year: value")
 #' @param value_round Integer indicating number of decimal places for rounding values (default: 2)
 #' @param text_size Size of text for labels and hover text (default: 14)
 #'
