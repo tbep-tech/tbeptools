@@ -77,6 +77,7 @@ Imports:
   reactable,
   readr,
   readxl,
+  rnoaa,
   rvest,
   sf,
   stringr,
@@ -99,6 +100,8 @@ Suggests:
   rmarkdown,
   testthat (>= 2.1.0),
   covr
+Remotes:
+  ropensci/rnoaa
 License: MIT + file LICENSE
 Encoding: UTF-8
 VignetteBuilder: knitr
