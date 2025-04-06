@@ -26,9 +26,11 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::covr, any::xml2
+          extra-packages: |
+            any::pkgdown
+            local::.
+            github::ropensci/rnoaa
           needs: coverage
-          dependencies: true
 
       - name: Test coverage
         run: |
