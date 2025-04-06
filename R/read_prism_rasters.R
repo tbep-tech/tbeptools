@@ -24,7 +24,6 @@
 #' - `date_updated` date the model was updated
 #'
 #' @importFrom dplyr arrange filter mutate select tibble
-#' @importFrom here here
 #' @importFrom lubridate day month
 #' @importFrom purrr map
 #' @importFrom stringr str_replace

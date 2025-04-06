@@ -105,9 +105,7 @@
 #'
 #' @importFrom dplyr any_of bind_rows case_when group_by mutate select summarise
 #'   tibble ungroup
-#' @importFrom fs dir_create dir_delete path_ext_remove
 #' @importFrom glue glue
-#' @importFrom here here
 #' @importFrom lubridate day days month today year ym
 #' @importFrom purrr map pwalk
 #' @importFrom readr parse_datetime
