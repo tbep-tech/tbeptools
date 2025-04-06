@@ -10,8 +10,6 @@
 #'
 #' @importFrom dplyr mutate group_by summarise n across
 #' @importFrom lubridate yday years
-#' @importFrom units as_units
-#' @import units
 #'
 #' @concept analyze
 #' @export

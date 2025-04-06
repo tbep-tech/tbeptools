@@ -26,7 +26,6 @@
 #' @importFrom ggplot2 ggplot aes coord_cartesian geom_col geom_errorbar theme_minimal labs geom_point geom_text geom_jitter
 #' @importFrom plotly ggplotly
 #' @importFrom glue glue
-#' @importFrom scales expand_range
 #'
 #' @export
 #'
@@ -129,7 +128,7 @@ show_splitbarplot <- function(
     util_frmyrrng(prefix = x_label_prefix)
   df <- df |>
     mutate(
-      {{value_col}}  := units::set_units(!!value_sym, NULL),
+      {{value_col}}  := as.numeric(as.character(!!value_sym)),
       {{period_col}} := recode(
         !!period_sym,
         before = lbl_before,
@@ -153,11 +152,11 @@ show_splitbarplot <- function(
   y_rng <- with(
     summary_data,
     range(
-      # mean_val - sd_val,
-      # mean_val + sd_val)) |>
       min_val,
-      max_val)) |>
-    scales::expand_range(mul = 0.05)
+      max_val))
+  y_rng_sz <- y_rng[2] - y_rng[1]
+  exp <- y_rng_sz * 0.05
+  y_rng <- c(y_rng[1] - exp, y_rng[2] + exp)
 
   # Create base plot
   p <- ggplot2::ggplot(
