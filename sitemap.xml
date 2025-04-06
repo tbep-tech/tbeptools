@@ -31,6 +31,8 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentave.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentpel.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentpelave.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_splitdata.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_splitstorms.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_tbbimed.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_tbbiscr.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_tbniave.html</loc></url>
@@ -74,13 +76,17 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importfib.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importfim.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importphyto.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importprism.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importrain.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importrainmany.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importsealevels.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importsediment.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importwq.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importwqp.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/read_prism_rasters.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_transect.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/seagrass.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/sealevelstations.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/sedimentdata.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/sgmanagement.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/sgseg.html</loc></url>
@@ -107,6 +113,7 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_segplotly.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_sitemap.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_sitesegmap.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/show_splitbarplot.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_tbbimatrix.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_tbnimatrix.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_tbniscr.html</loc></url>
@@ -142,6 +149,7 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/trnpts.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_fibicons.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_fiblevs.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/util_frmyrrng.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_html.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_map.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_orgin.html</loc></url>
