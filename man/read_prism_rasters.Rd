@@ -35,7 +35,7 @@ frame.
 For more on the \href{https://prism.oregonstate.edu/}{Parameter-elevation Relationship on Independent Slopes Model (PRISM)}, see \code{\link[=read_importprism]{read_importprism()}}.
 }
 \examples{
-dir_tif <- here::here("inst/prism")
+dir_tif <- system.file("prism", package = "tbeptools")
 read_prism_rasters(dir_tif)
 }
 \concept{read}

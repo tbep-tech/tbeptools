@@ -36,7 +36,7 @@
 #' @concept read
 #'
 #' @examples
-#' dir_tif <- here::here("inst/prism")
+#' dir_tif <- system.file("prism", package = "tbeptools")
 #' read_prism_rasters(dir_tif)
 read_prism_rasters <- function(dir_tif){
 

@@ -77,7 +77,7 @@
 #' @param dir_tif directory path to store downloaded and cropped PRISM daily
 #'   rasters (as GeoTIFF) across years with file name of format
 #'   `prism_daily_{month}-{day}.tif`. The default path is
-#'   `fs::path_ext_remove(zonal_csv)`.  Date and version in the raster layers
+#'   `sub("\\.[^.]*$", "", zonal_csv)`.  Date and version in the raster layers
 #'   will be compared with the [update
 #'   schedule](https://prism.oregonstate.edu/calendar/list.php) to determine if
 #'   it should be updated, otherwise will be skipped.
@@ -125,8 +125,8 @@
 #' @examples
 #' \dontrun{
 #' # setup output directory and table
-#' dir_tif   <- here::here("inst/prism")
-#' zonal_csv <- file.path(dir_tif, "_zones.csv")
+#' dir_tif   <- system.file("prism", package = "tbeptools")
+#' zonal_csv <- system.file("prism/_zones.csv", package = "tbeptools")
 #'
 #' # run function for Tampa Bay watersheds for first 3 days and 4 variables
 #' d <- read_importprism(
@@ -159,7 +159,7 @@ read_importprism <- function(
     date_beg   = as.Date("1981-01-01"),
     date_end   = Sys.Date(),
     bbox       = sf::st_bbox(sf_zones),
-    dir_tif    = fs::path_ext_remove(zonal_csv),
+    dir_tif    = sub("\\.[^.]*$", "", zonal_csv),
     pfx_tif    = "prism_daily_",
     sf_zones,
     fld_zones,
@@ -267,7 +267,7 @@ read_importprism <- function(
     u <- sprintf("https://services.nacse.org/prism/data/public/4km/%s/%s", var, format(date, "%Y%m%d"))
 
     z <- glue::glue("{dir_tif}/temp_{date}_{var}.zip")
-    dir_z <- fs::path_ext_remove(z)
+    dir_z <- sub("\\.[^.]*$", "", z)
 
     if (verbose)
       message(glue::glue("Downloading PRISM daily {date} {var}"))
@@ -301,7 +301,7 @@ read_importprism <- function(
         datatype = "FLT4S",
         filetype = "GTiff", gdal = c("COMPRESS=DEFLATE"),
         overwrite = T)
-      fs::dir_delete(dir_z)
+      unlink(dir_z, recursive = TRUE)
       return(T)
     }
 
@@ -327,8 +327,8 @@ read_importprism <- function(
       datatype = "FLT4S",
       filetype = "GTiff", gdal = c("COMPRESS=DEFLATE"),
       overwrite = T)
-    fs::file_move(tmp, md_tif)
-    fs::dir_delete(dir_z)
+    file.rename(tmp, md_tif)
+    unlink(dir_z, recursive = TRUE)
     return(T)
   }
 
@@ -386,7 +386,7 @@ read_importprism <- function(
       datatype = "FLT4S",
       filetype = "GTiff", gdal = c("COMPRESS=DEFLATE"),
       overwrite = T)
-    fs::file_move(tmp, md_tif)
+    file.rename(tmp, md_tif)
 
     return(T)
   }
@@ -425,7 +425,7 @@ read_importprism <- function(
 
   # variables ----
   crs_prism  = "+proj=longlat +datum=NAD83 +no_defs"
-browser()
+
   # * bounding box for PRISM daily data trimming
   if (is.numeric(bbox)){
     ply_bb <- sf::st_bbox(bbox, crs = "epsg:4326")

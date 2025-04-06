@@ -10,7 +10,7 @@ read_importprism(
   date_beg = as.Date("1981-01-01"),
   date_end = Sys.Date(),
   bbox = sf::st_bbox(sf_zones),
-  dir_tif = fs::path_ext_remove(zonal_csv),
+  dir_tif = sub("\\\\.[^.]*$", "", zonal_csv),
   pfx_tif = "prism_daily_",
   sf_zones,
   fld_zones,
@@ -45,7 +45,7 @@ which could be bigger than \code{st_bbox(sf_zones)}.}
 \item{dir_tif}{directory path to store downloaded and cropped PRISM daily
 rasters (as GeoTIFF) across years with file name of format
 \verb{prism_daily_\{month\}-\{day\}.tif}. The default path is
-\code{fs::path_ext_remove(zonal_csv)}.  Date and version in the raster layers
+\code{sub("\\\\.[^.]*$", "", zonal_csv)}.  Date and version in the raster layers
 will be compared with the \href{https://prism.oregonstate.edu/calendar/list.php}{update schedule} to determine if
 it should be updated, otherwise will be skipped.}
 
@@ -145,8 +145,8 @@ For more on \href{https://prism.oregonstate.edu/}{Parameter-elevation Relationsh
 \examples{
 \dontrun{
 # setup output directory and table
-dir_tif   <- here::here("inst/prism")
-zonal_csv <- file.path(dir_tif, "_zones.csv")
+dir_tif   <- system.file("prism", package = "tbeptools")
+zonal_csv <- system.file("prism/_zones.csv", package = "tbeptools")
 
 # run function for Tampa Bay watersheds for first 3 days and 4 variables
 d <- read_importprism(

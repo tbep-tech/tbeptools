@@ -1,5 +1,5 @@
-dir_tif <- here::here('inst/prism')
-zonal_csv <- file.path(dir_tif, "_zones.csv")
+dir_tif <- system.file('prism', package = 'tbeptools')
+zonal_csv <- system.file('prism/_zones.csv', package = 'tbeptools')
 
 test_that("read_importprism returns correct structur", {
 

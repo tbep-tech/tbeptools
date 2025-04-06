@@ -2,7 +2,7 @@
 test_that("read_prism_rasters correctly processes PRISM raster files", {
 
   # directories
-  dir_tif <- here::here("inst/prism")
+  dir_tif <- system.file('prism', package = 'tbeptools')
 
   # Call the function with our mock directory
   result <- read_prism_rasters(dir_tif)
