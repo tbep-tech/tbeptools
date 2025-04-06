@@ -462,7 +462,7 @@ read_importprism <- function(
            and are up-to-date."))
     message(msg)
   }
-
+browser()
   # * iterate over variable-dates, fetching and cropping PRISM rasters ----
   d_todo |>
     select(var = variable, date, version, date_updated) |>
