@@ -84,9 +84,7 @@ read_importsealevels <- function(
     df_stations     = sealevelstations[,c("station_id", "station_name")],
     api_url         = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
     beg_int         = 19010101,
-    end_int         = lubridate::today() %>%
-      format("%Y%m%d") %>%
-      as.integer(),
+    end_int         = as.integer(format(lubridate::today(), '%Y%m%d')),
     product         = "monthly_mean",
     datum           = "stnd",
     time_zone       = "lst",
