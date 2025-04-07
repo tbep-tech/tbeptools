@@ -19,7 +19,7 @@ mock_req_perform <- function(...) {
 
 # Mock read.csv to return a predefined dataframe
 mock_read_csv <- function(file, ...) {
-  data.frame(year = c(2023, 2023), month = c(1, 2), msl = c(1.5, 1.6))
+  data.frame(date = c('2023-01-01', '2023-02-01'), year = c(2023, 2023), month = c(1, 2), msl = c(1.5, 1.6))
 }
 
 test_that("read_importsealevels writes and reads CSV correctly", {
