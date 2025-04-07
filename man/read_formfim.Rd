@@ -22,7 +22,9 @@ Function is used internally within \code{\link{read_importfim}}
 }
 \examples{
 # file path
-csv <- url('https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/TampaBay_NektonIndexData.csv')
+url <- 'https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/'
+fl <- 'TampaBay_NektonIndexData.csv'
+csv <- url(paste0(url, fl))
 
 datin <- read.csv(csv)
 

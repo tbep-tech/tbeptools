@@ -67,7 +67,6 @@
 #' Currents](https://tidesandcurrents.noaa.gov/datum_options.html).
 #'
 #' @importFrom httr2 request req_url_query req_perform resp_body_string
-#' @importFrom readr read_csv write_csv
 #' @importFrom dplyr mutate
 #' @importFrom tidyr unnest
 #' @importFrom purrr map
@@ -107,9 +106,9 @@ read_importsealevels <- function(
           format      = "csv") |>
         httr2::req_perform() |>
         httr2::resp_body_string() |>
-        readr::read_csv(
-          name_repair    = "unique_quiet",
-          show_col_types = F),
+        textConnection() |>
+        read.csv(
+          stringsAsFactors = FALSE),
       error = function(e){
         stop(paste("Error in httr2::request"))
         }
@@ -126,9 +125,12 @@ read_importsealevels <- function(
       date = sprintf("%d-%02d-01", year, month) |>
         as.Date()) |>
     dplyr::relocate(date, .before = year) |>
-    readr::write_csv(path_csv)
+    write.csv(path_csv, row.names = FALSE)
 
-  out <- readr::read_csv(path_csv, show_col_types = F)
+  out <- read.csv(path_csv, stringsAsFactors = FALSE) %>%
+    dplyr::mutate(
+      date = as.Date(date)
+    )
 
   return(out)
 

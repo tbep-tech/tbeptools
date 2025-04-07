@@ -105,10 +105,8 @@
 #'
 #' @importFrom dplyr any_of bind_rows case_when group_by mutate select summarise
 #'   tibble ungroup
-#' @importFrom glue glue
 #' @importFrom lubridate day days month today year ym
 #' @importFrom purrr map pwalk
-#' @importFrom readr parse_datetime
 #' @importFrom rvest html_node html_table read_html
 #' @importFrom sf st_as_sfc st_as_sf st_bbox st_crs
 #' @importFrom stringr str_replace
@@ -264,11 +262,11 @@ read_importprism <- function(
 
     u <- sprintf("https://services.nacse.org/prism/data/public/4km/%s/%s", var, format(date, "%Y%m%d"))
 
-    z <- glue::glue("{dir_tif}/temp_{date}_{var}.zip")
+    z <- paste0(dir_tif, "/temp_", date, "_", var, ".zip")
     dir_z <- sub("\\.[^.]*$", "", z)
 
     if (verbose)
-      message(glue::glue("Downloading PRISM daily {date} {var}"))
+      message(paste("Downloading PRISM daily", date, var))
 
     download.file(u, z, quiet = T)
 
@@ -288,7 +286,8 @@ read_importprism <- function(
       terra::trim()
     terra::crs(r_new) <- crs_prism
 
-    names(r_new) <- glue::glue("{date}_{var}_v{version}-{date_updated}")
+    names(r_new) <- paste0(date, "_", var, "_v", version, "-", date_updated)
+
     terra::varnames(r_new) <- ""
 
     md_tif <- sprintf("%s/%s%02d-%02d.tif", dir_tif, pfx_tif, lubridate::month(date), lubridate::day(date))
@@ -336,9 +335,8 @@ read_importprism <- function(
     # var       = "ppt"
 
     # DEBUG
-    message(glue("var_ytd {date_calc} ~ {Sys.time()}"))
-
-    varytd <- glue::glue("{var}ytd")
+    message(paste("var_ytd", date_calc, "~", Sys.time()))
+    varytd <- paste0(var, "ytd")
 
     d <- d_r |>
       filter(
@@ -415,9 +413,9 @@ read_importprism <- function(
           as.Date()) |>
       dplyr::select(-lyr)
 
-    readr::write_csv(d_z, zonal_csv)
+    write.csv(d_z, zonal_csv, row.names = FALSE)
 
-    readr::read_csv(zonal_csv, show_col_types = F)
+    read.csv(zonal_csv, stringsAsFactors = FALSE)
 
   }
 
@@ -452,12 +450,13 @@ read_importprism <- function(
   if (verbose){
     msg <- ifelse(
       nrow(d_todo) > 0,
-      glue::glue(
-        "Of {nrow(d_req)} variable-dates requested, {nrow(d_todo)} are newer or
+      paste(
+        "Of", nrow(d_req), "variable-dates requested,", nrow(d_todo), "are newer or
            missing so will be downloaded and cropped to the bounding box."),
-      glue::glue(
-        "All {nrow(d_req)} variable-dates requested already exist in `dir_tif`
-           and are up-to-date."))
+      paste(
+        "All", nrow(d_req), "variable-dates requested already exist in `dir_tif`
+           and are up-to-date.")
+      )
     message(msg)
   }
 
@@ -476,7 +475,7 @@ read_importprism <- function(
   stopifnot(all(vars_ytd %in% unique(d_lyrs$variable)))
 
   d_ytd_done <- d_lyrs |>
-    dplyr::filter(variable %in% glue::glue("{vars_ytd}ytd")) |>
+    dplyr::filter(variable %in% paste0(vars_ytd, "ytd")) |>
     mutate(
       variable = str_replace(variable, "ytd", ""))
   d_ytd_todo <- d_lyrs |>
@@ -497,7 +496,7 @@ read_importprism <- function(
   # TODO: skip zonal stats on already done if redo_zonal = F
   # TODO: consider parquet format (with duckdb) or compressed since 24 MB
   if (verbose)
-    message(glue::glue("Summarizing rasters by zone to csv"))
+    message("Summarizing rasters by zone to csv")
 
   d_z <- get_zonal()
   d_z

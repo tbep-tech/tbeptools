@@ -15,8 +15,6 @@
 #' @param bars_alpha Alpha transparency for bars (default: 0.7)
 #' @param label_points Character vector specifying which points to label in exploded view (default: c("min","max","median"))
 #' @param label_color Color for labeled points in exploded view (default: "black")
-#' @param label_template Glue expression for point labels (default: "year: value (type)")
-#' @param hover_template Glue expression for hover text (default: "year: value")
 #' @param value_round Integer indicating number of decimal places for rounding values (default: 2)
 #' @param text_size Size of text for labels and hover text (default: 14)
 #'
@@ -25,7 +23,6 @@
 #' @importFrom dplyr mutate group_by summarise filter sym n arrange desc case_when
 #' @importFrom ggplot2 ggplot aes coord_cartesian geom_col geom_errorbar theme_minimal labs geom_point geom_text geom_jitter
 #' @importFrom plotly ggplotly
-#' @importFrom glue glue
 #'
 #' @export
 #'
@@ -52,13 +49,6 @@
 #'             label_points = c("min", "max"),
 #'             label_color = "darkred",
 #'             value_round = 1)
-#'
-#' # Custom label templates
-#' show_splitbarplot(df, "period", "year", "avg",
-#'             exploded = TRUE,
-#'             label_template = "{year} ({type})",
-#'             hover_template = "Year {year}",
-#'             value_round = 0)
 show_splitbarplot <- function(
     df,
     period_col,
@@ -72,8 +62,6 @@ show_splitbarplot <- function(
     bars_alpha     = 0.7,
     label_points   = c("min", "max", "median"),
     label_color    = "black",
-    label_template = "{year}: {value} ({type})",
-    hover_template = "{year}: {value}",
     value_round    = 2,
     text_size      = 14) {
 
@@ -173,8 +161,7 @@ show_splitbarplot <- function(
       na.rm = TRUE,
       color = "darkgray") +
     ggplot2::coord_cartesian(
-      ylim = y_rng) + # expand_range
-    # ggplot2::theme_minimal() +
+      ylim = y_rng) +
     ggplot2::theme(
       axis.text       = element_text(size = text_size),
       axis.title      = ggplot2::element_blank(),
@@ -194,10 +181,7 @@ show_splitbarplot <- function(
           dist_to_mean == min(dist_to_mean) ~ "median"
         ),
         value_round = round(!!value_sym, value_round),
-        hover_text = glue::glue(
-          hover_template,
-          year = !!year_sym,
-          value = value_round)
+        hover_text = paste0(!!year_sym, ': ', value_round)
       ) |>
       dplyr::ungroup()
 
@@ -232,11 +216,8 @@ show_splitbarplot <- function(
         # get single instance of each combination of period and point_type
         dplyr::distinct(!!period_sym, point_type, .keep_all = TRUE) |>
         dplyr::mutate(
-          label = glue::glue(
-            label_template,
-            year  = !!year_sym,
-            value = value_round,
-            type  = point_type) )
+          label = paste0(!!year_sym, ': ', value_round)
+        )
 
       p <- p +
         ggplot2::geom_point(

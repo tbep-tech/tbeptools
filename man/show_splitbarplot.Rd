@@ -17,8 +17,6 @@ show_splitbarplot(
   bars_alpha = 0.7,
   label_points = c("min", "max", "median"),
   label_color = "black",
-  label_template = "{year}: {value} ({type})",
-  hover_template = "{year}: {value}",
   value_round = 2,
   text_size = 14
 )
@@ -47,10 +45,6 @@ show_splitbarplot(
 \item{label_points}{Character vector specifying which points to label in exploded view (default: c("min","max","median"))}
 
 \item{label_color}{Color for labeled points in exploded view (default: "black")}
-
-\item{label_template}{Glue expression for point labels (default: "year: value (type)")}
-
-\item{hover_template}{Glue expression for hover text (default: "year: value")}
 
 \item{value_round}{Integer indicating number of decimal places for rounding values (default: 2)}
 
@@ -84,12 +78,5 @@ show_splitbarplot(df, "period", "year", "avg",
             label_points = c("min", "max"),
             label_color = "darkred",
             value_round = 1)
-
-# Custom label templates
-show_splitbarplot(df, "period", "year", "avg",
-            exploded = TRUE,
-            label_template = "{year} ({type})",
-            hover_template = "Year {year}",
-            value_round = 0)
 }
 \concept{show}

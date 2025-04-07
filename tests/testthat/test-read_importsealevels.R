@@ -17,14 +17,14 @@ mock_req_perform <- function(...) {
   structure(list(content = charToRaw(mock_api_response)), class = "httr2_response")
 }
 
-# Mock readr::read_csv to return a predefined dataframe
+# Mock read.csv to return a predefined dataframe
 mock_read_csv <- function(file, ...) {
   data.frame(year = c(2023, 2023), month = c(1, 2), msl = c(1.5, 1.6))
 }
 
 test_that("read_importsealevels writes and reads CSV correctly", {
   mockery::stub(read_importsealevels, "httr2::req_perform", mock_req_perform)
-  mockery::stub(read_importsealevels, "readr::read_csv", mock_read_csv)
+  mockery::stub(read_importsealevels, "read.csv", mock_read_csv)
   mockery::stub(read_importsealevels, "file.exists", function(...) FALSE)
 
   result <- read_importsealevels(
