@@ -64,16 +64,16 @@ anlz_splitstorms <- function(df_hurricane, date_split,
     }
   }
 
-  out <- df_hurricane |>
+  out <- df_hurricane %>%
     # Extract period and year
     dplyr::mutate(
       period = factor(
         sapply(date_beg, assign_period, ref_year, yday_split),
         levels = c("before", "after"), ordered = T),
       year = sapply(date_beg, assign_year, yday_split)
-    ) |>
+    ) %>%
     # Group and summarize
-    dplyr::group_by(year, period) |>
+    dplyr::group_by(year, period) %>%
     dplyr::summarise(
       dplyr::across(scale, stats, .names = "{.fn}"),
       .groups = "drop"

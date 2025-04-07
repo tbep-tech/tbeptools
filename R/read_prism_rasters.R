@@ -26,7 +26,6 @@
 #' @importFrom dplyr arrange filter mutate select tibble
 #' @importFrom lubridate day month
 #' @importFrom purrr map
-#' @importFrom stringr str_replace
 #' @importFrom terra rast
 #' @importFrom tidyr unnest
 #'
@@ -42,19 +41,19 @@ read_prism_rasters <- function(dir_tif){
   rx_lyr    <- "([-0-9]{10})_([A-z]+)_v([1-8]{1})-([-0-9]{10})"
 
   out <- dplyr::tibble(
-    path_tif = list.files(dir_tif, ".*\\.tif$", full.names = T) ) |>
+    path_tif = list.files(dir_tif, ".*\\.tif$", full.names = T) ) %>%
     dplyr::mutate(
-      lyr = purrr::map(path_tif, \(path_tif) terra::rast(path_tif) |> names() ) ) |>
-    tidyr::unnest(lyr) |>
+      lyr = purrr::map(path_tif, \(path_tif) terra::rast(path_tif) %>% names() ) ) %>%
+    tidyr::unnest(lyr) %>%
     dplyr::mutate(
-      date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
+      date         = gsub(rx_lyr, '\\1', lyr) %>%
         as.Date(),
       md           = sprintf("%02d-%02d", lubridate::month(date), lubridate::day(date)),
-      variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
-      version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
+      variable     = gsub(rx_lyr, '\\2', lyr),
+      version      = gsub(rx_lyr, '\\3', lyr) %>%
         as.integer(),
-      date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
-        as.Date()) |>
+      date_updated = gsub(rx_lyr, '\\4', lyr) %>%
+        as.Date()) %>%
     dplyr::arrange(md, date, variable, version) # order by: month-day, date, variable
 
   return(out)

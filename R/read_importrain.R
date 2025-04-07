@@ -72,7 +72,7 @@ read_importrain <- function(curyr, catchpixels, mos = 1:12, quiet = T){
   }
 
   # date as date
-  out <- out |>
+  out <- out %>%
     dplyr::mutate(date = as.Date(date, format = '%m/%d/%Y')) %>%
     dplyr::arrange(station, date)
 

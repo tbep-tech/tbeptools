@@ -15,13 +15,13 @@ pixels <- read_sf(here('data-raw/swfwmd_pixel_2_utm_m_83.shp'))
 catch2 <- st_transform(catchments,
                        crs = st_crs(pixels))
 
-catchpixels <- st_intersection(pixels, catch2) |>
-  sf::st_drop_geometry() |>
-  select(PIXEL, StationNam) |>
+catchpixels <- st_intersection(pixels, catch2) %>%
+  sf::st_drop_geometry() %>%
+  select(PIXEL, StationNam) %>%
   separate_wider_delim(StationNam, delim = " + ", names = c('a','b', 'c','d'),
-                       too_few = 'align_start', cols_remove = F) |>
-  pivot_longer(cols = c(a, b, c, d), names_to = 'col', values_to = 'value') |>
-  filter(!is.na(value)) |>
+                       too_few = 'align_start', cols_remove = F) %>%
+  pivot_longer(cols = c(a, b, c, d), names_to = 'col', values_to = 'value') %>%
+  filter(!is.na(value)) %>%
   mutate(
     station = case_when(
       StationNam == '21FLHILL_WQX-102 + 103 + 619' & col != 'a' ~ paste0('21FLHILL_WQX-', value),
@@ -36,7 +36,7 @@ catchpixels <- st_intersection(pixels, catch2) |>
     ),
     station = case_when(station == '21FLCOSP_WQX-CENTRAL *' ~ '21FLCOSP_WQX-CENTRAL CANAL',
                         T ~ station)
-  ) |>
+  ) %>%
   select(station, pixel = PIXEL)
 
 save(catchpixels, file = here('data/catchpixels.RData'), compress = 'xz')

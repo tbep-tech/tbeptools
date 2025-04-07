@@ -106,15 +106,15 @@ show_splitbarplot <- function(
   period_sym <- dplyr::sym(period_col)
 
   # Pull years into two groups
-  lbl_before <- df |>
-    dplyr::filter(!!period_sym == "before") |>
-    dplyr::pull(!!year_sym) |>
+  lbl_before <- df %>%
+    dplyr::filter(!!period_sym == "before") %>%
+    dplyr::pull(!!year_sym) %>%
     util_frmyrrng(prefix = x_label_prefix)
-  lbl_after  <- df |>
-    dplyr::filter(!!period_sym == "after") |>
-    dplyr::pull(!!year_sym) |>
+  lbl_after  <- df %>%
+    dplyr::filter(!!period_sym == "after") %>%
+    dplyr::pull(!!year_sym) %>%
     util_frmyrrng(prefix = x_label_prefix)
-  df <- df |>
+  df <- df %>%
     mutate(
       {{value_col}}  := as.numeric(as.character(!!value_sym)),
       {{period_col}} := recode(
@@ -123,8 +123,8 @@ show_splitbarplot <- function(
         after  = lbl_after))
 
   # summary_data_0 <- summary_data
-  summary_data <- df |>
-    dplyr::group_by(!!period_sym) |>
+  summary_data <- df %>%
+    dplyr::group_by(!!period_sym) %>%
     dplyr::summarise(
       mean_val   = mean(!!value_sym),
       sd_val     = stats::sd(!!value_sym),
@@ -132,7 +132,7 @@ show_splitbarplot <- function(
       min_val    = min(!!value_sym),
       max_val    = max(!!value_sym),
       median_val = stats::median(!!value_sym),
-      .groups = "drop") |>
+      .groups = "drop") %>%
     dplyr::mutate(
       sd_val = ifelse(n == 1, NA, sd_val))  # Remove SD for single-value groups
 
@@ -170,8 +170,8 @@ show_splitbarplot <- function(
   # Add exploded view if requested
   if (exploded) {
     # Prepare individual points data with hover text
-    points_data <- df |>
-      dplyr::group_by(!!period_sym) |>
+    points_data <- df %>%
+      dplyr::group_by(!!period_sym) %>%
       dplyr::mutate(
         group_mean = mean(!!value_sym),
         dist_to_mean = abs(!!value_sym - group_mean),
@@ -182,7 +182,7 @@ show_splitbarplot <- function(
         ),
         value_round = round(!!value_sym, value_round),
         hover_text = paste0(!!year_sym, ': ', value_round)
-      ) |>
+      ) %>%
       dplyr::ungroup()
 
     # Create points plot to get jittered positions
@@ -195,7 +195,7 @@ show_splitbarplot <- function(
           width = 0.2))
 
     # Extract jittered positions and combine with original data
-    jittered_data <- points_data |>
+    jittered_data <- points_data %>%
       dplyr::mutate(
         x = points_plot$data[[1]]$x,
         x_orig = as.numeric(!!period_sym))
@@ -204,17 +204,17 @@ show_splitbarplot <- function(
     p <- p +
       suppressWarnings(
         ggplot2::geom_point(
-          data = jittered_data, #|>
+          data = jittered_data, #%>%
           # dplyr::filter(is.na(point_type) | !point_type %in% label_points),
           ggplot2::aes(x = x, y = !!value_sym, text = hover_text),
           alpha = 0.5))
 
     # Add labeled points if requested
     if (!is.null(label_points)) {
-      labeled_data <- jittered_data |>
-        dplyr::filter(point_type %in% label_points) |>
+      labeled_data <- jittered_data %>%
+        dplyr::filter(point_type %in% label_points) %>%
         # get single instance of each combination of period and point_type
-        dplyr::distinct(!!period_sym, point_type, .keep_all = TRUE) |>
+        dplyr::distinct(!!period_sym, point_type, .keep_all = TRUE) %>%
         dplyr::mutate(
           label = paste0(!!year_sym, ': ', value_round)
         )

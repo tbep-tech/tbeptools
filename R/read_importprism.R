@@ -109,7 +109,6 @@
 #' @importFrom purrr map pwalk
 #' @importFrom rvest html_node html_table read_html
 #' @importFrom sf st_as_sfc st_as_sf st_bbox st_crs
-#' @importFrom stringr str_replace
 #' @importFrom terra crs nlyr plet rast subset trim varnames writeRaster zonal
 #' @importFrom tidyr unnest pivot_longer
 #' @importFrom utils download.file
@@ -180,39 +179,39 @@ read_importprism <- function(
   # helper functions ----
   get_updates <- function(){
     prism_beg   <- as.Date("1981-01-01")
-    url_udpates <- "https://prism.oregonstate.edu/calendar/list.php"
-    rx_udpates  <- "([0-9]{4}-[0-9]{2}-[0-9]{2}) \\(([0-9]{1})\\)"
+    url_updates <- "https://prism.oregonstate.edu/calendar/list.php"
+    rx_updates  <- "([0-9]{4}-[0-9]{2}-[0-9]{2}) \\(([0-9]{1})\\)"
 
-    d_updates <- rvest::read_html(url_udpates) |>
-      rvest::html_node("#calendar > table") |>
-      rvest::html_table() |>
+    d_updates <- rvest::read_html(url_updates) %>%
+      rvest::html_node("#calendar > table") %>%
+      rvest::html_table() %>%
       dplyr::mutate(
-        date = as.Date(Date, format = "%d %b %Y")) |>
-      dplyr::select(-Date) |>
-      dplyr::relocate(date) |>
+        date = as.Date(Date, format = "%d %b %Y")) %>%
+      dplyr::select(-Date) %>%
+      dplyr::relocate(date) %>%
       dplyr::rename(
-        out_ver = 2) |>  # all vars are for same date_updated
+        out_ver = 2) %>%  # all vars are for same date_updated
       dplyr::mutate(
-        date_updated = stringr::str_replace(out_ver, rx_udpates, "\\1") |>
+        date_updated = gsub(rx_updates, "\\1", out_ver) %>%
           as.Date(),
-        version      = stringr::str_replace(out_ver, rx_udpates, "\\2") |>
-          as.integer()) |>
+        version      = gsub(rx_updates, "\\2", out_ver) %>%
+          as.integer()) %>%
       dplyr::select(date, version, date_updated)
 
     # append remaining dates since beginning of PRISM with version 8
     v8_end <- min(d_updates$date) - lubridate::days(1)
-    d_updates <- d_updates |>
+    d_updates <- d_updates %>%
       dplyr::bind_rows(
         dplyr::tibble(
           date         = as.Date(v8_end :prism_beg),
           version      = 8L,
           date_updated = purrr::map_chr(date, \(x){
             # set to 1st of month 6+ months ahead
-            sprintf("%d-%02d-01", year(x), month(x)) |>
-              as.Date() |>
-              (\(y) y + months(6) + lubridate::days(20))() |>
+            sprintf("%d-%02d-01", year(x), month(x)) %>%
+              as.Date() %>%
+              (\(y) y + months(6) + lubridate::days(20))() %>%
               as.character()
-          }) |> as.Date() ) ) |>
+          }) %>% as.Date() ) ) %>%
       dplyr::arrange(desc(date), desc(version))
 
     # confirm no duplicates
@@ -228,17 +227,17 @@ read_importprism <- function(
   }
 
   get_todo <- function(){
-    d_todo <- d_updates |>
+    d_todo <- d_updates %>%
       filter(
         date >= !!date_beg,
-        date <= !!date_end) |>
+        date <= !!date_end) %>%
       cross_join(
         tibble(
-          variable = vars)) |>
+          variable = vars)) %>%
       dplyr::anti_join(
-        d_done |>
+        d_done %>%
           dplyr::select(date, variable, version),
-        by = c("date", "variable", "version")) |>
+        by = c("date", "variable", "version")) %>%
       dplyr::arrange(date, variable, version)
     d_todo
   }
@@ -246,14 +245,14 @@ read_importprism <- function(
   get_lyrs <- function(r){
     tibble::tibble(
       idx = 1:terra::nlyr(r),
-      lyr = names(r)) |>
+      lyr = names(r)) %>%
       mutate(
-        date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
+        date         = gsub(rx_lyr, '\\1', lyr) %>%
           as.Date(),
-        variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
-        version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
+        variable     = gsub(rx_lyr, '\\2', lyr),
+        version      = gsub(rx_lyr, '\\3', lyr) %>%
           as.integer(),
-        date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
+        date_updated = gsub(rx_lyr, '\\4', lyr) %>%
           as.Date())
   }
 
@@ -268,7 +267,7 @@ read_importprism <- function(
     if (verbose)
       message(paste("Downloading PRISM daily", date, var))
 
-    download.file(u, z, quiet = T)
+    download.file(u, z, quiet = T, method = 'curl')
 
     # If downloaded zip < 1 KB, assume one of these errors:
     # - You have tried to download the file PRISM_tdmean_stable_4kmD2_19810101_bil.zip more than twice in one day (Pacific local time).  Note that repeated offenses may result in your IP address being blocked.
@@ -280,9 +279,9 @@ read_importprism <- function(
     unzip(z, exdir = dir_z)
     unlink(z)
 
-    r_new <- list.files(dir_z, "PRISM_.*_bil\\.bil$", full.names = T) |>
-      terra::rast() |>
-      terra::crop(ply_bb, mask = T, touches = T) |>
+    r_new <- list.files(dir_z, "PRISM_.*_bil\\.bil$", full.names = T) %>%
+      terra::rast() %>%
+      terra::crop(ply_bb, mask = T, touches = T) %>%
       terra::trim()
     terra::crs(r_new) <- crs_prism
 
@@ -306,10 +305,10 @@ read_importprism <- function(
     df_md <- get_lyrs(r_md)
 
     # remove old date-var, eg for stability improved
-    i_lyr_rm <- df_md |>
+    i_lyr_rm <- df_md %>%
       dplyr::filter(
         date     == !!date,
-        variable == !!var) |>
+        variable == !!var) %>%
       dplyr::pull(idx)
     if (length(i_lyr_rm) > 0)
       r_md <- terra::subset(r_md, i_lyr_rm, negate = T)
@@ -338,25 +337,26 @@ read_importprism <- function(
     message(paste("var_ytd", date_calc, "~", Sys.time()))
     varytd <- paste0(var, "ytd")
 
-    d <- d_r |>
+    d <- d_r %>%
       filter(
         year(date) == lubridate::year(date_calc),
         date       <= date_calc,
-        variable   == var) |>
+        variable   == var) %>%
       mutate(
         r = purrr::map2(path_tif, lyr, \(x,y) terra::rast(x, lyrs = y) ))
 
     r_ytd <- sum(rast(d$r), na.rm = T)
 
     # data for calculated date
-    d_c <- d |>
+    d_c <- d %>%
       dplyr::filter(date == date_calc)
 
-    names(r_ytd) <- d_c |>
-      dplyr::pull(r) |>
-      purrr::pluck(1) |>
-      names() |>
-      stringr::str_replace(var, varytd)
+    tonm <- d_c %>%
+      dplyr::pull(r) %>%
+      purrr::pluck(1) %>%
+      names()
+    tonm <- gsub(var, varytd, tonm)
+    names(r_ytd) <- tonm
 
     md_tif <- d_c$path_tif
 
@@ -364,10 +364,10 @@ read_importprism <- function(
     df_md <- get_lyrs(r_md)
 
     # remove old date-var, eg for stability improved
-    i_lyr_rm <- df_md |>
+    i_lyr_rm <- df_md %>%
       dplyr::filter(
         date     == !!date_calc,
-        variable == varytd) |>  # TODO: switch to var as input argument
+        variable == varytd) %>%  # TODO: switch to var as input argument
       dplyr::pull(idx)
     if (length(i_lyr_rm) > 0)
       r_md <- terra::subset(r_md, i_lyr_rm, negate = T)
@@ -391,26 +391,26 @@ read_importprism <- function(
     d_z <- terra::zonal(
       x     = r,
       z     = terra::vect(
-        sf_zones |>
+        sf_zones %>%
           dplyr::select(dplyr::all_of(fld_zones)) ),
       fun   = zonal_fun,
       exact = T,
       na.rm = T,
-      as.polygons = T) |>
-      sf::st_as_sf() |>
-      sf::st_drop_geometry() |>
+      as.polygons = T) %>%
+      sf::st_as_sf() %>%
+      sf::st_drop_geometry() %>%
       tidyr::pivot_longer(
         cols      = -dplyr::any_of(fld_zones),
         names_to  = "lyr",
-        values_to = zonal_fun)  |>
+        values_to = zonal_fun)  %>%
       dplyr::mutate(
-        date         = stringr::str_replace(lyr, rx_lyr, "\\1") |>
+        date         = gsub(rx_lyr, '\\1', lyr) %>%
           as.Date(),
-        variable     = stringr::str_replace(lyr, rx_lyr, "\\2"),
-        version      = stringr::str_replace(lyr, rx_lyr, "\\3") |>
+        variable     = gsub(rx_lyr, '\\2', lyr),
+        version      = gsub(rx_lyr, '\\3', lyr) %>%
           as.integer(),
-        date_updated = stringr::str_replace(lyr, rx_lyr, "\\4") |>
-          as.Date()) |>
+        date_updated = gsub(rx_lyr, '\\4', lyr) %>%
+          as.Date()) %>%
       dplyr::select(-lyr)
 
     write.csv(d_z, zonal_csv, row.names = FALSE)
@@ -428,9 +428,9 @@ read_importprism <- function(
   } else {
     ply_bb <- bbox
   }
-  ply_bb <- ply_bb |>
-    sf::st_as_sfc() |>
-    sf::st_as_sf() |>
+  ply_bb <- ply_bb %>%
+    sf::st_as_sfc() %>%
+    sf::st_as_sf() %>%
     sf::st_transform(crs_prism)
 
   # * regular expressions ----
@@ -439,7 +439,7 @@ read_importprism <- function(
 
   # evaluate requested, updated, done and todo PRISM rasters ----
   d_req <- dplyr::tibble(
-    date = as.Date(date_beg:date_end) ) |>
+    date = as.Date(date_beg:date_end) ) %>%
     dplyr::cross_join(
       dplyr::tibble(
         variable = vars))
@@ -461,8 +461,8 @@ read_importprism <- function(
   }
 
   # * iterate over variable-dates, fetching and cropping PRISM rasters ----
-  d_todo |>
-    select(var = variable, date, version, date_updated) |>
+  d_todo %>%
+    select(var = variable, date, version, date_updated) %>%
     pwalk(prism_get_var_date)
 
   # * iterate over variable-dates for calculating year-to-date sums ----
@@ -474,19 +474,19 @@ read_importprism <- function(
   d_lyrs <- read_prism_rasters(dir_tif)
   stopifnot(all(vars_ytd %in% unique(d_lyrs$variable)))
 
-  d_ytd_done <- d_lyrs |>
-    dplyr::filter(variable %in% paste0(vars_ytd, "ytd")) |>
+  d_ytd_done <- d_lyrs %>%
+    dplyr::filter(variable %in% paste0(vars_ytd, "ytd")) %>%
     mutate(
-      variable = str_replace(variable, "ytd", ""))
-  d_ytd_todo <- d_lyrs |>
-    dplyr::filter(variable %in% vars_ytd) |>
+      variable = gsub("ytd", "", variable))
+  d_ytd_todo <- d_lyrs %>%
+    dplyr::filter(variable %in% vars_ytd) %>%
     dplyr::anti_join(
-      d_ytd_done |>
+      d_ytd_done %>%
         dplyr::select(date, variable, version),
       by = c("date", "variable", "version"))
 
-  d_ytd_todo |>
-    select(var = variable, date_calc = date) |>
+  d_ytd_todo %>%
+    select(var = variable, date_calc = date) %>%
     pwalk(sum_var_ytd, d_r = d_lyrs)
 
   # summarize rasters by zone ----

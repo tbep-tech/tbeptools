@@ -61,16 +61,16 @@ anlz_splitdata <- function(
   }
 
   # Process data
-  out <- df |>
+  out <- df %>%
     # Extract period and year
     dplyr::mutate(
       period = factor(
         sapply(.data[[date_col]], assign_period, ref_year, yday_split),
         levels = c("before", "after"), ordered = T),
       year = sapply(.data[[date_col]], assign_year, yday_split)
-    ) |>
+    ) %>%
     # Group and summarize
-    dplyr::group_by(year, period) |>
+    dplyr::group_by(year, period) %>%
     dplyr::summarise(
       dplyr::across(dplyr::all_of(value_col), stats, .names = "{.fn}"),
       .groups = "drop")

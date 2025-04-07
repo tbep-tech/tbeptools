@@ -76,7 +76,6 @@ Imports:
   rnoaa,
   rvest,
   sf,
-  stringr,
   terra,
   tibble,
   tidyr,

@@ -84,8 +84,8 @@ read_importsealevels <- function(
     df_stations     = sealevelstations[,c("station_id", "station_name")],
     api_url         = "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter",
     beg_int         = 19010101,
-    end_int         = lubridate::today() |>
-      format("%Y%m%d") |>
+    end_int         = lubridate::today() %>%
+      format("%Y%m%d") %>%
       as.integer(),
     product         = "monthly_mean",
     datum           = "stnd",
@@ -94,7 +94,7 @@ read_importsealevels <- function(
 
   get_station_data <- function(station_id, ...){
     tryCatch(
-      httr2::request(api_url) |>
+      httr2::request(api_url) %>%
         httr2::req_url_query(
           station     = station_id,
           begin_date  = beg_int,
@@ -103,10 +103,10 @@ read_importsealevels <- function(
           datum       = datum,
           time_zone   = time_zone,
           units       = units,
-          format      = "csv") |>
-        httr2::req_perform() |>
-        httr2::resp_body_string() |>
-        textConnection() |>
+          format      = "csv") %>%
+        httr2::req_perform() %>%
+        httr2::resp_body_string() %>%
+        textConnection() %>%
         read.csv(
           stringsAsFactors = FALSE),
       error = function(e){
@@ -116,15 +116,15 @@ read_importsealevels <- function(
   }
 
   if (!file.exists(path_csv) | download_latest)
-    df_stations |>
+    df_stations %>%
     dplyr::mutate(
-      data = purrr::map(station_id, get_station_data)) |>
-    tidyr::unnest(data) |>
-    dplyr::rename_with(tolower) |>
+      data = purrr::map(station_id, get_station_data)) %>%
+    tidyr::unnest(data) %>%
+    dplyr::rename_with(tolower) %>%
     mutate(
-      date = sprintf("%d-%02d-01", year, month) |>
-        as.Date()) |>
-    dplyr::relocate(date, .before = year) |>
+      date = sprintf("%d-%02d-01", year, month) %>%
+        as.Date()) %>%
+    dplyr::relocate(date, .before = year) %>%
     write.csv(path_csv, row.names = FALSE)
 
   out <- read.csv(path_csv, stringsAsFactors = FALSE) %>%
