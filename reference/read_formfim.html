@@ -78,7 +78,9 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># file path</span></span></span>
-<span class="r-in"><span><span class="va">csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/TampaBay_NektonIndexData.csv'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">'https://raw.githubusercontent.com/tbep-tech/tbni-proc/master/data/'</span></span></span>
+<span class="r-in"><span><span class="va">fl</span> <span class="op">&lt;-</span> <span class="st">'TampaBay_NektonIndexData.csv'</span></span></span>
+<span class="r-in"><span><span class="va">csv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">url</span>, <span class="va">fl</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">datin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">csv</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
