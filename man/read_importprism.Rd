@@ -51,7 +51,7 @@ it should be updated, otherwise will be skipped.}
 
 \item{pfx_tif}{prefix for the PRISM daily raster files, appended by the month-day. Defaults to \code{"prism_daily_"}.}
 
-\item{sf_zones}{spatial feature object (\code{\link{sf}}) with zones to extract zonal
+\item{sf_zones}{spatial feature object (\code{\link[sf]{sf}}) with zones to extract zonal
 statistics from PRISM daily weather data}
 
 \item{fld_zones}{character vector of unique field name(s) in \code{sf_zones} to

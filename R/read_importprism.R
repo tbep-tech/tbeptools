@@ -82,7 +82,7 @@
 #'   schedule](https://prism.oregonstate.edu/calendar/list.php) to determine if
 #'   it should be updated, otherwise will be skipped.
 #' @param pfx_tif prefix for the PRISM daily raster files, appended by the month-day. Defaults to `"prism_daily_"`.
-#' @param sf_zones spatial feature object ([`sf`]) with zones to extract zonal
+#' @param sf_zones spatial feature object (\code{\link[sf]{sf}}) with zones to extract zonal
 #'   statistics from PRISM daily weather data
 #' @param fld_zones character vector of unique field name(s) in `sf_zones` to
 #'   include in extracted zonal statistics
