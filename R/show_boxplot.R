@@ -138,7 +138,14 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
   names(cols)[2] <- as.character(yrsel)
 
   p <- ggplot() +
-    geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA, outliers = points) +
+    geom_boxplot(data = toplo1, aes(x = mo, y = val, colour = names(cols)[1]), outlier.colour = NA, outliers = points)
+
+  # add here to change order of points on plot
+  if(points)
+    p <- p +
+      geom_point(data = toplo1, aes(x = mo, y = val, group = yr, colour = names(cols)[1]), position = position_jitter(width = 0.2), size = ptsz)
+
+  p <- p +
     geom_point(data = toplo2, aes(x = mo, y = val, group = yr, fill = names(cols)[2]), pch = 21, color = cols[2], size = 3, alpha = 0.7) +
     geom_hline(aes(yintercept = thrnum, linetype = '+2 se (large exceedance)'), colour = 'blue') +
     labs(y = axlab, title = ttl) +
@@ -157,10 +164,6 @@ show_boxplot <- function(epcdata, param = c('chla', 'la'),  yrsel = NULL, yrrng 
     scale_fill_manual(values = cols[2]) +
     scale_linetype_manual(values = 'dotted') +
     guides(linetype = guide_legend(override.aes = list(colour = 'blue')))
-
-  if(points)
-    p <- p +
-      geom_point(data = toplo1, aes(x = mo, y = val, group = yr, colour = names(cols)[1]), position = position_jitter(width = 0.2), size = ptsz)
 
   # show text as max observed value or 75th percentile
   if(txtlab){
