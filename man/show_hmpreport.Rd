@@ -37,7 +37,7 @@ show_hmpreport(
 
 \item{ycollapse}{logical indicating if the y-axis is collapsed to year with data, see details}
 
-\item{text}{numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbols if \code{twocol = T}, use \code{NULL} to suppress}
+\item{text}{numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbol size if \code{twocol = T}, use \code{NULL} to suppress if \code{twocol = F}}
 
 \item{xang}{numeric for angle of habitat labels on the x-axis (top)}
 
@@ -72,5 +72,8 @@ show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE)
 
 # select only subtidal
 show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
+
+# show as symbols and colors
+show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, twocol = TRUE)
 }
 \concept{show}

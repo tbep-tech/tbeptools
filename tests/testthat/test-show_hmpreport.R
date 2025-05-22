@@ -25,3 +25,10 @@ test_that("Checking show_hmpreport class, twocol = T", {
   expect_is(result, 'ggplot')
 
 })
+
+test_that("Checking error if text is NULL when twocol = T", {
+
+  expect_error(show_hmpreport(acres, subtacres, hmptrgs, typ = 'targets', twocol = T, text = NULL),
+               "text value as numeric must be provided when twocol = TRUE")
+
+})

@@ -10,7 +10,7 @@
 #' @param strata character string indicating with strata to plot, one to many of \code{"Subtidal"}, \code{"Intertidal"}, and \code{"Supratidal"}
 #' @param totintertid logical indicating if total intertidal (mangroves, salt marsh, salt barrens) is shown
 #' @param ycollapse logical indicating if the y-axis is collapsed to year with data, see details
-#' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbols if \code{twocol = T}, use \code{NULL} to suppress
+#' @param text numeric indicating text size for proportion of target or goal met for habitat types shown in each cell types or symbol size if \code{twocol = T}, use \code{NULL} to suppress if \code{twocol = F}
 #' @param xang numeric for angle of habitat labels on the x-axis (top)
 #' @param family optional chr string indicating font family for text labels
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
@@ -42,6 +42,9 @@
 #'
 #' # select only subtidal
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, strata = 'Subtidal')
+#'
+#' # show as symbols and colors
+#' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, twocol = TRUE)
 show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strata = c('Subtidal', 'Intertidal', 'Supratidal'), totintertid = TRUE, ycollapse = FALSE, text = 2.5, xang = 25, family = NA, width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
@@ -183,6 +186,9 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
   if(twocol){
 
+    if(is.null(text))
+      stop('text value as numeric must be provided when twocol = TRUE')
+
     # Custom arrow grob function up
     my_custom_grob_up <- function(x, y, size, color) {
       length <- grid::unit(size, "mm")  # Fixed length
@@ -192,7 +198,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       grid::segmentsGrob(
         x0 = grid::unit(x, "npc") - dx, y0 = grid::unit(y, "npc") - dy,
         x1 = grid::unit(x, "npc") + dx, y1 = grid::unit(y, "npc") + dy,
-        gp = grid::gpar(col = color, fill = color, lwd = 4),
+        gp = grid::gpar(col = color, fill = color, lwd = text * 1.6),
         arrow = grid::arrow(type = "closed", length = grid::unit(size, "mm"), angle = 45)
       )
     }
@@ -214,7 +220,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
     GeomCustomUp <- ggplot2::ggproto("GeomCustom", Geom,
       required_aes = c("x", "y"),
-      default_aes = ggplot2::aes(size = 3, color = "black"),
+      default_aes = ggplot2::aes(size = text * 1.2, color = "black"),
       draw_panel = function(data, panel_scales, coord) {
         coords <- coord$transform(data, panel_scales)
         grobs <- mapply(my_custom_grob_up, coords$x, coords$y, coords$size, coords$colour, SIMPLIFY = FALSE)
@@ -232,7 +238,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       grid::segmentsGrob(
         x0 = grid::unit(x, "npc") - dx, y0 = grid::unit(y, "npc") + dy,
         x1 = grid::unit(x, "npc") + dx, y1 = grid::unit(y, "npc") - dy,
-        gp = grid::gpar(col = color, fill = color, lwd = 4),
+        gp = grid::gpar(col = color, fill = color, lwd = text * 1.6),
         arrow = grid::arrow(type = "closed", length = grid::unit(size, "mm"), angle = 45)
       )
     }
@@ -254,7 +260,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
     GeomCustomDown <- ggplot2::ggproto("GeomCustom", Geom,
       required_aes = c("x", "y"),
-      default_aes = ggplot2::aes(size = 3, color = "black"),
+      default_aes = ggplot2::aes(size = text * 1.2, color = "black"),
       draw_panel = function(data, panel_scales, coord) {
         coords <- coord$transform(data, panel_scales)
         grobs <- mapply(my_custom_grob_down, coords$x, coords$y, coords$size, coords$colour, SIMPLIFY = FALSE)
@@ -265,20 +271,20 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
     # legend drawing function up arrow
     draw_key_up <- function(data, params, size){
-      params$arrow$length <- grid::unit(0.3, 'cm')
+      params$arrow$length <- grid::unit(text * 0.12, 'cm')
       params$arrow$type <- 2L
       grid::segmentsGrob(0.15, 0.15, 0.85, 0.85,
-                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 3.5, lineend = "round"),
+                   gp = grid::gpar(col = 'black', fill = 'black', lwd = text * 1.4, lineend = "round"),
                    arrow = params$arrow
       )
     }
 
     # legend drawing function down arrow
     draw_key_down <- function(data, params, size){
-      params$arrow$length <- grid::unit(0.3, 'cm')
+      params$arrow$length <- grid::unit(text * 0.12, 'cm')
       params$arrow$type <- 2L
       grid::segmentsGrob(0.15, 0.85, 0.85, 0.15,
-                   gp = grid::gpar(col = 'black', fill = 'black', lwd = 3.5, lineend = "round"),
+                   gp = grid::gpar(col = 'black', fill = 'black', lwd = text * 1.4, lineend = "round"),
                    arrow = params$arrow
       )
     }
