@@ -1,11 +1,14 @@
 
 # tbeptools
 
+<!-- badges: start -->
 [![R-CMD-check](https://github.com/tbep-tech/tbeptools/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
 [![pkgdown](https://github.com/tbep-tech/tbeptools/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/tbep-tech/tbeptools/actions)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.03485/status.svg)](https://doi.org/10.21105/joss.03485)
 [![Codecov test coverage](https://codecov.io/gh/tbep-tech/tbeptools/branch/master/graph/badge.svg)](https://codecov.io/gh/tbep-tech/tbeptools?branch=master)
+[![tbeptools status badge](https://tbep-tech.r-universe.dev/tbeptools/badges/version)](https://tbep-tech.r-universe.dev/tbeptools)
 [![DOI](https://zenodo.org/badge/184627857.svg)](https://zenodo.org/badge/latestdoi/184627857)
+<!-- badges: end -->
 
 R package for Tampa Bay Estuary Program functions. Please see the [vignettes](https://tbep-tech.github.io/tbeptools/articles/intro.html) for a full description.
 
