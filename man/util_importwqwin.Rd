@@ -4,10 +4,12 @@
 \alias{util_importwqwin}
 \title{Utility function to retrieve water quality data from the Florida Department of Environmental Protection's Watershed Information Network (WIN)}
 \usage{
-util_importwqwin(start_date, org_id, page_num)
+util_importwqwin(start_date, end_date, org_id, page_num)
 }
 \arguments{
 \item{start_date}{character string for the start date in the format "YYYY-MM-DD"}
+
+\item{end_date}{character string for the end date in the format "YYYY-MM-DD"}
 
 \item{org_id}{character string for the organization ID}
 
@@ -24,7 +26,7 @@ Used internally with \code{\link{read_importwqwin}}.
 }
 \examples{
 \dontrun{
-onepg <- util_importwqwin("2025-01-01", "21FLMANA", 1)
+onepg <- util_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", 1)
 head(onepg)
 }
 }

@@ -4,10 +4,12 @@
 \alias{read_importwqwin}
 \title{Retrieve water quality data from the Florida Department of Environmental Protection's Watershed Information Network (WIN)}
 \usage{
-read_importwqwin(start_date, org_id, verbose = FALSE)
+read_importwqwin(start_date, end_date, org_id, verbose = FALSE)
 }
 \arguments{
 \item{start_date}{character string for the start date in the format "YYYY-MM-DD"}
+
+\item{end_date}{character string for the end date in the format "YYYY-MM-DD"}
 
 \item{org_id}{character string for the organization ID}
 
@@ -24,7 +26,7 @@ This function implements \code{\link{util_importwqwin}} iteratively to retrieve 
 }
 \examples{
 \dontrun{
-dat <- read_importwqwin("2025-01-01", "21FLMANA", verbose = TRUE)
+dat <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = TRUE)
 head(dat)
 }
 }

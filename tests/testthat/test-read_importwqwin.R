@@ -7,6 +7,7 @@ test_that("read_importwqwin handles single page response", {
     content = data.frame(
       resultKey = c("001", "002"),
       activityStartDate = c("2025-01-01", "2025-01-02"),
+      activityEndDate = c("2025-02-01", "2025-02-01"),
       organizationId = c("21FLMANA", "21FLMANA")
     ),
     totalPages = 1,
@@ -21,11 +22,11 @@ test_that("read_importwqwin handles single page response", {
     .package = 'tbeptools'
   )
 
-  result <- read_importwqwin("2025-01-01", "21FLMANA", verbose = FALSE)
+  result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = FALSE)
 
   # Verify util_importwqwin was called once with page 0
   expect_called(m_util, 1)
-  expect_equal(mock_args(m_util)[[1]], list("2025-01-01", "21FLMANA", 0))
+  expect_equal(mock_args(m_util)[[1]], list("2025-01-01", "2025-02-01", "21FLMANA", 0))
 
   # Verify result structure
   expect_s3_class(result, "data.frame")
@@ -41,6 +42,7 @@ test_that("read_importwqwin handles multiple pages", {
     content = data.frame(
       resultKey = c("001", "002"),
       activityStartDate = c("2025-01-01", "2025-01-02"),
+      activityEndDate = c("2025-02-01", "2025-02-01"),
       organizationId = c("21FLMANA", "21FLMANA")
     ),
     totalPages = 3,
@@ -51,6 +53,7 @@ test_that("read_importwqwin handles multiple pages", {
     content = data.frame(
       resultKey = c("003", "004"),
       activityStartDate = c("2025-01-03", "2025-01-04"),
+      activityEndDate = c("2025-02-03", "2025-02-04"),
       organizationId = c("21FLMANA", "21FLMANA")
     ),
     totalPages = 3,
@@ -61,6 +64,7 @@ test_that("read_importwqwin handles multiple pages", {
     content = data.frame(
       resultKey = c("005"),
       activityStartDate = c("2025-01-05"),
+      activityEndDate = c("2025-02-05"),
       organizationId = c("21FLMANA")
     ),
     totalPages = 3,
@@ -73,13 +77,13 @@ test_that("read_importwqwin handles multiple pages", {
   with_mocked_bindings(
     util_importwqwin = m_util,
     {
-      result <- read_importwqwin("2025-01-01", "21FLMANA", verbose = FALSE)
+      result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = FALSE)
 
       # Verify util_importwqwin was called 3 times with correct page numbers
       expect_called(m_util, 3)
-      expect_equal(mock_args(m_util)[[1]], list("2025-01-01", "21FLMANA", 0))
-      expect_equal(mock_args(m_util)[[2]], list("2025-01-01", "21FLMANA", 1))
-      expect_equal(mock_args(m_util)[[3]], list("2025-01-01", "21FLMANA", 2))
+      expect_equal(mock_args(m_util)[[1]], list("2025-01-01", "2025-02-01", "21FLMANA", 0))
+      expect_equal(mock_args(m_util)[[2]], list("2025-01-01", "2025-02-01", "21FLMANA", 1))
+      expect_equal(mock_args(m_util)[[3]], list("2025-01-01", "2025-02-01", "21FLMANA", 2))
 
       # Verify result combines all pages
       expect_s3_class(result, "data.frame")
@@ -105,7 +109,7 @@ test_that("read_importwqwin handles verbose output", {
     util_importwqwin = m_util,
     {
       output <- capture_output(
-        result <- read_importwqwin("2025-01-01", "21FLMANA", verbose = TRUE)
+        result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = TRUE)
       )
 
       # Check that verbose message was printed
@@ -135,7 +139,7 @@ test_that("read_importwqwin handles verbose output for multiple pages", {
     util_importwqwin = m_util,
     {
       output <- capture_output(
-        result <- read_importwqwin("2025-01-01", "21FLMANA", verbose = TRUE)
+        result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = TRUE)
       )
 
       # Check that both verbose messages were printed
