@@ -83,6 +83,7 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importsediment.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importwq.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importwqp.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/read_importwqwin.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_prism_rasters.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/read_transect.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/seagrass.html</loc></url>
@@ -152,6 +153,7 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_fiblevs.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_frmyrrng.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_html.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/util_importwqwin.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_map.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/util_orgin.html</loc></url>
 </urlset>

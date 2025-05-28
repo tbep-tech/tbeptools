@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.2
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   fib: fib.html
@@ -9,7 +9,7 @@ articles:
   tbbi: tbbi.html
   tbni: tbni.html
   tidalcreeks: tidalcreeks.html
-last_built: 2025-05-23T15:22Z
+last_built: 2025-05-28T13:51Z
 urls:
   reference: https://tbep-tech.github.io/tbeptools/reference
   article: https://tbep-tech.github.io/tbeptools/articles
