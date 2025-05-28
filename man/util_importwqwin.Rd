@@ -12,8 +12,6 @@ util_importwqwin(start_date, org_id, page_num)
 \item{org_id}{character string for the organization ID}
 
 \item{page_num}{integer for the page number to retrieve}
-
-\item{verbose}{logical indicating whether to print verbose output}
 }
 \value{
 A list containing the results from the API request
