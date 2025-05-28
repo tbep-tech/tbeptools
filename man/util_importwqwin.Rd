@@ -20,7 +20,7 @@ A list containing the results from the API request
 Utility function to retrieve water quality data from the Florida Department of Environmental Protection's Watershed Information Network (WIN)
 }
 \details{
-Used internally with \code{\link{read_importwqin}}.
+Used internally with \code{\link{read_importwqwin}}.
 }
 \examples{
 \dontrun{

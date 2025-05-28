@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-#' @details Used internally with \code{\link{read_importwqin}}.
+#' @details Used internally with \code{\link{read_importwqwin}}.
 #'
 #' @concept util
 #'

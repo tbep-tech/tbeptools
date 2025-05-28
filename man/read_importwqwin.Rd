@@ -20,7 +20,7 @@ A data frame containing the water quality data
 Retrieve water quality data from the Florida Department of Environmental Protection's Watershed Information Network (WIN)
 }
 \details{
-This function implements \code{\link{util_importwqin}} iteratively to retrieve one to many pages of water quality results for the specified organization ID and start date. Data are retrieve using the API at \url{https://prodapps.dep.state.fl.us/dear-watershed/swagger-ui/index.html}.
+This function implements \code{\link{util_importwqwin}} iteratively to retrieve one to many pages of water quality results for the specified organization ID and start date. Data are retrieve using the API at \url{https://prodapps.dep.state.fl.us/dear-watershed/swagger-ui/index.html}.
 }
 \examples{
 \dontrun{
