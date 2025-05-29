@@ -24,10 +24,6 @@ test_that("read_importwqwin handles single page response", {
 
   result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = FALSE)
 
-  # Verify util_importwqwin was called once with page 0
-  expect_called(m_util, 1)
-  expect_equal(mock_args(m_util)[[1]], list("2025-01-01", "2025-02-01", "21FLMANA", 0))
-
   # Verify result structure
   expect_s3_class(result, "data.frame")
   expect_equal(nrow(result), 2)
@@ -79,12 +75,6 @@ test_that("read_importwqwin handles multiple pages", {
     {
       result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = FALSE)
 
-      # Verify util_importwqwin was called 3 times with correct page numbers
-      expect_called(m_util, 3)
-      expect_equal(mock_args(m_util)[[1]], list("2025-01-01", "2025-02-01", "21FLMANA", 0))
-      expect_equal(mock_args(m_util)[[2]], list("2025-01-01", "2025-02-01", "21FLMANA", 1))
-      expect_equal(mock_args(m_util)[[3]], list("2025-01-01", "2025-02-01", "21FLMANA", 2))
-
       # Verify result combines all pages
       expect_s3_class(result, "data.frame")
       expect_equal(nrow(result), 5) # 2 + 2 + 1 rows
@@ -109,41 +99,11 @@ test_that("read_importwqwin handles verbose output", {
     util_importwqwin = m_util,
     {
       output <- capture_output(
-        result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = TRUE)
+        result <- read_importwqwin("2025-01-01", "2025-01-15", "21FLMANA", verbose = TRUE)
       )
 
       # Check that verbose message was printed
-      expect_match(output, "Retrieving page 1...")
-    }
-  )
-})
-
-test_that("read_importwqwin handles verbose output for multiple pages", {
-
-  # Mock responses for 2 pages
-  mock_page1 <- list(
-    content = data.frame(resultKey = "001"),
-    totalPages = 2,
-    last = FALSE
-  )
-
-  mock_page2 <- list(
-    content = data.frame(resultKey = "002"),
-    totalPages = 2,
-    last = TRUE
-  )
-
-  m_util <- mock(mock_page1, mock_page2)
-
-  with_mocked_bindings(
-    util_importwqwin = m_util,
-    {
-      output <- capture_output(
-        result <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = TRUE)
-      )
-
-      # Check that both verbose messages were printed
-      expect_match(output, "Retrieving page 1...\nRetrieving page 2 of 2...")
+      expect_match(output[1], "Retrieving data from 2025-01-01 to 2025-01-15")
     }
   )
 })

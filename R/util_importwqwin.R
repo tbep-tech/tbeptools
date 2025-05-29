@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' onepg <- util_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", 1)
+#' onepg <- util_importwqwin("2025-01-15", "2025-02-15", "21FLMANA", 1)
 #' head(onepg)
 #' }
 util_importwqwin <- function(start_date, end_date, org_id, page_num) {

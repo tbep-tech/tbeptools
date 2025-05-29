@@ -8,37 +8,51 @@
 #' @returns A data frame containing the water quality data
 #' @export
 #'
-#' @details This function implements \code{\link{util_importwqwin}} iteratively to retrieve one to many pages of water quality results for the specified organization ID and start date. Data are retrieve using the API at <https://prodapps.dep.state.fl.us/dear-watershed/swagger-ui/index.html>.
+#' @details This function implements \code{\link{util_importwqwin}} iteratively to retrieve water quality results for the specified organization ID and start date. Data are retrieved using the API at <https://prodapps.dep.state.fl.us/dear-watershed/swagger-ui/index.html>.
 #' @examples
 #' \dontrun{
-#' dat <- read_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", verbose = TRUE)
+#' dat <- read_importwqwin("2025-01-15", "2025-02-15", "21FLMANA", verbose = TRUE)
 #' head(dat)
 #' }
 read_importwqwin <- function(start_date, end_date, org_id, verbose = FALSE){
 
-  # Get results for the first page
-  if(verbose)
-    cat("Retrieving page 1...\n")
+  # date sequences to pull
+  dts <- util_dateseq(start_date, end_date)
 
-  pg <- 0
-  res <- util_importwqwin(start_date, end_date, org_id, pg)
-
-  # start output
   out <- data.frame()
-  out <- rbind(out, res$content)
 
-  # total pages
-  totpg <- res$totalPages
+  for(i in 1:nrow(dts)){
 
-  # Loop through remaining pages
-  while (res$last == FALSE) {
+    dt1 <- dts[i, 'start']
+    dt2 <- dts[i, 'end']
 
-    pg <- pg + 1
+    # Get results for the first page
     if(verbose)
-      cat(sprintf("Retrieving page %d of %d...\n", pg + 1, totpg))
+      cat(paste0("Retrieving data from ", as.character(dt1), " to ", as.character(dt2), "\n"))
 
-    res <- util_importwqwin(start_date, end_date, org_id, pg)
-    out <- rbind(out, res$content)
+    pg <- 0
+    res <- try(util_importwqwin(dt1, dt2, org_id, pg), silent = TRUE)
+
+    if(inherits(res, 'try-error'))
+      break()
+
+    # start output
+    outtmp <- data.frame()
+    outtmp <- rbind(outtmp, res$content)
+
+    # total pages
+    totpg <- res$totalPages
+
+    # Loop through remaining pages
+    while (res$last == FALSE) {
+
+      pg <- pg + 1
+      res <- util_importwqwin(dt1, dt2, org_id, pg)
+      outtmp <- rbind(outtmp, res$content)
+
+    }
+
+    out <- rbind(out, outtmp)
 
   }
 
