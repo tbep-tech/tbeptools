@@ -62,6 +62,7 @@ Imports:
   dataRetrieval,
   dplyr,
   flextable,
+  fs,
   ggplot2 (>= 3.2.0),
   httr,
   httr2,

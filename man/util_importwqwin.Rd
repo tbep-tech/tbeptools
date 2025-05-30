@@ -26,7 +26,7 @@ Used internally with \code{\link{read_importwqwin}}.
 }
 \examples{
 \dontrun{
-onepg <- util_importwqwin("2025-01-01", "2025-02-01", "21FLMANA", 1)
+onepg <- util_importwqwin("2025-01-15", "2025-02-15", "21FLMANA", 1)
 head(onepg)
 }
 }

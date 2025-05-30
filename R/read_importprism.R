@@ -105,6 +105,7 @@
 #'
 #' @importFrom dplyr any_of bind_rows case_when group_by mutate select summarise
 #'   tibble ungroup
+#' @importFrom fs file_move
 #' @importFrom lubridate day days month today year ym
 #' @importFrom purrr map pwalk
 #' @importFrom rvest html_node html_table read_html
@@ -323,7 +324,8 @@ read_importprism <- function(
       datatype = "FLT4S",
       filetype = "GTiff", gdal = c("COMPRESS=DEFLATE"),
       overwrite = T)
-    file.rename(tmp, md_tif)
+    unlink(md_tif)
+    fs::file_move(tmp, md_tif)
     unlink(dir_z, recursive = TRUE)
     return(T)
   }
@@ -382,7 +384,8 @@ read_importprism <- function(
       datatype = "FLT4S",
       filetype = "GTiff", gdal = c("COMPRESS=DEFLATE"),
       overwrite = T)
-    file.rename(tmp, md_tif)
+    unlink(md_tif)
+    fs::file_move(tmp, md_tif)
 
     return(T)
   }
