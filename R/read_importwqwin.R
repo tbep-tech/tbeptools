@@ -34,7 +34,7 @@ read_importwqwin <- function(start_date, end_date, org_id, verbose = FALSE){
     res <- try(util_importwqwin(dt1, dt2, org_id, pg), silent = TRUE)
 
     if(inherits(res, 'try-error'))
-      break()
+      next()
 
     # start output
     outtmp <- data.frame()
