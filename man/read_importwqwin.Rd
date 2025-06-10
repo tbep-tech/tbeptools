@@ -4,7 +4,13 @@
 \alias{read_importwqwin}
 \title{Retrieve water quality data from the Florida Department of Environmental Protection's Watershed Information Network (WIN)}
 \usage{
-read_importwqwin(start_date, end_date, org_id, verbose = FALSE)
+read_importwqwin(
+  start_date,
+  end_date,
+  org_id,
+  verbose = FALSE,
+  max_retries = 5
+)
 }
 \arguments{
 \item{start_date}{character string for the start date in the format "YYYY-MM-DD"}
@@ -14,6 +20,8 @@ read_importwqwin(start_date, end_date, org_id, verbose = FALSE)
 \item{org_id}{character string for the organization ID}
 
 \item{verbose}{logical indicating whether to print verbose output}
+
+\item{max_retries}{integer indicating maximum number of retries for timeout errors (default = 5)}
 }
 \value{
 A data frame containing the water quality data
