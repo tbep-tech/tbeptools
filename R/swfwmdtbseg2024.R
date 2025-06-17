@@ -4,7 +4,7 @@
 #'
 #' @format A simple features \code{\link[sf]{sf}} object (MULTIPOLYGON) with 7 features and 1 fields, +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
 #'
-#' @details 2024 segments are slighly different from \code{\link{swfwmdtbsg}}
+#' @details 2024 segments are slightly different from \code{\link{swfwmdtbseg}}.
 #'
 #' @concept data
 #'
@@ -18,7 +18,7 @@
 #' levs <- labs
 #'
 #' swfwmdtbseg2024 <- st_read(
-#'     dsn = 'T:/05_GIS/SWFWMD/Seagrass/2024_Seagrass/Tampa_2024_Seagrass_Segments.shp'
+#'     dsn = 'T:/05_GIS/SWFWMD/Seagrass/2024_Seagrass/'
 #'   ) %>%
 #'   rename(waterbodyName = waterbodyN) %>%
 #'   filter(waterbodyName %in% levs) %>%

@@ -14,20 +14,19 @@ swfwmdtbseg2024
 Spatial data object of SWFWMD Tampa Bay segments, 2024
 }
 \details{
-2024 segments are slighly different from \code{\link{swfwmdtbsg}}
+2024 segments are slightly different from \code{\link{swfwmdtbseg}}.
 }
 \examples{
 \dontrun{
 library(sf)
 library(dplyr)
 
-levs <- c('oldTampaBay', 'hillsboroughBay', 'middleTampaBay',
-  'lowerTampaBay', 'bocaCiegaBay', 'terraCieaBay', 'manateeRiver')
 labs <- c('Old Tampa Bay', 'Hillsborough Bay', 'Middle Tampa Bay',
   'Lower Tampa Bay', 'Boca Ciega Bay', 'Terra Ceia Bay', 'Manatee River')
+levs <- labs
 
 swfwmdtbseg2024 <- st_read(
-    dsn = 'T:/05_GIS/SWFWMD/Seagrass/2024_Seagrass/Tampa_2024_Seagrass_Segments.shp'
+    dsn = 'T:/05_GIS/SWFWMD/Seagrass/2024_Seagrass/'
   ) \%>\%
   rename(waterbodyName = waterbodyN) \%>\%
   filter(waterbodyName \%in\% levs) \%>\%
