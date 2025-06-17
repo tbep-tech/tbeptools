@@ -97,9 +97,15 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
   # -1, 0, 0.5, 1
   cols <- c('#CC3231', '#E9C318', '#AEFA2F', '#2DC938')
 
+  # text to add to legend entries
+  addtxt <- switch(typ,
+                   'targets' = '2030 target',
+                   'goals' = '2050 goal'
+  )
+
   if(typ == 'targets'){
 
-    leglabs <- c('Target not met,\ntrending below', 'Target met,\ntrending below', 'Target not met,\ntrending above', 'Target met,\ntrending above')
+    leglabs <- c('2030 target not met,\ntrending below', '2030 target met,\ntrending below', '2030 target not met,\ntrending above', '2030 target met,\ntrending above')
     ttl <- '2030 target report card'
 
     toplo <- toplo %>%
@@ -112,7 +118,7 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
   if(typ == 'goals'){
 
-    leglabs <- c('Goals not met,\ntrending below', 'Goals met,\ntrending below', 'Goals not met,\ntrending above', 'Goals met,\ntrending above')
+    leglabs <- c('2050 goal not met,\ntrending below', '2050 goal met,\ntrending below', '2050 goal not met,\ntrending above', '2050 goal met,\ntrending above')
     ttl <- '2050 goal report card'
 
     toplo <- toplo %>%
@@ -291,16 +297,16 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
 
     toplo <- toplo %>%
       dplyr::mutate(
-        z = rep('Trending above', nrow(.)),
-        v = rep('Trending below', nrow(.))
+        z = rep(paste('Trending above', addtxt), nrow(.)),
+        v = rep(paste('Trending below', addtxt), nrow(.))
       ) %>%
       dplyr::filter(!is.na(fillv))
 
     p <- p +
       ggplot2::geom_tile(fill = NA, color = NA) +
       ggplot2::geom_point(data = toplo, ggplot2::aes(x = metric, y = yearfac, color = fillv), alpha = 0) +
-      geom_custom_up(data = toplo[toplo$shapv == 'Trending above', ], ggplot2::aes(x = metric, y = yearfac, color = fillv), show.legend = F) +
-      geom_custom_down(data = toplo[toplo$shapv == 'Trending below', ], ggplot2::aes(x = metric, y = yearfac, color = fillv), show.legend = F) +
+      geom_custom_up(data = toplo[grepl('^Trending above', toplo$shapv), ], ggplot2::aes(x = metric, y = yearfac, color = fillv), show.legend = F) +
+      geom_custom_down(data = toplo[grepl('^Trending below', toplo$shapv), ], ggplot2::aes(x = metric, y = yearfac, color = fillv), show.legend = F) +
       ggplot2::scale_colour_manual(values = cols) +
       ggplot2::guides(color = ggplot2::guide_legend(override.aes = list(alpha = 1, shape = 15, size = 6), order = 1)) +
       ggplot2::geom_segment(data = toplo,
