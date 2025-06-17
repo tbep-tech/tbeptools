@@ -56,7 +56,7 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>2024 segments are slighly different from <code>swfwmdtbsg</code></p>
+    <p>2024 segments are slightly different from <code><a href="swfwmdtbseg.html">swfwmdtbseg</a></code>.</p>
     </div>
 
     <div class="section level2">
@@ -65,13 +65,12 @@
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">levs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'oldTampaBay'</span>, <span class="st">'hillsboroughBay'</span>, <span class="st">'middleTampaBay'</span>,</span></span>
-<span class="r-in"><span>  <span class="st">'lowerTampaBay'</span>, <span class="st">'bocaCiegaBay'</span>, <span class="st">'terraCieaBay'</span>, <span class="st">'manateeRiver'</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Old Tampa Bay'</span>, <span class="st">'Hillsborough Bay'</span>, <span class="st">'Middle Tampa Bay'</span>,</span></span>
 <span class="r-in"><span>  <span class="st">'Lower Tampa Bay'</span>, <span class="st">'Boca Ciega Bay'</span>, <span class="st">'Terra Ceia Bay'</span>, <span class="st">'Manatee River'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">levs</span> <span class="op">&lt;-</span> <span class="va">labs</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">swfwmdtbseg2024</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    dsn <span class="op">=</span> <span class="st">'T:/05_GIS/SWFWMD/Seagrass/2024_Seagrass/Tampa_2024_Seagrass_Segments.shp'</span></span></span>
+<span class="r-in"><span>    dsn <span class="op">=</span> <span class="st">'T:/05_GIS/SWFWMD/Seagrass/2024_Seagrass/'</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span>waterbodyName <span class="op">=</span> <span class="va">waterbodyN</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">waterbodyName</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">levs</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
