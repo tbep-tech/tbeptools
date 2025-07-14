@@ -65,8 +65,6 @@ benthicdata <- read_importbenthic(path, download_latest = T)
 ```
 ```{r, eval = F}
 #> File ~/Desktop/benthic.zip does not exist, replacing with downloaded file...
-
-#> trying URL 'https://epcbocc.sharepoint.com/:u:/s/Share/EQUCWBuwCNdGuMREYAyAD1gBKC98mYtCHMWX0FYLrbT4KA?e=nDfnnQ&download=1' length 37122877 bytes (35.4 MB)
 ```
 
 Now we get an indication that the file on the server is being downloaded. When the download is complete, we’ll have the data downloaded and saved to the `benthicdata` object in the current R session.

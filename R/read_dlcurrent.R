@@ -28,7 +28,7 @@ read_dlcurrent <- function(locin, download_latest = TRUE, urlin){
 
   # download data from remote
   tmpfl <- tempfile(fileext = tools::file_ext(locin))
-  download.file(url = urlin, destfile = tmpfl, method = "libcurl", mode = "wb")
+  download.file(url = urlin, destfile = tmpfl, method = "libcurl", mode = "wb", quiet = T)
 
   # if the file exists, compare with the file on server
   if (file.exists(locin)){
