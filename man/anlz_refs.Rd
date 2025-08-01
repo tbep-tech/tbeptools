@@ -16,12 +16,11 @@ A data frame with references formatted as bib entries
 Convert references csv to bib
 }
 \examples{
-
+\dontrun{
 # input and format
 path <- 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/tbep-refs.csv'
 bibs <- anlz_refs(path)
 
-\dontrun{
 # save output
  writeLines(bibs, 'formatted.bib')
 }
