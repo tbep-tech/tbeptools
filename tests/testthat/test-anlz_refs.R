@@ -1,6 +1,6 @@
 test_that("Checking anlz_refs", {
 
-  path <- 'tbep-refs.csv'
+  path <- system.file('tbep-refs.csv', package = 'tbeptools')
   result <- anlz_refs(path) %>%
     .[(length(.) - 3):length(.)]
 

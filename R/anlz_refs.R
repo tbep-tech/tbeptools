@@ -13,11 +13,11 @@
 #' @concept analyze
 #'
 #' @examples
-#' \dontrun{
 #' # input and format
-#' path <- 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/tbep-refs.csv'
+#' path <- system.file('tbep-refs.csv', package = 'tbeptools')
 #' bibs <- anlz_refs(path)
 #'
+#' \dontrun{
 #' # save output
 #'  writeLines(bibs, 'formatted.bib')
 #' }
