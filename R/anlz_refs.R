@@ -13,9 +13,8 @@
 #' @concept analyze
 #'
 #' @examples
-#'
 #' # input and format
-#' path <- 'https://raw.githubusercontent.com/tbep-tech/tbep-refs/master/tbep-refs.csv'
+#' path <- system.file('tbep-refs.csv', package = 'tbeptools')
 #' bibs <- anlz_refs(path)
 #'
 #' \dontrun{
@@ -46,7 +45,7 @@ anlz_refs <- function(path) {
   # specific fields for bib entry types
   flds <- list(
     article = c('author', 'year', 'title', 'journal', 'volume', 'number', 'pages', 'doi', 'misc', 'url'),
-    techreport = c('author', 'year', 'title', 'number', 'publisher', 'address', 'pages', 'misc', 'url'),
+    techreport = c('author', 'year', 'title', 'number', 'publisher', 'address', 'pages', 'misc', 'url', 'type'),
     incollection = c('author', 'year', 'title', 'number', 'booktitle', 'editor', 'publisher', 'address', 'pages', 'misc', 'url'),
     proceedings = c('author', 'year', 'title', 'number', 'publisher', 'address', 'misc', 'url')
   )
@@ -58,13 +57,25 @@ anlz_refs <- function(path) {
     dplyr::mutate(
       data = purrr::pmap(list(type, data), function(type, data){
 
+        typeent <- type
+
         fldsel <- flds[[type]]
 
         levs <- c('tag', fldsel, 'brk')
 
+        # add type field for techreport to define how report number is shown
+        if(typeent == 'techreport')
+          data <- data |>
+            mutate(
+              type = case_when(
+                grepl('^tbep', tag) ~ 'Technical report',
+                grepl('^edu', tag) ~ 'Education product'
+              )
+            )
+
         tmp <- data %>%
           dplyr::mutate(
-            tag = paste0('@', type, '{', tag, ','),
+            tag = paste0('@', typeent, '{', tag, ','),
             brk = '}\n',
             author = paste0('{', author, '}')
           ) %>%
