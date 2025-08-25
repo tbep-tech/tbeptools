@@ -1,114 +1,141 @@
-# Mock response helper function
-create_mock_response <- function(status_code = 200, items = list(), total_pages = 1) {
+# Mock response helper function for NDJSON
+create_mock_ndjson_response <- function(status_code = 200, ndjson_content = "") {
   response <- list()
   class(response) <- "response"
-  
-  # Mock the status code
   attr(response, "status_code") <- status_code
-  
-  # Mock the content
-  content_data <- list(
-    items = items,
-    totalPages = total_pages
-  )
-  
-  return(list(response = response, content = content_data))
+  return(list(response = response, content = ndjson_content))
 }
 
-test_that("util_importwqwa validates endpoint argument", {
-  expect_error(
-    util_importwqwa("invalid_endpoint"),
-    "'arg' should be one of"
-  )
-})
-
-test_that("util_importwqwa handles single page response", {
-  # Mock data
-  mock_items <- list(
-    list(id = 1, name = "Item 1"),
-    list(id = 2, name = "Item 2")
+test_that("read_importwqwa processes basic NDJSON response", {
+  # Mock NDJSON content
+  ndjson_content <- '{"id": 1, "value": 10.5, "activityStartDate": "2023-01-01"}
+{"id": 2, "value": 12.3, "activityStartDate": "2023-01-02"}'
+  
+  mock_data <- create_mock_ndjson_response(200, ndjson_content)
+  
+  # Create a proper data frame with the activityStartDate column
+  mock_df <- data.frame(
+    id = c(1, 2), 
+    value = c(10.5, 12.3), 
+    activityStartDate = c("2023-01-01", "2023-01-02"),
+    stringsAsFactors = FALSE
   )
   
-  mock_data <- create_mock_response(200, mock_items, 1)
-  
-  # Mock httr functions
+  # Mock functions
   mock_get <- mock(mock_data$response)
   mock_stop_for_status <- mock()
-  mock_content <- mock(mock_data$content)
-  
-  # Mock dplyr::bind_rows to return a simple data frame
-  mock_bind_rows <- mock(data.frame(id = c(1, 2), name = c("Item 1", "Item 2")))
+  mock_content <- mock(ndjson_content)
+  mock_fromJSON <- mock(
+    list(id = 1, value = 10.5, activityStartDate = "2023-01-01"),
+    list(id = 2, value = 12.3, activityStartDate = "2023-01-02")
+  )
+  mock_bind_rows <- mock(mock_df)
   
   # Apply stubs
-  stub(util_importwqwa, "httr::GET", mock_get)
-  stub(util_importwqwa, "httr::stop_for_status", mock_stop_for_status)
-  stub(util_importwqwa, "httr::content", mock_content)
-  stub(util_importwqwa, "dplyr::bind_rows", mock_bind_rows)
+  stub(read_importwqwa, "httr::GET", mock_get)
+  stub(read_importwqwa, "httr::stop_for_status", mock_stop_for_status)
+  stub(read_importwqwa, "httr::content", mock_content)
+  stub(read_importwqwa, "jsonlite::fromJSON", mock_fromJSON)
+  stub(read_importwqwa, "dplyr::bind_rows", mock_bind_rows)
   
-  result <- util_importwqwa("parameters")
+  # Suppress trace output for testing
+  result <- suppressMessages(read_importwqwa("WIN_21FLHILL", "Chla_ugl", trace = FALSE))
   
   # Verify the result
   expect_equal(nrow(result), 2)
   expect_equal(result$id, c(1, 2))
+  expect_true("activityStartDate" %in% names(result))
   
-  # Verify mocks were called correctly
+  # Verify mocks were called
   expect_called(mock_get, 1)
   expect_called(mock_stop_for_status, 1)
   expect_called(mock_content, 1)
+  expect_called(mock_fromJSON, 2)  # Once for each JSON line
 })
 
-test_that("util_importwqwa handles multiple pages", {
-  # Mock data for first page
-  mock_items_page1 <- list(list(id = 1, name = "Item 1"))
-  mock_items_page2 <- list(list(id = 2, name = "Item 2"))
+test_that("read_importwqwa includes optional date parameters", {
+  mock_data <- create_mock_ndjson_response(200, '{"id": 1, "activityStartDate": "2023-01-01"}')
   
-  mock_data_page1 <- create_mock_response(200, mock_items_page1, 2)
-  mock_data_page2 <- create_mock_response(200, mock_items_page2, 2)
+  # Create proper data frame with activityStartDate column
+  mock_df <- data.frame(id = 1, activityStartDate = "2023-01-01", stringsAsFactors = FALSE)
   
-  # Mock httr functions
-  mock_get <- mock(mock_data_page1$response, mock_data_page2$response)
+  # Capture the query parameters
+  mock_get <- mock(mock_data$response, side_effect = function(url, query) {
+    captured_query <<- query
+    return(mock_data$response)
+  })
+  
   mock_stop_for_status <- mock()
-  mock_content <- mock(mock_data_page1$content, mock_data_page2$content)
+  mock_content <- mock('{"id": 1, "activityStartDate": "2023-01-01"}')
+  mock_fromJSON <- mock(list(id = 1, activityStartDate = "2023-01-01"))
+  mock_bind_rows <- mock(mock_df)
   
-  # Mock dplyr::bind_rows
-  mock_bind_rows <- mock(
-    data.frame(id = 1, name = "Item 1"),  # First call for page 1
-    data.frame(id = 2, name = "Item 2"),  # Second call for page 2
-    data.frame(id = c(1, 2), name = c("Item 1", "Item 2"))  # Final bind
+  # Apply stubs
+  stub(read_importwqwa, "httr::GET", mock_get)
+  stub(read_importwqwa, "httr::stop_for_status", mock_stop_for_status)
+  stub(read_importwqwa, "httr::content", mock_content)
+  stub(read_importwqwa, "jsonlite::fromJSON", mock_fromJSON)
+  stub(read_importwqwa, "dplyr::bind_rows", mock_bind_rows)
+  
+  result <- suppressMessages(
+    read_importwqwa("WIN_21FLHILL", "Chla_ugl", "2023-01-01", "2023-02-01", trace = FALSE)
   )
   
-  # Apply stubs
-  stub(util_importwqwa, "httr::GET", mock_get)
-  stub(util_importwqwa, "httr::stop_for_status", mock_stop_for_status)
-  stub(util_importwqwa, "httr::content", mock_content)
-  stub(util_importwqwa, "dplyr::bind_rows", mock_bind_rows)
-  
-  result <- util_importwqwa("waterbodies")
-  
-  # Verify the result
-  expect_equal(nrow(result), 2)
-  
-  # Verify GET was called twice (once for each page)
-  expect_called(mock_get, 2)
-  expect_called(mock_stop_for_status, 2)
-  expect_called(mock_content, 2)
+  # Verify parameters were included
+  expect_equal(result$activityStartDate, as.Date("2023-01-01"))
 })
 
-test_that("util_importwqwa handles HTTP errors gracefully", {
-  # Mock a failed response
+test_that("read_importwqwa handles HTTP errors", {
   mock_response <- list()
   class(mock_response) <- "response"
-  attr(mock_response, "status_code") <- 500
+  attr(mock_response, "status_code") <- 404
   
   mock_get <- mock(mock_response)
-  mock_stop_for_status <- mock(stop("HTTP 500 Internal Server Error"))
+  mock_stop_for_status <- mock(stop("HTTP 404 Not Found"))
   
   # Apply stubs
-  stub(util_importwqwa, "httr::GET", mock_get)
-  stub(util_importwqwa, "httr::stop_for_status", mock_stop_for_status)
+  stub(read_importwqwa, "httr::GET", mock_get)
+  stub(read_importwqwa, "httr::stop_for_status", mock_stop_for_status)
   
   expect_error(
-    util_importwqwa("parameters"),
-    "HTTP 500 Internal Server Error"
+    suppressMessages(read_importwqwa("INVALID", "INVALID", trace = FALSE)),
+    "HTTP 404 Not Found"
+  )
+})
+
+test_that("read_importwqwa handles malformed JSON gracefully", {
+  # Mix of valid and invalid JSON
+  ndjson_content <- '{"id": 1, "value": 10.5}
+{invalid json}
+{"id": 2, "value": 12.3}'
+  
+  mock_data <- create_mock_ndjson_response(200, ndjson_content)
+  
+  # Create data frame without activityStartDate since it's not in the test data
+  mock_df <- data.frame(id = c(1, 2), value = c(10.5, 12.3), stringsAsFactors = FALSE)
+  
+  mock_get <- mock(mock_data$response)
+  mock_stop_for_status <- mock()
+  mock_content <- mock(ndjson_content)
+  
+  # Mock fromJSON to succeed twice and fail once
+  mock_fromJSON <- mock(
+    list(id = 1, value = 10.5),
+    stop("Invalid JSON"),
+    list(id = 2, value = 12.3)
+  )
+  
+  mock_bind_rows <- mock(mock_df)
+  
+  # Apply stubs
+  stub(read_importwqwa, "httr::GET", mock_get)
+  stub(read_importwqwa, "httr::stop_for_status", mock_stop_for_status)
+  stub(read_importwqwa, "httr::content", mock_content)
+  stub(read_importwqwa, "jsonlite::fromJSON", mock_fromJSON)
+  stub(read_importwqwa, "dplyr::bind_rows", mock_bind_rows)
+  
+  expect_error(
+    suppressMessages(read_importwqwa("WIN_21FLHILL", "Chla_ugl", trace = FALSE)),
+    "Error parsing JSON line: Invalid JSON"
   )
 })

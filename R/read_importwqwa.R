@@ -54,11 +54,11 @@ read_importwqwa <- function(dataSource, parameter, start_date = NULL, end_date =
         item <- jsonlite::fromJSON(i)
         out <- append(out, list(item), after = length(out))
       }, error = function(e) {
-        cat(sprintf("Error parsing JSON line: %s\n", e$message))
+        stop(sprintf("Error parsing JSON line: %s\n", e$message))
       })
     }
   }
-  
+
   out <- dplyr::bind_rows(out) |> 
     dplyr::mutate(
       activityStartDate = as.Date(activityStartDate)

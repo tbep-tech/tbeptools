@@ -47,7 +47,6 @@ util_importwqwa <- function(endpoint, pageSize = 10000, waterbodyId = NULL){
   out <- dplyr::bind_rows(data$items)
   
   totpages <- data$totalPages
-  failed_pages <- c()
   
   if(totpages > 1){
 
@@ -64,8 +63,7 @@ util_importwqwa <- function(endpoint, pageSize = 10000, waterbodyId = NULL){
         out <- dplyr::bind_rows(out, outi)
         
       }, error = function(e) {
-        failed_pages <<- c(failed_pages, i)
-        cat("Page", i, "of", totpages, "failed:", httr::status_code(response), "\n")
+        cat("Page", i, "of", totpages, "failed\n")
       })
     }
   }
