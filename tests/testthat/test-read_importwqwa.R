@@ -135,7 +135,7 @@ test_that("read_importwqwa handles malformed JSON gracefully", {
   stub(read_importwqwa, "dplyr::bind_rows", mock_bind_rows)
   
   expect_error(
-    suppressMessages(read_importwqwa("WIN_21FLHILL", "Chla_ugl", trace = FALSE)),
+    suppressMessages(read_importwqwa("WIN_21FLHILL", "Chla_ugl", trace = TRUE)),
     "Error parsing JSON line: Invalid JSON"
   )
 })
