@@ -8,7 +8,7 @@
 #' @param end_date Numeric for the end date in ISO format, optional
 #' @param trace Logical indicating whether to display progress messages, default \code{TRUE}
 #' 
-#' @details This function retrieves sampling data from the Water Atlas API (\url{https://dev.api.wateratlas.org/api/samplingdata/stream}) using the specified data source and parameter. Optional start and end dates can be provided to filter the data by date range. The function processes the NDJSON response stream and returns a data frame of sampling records.
+#' @details This function retrieves sampling data from the Water Atlas API (\url{https://dev.api.wateratlas.org/redoc/index.html#tag/Sampling-Data/operation/StreamSamplingData}) using the specified data source and parameter. Optional start and end dates can be provided to filter the data by date range. The function processes the NDJSON response stream and returns a data frame of sampling records.
 #' 
 #' See \code{\link{util_importwqwa}} for retrieving metadata such as available data sources and parameters.
 #' 
