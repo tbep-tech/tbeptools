@@ -1,5 +1,6 @@
 library(tbeptools)
 library(dplyr)
+library(mockery)
 
 # data for tidal creek radar plots
 cntdatrdr <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2024, radar = TRUE)
