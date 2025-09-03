@@ -20,7 +20,7 @@ Spatial data object of FIM stations including Tampa Bay segments
 \examples{
 \dontrun{
 # file path
-csv <- '~/Desktop/fimdata.csv'
+csv <- '~/Desktop/fimraw.csv'
 
 # load and assign to object
 fimstations <- read_importfim(csv, download_latest = FALSE, locs = TRUE)

@@ -13,7 +13,7 @@
 #' @examples
 #' \dontrun{
 #' # file path
-#' csv <- '~/Desktop/fimdata.csv'
+#' csv <- '~/Desktop/fimraw.csv'
 #'
 #' # load and assign to object
 #' fimstations <- read_importfim(csv, download_latest = FALSE, locs = TRUE)
