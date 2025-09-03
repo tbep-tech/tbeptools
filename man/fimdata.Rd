@@ -3,9 +3,9 @@
 \docType{data}
 \name{fimdata}
 \alias{fimdata}
-\title{FIM data for Tampa Bay Nekton Index current as of 07092024}
+\title{FIM data for Tampa Bay Nekton Index current as of 09032025}
 \format{
-A data frame with 52042 rows and 19 variables:
+A data frame with 53969 rows and 19 variables:
 \describe{
 \item{Reference}{chr}
 \item{Sampling_Date}{Date}
@@ -32,7 +32,7 @@ A data frame with 52042 rows and 19 variables:
 fimdata
 }
 \description{
-FIM data for Tampa Bay Nekton Index current as of 07092024
+FIM data for Tampa Bay Nekton Index current as of 09032025
 }
 \examples{
 \dontrun{
