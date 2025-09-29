@@ -16,19 +16,19 @@
 #' @examples
 #' mat <- show_wqmatrix(epcdata)
 #' show_matrixplotly(mat)
-show_matrixplotly <- function(mat, family = NULL, tooltip = 'Result', width = NULL, height = NULL){
+show_matrixplotly <- function(mat, family = 'sans', tooltip = 'Result', width = NULL, height = NULL){
 
   # matrix, new theme
   plo <- mat +
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 12),
-      text = ggplot2::element_text(family = NULL),
+      text = ggplot2::element_text(family = family),
       axis.text.x = ggplot2::element_blank(),
       axis.ticks.x = ggplot2::element_blank()
     )
 
   # get number of columns
-  collev <- mat$data[, mat$labels$x, drop = TRUE] %>%
+  collev <- mat$data[, ggplot2::as_label(mat$mapping$x), drop = TRUE] %>%
     droplevels %>%
     levels %>%
     factor(., levels = .)
@@ -43,7 +43,7 @@ show_matrixplotly <- function(mat, family = NULL, tooltip = 'Result', width = NU
   )
 
   out <- plotly::ggplotly(plo, tooltip = tooltip, width = width, height = height) %>%
-    plotly::add_bars(x = collev,y = seq(1, length(collev)), xaxis = 'x2', inherit = F, showlegend = F) %>%
+    plotly::add_bars(x = collev, y = seq(1, length(collev)), xaxis = 'x2', inherit = F, showlegend = F) %>%
     plotly::layout(
       xaxis2 = ax
       )
