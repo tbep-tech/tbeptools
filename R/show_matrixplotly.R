@@ -17,7 +17,7 @@
 #' mat <- show_wqmatrix(epcdata)
 #' show_matrixplotly(mat)
 show_matrixplotly <- function(mat, family = NULL, tooltip = 'Result', width = NULL, height = NULL){
-browser()
+
   # matrix, new theme
   plo <- mat +
     ggplot2::theme(
