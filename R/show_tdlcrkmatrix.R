@@ -22,7 +22,7 @@
 #' @examples
 #' dat <- anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2024)
 #' show_tdlcrkmatrix(dat)
-show_tdlcrkmatrix <- function(dat, class = c('3M', '2'), score = c('Prioritize', 'Investigate', 'Caution', 'Monitor'), family = NA, size = 11){
+show_tdlcrkmatrix <- function(dat, class = c('3M', '2'), score = c('Prioritize', 'Investigate', 'Caution', 'Monitor'), family = 'sans', size = 11){
 
   # sanity checks
   if(any(!class %in% c('3M', '2', '3F', '1')))

@@ -11,7 +11,7 @@ show_segmatrix(
   yrrng = c(1975, 2024),
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   abbrev = FALSE,
-  family = NA,
+  family = "sans",
   historic = TRUE,
   plotly = FALSE,
   partialyr = FALSE,

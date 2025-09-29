@@ -12,7 +12,7 @@ show_boxplot(
   ptsz = 0.5,
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
   trgs = NULL,
-  family = NA,
+  family = "sans",
   labelexp = TRUE,
   txtlab = TRUE,
   partialyr = FALSE,

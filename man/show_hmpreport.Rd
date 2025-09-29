@@ -15,7 +15,7 @@ show_hmpreport(
   ycollapse = FALSE,
   text = 2.5,
   xang = 25,
-  family = NA,
+  family = "sans",
   width = NULL,
   height = NULL
 )

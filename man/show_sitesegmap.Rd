@@ -13,7 +13,7 @@ show_sitesegmap(
   partialyr = FALSE,
   showseg = TRUE,
   base_size = 12,
-  family = NA
+  family = "sans"
 )
 }
 \arguments{

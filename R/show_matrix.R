@@ -32,7 +32,7 @@
 #' @examples
 #' show_matrix(epcdata)
 show_matrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = NULL, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), asreact = FALSE,
-                        nrows = 10, abbrev = FALSE, family = NA, historic = TRUE, plotly = FALSE, partialyr = FALSE, width = NULL,
+                        nrows = 10, abbrev = FALSE, family = 'sans', historic = TRUE, plotly = FALSE, partialyr = FALSE, width = NULL,
                         height = NULL){
 
   # default targets from data file

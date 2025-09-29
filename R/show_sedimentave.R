@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' show_sedimentave(sedimentdata, param = 'Arsenic')
-show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2023), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', lnsz = 1, base_size = 12, plotly = FALSE, family = NA, width = NULL, height = NULL){
+show_sedimentave <- function(sedimentdata, param, yrrng = c(1993, 2023), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', lnsz = 1, base_size = 12, plotly = FALSE, family = 'sans', width = NULL, height = NULL){
 
   toplo <- anlz_sedimentave(sedimentdata, param = param, yrrng = yrrng, bay_segment = bay_segment, funding_proj = funding_proj)
 

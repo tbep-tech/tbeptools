@@ -12,7 +12,7 @@ show_tbniscr(
   ylim = c(22, 58),
   rev = FALSE,
   plotly = FALSE,
-  family = NA,
+  family = "sans",
   width = NULL,
   height = NULL
 )

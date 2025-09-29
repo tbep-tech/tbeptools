@@ -25,7 +25,7 @@
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbnimatrix(tbniscr)
 show_tbnimatrix <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 1, txtsz = 3,
-                            family = NA, rev = FALSE, position = 'top', plotly = FALSE, width = NULL, height = NULL){
+                            family = 'sans', rev = FALSE, position = 'top', plotly = FALSE, width = NULL, height = NULL){
 
   # annual average by segment
   toplo <- anlz_tbniave(tbniscr, bay_segment, rev = rev, perc = perc)

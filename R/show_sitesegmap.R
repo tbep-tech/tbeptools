@@ -25,7 +25,7 @@
 #' @examples
 #' show_sitesegmap(epcdata, yrsel = 2024)
 show_sitesegmap <- function(epcdata, yrsel, param = c('chla', 'la'), trgs = NULL, thrs = FALSE, partialyr = FALSE,
-                            showseg = TRUE, base_size = 12, family = NA){
+                            showseg = TRUE, base_size = 12, family = 'sans'){
 
   # sanity check
   # default targets from data file

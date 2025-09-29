@@ -24,7 +24,7 @@
 #' tbniscr <- anlz_tbniscr(fimdata)
 #' show_tbniscr(tbniscr)
 show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), perc = c(32, 46), alph = 1,
-                         ylim = c(22 ,58), rev = FALSE, plotly = FALSE, family = NA, width = NULL, height = NULL){
+                         ylim = c(22 ,58), rev = FALSE, plotly = FALSE, family = 'sans', width = NULL, height = NULL){
 
   # sanity checks
   stopifnot(length(perc) == 2)

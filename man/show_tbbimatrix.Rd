@@ -10,7 +10,7 @@ show_tbbimatrix(
   yrrng = c(1993, 2023),
   alph = 1,
   txtsz = 3,
-  family = NA,
+  family = "sans",
   rev = FALSE,
   position = "top",
   plotly = FALSE,

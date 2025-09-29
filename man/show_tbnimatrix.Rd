@@ -10,7 +10,7 @@ show_tbnimatrix(
   perc = c(32, 46),
   alph = 1,
   txtsz = 3,
-  family = NA,
+  family = "sans",
   rev = FALSE,
   position = "top",
   plotly = FALSE,

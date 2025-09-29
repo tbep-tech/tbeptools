@@ -13,7 +13,7 @@ show_sedimentave(
   lnsz = 1,
   base_size = 12,
   plotly = FALSE,
-  family = NA,
+  family = "sans",
   width = NULL,
   height = NULL
 )

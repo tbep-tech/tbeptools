@@ -14,7 +14,7 @@ show_wqmatrix(
   asreact = FALSE,
   nrows = 10,
   abbrev = FALSE,
-  family = NA,
+  family = "sans",
   plotly = FALSE,
   partialyr = FALSE,
   width = NULL,

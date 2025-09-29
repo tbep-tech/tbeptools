@@ -17,7 +17,7 @@ show_fibmatrix(
   txtsz = 3,
   asreact = FALSE,
   nrows = 10,
-  family = NA,
+  family = "sans",
   angle = 90,
   size = 10,
   hjust = 0,

@@ -12,7 +12,7 @@ show_transectmatrix(
   yrrng = c(1998, 2024),
   alph = 1,
   txtsz = 3,
-  family = NA,
+  family = "sans",
   rev = FALSE,
   position = "top",
   plotly = FALSE,

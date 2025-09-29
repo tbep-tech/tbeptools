@@ -45,7 +45,7 @@
 #'
 #' # show as symbols and colors
 #' show_hmpreport(acres, subtacres, hmptrgs, typ = "targets", ycollapse = TRUE, twocol = TRUE)
-show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strata = c('Subtidal', 'Intertidal', 'Supratidal'), totintertid = TRUE, ycollapse = FALSE, text = 2.5, xang = 25, family = NA, width = NULL, height = NULL){
+show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strata = c('Subtidal', 'Intertidal', 'Supratidal'), totintertid = TRUE, ycollapse = FALSE, text = 2.5, xang = 25, family = 'sans', width = NULL, height = NULL){
 
   strat <- c('Subtidal', 'Intertidal', 'Supratidal')
   typ <- match.arg(typ, choices = c('targets', 'goals'))

@@ -13,7 +13,7 @@ show_matrix(
   asreact = FALSE,
   nrows = 10,
   abbrev = FALSE,
-  family = NA,
+  family = "sans",
   historic = TRUE,
   plotly = FALSE,
   partialyr = FALSE,

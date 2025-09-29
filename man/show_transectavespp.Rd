@@ -12,7 +12,7 @@ show_transectavespp(
     "Dapis", "Chaetomorpha"),
   total = TRUE,
   alph = 1,
-  family = NA,
+  family = "sans",
   plotly = FALSE,
   asreact = FALSE,
   width = NULL,

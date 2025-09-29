@@ -6,7 +6,7 @@
 \usage{
 show_matrixplotly(
   mat,
-  family = NA,
+  family = NULL,
   tooltip = "Result",
   width = NULL,
   height = NULL

@@ -40,7 +40,7 @@ show_fibmatrix <- function(fibdata, yrrng = NULL,
                            stas = NULL, bay_segment = NULL,
                            lagyr = 3, subset_wetdry = c("all", "wet", "dry"), precipdata = NULL,
                            temporal_window = NULL, wet_threshold = NULL,
-                           txtsz = 3, asreact = FALSE, nrows = 10, family = NA, angle = 90,
+                           txtsz = 3, asreact = FALSE, nrows = 10, family = 'sans', angle = 90,
                            size = 10, hjust = 0, plotly = FALSE, width = NULL, height = NULL,
                            warn = TRUE){
 

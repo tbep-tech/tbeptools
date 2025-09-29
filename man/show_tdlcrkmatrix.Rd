@@ -8,7 +8,7 @@ show_tdlcrkmatrix(
   dat,
   class = c("3M", "2"),
   score = c("Prioritize", "Investigate", "Caution", "Monitor"),
-  family = NA,
+  family = "sans",
   size = 11
 )
 }

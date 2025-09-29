@@ -16,13 +16,13 @@
 #' @examples
 #' mat <- show_wqmatrix(epcdata)
 #' show_matrixplotly(mat)
-show_matrixplotly <- function(mat, family = NA, tooltip = 'Result', width = NULL, height = NULL){
-
+show_matrixplotly <- function(mat, family = NULL, tooltip = 'Result', width = NULL, height = NULL){
+browser()
   # matrix, new theme
   plo <- mat +
     ggplot2::theme(
       axis.text = ggplot2::element_text(size = 12),
-      text = ggplot2::element_text(family = family),
+      text = ggplot2::element_text(family = NULL),
       axis.text.x = ggplot2::element_blank(),
       axis.ticks.x = ggplot2::element_blank()
     )

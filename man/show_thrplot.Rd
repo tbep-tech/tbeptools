@@ -10,7 +10,7 @@ show_thrplot(
   thr = c("chla", "la"),
   trgs = NULL,
   yrrng = c(1975, 2024),
-  family = NA,
+  family = "sans",
   labelexp = TRUE,
   txtlab = TRUE,
   thrs = FALSE,
