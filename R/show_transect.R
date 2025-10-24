@@ -80,7 +80,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
         T ~ Savspecies
       )
     ) %>%
-    tidyr::spread(Savspecies, aveval, fill = 0) %>%
+    tidyr::pivot_wider(names_from = 'Savspecies', values_from = 'aveval', values_fill = 0, values_fn = max) %>%
     dplyr::select(Date, Site, dplyr::matches(paste0('^', species))) %>%
     tidyr::pivot_longer(dplyr::matches(paste0('^', species)), values_to = 'val') %>%
     dplyr::mutate(
@@ -89,7 +89,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
 
   # stop if no data for the species, transect
   if(inherits(dat, 'try-error'))
-    stop(paste('No data for', species, 'at transect', site))
+    stop(paste('No data for', paste(species, collapse = ', '), 'at transect', site))
 
   dat <- dat %>%
     dplyr::mutate(
