@@ -23,7 +23,7 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' anlz_transectavespp(transectocc)
-anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2024),
+anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2025),
                                 species = c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa', 'Dapis', 'Chaetomorpha'),
                                 total = TRUE, by_seg = FALSE){
 
