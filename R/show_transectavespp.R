@@ -33,7 +33,7 @@
 #' }
 #' transectocc <- anlz_transectocc(transect)
 #' show_transectavespp(transectocc)
-show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2024),
+show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB'), yrrng = c(1998, 2025),
                                 species = c('Halodule', 'Syringodium', 'Thalassia', 'Halophila', 'Ruppia', 'Caulerpa', 'Dapis', 'Chaetomorpha'),
                                 total = TRUE, alph = 1, family = 'sans', plotly = FALSE, asreact = FALSE, width = NULL,
                                 height = NULL, sppcol = NULL){
