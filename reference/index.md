@@ -334,7 +334,7 @@ Supporting datasets used by the other functions.
 - [`tidaltargets`](https://tbep-tech.github.io/tbeptools/reference/tidaltargets.md)
   : Tidal creek nitrogen targets
 - [`transect`](https://tbep-tech.github.io/tbeptools/reference/transect.md)
-  : Seagrass transect data for Tampa Bay current as of 10292025
+  : Seagrass transect data for Tampa Bay current as of 12052025
 - [`trnlns`](https://tbep-tech.github.io/tbeptools/reference/trnlns.md)
   : Seagrass transect locations
 - [`trnpts`](https://tbep-tech.github.io/tbeptools/reference/trnpts.md)

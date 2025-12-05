@@ -137,7 +137,7 @@ transect <- read_transect(training = FALSE)
 
 # view the data
 transect
-#> # A tibble: 164,727 × 11
+#> # A tibble: 164,724 × 11
 #>    Crew              MonitoringAgency Date       Transect Site  Depth Savspecies
 #>    <chr>             <chr>            <date>     <chr>    <chr> <int> <chr>     
 #>  1 A. McClory, A. I… MCNRD            2024-08-13 S4T2     0       -10 No Cover  
@@ -150,7 +150,7 @@ transect
 #>  8 A. McClory, A. I… MCNRD            2024-08-13 S4T2     125     -25 Thalassia 
 #>  9 A. McClory, A. I… MCNRD            2024-08-13 S4T2     125     -25 Thalassia 
 #> 10 A. McClory, A. I… MCNRD            2024-08-13 S4T2     150      -5 Halodule  
-#> # ℹ 164,717 more rows
+#> # ℹ 164,714 more rows
 #> # ℹ 4 more variables: SeagrassEdge <dbl>, var <chr>, aveval <dbl>, sdval <dbl>
 ```
 
@@ -221,8 +221,8 @@ species are aggregated. Drift or attached macroalgae and cyanobacteria
 ``` r
 transectocc <- anlz_transectocc(transect)
 transectocc
-#> # A tibble: 45,360 × 6
-#> # Groups:   Date, Transect [1,620]
+#> # A tibble: 41,916 × 6
+#> # Groups:   Date, Transect [1,497]
 #>    Date       Transect Savspecies                  nsites foest bbest
 #>    <date>     <chr>    <chr>                        <int> <dbl> <dbl>
 #>  1 1997-10-11 S2T3     "AA"                            41     0     0
@@ -235,7 +235,7 @@ transectocc
 #>  8 1997-10-11 S2T3     "DG: Ulva"                      41     0     0
 #>  9 1997-10-11 S2T3     "DG: Ulva fasciata\r\n"         41     0     0
 #> 10 1997-10-11 S2T3     "DG: Ulva intestinales\r\n"     41     0     0
-#> # ℹ 45,350 more rows
+#> # ℹ 41,906 more rows
 ```
 
 The second function,
@@ -265,7 +265,7 @@ transectave
 #>  4 MTB          1998  53.7 #E9C318
 #>  5 LTB          1998  80.8 #2DC938
 #>  6 BCB          1998  81.0 #2DC938
-#>  7 All          1999  51.5 #E9C318
+#>  7 All          1999  51.4 #E9C318
 #>  8 OTB          1999  64.7 #E9C318
 #>  9 HB           1999  10.1 #CC3231
 #> 10 MTB          1999  51.8 #E9C318
@@ -304,7 +304,7 @@ transectavespp
 #>  7  1998 Syringodium  0.0451
 #>  8  1998 Thalassia    0.254 
 #>  9  1998 total        0.580 
-#> 10  1999 Caulerpa     0.0277
+#> 10  1999 Caulerpa     0.0283
 #> # ℹ 242 more rows
 ```
 

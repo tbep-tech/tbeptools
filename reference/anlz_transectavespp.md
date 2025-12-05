@@ -78,6 +78,6 @@ anlz_transectavespp(transectocc)
 #>  7  1998 Syringodium  0.0451
 #>  8  1998 Thalassia    0.254 
 #>  9  1998 total        0.580 
-#> 10  1999 Caulerpa     0.0277
+#> 10  1999 Caulerpa     0.0283
 #> # ℹ 242 more rows
 ```

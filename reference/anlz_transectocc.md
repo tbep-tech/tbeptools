@@ -51,8 +51,8 @@ if (FALSE) { # \dontrun{
 transect <- read_transect()
 } # }
 anlz_transectocc(transect)
-#> # A tibble: 45,360 × 6
-#> # Groups:   Date, Transect [1,620]
+#> # A tibble: 41,916 × 6
+#> # Groups:   Date, Transect [1,497]
 #>    Date       Transect Savspecies                  nsites foest bbest
 #>    <date>     <chr>    <chr>                        <int> <dbl> <dbl>
 #>  1 1997-10-11 S2T3     "AA"                            41     0     0
@@ -65,5 +65,5 @@ anlz_transectocc(transect)
 #>  8 1997-10-11 S2T3     "DG: Ulva"                      41     0     0
 #>  9 1997-10-11 S2T3     "DG: Ulva fasciata\r\n"         41     0     0
 #> 10 1997-10-11 S2T3     "DG: Ulva intestinales\r\n"     41     0     0
-#> # ℹ 45,350 more rows
+#> # ℹ 41,906 more rows
 ```

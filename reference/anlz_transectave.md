@@ -69,7 +69,7 @@ anlz_transectave(transectocc)
 #>  4 MTB          1998  53.7 #E9C318
 #>  5 LTB          1998  80.8 #2DC938
 #>  6 BCB          1998  81.0 #2DC938
-#>  7 All          1999  51.5 #E9C318
+#>  7 All          1999  51.4 #E9C318
 #>  8 OTB          1999  64.7 #E9C318
 #>  9 HB           1999  10.1 #CC3231
 #> 10 MTB          1999  51.8 #E9C318
