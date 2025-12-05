@@ -96,7 +96,7 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
       return(out)
 
     out <- out %>%
-      dplyr::select(Crew, MonitoringAgency, Date = ObservationDate, Transect, Site, Depth, Savspecies = Species, SeagrassEdge, Abundance = SpeciesAbundance,
+      dplyr::select(IDall, Crew, MonitoringAgency, Date = ObservationDate, Transect, Site, Depth, Savspecies = Species, SeagrassEdge, Abundance = SpeciesAbundance,
                     matches('BladeLength_|ShootDensity_|CountSqSize_')) %>%
       dplyr::select(-BladeLength_Avg, -BladeLength_StdDev, -ShootDensity_Avg, -ShootDensity_StdDev) %>%
       dplyr::mutate(
@@ -119,6 +119,11 @@ read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
           !is.na(CountSqSize_3) & CountSqSize_3 > 0 ~ 1e5* ShootDensity_3 / (CountSqSize_3^2)
           )
         ) %>%
+      dplyr::mutate(
+        Date = max(Date), # IDall is unique ID for eacah transect sample, some are sampled on more than one day, using date as a unique id screws it up
+        .by = c(IDall)
+      ) %>%
+      dplyr::select(-IDall) %>%
       dplyr::select(-matches('CountSqSize_')) %>%
       tidyr::gather('var', 'val', -Crew, -Date, -MonitoringAgency, -Transect, -Site, -Depth, -Savspecies, -SeagrassEdge) %>%
       dplyr::mutate(
