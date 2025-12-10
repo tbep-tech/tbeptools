@@ -7,7 +7,7 @@
 show_tbbimatrix(
   tbbiscr,
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"),
-  yrrng = c(1993, 2023),
+  yrrng = c(1993, 2024),
   alph = 1,
   txtsz = 3,
   family = "sans",

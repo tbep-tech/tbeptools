@@ -20,7 +20,7 @@
 #' @examples
 #' tbbiscr <- anlz_tbbiscr(benthicdata)
 #' anlz_tbbimed(tbbiscr)
-anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB',  'All', 'All (wt)'), rev = FALSE, yrrng = c(1993, 2023)) {
+anlz_tbbimed <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB',  'All', 'All (wt)'), rev = FALSE, yrrng = c(1993, 2024)) {
 
   # sanity checks
   stopifnot(length(yrrng) == 2)

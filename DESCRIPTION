@@ -1,7 +1,7 @@
 Package: tbeptools
 Title: Data and Indicators for the Tampa Bay Estuary Program
-Version: 3.1.0.9017
-Date: 2025-12-05
+Version: 3.1.0.9018
+Date: 2025-12-10
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
