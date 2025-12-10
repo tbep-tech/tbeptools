@@ -8,7 +8,7 @@ Plot metal concentrations against aluminum
 show_sedimentalratio(
   sedimentdata,
   param,
-  yrrng = c(1993, 2023),
+  yrrng = c(1993, 2024),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
   funding_proj = "TBEP",
   lnsz = 1,

@@ -259,7 +259,7 @@ Supporting datasets used by the other functions.
 - [`acres`](https://tbep-tech.github.io/tbeptools/reference/acres.md) :
   Tampa Bay intertidal and supratidal land use and cover
 - [`benthicdata`](https://tbep-tech.github.io/tbeptools/reference/benthicdata.md)
-  : Benthic data for the Tampa Bay Benthic Index current as of 20241212
+  : Benthic data for the Tampa Bay Benthic Index current as of 20251225
 - [`bsmap`](https://tbep-tech.github.io/tbeptools/reference/bsmap.md) :
   Terrain basemap
 - [`catchpixels`](https://tbep-tech.github.io/tbeptools/reference/catchpixels.md)
@@ -297,7 +297,7 @@ Supporting datasets used by the other functions.
 - [`sealevelstations`](https://tbep-tech.github.io/tbeptools/reference/sealevelstations.md)
   : Sea level stations in Tampa Bay
 - [`sedimentdata`](https://tbep-tech.github.io/tbeptools/reference/sedimentdata.md)
-  : Sediment data for the Tampa Bay current as of 20241212
+  : Sediment data for the Tampa Bay current as of 20251210
 - [`sgmanagement`](https://tbep-tech.github.io/tbeptools/reference/sgmanagement.md)
   : Seagrass management areas for Tampa Bay
 - [`sgseg`](https://tbep-tech.github.io/tbeptools/reference/sgseg.md) :

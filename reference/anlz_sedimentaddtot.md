@@ -7,7 +7,7 @@ Add contaminant totals to sediment data
 ``` r
 anlz_sedimentaddtot(
   sedimentdata,
-  yrrng = c(1993, 2023),
+  yrrng = c(1993, 2024),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
   funding_proj = "TBEP",
   param = NULL,
@@ -63,7 +63,7 @@ TEL/PEL values for the totals are also added.
 
 ``` r
 anlz_sedimentaddtot(sedimentdata)
-#> # A tibble: 64,008 × 24
+#> # A tibble: 65,372 × 24
 #>    ProgramId ProgramName   FundingProject    yr AreaAbbr StationID StationNumber
 #>        <int> <chr>         <chr>          <int> <chr>        <int> <chr>        
 #>  1         4 Benthic Moni… TBEP            1993 HB            2463 93HB15       
@@ -76,10 +76,10 @@ anlz_sedimentaddtot(sedimentdata)
 #>  8         4 Benthic Moni… TBEP            1993 HB            2463 93HB15       
 #>  9         4 Benthic Moni… TBEP            1993 HB            2463 93HB15       
 #> 10         4 Benthic Moni… TBEP            1993 HB            2464 93HB16       
-#> # ℹ 63,998 more rows
+#> # ℹ 65,362 more rows
 #> # ℹ 17 more variables: Latitude <dbl>, Longitude <dbl>, Replicate <chr>,
 #> #   SedResultsType <chr>, Parameter <chr>, ValueAdjusted <dbl>, Units <chr>,
-#> #   Qualifier <chr>, MDLnum <dbl>, PQLnum <dbl>, TEL <dbl>, PEL <dbl>,
+#> #   Qualifier <chr>, MDLnum <chr>, PQLnum <chr>, TEL <dbl>, PEL <dbl>,
 #> #   BetweenTELPEL <chr>, ExceedsPEL <chr>, PELRatio <dbl>,
 #> #   PreparationDate <chr>, AnalysisTimeMerge <chr>
 ```

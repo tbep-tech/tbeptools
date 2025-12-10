@@ -1,6 +1,6 @@
-# Sediment data for the Tampa Bay current as of 20241212
+# Sediment data for the Tampa Bay current as of 20251210
 
-Sediment data for the Tampa Bay current as of 20241212
+Sediment data for the Tampa Bay current as of 20251210
 
 ## Usage
 
@@ -10,7 +10,7 @@ sedimentdata
 
 ## Format
 
-A `data.frame` with 226536 rows and 24 variables:
+A `data.frame` with 231727 rows and 24 variables:
 
 - ProgramId:
 

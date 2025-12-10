@@ -9,7 +9,7 @@ anlz_tbbimed(
   tbbiscr,
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"),
   rev = FALSE,
-  yrrng = c(1993, 2023)
+  yrrng = c(1993, 2024)
 )
 ```
 
@@ -51,7 +51,7 @@ monitoring program are included in the final categories.
 ``` r
 tbbiscr <- anlz_tbbiscr(benthicdata)
 anlz_tbbimed(tbbiscr)
-#> # A tibble: 277 × 6
+#> # A tibble: 286 × 6
 #> # Rowwise: 
 #>    bay_segment    yr Degraded Healthy Intermediate TBBICat
 #>    <fct>       <dbl>    <dbl>   <dbl>        <dbl> <fct>  
@@ -65,5 +65,5 @@ anlz_tbbimed(tbbiscr)
 #>  8 All          2000    0.163   0.407        0.430 Fair   
 #>  9 All          2001    0.231   0.321        0.449 Poor   
 #> 10 All          2002    0.2     0.425        0.375 Poor   
-#> # ℹ 267 more rows
+#> # ℹ 276 more rows
 ```

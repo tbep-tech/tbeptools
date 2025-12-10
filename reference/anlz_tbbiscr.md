@@ -30,7 +30,7 @@ field sample data. The total TBBI scores are returned as `TBBI` and
 
 ``` r
 anlz_tbbiscr(benthicdata)
-#> # A tibble: 4,851 × 15
+#> # A tibble: 4,915 × 15
 #>    StationID StationNumber AreaAbbr FundingProject ProgramID ProgramName       
 #>        <int> <chr>         <chr>    <chr>              <int> <chr>             
 #>  1       448 02BBs301      MTB      Apollo Beach           4 Benthic Monitoring
@@ -43,7 +43,7 @@ anlz_tbbiscr(benthicdata)
 #>  8       455 02BBs398      MTB      Apollo Beach           4 Benthic Monitoring
 #>  9       456 02BBs401      MTB      Apollo Beach           4 Benthic Monitoring
 #> 10       457 02BBs402      MTB      Apollo Beach           4 Benthic Monitoring
-#> # ℹ 4,841 more rows
+#> # ℹ 4,905 more rows
 #> # ℹ 9 more variables: Latitude <dbl>, Longitude <dbl>, date <date>, yr <dbl>,
 #> #   TotalAbundance <dbl>, SpeciesRichness <dbl>, TBBI <dbl>, TBBICat <chr>,
 #> #   Salinity <dbl>

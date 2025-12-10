@@ -7,7 +7,7 @@ Get average concentrations for a sediment parameter by bay segment
 ``` r
 anlz_sedimentpelave(
   sedimentdata,
-  yrrng = c(1993, 2023),
+  yrrng = c(1993, 2024),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
   funding_proj = "TBEP"
 )
@@ -57,11 +57,11 @@ anlz_sedimentpelave(sedimentdata)
 #> # A tibble: 7 × 5
 #>   AreaAbbr    ave    lov    hiv grandave
 #>   <fct>     <dbl>  <dbl>  <dbl>    <dbl>
-#> 1 BCB      0.0527 0.0439 0.0615   0.0517
-#> 2 HB       0.116  0.0655 0.166    0.0517
-#> 3 LTB      0.0280 0.0247 0.0314   0.0517
-#> 4 MR       0.0447 0.0378 0.0515   0.0517
-#> 5 MTB      0.0370 0.0324 0.0417   0.0517
-#> 6 OTB      0.0499 0.0366 0.0632   0.0517
-#> 7 TCB      0.0337 0.0265 0.0408   0.0517
+#> 1 BCB      0.0521 0.0435 0.0606   0.0513
+#> 2 HB       0.115  0.0654 0.164    0.0513
+#> 3 LTB      0.0279 0.0246 0.0312   0.0513
+#> 4 MR       0.0447 0.0380 0.0514   0.0513
+#> 5 MTB      0.0368 0.0322 0.0414   0.0513
+#> 6 OTB      0.0494 0.0363 0.0625   0.0513
+#> 7 TCB      0.0334 0.0264 0.0404   0.0513
 ```

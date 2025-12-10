@@ -105,9 +105,9 @@ benthicdata
 #> # A tibble: 3 × 2
 #>   name         value                 
 #>   <chr>        <list>                
-#> 1 stations     <tibble [4,851 × 10]> 
-#> 2 fieldsamples <tibble [5,261 × 3]>  
-#> 3 taxacounts   <tibble [151,718 × 7]>
+#> 1 stations     <tibble [4,915 × 10]> 
+#> 2 fieldsamples <tibble [5,334 × 3]>  
+#> 3 taxacounts   <tibble [153,895 × 7]>
 ```
 
 The individual datasets can be viewed by extracting them from the parent
@@ -117,7 +117,7 @@ object using the `deframe()` function from the tibble package.
 # see all
 deframe(benthicdata)
 #> $stations
-#> # A tibble: 4,851 × 10
+#> # A tibble: 4,915 × 10
 #>    StationID StationNumber AreaAbbr FundingProject ProgramID ProgramName       
 #>        <int> <chr>         <chr>    <chr>              <int> <chr>             
 #>  1       448 02BBs301      MTB      Apollo Beach           4 Benthic Monitoring
@@ -130,11 +130,11 @@ deframe(benthicdata)
 #>  8       455 02BBs398      MTB      Apollo Beach           4 Benthic Monitoring
 #>  9       456 02BBs401      MTB      Apollo Beach           4 Benthic Monitoring
 #> 10       457 02BBs402      MTB      Apollo Beach           4 Benthic Monitoring
-#> # ℹ 4,841 more rows
+#> # ℹ 4,905 more rows
 #> # ℹ 4 more variables: Latitude <dbl>, Longitude <dbl>, date <date>, yr <dbl>
 #> 
 #> $fieldsamples
-#> # A tibble: 5,261 × 3
+#> # A tibble: 5,334 × 3
 #>    StationID date       Salinity
 #>        <int> <date>        <dbl>
 #>  1       448 2002-05-21     30.5
@@ -147,10 +147,10 @@ deframe(benthicdata)
 #>  8       455 2002-05-21     30.3
 #>  9       456 2002-05-20     30.0
 #> 10       457 2002-05-20     29.9
-#> # ℹ 5,251 more rows
+#> # ℹ 5,324 more rows
 #> 
 #> $taxacounts
-#> # A tibble: 151,718 × 7
+#> # A tibble: 153,895 × 7
 #>    StationID TaxaCountID TaxaListID FAMILY           NAME     TaxaCount AdjCount
 #>        <int>       <int>      <int> <chr>            <chr>        <dbl>    <dbl>
 #>  1     11321      152055       1198 Anomiidae        Anomia …         1       25
@@ -163,11 +163,11 @@ deframe(benthicdata)
 #>  8      2542      140531        258 NULL             NEMERTEA         2       50
 #>  9      2992      140631        262 NULL             Palaeon…         4      100
 #> 10      3003      140635        285 Tetrastemmatidae Tetrast…         2       50
-#> # ℹ 151,708 more rows
+#> # ℹ 153,885 more rows
 
 # get only station dat
 deframe(benthicdata)[['stations']]
-#> # A tibble: 4,851 × 10
+#> # A tibble: 4,915 × 10
 #>    StationID StationNumber AreaAbbr FundingProject ProgramID ProgramName       
 #>        <int> <chr>         <chr>    <chr>              <int> <chr>             
 #>  1       448 02BBs301      MTB      Apollo Beach           4 Benthic Monitoring
@@ -180,7 +180,7 @@ deframe(benthicdata)[['stations']]
 #>  8       455 02BBs398      MTB      Apollo Beach           4 Benthic Monitoring
 #>  9       456 02BBs401      MTB      Apollo Beach           4 Benthic Monitoring
 #> 10       457 02BBs402      MTB      Apollo Beach           4 Benthic Monitoring
-#> # ℹ 4,841 more rows
+#> # ℹ 4,905 more rows
 #> # ℹ 4 more variables: Latitude <dbl>, Longitude <dbl>, date <date>, yr <dbl>
 ```
 
@@ -201,7 +201,7 @@ the time of sampling are required for accurate calculation of the TBBI.
 ``` r
 tbbiscr <- anlz_tbbiscr(benthicdata)
 tbbiscr
-#> # A tibble: 4,851 × 15
+#> # A tibble: 4,915 × 15
 #>    StationID StationNumber AreaAbbr FundingProject ProgramID ProgramName       
 #>        <int> <chr>         <chr>    <chr>              <int> <chr>             
 #>  1       448 02BBs301      MTB      Apollo Beach           4 Benthic Monitoring
@@ -214,7 +214,7 @@ tbbiscr
 #>  8       455 02BBs398      MTB      Apollo Beach           4 Benthic Monitoring
 #>  9       456 02BBs401      MTB      Apollo Beach           4 Benthic Monitoring
 #> 10       457 02BBs402      MTB      Apollo Beach           4 Benthic Monitoring
-#> # ℹ 4,841 more rows
+#> # ℹ 4,905 more rows
 #> # ℹ 9 more variables: Latitude <dbl>, Longitude <dbl>, date <date>, yr <dbl>,
 #> #   TotalAbundance <dbl>, SpeciesRichness <dbl>, TBBI <dbl>, TBBICat <chr>,
 #> #   Salinity <dbl>
@@ -280,7 +280,7 @@ After the data are imported, you can view them from the assigned object.
 
 ``` r
 sedimentdata
-#> # A tibble: 226,536 × 24
+#> # A tibble: 231,727 × 24
 #>    ProgramId ProgramName   FundingProject    yr AreaAbbr StationID StationNumber
 #>        <int> <chr>         <chr>          <int> <chr>        <int> <chr>        
 #>  1         4 Benthic Moni… TBEP            1993 HB            2463 93HB15       
@@ -293,10 +293,10 @@ sedimentdata
 #>  8         4 Benthic Moni… TBEP            1993 HB            2463 93HB15       
 #>  9         4 Benthic Moni… TBEP            1993 HB            2463 93HB15       
 #> 10         4 Benthic Moni… TBEP            1993 HB            2463 93HB15       
-#> # ℹ 226,526 more rows
+#> # ℹ 231,717 more rows
 #> # ℹ 17 more variables: Latitude <dbl>, Longitude <dbl>, Replicate <chr>,
 #> #   SedResultsType <chr>, Parameter <chr>, ValueAdjusted <dbl>, Units <chr>,
-#> #   Qualifier <chr>, MDLnum <dbl>, PQLnum <dbl>, TEL <dbl>, PEL <dbl>,
+#> #   Qualifier <chr>, MDLnum <chr>, PQLnum <chr>, TEL <dbl>, PEL <dbl>,
 #> #   BetweenTELPEL <chr>, ExceedsPEL <chr>, PELRatio <dbl>,
 #> #   PreparationDate <chr>, AnalysisTimeMerge <chr>
 ```
@@ -312,20 +312,20 @@ stations are those that are sampled in the years within the `yrrng`
 argument.
 
 ``` r
-show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2023))
+show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024))
 ```
 
 A single year of data can be shown as well.
 
 ``` r
-show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2023)
+show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2024)
 ```
 
 A map showing only the concentrations is returned if TEL and PEL values
 are not available for a parameter.
 
 ``` r
-show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2023))
+show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2024))
 ```
 
 Maps for total contaminant values (e.g., Total DDT, Total PAH, Total
@@ -338,7 +338,7 @@ function. Simply entering the name of the total parameter in the
 function will produce the summary map.
 
 ``` r
-show_sedimentmap(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2023))
+show_sedimentmap(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2024))
 ```
 
 The PEL ratio can also be used to assess relative sediment quality given
@@ -353,7 +353,7 @@ invertebrates. The station average combines the PEL ratios across all
 contaminants measured at a station.
 
 ``` r
-show_sedimentpelmap(sedimentdata, yrrng = c(1993, 2023))
+show_sedimentpelmap(sedimentdata, yrrng = c(1993, 2024))
 ```
 
 The average PEL ratios and grades used to create the map can also be
@@ -361,8 +361,8 @@ returned as a data frame using
 [`anlz_sedimentpel()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentpel.md).
 
 ``` r
-anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2023))
-#> # A tibble: 2,277 × 7
+anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2024))
+#> # A tibble: 2,321 × 7
 #>       yr AreaAbbr StationNumber Latitude Longitude PELRatio Grade
 #>    <int> <chr>    <chr>            <dbl>     <dbl>    <dbl> <fct>
 #>  1  1993 HB       93HB15            27.8     -82.4  0.0157  B    
@@ -375,7 +375,7 @@ anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2023))
 #>  8  1993 LTB      93LTB28           27.6     -82.7  0.0887  D    
 #>  9  1993 LTB      93LTB29           27.6     -82.6  0.0350  C    
 #> 10  1993 LTB      93LTB30           27.6     -82.6  0.0496  C    
-#> # ℹ 2,267 more rows
+#> # ℹ 2,311 more rows
 ```
 
 Plots of bay segment averages of sediment concentrations for selected
@@ -386,7 +386,7 @@ the grand mean across all segments. The former are omitted from the plot
 if unavailable for a selected parameter.
 
 ``` r
-show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2023))
+show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024))
 ```
 
 ![](tbbi_files/figure-html/unnamed-chunk-21-1.png)
@@ -395,24 +395,24 @@ The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
 
 ``` r
-show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2023), plotly = T)
+show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024), plotly = T)
 ```
 
 The values used in the plot can be returned with
 [`anlz_sedimentave()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentave.md).
 
 ``` r
-anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2023))
+anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024))
 #> # A tibble: 7 × 8
 #>   AreaAbbr   TEL   PEL Units   ave   lov   hiv grandave
 #>   <fct>    <dbl> <dbl> <chr> <dbl> <dbl> <dbl>    <dbl>
-#> 1 BCB       7.24  41.6 mg/kg  2.63 2.33   2.92     2.56
-#> 2 HB        7.24  41.6 mg/kg  2.90 0.681  5.13     2.56
-#> 3 LTB       7.24  41.6 mg/kg  2.92 2.46   3.38     2.56
-#> 4 MR        7.24  41.6 mg/kg  1.68 1.40   1.97     2.56
-#> 5 MTB       7.24  41.6 mg/kg  2.15 1.85   2.46     2.56
-#> 6 OTB       7.24  41.6 mg/kg  3.19 0.702  5.68     2.56
-#> 7 TCB       7.24  41.6 mg/kg  2.43 1.94   2.91     2.56
+#> 1 BCB       7.24  41.6 mg/kg  2.63 2.34   2.92     2.56
+#> 2 HB        7.24  41.6 mg/kg  2.89 0.706  5.07     2.56
+#> 3 LTB       7.24  41.6 mg/kg  2.90 2.45   3.36     2.56
+#> 4 MR        7.24  41.6 mg/kg  1.73 1.45   2.01     2.56
+#> 5 MTB       7.24  41.6 mg/kg  2.16 1.86   2.47     2.56
+#> 6 OTB       7.24  41.6 mg/kg  3.16 0.721  5.60     2.56
+#> 7 TCB       7.24  41.6 mg/kg  2.47 1.99   2.94     2.56
 ```
 
 As before, the total contaminant values (e.g., Total DDT, Total PAH,
@@ -423,17 +423,17 @@ function is used to calculate the totals within
 [`anlz_sedimentave()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentave.md).
 
 ``` r
-anlz_sedimentave(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2023))
+anlz_sedimentave(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2024))
 #> # A tibble: 7 × 8
 #>   AreaAbbr   TEL   PEL Units   ave   lov   hiv grandave
 #>   <fct>    <dbl> <dbl> <chr> <dbl> <dbl> <dbl>    <dbl>
-#> 1 BCB       3.89  51.7 ug/kg 0.561 0.379 0.743    0.688
-#> 2 HB        3.89  51.7 ug/kg 1.74  0.854 2.62     0.688
-#> 3 LTB       3.89  51.7 ug/kg 0.217 0.105 0.330    0.688
-#> 4 MR        3.89  51.7 ug/kg 0.814 0.505 1.12     0.688
-#> 5 MTB       3.89  51.7 ug/kg 0.429 0.282 0.575    0.688
-#> 6 OTB       3.89  51.7 ug/kg 0.483 0.271 0.695    0.688
-#> 7 TCB       3.89  51.7 ug/kg 0.576 0.200 0.953    0.688
+#> 1 BCB       3.89  51.7 ug/kg 0.547 0.371 0.724    0.676
+#> 2 HB        3.89  51.7 ug/kg 1.71  0.845 2.58     0.676
+#> 3 LTB       3.89  51.7 ug/kg 0.214 0.104 0.325    0.676
+#> 4 MR        3.89  51.7 ug/kg 0.799 0.502 1.10     0.676
+#> 5 MTB       3.89  51.7 ug/kg 0.424 0.280 0.569    0.676
+#> 6 OTB       3.89  51.7 ug/kg 0.475 0.267 0.682    0.676
+#> 7 TCB       3.89  51.7 ug/kg 0.565 0.196 0.934    0.676
 ```
 
 A similar plot of the bay segment averages for the average PEL ratios
@@ -442,7 +442,7 @@ can be created with
 The colors indicate the grades for A (green) to F (red).
 
 ``` r
-show_sedimentpelave(sedimentdata, yrrng = c(1993, 2023))
+show_sedimentpelave(sedimentdata, yrrng = c(1993, 2024))
 ```
 
 ![](tbbi_files/figure-html/unnamed-chunk-25-1.png)
@@ -451,24 +451,24 @@ The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
 
 ``` r
-show_sedimentpelave(sedimentdata, yrrng = c(1993, 2023), plotly = T)
+show_sedimentpelave(sedimentdata, yrrng = c(1993, 2024), plotly = T)
 ```
 
 The values used in the plot can be returned with
 [`anlz_sedimentpelave()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentpelave.md).
 
 ``` r
-anlz_sedimentpelave(sedimentdata, yrrng = c(1993, 2023))
+anlz_sedimentpelave(sedimentdata, yrrng = c(1993, 2024))
 #> # A tibble: 7 × 5
 #>   AreaAbbr    ave    lov    hiv grandave
 #>   <fct>     <dbl>  <dbl>  <dbl>    <dbl>
-#> 1 BCB      0.0527 0.0439 0.0615   0.0517
-#> 2 HB       0.116  0.0655 0.166    0.0517
-#> 3 LTB      0.0280 0.0247 0.0314   0.0517
-#> 4 MR       0.0447 0.0378 0.0515   0.0517
-#> 5 MTB      0.0370 0.0324 0.0417   0.0517
-#> 6 OTB      0.0499 0.0366 0.0632   0.0517
-#> 7 TCB      0.0337 0.0265 0.0408   0.0517
+#> 1 BCB      0.0521 0.0435 0.0606   0.0513
+#> 2 HB       0.115  0.0654 0.164    0.0513
+#> 3 LTB      0.0279 0.0246 0.0312   0.0513
+#> 4 MR       0.0447 0.0380 0.0514   0.0513
+#> 5 MTB      0.0368 0.0322 0.0414   0.0513
+#> 6 OTB      0.0494 0.0363 0.0625   0.0513
+#> 7 TCB      0.0334 0.0264 0.0404   0.0513
 ```
 
 The

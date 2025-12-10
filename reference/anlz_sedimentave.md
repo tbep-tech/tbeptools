@@ -8,7 +8,7 @@ Get average concentrations for a sediment parameter by bay segment
 anlz_sedimentave(
   sedimentdata,
   param,
-  yrrng = c(1993, 2023),
+  yrrng = c(1993, 2024),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
   funding_proj = "TBEP"
 )
@@ -62,11 +62,11 @@ anlz_sedimentave(sedimentdata, param = 'Arsenic')
 #> # A tibble: 7 × 8
 #>   AreaAbbr   TEL   PEL Units   ave   lov   hiv grandave
 #>   <fct>    <dbl> <dbl> <chr> <dbl> <dbl> <dbl>    <dbl>
-#> 1 BCB       7.24  41.6 mg/kg  2.63 2.33   2.92     2.56
-#> 2 HB        7.24  41.6 mg/kg  2.90 0.681  5.13     2.56
-#> 3 LTB       7.24  41.6 mg/kg  2.92 2.46   3.38     2.56
-#> 4 MR        7.24  41.6 mg/kg  1.68 1.40   1.97     2.56
-#> 5 MTB       7.24  41.6 mg/kg  2.15 1.85   2.46     2.56
-#> 6 OTB       7.24  41.6 mg/kg  3.19 0.702  5.68     2.56
-#> 7 TCB       7.24  41.6 mg/kg  2.43 1.94   2.91     2.56
+#> 1 BCB       7.24  41.6 mg/kg  2.63 2.34   2.92     2.56
+#> 2 HB        7.24  41.6 mg/kg  2.89 0.706  5.07     2.56
+#> 3 LTB       7.24  41.6 mg/kg  2.90 2.45   3.36     2.56
+#> 4 MR        7.24  41.6 mg/kg  1.73 1.45   2.01     2.56
+#> 5 MTB       7.24  41.6 mg/kg  2.16 1.86   2.47     2.56
+#> 6 OTB       7.24  41.6 mg/kg  3.16 0.721  5.60     2.56
+#> 7 TCB       7.24  41.6 mg/kg  2.47 1.99   2.94     2.56
 ```

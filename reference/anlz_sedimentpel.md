@@ -7,7 +7,7 @@ Get sediment PEL ratios at stations in Tampa Bay
 ``` r
 anlz_sedimentpel(
   sedimentdata,
-  yrrng = c(1993, 2023),
+  yrrng = c(1993, 2024),
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"),
   funding_proj = "TBEP"
 )
@@ -63,7 +63,7 @@ The grade breaks for the PEL ratio are 0.00756, 0.02052, 0.08567, and
 
 ``` r
 anlz_sedimentpel(sedimentdata)
-#> # A tibble: 2,277 × 7
+#> # A tibble: 2,321 × 7
 #>       yr AreaAbbr StationNumber Latitude Longitude PELRatio Grade
 #>    <int> <chr>    <chr>            <dbl>     <dbl>    <dbl> <fct>
 #>  1  1993 HB       93HB15            27.8     -82.4  0.0157  B    
@@ -76,5 +76,5 @@ anlz_sedimentpel(sedimentdata)
 #>  8  1993 LTB      93LTB28           27.6     -82.7  0.0887  D    
 #>  9  1993 LTB      93LTB29           27.6     -82.6  0.0350  C    
 #> 10  1993 LTB      93LTB30           27.6     -82.6  0.0496  C    
-#> # ℹ 2,267 more rows
+#> # ℹ 2,311 more rows
 ```

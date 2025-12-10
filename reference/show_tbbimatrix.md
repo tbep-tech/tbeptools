@@ -8,7 +8,7 @@ Plot a matrix of Tampa Bay Benthic Index scores over time by bay segment
 show_tbbimatrix(
   tbbiscr,
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"),
-  yrrng = c(1993, 2023),
+  yrrng = c(1993, 2024),
   alph = 1,
   txtsz = 3,
   family = "sans",
