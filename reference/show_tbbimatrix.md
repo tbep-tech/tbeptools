@@ -9,6 +9,7 @@ show_tbbimatrix(
   tbbiscr,
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"),
   yrrng = c(1993, 2024),
+  window = TRUE,
   alph = 1,
   txtsz = 3,
   family = "sans",
@@ -35,6 +36,12 @@ show_tbbimatrix(
 - yrrng:
 
   numeric indicating year ranges to evaluate
+
+- window:
+
+  logical indicating whether to use a rolling 5-year window (default
+  TRUE) or single year values (FALSE) for the bay segment categories,
+  see details
 
 - alph:
 
@@ -84,6 +91,14 @@ showing trends over time in TBBI scores for each bay segment if
 Additional summaries are provided for the entire bay, as a summary
 across categories ("All") and a summary weighted across the relative
 sizes of each bay segment ("All (wt)").
+
+The default behavior is to use a rolling five-year window to calculate
+the percent of sites in each TBBI category by bay segment. This applies
+only to years 2005 and later, where the counts from the current year and
+the prior four years are summed to calculate the percentages. This is
+intended to help smooth out inter-annual variability due to reduced
+sampling effort from 2005 to present. If `window = FALSE`, then only
+single year values are used.
 
 ## Examples
 

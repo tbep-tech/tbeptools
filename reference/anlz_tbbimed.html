@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.1.0.9018</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.1.0.9019</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,8 @@
 <span>  <span class="va">tbbiscr</span>,</span>
 <span>  bay_segment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HB"</span>, <span class="st">"OTB"</span>, <span class="st">"MTB"</span>, <span class="st">"LTB"</span>, <span class="st">"TCB"</span>, <span class="st">"MR"</span>, <span class="st">"BCB"</span>, <span class="st">"All"</span>, <span class="st">"All (wt)"</span><span class="op">)</span>,</span>
 <span>  rev <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1993</span>, <span class="fl">2024</span><span class="op">)</span></span>
+<span>  yrrng <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1993</span>, <span class="fl">2024</span><span class="op">)</span>,</span>
+<span>  window <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -74,6 +75,10 @@
 <dt id="arg-yrrng">yrrng<a class="anchor" aria-label="anchor" href="#arg-yrrng"></a></dt>
 <dd><p>numeric indicating year ranges to evaluate</p></dd>
 
+
+<dt id="arg-window">window<a class="anchor" aria-label="anchor" href="#arg-window"></a></dt>
+<dd><p>logical indicating whether to use a rolling 5-year window (default TRUE) or single year values (FALSE) for the bay segment categories, see details</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -83,6 +88,7 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Additional summaries are provided for the entire bay, as a summary across categories ("All") and a summary weighted across the relative sizes of each bay segment ("All (wt)").</p>
 <p>Only sampling funded by TBEP and as part of the routine EPC benthic monitoring program are included in the final categories.</p>
+<p>The default behavior is to use a rolling five-year window to calculate the percent of sites in each TBBI category by bay segment. This applies only to years 2005 and later, where the counts from the current year and the prior four years are summed to calculate the percentages. This is intended to help smooth out inter-annual variability due to reduced sampling effort from 2005 to present. If <code>window = FALSE</code>, then only single year values are used.</p>
     </div>
 
     <div class="section level2">

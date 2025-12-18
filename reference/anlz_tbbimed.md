@@ -9,7 +9,8 @@ anlz_tbbimed(
   tbbiscr,
   bay_segment = c("HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"),
   rev = FALSE,
-  yrrng = c(1993, 2024)
+  yrrng = c(1993, 2024),
+  window = TRUE
 )
 ```
 
@@ -33,6 +34,12 @@ anlz_tbbimed(
 
   numeric indicating year ranges to evaluate
 
+- window:
+
+  logical indicating whether to use a rolling 5-year window (default
+  TRUE) or single year values (FALSE) for the bay segment categories,
+  see details
+
 ## Value
 
 A data frame of annual medians by bay segment
@@ -45,6 +52,14 @@ sizes of each bay segment ("All (wt)").
 
 Only sampling funded by TBEP and as part of the routine EPC benthic
 monitoring program are included in the final categories.
+
+The default behavior is to use a rolling five-year window to calculate
+the percent of sites in each TBBI category by bay segment. This applies
+only to years 2005 and later, where the counts from the current year and
+the prior four years are summed to calculate the percentages. This is
+intended to help smooth out inter-annual variability due to reduced
+sampling effort from 2005 to present. If `window = FALSE`, then only
+single year values are used.
 
 ## Examples
 
