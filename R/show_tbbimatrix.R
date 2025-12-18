@@ -5,6 +5,7 @@
 #' @param tbbiscr input data frame as returned by \code{\link{anlz_tbbiscr}}
 #' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB", "All", "All (wt)"
 #' @param yrrng numeric indicating year ranges to evaluate
+#' @param window logical indicating whether to use a rolling 5-year window (default TRUE) or single year values (FALSE) for the bay segment categories, see details
 #' @param alph numeric indicating alpha value for score category colors
 #' @param txtsz numeric for size of text in the plot
 #' @param family optional chr string indicating font family for text labels
@@ -20,6 +21,8 @@
 #' @details
 #' Additional summaries are provided for the entire bay, as a summary across categories ("All") and a summary weighted across the relative sizes of each bay segment ("All (wt)").
 #'
+#' The default behavior is to use a rolling five-year window to calculate the percent of sites in each TBBI category by bay segment. This applies only to years 2005 and later, where the counts from the current year and the prior four years are summed to calculate the percentages. This is intended to help smooth out inter-annual variability due to reduced sampling effort from 2005 to present. If \code{window = FALSE}, then only single year values are used.
+#' 
 #' @concept show
 #'
 #' @importFrom dplyr "%>%"
@@ -28,11 +31,11 @@
 #' tbbiscr <- anlz_tbbiscr(benthicdata)
 #' show_tbbimatrix(tbbiscr)
 show_tbbimatrix <- function(tbbiscr, bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All', 'All (wt)'),
-                            yrrng = c(1993, 2024), alph = 1, txtsz = 3, family = 'sans', rev = FALSE, position = 'top',
+                            yrrng = c(1993, 2024), window = TRUE, alph = 1, txtsz = 3, family = 'sans', rev = FALSE, position = 'top',
                             plotly = FALSE, width = NULL, height = NULL){
 
   # annual average by segment
-  toplo <- anlz_tbbimed(tbbiscr, bay_segment, rev = rev, yrrng = yrrng)
+  toplo <- anlz_tbbimed(tbbiscr, bay_segment, rev = rev, yrrng = yrrng, window = window)
 
   p <- ggplot2::ggplot(toplo, ggplot2::aes(x = bay_segment, y = yr, fill = TBBICat)) +
     geom_tile(colour = 'black', alpha = alph) +
