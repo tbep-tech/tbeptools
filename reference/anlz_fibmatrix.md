@@ -168,7 +168,7 @@ anlz_fibmatrix(fibdata)
 # use different dataset
 anlz_fibmatrix(enterodata, lagyr = 1)
 #> Warning: Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06
-#> # A tibble: 684 × 7
+#> # A tibble: 719 × 7
 #>       yr grp                    class  gmean Latitude Longitude cat  
 #>    <dbl> <fct>                  <chr>  <dbl>    <dbl>     <dbl> <chr>
 #>  1  2000 21FLDOH_WQX-MANATEE152 Marine  10.7     27.5     -82.7 A    
@@ -181,12 +181,12 @@ anlz_fibmatrix(enterodata, lagyr = 1)
 #>  8  2001 21FLHILL_WQX-112       Marine  48.3     27.7     -82.4 A    
 #>  9  2001 21FLHILL_WQX-133       Marine 747.      27.9     -82.4 D    
 #> 10  2001 21FLHILL_WQX-136       Marine  26.1     27.7     -82.5 A    
-#> # ℹ 674 more rows
+#> # ℹ 709 more rows
 
 # subset to only wet samples
 anlz_fibmatrix(enterodata, lagyr = 1, subset_wetdry = "wet",
                temporal_window = 2, wet_threshold = 0.5)
-#> # A tibble: 500 × 7
+#> # A tibble: 526 × 7
 #>       yr grp                    class   gmean Latitude Longitude cat  
 #>    <dbl> <fct>                  <chr>   <dbl>    <dbl>     <dbl> <chr>
 #>  1  2001 21FLDOH_WQX-MANATEE152 Marine   31.6     27.5     -82.7 A    
@@ -199,7 +199,7 @@ anlz_fibmatrix(enterodata, lagyr = 1, subset_wetdry = "wet",
 #>  8  2001 21FLHILL_WQX-133       Marine 3286.      27.9     -82.4 C    
 #>  9  2002 21FLDOH_WQX-MANATEE152 Marine   13.7     27.5     -82.7 A    
 #> 10  2002 21FLHILL_WQX-101       Marine  531.      28.0     -82.6 C    
-#> # ℹ 490 more rows
+#> # ℹ 516 more rows
 
 # Manatee County data
 anlz_fibmatrix(mancofibdata, lagyr = 1)

@@ -458,27 +458,27 @@ dataset includes all data from the 53 selected stations from 1995-2023.
 
 ``` r
 head(enterodata)
-#>            date   yr mo time time_zone     long_name bay_segment
-#> 2018 2001-01-16 2001  1                Old Tampa Bay         OTB
-#> 2019 2001-02-20 2001  2                Old Tampa Bay         OTB
-#> 2020 2001-03-20 2001  3                Old Tampa Bay         OTB
-#> 2021 2001-04-17 2001  4                Old Tampa Bay         OTB
-#> 2022 2001-05-15 2001  5                Old Tampa Bay         OTB
-#> 2023 2001-06-19 2001  6                Old Tampa Bay         OTB
-#>               station entero entero_censored MDL entero_units qualifier
-#> 2018 21FLHILL_WQX-101     80           FALSE  NA      #/100mL        NA
-#> 2019 21FLHILL_WQX-101    360           FALSE  NA      #/100mL        NA
-#> 2020 21FLHILL_WQX-101   3900           FALSE  NA      #/100mL        NA
-#> 2021 21FLHILL_WQX-101     20           FALSE  NA      #/100mL        NA
-#> 2022 21FLHILL_WQX-101     NA           FALSE  20                     NA
-#> 2023 21FLHILL_WQX-101     NA           FALSE  20                     NA
-#>      LabComments Latitude Longitude
-#> 2018          NA  28.0248  -82.6316
-#> 2019          NA  28.0248  -82.6316
-#> 2020          NA  28.0248  -82.6316
-#> 2021          NA  28.0248  -82.6316
-#> 2022          NA  28.0248  -82.6316
-#> 2023          NA  28.0248  -82.6316
+#>         date   yr mo time time_zone     long_name bay_segment          station
+#> 1 2001-01-16 2001  1                Old Tampa Bay         OTB 21FLHILL_WQX-101
+#> 2 2001-02-20 2001  2                Old Tampa Bay         OTB 21FLHILL_WQX-101
+#> 3 2001-03-20 2001  3                Old Tampa Bay         OTB 21FLHILL_WQX-101
+#> 4 2001-04-17 2001  4                Old Tampa Bay         OTB 21FLHILL_WQX-101
+#> 5 2001-05-15 2001  5                Old Tampa Bay         OTB 21FLHILL_WQX-101
+#> 6 2001-06-19 2001  6                Old Tampa Bay         OTB 21FLHILL_WQX-101
+#>   entero entero_censored MDL entero_units qualifier LabComments Latitude
+#> 1     80           FALSE  NA      #/100mL        NA          NA  28.0248
+#> 2    360           FALSE  NA      #/100mL        NA          NA  28.0248
+#> 3   3900           FALSE  NA      #/100mL        NA          NA  28.0248
+#> 4     20           FALSE  NA      #/100mL        NA          NA  28.0248
+#> 5     NA           FALSE  20                     NA          NA  28.0248
+#> 6     NA           FALSE  20                     NA          NA  28.0248
+#>   Longitude
+#> 1  -82.6316
+#> 2  -82.6316
+#> 3  -82.6316
+#> 4  -82.6316
+#> 5  -82.6316
+#> 6  -82.6316
 ```
 
 The downstream functions also require precipitation data obtained using
@@ -558,7 +558,7 @@ value (`wet_sample`).
 
 ``` r
 anlz_fibwetdry(enterodata, catchprecip, temporal_window = 2, wet_threshold = 0.5)
-#> # A tibble: 6,622 × 19
+#> # A tibble: 6,872 × 19
 #>    date          yr    mo time  time_zone long_name   bay_segment station entero
 #>    <date>     <dbl> <dbl> <chr> <chr>     <chr>       <chr>       <chr>    <dbl>
 #>  1 2001-01-16  2001     1 ""    ""        Old Tampa … OTB         21FLHI…     80
@@ -571,7 +571,7 @@ anlz_fibwetdry(enterodata, catchprecip, temporal_window = 2, wet_threshold = 0.5
 #>  8 2001-08-21  2001     8 ""    ""        Old Tampa … OTB         21FLHI…    260
 #>  9 2001-09-18  2001     9 ""    ""        Old Tampa … OTB         21FLHI…    420
 #> 10 2001-10-16  2001    10 ""    ""        Old Tampa … OTB         21FLHI…    520
-#> # ℹ 6,612 more rows
+#> # ℹ 6,862 more rows
 #> # ℹ 10 more variables: entero_censored <lgl>, MDL <int>, entero_units <chr>,
 #> #   qualifier <lgl>, LabComments <lgl>, Latitude <dbl>, Longitude <dbl>,
 #> #   rain_sampleDay <dbl>, rain_total <dbl>, wet_sample <lgl>
@@ -601,7 +601,7 @@ noted in the `cat` column of the output. Corresponding colors are in the
 
 ``` r
 anlz_enteromap(enterodata)
-#> # A tibble: 6,622 × 12
+#> # A tibble: 6,872 × 12
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
 #>    <chr>       <chr>     <dbl> <dbl>    <dbl>     <dbl>  <dbl> <fct> <chr> <chr>
 #>  1 21FLHILL_W… Old Tamp…  2001     1     28.0     -82.6     80 35 -… #E9C… Ente…
@@ -614,7 +614,7 @@ anlz_enteromap(enterodata)
 #>  8 21FLHILL_W… Old Tamp…  2001     8     28.0     -82.6    260 130 … #EE7… Ente…
 #>  9 21FLHILL_W… Old Tamp…  2001     9     28.0     -82.6    420 130 … #EE7… Ente…
 #> 10 21FLHILL_W… Old Tamp…  2001    10     28.0     -82.6    520 130 … #EE7… Ente…
-#> # ℹ 6,612 more rows
+#> # ℹ 6,862 more rows
 #> # ℹ 2 more variables: indnm <chr>, conc <dbl>
 ```
 
@@ -661,7 +661,7 @@ sample date.
 ``` r
 anlz_enteromap(enterodata, wetdry = TRUE, precipdata = catchprecip,
                temporal_window = 2, wet_threshold = 0.5)
-#> # A tibble: 6,622 × 13
+#> # A tibble: 6,872 × 13
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
 #>    <chr>       <chr>     <dbl> <dbl>    <dbl>     <dbl>  <dbl> <fct> <chr> <chr>
 #>  1 21FLHILL_W… Old Tamp…  2001     1     28.0     -82.6     80 35 -… #E9C… Ente…
@@ -674,7 +674,7 @@ anlz_enteromap(enterodata, wetdry = TRUE, precipdata = catchprecip,
 #>  8 21FLHILL_W… Old Tamp…  2001     8     28.0     -82.6    260 130 … #EE7… Ente…
 #>  9 21FLHILL_W… Old Tamp…  2001     9     28.0     -82.6    420 130 … #EE7… Ente…
 #> 10 21FLHILL_W… Old Tamp…  2001    10     28.0     -82.6    520 130 … #EE7… Ente…
-#> # ℹ 6,612 more rows
+#> # ℹ 6,862 more rows
 #> # ℹ 3 more variables: indnm <chr>, conc <dbl>, wet_sample <lgl>
 ```
 
@@ -724,7 +724,7 @@ based on the likelihood of exceedences (`cat`).
 
 ``` r
 anlz_fibmatrix(enterodata)
-#> # A tibble: 571 × 7
+#> # A tibble: 605 × 7
 #>       yr grp                    class   gmean Latitude Longitude cat  
 #>    <dbl> <fct>                  <chr>   <dbl>    <dbl>     <dbl> <chr>
 #>  1  2002 21FLDOH_WQX-MANATEE152 Marine   13.6     27.5     -82.7 A    
@@ -737,7 +737,7 @@ anlz_fibmatrix(enterodata)
 #>  8  2003 21FLHILL_WQX-112       Marine   49.4     27.7     -82.4 B    
 #>  9  2003 21FLHILL_WQX-133       Marine  829.      27.9     -82.4 E    
 #> 10  2003 21FLHILL_WQX-136       Marine   60.7     27.7     -82.5 A    
-#> # ℹ 561 more rows
+#> # ℹ 595 more rows
 ```
 
 #### Show

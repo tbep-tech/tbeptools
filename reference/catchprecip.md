@@ -42,7 +42,7 @@ stations. Created using
 
 ``` r
 if (FALSE) { # \dontrun{
-catchprecip <- read_importrainmany(1995:2024, quiet = F)
+catchprecip <- read_importrainmany(1995:2025, quiet = F)
 
 save(catchprecip, file = 'data/catchprecip.RData')
 } # }

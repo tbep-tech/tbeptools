@@ -152,12 +152,12 @@ anlz_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
 
 # as sf object
 anlz_enteromap(enterodata, assf = TRUE)
-#> Simple feature collection with 5951 features and 14 fields
+#> Simple feature collection with 6195 features and 14 fields
 #> Geometry type: POINT
 #> Dimension:     XY
 #> Bounding box:  xmin: -82.74598 ymin: 27.49433 xmax: -82.38168 ymax: 28.02571
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 5,951 × 15
+#> # A tibble: 6,195 × 15
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
 #>    <chr>       <chr>     <dbl> <dbl>    <dbl>     <dbl>  <dbl> <fct> <chr> <chr>
 #>  1 21FLHILL_W… Old Tamp…  2001     1     28.0     -82.6     80 35 -… #E9C… Ente…
@@ -170,7 +170,7 @@ anlz_enteromap(enterodata, assf = TRUE)
 #>  8 21FLHILL_W… Old Tamp…  2001    10     28.0     -82.6    520 130 … #EE7… Ente…
 #>  9 21FLHILL_W… Old Tamp…  2001    11     28.0     -82.6     60 35 -… #E9C… Ente…
 #> 10 21FLHILL_W… Old Tamp…  2001    12     28.0     -82.6    340 130 … #EE7… Ente…
-#> # ℹ 5,941 more rows
+#> # ℹ 6,185 more rows
 #> # ℹ 5 more variables: grp <fct>, conc <dbl>, wet_sample <fct>,
 #> #   geometry <POINT [°]>, lab <chr>
 ```
