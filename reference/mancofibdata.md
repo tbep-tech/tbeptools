@@ -1,6 +1,6 @@
-# Manatee County FIB data as of 20250211
+# Manatee County FIB data as of 20260108
 
-Manatee County FIB data as of 20250211
+Manatee County FIB data as of 20260108
 
 ## Usage
 
@@ -10,7 +10,7 @@ mancofibdata
 
 ## Format
 
-A data frame with 1616 rows and 13 variables:
+A data frame with 1928 rows and 13 variables:
 
 - manco_station:
 

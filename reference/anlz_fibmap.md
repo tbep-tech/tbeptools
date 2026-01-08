@@ -99,20 +99,20 @@ on the year/month selection.
 ``` r
 # assign categories to all
 anlz_fibmap(fibdata)
-#> # A tibble: 29,175 × 12
+#> # A tibble: 30,648 × 12
 #>    area    station class    yr    mo Latitude Longitude ecoli entero ind   cat  
 #>    <chr>     <dbl> <chr> <dbl> <dbl>    <dbl>     <dbl> <dbl>  <dbl> <chr> <fct>
-#>  1 Hillsb…       2 3M     2024    12     27.9     -82.5    NA     28 Ente… < 35 
-#>  2 Hillsb…       6 3M     2024    12     27.9     -82.5    NA      2 Ente… < 35 
-#>  3 Hillsb…       7 3M     2024    12     27.9     -82.5    NA      2 Ente… < 35 
-#>  4 Hillsb…       8 3M     2024    12     27.9     -82.4    NA      2 Ente… < 35 
-#>  5 Middle…       9 2      2024    12     27.8     -82.4    NA      4 Ente… < 35 
-#>  6 Middle…      11 2      2024    12     27.8     -82.5    NA      2 Ente… < 35 
-#>  7 Middle…      13 2      2024    12     27.8     -82.5    NA      2 Ente… < 35 
-#>  8 Middle…      14 2      2024    12     27.8     -82.5    NA      2 Ente… < 35 
-#>  9 Middle…      16 2      2024    12     27.7     -82.5    NA      2 Ente… < 35 
-#> 10 Middle…      19 2      2024    12     27.7     -82.6    NA      2 Ente… < 35 
-#> # ℹ 29,165 more rows
+#>  1 Hillsb…       2 3M     2025    10     27.9     -82.5    NA      2 Ente… < 35 
+#>  2 Hillsb…       6 3M     2025    10     27.9     -82.5    NA      4 Ente… < 35 
+#>  3 Hillsb…       7 3M     2025    10     27.9     -82.5    NA      2 Ente… < 35 
+#>  4 Hillsb…       8 3M     2025    10     27.9     -82.4    NA      2 Ente… < 35 
+#>  5 Middle…       9 2      2025    10     27.8     -82.4    NA      2 Ente… < 35 
+#>  6 Middle…      11 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
+#>  7 Middle…      13 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
+#>  8 Middle…      14 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
+#>  9 Middle…      16 2      2025    10     27.7     -82.5    NA      4 Ente… < 35 
+#> 10 Middle…      19 2      2025    10     27.7     -82.6    NA      2 Ente… < 35 
+#> # ℹ 30,638 more rows
 #> # ℹ 1 more variable: col <chr>
 
 # filter by year, month, and area
@@ -137,25 +137,25 @@ anlz_fibmap(fibdata, yrsel = 2020, mosel = 7, areasel = 'Alafia River')
 
 # as sf object
 anlz_fibmap(fibdata, assf = TRUE)
-#> Simple feature collection with 29175 features and 16 fields
+#> Simple feature collection with 30648 features and 16 fields
 #> Geometry type: POINT
 #> Dimension:     XY
 #> Bounding box:  xmin: -82.7832 ymin: 27.53248 xmax: -82.05604 ymax: 28.16544
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 29,175 × 17
+#> # A tibble: 30,648 × 17
 #>    area    station class    yr    mo Latitude Longitude ecoli entero ind   cat  
 #>    <chr>     <dbl> <chr> <dbl> <dbl>    <dbl>     <dbl> <dbl>  <dbl> <chr> <fct>
-#>  1 Hillsb…       2 3M     2024    12     27.9     -82.5    NA     28 Ente… < 35 
-#>  2 Hillsb…       6 3M     2024    12     27.9     -82.5    NA      2 Ente… < 35 
-#>  3 Hillsb…       7 3M     2024    12     27.9     -82.5    NA      2 Ente… < 35 
-#>  4 Hillsb…       8 3M     2024    12     27.9     -82.4    NA      2 Ente… < 35 
-#>  5 Middle…       9 2      2024    12     27.8     -82.4    NA      4 Ente… < 35 
-#>  6 Middle…      11 2      2024    12     27.8     -82.5    NA      2 Ente… < 35 
-#>  7 Middle…      13 2      2024    12     27.8     -82.5    NA      2 Ente… < 35 
-#>  8 Middle…      14 2      2024    12     27.8     -82.5    NA      2 Ente… < 35 
-#>  9 Middle…      16 2      2024    12     27.7     -82.5    NA      2 Ente… < 35 
-#> 10 Middle…      19 2      2024    12     27.7     -82.6    NA      2 Ente… < 35 
-#> # ℹ 29,165 more rows
+#>  1 Hillsb…       2 3M     2025    10     27.9     -82.5    NA      2 Ente… < 35 
+#>  2 Hillsb…       6 3M     2025    10     27.9     -82.5    NA      4 Ente… < 35 
+#>  3 Hillsb…       7 3M     2025    10     27.9     -82.5    NA      2 Ente… < 35 
+#>  4 Hillsb…       8 3M     2025    10     27.9     -82.4    NA      2 Ente… < 35 
+#>  5 Middle…       9 2      2025    10     27.8     -82.4    NA      2 Ente… < 35 
+#>  6 Middle…      11 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
+#>  7 Middle…      13 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
+#>  8 Middle…      14 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
+#>  9 Middle…      16 2      2025    10     27.7     -82.5    NA      4 Ente… < 35 
+#> 10 Middle…      19 2      2025    10     27.7     -82.6    NA      2 Ente… < 35 
+#> # ℹ 30,638 more rows
 #> # ℹ 6 more variables: col <chr>, geometry <POINT [°]>, grp <fct>, conc <dbl>,
 #> #   cls <chr>, lab <chr>
 ```

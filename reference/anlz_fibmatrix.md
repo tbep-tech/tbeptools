@@ -150,7 +150,7 @@ been tested for other organizations.
 
 ``` r
 anlz_fibmatrix(fibdata)
-#> # A tibble: 102 × 7
+#> # A tibble: 111 × 7
 #>       yr grp   class  gmean Latitude Longitude cat  
 #>    <dbl> <fct> <chr>  <dbl>    <dbl>     <dbl> <chr>
 #>  1  2003 105   Marine  97.1     28.0     -82.4 C    
@@ -163,7 +163,7 @@ anlz_fibmatrix(fibdata)
 #>  8  2005 152   Marine  91.7     28.0     -82.5 C    
 #>  9  2005 137   Marine  66.6     28.0     -82.5 C    
 #> 10  2006 105   Marine  90.7     28.0     -82.4 C    
-#> # ℹ 92 more rows
+#> # ℹ 101 more rows
 
 # use different dataset
 anlz_fibmatrix(enterodata, lagyr = 1)
@@ -203,7 +203,7 @@ anlz_fibmatrix(enterodata, lagyr = 1, subset_wetdry = "wet",
 
 # Manatee County data
 anlz_fibmatrix(mancofibdata, lagyr = 1)
-#> # A tibble: 200 × 7
+#> # A tibble: 263 × 7
 #>       yr grp   class   gmean Latitude Longitude cat  
 #>    <dbl> <fct> <chr>   <dbl>    <dbl>     <dbl> <chr>
 #>  1  2013 LM4   Marine  771.      27.5     -82.5 C    
@@ -216,5 +216,5 @@ anlz_fibmatrix(mancofibdata, lagyr = 1)
 #>  8  2018 BC1   Fresh  1591.      27.4     -82.6 C    
 #>  9  2018 BC2   Fresh   674.      27.4     -82.6 C    
 #> 10  2018 BR1   Fresh    16.6     27.4     -82.5 A    
-#> # ℹ 190 more rows
+#> # ℹ 253 more rows
 ```

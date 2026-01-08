@@ -1,6 +1,6 @@
-# Polk County FIB data as of 20250304
+# Polk County FIB data as of 20260108
 
-Polk County FIB data as of 20250304
+Polk County FIB data as of 20260108
 
 ## Usage
 
@@ -10,7 +10,7 @@ polcofibdata
 
 ## Format
 
-A data frame with 833 rows and 13 variables:
+A data frame with 996 rows and 13 variables:
 
 - polco_station:
 
