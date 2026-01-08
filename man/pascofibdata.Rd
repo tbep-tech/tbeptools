@@ -3,9 +3,9 @@
 \docType{data}
 \name{pascofibdata}
 \alias{pascofibdata}
-\title{Pasco County FIB data as of 20250304}
+\title{Pasco County FIB data as of 20260108}
 \format{
-A data frame with 209 rows and 13 variables:
+A data frame with 255 rows and 13 variables:
 \describe{
 \item{pasco_station}{chr, Station name}
 \item{SampleTime}{POSIXct, Date/time of sampling}
@@ -26,7 +26,7 @@ A data frame with 209 rows and 13 variables:
 pascofibdata
 }
 \description{
-Pasco County FIB data as of 20250304
+Pasco County FIB data as of 20260108
 }
 \details{
 This dataset includes FIB data from Pasco County (21FLPASC_WQX) where station class is marine (estuary) and Enterococcus data is present or the station class is freshwater (stream/river, reservoir) and E. coli data is present. The data is formatted from the raw data loaded from \code{\link{read_importwqp}}.
