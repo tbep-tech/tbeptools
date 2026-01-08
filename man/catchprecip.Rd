@@ -26,7 +26,7 @@ Daily precipitation data for multiple years, provided by the Southwest Florida W
 }
 \examples{
 \dontrun{
-catchprecip <- read_importrainmany(1995:2024, quiet = F)
+catchprecip <- read_importrainmany(1995:2025, quiet = F)
 
 save(catchprecip, file = 'data/catchprecip.RData')
 }

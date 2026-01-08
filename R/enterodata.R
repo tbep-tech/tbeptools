@@ -25,7 +25,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' enterodata <- read_importentero(startDate = '1995-01-01', endDate = '2024-12-31')
+#' enterodata <- read_importentero(startDate = '1995-01-01', endDate = '2025-12-31')
 #'
 #' save(enterodata, file = 'data/enterodata.RData')
 #' }
