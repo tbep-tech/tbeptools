@@ -17,8 +17,8 @@ reporting these data. Three workflows are available:
 
 1.  Functions that use data exclusively from the Environmental
     Protection Commission (EPC) of Hillsborough County
-2.  Functions that use data from Manatee, Pasco, Polk County, or
-    Hillsborough County (Environmental Services Division)
+2.  Functions that use data from Manatee, Pasco, Polk, or Hillsborough
+    (Environmental Services Division) Counties
 3.  Functions that use data from several monitoring programs for baywide
     reporting focusing exclusively on *Enterococcus*
 
@@ -28,7 +28,7 @@ or to support prioritization of areas for further investigation. They
 are not meant to support beach monitoring efforts or closures for
 recreational uses - alternative reporting products are available for
 that purpose (see [FLDOH Healthy
-Beaches](https://www.floridahealth.gov/environmental-health/beach-water-quality/county-detail.html?County=Pinellas&Zip=33701-3109)
+Beaches](https://www.floridahealth.gov/community-environmental-public-health/environmental-public-health/water-quality/aquatic-toxins/beach-water-quality/)
 or the [Tampa Bay Recreational Water Quality
 Map](https://tampabay.wateratlas.usf.edu/maps/recreational-water-quality-map/)).
 
