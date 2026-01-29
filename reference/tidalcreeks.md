@@ -1,6 +1,6 @@
-# Spatial data object of tidal creeks in Impaired Waters Rule, Run 66
+# Spatial data object of tidal creeks in Impaired Waters Rule, Run 67
 
-Spatial data object of tidal creeks in Impaired Waters Rule, Run 66
+Spatial data object of tidal creeks in Impaired Waters Rule, Run 67
 
 ## Usage
 
@@ -12,7 +12,7 @@ tidalcreeks
 
 A simple features
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-(MULTILINESTRING) with 620 features and 6 fields, +proj=longlat
+(MULTILINESTRING) with 623 features and 6 fields, +proj=longlat
 +ellps=WGS84 +datum=WGS84 +no_defs
 
 - id:

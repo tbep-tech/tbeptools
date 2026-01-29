@@ -63,7 +63,7 @@ package.
 ## Examples
 
 ``` r
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2024, radar = TRUE)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2025, radar = TRUE)
 
 set.seed(123)
 id <- sample(unique(cntdat$id), 1)

@@ -22,7 +22,7 @@ The tbeptools package includes a [simple
 features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data
 object of the population of tidal creeks in southwest Florida, called
 [`tidalcreeks()`](https://tbep-tech.github.io/tbeptools/reference/tidalcreeks.md).
-This includes 620 polyline features designated by a water body ID
+This includes 623 polyline features designated by a water body ID
 (`WBID`), creek id (`JEI`), and [FDEP
 class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria)
 (`class`, 1 for potable water, 2 for shellfish harvesting or
@@ -154,7 +154,7 @@ datasets to estimate the scores:
 ``` r
 results <- anlz_tdlcrk(tidalcreeks, iwrraw)
 results
-#> # A tibble: 620 × 10
+#> # A tibble: 623 × 10
 #>       id wbid  JEI   name     class monitor caution investigate prioritize score
 #>    <int> <chr> <chr> <chr>    <chr>   <dbl>   <dbl>       <dbl>      <dbl> <chr>
 #>  1     1 1983B CC01  Rock Cr… 2           1      NA          NA         NA Moni…
@@ -165,9 +165,9 @@ results
 #>  6     6 2068A CC03  Buck Cr… 3M          9       1          NA         NA Moni…
 #>  7     7 2078A CC04  Buck Cr… 2          NA      NA           1         NA Inve…
 #>  8     8 2078A CC05  Coral C… 2          NA      NA          NA         NA No D…
-#>  9     9 2078B CC05  Coral C… 2           6      NA          NA         NA Moni…
-#> 10    10 2065C CC06  Catfish… 2           2      NA          NA         NA Moni…
-#> # ℹ 610 more rows
+#>  9     9 2078B CC05  Coral C… 2           7      NA          NA         NA Moni…
+#> 10    10 2065C CC06  Catfish… 2           3      NA          NA         NA Moni…
+#> # ℹ 613 more rows
 ```
 
 The results include a unique creek identifier (`id`, based on the `wbid`
@@ -240,34 +240,34 @@ combination.
 ``` r
 results <- anlz_tdlcrkindic(tidalcreeks, iwrraw)
 head(results)
-#>   id       name  JEI  wbid class year    CHLAC    COLOR     COND       DO
-#> 1  1 Rock Creek CC01 1983B     2 2022       NA       NA 53297.25 4.159892
-#> 2  2 Rock Creek CC01  2052    3M 2015 2.647817 21.91113       NA 4.034172
-#> 3  2 Rock Creek CC01  2052    3M 2016 2.265462 19.13080       NA 3.980251
-#> 4  2 Rock Creek CC01  2052    3M 2017 2.851726 15.39576       NA 4.157777
-#> 5  2 Rock Creek CC01  2052    3M 2018 1.934899 11.65500       NA 4.219790
-#> 6  2 Rock Creek CC01  2052    3M 2019 2.071003  7.21425       NA 3.015847
+#>   id       name  JEI  wbid class year    CHLAC     COLOR     COND       DO
+#> 1  1 Rock Creek CC01 1983B     2 2022       NA        NA 53297.25 4.159892
+#> 2  2 Rock Creek CC01  2052    3M 2016 2.265462 19.130797       NA 3.980251
+#> 3  2 Rock Creek CC01  2052    3M 2017 2.851726 15.395763       NA 4.157777
+#> 4  2 Rock Creek CC01  2052    3M 2018 1.934899 11.655004       NA 4.219790
+#> 5  2 Rock Creek CC01  2052    3M 2019 2.071003  7.214250       NA 3.015847
+#> 6  2 Rock Creek CC01  2052    3M 2020 1.283014  6.401676       NA 5.858378
 #>      DOSAT        NO23 ORGN    SALIN       TKN        TN         TP  TSS
 #> 1 66.54848 0.006000000   NA 35.18500 0.6260000 0.6260000 0.06500000 45.3
-#> 2 55.41609 0.009361504   NA 19.10494 0.6465161 0.5678241 0.07602770   NA
-#> 3 55.96637 0.008532522   NA 25.84531 0.5813818 0.5408161 0.08330509   NA
-#> 4 60.18017 0.007447260   NA 24.86909 0.6255197 0.6326848 0.07566682   NA
-#> 5 63.32630 0.006994714   NA 31.32419 0.5668727 0.5734574 0.07432007   NA
-#> 6 44.90322 0.007047106   NA 31.63214 0.5053022 0.4577485 0.06300538   NA
+#> 2 55.96637 0.008532522   NA 25.84531 0.5813818 0.5408161 0.08330509   NA
+#> 3 60.18017 0.007447260   NA 24.86909 0.6255197 0.6326848 0.07566682   NA
+#> 4 63.32630 0.006994714   NA 31.32419 0.5668727 0.5734574 0.07432007   NA
+#> 5 44.90322 0.007047106   NA 31.63214 0.5053022 0.4577485 0.06300538   NA
+#> 6 74.97221 0.009582840   NA 34.00753 0.4665677 0.3610097 0.06714974   NA
 #>       TURB chla_tn_ratio tn_tp_ratio chla_tsi   tn_tsi  tn2_tsi   tp_tsi
 #> 1 2.300000            NA    9.630769       NA 46.72558 49.53273 59.24360
-#> 2 1.814818      4.663093    7.468648 30.82179 44.79432 47.43600 62.15842
-#> 3 2.082253      4.188970    6.491994 28.57601 43.82942 46.38844 63.85868
-#> 4 1.802161      4.507341    8.361456 31.89011 46.93590 49.76107 62.06992
-#> 5 2.454007      3.374095    7.716050 26.30480 44.98978 47.64821 61.73589
-#> 6 1.831953      4.524324    7.265229 27.28367 40.52758 42.80384 58.66389
+#> 2 2.082253      4.188970    6.491994 28.57601 43.82942 46.38844 63.85868
+#> 3 1.802161      4.507341    8.361456 31.89011 46.93590 49.76107 62.06992
+#> 4 2.454007      3.374095    7.716050 26.30480 44.98978 47.64821 61.73589
+#> 5 1.831953      4.524324    7.265229 27.28367 40.52758 42.80384 58.66389
+#> 6 2.185581      3.553960    5.376189 20.38865 35.82676 37.70067 59.84880
 #>    tp2_tsi  nut_tsi      tsi no23_source no23_tidal no23_ratio do_bnml do_prop
 #> 1 74.71554 49.53273       NA          NA         NA         NA       0       0
-#> 2 78.41391 47.43600 39.12890          NA         NA         NA       0       1
-#> 3 80.57123 46.38844 37.48223          NA         NA         NA       0       1
-#> 4 78.30162 49.76107 40.82559          NA         NA         NA       0       0
-#> 5 77.87779 47.64821 36.97650          NA         NA         NA       0       1
-#> 6 73.97999 42.80384 35.04375          NA         NA         NA       1       1
+#> 2 80.57123 46.38844 37.48223          NA         NA         NA       0       1
+#> 3 78.30162 49.76107 40.82559          NA         NA         NA       0       0
+#> 4 77.87779 47.64821 36.97650          NA         NA         NA       0       1
+#> 5 73.97999 42.80384 35.04375          NA         NA         NA       1       1
+#> 6 75.48343 37.70067 29.04466          NA         NA         NA       0       0
 ```
 
 Individual creek indicators are summarized using a multivariate response
@@ -282,7 +282,7 @@ creeks (Florida DEP class 2, 3M). Indicators without data for the creek
 do not have a point on the plot.
 
 ``` r
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2024, radar = T)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2025, radar = T)
 
 # get random creek id
 set.seed(123)
@@ -308,7 +308,7 @@ function, where the latter is passed to the `cntdat` argument. The
 Each year has its own unique color.
 
 ``` r
-cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2024)
+cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2025)
 show_tdlcrkindic(id = id, cntdat = cntdat, thrsel = TRUE)
 ```
 
