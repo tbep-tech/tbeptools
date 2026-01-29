@@ -10,9 +10,9 @@ test_that("read_importrainmany works correctly", {
     )
   )
 
-  # Use with_mock instead of stub
-  with_mock(
-    "tbeptools::read_importrain" = mock_read_importrain,
+  # Use with_mocked_bindings
+  with_mocked_bindings(
+    read_importrain = mock_read_importrain,
     {
       # Call the function with mocked dependencies
       result <- read_importrainmany(2021, quiet = FALSE)

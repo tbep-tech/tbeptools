@@ -3,9 +3,9 @@
 \docType{data}
 \name{mancofibdata}
 \alias{mancofibdata}
-\title{Manatee County FIB data as of 20250211}
+\title{Manatee County FIB data as of 20260108}
 \format{
-A data frame with 1616 rows and 13 variables:
+A data frame with 1928 rows and 13 variables:
 \describe{
 \item{manco_station}{chr, Station name}
 \item{SampleTime}{POSIXct, Date/time of sampling}
@@ -26,7 +26,7 @@ A data frame with 1616 rows and 13 variables:
 mancofibdata
 }
 \description{
-Manatee County FIB data as of 20250211
+Manatee County FIB data as of 20260108
 }
 \details{
 This dataset includes FIB data from Manatee County Department of Natural Resources where station class is marine (estuary) and Enterococcus data is present or the station class is freshwater (stream/river, reservoir) and E. coli data is present. The data is formatted from the raw data loaded from \code{\link{read_importwqp}}.

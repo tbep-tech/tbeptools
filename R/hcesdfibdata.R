@@ -1,8 +1,8 @@
-#' Hillsborough County Environmental Services Division (ESD) FIB data as of 20250306
+#' Hillsborough County Environmental Services Division (ESD) FIB data as of 20260108
 #'
-#' Hillsborough County Environmental Services Division (ESD) FIB data as of 20250306
+#' Hillsborough County Environmental Services Division (ESD) FIB data as of 20260108
 #'
-#' @format A data frame with 980 rows and 13 variables:
+#' @format A data frame with 1264 rows and 13 variables:
 #' \describe{
 #'   \item{hcesd_station}{chr, Station name}
 #'   \item{SampleTime}{POSIXct, Date/time of sampling}

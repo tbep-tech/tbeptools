@@ -1,8 +1,8 @@
-#' Manatee County FIB data as of 20250211
+#' Manatee County FIB data as of 20260108
 #'
-#' Manatee County FIB data as of 20250211
+#' Manatee County FIB data as of 20260108
 #'
-#' @format A data frame with 1616 rows and 13 variables:
+#' @format A data frame with 1928 rows and 13 variables:
 #' \describe{
 #'   \item{manco_station}{chr, Station name}
 #'   \item{SampleTime}{POSIXct, Date/time of sampling}

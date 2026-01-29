@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' anlz_sedimentaddtot(sedimentdata)
-anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2023), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', param = NULL, pelave = TRUE){
+anlz_sedimentaddtot <- function(sedimentdata, yrrng = c(1993, 2024), bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB'), funding_proj = 'TBEP', param = NULL, pelave = TRUE){
 
   # make yrrng two if only one year provided
   if(length(yrrng) == 1)

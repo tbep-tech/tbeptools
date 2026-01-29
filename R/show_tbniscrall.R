@@ -47,7 +47,7 @@ show_tbniscrall <- function(tbniscr, perc = c(32, 46), alph = 1, ylim = c(22 ,58
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = '#E9C318') +
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = '#2DC938') +
     geom_ribbon(aes(x = Year, ymin = TBNI_Score - seval, ymax = TBNI_Score + seval), fill = secol) +
-    ggplot2::geom_line(aes(x = Year, y = TBNI_Score), size = 1.25) +
+    ggplot2::geom_line(aes(x = Year, y = TBNI_Score), linewidth = 1.25) +
     ggplot2::scale_y_continuous(name = "TBNI average of bay segments", limits = ylim, breaks = seq(ylim[1], ylim[2], 4)) +
     ggplot2::scale_x_continuous(breaks = seq(1998,max(toplo$Year), 1), expand = c(0.025, 0.025)) +
     ggplot2::geom_hline(aes(yintercept = perc[1]), color = "black", linetype = "dotted") +

@@ -102,6 +102,7 @@ read_importentero <- function(stas = NULL, startDate, endDate){
       LabComments = ResultLaboratoryCommentText
     ) %>%
     dplyr::mutate(
+      entero = as.character(entero),
       entero = dplyr::case_when(
         entero %in% c('*Non-detect', '*Not Reported', 'Not Reported', '*Present >QL') ~ NA_character_,
         TRUE ~ entero

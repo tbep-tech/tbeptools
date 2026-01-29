@@ -43,7 +43,7 @@ show_tbniscr <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), pe
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = perc[1], alpha = alph, fill = '#CC3231') + # red
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[1], ymax = perc[2], alpha = alph, fill = '#E9C318') + # yellow
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = perc[2], ymax = Inf, alpha = alph, fill = '#2DC938') + # green
-    ggplot2::geom_line(aes(x = Year, y = Segment_TBNI, linetype = bay_segment, color = bay_segment), size = 1.25) +
+    ggplot2::geom_line(aes(x = Year, y = Segment_TBNI, linetype = bay_segment, color = bay_segment), linewidth = 1.25) +
     # stat_summary(fun.y=sum, geom="line") +
     ggplot2::scale_linetype_manual(name = "",
                           breaks = levs,

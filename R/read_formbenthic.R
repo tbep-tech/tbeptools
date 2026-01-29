@@ -141,7 +141,7 @@ read_formbenthic <- function(pathin){
   # taxa counts -------------------------------------------------------------
 
   taxalist <- TaxaList %>%
-    dplyr::select(TaxaListID, FAMILY, NAME, `COLONIAL/PLANKTONIC?` = `COLONIAL.PLANKTONIC.`)
+    dplyr::select(TaxaListID, FAMILY = Family, NAME, `COLONIAL/PLANKTONIC?` = `Colonial.Planktonic`)
   taxagroup <- TaxaGroup %>%
     dplyr::select(TaxaCountID = TAXA_ID, TAXA_GROUP)
   taxaunits <- TaxaUnits %>%
