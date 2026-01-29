@@ -13,8 +13,8 @@
 #' @concept analyze
 #'
 #' @examples
-#' anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2024)
-anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2024) {
+#' anlz_tdlcrk(tidalcreeks, iwrraw, yr = 2025)
+anlz_tdlcrk <- function(tidalcreeks, iwrraw, tidtrgs = NULL, yr = 2025) {
 
   # default targets from data file
   if(is.null(tidtrgs))

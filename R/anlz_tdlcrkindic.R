@@ -21,9 +21,9 @@
 #' @concept analyze
 #'
 #' @examples
-#' dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2024)
+#' dat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2025)
 #' head(dat)
-anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2024, radar = FALSE) {
+anlz_tdlcrkindic <- function(tidalcreeks, iwrraw, yr = 2025, radar = FALSE) {
 
   # format iwr data
   iwrdat <- anlz_iwrraw(iwrraw, tidalcreeks, yr = yr)
