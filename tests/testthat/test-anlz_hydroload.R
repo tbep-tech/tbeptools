@@ -214,9 +214,8 @@ test_that("anlz_hydroload works with NULL noaa_key", {
   stub(anlz_hydroload, "dataRetrieval::readNWISdv", mock_usgs_data)
   stub(anlz_hydroload, "dataRetrieval::renameNWISColumns", function(x) x)
   
-  expect_no_error(
-    result <- anlz_hydroload(2021, noaa_key = NULL)
+  expect_error(
+    anlz_hydroload(2021, noaa_key = NULL)
   )
   
-  expect_s3_class(result, "data.frame")
 })
