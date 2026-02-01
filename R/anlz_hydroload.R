@@ -13,8 +13,6 @@
 #'
 #' @concept analyze
 #'
-#' @importFrom rnoaa ncdc
-#'
 #' @return A data frame with hydrological load estimates by bay segments for the requested years
 #' @export
 #'
@@ -36,9 +34,6 @@
 #' }
 anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
 
-  if(!requireNamespace('rnoaa', quietly = TRUE))
-    stop("Package \"noaa\" needed for this function to work. Please install it.", call. = FALSE)
-
   res <- yrs %>%
     tibble::enframe('name', 'year') %>%
     dplyr::group_by(name) %>%
@@ -55,17 +50,10 @@ anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
         end <- paste0(yr, "-12-31")
 
         # download NOAA UWS rainfall station data
-        sp_rainfall <- ncdc(datasetid = "GHCND", stationid = "GHCND:USW00092806",
-                            datatypeid = "PRCP", startdate = start, enddate = end,
-                            limit = 500, add_units = TRUE, token = noaa_key)
-        sp_rain <- sp_rainfall$data %>%
-          dplyr::summarise(sum = sum(value)/254)
-
-        tia_rainfall <- ncdc(datasetid = "GHCND", stationid = "GHCND:USW00012842",
-                             datatypeid = "PRCP", startdate = start, enddate = end,
-                             limit = 500, add_units = TRUE, token = noaa_key)
-        tia_rain <- tia_rainfall$data %>%
-          dplyr::summarise(sum = sum(value)/254)
+        sp_rain <- util_rain(station = 'GHCND:USW00092806', start = start, end = end,
+                            token = noaa_key, quiet = T)
+        tia_rain <- util_rain(station = 'GHCND:USW00012842', start = start, end = end,
+                            token = noaa_key, quiet = T)
 
         # download USGS streamflow data
         hr <- dataRetrieval::readNWISdv("02303000", "00060", start, end) %>%

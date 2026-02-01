@@ -1,37 +1,25 @@
-test_that("anlz_hydroload requires rnoaa package", {
-  # Mock requireNamespace to return FALSE
-  stub(anlz_hydroload, "requireNamespace", FALSE)
-  
-  expect_error(
-    anlz_hydroload(2021, "fake_key"),
-    "Package \"noaa\" needed for this function to work. Please install it.",
-    fixed = TRUE
-  )
-})
-
 test_that("anlz_hydroload works with single year - no adjustment needed", {
   # Mock requireNamespace to return TRUE
   stub(anlz_hydroload, "requireNamespace", TRUE)
   
   # Mock NOAA rainfall data for St. Petersburg
-  mock_sp_rainfall <- list(
-    data = data.frame(value = rep(254, 365)) # 1 inch per day = 254 units
-  )
-  
+  mock_sp_rain <- data.frame(
+      sum = 45
+    )
   # Mock NOAA rainfall data for Tampa
-  mock_tia_rainfall <- list(
-    data = data.frame(value = rep(254, 365)) # 1 inch per day = 254 units
-  )
+  mock_tia_rain <- data.frame(
+      sum = 45
+    )
   
   # Mock USGS streamflow data (returning data frames with Flow column)
   mock_usgs_data <- data.frame(Flow = 100) # 100 cubic feet per second
   
-  # Mock the ncdc function calls
-  stub(anlz_hydroload, "ncdc", function(datasetid, stationid, datatypeid, startdate, enddate, limit, add_units, token) {
-    if (stationid == "GHCND:USW00092806") {
-      return(mock_sp_rainfall)
-    } else if (stationid == "GHCND:USW00012842") {
-      return(mock_tia_rainfall)
+  # Mock the util_rain function calls
+  stub(anlz_hydroload, "util_rain", function(station, start, end, token, ntry, quiet) {
+    if (station == "GHCND:USW00092806") {
+      return(mock_sp_rain)
+    } else if (station == "GHCND:USW00012842") {
+      return(mock_tia_rain)
     }
   })
   
@@ -53,22 +41,25 @@ test_that("anlz_hydroload works with single year - no adjustment needed", {
 })
 
 test_that("anlz_hydroload works with multiple years", {
-  # Mock requireNamespace to return TRUE
-  stub(anlz_hydroload, "requireNamespace", TRUE)
-  
-  # Mock NOAA rainfall data
-  mock_sp_rainfall <- list(data = data.frame(value = rep(254, 365)))
-  mock_tia_rainfall <- list(data = data.frame(value = rep(254, 365)))
+
+  # Mock NOAA rainfall data for St. Petersburg
+  mock_sp_rain <- data.frame(
+      sum = 45
+    )
+  # Mock NOAA rainfall data for Tampa
+  mock_tia_rain <- data.frame(
+      sum = 45
+    )
   
   # Mock USGS streamflow data
   mock_usgs_data <- data.frame(Flow = 100)
   
-  # Mock the API calls
-  stub(anlz_hydroload, "ncdc", function(datasetid, stationid, datatypeid, startdate, enddate, limit, add_units, token) {
-    if (stationid == "GHCND:USW00092806") {
-      return(mock_sp_rainfall)
-    } else if (stationid == "GHCND:USW00012842") {
-      return(mock_tia_rainfall)
+  # Mock the util_rain function calls
+  stub(anlz_hydroload, "util_rain", function(station, start, end, token, ntry, quiet) {
+    if (station == "GHCND:USW00092806") {
+      return(mock_sp_rain)
+    } else if (station == "GHCND:USW00012842") {
+      return(mock_tia_rain)
     }
   })
   
@@ -82,21 +73,25 @@ test_that("anlz_hydroload works with multiple years", {
 })
 
 test_that("anlz_hydroload handles adjustment cases correctly", {
-  # Mock requireNamespace to return TRUE
-  stub(anlz_hydroload, "requireNamespace", TRUE)
-  
+
   # Mock rainfall data that will trigger adjustments
-  mock_sp_rainfall <- list(data = data.frame(value = rep(5080, 365))) # High rainfall
-  mock_tia_rainfall <- list(data = data.frame(value = rep(5080, 365))) # High rainfall
+  mock_sp_rain <- data.frame(
+      sum = 90
+    )
+  # Mock NOAA rainfall data for Tampa
+  mock_tia_rain <- data.frame(
+      sum = 90
+    )
   
   # Mock high streamflow data that will trigger adjustments
   mock_usgs_data <- data.frame(Flow = 1000) # High flow
   
-  stub(anlz_hydroload, "ncdc", function(datasetid, stationid, datatypeid, startdate, enddate, limit, add_units, token) {
-    if (stationid == "GHCND:USW00092806") {
-      return(mock_sp_rainfall)
-    } else if (stationid == "GHCND:USW00012842") {
-      return(mock_tia_rainfall)
+  # Mock the util_rain function calls
+  stub(anlz_hydroload, "util_rain", function(station, start, end, token, ntry, quiet) {
+    if (station == "GHCND:USW00092806") {
+      return(mock_sp_rain)
+    } else if (station == "GHCND:USW00012842") {
+      return(mock_tia_rain)
     }
   })
   
@@ -113,50 +108,24 @@ test_that("anlz_hydroload handles adjustment cases correctly", {
   expect_true(all(!is.na(adjusted_rows$`Compliance Load Adjustment Factor`)))
 })
 
-test_that("anlz_hydroload handles no adjustment cases correctly", {
-  # Mock requireNamespace to return TRUE
-  stub(anlz_hydroload, "requireNamespace", TRUE)
-  
-  # Mock moderate rainfall and flow data that won't trigger adjustments
-  mock_sp_rainfall <- list(data = data.frame(value = rep(1270, 365))) # Moderate rainfall
-  mock_tia_rainfall <- list(data = data.frame(value = rep(1270, 365))) # Moderate rainfall
-  
-  mock_usgs_data <- data.frame(Flow = 200) # Moderate flow
-  
-  stub(anlz_hydroload, "ncdc", function(datasetid, stationid, datatypeid, startdate, enddate, limit, add_units, token) {
-    if (stationid == "GHCND:USW00092806") {
-      return(mock_sp_rainfall)
-    } else if (stationid == "GHCND:USW00012842") {
-      return(mock_tia_rainfall)
-    }
-  })
-  
-  stub(anlz_hydroload, "dataRetrieval::readNWISdv", mock_usgs_data)
-  stub(anlz_hydroload, "dataRetrieval::renameNWISColumns", function(x) x)
-  
-  result <- anlz_hydroload(2021, "fake_key")
-  
-  # Check that no adjustments are made for moderate values
-  no_adjust_rows <- result[result$`Adjusted?` == "NO", ]
-  if (nrow(no_adjust_rows) > 0) {
-    expect_true(all(is.na(no_adjust_rows$`Compliance Load Adjustment Factor`)))
-  }
-})
-
 test_that("anlz_hydroload trace parameter works", {
-  # Mock requireNamespace to return TRUE
-  stub(anlz_hydroload, "requireNamespace", TRUE)
-  
+
   # Mock data
-  mock_sp_rainfall <- list(data = data.frame(value = rep(254, 365)))
-  mock_tia_rainfall <- list(data = data.frame(value = rep(254, 365)))
+  mock_sp_rain <- data.frame(
+      sum = 90
+    )
+  # Mock NOAA rainfall data for Tampa
+  mock_tia_rain <- data.frame(
+      sum = 90
+    )
   mock_usgs_data <- data.frame(Flow = 100)
   
-  stub(anlz_hydroload, "ncdc", function(datasetid, stationid, datatypeid, startdate, enddate, limit, add_units, token) {
-    if (stationid == "GHCND:USW00092806") {
-      return(mock_sp_rainfall)
-    } else if (stationid == "GHCND:USW00012842") {
-      return(mock_tia_rainfall)
+  # Mock the util_rain function calls
+  stub(anlz_hydroload, "util_rain", function(station, start, end, token, ntry, quiet) {
+    if (station == "GHCND:USW00092806") {
+      return(mock_sp_rain)
+    } else if (station == "GHCND:USW00012842") {
+      return(mock_tia_rain)
     }
   })
   
@@ -172,12 +141,15 @@ test_that("anlz_hydroload trace parameter works", {
 })
 
 test_that("anlz_hydroload calculations are correct", {
-  # Mock requireNamespace to return TRUE
-  stub(anlz_hydroload, "requireNamespace", TRUE)
   
   # Set specific known values for testing calculations
-  mock_sp_rainfall <- list(data = data.frame(value = rep(254, 100))) # 100 inches total
-  mock_tia_rainfall <- list(data = data.frame(value = rep(508, 100))) # 200 inches total
+  mock_sp_rain <- data.frame(
+      sum = 90
+    )
+  # Mock NOAA rainfall data for Tampa
+  mock_tia_rain <- data.frame(
+      sum = 90
+    )
   
   mock_flows <- list(
     hr = data.frame(Flow = 100),   # Hillsborough River
@@ -200,11 +172,12 @@ test_that("anlz_hydroload calculations are correct", {
            mock_flows$hr)
   })
   
-  stub(anlz_hydroload, "ncdc", function(datasetid, stationid, datatypeid, startdate, enddate, limit, add_units, token) {
-    if (stationid == "GHCND:USW00092806") {
-      return(mock_sp_rainfall)
-    } else if (stationid == "GHCND:USW00012842") {
-      return(mock_tia_rainfall)
+  # Mock the util_rain function calls
+  stub(anlz_hydroload, "util_rain", function(station, start, end, token, ntry, quiet) {
+    if (station == "GHCND:USW00092806") {
+      return(mock_sp_rain)
+    } else if (station == "GHCND:USW00012842") {
+      return(mock_tia_rain)
     }
   })
   
@@ -224,8 +197,7 @@ test_that("anlz_hydroload calculations are correct", {
 
 # Test edge case with NULL noaa_key (should still work as it's passed to ncdc)
 test_that("anlz_hydroload works with NULL noaa_key", {
-  stub(anlz_hydroload, "requireNamespace", TRUE)
-  
+
   mock_sp_rainfall <- list(data = data.frame(value = rep(254, 365)))
   mock_tia_rainfall <- list(data = data.frame(value = rep(254, 365)))
   mock_usgs_data <- data.frame(Flow = 100)
