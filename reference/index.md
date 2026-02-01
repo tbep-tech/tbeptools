@@ -365,3 +365,5 @@ Utility functions used by other functions.
 - [`util_orgin()`](https://tbep-tech.github.io/tbeptools/reference/util_orgin.md)
   : Get organization name from organization identifier in USEPA Water
   Quality Portal
+- [`util_rain()`](https://tbep-tech.github.io/tbeptools/reference/util_rain.md)
+  : Get rainfall data at NOAA NCDC sites

@@ -30,9 +30,10 @@ requested years
 ## Details
 
 This function uses rainfall and streamflow data from NOAA and USGS and
-requires an API key. See the "Authentication" section under the help
-file for ncdc in the defunct rnoaa package. This key can be added to the
-R environment file and called for later use, see the examples.
+requires an API key. See the webpage
+<https://www.ncdc.noaa.gov/cdo-web/token> for retrieving a NOAA token.
+This key can be added to the R environment file and called for later
+use, see the examples.
 
 These estimates are used in annual compliance assessment reports
 produced by the Tampa Bay Nitrogen Management Consortium. Load estimates
