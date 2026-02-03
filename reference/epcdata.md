@@ -1,6 +1,6 @@
-# All bay data as of 20250210
+# All bay data as of 20260203
 
-All bay data as of 20250210
+All bay data as of 20260203
 
 ## Usage
 
@@ -10,7 +10,7 @@ epcdata
 
 ## Format
 
-A data frame with 28501 rows and 26 variables:
+A data frame with 29041 rows and 26 variables:
 
 - bay_segment:
 

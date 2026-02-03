@@ -127,20 +127,20 @@ assigned object:
 
 ``` r
 epcdata
-#> # A tibble: 28,501 × 26
+#> # A tibble: 29,041 × 26
 #>    bay_segment epchc_station SampleTime             yr    mo Latitude Longitude
 #>    <chr>               <dbl> <dttm>              <dbl> <dbl>    <dbl>     <dbl>
-#>  1 HB                      6 2024-12-09 09:27:00  2024    12     27.9     -82.5
-#>  2 HB                      7 2024-12-09 09:38:00  2024    12     27.9     -82.5
-#>  3 HB                      8 2024-12-09 11:42:00  2024    12     27.9     -82.4
-#>  4 MTB                     9 2024-12-09 11:02:00  2024    12     27.8     -82.4
-#>  5 MTB                    11 2024-12-09 09:52:00  2024    12     27.8     -82.5
-#>  6 MTB                    13 2024-12-09 10:04:00  2024    12     27.8     -82.5
-#>  7 MTB                    14 2024-12-09 10:37:00  2024    12     27.8     -82.5
-#>  8 MTB                    16 2024-12-16 09:44:00  2024    12     27.7     -82.5
-#>  9 MTB                    19 2024-12-16 09:59:00  2024    12     27.7     -82.6
-#> 10 LTB                    23 2024-12-16 13:33:00  2024    12     27.7     -82.6
-#> # ℹ 28,491 more rows
+#>  1 HB                      6 2025-12-10 09:41:00  2025    12     27.9     -82.5
+#>  2 HB                      7 2025-12-10 09:49:00  2025    12     27.9     -82.5
+#>  3 HB                      8 2025-12-10 11:31:00  2025    12     27.9     -82.4
+#>  4 MTB                     9 2025-12-10 11:00:00  2025    12     27.8     -82.4
+#>  5 MTB                    11 2025-12-10 10:00:00  2025    12     27.8     -82.5
+#>  6 MTB                    13 2025-12-10 10:10:00  2025    12     27.8     -82.5
+#>  7 MTB                    14 2025-12-10 10:37:00  2025    12     27.8     -82.5
+#>  8 MTB                    16 2025-12-17 09:26:00  2025    12     27.7     -82.5
+#>  9 MTB                    19 2025-12-17 09:37:00  2025    12     27.7     -82.6
+#> 10 LTB                    23 2025-12-17 12:03:00  2025    12     27.7     -82.6
+#> # ℹ 29,031 more rows
 #> # ℹ 19 more variables: Total_Depth_m <dbl>, Sample_Depth_m <dbl>, tn <dbl>,
 #> #   tn_q <chr>, sd_m <dbl>, sd_raw_m <dbl>, sd_q <chr>, chla <dbl>,
 #> #   chla_q <chr>, Sal_Top_ppth <dbl>, Sal_Mid_ppth <dbl>,
@@ -369,7 +369,7 @@ list for the annual (`ann`) and monthly (`mos`) means by segment.
 avedat <- anlz_avedat(epcdata)
 avedat
 #> $ann
-#> # A tibble: 620 × 4
+#> # A tibble: 632 × 4
 #>       yr bay_segment var         val
 #>    <dbl> <chr>       <chr>     <dbl>
 #>  1  1974 HB          mean_chla 22.4 
@@ -382,10 +382,10 @@ avedat
 #>  8  1975 OTB         mean_chla 13.2 
 #>  9  1976 HB          mean_chla 29.5 
 #> 10  1976 LTB         mean_chla  5.08
-#> # ℹ 610 more rows
+#> # ℹ 622 more rows
 #> 
 #> $mos
-#> # A tibble: 4,820 × 5
+#> # A tibble: 4,916 × 5
 #>    bay_segment    yr    mo var         val
 #>    <chr>       <dbl> <dbl> <chr>     <dbl>
 #>  1 HB           1974     1 mean_chla 36.2 
@@ -398,7 +398,7 @@ avedat
 #>  8 OTB          1974     2 mean_chla  4.07
 #>  9 HB           1974     3 mean_chla 14.9 
 #> 10 LTB          1974     3 mean_chla  5.88
-#> # ℹ 4,810 more rows
+#> # ℹ 4,906 more rows
 ```
 
 This output can then be further analyzed with
@@ -413,7 +413,7 @@ higher integer values.
 
 ``` r
 anlz_attain(avedat)
-#> # A tibble: 204 × 4
+#> # A tibble: 208 × 4
 #>    bay_segment    yr chl_la outcome
 #>    <chr>       <dbl> <chr>  <chr>  
 #>  1 HB           1974 3_0    yellow 
@@ -426,7 +426,7 @@ anlz_attain(avedat)
 #>  8 HB           1981 3_3    red    
 #>  9 HB           1982 3_3    red    
 #> 10 HB           1983 3_0    yellow 
-#> # ℹ 194 more rows
+#> # ℹ 198 more rows
 ```
 
 Similar information can be obtained for individual sites using
@@ -439,7 +439,7 @@ site.
 
 ``` r
 anlz_avedatsite(epcdata) %>% anlz_attainsite
-#> # A tibble: 2,295 × 9
+#> # A tibble: 2,340 × 9
 #>       yr bay_segment epchc_station var     val target smallex thresh met  
 #>    <dbl> <chr>               <dbl> <chr> <dbl>  <dbl>   <dbl>  <dbl> <chr>
 #>  1  1974 HB                      6 chla   25.6   13.2    14.1     15 no   
@@ -452,7 +452,7 @@ anlz_avedatsite(epcdata) %>% anlz_attainsite
 #>  8  1974 HB                     71 chla   25.8   13.2    14.1     15 no   
 #>  9  1974 HB                     73 chla   17.6   13.2    14.1     15 no   
 #> 10  1974 HB                     80 chla   10.5   13.2    14.1     15 yes  
-#> # ℹ 2,285 more rows
+#> # ℹ 2,330 more rows
 ```
 
 ### Show
@@ -857,32 +857,32 @@ names colored by the management outcome. The required inputs are the EPC
 dataset and the selected year.
 
 ``` r
-show_annualassess(epcdata, yrsel = 2024)
+show_annualassess(epcdata, yrsel = 2025)
 ```
 
 | Segment | Chl-a (ug/L) |        | Light Penetration (m-1) |        |
 |---------|--------------|--------|-------------------------|--------|
-|         | 2024         | target | 2024                    | target |
-| OTB     | 8.8          | 8.5    | 0.67                    | 0.83   |
-| HB      | 10.7         | 13.2   | 0.88                    | 1.58   |
-| MTB     | 7.8          | 7.4    | 0.61                    | 0.83   |
-| LTB     | 4.6          | 4.6    | 0.69                    | 0.63   |
+|         | 2025         | target | 2025                    | target |
+| OTB     | 6.6          | 8.5    | 0.71                    | 0.83   |
+| HB      | 10.0         | 13.2   | 0.88                    | 1.58   |
+| MTB     | 5.5          | 7.4    | 0.56                    | 0.83   |
+| LTB     | 3.0          | 4.6    | 0.60                    | 0.63   |
 
 A default caption can also be included by setting `caption = TRUE`.
 
 ``` r
-show_annualassess(epcdata, yrsel = 2024, caption = TRUE)
+show_annualassess(epcdata, yrsel = 2025, caption = TRUE)
 ```
 
 | Segment | Chl-a (ug/L) |        | Light Penetration (m-1) |        |
 |---------|--------------|--------|-------------------------|--------|
-|         | 2024         | target | 2024                    | target |
-| OTB     | 8.8          | 8.5    | 0.67                    | 0.83   |
-| HB      | 10.7         | 13.2   | 0.88                    | 1.58   |
-| MTB     | 7.8          | 7.4    | 0.61                    | 0.83   |
-| LTB     | 4.6          | 4.6    | 0.69                    | 0.63   |
+|         | 2025         | target | 2025                    | target |
+| OTB     | 6.6          | 8.5    | 0.71                    | 0.83   |
+| HB      | 10.0         | 13.2   | 0.88                    | 1.58   |
+| MTB     | 5.5          | 7.4    | 0.56                    | 0.83   |
+| LTB     | 3.0          | 4.6    | 0.60                    | 0.63   |
 
-Water quality outcomes for 2024.
+Water quality outcomes for 2025.
 
 Second, the
 [`show_ratab()`](https://tbep-tech.github.io/tbeptools/reference/show_ratab.md)
@@ -894,16 +894,16 @@ maintained or restored following the outcomes. The results are specific
 to each of the four bay segments.
 
 ``` r
-show_ratab(epcdata, yrsel = 2024, bay_segment = 'OTB')
+show_ratab(epcdata, yrsel = 2025, bay_segment = 'OTB')
 ```
 
 |                                                                                                                                                |                                                 |               |               |               |               |                                                                                        |
 |------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|---------------|---------------|---------------|---------------|----------------------------------------------------------------------------------------|
 | Bay Segment Reasonable Assurance Assessment Steps                                                                                              | DATA USED TO ASSESS ANNUAL REASONABLE ASSURANCE |               |               |               |               | OUTCOME                                                                                |
-|                                                                                                                                                | Year 1 (2022)                                   | Year 2 (2023) | Year 3 (2024) | Year 4 (2025) | Year 5 (2026) |                                                                                        |
-| NMC Action 1: Determine if observed chlorophyll-a exceeds FDEP threshold of 9.3 ug/L                                                           | No (7.1)                                        | No (6.2)      | No (8.8)      |               |               | All years below threshold so far, not necessary for NMC Actions 2-5                    |
-| NMC Action 2: Determine if any observed chlorophyll-a exceedences occurred for 2 consecutive years                                             | No                                              | No            | No            |               |               | All years met threshold, not necessary for NMC Actions 3-5                             |
-| NMC Action 3: Determine if observed hydrologically-normalized total load exceeds federally-recognized TMDL of 486 tons/year                    | N/A                                             | N/A           | N/A           |               |               | Not necessary due to observed water quality and seagrass conditions in the bay segment |
+|                                                                                                                                                | Year 1 (2022)                                   | Year 2 (2023) | Year 3 (2025) | Year 4 (2025) | Year 5 (2026) |                                                                                        |
+| NMC Action 1: Determine if observed chlorophyll-a exceeds FDEP threshold of 9.3 ug/L                                                           | No (7.1)                                        | No (6.2)      | No (6.6)      | No (6.6)      |               | All years below threshold so far, not necessary for NMC Actions 2-5                    |
+| NMC Action 2: Determine if any observed chlorophyll-a exceedences occurred for 2 consecutive years                                             | No                                              | No            | No            | No            |               | All years met threshold, not necessary for NMC Actions 3-5                             |
+| NMC Action 3: Determine if observed hydrologically-normalized total load exceeds federally-recognized TMDL of 486 tons/year                    | N/A                                             | N/A           | N/A           | N/A           |               | Not necessary due to observed water quality and seagrass conditions in the bay segment |
 | NMC Actions 4-5: Determine if any entity/source/facility specific exceedences of 5-yr average allocation occurred during implementation period |                                                 |               |               |               |               | Not necessary when chlorophyll-a threshold met                                         |
 
 The

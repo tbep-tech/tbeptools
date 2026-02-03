@@ -29,7 +29,7 @@ Mean estimates for chlorophyll and secchi
 # view average estimates
 anlz_avedatsite(epcdata)
 #> $ann
-#> # A tibble: 6,973 × 5
+#> # A tibble: 7,108 × 5
 #>       yr bay_segment epchc_station var         val
 #>    <dbl> <chr>               <dbl> <chr>     <dbl>
 #>  1  1974 HB                      6 mean_chla  25.6
@@ -42,10 +42,10 @@ anlz_avedatsite(epcdata)
 #>  8  1974 HB                     71 mean_chla  25.8
 #>  9  1974 HB                     73 mean_chla  17.6
 #> 10  1974 HB                     80 mean_chla  10.5
-#> # ℹ 6,963 more rows
+#> # ℹ 7,098 more rows
 #> 
 #> $mos
-#> # A tibble: 49,702 × 6
+#> # A tibble: 50,705 × 6
 #>    bay_segment epchc_station    yr    mo var         val
 #>    <chr>               <dbl> <dbl> <dbl> <chr>     <dbl>
 #>  1 HB                      6  1974     1 mean_chla    53
@@ -58,6 +58,6 @@ anlz_avedatsite(epcdata)
 #>  8 HB                     71  1974     1 mean_chla    73
 #>  9 HB                     73  1974     1 mean_chla    17
 #> 10 HB                     80  1974     1 mean_chla    11
-#> # ℹ 49,692 more rows
+#> # ℹ 50,695 more rows
 #> 
 ```

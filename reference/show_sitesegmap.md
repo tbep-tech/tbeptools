@@ -78,7 +78,7 @@ selected parameter in `param`.
 ## Examples
 
 ``` r
-show_sitesegmap(epcdata, yrsel = 2024)
+show_sitesegmap(epcdata, yrsel = 2025)
 #> Coordinate system already present.
 #> ℹ Adding new coordinate system, which will replace the existing one.
 ```

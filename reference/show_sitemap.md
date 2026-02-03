@@ -69,7 +69,7 @@ A static `ggplot` object is returned
 ## Examples
 
 ``` r
-show_sitemap(epcdata, yrsel = 2024)
+show_sitemap(epcdata, yrsel = 2025)
 #> Coordinate system already present.
 #> ℹ Adding new coordinate system, which will replace the existing one.
 ```

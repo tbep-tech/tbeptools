@@ -58,7 +58,7 @@ for chlorophyll or light attenuation.
 ``` r
 avedatsite <- anlz_avedatsite(epcdata)
 anlz_attainsite(avedatsite)
-#> # A tibble: 2,295 × 9
+#> # A tibble: 2,340 × 9
 #>       yr bay_segment epchc_station var     val target smallex thresh met  
 #>    <dbl> <chr>               <dbl> <chr> <dbl>  <dbl>   <dbl>  <dbl> <chr>
 #>  1  1974 HB                      6 chla   25.6   13.2    14.1     15 no   
@@ -71,5 +71,5 @@ anlz_attainsite(avedatsite)
 #>  8  1974 HB                     71 chla   25.8   13.2    14.1     15 no   
 #>  9  1974 HB                     73 chla   17.6   13.2    14.1     15 no   
 #> 10  1974 HB                     80 chla   10.5   13.2    14.1     15 yes  
-#> # ℹ 2,285 more rows
+#> # ℹ 2,330 more rows
 ```

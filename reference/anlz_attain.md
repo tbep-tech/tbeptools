@@ -37,7 +37,7 @@ category
 ``` r
 avedat <- anlz_avedat(epcdata)
 anlz_attain(avedat)
-#> # A tibble: 204 × 4
+#> # A tibble: 208 × 4
 #>    bay_segment    yr chl_la outcome
 #>    <chr>       <dbl> <chr>  <chr>  
 #>  1 HB           1974 3_0    yellow 
@@ -50,5 +50,5 @@ anlz_attain(avedat)
 #>  8 HB           1981 3_3    red    
 #>  9 HB           1982 3_3    red    
 #> 10 HB           1983 3_0    yellow 
-#> # ℹ 194 more rows
+#> # ℹ 198 more rows
 ```

@@ -270,7 +270,7 @@ Supporting datasets used by the other functions.
 - [`enterodata`](https://tbep-tech.github.io/tbeptools/reference/enterodata.md)
   : Enterococcus data from 53 key Enterococcus stations since 1995
 - [`epcdata`](https://tbep-tech.github.io/tbeptools/reference/epcdata.md)
-  : All bay data as of 20250210
+  : All bay data as of 20260203
 - [`fibdata`](https://tbep-tech.github.io/tbeptools/reference/fibdata.md)
   : All Fecal Indicator Bacteria (FIB) data as of 20260108
 - [`fimdata`](https://tbep-tech.github.io/tbeptools/reference/fimdata.md)

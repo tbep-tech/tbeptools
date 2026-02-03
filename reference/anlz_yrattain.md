@@ -34,12 +34,12 @@ segment targets, and attainment categories.
 
 ``` r
 # defaults to current year
-anlz_yrattain(epcdata, yrsel = 2024)
+anlz_yrattain(epcdata, yrsel = 2025)
 #> # A tibble: 4 × 6
 #>   bay_segment chla_val chla_target la_val la_target outcome
 #>   <fct>          <dbl>       <dbl>  <dbl>     <dbl> <chr>  
-#> 1 OTB             8.76         8.5  0.673      0.83 green  
-#> 2 HB             10.7         13.2  0.880      1.58 green  
-#> 3 MTB             7.75         7.4  0.610      0.83 green  
-#> 4 LTB             4.59         4.6  0.686      0.63 yellow 
+#> 1 OTB             6.56         8.5  0.711      0.83 green  
+#> 2 HB              9.96        13.2  0.881      1.58 green  
+#> 3 MTB             5.46         7.4  0.563      0.83 green  
+#> 4 LTB             2.95         4.6  0.603      0.63 green  
 ```
