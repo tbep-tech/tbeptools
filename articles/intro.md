@@ -177,20 +177,20 @@ them from the assigned object:
 
 ``` r
 phytodata
-#> # A tibble: 40,521 × 8
-#>    epchc_station Date       name          units  count yrqrt         yr mo   
-#>    <chr>         <date>     <chr>         <chr>  <dbl> <date>     <dbl> <ord>
-#>  1 11            1975-07-23 Cyanobacteria /0.1mL     0 1975-07-01  1975 Jul  
-#>  2 11            1975-08-21 other         /0.1mL     0 1975-07-01  1975 Aug  
-#>  3 11            1975-09-17 other         /0.1mL     0 1975-07-01  1975 Sep  
-#>  4 11            1975-10-15 other         /0.1mL     0 1975-10-01  1975 Oct  
-#>  5 11            1975-11-12 other         /0.1mL     0 1975-10-01  1975 Nov  
-#>  6 11            1976-01-07 Cyanobacteria /0.1mL     1 1976-01-01  1976 Jan  
-#>  7 11            1976-02-03 other         /0.1mL     0 1976-01-01  1976 Feb  
-#>  8 11            1976-03-02 other         /0.1mL     0 1976-01-01  1976 Mar  
-#>  9 11            1976-03-31 other         /0.1mL     0 1976-01-01  1976 Mar  
-#> 10 11            1976-04-28 other         /0.1mL     0 1976-04-01  1976 Apr  
-#> # ℹ 40,511 more rows
+#> # A tibble: 42,812 × 8
+#>    epchc_station Date       name  units  count yrqrt         yr mo   
+#>    <chr>         <date>     <chr> <chr>  <dbl> <date>     <dbl> <ord>
+#>  1 11            1975-07-23 other /0.1mL     0 1975-07-01  1975 Jul  
+#>  2 11            1975-08-21 other /0.1mL     0 1975-07-01  1975 Aug  
+#>  3 11            1975-09-17 other /0.1mL     0 1975-07-01  1975 Sep  
+#>  4 11            1975-10-15 other /0.1mL     0 1975-10-01  1975 Oct  
+#>  5 11            1975-11-12 other /0.1mL     0 1975-10-01  1975 Nov  
+#>  6 11            1976-01-07 other /0.1mL     1 1976-01-01  1976 Jan  
+#>  7 11            1976-02-03 other /0.1mL     0 1976-01-01  1976 Feb  
+#>  8 11            1976-03-02 other /0.1mL     0 1976-01-01  1976 Mar  
+#>  9 11            1976-03-31 other /0.1mL     0 1976-01-01  1976 Mar  
+#> 10 11            1976-04-28 other /0.1mL     0 1976-04-01  1976 Apr  
+#> # ℹ 42,802 more rows
 ```
 
 These data are highly summarized from the raw data file available
