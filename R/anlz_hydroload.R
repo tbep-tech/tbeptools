@@ -7,13 +7,11 @@
 #' @param trace logical indicating if function progress is printed in the consol
 #'
 #' @details
-#' This function uses rainfall and streamflow data from NOAA and USGS and requires an API key.  See the "Authentication" section under the help file for ncdc in the defunct rnoaa package.  This key can be added to the R environment file and called for later use, see the examples.
+#' This function uses rainfall and streamflow data from NOAA and USGS and requires an API key.  See the webpage <https://www.ncdc.noaa.gov/cdo-web/token> for retrieving a NOAA token.  This key can be added to the R environment file and called for later use, see the examples.
 #'
 #' These estimates are used in annual compliance assessment reports produced by the Tampa Bay Nitrogen Management Consortium. Load estimates and adjustment factors are based on regression models in https://drive.google.com/file/d/11NT0NQ2WbPO6pVZaD7P7Z6qjcwO1jxHw/view?usp=drivesdk
 #'
 #' @concept analyze
-#'
-#' @importFrom rnoaa ncdc
 #'
 #' @return A data frame with hydrological load estimates by bay segments for the requested years
 #' @export
@@ -36,9 +34,6 @@
 #' }
 anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
 
-  if(!requireNamespace('rnoaa', quietly = TRUE))
-    stop("Package \"noaa\" needed for this function to work. Please install it.", call. = FALSE)
-
   res <- yrs %>%
     tibble::enframe('name', 'year') %>%
     dplyr::group_by(name) %>%
@@ -55,17 +50,10 @@ anlz_hydroload <- function(yrs, noaa_key = NULL, trace = FALSE){
         end <- paste0(yr, "-12-31")
 
         # download NOAA UWS rainfall station data
-        sp_rainfall <- ncdc(datasetid = "GHCND", stationid = "GHCND:USW00092806",
-                            datatypeid = "PRCP", startdate = start, enddate = end,
-                            limit = 500, add_units = TRUE, token = noaa_key)
-        sp_rain <- sp_rainfall$data %>%
-          dplyr::summarise(sum = sum(value)/254)
-
-        tia_rainfall <- ncdc(datasetid = "GHCND", stationid = "GHCND:USW00012842",
-                             datatypeid = "PRCP", startdate = start, enddate = end,
-                             limit = 500, add_units = TRUE, token = noaa_key)
-        tia_rain <- tia_rainfall$data %>%
-          dplyr::summarise(sum = sum(value)/254)
+        sp_rain <- util_rain(station = 'GHCND:USW00092806', start = start, end = end,
+                            token = noaa_key, quiet = T)
+        tia_rain <- util_rain(station = 'GHCND:USW00012842', start = start, end = end,
+                            token = noaa_key, quiet = T)
 
         # download USGS streamflow data
         hr <- dataRetrieval::readNWISdv("02303000", "00060", start, end) %>%

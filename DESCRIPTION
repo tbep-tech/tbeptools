@@ -1,7 +1,7 @@
 Package: tbeptools
 Title: Data and Indicators for the Tampa Bay Estuary Program
-Version: 3.1.0.9022
-Date: 2026-01-29
+Version: 3.1.0.9023
+Date: 2026-02-01
 Authors@R: c(
     person(given = "Marcus",
       family = "Beck",
@@ -74,7 +74,6 @@ Imports:
   purrr,
   reactable,
   readxl,
-  rnoaa,
   rvest,
   sf,
   terra,
@@ -95,8 +94,6 @@ Suggests:
   rmarkdown,
   testthat (>= 2.1.0),
   covr
-Remotes:
-  ropensci/rnoaa
 License: MIT + file LICENSE
 Encoding: UTF-8
 VignetteBuilder: knitr
