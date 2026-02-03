@@ -20,7 +20,7 @@
 #' @import ggplot2 sf
 #'
 #' @examples
-#' show_sitemap(epcdata, yrsel = 2024)
+#' show_sitemap(epcdata, yrsel = 2025)
 show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la'), trgs = NULL, thrs = FALSE, showseg = TRUE, partialyr = FALSE){
 
   # sanity check

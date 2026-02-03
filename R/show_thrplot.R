@@ -24,7 +24,7 @@
 #'
 #' @examples
 #' show_thrplot(epcdata, bay_segment = 'OTB', thr = 'chl')
-show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2024),
+show_thrplot <- function(epcdata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), thr = c('chla', 'la'), trgs = NULL, yrrng = c(1975, 2025),
                          family = 'sans', labelexp = TRUE, txtlab = TRUE, thrs = FALSE, partialyr = FALSE){
 
   # default targets from data file

@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @examples
-#' show_ratab(epcdata, yrsel = 2024, bay_segment = 'OTB')
+#' show_ratab(epcdata, yrsel = 2025, bay_segment = 'OTB')
 show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'RALTB'), partialyr = F, outtxt1 = NULL, outtxt2 = NULL, outtxt3 = NULL, outtxt45 = NULL, txtsz = 13, width = NULL){
 
   if(!requireNamespace('ftExtra', quietly = TRUE))
@@ -135,10 +135,10 @@ show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'
     ),
     col4 = c(
       NA,
-      'Year 3 (2024)',
-      avedat[avedat$yr == 2024, "out1", drop = T],
-      avedat[avedat$yr == 2024, "sums", drop = T],
-      avedat[avedat$yr == 2024, "act3", drop = T],
+      'Year 3 (2025)',
+      avedat[avedat$yr == 2025, "out1", drop = T],
+      avedat[avedat$yr == 2025, "sums", drop = T],
+      avedat[avedat$yr == 2025, "act3", drop = T],
       NA
     ),
     col5 = c(
@@ -181,9 +181,9 @@ show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'
     flextable::bg(i = 3, j = 3, bg = avedat[avedat$yr == 2023, 'out1col', drop = T]) %>%
     flextable::bg(i = 4, j = 3, bg = avedat[avedat$yr == 2023, 'sumscol', drop = T]) %>%
     flextable::bg(i = 5, j = 3, bg = avedat[avedat$yr == 2023, 'act3col', drop = T]) %>%
-    flextable::bg(i = 3, j = 4, bg = avedat[avedat$yr == 2024, 'out1col', drop = T]) %>%
-    flextable::bg(i = 4, j = 4, bg = avedat[avedat$yr == 2024, 'sumscol', drop = T]) %>%
-    flextable::bg(i = 5, j = 4, bg = avedat[avedat$yr == 2024, 'act3col', drop = T]) %>%
+    flextable::bg(i = 3, j = 4, bg = avedat[avedat$yr == 2025, 'out1col', drop = T]) %>%
+    flextable::bg(i = 4, j = 4, bg = avedat[avedat$yr == 2025, 'sumscol', drop = T]) %>%
+    flextable::bg(i = 5, j = 4, bg = avedat[avedat$yr == 2025, 'act3col', drop = T]) %>%
     flextable::bg(i = 3, j = 5, bg = avedat[avedat$yr == 2025, 'out1col', drop = T]) %>%
     flextable::bg(i = 4, j = 5, bg = avedat[avedat$yr == 2025, 'sumscol', drop = T]) %>%
     flextable::bg(i = 5, j = 5, bg = avedat[avedat$yr == 2025, 'act3col', drop = T]) %>%
