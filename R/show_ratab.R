@@ -85,6 +85,7 @@ show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'
         out1 == '' ~ 'white'
       ),
       sums = stats::filter(met, filter= rep(1, 2), sides = 1),
+      sums = dplyr::if_else(is.na(sums), NA_real_, sums),
       sums = dplyr::case_when(
         sums >= 2 ~ 'Yes',
         sums < 2 ~ 'No',
