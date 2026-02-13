@@ -53,18 +53,16 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
   if(!isepchc & !isother){
 
     # includes bay segment check
-    tomapseg <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = NULL, bay_segment = areasel,
+    tomapsegcat <- anlz_fibmatrix(fibdata, yrrng = c(yrsel - lagyr, yrsel), stas = NULL, bay_segment = areasel,
                              lagyr = lagyr,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold ,
                              warn = warn) %>%
       dplyr::filter(!is.na(cat)) %>%
-      dplyr::filter(yr == !!yrsel) %>%
-      dplyr::inner_join(tbsegdetail, ., by = c('bay_segment' = 'grp')) %>%
-      dplyr::mutate(
-        lab = paste0('<html>Area: ', long_name, '<br>Category: ', cat),
-        col = as.character(cols[cat])
-      )
+      dplyr::filter(yr == !!yrsel)
+
+    bayseg <- tbsegdetail %>%
+      dplyr::filter(bay_segment %in% !!areasel)
 
     stas <- fibdata %>%
       dplyr::filter(bay_segment %in% !!areasel) %>%
@@ -77,6 +75,18 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
                              subset_wetdry = subset_wetdry, precipdata = precipdata,
                              temporal_window = temporal_window, wet_threshold = wet_threshold,
                              warn = warn)
+    
+    tomapseg <- dbasin[tomapsta %>%
+        sf::st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE),
+      ] %>%
+      dplyr::select(long_name, bay_segment, geometry) |> 
+      dplyr::group_by(long_name, bay_segment) |>
+      dplyr::summarise(geometry = sf::st_union(geometry), .groups = 'drop') |>
+      dplyr::left_join(tomapsegcat, by = c('bay_segment' = 'grp')) %>%
+      dplyr::mutate(
+        lab = paste0('<html>Area: ', long_name, '<br>Category: ', cat),
+        col = as.character(cols[cat])
+      )
 
   }
 
@@ -214,6 +224,13 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
   if(!isepchc & !isother){
 
     out <- out %>%
+      leaflet::addPolygons(
+        data = bayseg,
+        fillColor = 'transparent',
+        color = 'black',
+        weight = 2,
+        label = ~lapply(as.list(long_name), util_html)
+      ) %>%
       leaflet::addPolygons(
         data = tomapseg,
         fillColor = ~I(col),
