@@ -1,6 +1,6 @@
-# Phytoplankton data current as of 10312024
+# Phytoplankton data current as of 20260204
 
-Phytoplankton data current as of 10312024
+Phytoplankton data current as of 20260204
 
 ## Usage
 
@@ -11,7 +11,7 @@ phytodata
 ## Format
 
 A nested [`tibble`](https://tibble.tidyverse.org/reference/tibble.html)
-with 40521 rows and 8 variables:
+with 41390 rows and 8 variables:
 
 - epchc_station:
 

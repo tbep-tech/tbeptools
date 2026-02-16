@@ -177,7 +177,7 @@ them from the assigned object:
 
 ``` r
 phytodata
-#> # A tibble: 42,812 × 8
+#> # A tibble: 41,390 × 8
 #>    epchc_station Date       name  units  count yrqrt         yr mo   
 #>    <chr>         <date>     <chr> <chr>  <dbl> <date>     <dbl> <ord>
 #>  1 11            1975-07-23 other /0.1mL     0 1975-07-01  1975 Jul  
@@ -190,7 +190,7 @@ phytodata
 #>  8 11            1976-03-02 other /0.1mL     0 1976-01-01  1976 Mar  
 #>  9 11            1976-03-31 other /0.1mL     0 1976-01-01  1976 Mar  
 #> 10 11            1976-04-28 other /0.1mL     0 1976-04-01  1976 Apr  
-#> # ℹ 42,802 more rows
+#> # ℹ 41,380 more rows
 ```
 
 These data are highly summarized from the raw data file available

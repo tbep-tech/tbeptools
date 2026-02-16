@@ -267,6 +267,9 @@ Supporting datasets used by the other functions.
   stations
 - [`catchprecip`](https://tbep-tech.github.io/tbeptools/reference/catchprecip.md)
   : Daily precip by catchment for selected Enterococcus stations
+- [`dbasin`](https://tbep-tech.github.io/tbeptools/reference/dbasin.md)
+  : Spatial data object of minor subbasins (dbasins) in the Tampa Bay
+  watershed
 - [`enterodata`](https://tbep-tech.github.io/tbeptools/reference/enterodata.md)
   : Enterococcus data from 53 key Enterococcus stations since 1995
 - [`epcdata`](https://tbep-tech.github.io/tbeptools/reference/epcdata.md)
@@ -289,7 +292,7 @@ Supporting datasets used by the other functions.
 - [`pascofibdata`](https://tbep-tech.github.io/tbeptools/reference/pascofibdata.md)
   : Pasco County FIB data as of 20260108
 - [`phytodata`](https://tbep-tech.github.io/tbeptools/reference/phytodata.md)
-  : Phytoplankton data current as of 10312024
+  : Phytoplankton data current as of 20260204
 - [`polcofibdata`](https://tbep-tech.github.io/tbeptools/reference/polcofibdata.md)
   : Polk County FIB data as of 20260108
 - [`seagrass`](https://tbep-tech.github.io/tbeptools/reference/seagrass.md)
