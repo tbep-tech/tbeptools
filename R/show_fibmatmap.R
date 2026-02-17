@@ -120,6 +120,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
                              temporal_window = temporal_window, wet_threshold = wet_threshold,
                              warn = warn)
 
+    bayseg <- NULL
     tomapseg <- NULL
 
   }
@@ -150,6 +151,7 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
                                temporal_window = temporal_window, wet_threshold = wet_threshold,
                                warn = warn)
 
+    bayseg <- NULL
     tomapseg <- NULL
 
   }
