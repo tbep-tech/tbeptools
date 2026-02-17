@@ -56,7 +56,7 @@ Description: Several functions are provided for working with Tampa Bay Estuary
   data, habitat report card, and fecal indicator bacteria. Additional functions are 
   provided for miscellaneous tasks, such as reference library curation.
 Depends: 
-  R (>= 3.6),
+  R (>= 4.1),
   methods
 Imports:
   dataRetrieval,
