@@ -191,7 +191,8 @@ show_fibmatmap <- function(fibdata, yrsel, areasel,
     out <- list(
       icons = icons,
       tomapsta = tomapsta,
-      tomapseg = tomapseg
+      tomapseg = tomapseg,
+      bayseg = bayseg
     )
 
     return(out)

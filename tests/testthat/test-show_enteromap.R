@@ -10,7 +10,7 @@ test_that("show_enteromap correctly creates a leaflet map", {
 
 test_that("show_enteromap errors if wetdry info is not provided", {
   expect_error(show_enteromap(enterodata, wetdry = TRUE, temporal_window = 2),
-               regxp = 'temporal_window and wet_threshold must both be provided in order to differentiate wet vs. dry samples')
+               regexp = 'temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples')
 })
 
 test_that("show_enteromap works for wetdry", {
