@@ -154,13 +154,10 @@ returned if `plotly = TRUE`.
 
 The matrix color codes years and stations based on the likelihood of
 fecal indicator bacteria concentrations exceeding 410 CFU / 100 mL for
-E. coli (fresh) or 130 CFU / 100 mL for Enterococcus (marine). Bay
-segments are used instead of stations if `bay_segment` is not `NULL` and
-the input data are from
-[`read_importentero`](https://tbep-tech.github.io/tbeptools/reference/read_importentero.md).
-The likelihoods are categorized as A, B, C, D, or E (Microbial Water
-Quality Assessment or MWQA categories) with corresponding colors, where
-the breakpoints for each category are \<10%, 10-30%, 30-50%, 50-75%, and
+E. coli (fresh) or 130 CFU / 100 mL for Enterococcus (marine). The
+likelihoods are categorized as A, B, C, D, or E (Microbial Water Quality
+Assessment or MWQA categories) with corresponding colors, where the
+breakpoints for each category are \<10%, 10-30%, 30-50%, 50-75%, and
 \>75% (right-closed). By default, the results for each year are based on
 a right-centered window that uses the previous two years and the current
 year to calculate probabilities from the monthly samples (`lagyr = 3`).
@@ -170,6 +167,19 @@ at
 <http://publicfiles.dep.state.fl.us/DEAR/BMAP/Tampa/MST%20Report/Fecal%20BMAP%20DST%20Final%20Report%20--%20June%202008.pdf>
 and Morrison et al. 2009 in the [BASIS 5
 proceedings](https://drive.google.com/file/d/1vaoAKkwSLlIS2RzeBeCTjQST1dUmo0rr/view).
+
+Bay segments scores are used instead of stations if `bay_segment` is not
+`NULL` and the input data are from
+[`read_importentero`](https://tbep-tech.github.io/tbeptools/reference/read_importentero.md).
+Care should be taken when communicating results at the bay segment scale
+to ensure appropriate messaging. Baywide scores could be misleading by
+using a handful of stations to communicate results at the bay segment
+scale. Reporting at this scale is meant to support assessments that are
+comparable to other similar indicators used by TBEP. A low grade for a
+bay segment does not imply hazardous conditions, rather the score
+reflects the aggregate likelihood for all stations selected for that bay
+segment. Remediation of conditions that contribute to fecal
+contamination is best handled at the site scale.
 
 See
 [`anlz_fibmatrix`](https://tbep-tech.github.io/tbeptools/reference/anlz_fibmatrix.md)

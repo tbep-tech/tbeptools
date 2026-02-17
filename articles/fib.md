@@ -850,6 +850,16 @@ summary of the stations by bay segment can indicate the MWQA category.
 The calculations are the same as by station, but the data are aggregated
 by bay segment.
 
+Care should be taken when communicating results at the bay segment scale
+to ensure appropriate messaging. Baywide scores could be misleading by
+using a handful of stations to communicate results at the bay segment
+scale. Reporting at this scale is meant to support assessments that are
+comparable to other similar indicators used by TBEP. A low grade for a
+bay segment does not imply hazardous conditions, rather the score
+reflects the aggregate likelihood for all stations selected for that bay
+segment. Remediation of conditions that contribute to fecal
+contamination is best handled at the site scale.
+
 ``` r
 show_fibmatrix(enterodata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))
 ```
@@ -863,6 +873,12 @@ area. The values shown on the map are the same as those for the
 respective year in the
 [`show_fibmatrix()`](https://tbep-tech.github.io/tbeptools/reference/show_fibmatrix.md)
 function.
+
+Note the use of the minor sub-basins for reporting the outcomes for each
+bay segment. The collection of sub-basins that include stations used to
+estimate the bay segment outcomes are shown and color-coded by the
+appropriate outcome for each bay segment. As noted above, care should be
+taken when communicating results at the bay segment scale.
 
 ``` r
 show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))

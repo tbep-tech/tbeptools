@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.1.0.9025</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.1.0.9026</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,7 +118,8 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Placing the mouse cursor over an item on the map will reveal additional information about a segment or station.</p>
 <p>If the input is from EPCHC (from <code><a href="read_importfib.html">read_importfib</a></code>, i.e., <code><a href="fibdata.html">fibdata</a></code>), valid entries for <code>areasel</code> include 'Alafia River', 'Hillsborough River', 'Big Bend', 'Cockroach Bay', 'East Lake Outfall', 'Hillsborough Bay', 'Little Manatee River', 'Lower Tampa Bay', 'McKay Bay', 'Middle Tampa Bay', 'Old Tampa Bay', 'Palm River', 'Tampa Bypass Canal', and 'Valrico Lake'.  If the input data is from <code><a href="read_importentero.html">read_importentero</a></code> (i.e., <code><a href="enterodata.html">enterodata</a></code>)), valid entries for <code>areasel</code> include 'OTB', 'HB', 'MTB', 'LTB', 'BCB', and 'MR'.  If the input is from <code><a href="read_importwqp.html">read_importwqp</a></code> for Manatee County (21FLMANA_WQX, <code><a href="mancofibdata.html">mancofibdata</a></code>), Pasco County (21FLPASC_WQX, <code><a href="pascofibdata.html">pascofibdata</a></code>), Polk County (21FLPOLK_WQX, <code><a href="polcofibdata.html">polcofibdata</a></code>), or Hillsborough County Environmental Services Division (21FLHESD_WQX, <code><a href="hcesdfibdata.html">hcesdfibdata</a></code>) valid entries for <code>areasel</code> are any that are present in the <code>area</code> column for the respective input datasets.</p>
-<p>Bay segment matrix categories can be shown if input data are from <code><a href="read_importentero.html">read_importentero</a></code>).  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the other datasets are not appropriate for estimating bay segment outcomes.</p>
+<p>Bay segment matrix categories can be shown if input data are from <code><a href="read_importentero.html">read_importentero</a></code>.  Stations for these data were chosen specifically as downstream endpoints for each bay segment, whereas the other datasets are not appropriate for estimating bay segment outcomes. Bay segment categories are shown using minor sub-basins.  The collection of sub-basins that include stations used to estimate the bay segment outcomes are shown and color-coded by the appropriate outcome for each bay segment.</p>
+<p>Care should be taken when communicating results at the bay segment scale to ensure appropriate messaging.  Baywide scores could be misleading by using a handful of stations to communicate results at the bay segment scale.  Reporting at this scale is meant to support assessments that are comparable to other similar indicators used by TBEP.  A low grade for a bay segment does not imply hazardous conditions, rather the score reflects the aggregate likelihood for all stations selected for that bay segment.  Remediation of conditions that contribute to fecal contamination is best handled at the site scale.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

@@ -128,10 +128,23 @@ valid entries for `areasel` are any that are present in the `area`
 column for the respective input datasets.
 
 Bay segment matrix categories can be shown if input data are from
-[`read_importentero`](https://tbep-tech.github.io/tbeptools/reference/read_importentero.md)).
+[`read_importentero`](https://tbep-tech.github.io/tbeptools/reference/read_importentero.md).
 Stations for these data were chosen specifically as downstream endpoints
 for each bay segment, whereas the other datasets are not appropriate for
-estimating bay segment outcomes.
+estimating bay segment outcomes. Bay segment categories are shown using
+minor sub-basins. The collection of sub-basins that include stations
+used to estimate the bay segment outcomes are shown and color-coded by
+the appropriate outcome for each bay segment.
+
+Care should be taken when communicating results at the bay segment scale
+to ensure appropriate messaging. Baywide scores could be misleading by
+using a handful of stations to communicate results at the bay segment
+scale. Reporting at this scale is meant to support assessments that are
+comparable to other similar indicators used by TBEP. A low grade for a
+bay segment does not imply hazardous conditions, rather the score
+reflects the aggregate likelihood for all stations selected for that bay
+segment. Remediation of conditions that contribute to fecal
+contamination is best handled at the site scale.
 
 ## See also
 

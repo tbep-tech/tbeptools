@@ -273,7 +273,7 @@ util_importwqwa('parameters')
 
 # stations, using optional waterbodyId argument for Hillsborough Bay
 util_importwqwa('sampling-locations', waterbodyId = 20005)
-#> # A tibble: 415 × 8
+#> # A tibble: 416 × 8
 #>    dataSource       name  stationId latitude longitude waterBodyId waterBodyName
 #>    <chr>            <chr> <chr>     <chr>    <chr>           <int> <chr>        
 #>  1 USGS_NWIS        MCKA… 02301761  27.9153… -82.4234…       20005 Hillsborough…
@@ -286,7 +286,7 @@ util_importwqwa('sampling-locations', waterbodyId = 20005)
 #>  8 EPC_ROUTINE_MON… Big … 14410     27.7778… -82.4063…       20005 Hillsborough…
 #>  9 WIN_21FLHILL     14410 14410     27.7781… -82.4060…       20005 Hillsborough…
 #> 10 WIN_21FLHILL     14415 14415     27.7796… -82.4122…       20005 Hillsborough…
-#> # ℹ 405 more rows
+#> # ℹ 406 more rows
 #> # ℹ 1 more variable: county <chr>
 
 # waterbodies
