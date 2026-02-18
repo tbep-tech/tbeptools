@@ -48,13 +48,13 @@ library(jsonlite)
 
 if (FALSE) { # \dontrun{
 # all transect data
-url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/all__use-with-care'
+url <- 'https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/all__use-with-care'
 jsn <- fromJSON(url)
 trndat <- read_formtransect(jsn)
 } # }
 
 # training transect data
-url <- 'http://dev.seagrass.wateratlas.usf.edu/api/assessments/training'
+url <- 'https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/training'
 jsn <- fromJSON(url)
 trndat <- read_formtransect(jsn, training = TRUE)
 ```
