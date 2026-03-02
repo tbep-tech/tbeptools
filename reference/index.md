@@ -275,26 +275,26 @@ Supporting datasets used by the other functions.
 - [`epcdata`](https://tbep-tech.github.io/tbeptools/reference/epcdata.md)
   : All bay data as of 20260203
 - [`fibdata`](https://tbep-tech.github.io/tbeptools/reference/fibdata.md)
-  : All Fecal Indicator Bacteria (FIB) data as of 20260108
+  : All Fecal Indicator Bacteria (FIB) data as of 20260302
 - [`fimdata`](https://tbep-tech.github.io/tbeptools/reference/fimdata.md)
   : FIM data for Tampa Bay Nekton Index current as of 09032025
 - [`fimstations`](https://tbep-tech.github.io/tbeptools/reference/fimstations.md)
   : Spatial data object of FIM stations including Tampa Bay segments
 - [`hcesdfibdata`](https://tbep-tech.github.io/tbeptools/reference/hcesdfibdata.md)
   : Hillsborough County Environmental Services Division (ESD) FIB data
-  as of 20260108
+  as of 20260302
 - [`hmptrgs`](https://tbep-tech.github.io/tbeptools/reference/hmptrgs.md)
   : Habitat Master Plan targets and goals
 - [`iwrraw`](https://tbep-tech.github.io/tbeptools/reference/iwrraw.md)
   : FDEP IWR run 67
 - [`mancofibdata`](https://tbep-tech.github.io/tbeptools/reference/mancofibdata.md)
-  : Manatee County FIB data as of 20260108
+  : Manatee County FIB data as of 20260302
 - [`pascofibdata`](https://tbep-tech.github.io/tbeptools/reference/pascofibdata.md)
-  : Pasco County FIB data as of 20260108
+  : Pasco County FIB data as of 20260302
 - [`phytodata`](https://tbep-tech.github.io/tbeptools/reference/phytodata.md)
   : Phytoplankton data current as of 20260204
 - [`polcofibdata`](https://tbep-tech.github.io/tbeptools/reference/polcofibdata.md)
-  : Polk County FIB data as of 20260108
+  : Polk County FIB data as of 20260302
 - [`seagrass`](https://tbep-tech.github.io/tbeptools/reference/seagrass.md)
   : Seagrass coverage by year
 - [`sealevelstations`](https://tbep-tech.github.io/tbeptools/reference/sealevelstations.md)

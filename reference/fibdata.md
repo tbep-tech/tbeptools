@@ -1,6 +1,6 @@
-# All Fecal Indicator Bacteria (FIB) data as of 20260108
+# All Fecal Indicator Bacteria (FIB) data as of 20260302
 
-All Fecal Indicator Bacteria (FIB) data as of 20260108
+All Fecal Indicator Bacteria (FIB) data as of 20260302
 
 ## Usage
 
@@ -10,7 +10,7 @@ fibdata
 
 ## Format
 
-A data frame with 30648 rows and 18 variables:
+A data frame with 31081 rows and 18 variables:
 
 - area:
 

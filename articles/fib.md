@@ -85,20 +85,20 @@ the download date.
 
 ``` r
 fibdata
-#> # A tibble: 30,648 × 18
+#> # A tibble: 31,081 × 18
 #>    area   epchc_station class SampleTime             yr    mo Latitude Longitude
 #>    <chr>          <dbl> <chr> <dttm>              <dbl> <dbl>    <dbl>     <dbl>
-#>  1 Hills…             2 3M    2025-10-08 12:57:00  2025    10     27.9     -82.5
-#>  2 Hills…             6 3M    2025-10-14 09:47:00  2025    10     27.9     -82.5
-#>  3 Hills…             7 3M    2025-10-14 10:01:00  2025    10     27.9     -82.5
-#>  4 Hills…             8 3M    2025-10-14 12:23:00  2025    10     27.9     -82.4
-#>  5 Middl…             9 2     2025-10-14 11:35:00  2025    10     27.8     -82.4
-#>  6 Middl…            11 2     2025-10-14 10:13:00  2025    10     27.8     -82.5
-#>  7 Middl…            13 2     2025-10-14 10:25:00  2025    10     27.8     -82.5
-#>  8 Middl…            14 2     2025-10-14 11:11:00  2025    10     27.8     -82.5
-#>  9 Middl…            16 2     2025-10-20 09:21:00  2025    10     27.7     -82.5
-#> 10 Middl…            19 2     2025-10-20 09:33:00  2025    10     27.7     -82.6
-#> # ℹ 30,638 more rows
+#>  1 Hills…             2 3M    2026-01-13 14:19:00  2026     1     27.9     -82.5
+#>  2 Hills…             6 3M    2026-01-28 09:36:00  2026     1     27.9     -82.5
+#>  3 Hills…             7 3M    2026-01-28 09:50:00  2026     1     27.9     -82.5
+#>  4 Hills…             8 3M    2026-01-28 13:10:00  2026     1     27.9     -82.4
+#>  5 Middl…             9 2     2026-01-28 12:04:00  2026     1     27.8     -82.4
+#>  6 Middl…            11 2     2026-01-28 10:08:00  2026     1     27.8     -82.5
+#>  7 Middl…            13 2     2026-01-28 10:22:00  2026     1     27.8     -82.5
+#>  8 Middl…            14 2     2026-01-28 11:21:00  2026     1     27.8     -82.5
+#>  9 Middl…            16 2     2026-01-28 09:44:00  2026     1     27.7     -82.5
+#> 10 Middl…            19 2     2026-01-28 10:00:00  2026     1     27.7     -82.6
+#> # ℹ 31,071 more rows
 #> # ℹ 10 more variables: Total_Depth_m <dbl>, Sample_Depth_m <dbl>, ecoli <dbl>,
 #> #   ecoli_q <chr>, entero <dbl>, entero_q <chr>, fcolif <dbl>, fcolif_q <chr>,
 #> #   totcol <dbl>, totcol_q <chr>
@@ -144,20 +144,20 @@ for each range as noted in the `col` column of the output.
 
 ``` r
 anlz_fibmap(fibdata)
-#> # A tibble: 30,648 × 12
+#> # A tibble: 31,081 × 12
 #>    area    station class    yr    mo Latitude Longitude ecoli entero ind   cat  
 #>    <chr>     <dbl> <chr> <dbl> <dbl>    <dbl>     <dbl> <dbl>  <dbl> <chr> <fct>
-#>  1 Hillsb…       2 3M     2025    10     27.9     -82.5    NA      2 Ente… < 35 
-#>  2 Hillsb…       6 3M     2025    10     27.9     -82.5    NA      4 Ente… < 35 
-#>  3 Hillsb…       7 3M     2025    10     27.9     -82.5    NA      2 Ente… < 35 
-#>  4 Hillsb…       8 3M     2025    10     27.9     -82.4    NA      2 Ente… < 35 
-#>  5 Middle…       9 2      2025    10     27.8     -82.4    NA      2 Ente… < 35 
-#>  6 Middle…      11 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
-#>  7 Middle…      13 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
-#>  8 Middle…      14 2      2025    10     27.8     -82.5    NA      2 Ente… < 35 
-#>  9 Middle…      16 2      2025    10     27.7     -82.5    NA      4 Ente… < 35 
-#> 10 Middle…      19 2      2025    10     27.7     -82.6    NA      2 Ente… < 35 
-#> # ℹ 30,638 more rows
+#>  1 Hillsb…       2 3M     2026     1     27.9     -82.5    NA     12 Ente… < 35 
+#>  2 Hillsb…       6 3M     2026     1     27.9     -82.5    NA      4 Ente… < 35 
+#>  3 Hillsb…       7 3M     2026     1     27.9     -82.5    NA      2 Ente… < 35 
+#>  4 Hillsb…       8 3M     2026     1     27.9     -82.4    NA      2 Ente… < 35 
+#>  5 Middle…       9 2      2026     1     27.8     -82.4    NA      2 Ente… < 35 
+#>  6 Middle…      11 2      2026     1     27.8     -82.5    NA      4 Ente… < 35 
+#>  7 Middle…      13 2      2026     1     27.8     -82.5    NA      2 Ente… < 35 
+#>  8 Middle…      14 2      2026     1     27.8     -82.5    NA      2 Ente… < 35 
+#>  9 Middle…      16 2      2026     1     27.7     -82.5    NA      4 Ente… < 35 
+#> 10 Middle…      19 2      2026     1     27.7     -82.6    NA      2 Ente… < 35 
+#> # ℹ 31,071 more rows
 #> # ℹ 1 more variable: col <chr>
 ```
 
@@ -252,7 +252,7 @@ a letter outcome based on the likelihood of exceedences (`cat`).
 
 ``` r
 anlz_fibmatrix(fibdata)
-#> # A tibble: 111 × 7
+#> # A tibble: 120 × 7
 #>       yr grp   class  gmean Latitude Longitude cat  
 #>    <dbl> <fct> <chr>  <dbl>    <dbl>     <dbl> <chr>
 #>  1  2003 105   Marine  97.1     28.0     -82.4 C    
@@ -265,7 +265,7 @@ anlz_fibmatrix(fibdata)
 #>  8  2005 152   Marine  91.7     28.0     -82.5 C    
 #>  9  2005 137   Marine  66.6     28.0     -82.5 C    
 #> 10  2006 105   Marine  90.7     28.0     -82.4 C    
-#> # ℹ 101 more rows
+#> # ℹ 110 more rows
 ```
 
 #### Show
@@ -625,8 +625,8 @@ for *Enterococcus*:
 |:-------|:----------|
 | Green  | \< 35     |
 | Orange | 130 - 999 |
-| Yellow | 35 - 129  |
 | Red    | \> 999    |
+| Yellow | 35 - 129  |
 
 The `yrsel` and `mosel` arguments can be used to filter results by year
 and month. Not specifying these arguments will return results for the

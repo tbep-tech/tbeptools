@@ -150,7 +150,7 @@ been tested for other organizations.
 
 ``` r
 anlz_fibmatrix(fibdata)
-#> # A tibble: 111 × 7
+#> # A tibble: 120 × 7
 #>       yr grp   class  gmean Latitude Longitude cat  
 #>    <dbl> <fct> <chr>  <dbl>    <dbl>     <dbl> <chr>
 #>  1  2003 105   Marine  97.1     28.0     -82.4 C    
@@ -163,7 +163,7 @@ anlz_fibmatrix(fibdata)
 #>  8  2005 152   Marine  91.7     28.0     -82.5 C    
 #>  9  2005 137   Marine  66.6     28.0     -82.5 C    
 #> 10  2006 105   Marine  90.7     28.0     -82.4 C    
-#> # ℹ 101 more rows
+#> # ℹ 110 more rows
 
 # use different dataset
 anlz_fibmatrix(enterodata, lagyr = 1)
