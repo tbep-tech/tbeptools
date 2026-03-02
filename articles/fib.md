@@ -558,7 +558,7 @@ value (`wet_sample`).
 
 ``` r
 anlz_fibwetdry(enterodata, catchprecip, temporal_window = 2, wet_threshold = 0.5)
-#> # A tibble: 6,872 × 19
+#> # A tibble: 6,885 × 19
 #>    date          yr    mo time  time_zone long_name   bay_segment station entero
 #>    <date>     <dbl> <dbl> <chr> <chr>     <chr>       <chr>       <chr>    <dbl>
 #>  1 2001-01-16  2001     1 ""    ""        Old Tampa … OTB         21FLHI…     80
@@ -571,7 +571,7 @@ anlz_fibwetdry(enterodata, catchprecip, temporal_window = 2, wet_threshold = 0.5
 #>  8 2001-08-21  2001     8 ""    ""        Old Tampa … OTB         21FLHI…    260
 #>  9 2001-09-18  2001     9 ""    ""        Old Tampa … OTB         21FLHI…    420
 #> 10 2001-10-16  2001    10 ""    ""        Old Tampa … OTB         21FLHI…    520
-#> # ℹ 6,862 more rows
+#> # ℹ 6,875 more rows
 #> # ℹ 10 more variables: entero_censored <lgl>, MDL <int>, entero_units <chr>,
 #> #   qualifier <lgl>, LabComments <lgl>, Latitude <dbl>, Longitude <dbl>,
 #> #   rain_sampleDay <dbl>, rain_total <dbl>, wet_sample <lgl>
@@ -601,7 +601,7 @@ noted in the `cat` column of the output. Corresponding colors are in the
 
 ``` r
 anlz_enteromap(enterodata)
-#> # A tibble: 6,872 × 12
+#> # A tibble: 6,885 × 12
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
 #>    <chr>       <chr>     <dbl> <dbl>    <dbl>     <dbl>  <dbl> <fct> <chr> <chr>
 #>  1 21FLHILL_W… Old Tamp…  2001     1     28.0     -82.6     80 35 -… #E9C… Ente…
@@ -614,7 +614,7 @@ anlz_enteromap(enterodata)
 #>  8 21FLHILL_W… Old Tamp…  2001     8     28.0     -82.6    260 130 … #EE7… Ente…
 #>  9 21FLHILL_W… Old Tamp…  2001     9     28.0     -82.6    420 130 … #EE7… Ente…
 #> 10 21FLHILL_W… Old Tamp…  2001    10     28.0     -82.6    520 130 … #EE7… Ente…
-#> # ℹ 6,862 more rows
+#> # ℹ 6,875 more rows
 #> # ℹ 2 more variables: indnm <chr>, conc <dbl>
 ```
 
@@ -661,7 +661,7 @@ sample date.
 ``` r
 anlz_enteromap(enterodata, wetdry = TRUE, precipdata = catchprecip,
                temporal_window = 2, wet_threshold = 0.5)
-#> # A tibble: 6,872 × 13
+#> # A tibble: 6,885 × 13
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
 #>    <chr>       <chr>     <dbl> <dbl>    <dbl>     <dbl>  <dbl> <fct> <chr> <chr>
 #>  1 21FLHILL_W… Old Tamp…  2001     1     28.0     -82.6     80 35 -… #E9C… Ente…
@@ -674,7 +674,7 @@ anlz_enteromap(enterodata, wetdry = TRUE, precipdata = catchprecip,
 #>  8 21FLHILL_W… Old Tamp…  2001     8     28.0     -82.6    260 130 … #EE7… Ente…
 #>  9 21FLHILL_W… Old Tamp…  2001     9     28.0     -82.6    420 130 … #EE7… Ente…
 #> 10 21FLHILL_W… Old Tamp…  2001    10     28.0     -82.6    520 130 … #EE7… Ente…
-#> # ℹ 6,862 more rows
+#> # ℹ 6,875 more rows
 #> # ℹ 3 more variables: indnm <chr>, conc <dbl>, wet_sample <lgl>
 ```
 

@@ -10,7 +10,7 @@ enterodata
 
 ## Format
 
-A data frame with 6622 rows and 16 columns:
+A data frame with 6885 rows and 16 columns:
 
 - `date`:
 
