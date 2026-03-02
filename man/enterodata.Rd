@@ -5,7 +5,7 @@
 \alias{enterodata}
 \title{Enterococcus data from 53 key Enterococcus stations since 1995}
 \format{
-A data frame with 6622 rows and 16 columns:
+A data frame with 6885 rows and 16 columns:
 \describe{
 \item{\code{date}}{date, sample date}
 \item{\code{yr}}{numeric, year of sample date}
