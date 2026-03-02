@@ -66,7 +66,7 @@ substas <- c("21FLHILL_WQX-101", "21FLHILL_WQX-102", "21FLHILL_WQX-103")
 test_that("anlz_fibmatrix errors if wetdry info is not provided", {
   expect_error(anlz_fibmatrix(enterodata, stas = substas,
                               lagyr = 1, subset_wetdry = "dry", temporal_window = 2),
-               regxp = 'temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples')
+               regexp = 'temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples')
 })
 
 test_that("wet/dry subsetting inside function works the same as the longer workflow", {

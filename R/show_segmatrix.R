@@ -31,7 +31,7 @@
 #'
 #' @examples
 #' show_segmatrix(epcdata, bay_segment = 'OTB')
-show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2024), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
+show_segmatrix <- function(epcdata, txtsz = 3, trgs = NULL, yrrng = c(1975, 2025), bay_segment = c('OTB', 'HB', 'MTB', 'LTB'),
                            abbrev = FALSE, family = 'sans', historic = TRUE, plotly = FALSE, partialyr = FALSE, width = NULL,
                            height = NULL) {
 

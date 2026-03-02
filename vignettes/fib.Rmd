@@ -360,11 +360,15 @@ As for the EPC data, an HTML table can be returned with `show_fibmatrix()` using
 
 The `show_fibmatrix()` function also supports baywide reporting by bay segment, unlike the EPC data.  The stations for the baywide reporting were selected specifically as endpoints that drain directly into each bay segment and an aggregate summary of the stations by bay segment can indicate the MWQA category.  The calculations are the same as by station, but the data are aggregated by bay segment. 
 
+Care should be taken when communicating results at the bay segment scale to ensure appropriate messaging.  Baywide scores could be misleading by using a handful of stations to communicate results at the bay segment scale.  Reporting at this scale is meant to support assessments that are comparable to other similar indicators used by TBEP.  A low grade for a bay segment does not imply hazardous conditions, rather the score reflects the aggregate likelihood for all stations selected for that bay segment.  Remediation of conditions that contribute to fecal contamination is best handled at the site scale. 
+
 ```{r, fig.height = 5, fig.width = 9}
 show_fibmatrix(enterodata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))
 ```
 
-Finally, a map of station and bay segment categories for a given year can be plotted using `show_fibmatrixmap()`. The `yrsel` argument is required, and the `areasel` argument can be used to select a specific area. The values shown on the map are the same as those for the respective year in the `show_fibmatrix()` function.
+Finally, a map of station and bay segment categories for a given year can be plotted using `show_fibmatrixmap()`. The `yrsel` argument is required, and the `areasel` argument can be used to select a specific area. The values shown on the map are the same as those for the respective year in the `show_fibmatrix()` function.  
+
+Note the use of the minor sub-basins for reporting the outcomes for each bay segment.  The collection of sub-basins that include stations used to estimate the bay segment outcomes are shown and color-coded by the appropriate outcome for each bay segment.  As noted above, care should be taken when communicating results at the bay segment scale.
 
 ```{r, out.width="100%"}
 show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))

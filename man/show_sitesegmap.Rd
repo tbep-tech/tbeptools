@@ -45,6 +45,6 @@ Map site and bay segment attainment categories for a selected year
 The map is similar to that returned by \code{\link{show_sitemap}} with the addition of polygons for each bay segment colored by the annual attainment category and the site points are sized relative to the selected parameter in \code{param}.
 }
 \examples{
-show_sitesegmap(epcdata, yrsel = 2024)
+show_sitesegmap(epcdata, yrsel = 2025)
 }
 \concept{show}

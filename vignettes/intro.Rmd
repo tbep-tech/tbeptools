@@ -351,19 +351,19 @@ The TBEP in collaboration with the Tampa Bay Nitrogen Management Consortium (NMC
 First, the `show_annualassess()` function can create a simple table for the annual management outcome assessments for chlorophyll-a and light attenuation by bay segment.  This provides a summary of results for a given year, including the segment-averaged chlorophyll-a and light attenuation and bay segment names colored by the management outcome.  The required inputs are the EPC dataset and the selected year. 
 
 ```{r}
-show_annualassess(epcdata, yrsel = 2024)
+show_annualassess(epcdata, yrsel = 2025)
 ```
 
 A default caption can also be included by setting `caption = TRUE`. 
 
 ```{r}
-show_annualassess(epcdata, yrsel = 2024, caption = TRUE)
+show_annualassess(epcdata, yrsel = 2025, caption = TRUE)
 ```
 
 Second, the `show_ratab()` function provides a table of the annual water quality outcomes relative to the five-year RA reporting period.  The table includes the associated NMC actions that are followed based on the water quality outcomes, actions which provide reasonable assurance that water quality will be maintained or restored following the outcomes.  The results are specific to each of the four bay segments. 
 
 ```{r}
-show_ratab(epcdata, yrsel = 2024, bay_segment = 'OTB')
+show_ratab(epcdata, yrsel = 2025, bay_segment = 'OTB')
 ```
 
 The `show_ratab()` function was developed for the 2022-2026 RA period and currently does not work for previous RA periods.  The function may be updated in the future to accommodate different periods. 

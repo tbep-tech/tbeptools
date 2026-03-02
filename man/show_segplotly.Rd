@@ -7,7 +7,7 @@
 show_segplotly(
   epcdata,
   bay_segment = c("OTB", "HB", "MTB", "LTB"),
-  yrrng = c(1975, 2024),
+  yrrng = c(1975, 2025),
   family = NULL,
   partialyr = FALSE,
   width = NULL,

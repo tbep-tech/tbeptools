@@ -260,7 +260,7 @@ read_importprism <- function(
   prism_get_var_date <- function(
     var, date, version, date_updated){
 
-    u <- sprintf("https://services.nacse.org/prism/data/public/4km/%s/%s", var, format(date, "%Y%m%d"))
+    u <- sprintf("https://services.nacse.org/prism/data/get/us/4km/%s/%s", var, format(date, "%Y%m%d"))
 
     z <- paste0(dir_tif, "/temp_", date, "_", var, ".zip")
     dir_z <- sub("\\.[^.]*$", "", z)
@@ -280,7 +280,7 @@ read_importprism <- function(
     unzip(z, exdir = dir_z)
     unlink(z)
 
-    r_new <- list.files(dir_z, "PRISM_.*_bil\\.bil$", full.names = T) %>%
+    r_new <- list.files(dir_z, "prism_.*\\.tif$", full.names = T) %>%
       terra::rast() %>%
       terra::crop(ply_bb, mask = T, touches = T) %>%
       terra::trim()

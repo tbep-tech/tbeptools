@@ -17,8 +17,8 @@
 #' @export
 #'
 #' @examples
-#' show_annualassess(epcdata, yrsel = 2024)
-#' show_annualassess(epcdata, yrsel = 2024, caption = TRUE)
+#' show_annualassess(epcdata, yrsel = 2025)
+#' show_annualassess(epcdata, yrsel = 2025, caption = TRUE)
 show_annualassess <- function(epcdata, yrsel, partialyr = F, caption = F, family = 'Arial', txtsz = 12, width = NULL){
 
   totab <- anlz_yrattain(epcdata, yrsel = yrsel, partialyr = partialyr) %>%

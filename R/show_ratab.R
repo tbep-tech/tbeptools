@@ -22,7 +22,7 @@
 #' @export
 #'
 #' @examples
-#' show_ratab(epcdata, yrsel = 2024, bay_segment = 'OTB')
+#' show_ratab(epcdata, yrsel = 2025, bay_segment = 'OTB')
 show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'RALTB'), partialyr = F, outtxt1 = NULL, outtxt2 = NULL, outtxt3 = NULL, outtxt45 = NULL, txtsz = 13, width = NULL){
 
   if(!requireNamespace('ftExtra', quietly = TRUE))
@@ -85,6 +85,7 @@ show_ratab <- function(epcdata, yrsel, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'
         out1 == '' ~ 'white'
       ),
       sums = stats::filter(met, filter= rep(1, 2), sides = 1),
+      sums = dplyr::if_else(is.na(sums), NA_real_, sums),
       sums = dplyr::case_when(
         sums >= 2 ~ 'Yes',
         sums < 2 ~ 'No',

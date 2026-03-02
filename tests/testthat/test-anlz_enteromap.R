@@ -49,7 +49,7 @@ test_that("Checking error for no data with anlz_enteromap", {
 # Test wet/dry subsetting
 test_that("anlz_enteromap errors if wetdry info is not provided", {
   expect_error(anlz_enteromap(enterodata, wetdry = TRUE, temporal_window = 2),
-               regxp = 'temporal_window and wet_threshold must both be provided in order to in order to differentiate wet vs. dry samples')
+               regexp = 'temporal_window and wet_threshold must both be provided in order to subset to wet or dry samples')
 })
 
 test_that("FALSE default for wetdry works", {
@@ -71,7 +71,7 @@ test_that("wet/dry subsetting does lead to different data frames", {
 
 test_that("Checking error for no data for selected month, year", {
 
-  expect_error(anlz_enteromap(enterodata, yrsel = 2020, mosel = 4), regxp = 'No FIB data for Apr 2020')
+  expect_error(anlz_enteromap(enterodata, yrsel = 2020, mosel = 4), regexp = 'No FIB data for Apr 2020')
 
 })
 
@@ -83,7 +83,6 @@ test_that("Checking sf output", {
   expect_equal(ncol(result), 15)
 
 })
-
 
 test_that("Checking sf output, wetdry T", {
 
