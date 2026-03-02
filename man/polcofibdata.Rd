@@ -3,7 +3,7 @@
 \docType{data}
 \name{polcofibdata}
 \alias{polcofibdata}
-\title{Polk County FIB data as of 20260108}
+\title{Polk County FIB data as of 20260302}
 \format{
 A data frame with 996 rows and 13 variables:
 \describe{
@@ -26,7 +26,7 @@ A data frame with 996 rows and 13 variables:
 polcofibdata
 }
 \description{
-Polk County FIB data as of 20260108
+Polk County FIB data as of 20260302
 }
 \details{
 This dataset includes FIB data from Polk County (21FLPOLK_WQX) where station class is marine (estuary) and Enterococcus data is present or the station class is freshwater (stream/river, reservoir) and E. coli data is present. The data is formatted from the raw data loaded from \code{\link{read_importwqp}}.
