@@ -262,6 +262,201 @@ interactive plot by setting `plotly = TRUE` inside the function.
 show_tbbimatrix(tbbiscr, plotly = T)
 ```
 
+### AZTI Marine Biotic Index (AMBI)
+
+#### Background
+
+The AZTI Marine Biotic Index (AMBI) is a measure of benthic community
+health based on the pollution sensitivity of the organisms found at a
+sampling station. Benthic macroinvertebrates are assigned to one of five
+ecological groups ranging from Group I (most sensitive, typical of clean
+conditions) to Group V (most tolerant, typical of heavily disturbed
+conditions) based on established taxonomic lists \[3\]. A Biotic
+Coefficient (BC) is then calculated as a weighted sum of the proportion
+of taxa records in each group:
+
+``` math
+BC = \frac{0 \times \%G1 + 1.5 \times \%G2 + 3 \times \%G3 + 4.5 \times \%G4 + 6 \times \%G5}{100}
+```
+
+Lower BC values indicate undisturbed conditions dominated by sensitive
+species, while higher values (approaching 7) indicate heavily stressed
+communities. Azoic stations (empty samples with no organisms) receive a
+BC of 7. An adjusted score on a 0 to 10 scale is also computed as
+$`(7 - BC) \times 10/7`$, where higher values indicate healthier
+conditions.
+
+Pollution categories are assigned based on the adjusted score:
+Unpolluted (above 8.29), Slightly Polluted (5.29 to 8.29), Meanly
+Polluted (2.89 to 5.29), Heavily Polluted (1.39 to 2.89), and Extremely
+Polluted (below 1.39). Azoic stations are assigned an adjusted score of
+zero and treated as Extremely Polluted.
+
+The tbeptools package supports two AMBI variants calculated from the
+same `benthicdata` object used for the TBBI. The standard variant uses
+Gulf of Mexico ecological group assignments from \[3\], while the Tampa
+Bay-specific variant (AMBI-TB) uses group assignments tailored to the
+local benthic community \[1\]. Both variants use the same scoring
+formula, where only the taxon-to-group mapping differs.
+
+#### Calculating AMBI scores
+
+AMBI scores by site are calculated using
+[`anlz_ambiscr()`](https://tbep-tech.github.io/tbeptools/reference/anlz_ambiscr.md).
+The `type` argument selects the variant, defaulting to the standard GOM
+assignments.
+
+``` r
+
+ambiscr <- anlz_ambiscr(benthicdata)
+ambiscr
+#> # A tibble: 4,915 × 23
+#>    StationID StationNumber AreaAbbr FundingProject ProgramID ProgramName       
+#>        <int> <chr>         <chr>    <chr>              <int> <chr>             
+#>  1       448 02BBs301      MTB      Apollo Beach           4 Benthic Monitoring
+#>  2       449 02BBs305      MTB      Apollo Beach           4 Benthic Monitoring
+#>  3       450 02BBs307      MTB      Apollo Beach           4 Benthic Monitoring
+#>  4       451 02BBs364      MTB      Apollo Beach           4 Benthic Monitoring
+#>  5       452 02BBs369      MTB      Apollo Beach           4 Benthic Monitoring
+#>  6       453 02BBs395      MTB      Apollo Beach           4 Benthic Monitoring
+#>  7       454 02BBs397      MTB      Apollo Beach           4 Benthic Monitoring
+#>  8       455 02BBs398      MTB      Apollo Beach           4 Benthic Monitoring
+#>  9       456 02BBs401      MTB      Apollo Beach           4 Benthic Monitoring
+#> 10       457 02BBs402      MTB      Apollo Beach           4 Benthic Monitoring
+#> # ℹ 4,905 more rows
+#> # ℹ 17 more variables: Latitude <dbl>, Longitude <dbl>, date <date>, yr <dbl>,
+#> #   TotalGroupCount <int>, PercentG1 <dbl>, PercentG2 <dbl>, PercentG3 <dbl>,
+#> #   PercentG4 <dbl>, PercentG5 <dbl>, BC <dbl>, AMBI <dbl>,
+#> #   SitePollutionClassification <chr>, BioticIndex <chr>,
+#> #   DominatingEcologicalGroup <chr>, BenthicCommunityHealth <chr>,
+#> #   AMBICat <chr>
+```
+
+The Tampa Bay-specific variant is selected with `type = 'AMBI-TB'`.
+
+``` r
+
+ambiscr_tb <- anlz_ambiscr(benthicdata, type = 'AMBI-TB')
+ambiscr_tb
+#> # A tibble: 4,915 × 23
+#>    StationID StationNumber AreaAbbr FundingProject ProgramID ProgramName       
+#>        <int> <chr>         <chr>    <chr>              <int> <chr>             
+#>  1       448 02BBs301      MTB      Apollo Beach           4 Benthic Monitoring
+#>  2       449 02BBs305      MTB      Apollo Beach           4 Benthic Monitoring
+#>  3       450 02BBs307      MTB      Apollo Beach           4 Benthic Monitoring
+#>  4       451 02BBs364      MTB      Apollo Beach           4 Benthic Monitoring
+#>  5       452 02BBs369      MTB      Apollo Beach           4 Benthic Monitoring
+#>  6       453 02BBs395      MTB      Apollo Beach           4 Benthic Monitoring
+#>  7       454 02BBs397      MTB      Apollo Beach           4 Benthic Monitoring
+#>  8       455 02BBs398      MTB      Apollo Beach           4 Benthic Monitoring
+#>  9       456 02BBs401      MTB      Apollo Beach           4 Benthic Monitoring
+#> 10       457 02BBs402      MTB      Apollo Beach           4 Benthic Monitoring
+#> # ℹ 4,905 more rows
+#> # ℹ 17 more variables: Latitude <dbl>, Longitude <dbl>, date <date>, yr <dbl>,
+#> #   TotalGroupCount <int>, PercentG1 <dbl>, PercentG2 <dbl>, PercentG3 <dbl>,
+#> #   PercentG4 <dbl>, PercentG5 <dbl>, BC <dbl>, TBAMBI <dbl>,
+#> #   SitePollutionClassification <chr>, BioticIndex <chr>,
+#> #   DominatingEcologicalGroup <chr>, BenthicCommunityHealth <chr>,
+#> #   TBAMBICat <chr>
+```
+
+Both outputs include the Biotic Coefficient (`BC`), the adjusted AMBI
+score (`AMBI` or `TBAMBI`), the pollution category (`AMBICat` or
+`TBAMBICat`), and ancillary descriptors (`SitePollutionClassification`,
+`BioticIndex`, `DominatingEcologicalGroup`, `BenthicCommunityHealth`).
+
+#### Plotting results
+
+The dominant AMBI pollution category for each bay segment and year can
+be viewed as a matrix using
+[`show_ambimatrix()`](https://tbep-tech.github.io/tbeptools/reference/show_ambimatrix.md).
+Internally, the function summarizes the percent of sites in each
+category per bay segment and year using
+[`anlz_ambimed()`](https://tbep-tech.github.io/tbeptools/reference/anlz_ambimed.md),
+then identifies the plurality category for display. By default, a
+rolling five-year window is applied from 2005 onward to smooth
+inter-annual variability from reduced sampling effort in recent years,
+similar to the TBBI.
+
+``` r
+
+show_ambimatrix(ambiscr)
+```
+
+![](tbbi_files/figure-html/unnamed-chunk-15-1.png)
+
+The same matrix is available for the Tampa Bay AMBI.
+
+``` r
+
+show_ambimatrix(ambiscr_tb)
+```
+
+![](tbbi_files/figure-html/unnamed-chunk-16-1.png)
+
+The matrix can also be produced as a [plotly](https://plotly.com/r/)
+interactive plot.
+
+``` r
+
+show_ambimatrix(ambiscr, plotly = TRUE)
+```
+
+Mean annual adjusted AMBI scores can be plotted over time using
+[`show_ambitrend()`](https://tbep-tech.github.io/tbeptools/reference/show_ambitrend.md).
+The background shading identifies the pollution category zones. Both
+AMBI variants can be overlaid on the same plot by providing both scoring
+objects.
+
+``` r
+
+show_ambitrend(ambiscr, ambiscr_tb)
+```
+
+![](tbbi_files/figure-html/unnamed-chunk-18-1.png)
+
+The same plot can be produced as an interactive
+[plotly](https://plotly.com/r/) object.
+
+``` r
+
+show_ambitrend(ambiscr, ambiscr_tb, plotly = TRUE)
+```
+
+A summary table of the percent of sites in each AMBI category by bay
+segment over a selected year range can be produced with
+[`show_ambitab()`](https://tbep-tech.github.io/tbeptools/reference/show_ambitab.md).
+By default, the summaries are calculated for all bay segments.
+
+``` r
+
+show_ambitab(ambiscr)
+```
+
+| Segment | n | Extremely Polluted | Heavily Polluted | Meanly Polluted | Slightly Polluted | Unpolluted |
+|----|----|----|----|----|----|----|
+| OTB | 318 | 1.26% | 0.00% | 1.26% | 85.22% | 12.26% |
+| HB | 470 | 4.04% | 0.21% | 6.38% | 88.72% | 0.64% |
+| MTB | 332 | 0.30% | 0.00% | 0.00% | 84.64% | 15.06% |
+| LTB | 258 | 0.00% | 0.00% | 0.00% | 85.27% | 14.73% |
+| TCB | 129 | 0.00% | 0.78% | 1.55% | 90.70% | 6.98% |
+| MR | 237 | 0.00% | 0.00% | 1.27% | 97.05% | 1.69% |
+| BCB | 365 | 1.64% | 0.55% | 1.92% | 91.51% | 4.38% |
+| All | 2,109 | 1.42% | 0.19% | 2.18% | 88.67% | 7.54% |
+
+Summarizing for individual bay segments is also possible by specifying
+the `bay_segment` argument.
+
+``` r
+
+show_ambitab(ambiscr, bay_segment = 'HB')
+```
+
+| Segment | n | Extremely Polluted | Heavily Polluted | Meanly Polluted | Slightly Polluted | Unpolluted |
+|----|----|----|----|----|----|----|
+| HB | 470 | 4.04% | 0.21% | 6.38% | 88.72% | 0.64% |
+| All | 470 | 4.04% | 0.21% | 6.38% | 88.72% | 0.64% |
+
 ### Additional sediment data
 
 In addition to biological data, sediment contaminant concentrations are
@@ -410,7 +605,7 @@ if unavailable for a selected parameter.
 show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024))
 ```
 
-![](tbbi_files/figure-html/unnamed-chunk-21-1.png)
+![](tbbi_files/figure-html/unnamed-chunk-30-1.png)
 
 The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
@@ -470,7 +665,7 @@ The colors indicate the grades for A (green) to F (red).
 show_sedimentpelave(sedimentdata, yrrng = c(1993, 2024))
 ```
 
-![](tbbi_files/figure-html/unnamed-chunk-25-1.png)
+![](tbbi_files/figure-html/unnamed-chunk-34-1.png)
 
 The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
@@ -505,7 +700,7 @@ This plot provides information on the concentration of the parameter
 relative to background levels, where Aluminum is present as a common
 metal in the Earth’s crust. An elevated ratio of a metal parameter
 relative to aluminum suggests it is higher than background
-concentrations \[3\]. The linear fit of a log-log model is shown as a
+concentrations \[4\]. The linear fit of a log-log model is shown as a
 solid black line, with 95% prediction intervals. The TEL/PEL values, if
 available, are also shown as horizontal red lines.
 
@@ -514,7 +709,7 @@ available, are also shown as horizontal red lines.
 show_sedimentalratio(sedimentdata, param = 'Zinc', bay_segment = c('HB', 'LTB'))
 ```
 
-![](tbbi_files/figure-html/unnamed-chunk-28-1.png)
+![](tbbi_files/figure-html/unnamed-chunk-37-1.png)
 
 The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
@@ -542,6 +737,15 @@ Estuary, Tampa Bay Estuary Program, St. Petersburg, Florida, 2006.
 <https://drive.google.com/file/d/1jWYmbtBWACLXAM3F6xP9VqCD7qEbvOPF/view?usp=drivesdk>.
 
 \[3\]
+
+D.J. Gillett, S.B. Weisberg, T. Grayson, A. Hamilton, V. Hansen, E.W.
+Leppo, M.C. Pelletier, A. Borja, D. Cadien, D. Dauer, others, Effect of
+ecological group classification schemes on performance of the AMBI
+benthic index in US coastal waters, Ecological Indicators 50 (2015)
+99–107.
+https://doi.org/[10.1016/j.ecolind.2014.11.005](https://doi.org/10.1016/j.ecolind.2014.11.005).
+
+\[4\]
 
 S.J. Schropp, F. Graham Lewis, H.L. Windom, J.D. Ryan, F.D. Calder, L.C.
 Burney, Interpretation of metal concentrations in estuarine sediments of
