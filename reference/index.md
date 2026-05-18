@@ -165,6 +165,8 @@ Functions for plotting data.
   : Plot a matrix of AMBI scores over time by bay segment
 - [`show_ambitab()`](https://tbep-tech.github.io/tbeptools/reference/show_ambitab.md)
   : Create a summary table of AMBI category percentages by bay segment
+- [`show_ambitrend()`](https://tbep-tech.github.io/tbeptools/reference/show_ambitrend.md)
+  : Plot mean AMBI scores over time by bay segment
 - [`show_annualassess()`](https://tbep-tech.github.io/tbeptools/reference/show_annualassess.md)
   : Create a table for the annual management outcome assessments
 - [`show_boxplot()`](https://tbep-tech.github.io/tbeptools/reference/show_boxplot.md)
