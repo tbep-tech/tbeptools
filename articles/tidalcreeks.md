@@ -31,6 +31,7 @@ recreation, propagation and maintenance of a healthy, well-balanced
 population of fish and wildlife).
 
 ``` r
+
 mapview(tidalcreeks, homebutton = F, legend = F)
 ```
 
@@ -115,6 +116,7 @@ data object included in tbeptools includes these thresholds. Note that
 the “Caution” category is a function of creek length.
 
 ``` r
+
 tidaltargets
 #>         region prioritize investigate
 #> 1 West Central       1.65        1.38
@@ -152,6 +154,7 @@ and
 datasets to estimate the scores:
 
 ``` r
+
 results <- anlz_tdlcrk(tidalcreeks, iwrraw)
 results
 #> # A tibble: 623 × 10
@@ -193,6 +196,7 @@ to view an interactive map of the results. Creeks are color-coded by the
 exceedance categories, with “No Data” creeks shown in light blue.
 
 ``` r
+
 show_tdlcrk(results)
 ```
 
@@ -210,6 +214,7 @@ with the `class` argument (i.e., `class c('3M', '2', '3F', '1')` for
 marine and freshwater WBIDs).
 
 ``` r
+
 show_tdlcrkmatrix(results)
 ```
 
@@ -238,6 +243,7 @@ function generates these annual outcomes for each `wbid`/`JEI`
 combination.
 
 ``` r
+
 results <- anlz_tdlcrkindic(tidalcreeks, iwrraw)
 head(results)
 #>   id       name  JEI  wbid class year    CHLAC     COLOR     COND       DO
@@ -282,6 +288,7 @@ creeks (Florida DEP class 2, 3M). Indicators without data for the creek
 do not have a point on the plot.
 
 ``` r
+
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2025, radar = T)
 
 # get random creek id
@@ -308,6 +315,7 @@ function, where the latter is passed to the `cntdat` argument. The
 Each year has its own unique color.
 
 ``` r
+
 cntdat <- anlz_tdlcrkindic(tidalcreeks, iwrraw, yr = 2025)
 show_tdlcrkindic(id = id, cntdat = cntdat, thrsel = TRUE)
 ```
@@ -325,6 +333,7 @@ over a point shows the year and holding the cursor over the line shows
 the percentile value from the CDF.
 
 ``` r
+
 show_tdlcrkindiccdf(id = id, cntdat = cntdat, thrsel = TRUE)
 ```
 

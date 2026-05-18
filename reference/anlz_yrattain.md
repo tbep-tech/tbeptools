@@ -33,6 +33,7 @@ segment targets, and attainment categories.
 ## Examples
 
 ``` r
+
 # defaults to current year
 anlz_yrattain(epcdata, yrsel = 2025)
 #> # A tibble: 4 × 6

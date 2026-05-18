@@ -89,6 +89,10 @@ Functions for reading data.
 
 Functions for analyzing data.
 
+- [`anlz_ambimed()`](https://tbep-tech.github.io/tbeptools/reference/anlz_ambimed.md)
+  : Get annual medians of AMBI scores by bay segment
+- [`anlz_ambiscr()`](https://tbep-tech.github.io/tbeptools/reference/anlz_ambiscr.md)
+  : Get AMBI scores for benthic stations
 - [`anlz_attain()`](https://tbep-tech.github.io/tbeptools/reference/anlz_attain.md)
   : Get attainment categories
 - [`anlz_attainsite()`](https://tbep-tech.github.io/tbeptools/reference/anlz_attainsite.md)
@@ -157,6 +161,8 @@ Functions for analyzing data.
 
 Functions for plotting data.
 
+- [`show_ambimatrix()`](https://tbep-tech.github.io/tbeptools/reference/show_ambimatrix.md)
+  : Plot a matrix of AMBI scores over time by bay segment
 - [`show_annualassess()`](https://tbep-tech.github.io/tbeptools/reference/show_annualassess.md)
   : Create a table for the annual management outcome assessments
 - [`show_boxplot()`](https://tbep-tech.github.io/tbeptools/reference/show_boxplot.md)
@@ -258,6 +264,8 @@ Supporting datasets used by the other functions.
 
 - [`acres`](https://tbep-tech.github.io/tbeptools/reference/acres.md) :
   Tampa Bay intertidal and supratidal land use and cover
+- [`ambispp`](https://tbep-tech.github.io/tbeptools/reference/ambispp.md)
+  : AMBI species group assignments for Tampa Bay benthic taxa
 - [`benthicdata`](https://tbep-tech.github.io/tbeptools/reference/benthicdata.md)
   : Benthic data for the Tampa Bay Benthic Index current as of 20251225
 - [`bsmap`](https://tbep-tech.github.io/tbeptools/reference/bsmap.md) :

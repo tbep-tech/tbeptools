@@ -40,6 +40,7 @@ the downloaded file. Here, we want to put the file on the desktop in our
 home directory and name it `fimdata.csv`.
 
 ``` r
+
 csv <- '~/Desktop/fimdata.csv'
 fimdata <- read_importfim(csv)
 ```
@@ -47,6 +48,7 @@ fimdata <- read_importfim(csv)
 Running the above code will return the following error:
 
 ``` r
+
 #> Error in read_importfim(csv) : file.exists(csv) is not TRUE
 ```
 
@@ -57,10 +59,12 @@ changing the `download_latest` argument to `TRUE` (the default is
 `FALSE`).
 
 ``` r
+
 fimdata <- read_importfim(csv, download_latest = T)
 ```
 
 ``` r
+
 #> File ~/Desktop/fimdata.csv does not exist, replacing with downloaded file...
 ```
 
@@ -74,10 +78,12 @@ that the data are not unnecessarily downloaded if the current matches
 the file on the server.
 
 ``` r
+
 fimdata <- read_importfim(csv, download_latest = T)
 ```
 
 ``` r
+
 #> File is current..
 ```
 
@@ -90,6 +96,7 @@ However, new data are regularly collected and posted on the server. If
 receive the following message:
 
 ``` r
+
 #> Replacing local file with current...
 ```
 
@@ -97,6 +104,7 @@ After the data are successfully imported, you can view them from the
 assigned object:
 
 ``` r
+
 head(fimdata)
 #> # A tibble: 6 × 19
 #>   Reference    Sampling_Date Latitude Longitude Zone   Grid NODCCODE  Year Month
@@ -124,6 +132,7 @@ the package that is merged with the imported FIM data. This file,
 `tbnispp`, can be viewed anytime the package is loaded:
 
 ``` r
+
 head(tbnispp)
 #>      TSN   NODCCODE               ScientificName Include_TB_Index Hab_Cat
 #> 1 173245 8860030201 Acanthostracion quadricornis                Y       B
@@ -151,6 +160,7 @@ function. For ease of use, a dataset named `fimstations` is included in
 tbeptools.
 
 ``` r
+
 fimstations <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
 mapview(fimstations, zcol = 'bay_segment')
 ```
@@ -198,6 +208,7 @@ the
 function.
 
 ``` r
+
 tbniscr <- anlz_tbniscr(fimdata)
 head(tbniscr)
 #> # A tibble: 6 × 16
@@ -224,6 +235,7 @@ developing a Nekton index outside of Tampa Bay. The argument
 selected five for the TBNI are returned.
 
 ``` r
+
 tbnimet <- anlz_tbnimet(fimdata, all = T)
 head(tbnimet)
 #> # A tibble: 6 × 37
@@ -265,18 +277,21 @@ output from the
 function.
 
 ``` r
+
 show_tbniscr(tbniscr)
 ```
 
 ![](tbni_files/figure-html/unnamed-chunk-14-1.png)
 
 ``` r
+
 show_tbniscrall(tbniscr)
 ```
 
 ![](tbni_files/figure-html/unnamed-chunk-15-1.png)
 
 ``` r
+
 show_tbnimatrix(tbniscr)
 ```
 
@@ -287,14 +302,17 @@ Each of the plots can also be produced as
 `plotly = TRUE` inside each function.
 
 ``` r
+
 show_tbniscr(tbniscr, plotly = T)
 ```
 
 ``` r
+
 show_tbniscrall(tbniscr, plotly = T)
 ```
 
 ``` r
+
 show_tbnimatrix(tbniscr, plotly = T)
 ```
 
@@ -316,6 +334,7 @@ showing the trends over time as both categorical outcomes in the matrix
 and continuous scores in the bottom plot.
 
 ``` r
+
 p1 <- show_tbnimatrix(tbniscr, txtsz = NULL, rev = TRUE, position = 'bottom') +
   scale_y_continuous(expand = c(0,0), breaks = c(1998:2020)) +
   coord_flip() +

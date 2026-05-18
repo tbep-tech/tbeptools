@@ -74,6 +74,7 @@ vignette for additional details on the import function.
 The FIB data can be downloaded as follows:
 
 ``` r
+
 fibdata <- read_importfib(xlsx = 'vignettes/current_data.xlsx', download_latest = T)
 ```
 
@@ -84,6 +85,7 @@ file](https://tbep-tech.github.io/tbeptools/reference/fibdata.html) for
 the download date.
 
 ``` r
+
 fibdata
 #> # A tibble: 31,081 × 18
 #>    area   epchc_station class SampleTime             yr    mo Latitude Longitude
@@ -143,6 +145,7 @@ in the `cat` column of the output, with corresponding colors appropriate
 for each range as noted in the `col` column of the output.
 
 ``` r
+
 anlz_fibmap(fibdata)
 #> # A tibble: 31,081 × 12
 #>    area    station class    yr    mo Latitude Longitude ecoli entero ind   cat  
@@ -180,6 +183,7 @@ and month. Not specifying these arguments will return results for the
 entire period of record.
 
 ``` r
+
 anlz_fibmap(fibdata, yrsel = 2023, mosel = 7)
 #> # A tibble: 150 × 12
 #>    area    station class    yr    mo Latitude Longitude ecoli entero ind   cat  
@@ -216,6 +220,7 @@ for `yrsel` and `mosel`. All valid options for `areasel` include
 `"Valrico Lake"`.
 
 ``` r
+
 anlz_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = 'Hillsborough River')
 #> # A tibble: 37 × 12
 #>    area    station class    yr    mo Latitude Longitude ecoli entero ind   cat  
@@ -251,6 +256,7 @@ mean of the indicator concentrations (`gmean`) and a category indicating
 a letter outcome based on the likelihood of exceedences (`cat`).
 
 ``` r
+
 anlz_fibmatrix(fibdata)
 #> # A tibble: 120 × 7
 #>       yr grp   class  gmean Latitude Longitude cat  
@@ -285,6 +291,7 @@ provided). Unlike
 the `yrsel` and `mosel` arguments are required.
 
 ``` r
+
 show_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = NULL)
 ```
 
@@ -292,10 +299,12 @@ Sites for the Hillsborough or Alafia river basins can be shown using the
 `areasel` argument.
 
 ``` r
+
 show_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = 'Hillsborough River')
 ```
 
 ``` r
+
 show_fibmap(fibdata, yrsel = 2023, mosel = 7, areasel = 'Alafia River')
 ```
 
@@ -318,6 +327,7 @@ provided by the Florida Department of Environmental Protection, Figure 8
 in \[2\] and \[1\].
 
 ``` r
+
 show_fibmatrix(fibdata)
 ```
 
@@ -329,6 +339,7 @@ calculate probabilities from the monthly samples (`lagyr = 3`). This
 example shows results using only the monthly observations in each year.
 
 ``` r
+
 show_fibmatrix(fibdata, lagyr = 1)
 ```
 
@@ -343,6 +354,7 @@ Lower Hillsborough River (WBID 1443E, EPC stations 105, 152, 137). Other
 stations in `fibdata` can be plotted using the `stas` argument.
 
 ``` r
+
 show_fibmatrix(fibdata, stas = c(115, 116))
 ```
 
@@ -353,6 +365,7 @@ default is years with sufficient data for *Enterococcus* at marine
 stations and *E. coli* for freshwater stations.
 
 ``` r
+
 show_fibmatrix(fibdata, yrrng = c(2010, 2020))
 ```
 
@@ -365,6 +378,7 @@ changed with the `nrows` argument. Use a sufficiently large number to
 show all rows.
 
 ``` r
+
 show_fibmatrix(fibdata, asreact = TRUE)
 ```
 
@@ -372,6 +386,7 @@ A plotly (interactive, dynamic plot) object can be returned by setting
 `plotly = TRUE`.
 
 ``` r
+
 show_fibmatrix(fibdata, plotly = TRUE)
 ```
 
@@ -385,6 +400,7 @@ those for the respective year in the
 function.
 
 ``` r
+
 show_fibmatmap(fibdata, yrsel = 2020, areasel = c('Hillsborough River', 'Alafia River'))
 ```
 
@@ -398,6 +414,7 @@ identifier (i.e., Manatee County `21FLMANA_WQP`, Pasco County
 `21FLPASCO_WQP`, Polk County `21FLPOLK_WQP`).
 
 ``` r
+
 mancofibdata <- read_importwqp(org = '21FLMANA_WQX', type = 'fib')
 ```
 
@@ -414,14 +431,17 @@ functions using the Manatee County data are below. The same
 functionality can be used with the other county datasets.
 
 ``` r
+
 show_fibmap(mancofibdata, yrsel = 2023, mosel = 7, areasel = NULL)
 ```
 
 ``` r
+
 show_fibmatrix(mancofibdata, plotly = TRUE)
 ```
 
 ``` r
+
 show_fibmatmap(mancofibdata, yrsel = 2020, areasel = 'Manatee River')
 ```
 
@@ -449,6 +469,7 @@ for retrieving data, where the input format for each is a character
 string as `'YYYY-MM-DD'`.
 
 ``` r
+
 read_importentero(startDate = '1995-01-01', endDate = '2023-12-31')
 ```
 
@@ -457,6 +478,7 @@ provided with the package for use with all downstream functions. This
 dataset includes all data from the 53 selected stations from 1995-2023.
 
 ``` r
+
 head(enterodata)
 #>         date   yr mo time time_zone     long_name bay_segment          station
 #> 1 2001-01-16 2001  1                Old Tampa Bay         OTB 21FLHILL_WQX-101
@@ -495,6 +517,7 @@ information is available in the `catchpixels` data object.
 Rainfall data is downloaded by defining years and months of interest.
 
 ``` r
+
 read_importrain(2021, catchpixels, mos = 1:12, quiet = F)
 ```
 
@@ -506,6 +529,7 @@ stations from 1995-2023. The rainfall data is used to define
 user-defined thresholds described below.
 
 ``` r
+
 head(catchprecip)
 #> # A tibble: 6 × 3
 #>   station            date        rain
@@ -557,6 +581,7 @@ rain in the period defined by the `temporal_window` argument
 value (`wet_sample`).
 
 ``` r
+
 anlz_fibwetdry(enterodata, catchprecip, temporal_window = 2, wet_threshold = 0.5)
 #> # A tibble: 6,885 × 19
 #>    date          yr    mo time  time_zone long_name   bay_segment station entero
@@ -600,6 +625,7 @@ noted in the `cat` column of the output. Corresponding colors are in the
 `col` column of the output.
 
 ``` r
+
 anlz_enteromap(enterodata)
 #> # A tibble: 6,885 × 12
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
@@ -633,6 +659,7 @@ and month. Not specifying these arguments will return results for the
 entire period of record.
 
 ``` r
+
 anlz_enteromap(enterodata, yrsel = 2020, mosel = 8)
 #> # A tibble: 27 × 12
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
@@ -659,6 +686,7 @@ least 0.5 inches of rain occurring two days prior to and including the
 sample date.
 
 ``` r
+
 anlz_enteromap(enterodata, wetdry = TRUE, precipdata = catchprecip,
                temporal_window = 2, wet_threshold = 0.5)
 #> # A tibble: 6,885 × 13
@@ -688,6 +716,7 @@ set as `NULL` (default). All valid options for `areasel` include
 `"Lower Tampa Bay"`, `"Boca Ciega Bay"`, or `"Manatee River"`.
 
 ``` r
+
 anlz_enteromap(enterodata, yrsel = 2023, mosel = 7, areasel = 'Old Tampa Bay')
 #> # A tibble: 12 × 12
 #>    station     long_name    yr    mo Latitude Longitude entero cat   col   ind  
@@ -723,6 +752,7 @@ concentrations (`gmean`) and a category indicating a letter outcome
 based on the likelihood of exceedences (`cat`).
 
 ``` r
+
 anlz_fibmatrix(enterodata)
 #> # A tibble: 605 × 7
 #>       yr grp                    class   gmean Latitude Longitude cat  
@@ -758,10 +788,12 @@ by their shapes. Unlike
 the `yrsel` and `mosel` arguments are required.
 
 ``` r
+
 show_enteromap(enterodata, yrsel = 2020, mosel = 9)
 ```
 
 ``` r
+
 show_enteromap(enterodata, yrsel = 2020, mosel = 9, wetdry = TRUE,
                temporal_window = 2, wet_threshold = 0.5)
 ```
@@ -773,6 +805,7 @@ the bottom left of the map.
 Sites for specific areas can be shown using the `areasel` argument.
 
 ``` r
+
 show_enteromap(enterodata, yrsel = 2023, mosel = 7, areasel = 'Old Tampa Bay')
 ```
 
@@ -791,6 +824,7 @@ Protection, Figure 8 in \[2\] and \[1\]. All stations are shown by
 default.
 
 ``` r
+
 show_fibmatrix(enterodata)
 ```
 
@@ -802,6 +836,7 @@ calculate probabilities from the monthly samples (`lagyr = 3`). This
 example shows results using only the monthly observations in each year.
 
 ``` r
+
 show_fibmatrix(enterodata, lagyr = 1)
 ```
 
@@ -810,6 +845,7 @@ show_fibmatrix(enterodata, lagyr = 1)
 Individual stations can be selectd using the `stas` argument.
 
 ``` r
+
 show_fibmatrix(enterodata,
                stas = c('21FLHILL_WQX-101', '21FLHILL_WQX-102', '21FLHILL_WQX-103'))
 ```
@@ -820,6 +856,7 @@ The `yrrng` argument can also be used to select a year range, where the
 default is the date range contained in the data.
 
 ``` r
+
 show_fibmatrix(enterodata, yrrng = c(2015, 2020))
 ```
 
@@ -861,6 +898,7 @@ segment. Remediation of conditions that contribute to fecal
 contamination is best handled at the site scale.
 
 ``` r
+
 show_fibmatrix(enterodata, bay_segment = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))
 ```
 
@@ -881,6 +919,7 @@ appropriate outcome for each bay segment. As noted above, care should be
 taken when communicating results at the bay segment scale.
 
 ``` r
+
 show_fibmatmap(enterodata, yrsel = 2020, areasel = c('OTB', 'HB', 'MTB', 'LTB', 'BCB', 'MR'))
 ```
 
@@ -893,6 +932,7 @@ Portal using an organization identifier. The data can be retrieved as
 follows and will typically take less than one minute to download.
 
 ``` r
+
 # get Manatee County data
 mancodata <- read_importwqp(org = '21FLDOH_WQX', type = 'fib', trace = T)
 

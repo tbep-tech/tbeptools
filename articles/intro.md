@@ -70,6 +70,7 @@ working directly for the current R session. You can view the working
 directory with [`getwd()`](https://rdrr.io/r/base/getwd.html).
 
 ``` r
+
 xlsx <- 'vignettes/current_results.xlsx'
 ```
 
@@ -78,6 +79,7 @@ Now we pass this `xlsx` object to the
 function.
 
 ``` r
+
 epcdata <- read_importwq(xlsx)
 ```
 
@@ -88,6 +90,7 @@ changing the `download_latest` argument to `TRUE` (the default is
 `FALSE`).
 
 ``` r
+
 epcdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 
@@ -103,6 +106,7 @@ that the data are not unnecessarily downloaded if the current file
 matches the file on the server.
 
 ``` r
+
 epcdata <- read_importwq(xlsx, download_latest = TRUE)
 ```
 
@@ -126,6 +130,7 @@ After the data are successfully imported, you can view them from the
 assigned object:
 
 ``` r
+
 epcdata
 #> # A tibble: 29,041 × 26
 #>    bay_segment epchc_station SampleTime             yr    mo Latitude Longitude
@@ -166,6 +171,7 @@ summarize data from the file
 `PlanktonDataList_ThroughCurrentReportMonth.xlsx` on the EPC website.
 
 ``` r
+
 xlsx <- 'phyto_data.xlsx'
 phytodata <- read_importphyto(xlsx, download_latest = T)
 ```
@@ -176,6 +182,7 @@ After the phytoplankton data are successfully imported, you can view
 them from the assigned object:
 
 ``` r
+
 phytodata
 #> # A tibble: 41,390 × 8
 #>    epchc_station Date       name  units  count yrqrt         yr mo   
@@ -220,6 +227,7 @@ be retrieved as follows and will typically take less than one minute to
 download.
 
 ``` r
+
 # get Manatee County data
 mancodata <- read_importwqp(org = '21FLMANA_WQX', type = 'wq', trace = T)
 
@@ -237,6 +245,7 @@ Atlas API. This includes information on available data sources,
 parameters, sampling stations, and waterbodies.
 
 ``` r
+
 # data sources
 util_importwqwa('dataSources')
 #> # A tibble: 511 × 4
@@ -317,6 +326,7 @@ of 2023. Consult the metadata using
 to determine available data sources and parameters.
 
 ``` r
+
 read_importwqwa(dataSource = 'WIN_21FLPDEM', parameter = 'Chla_ugl', 
   start_date = '2023-01-01', end_date = '2023-01-31')
 #> Requesting: WIN_21FLPDEM, Chla_ugl, 2023-01-01, 2023-01-31
@@ -366,6 +376,7 @@ means for chlorophyll and light attenuation. The output is a two-element
 list for the annual (`ann`) and monthly (`mos`) means by segment.
 
 ``` r
+
 avedat <- anlz_avedat(epcdata)
 avedat
 #> $ann
@@ -412,6 +423,7 @@ for each segment, both in duration and magnitude, are indicated by
 higher integer values.
 
 ``` r
+
 anlz_attain(avedat)
 #> # A tibble: 208 × 4
 #>    bay_segment    yr chl_la outcome
@@ -438,6 +450,7 @@ only if the target was above or below the segment threshold for each
 site.
 
 ``` r
+
 anlz_avedatsite(epcdata) %>% anlz_attainsite
 #> # A tibble: 2,340 × 9
 #>       yr bay_segment epchc_station var     val target smallex thresh met  
@@ -464,6 +477,7 @@ with the [dplyr](https://dplyr.tidyverse.org/) is done first to filter
 the data we want to plot.
 
 ``` r
+
 toplo <- epcdata %>% 
   filter(epchc_station == '52')
 
@@ -496,6 +510,7 @@ standard errors are considered when identifying the annual segment
 outcome for chlorophyll.
 
 ``` r
+
 show_thrplot(epcdata, bay_segment = "OTB", thr = "chla")
 ```
 
@@ -506,6 +521,7 @@ We can show the same plot but for light attenuation by changing the
 reference lines for the light attenuation target.
 
 ``` r
+
 show_thrplot(epcdata, bay_segment = "OTB", thr = "la")
 ```
 
@@ -515,6 +531,7 @@ The year range to plot can also be specified using the `yrrng` argument,
 where the default is the year range from `epcdata`.
 
 ``` r
+
 show_thrplot(epcdata, bay_segment = "OTB", thr = "la", yrrng = c(2000, 2018))
 ```
 
@@ -528,6 +545,7 @@ function. For example, you can retrieve the values from the above plot
 as follows:
 
 ``` r
+
 epcdata %>% 
   anlz_avedat %>% 
   .[['ann']] %>% 
@@ -570,12 +588,14 @@ the bay segment threshold and is the same dotted line shown in
 [`show_thrplot()`](https://tbep-tech.github.io/tbeptools/reference/show_thrplot.md).
 
 ``` r
+
 show_boxplot(epcdata, param = 'chla', bay_segment = "OTB")
 ```
 
 ![](intro_files/figure-html/unnamed-chunk-19-1.png)
 
 ``` r
+
 show_boxplot(epcdata, param = 'la', bay_segment = "HB")
 ```
 
@@ -586,6 +606,7 @@ viewed by changing the `yrrng` and `yrsel` arguments. Here we show 1980
 compared to monthly averages from 2008 to 2018.
 
 ``` r
+
 show_boxplot(epcdata, param = 'chla', bay_segment = "OTB", yrrng = c(2008, 2018), yrsel = 1980)
 ```
 
@@ -622,6 +643,7 @@ determining annual outcomes. This file is loaded automatically with the
 package and can be viewed from the command line.
 
 ``` r
+
 targets
 #>   bay_segment                      name chla_target chla_smallex chla_thresh
 #> 1         OTB             Old Tampa Bay         8.5          8.9         9.3
@@ -676,6 +698,7 @@ The results can be viewed with
 [`show_matrix()`](https://tbep-tech.github.io/tbeptools/reference/show_matrix.md).
 
 ``` r
+
 show_matrix(epcdata)
 ```
 
@@ -686,6 +709,7 @@ The matrix is also a `ggplot` object and its layout can be changed using
 labels.
 
 ``` r
+
 show_matrix(epcdata, txtsz = NULL) +
   scale_y_continuous(expand = c(0,0), breaks = sort(unique(epcdata$yr))) + 
   coord_flip() +
@@ -700,6 +724,7 @@ The default number of rows (10) can be changed with the `nrows`
 argument. Use a sufficiently large number to show all rows.
 
 ``` r
+
 show_matrix(epcdata, asreact = TRUE)
 ```
 
@@ -707,6 +732,7 @@ A plotly (interactive, dynamic plot) can be returned by setting the
 `plotly` argument to `TRUE`.
 
 ``` r
+
 show_matrix(epcdata, plotly = TRUE)
 ```
 
@@ -717,6 +743,7 @@ This table also shows segment averages for chlorophyll and light
 attenuation, including the associated targets.
 
 ``` r
+
 anlz_yrattain(epcdata, yrsel = 2018)
 #> # A tibble: 4 × 6
 #>   bay_segment chla_val chla_target la_val la_target outcome
@@ -734,6 +761,7 @@ The station averages for chlorophyll for the selected year are shown
 next to each point. Stations in red failed to meet the segment target.
 
 ``` r
+
 show_sitemap(epcdata, yrsel = 2018)
 ```
 
@@ -746,6 +774,7 @@ for the selected year. If this option is chosen, averages are shown as
 continuous values at each station.
 
 ``` r
+
 show_sitemap(epcdata, yrsel = 2018, mosel = c(7, 9))
 ```
 
@@ -760,6 +789,7 @@ This map is useful to understand how the site data correspond to each
 bay segment.
 
 ``` r
+
 show_sitesegmap(epcdata, yrsel = 2018)
 ```
 
@@ -772,6 +802,7 @@ The thresholds for these values correspond to the Florida DEP criteria
 target).
 
 ``` r
+
 show_wqmatrix(epcdata)
 ```
 
@@ -783,6 +814,7 @@ function returns chlorophyll exceedances by segment. Light attenuation
 exceedances can be viewed by changing the `param` argument.
 
 ``` r
+
 show_wqmatrix(epcdata, param = 'la')
 ```
 
@@ -803,6 +835,7 @@ next to the segment management outcomes from
 Only one segment can be plotted for each function call.
 
 ``` r
+
 show_segmatrix(epcdata, bay_segment = 'OTB')
 ```
 
@@ -820,6 +853,7 @@ pointer over a section of the plot. Information about each cell or value
 can be seen by hovering over a location in the plot.
 
 ``` r
+
 show_segplotly(epcdata, width = 1000, height = 600)
 ```
 
@@ -857,6 +891,7 @@ names colored by the management outcome. The required inputs are the EPC
 dataset and the selected year.
 
 ``` r
+
 show_annualassess(epcdata, yrsel = 2025)
 ```
 
@@ -871,6 +906,7 @@ show_annualassess(epcdata, yrsel = 2025)
 A default caption can also be included by setting `caption = TRUE`.
 
 ``` r
+
 show_annualassess(epcdata, yrsel = 2025, caption = TRUE)
 ```
 
@@ -882,7 +918,8 @@ show_annualassess(epcdata, yrsel = 2025, caption = TRUE)
 | MTB     | 5.5          | 7.4    | 0.56                    | 0.83   |
 | LTB     | 3.0          | 4.6    | 0.60                    | 0.63   |
 
-Water quality outcomes for 2025.
+Water quality outcomes for 2025. {.table .cl-83b0be22
+quarto-disable-processing="true"}
 
 Second, the
 [`show_ratab()`](https://tbep-tech.github.io/tbeptools/reference/show_ratab.md)
@@ -894,17 +931,18 @@ maintained or restored following the outcomes. The results are specific
 to each of the four bay segments.
 
 ``` r
+
 show_ratab(epcdata, yrsel = 2025, bay_segment = 'OTB')
 ```
 
-|                                                                                                                                                |                                                 |               |               |               |               |                                                                                        |
-|------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|---------------|---------------|---------------|---------------|----------------------------------------------------------------------------------------|
-| Bay Segment Reasonable Assurance Assessment Steps                                                                                              | DATA USED TO ASSESS ANNUAL REASONABLE ASSURANCE |               |               |               |               | OUTCOME                                                                                |
-|                                                                                                                                                | Year 1 (2022)                                   | Year 2 (2023) | Year 3 (2024) | Year 4 (2025) | Year 5 (2026) |                                                                                        |
-| NMC Action 1: Determine if observed chlorophyll-a exceeds FDEP threshold of 9.3 ug/L                                                           | No (7.1)                                        | No (6.2)      | No (8.8)      | No (6.6)      |               | All years below threshold so far, not necessary for NMC Actions 2-5                    |
-| NMC Action 2: Determine if any observed chlorophyll-a exceedences occurred for 2 consecutive years                                             | No                                              | No            | No            | No            |               | All years met threshold, not necessary for NMC Actions 3-5                             |
-| NMC Action 3: Determine if observed hydrologically-normalized total load exceeds federally-recognized TMDL of 486 tons/year                    | N/A                                             | N/A           | N/A           | N/A           |               | Not necessary due to observed water quality and seagrass conditions in the bay segment |
-| NMC Actions 4-5: Determine if any entity/source/facility specific exceedences of 5-yr average allocation occurred during implementation period |                                                 |               |               |               |               | Not necessary when chlorophyll-a threshold met                                         |
+|  |  |  |  |  |  |  |
+|----|----|----|----|----|----|----|
+| Bay Segment Reasonable Assurance Assessment Steps | DATA USED TO ASSESS ANNUAL REASONABLE ASSURANCE |  |  |  |  | OUTCOME |
+|  | Year 1 (2022) | Year 2 (2023) | Year 3 (2024) | Year 4 (2025) | Year 5 (2026) |  |
+| NMC Action 1: Determine if observed chlorophyll-a exceeds FDEP threshold of 9.3 ug/L | No (7.1) | No (6.2) | No (8.8) | No (6.6) |  | All years below threshold so far, not necessary for NMC Actions 2-5 |
+| NMC Action 2: Determine if any observed chlorophyll-a exceedences occurred for 2 consecutive years | No | No | No | No |  | All years met threshold, not necessary for NMC Actions 3-5 |
+| NMC Action 3: Determine if observed hydrologically-normalized total load exceeds federally-recognized TMDL of 486 tons/year | N/A | N/A | N/A | N/A |  | Not necessary due to observed water quality and seagrass conditions in the bay segment |
+| NMC Actions 4-5: Determine if any entity/source/facility specific exceedences of 5-yr average allocation occurred during implementation period |  |  |  |  |  | Not necessary when chlorophyll-a threshold met |
 
 The
 [`show_ratab()`](https://tbep-tech.github.io/tbeptools/reference/show_ratab.md)

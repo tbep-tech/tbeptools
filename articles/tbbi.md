@@ -39,6 +39,7 @@ not exist, specify a location and name for the downloaded file. Here, we
 name the folder `benthic.zip` and download it on our desktop.
 
 ``` r
+
 path <- '~/Desktop/benthic.zip'
 benthicdata <- read_importbenthic(path)
 ```
@@ -46,6 +47,7 @@ benthicdata <- read_importbenthic(path)
 Running the above code will return the following error:
 
 ``` r
+
 #> Error in read_importbenthic() : File at path does not exist, use download_latest = TRUE
 ```
 
@@ -56,10 +58,12 @@ changing the `download_latest` argument to `TRUE` (the default is
 `FALSE`).
 
 ``` r
+
 benthicdata <- read_importbenthic(path, download_latest = T)
 ```
 
 ``` r
+
 #> File ~/Desktop/benthic.zip does not exist, replacing with downloaded file...
 ```
 
@@ -74,10 +78,12 @@ not unnecessarily downloaded if the current file matches the file on the
 server.
 
 ``` r
+
 benthicdata <- read_importbenthic(path, download_latest = T)
 ```
 
 ``` r
+
 #> File is current..
 ```
 
@@ -90,6 +96,7 @@ However, data are periodically updated and posted on the server. If
 receive the following message:
 
 ``` r
+
 #> Replacing local file with current...
 ```
 
@@ -101,6 +108,7 @@ datasets: station information, field sample data (salinity), and
 detailed taxa information.
 
 ``` r
+
 benthicdata
 #> # A tibble: 3 × 2
 #>   name         value                 
@@ -114,6 +122,7 @@ The individual datasets can be viewed by extracting them from the parent
 object using the `deframe()` function from the tibble package.
 
 ``` r
+
 # see all
 deframe(benthicdata)
 #> $stations
@@ -199,6 +208,7 @@ for the TBBI are corrected for salinity and bottom measurements taken at
 the time of sampling are required for accurate calculation of the TBBI.
 
 ``` r
+
 tbbiscr <- anlz_tbbiscr(benthicdata)
 tbbiscr
 #> # A tibble: 4,915 × 15
@@ -238,6 +248,7 @@ function is the output from the
 function.
 
 ``` r
+
 show_tbbimatrix(tbbiscr)
 ```
 
@@ -247,6 +258,7 @@ The matrix can also be produced as a [plotly](https://plotly.com/r/)
 interactive plot by setting `plotly = TRUE` inside the function.
 
 ``` r
+
 show_tbbimatrix(tbbiscr, plotly = T)
 ```
 
@@ -272,6 +284,7 @@ location](https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU
 as the biological data used to calculate the TBBI.
 
 ``` r
+
 path <- '~/Desktop/sediment.zip'
 sedimentdata <- read_importsediment(path, download_latest = T)
 ```
@@ -279,6 +292,7 @@ sedimentdata <- read_importsediment(path, download_latest = T)
 After the data are imported, you can view them from the assigned object.
 
 ``` r
+
 sedimentdata
 #> # A tibble: 231,727 × 24
 #>    ProgramId ProgramName   FundingProject    yr AreaAbbr StationID StationNumber
@@ -312,12 +326,14 @@ stations are those that are sampled in the years within the `yrrng`
 argument.
 
 ``` r
+
 show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024))
 ```
 
 A single year of data can be shown as well.
 
 ``` r
+
 show_sedimentmap(sedimentdata, param = 'Arsenic', yrrng = 2024)
 ```
 
@@ -325,6 +341,7 @@ A map showing only the concentrations is returned if TEL and PEL values
 are not available for a parameter.
 
 ``` r
+
 show_sedimentmap(sedimentdata, param = 'Selenium', yrrng = c(1993, 2024))
 ```
 
@@ -338,6 +355,7 @@ function. Simply entering the name of the total parameter in the
 function will produce the summary map.
 
 ``` r
+
 show_sedimentmap(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2024))
 ```
 
@@ -353,6 +371,7 @@ invertebrates. The station average combines the PEL ratios across all
 contaminants measured at a station.
 
 ``` r
+
 show_sedimentpelmap(sedimentdata, yrrng = c(1993, 2024))
 ```
 
@@ -361,6 +380,7 @@ returned as a data frame using
 [`anlz_sedimentpel()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentpel.md).
 
 ``` r
+
 anlz_sedimentpel(sedimentdata, yrrng = c(1993, 2024))
 #> # A tibble: 2,321 × 7
 #>       yr AreaAbbr StationNumber Latitude Longitude PELRatio Grade
@@ -386,6 +406,7 @@ the grand mean across all segments. The former are omitted from the plot
 if unavailable for a selected parameter.
 
 ``` r
+
 show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024))
 ```
 
@@ -395,6 +416,7 @@ The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
 
 ``` r
+
 show_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024), plotly = T)
 ```
 
@@ -402,6 +424,7 @@ The values used in the plot can be returned with
 [`anlz_sedimentave()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentave.md).
 
 ``` r
+
 anlz_sedimentave(sedimentdata, param = 'Arsenic', yrrng = c(1993, 2024))
 #> # A tibble: 7 × 8
 #>   AreaAbbr   TEL   PEL Units   ave   lov   hiv grandave
@@ -423,6 +446,7 @@ function is used to calculate the totals within
 [`anlz_sedimentave()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentave.md).
 
 ``` r
+
 anlz_sedimentave(sedimentdata, param = 'Total DDT', yrrng = c(1993, 2024))
 #> # A tibble: 7 × 8
 #>   AreaAbbr   TEL   PEL Units   ave   lov   hiv grandave
@@ -442,6 +466,7 @@ can be created with
 The colors indicate the grades for A (green) to F (red).
 
 ``` r
+
 show_sedimentpelave(sedimentdata, yrrng = c(1993, 2024))
 ```
 
@@ -451,6 +476,7 @@ The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
 
 ``` r
+
 show_sedimentpelave(sedimentdata, yrrng = c(1993, 2024), plotly = T)
 ```
 
@@ -458,6 +484,7 @@ The values used in the plot can be returned with
 [`anlz_sedimentpelave()`](https://tbep-tech.github.io/tbeptools/reference/anlz_sedimentpelave.md).
 
 ``` r
+
 anlz_sedimentpelave(sedimentdata, yrrng = c(1993, 2024))
 #> # A tibble: 7 × 5
 #>   AreaAbbr    ave    lov    hiv grandave
@@ -483,6 +510,7 @@ solid black line, with 95% prediction intervals. The TEL/PEL values, if
 available, are also shown as horizontal red lines.
 
 ``` r
+
 show_sedimentalratio(sedimentdata, param = 'Zinc', bay_segment = c('HB', 'LTB'))
 ```
 
@@ -492,6 +520,7 @@ The same plot can be returned as an interactive
 [plotly](https://plotly.com/r/) object using `plotly = T`.
 
 ``` r
+
 show_sedimentalratio(sedimentdata, param = 'Zinc', bay_segment = c('HB', 'LTB'), plotly = T)
 ```
 

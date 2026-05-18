@@ -14,6 +14,7 @@ to be installed once, but it needs to be loaded every new R session
 (i.e., [`library(tbeptools)`](https://github.com/tbep-tech/tbeptools)).
 
 ``` r
+
 # enable repos
 options(repos = c(
     tbeptech = 'https://tbep-tech.r-universe.dev',
@@ -146,6 +147,7 @@ monthly and annual averages by major bay segments of Tampa Bay, and plot
 an annual time series for one of the bay segments.
 
 ``` r
+
 # load the package
 library(tbeptools)
 
@@ -171,6 +173,7 @@ wqdat
     ## #   Temp_Water_Mid_degC <dbl>, ...
 
 ``` r
+
 # analyze monthly and annual means by bay segment
 avedat <- anlz_avedat(wqdat)
 avedat
@@ -199,6 +202,7 @@ avedat
     ## # ... with 4,479 more rows
 
 ``` r
+
 # show annual time series of chlorophyll for Hillsborough bay segment
 show_thrplot(wqdat, bay_segment = "HB", yrrng = c(1975, 2020))
 ```

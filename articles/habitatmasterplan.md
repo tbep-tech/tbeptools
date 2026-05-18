@@ -34,6 +34,7 @@ to create the Habitat Master Plan report card.
     intertidal and supratidal strata.
 
     ``` r
+
     acres
     #> # A tibble: 100 × 3
     #> # Groups:   name [10]
@@ -56,6 +57,7 @@ to create the Habitat Master Plan report card.
     the subtidal stratam.
 
     ``` r
+
     subtacres
     #> # A tibble: 69 × 3
     #>    name  HMPU_TARGETS    Acres
@@ -78,6 +80,7 @@ to create the Habitat Master Plan report card.
     shown).
 
     ``` r
+
     hmptrgs[, c("Category", "HMPU_TARGETS", "Target2030", "Goal2050")]
     #>      Category                     HMPU_TARGETS Target2030 Goal2050
     #> 1    Subtidal                      Hard Bottom      423.0    423.0
@@ -125,6 +128,7 @@ assesses the coverage trend between year pairs to determine if the
 changes are trending above or below the targets and goals.
 
 ``` r
+
 anlz_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs)
 #> # A tibble: 165 × 17
 #>     year metric      Acres lacres   lyr category Target  Goal acresdiff yeardiff
@@ -202,6 +206,7 @@ datasets to generate the summaries is not continuous each year and
 varies between the subtidal and inter/supratidal habitat.
 
 ``` r
+
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets')
 ```
 
@@ -210,6 +215,7 @@ show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 't
 The 2050 goals report card can be shown using `typ = "goals"`.
 
 ``` r
+
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'goals')
 ```
 
@@ -224,6 +230,7 @@ variable, where gaps are shown in years when each dataset was
 unavailable. Use `ycollapse = TRUE` to remove years without data.
 
 ``` r
+
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', ycollapse = T)
 ```
 
@@ -233,6 +240,7 @@ Different strata can also be selected using the `strata` argument. Note
 the use of `ycollapse = T` to remove years without data.
 
 ``` r
+
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', 
                strata = c('Intertidal', 'Supratidal'), ycollapse = T)
 ```
@@ -243,6 +251,7 @@ All strata can be combined in a single plot with collapsed years using
 the patchwork library.
 
 ``` r
+
 library(patchwork)
 library(ggplot2) 
 
@@ -261,6 +270,7 @@ be suppressed using `text = NULL`. The size of the text can be changed
 by entering a numeric value (default `text = 2.5`).
 
 ``` r
+
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', text = NULL)
 ```
 
@@ -275,6 +285,7 @@ likely to be met, and a down arrow shows the target or goal is not
 likely to be met.
 
 ``` r
+
 show_hmpreport(acres = acres, subtacres = subtacres, hmptrgs = hmptrgs, typ = 'targets', twocol = T)
 ```
 

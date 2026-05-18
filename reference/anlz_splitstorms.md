@@ -49,8 +49,8 @@ anlz_splitstorms(hurricanes, split_date)
 #> # A tibble: 2 × 5
 #>    year period   sum   avg     n
 #>   <dbl> <ord>  <dbl> <dbl> <int>
-#> 1  1981 before    10  3.33     3
-#> 2  1982 before     4  1.33     3
+#> 1  1981 before    11  2.75     4
+#> 2  1982 before     3  1.5      2
 
 # Analysis with custom statistics
 anlz_splitstorms(hurricanes, split_date,

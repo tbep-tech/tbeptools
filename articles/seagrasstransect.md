@@ -18,6 +18,7 @@ includes the `MonAgency` column that indicates which monitoring agency
 collects the data at each transect.
 
 ``` r
+
 trnpts
 #> Simple feature collection with 66 features and 11 fields
 #> Geometry type: POINT
@@ -83,6 +84,7 @@ The two datasets are `sf()` (simple features) objects and are easily
 mapped with `mapview()` to view their locations.
 
 ``` r
+
 cols <- c("#E16A86", "#CB7F2F", "#9F9400", "#50A315", "#00AC79", "#00AAB7", "#009ADE", "#A87BE4", "#DA65C3")
 
 mapview(trnpts, zcol = 'MonAgency', lwd = 0, legend = F, homebutton = F, col.regions = cols) + 
@@ -106,6 +108,7 @@ is reported as a numeric value from 0 -5 for Braun-Blanquet coverage
 estimates and blade length is in cm.
 
 ``` r
+
 # import training data
 traindat <- read_transect(training = TRUE)
 
@@ -132,6 +135,7 @@ Change the `training` argument to `FALSE` to download the entire
 transect database. This may take a few seconds.
 
 ``` r
+
 # import entire transct dataset as JSON
 transect <- read_transect(training = FALSE)
 
@@ -168,6 +172,7 @@ If the raw, unformatted transect data are preferred, use the
 [`read_transect()`](https://tbep-tech.github.io/tbeptools/reference/read_transect.md).
 
 ``` r
+
 # raw transect data
 transectraw <- read_transect(training = FALSE, raw = TRUE)
 
@@ -219,6 +224,7 @@ species are aggregated. Drift or attached macroalgae and cyanobacteria
 (Dapis) estimates may not be accurate prior to 2021.
 
 ``` r
+
 transectocc <- anlz_transectocc(transect)
 transectocc
 #> # A tibble: 41,916 × 6
@@ -253,6 +259,7 @@ specific bay segments and annual ranges can be filtered with the
 `bay_segment` and `yrrng` arguments.
 
 ``` r
+
 transectave <- anlz_transectave(transectocc)
 transectave
 #> # A tibble: 168 × 4
@@ -290,6 +297,7 @@ default is to return all. *Caulerpa spp.*, *Dapis spp.*, and
 *Chaetomorpha spp.* are also included.
 
 ``` r
+
 transectavespp <- anlz_transectavespp(transectocc)
 transectavespp
 #> # A tibble: 252 × 3
@@ -314,6 +322,7 @@ can be retained by setting the `by_seg` argument to `TRUE`. Note that
 totals are not returned in this case.
 
 ``` r
+
 transectavespp <- anlz_transectavespp(transectocc, by_seg = TRUE)
 transectavespp
 #> # A tibble: 1,400 × 5
@@ -340,6 +349,7 @@ function is used to compare training data between crews for a selected
 species (`species` argument) and variable (`varplo` argument).
 
 ``` r
+
 show_compplot(traindat, yr = 2025, site = '3', species = 'Halodule', varplo = 'Abundance', base_size = 14)
 ```
 
@@ -356,6 +366,7 @@ spatial changes in the selected seagrass metric for an individual
 location.
 
 ``` r
+
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance')
 ```
 
@@ -368,6 +379,7 @@ size is the average abundance for the species. The sizes can be viewed
 on mouseover of each point.
 
 ``` r
+
 show_transect(transect, site = 'S3T10', species = 'Halodule', varplo = 'Abundance', plotly = T)
 ```
 
@@ -377,6 +389,7 @@ function can also be used to plot multiple species. One to many species
 can be provided to the `species` argument.
 
 ``` r
+
 show_transect(transect, site = 'S3T10', species = c('Halodule', 'Syringodium', 'Thalassia'), varplo = 'Abundance')
 ```
 
@@ -387,6 +400,7 @@ The plots can also be separated into facets for each species using
 species found at the same location.
 
 ``` r
+
 show_transect(transect, site = 'S3T10', species = c('Halodule', 'Syringodium', 'Thalassia'), varplo = 'Abundance', facet = TRUE)
 ```
 
@@ -405,6 +419,7 @@ uses summarized data from the
 function as input.
 
 ``` r
+
 show_transectsum(transectocc, site = 'S3T10')
 ```
 
@@ -420,6 +435,7 @@ frequency occurrence estimates are binned into color categories
 described above, as in Table 1 in \[2\].
 
 ``` r
+
 show_transectmatrix(transectocc)
 ```
 
@@ -431,6 +447,7 @@ ecological breakpoints. Use `neutral = TRUE` to use a neutral and
 continuous color palette.
 
 ``` r
+
 show_transectmatrix(transectocc, neutral = T)
 ```
 
@@ -440,6 +457,7 @@ The matrix can also be produced as a [plotly](https://plotly.com/r/)
 interactive plot by setting `plotly = TRUE` inside the function.
 
 ``` r
+
 show_transectmatrix(transectocc, plotly = T)
 ```
 
@@ -450,6 +468,7 @@ function. By default, all estimates are averaged across all bay segments
 for each species. The plot is a representation of Figure 2 in \[2\].
 
 ``` r
+
 show_transectavespp(transectocc)
 ```
 
@@ -460,6 +479,7 @@ Results for individual segments and species can be returned with the
 to omit the total frequency occurrence from the plot.
 
 ``` r
+
 show_transectavespp(transectocc, bay_segment = 'LTB', species = c('Syringodium', 'Thalassia'), total = FALSE)
 ```
 
@@ -469,6 +489,7 @@ The plot can also be produced as a [plotly](https://plotly.com/r/)
 interactive plot by setting `plotly = TRUE` inside the function.
 
 ``` r
+
 show_transectavespp(transectocc, bay_segment = 'LTB', species = c('Syringodium', 'Thalassia'), plotly = T)
 ```
 
@@ -480,6 +501,7 @@ four major bay segments and specific year ranges. Also note that the
 totals are not returned in the table.
 
 ``` r
+
 show_transectavespp(transectocc, asreact = T, bay_segment = c('HB', 'OTB', 'MTB', 'LTB'), yrrng = c(2006, 2012))
 ```
 
@@ -495,6 +517,7 @@ function creates the flagship seagrass coverage graphic to report on
 changes over time from these data.
 
 ``` r
+
 show_seagrasscoverage(seagrass)
 ```
 

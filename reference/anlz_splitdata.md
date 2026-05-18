@@ -55,16 +55,16 @@ anlz_splitdata(data, split_date, "date", "value")
 #> # A tibble: 12 × 3
 #>     year period   avg
 #>    <dbl> <ord>  <dbl>
-#>  1  2010 before  9.96
-#>  2  2011 before 10.2 
-#>  3  2012 before 10.3 
-#>  4  2013 before  9.91
-#>  5  2014 before  9.65
-#>  6  2015 before 11.4 
-#>  7  2016 after  10.4 
-#>  8  2017 after   9.17
-#>  9  2018 after  10.4 
-#> 10  2019 after  10.7 
-#> 11  2020 after   9.96
-#> 12  2021 after  10.6 
+#>  1  2010 before  9.39
+#>  2  2011 before  9.33
+#>  3  2012 before  9.73
+#>  4  2013 before 10.2 
+#>  5  2014 before 10.4 
+#>  6  2015 before  9.99
+#>  7  2016 after  10.5 
+#>  8  2017 after  10.4 
+#>  9  2018 after  10.8 
+#> 10  2019 after   9.00
+#> 11  2020 after  11.2 
+#> 12  2021 after   9.90
 ```

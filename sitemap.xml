@@ -15,6 +15,9 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/authors.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/index.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/acres.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/ambispp.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_ambimed.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_ambiscr.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_attain.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_attainsite.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/anlz_avedat.html</loc></url>
@@ -93,6 +96,7 @@
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/sedimentdata.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/sgmanagement.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/sgseg.html</loc></url>
+<url><loc>https://tbep-tech.github.io/tbeptools/reference/show_ambimatrix.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_annualassess.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_boxplot.html</loc></url>
 <url><loc>https://tbep-tech.github.io/tbeptools/reference/show_compplot.html</loc></url>
