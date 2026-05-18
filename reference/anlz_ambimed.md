@@ -73,19 +73,19 @@ defined in
 ``` r
 ambiscr <- anlz_ambiscr(benthicdata)
 anlz_ambimed(ambiscr)
-#> # A tibble: 254 × 6
-#>    bay_segment    yr `Heavily Polluted` `Meanly Polluted` `Slightly Polluted`
-#>    <fct>       <dbl>              <dbl>             <dbl>               <dbl>
-#>  1 All          1993             0                0                     0.901
-#>  2 All          1994             0                0.0449                0.921
-#>  3 All          1995             0                0.00781               0.891
-#>  4 All          1996             0                0.00769               0.885
-#>  5 All          1997             0                0.00820               0.926
-#>  6 All          1998             0                0.0169                0.898
-#>  7 All          1999             0                0.0163                0.902
-#>  8 All          2000             0                0.0233                0.907
-#>  9 All          2001             0.0128           0.0128                0.885
-#> 10 All          2002             0.0122           0.0366                0.866
+#> # A tibble: 254 × 7
+#>    bay_segment    yr `Extremely Polluted` `Heavily Polluted` `Meanly Polluted`
+#>    <fct>       <dbl>                <dbl>              <dbl>             <dbl>
+#>  1 All          1993              0                   0                0      
+#>  2 All          1994              0.0111              0                0.0444 
+#>  3 All          1995              0.0448              0                0.00746
+#>  4 All          1996              0.0152              0                0.00758
+#>  5 All          1997              0.00813             0                0.00813
+#>  6 All          1998              0.0167              0                0.0167 
+#>  7 All          1999              0.00806             0                0.0161 
+#>  8 All          2000              0                   0                0.0233 
+#>  9 All          2001              0.025               0.0125           0.0125 
+#> 10 All          2002              0.0120              0.0120           0.0361 
 #> # ℹ 244 more rows
-#> # ℹ 1 more variable: Unpolluted <dbl>
+#> # ℹ 2 more variables: `Slightly Polluted` <dbl>, Unpolluted <dbl>
 ```
