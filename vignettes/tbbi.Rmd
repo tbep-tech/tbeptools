@@ -123,6 +123,82 @@ The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive
 show_tbbimatrix(tbbiscr, plotly = T)
 ```
 
+## AZTI Marine Biotic Index (AMBI)
+
+### Background
+
+The AZTI Marine Biotic Index (AMBI) is a measure of benthic community health based on the pollution sensitivity of the organisms found at a sampling station.  Benthic macroinvertebrates are assigned to one of five ecological groups ranging from Group I (most sensitive, typical of clean conditions) to Group V (most tolerant, typical of heavily disturbed conditions) based on established taxonomic lists [@Gillett15].  A Biotic Coefficient (BC) is then calculated as a weighted sum of the proportion of taxa records in each group:
+
+$$BC = \frac{0 \times \%G1 + 1.5 \times \%G2 + 3 \times \%G3 + 4.5 \times \%G4 + 6 \times \%G5}{100}$$
+
+Lower BC values indicate undisturbed conditions dominated by sensitive species, while higher values (approaching 7) indicate heavily stressed communities.  Azoic stations (empty samples with no organisms) receive a BC of 7.  An adjusted score on a 0 to 10 scale is also computed as $(7 - BC) \times 10/7$, where higher values indicate healthier conditions.
+
+Pollution categories are assigned based on the adjusted score: Unpolluted (above 8.29), Slightly Polluted (5.29 to 8.29), Meanly Polluted (2.89 to 5.29), Heavily Polluted (1.39 to 2.89), and Extremely Polluted (below 1.39).  Azoic stations are assigned an adjusted score of zero and treated as Extremely Polluted.
+
+The tbeptools package supports two AMBI variants calculated from the same `benthicdata` object used for the TBBI.  The standard variant uses Gulf of Mexico ecological group assignments from @Gillett15, while the Tampa Bay-specific variant (AMBI-TB) uses group assignments tailored to the local benthic community [@tbep1325].  Both variants use the same scoring formula, where only the taxon-to-group mapping differs.
+
+### Calculating AMBI scores
+
+AMBI scores by site are calculated using `anlz_ambiscr()`.  The `type` argument selects the variant, defaulting to the standard GOM assignments.
+
+```{r}
+ambiscr <- anlz_ambiscr(benthicdata)
+ambiscr
+```
+
+The Tampa Bay-specific variant is selected with `type = 'AMBI-TB'`.
+
+```{r}
+ambiscr_tb <- anlz_ambiscr(benthicdata, type = 'AMBI-TB')
+ambiscr_tb
+```
+
+Both outputs include the Biotic Coefficient (`BC`), the adjusted AMBI score (`AMBI` or `TBAMBI`), the pollution category (`AMBICat` or `TBAMBICat`), and ancillary descriptors (`SitePollutionClassification`, `BioticIndex`, `DominatingEcologicalGroup`, `BenthicCommunityHealth`).
+
+### Plotting results
+
+The dominant AMBI pollution category for each bay segment and year can be viewed as a matrix using `show_ambimatrix()`.  Internally, the function summarizes the percent of sites in each category per bay segment and year using `anlz_ambimed()`, then identifies the plurality category for display.  By default, a rolling five-year window is applied from 2005 onward to smooth inter-annual variability from reduced sampling effort in recent years, similar to the TBBI.
+
+```{r, fig.height = 7, fig.width = 7}
+show_ambimatrix(ambiscr)
+```
+
+The same matrix is available for the Tampa Bay AMBI.
+
+```{r, fig.height = 7, fig.width = 7}
+show_ambimatrix(ambiscr_tb)
+```
+
+The matrix can also be produced as a [plotly](https://plotly.com/r/) interactive plot.
+
+```{r, fig.height = 7, fig.width = 7}
+show_ambimatrix(ambiscr, plotly = TRUE)
+```
+
+Mean annual adjusted AMBI scores can be plotted over time using `show_ambitrend()`.  The background shading identifies the pollution category zones.  Both AMBI variants can be overlaid on the same plot by providing both scoring objects.
+
+```{r, fig.height = 4, fig.width = 8}
+show_ambitrend(ambiscr, ambiscr_tb)
+```
+
+The same plot can be produced as an interactive [plotly](https://plotly.com/r/) object.
+
+```{r, fig.height = 4, fig.width = 8}
+show_ambitrend(ambiscr, ambiscr_tb, plotly = TRUE)
+```
+
+A summary table of the percent of sites in each AMBI category by bay segment over a selected year range can be produced with `show_ambitab()`.  By default, the summaries are calculated for all bay segments.
+
+```{r}
+show_ambitab(ambiscr)
+```
+
+Summarizing for individual bay segments is also possible by specifying the `bay_segment` argument.
+
+```{r}
+show_ambitab(ambiscr, bay_segment = 'HB')
+```
+
 ## Additional sediment data
 
 In addition to biological data, sediment contaminant concentrations are measured at sites within Tampa Bay.  These include over 100 different constituents grouped broadly as metals, organics, physical, or other.  The concentrations of these constituents can be compared relative to Threshold Effects Levels (TEL) or Potential Effects Levels (PEL), when available, as relative indications of the likelihood that the concentrations will have toxic effects on invertebrates that inhabit the sediments. The functions in tbeptools can be used to retrieve the sediment data and provide an indication of the concentrations relative to the TEL or PEL thresholds. 
