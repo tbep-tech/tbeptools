@@ -94,7 +94,7 @@ show_ambitab <- function(ambiscr,
     if (!lev %in% names(all_row)) all_row[[lev]] <- 0
   }
 
-  segs_present <- intersect(bay_segment, unique(seg_rows$Segment))
+  segs_present <- intersect(segs_all, unique(seg_rows$Segment))
   seg_rows <- seg_rows %>%
     dplyr::mutate(Segment = factor(Segment, levels = segs_present)) %>%
     dplyr::arrange(Segment) %>%
@@ -110,10 +110,10 @@ show_ambitab <- function(ambiscr,
 
   ft <- flextable::flextable(tab) %>%
     flextable::colformat_int(j = 'n') %>%
-    flextable::colformat_double(j = cats_present, digits = 2, suffix = '%') %>%
+    flextable::colformat_double(j = cats_present, digits = 1, suffix = '%') %>%
     flextable::bold(i = nrow(tab)) %>%
     flextable::align(align = 'center', part = 'all') %>%
-    flextable::align(j = 'Segment', align = 'left', part = 'body') %>%
+    flextable::align(j = 'Segment', align = 'left', part = 'all') %>%
     flextable::autofit()
 
   for (cat in cats_present) {

@@ -36,7 +36,7 @@
 #' show_ambimatrix(ambiscr)
 show_ambimatrix <- function(ambiscr,
                             bay_segment = c('HB', 'OTB', 'MTB', 'LTB', 'TCB', 'MR', 'BCB', 'All'),
-                            yrrng = c(1993, 2024), window = TRUE, alph = 1, txtsz = 3,
+                            yrrng = c(1993, 2024), window = TRUE, alph = 1, txtsz = 2.5,
                             family = 'sans', rev = FALSE, position = 'top',
                             plotly = FALSE, width = NULL, height = NULL) {
 
