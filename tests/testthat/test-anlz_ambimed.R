@@ -11,8 +11,9 @@ test_that("anlz_ambimed row 1 matches expected values for standard AMBI", {
   result <- anlz_ambimed(ambiscr)[1, ]
   expect_equal(result, structure(list(
     bay_segment = structure(8L, levels = c("OTB", "HB", "MTB", "LTB", "TCB", "MR", "BCB", "All"), class = "factor"),
-    yr = 1993, `Heavily Polluted` = 0, `Meanly Polluted` = 0,
-    `Slightly Polluted` = 0.901098901098901, Unpolluted = 0.0989010989010989),
+    yr = 1993, `Extremely Polluted` = 0, `Heavily Polluted` = 0,
+    `Meanly Polluted` = 0, `Slightly Polluted` = 0.901098901098901,
+    Unpolluted = 0.0989010989010989),
     row.names = c(NA, -1L), class = c("tbl_df", "tbl", "data.frame")))
 
 })
@@ -22,8 +23,9 @@ test_that("anlz_ambimed row 1 matches expected values for AMBI-TB", {
   result <- anlz_ambimed(ambiscr_tb)[1, ]
   expect_equal(result, structure(list(
     bay_segment = structure(8L, levels = c("OTB", "HB", "MTB", "LTB", "TCB", "MR", "BCB", "All"), class = "factor"),
-    yr = 1993, `Heavily Polluted` = 0, `Meanly Polluted` = 0.043956043956044,
-    `Slightly Polluted` = 0.32967032967033, Unpolluted = 0.626373626373626),
+    yr = 1993, `Extremely Polluted` = 0, `Heavily Polluted` = 0,
+    `Meanly Polluted` = 0.043956043956044, `Slightly Polluted` = 0.32967032967033,
+    Unpolluted = 0.626373626373626),
     row.names = c(NA, -1L), class = c("tbl_df", "tbl", "data.frame")))
 
 })

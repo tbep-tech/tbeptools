@@ -57,7 +57,7 @@ anlz_ambimed <- function(ambiscr,
     dplyr::filter(FundingProject %in% 'TBEP') %>%
     dplyr::filter(ProgramID %in% 4) %>%
     dplyr::filter(!is.na(.data[[cat_col]])) %>%
-    dplyr::filter(.data[[cat_col]] != 'Azoic') %>%
+    dplyr::mutate(!!cat_col := dplyr::if_else(.data[[cat_col]] == 'Azoic', 'Extremely Polluted', .data[[cat_col]])) %>%
     dplyr::group_by(bay_segment, yr, .data[[cat_col]]) %>%
     dplyr::summarise(cnt = dplyr::n(), .groups = 'drop') %>%
     dplyr::rename(AMBICat = dplyr::all_of(cat_col))
