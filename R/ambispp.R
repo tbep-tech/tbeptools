@@ -1,0 +1,34 @@
+#' AMBI species group assignments for Tampa Bay benthic taxa
+#'
+#' AMBI species group assignments for Tampa Bay benthic taxa
+#'
+#' @format A data frame with 1983 rows and 5 variables:
+#' \describe{
+#'   \item{TaxaListID}{int, join key to taxacounts in \code{\link{benthicdata}}}
+#'   \item{NAME}{chr, taxon name}
+#'   \item{AMBIGroupID}{int, ecological group 1-5 for conventional AMBI (Gillett et al. 2015), NA if unclassified}
+#'   \item{TBAMBIGroupID}{int, ecological group 1-5 for Tampa Bay-specific AMBI, NA if unclassified}
+#'   \item{AMBIListSource}{chr, provenance of the AMBI group assignment (Gulf, National, or assumption)}
+#' }
+#'
+#' @details
+#' Ecological groups range from I (most sensitive to pollution) to V (most tolerant).  The conventional AMBI groups (\code{AMBIGroupID}) follow published literature (Gillett et al. 2015), with Gulf of Mexico scores preferred over National scores, and family-level assumptions applied where species-level scores were unavailable.  The Tampa Bay-specific groups (\code{TBAMBIGroupID}) are based on local sediment sample assignments.
+#'
+#' This table is used as the species lookup in \code{\link{anlz_ambiscr}} to join ecological group assignments to observed taxa counts in \code{\link{benthicdata}}.
+#'
+#' @references
+#' Gillett, D.J., Weisberg, S.B., Grayson, T., Hamilton, A., Hansen, V., Leppo, E.W., Pelletier, M.C., et al. (2015). Effect of ecological group classification schemes on performance of the AMBI benthic index in US coastal waters. Ecological Indicators, 50, 99-107. \doi{10.1016/j.ecolind.2014.11.005}
+#'
+#' @concept data
+#'
+#' @examples
+#' \dontrun{
+#' library(readxl)
+#' library(dplyr)
+#'
+#' ambispp <- read_excel('data-raw/AMBI_EcoSource_ReportDeliverableToDK.xlsx') |>
+#'   select(TaxaListID, NAME, AMBIGroupID, TBAMBIGroupID = TBAMBIGroupId, AMBIListSource)
+#'
+#' save(ambispp, file = 'data/ambispp.RData', compress = 'xz')
+#' }
+"ambispp"
