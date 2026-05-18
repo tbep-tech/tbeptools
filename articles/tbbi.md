@@ -1,6 +1,8 @@
 # Tampa Bay Benthic Index
 
-### Background
+### Tampa Bay Benthic Index (TBBI)
+
+#### Background
 
 The Tampa Bay Benthic Index (TBBI) \[1,2\]) is an assessment method that
 quantifies the ecological health of the benthic community in Tampa Bay.
@@ -24,7 +26,7 @@ files, available
 The process for downloading and working with the data are similar as for
 the other functions in tbeptools.
 
-### Data import and included datasets
+#### Data import and included datasets
 
 Data for calculating TBBI scores can be imported into the current R
 session using the
@@ -100,7 +102,7 @@ receive the following message:
 #> Replacing local file with current...
 ```
 
-### Calculating TBBI scores
+#### Calculating TBBI scores
 
 After the data are imported, you can view them from the assigned object.
 The data are provided as a nested tibble that includes three different
@@ -230,7 +232,7 @@ tbbiscr
 #> #   Salinity <dbl>
 ```
 
-### Plotting results
+#### Plotting results
 
 The TBBI scores can be viewed as annual averages for each bay segment
 using the
@@ -380,26 +382,17 @@ similar to the TBBI.
 
 ``` r
 
-show_ambimatrix(ambiscr)
-```
-
-![](tbbi_files/figure-html/unnamed-chunk-15-1.png)
-
-The same matrix is available for the Tampa Bay AMBI.
-
-``` r
-
 show_ambimatrix(ambiscr_tb)
 ```
 
-![](tbbi_files/figure-html/unnamed-chunk-16-1.png)
+![](tbbi_files/figure-html/unnamed-chunk-15-1.png)
 
 The matrix can also be produced as a [plotly](https://plotly.com/r/)
 interactive plot.
 
 ``` r
 
-show_ambimatrix(ambiscr, plotly = TRUE)
+show_ambimatrix(ambiscr_tb, plotly = TRUE)
 ```
 
 Mean annual adjusted AMBI scores can be plotted over time using
@@ -413,7 +406,7 @@ objects.
 show_ambitrend(ambiscr, ambiscr_tb)
 ```
 
-![](tbbi_files/figure-html/unnamed-chunk-18-1.png)
+![](tbbi_files/figure-html/unnamed-chunk-17-1.png)
 
 The same plot can be produced as an interactive
 [plotly](https://plotly.com/r/) object.
@@ -422,6 +415,19 @@ The same plot can be produced as an interactive
 
 show_ambitrend(ambiscr, ambiscr_tb, plotly = TRUE)
 ```
+
+By default,
+[`show_ambitrend()`](https://tbep-tech.github.io/tbeptools/reference/show_ambitrend.md)
+plots the mean adjusted AMBI scores for all bay segments combined. The
+`bay_segment` argument can be used to plot individual segments (or
+combinations) instead.
+
+``` r
+
+show_ambitrend(ambiscr, ambiscr_tb, bay_segment = 'HB')
+```
+
+![](tbbi_files/figure-html/unnamed-chunk-19-1.png)
 
 A summary table of the percent of sites in each AMBI category by bay
 segment over a selected year range can be produced with
@@ -435,27 +441,29 @@ show_ambitab(ambiscr)
 
 | Segment | n | Extremely Polluted | Heavily Polluted | Meanly Polluted | Slightly Polluted | Unpolluted |
 |----|----|----|----|----|----|----|
-| OTB | 318 | 1.26% | 0.00% | 1.26% | 85.22% | 12.26% |
-| HB | 470 | 4.04% | 0.21% | 6.38% | 88.72% | 0.64% |
-| MTB | 332 | 0.30% | 0.00% | 0.00% | 84.64% | 15.06% |
-| LTB | 258 | 0.00% | 0.00% | 0.00% | 85.27% | 14.73% |
-| TCB | 129 | 0.00% | 0.78% | 1.55% | 90.70% | 6.98% |
-| MR | 237 | 0.00% | 0.00% | 1.27% | 97.05% | 1.69% |
-| BCB | 365 | 1.64% | 0.55% | 1.92% | 91.51% | 4.38% |
-| All | 2,109 | 1.42% | 0.19% | 2.18% | 88.67% | 7.54% |
+| OTB | 318 | 1.3% | 0.0% | 1.3% | 85.2% | 12.3% |
+| HB | 470 | 4.0% | 0.2% | 6.4% | 88.7% | 0.6% |
+| MTB | 332 | 0.3% | 0.0% | 0.0% | 84.6% | 15.1% |
+| LTB | 258 | 0.0% | 0.0% | 0.0% | 85.3% | 14.7% |
+| TCB | 129 | 0.0% | 0.8% | 1.6% | 90.7% | 7.0% |
+| MR | 237 | 0.0% | 0.0% | 1.3% | 97.0% | 1.7% |
+| BCB | 365 | 1.6% | 0.5% | 1.9% | 91.5% | 4.4% |
+| All | 2,109 | 1.4% | 0.2% | 2.2% | 88.7% | 7.5% |
 
-Summarizing for individual bay segments is also possible by specifying
-the `bay_segment` argument.
+Summarizing for individual bay segments or a different annual range is
+also possible by specifying the `bay_segment` and `yrrng` arguments,
+respectively.
 
 ``` r
 
-show_ambitab(ambiscr, bay_segment = 'HB')
+show_ambitab(ambiscr, bay_segment = c('OTB', 'HB'), yrrng = c(2010, 2020))
 ```
 
 | Segment | n | Extremely Polluted | Heavily Polluted | Meanly Polluted | Slightly Polluted | Unpolluted |
 |----|----|----|----|----|----|----|
-| HB | 470 | 4.04% | 0.21% | 6.38% | 88.72% | 0.64% |
-| All | 470 | 4.04% | 0.21% | 6.38% | 88.72% | 0.64% |
+| OTB | 91 | 3.3% | 0.0% | 0.0% | 89.0% | 7.7% |
+| HB | 99 | 3.0% | 0.0% | 8.1% | 86.9% | 2.0% |
+| All | 190 | 3.2% | 0.0% | 4.2% | 87.9% | 4.7% |
 
 ### Additional sediment data
 
