@@ -10,7 +10,7 @@ show_ambimatrix(
   yrrng = c(1993, 2024),
   window = TRUE,
   alph = 1,
-  txtsz = 3,
+  txtsz = 2.5,
   family = "sans",
   rev = FALSE,
   position = "top",
