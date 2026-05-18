@@ -6,16 +6,17 @@ tomap <- tibble::tibble(
 tomap <- sf::st_as_sf(tomap, coords = c('lon', 'lat'), crs = 4326)
 
 test_that("util_map correctly creates a leaflet map", {
-
-  # Test if the function runs without errors
   result <- util_map(tomap)
 
-  # Check if the result is a leaflet object
   expect_s3_class(result, "leaflet")
 
-  # Check if the map contains the expected layers
-  expect_true(any(result$x$calls[[12]]$args[[1]] == "Esri.WorldImagery"))
-
+  expect_true(any(vapply(
+    result$x$calls,
+    function(x) identical(x$method, "addProviderTiles") &&
+      length(x$args) > 0 &&
+      identical(as.character(x$args[[1]]), "Esri.WorldImagery"),
+    logical(1)
+  )))
 })
 
 test_that("util_map has no minimap when minimap argument is NULL", {
