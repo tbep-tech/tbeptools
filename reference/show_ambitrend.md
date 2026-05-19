@@ -81,7 +81,7 @@ Only sampling funded by TBEP and as part of the routine EPC benthic
 monitoring program are included.
 
 If both `ambiscr` and `ambiscr_tb` are provided, both series are shown
-on the same plot with black used for the first series and dark grey for
+on the same plot with dark grey used for the first series and black for
 the second. The AMBI variant for each input is detected automatically
 from the column names (`AMBI` or `TBAMBI`).
 
