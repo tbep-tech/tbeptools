@@ -19,7 +19,7 @@
 #'
 #' Only sampling funded by TBEP and as part of the routine EPC benthic monitoring program are included.
 #'
-#' If both \code{ambiscr} and \code{ambiscr_tb} are provided, both series are shown on the same plot with black used for the first series and dark grey for the second.  The AMBI variant for each input is detected automatically from the column names (\code{AMBI} or \code{TBAMBI}).
+#' If both \code{ambiscr} and \code{ambiscr_tb} are provided, both series are shown on the same plot with dark grey used for the first series and black for the second.  The AMBI variant for each input is detected automatically from the column names (\code{AMBI} or \code{TBAMBI}).
 #'
 #' @concept show
 #'
@@ -80,7 +80,7 @@ show_ambitrend <- function(ambiscr, ambiscr_tb = NULL,
   plot_dat <- dplyr::bind_rows(dat1, dat2) %>%
     dplyr::mutate(type = factor(type, levels = c('GOM AMBI', 'TB AMBI')))
 
-  type_col <- c('GOM AMBI' = 'black', 'TB AMBI' = 'darkgrey')
+  type_col <- c('GOM AMBI' = 'darkgrey', 'TB AMBI' = 'black')
 
   y_lims <- if (yscl) c(0, 10) else {
     pad <- diff(range(plot_dat$score)) * 0.05
