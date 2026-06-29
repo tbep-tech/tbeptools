@@ -451,6 +451,10 @@ read_importprism <- function(
   d_todo    <- get_todo()
 
   if (verbose){
+    prism_max <- max(d_updates$date)
+    message(paste(
+      "PRISM calendar latest:", prism_max,
+      sprintf("(%d days behind today)", as.integer(Sys.Date() - prism_max))))
     msg <- ifelse(
       nrow(d_todo) > 0,
       paste(
