@@ -114,7 +114,7 @@ traindat <- read_transect(training = TRUE)
 
 # view the data
 traindat
-#> # A tibble: 1,857 × 11
+#> # A tibble: 2,103 × 11
 #>       yr grp   grpact    Crew  MonitoringAgency Site  Depth Species var   aveval
 #>    <int> <chr> <chr>     <chr> <chr>            <chr> <int> <chr>   <chr>  <dbl>
 #>  1  2020 A     2020: MC… K. H… MCNRD            1       -50 Halodu… Abun…    3  
@@ -127,7 +127,7 @@ traindat
 #>  8  2020 A     2020: MC… K. H… MCNRD            3       -60 Halodu… Blad…   22  
 #>  9  2020 A     2020: MC… K. H… MCNRD            3       -60 Halodu… Shor…   27.3
 #> 10  2020 A     2020: MC… K. H… MCNRD            3       -60 Thalas… Abun…    1  
-#> # ℹ 1,847 more rows
+#> # ℹ 2,093 more rows
 #> # ℹ 1 more variable: sdval <dbl>
 ```
 
