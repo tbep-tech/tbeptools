@@ -4,14 +4,16 @@
 \alias{read_importwqp}
 \title{Import data from the Water Quality Portal}
 \usage{
-read_importwqp(org, type, trace = F)
+read_importwqp(org, type, trace = T, max_retries = 5)
 }
 \arguments{
 \item{org}{chr string indicating the organization identifier, see details}
 
 \item{type}{chr string indicating data type to download, one of \code{"wq"} or \code{"fib"}}
 
-\item{trace}{logical indicating whether to display progress messages, default \code{FALSE}}
+\item{trace}{logical indicating whether to display progress messages, default \code{TRUE}}
+
+\item{max_retries}{integer indicating maximum number of retries on request failure, default \code{5}}
 }
 \value{
 A data frame containing the imported data for the selected county
@@ -25,6 +27,8 @@ This function retrieves data from the Water Quality Portal API (\url{https://www
 The \code{org} argument retrieves data for the specific organization. Valid entries for \code{org} include \code{"21FLCOSP_WQX"} (City of St. Petersburg), \code{"21FLDOH_WQX"} (Florida Department of Health), \code{"21FLHILL_WQX"} (Hillsborough County), \code{"21FLMANA_WQX"} (Manatee County), \code{"21FLPASC_WQX"} (Pasco County), \code{"21FLPDEM_WQX"} (Pinellas County), \code{"21FLPOLK_WQX"} (Polk County), \code{"21FLTPA_WQX"} (Florida Department of Environmental Protection, Southwest District), or \code{"21FLHESD_WQX"} (Hillsborough County Environmental Services Division).  The naming convention follows the Organization ID in the Water Quality Portal.
 
 The function fetches results and station metadata, combines and formats them using the \code{read_formwqp} function, and returns the processed data as a data frame.  Parameters are specific to the \code{type} argument.
+
+Requests are retried with exponential backoff (via \code{\link{util_importwqp}}) up to \code{max_retries} times if the Water Quality Portal API returns an intermittent failure.
 }
 \examples{
 \dontrun{

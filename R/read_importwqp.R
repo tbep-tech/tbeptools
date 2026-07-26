@@ -4,7 +4,8 @@
 #'
 #' @param org chr string indicating the organization identifier, see details
 #' @param type chr string indicating data type to download, one of \code{"wq"} or \code{"fib"}
-#' @param trace logical indicating whether to display progress messages, default \code{FALSE}
+#' @param trace logical indicating whether to display progress messages, default \code{TRUE}
+#' @param max_retries integer indicating maximum number of retries on request failure, default \code{5}
 #'
 #' @return A data frame containing the imported data for the selected county
 #'
@@ -13,6 +14,8 @@
 #' The \code{org} argument retrieves data for the specific organization. Valid entries for \code{org} include \code{"21FLCOSP_WQX"} (City of St. Petersburg), \code{"21FLDOH_WQX"} (Florida Department of Health), \code{"21FLHILL_WQX"} (Hillsborough County), \code{"21FLMANA_WQX"} (Manatee County), \code{"21FLPASC_WQX"} (Pasco County), \code{"21FLPDEM_WQX"} (Pinellas County), \code{"21FLPOLK_WQX"} (Polk County), \code{"21FLTPA_WQX"} (Florida Department of Environmental Protection, Southwest District), or \code{"21FLHESD_WQX"} (Hillsborough County Environmental Services Division).  The naming convention follows the Organization ID in the Water Quality Portal.
 #'
 #' The function fetches results and station metadata, combines and formats them using the \code{read_formwqp} function, and returns the processed data as a data frame.  Parameters are specific to the \code{type} argument.
+#'
+#' Requests are retried with exponential backoff (via \code{\link{util_importwqp}}) up to \code{max_retries} times if the Water Quality Portal API returns an intermittent failure.
 #'
 #' @concept read
 #'
@@ -30,7 +33,7 @@
 #' # get Pinellas County FIB data
 #' pincodata <- read_importwqp(org = '21FLPDEM_WQX', type = 'fib', trace = T)
 #' }
-read_importwqp <- function(org, type, trace = F){
+read_importwqp <- function(org, type, trace = T, max_retries = 5){
 
   # get type
   type <- match.arg(type, c('fib', 'wq'))
@@ -71,10 +74,7 @@ read_importwqp <- function(org, type, trace = F){
   if(trace)
     cat('Retrieving data...\n')
 
-  res <- url[['Result']] %>%
-    httr::POST(httr::add_headers(headers), body = jsonlite::toJSON(body)) %>%
-    httr::content('text') %>%
-    read.csv(text = .)
+  res <- util_importwqp(url[['Result']], headers, body, max_retries, trace)
 
   # stop if no data
   if(nrow(res) == 0)
@@ -83,10 +83,7 @@ read_importwqp <- function(org, type, trace = F){
   if(trace)
     cat('Retrieving station metadata...\n')
 
-  sta <- url[['Station']] %>%
-    httr::POST(httr::add_headers(headers), body = jsonlite::toJSON(body)) %>%
-    httr::content('text') %>%
-    read.csv(text = .)
+  sta <- util_importwqp(url[['Station']], headers, body, max_retries, trace)
 
   # combine and format
   out <- read_formwqp(res, sta, org, type, trace)
