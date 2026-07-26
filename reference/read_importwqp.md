@@ -5,7 +5,7 @@ Import data from the Water Quality Portal
 ## Usage
 
 ``` r
-read_importwqp(org, type, trace = F)
+read_importwqp(org, type, trace = T, max_retries = 5)
 ```
 
 ## Arguments
@@ -21,7 +21,12 @@ read_importwqp(org, type, trace = F)
 - trace:
 
   logical indicating whether to display progress messages, default
-  `FALSE`
+  `TRUE`
+
+- max_retries:
+
+  integer indicating maximum number of retries on request failure,
+  default `5`
 
 ## Value
 
@@ -48,6 +53,11 @@ convention follows the Organization ID in the Water Quality Portal.
 The function fetches results and station metadata, combines and formats
 them using the `read_formwqp` function, and returns the processed data
 as a data frame. Parameters are specific to the `type` argument.
+
+Requests are retried with exponential backoff (via
+[`util_importwqp`](https://tbep-tech.github.io/tbeptools/reference/util_importwqp.md))
+up to `max_retries` times if the Water Quality Portal API returns an
+intermittent failure.
 
 ## See also
 

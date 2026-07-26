@@ -603,6 +603,9 @@ Utility functions used by other functions.
   : Format a Vector of Years into a Concise Range
 - [`util_html()`](https://tbep-tech.github.io/tbeptools/reference/util_html.md)
   : Convert character string to html class
+- [`util_importwqp()`](https://tbep-tech.github.io/tbeptools/reference/util_importwqp.md)
+  : Utility function to retrieve data from the Water Quality Portal with
+  retry
 - [`util_importwqwa()`](https://tbep-tech.github.io/tbeptools/reference/util_importwqwa.md)
   : Retrieve metadata from the Water Atlas API
 - [`util_importwqwin()`](https://tbep-tech.github.io/tbeptools/reference/util_importwqwin.md)
