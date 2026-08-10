@@ -12,7 +12,7 @@ fimstations
 
 A simple features
 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object (POINT)
-with 8099 features and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84
+with 8423 features and 2 fields, +proj=longlat +ellps=WGS84 +datum=WGS84
 +no_defs
 
 - Reference:
@@ -31,7 +31,7 @@ if (FALSE) { # \dontrun{
 csv <- '~/Desktop/fimraw.csv'
 
 # load and assign to object
-fimstations <- read_importfim(csv, download_latest = FALSE, locs = TRUE)
+fimstations <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
 save(fimstations, file = 'data/fimstations.RData', compress = 'xz')
 } # }
 ```

@@ -523,7 +523,7 @@ Supporting datasets used by the other functions.
 - [`fibdata`](https://tbep-tech.github.io/tbeptools/reference/fibdata.md)
   : All Fecal Indicator Bacteria (FIB) data as of 20260302
 - [`fimdata`](https://tbep-tech.github.io/tbeptools/reference/fimdata.md)
-  : FIM data for Tampa Bay Nekton Index current as of 09032025
+  : FIM data for Tampa Bay Nekton Index current as of 08102026
 - [`fimstations`](https://tbep-tech.github.io/tbeptools/reference/fimstations.md)
   : Spatial data object of FIM stations including Tampa Bay segments
 - [`hcesdfibdata`](https://tbep-tech.github.io/tbeptools/reference/hcesdfibdata.md)

@@ -35,7 +35,7 @@ catch data were available.
 
 ``` r
 anlz_tbnimet(fimdata)
-#> # A tibble: 8,094 × 10
+#> # A tibble: 8,418 × 10
 #>    Reference  Year Month Season bay_segment NumTaxa Shannon TaxaSelect NumGuilds
 #>    <chr>     <dbl> <dbl> <chr>  <chr>         <dbl>   <dbl>      <dbl>     <dbl>
 #>  1 TBM19980…  1998     1 Winter OTB               2   0.362          0         2
@@ -48,6 +48,6 @@ anlz_tbnimet(fimdata)
 #>  8 TBM19980…  1998     1 Winter OTB               0   0              0         0
 #>  9 TBM19980…  1998     1 Winter HB                4   0.794          1         4
 #> 10 TBM19980…  1998     1 Winter HB                1   0              0         1
-#> # ℹ 8,084 more rows
+#> # ℹ 8,408 more rows
 #> # ℹ 1 more variable: BenthicTaxa <dbl>
 ```

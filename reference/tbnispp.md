@@ -52,21 +52,15 @@ A data frame with 196 rows and 10 variables:
 
   chr
 
+## Details
+
+See `data-raw/tbnispp-raw.R` for the script used to create the data
+object, which pulls the source rds file from the
+[tbni-proc](https://github.com/tbep-tech/tbni-proc) repo.
+
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-library(dplyr)
-
-# import and clean
-tbnispp <- read.csv('../tbni-proc/data/TBIndex_spp_codes.csv',
-    header = TRUE, stringsAsFactors = FALSE) %>%
-  mutate(
-    NODCCODE = as.character(NODCCODE),
-    NODCCODE = case_when(NODCCODE == "9.998e+09" ~ "9998000000",
-                             TRUE ~ NODCCODE)
-  )
-
-save(tbnispp, file = 'data/tbnispp.RData', compress = 'xz')
-} # }
+dim(tbnispp)
+#> [1] 196  10
 ```

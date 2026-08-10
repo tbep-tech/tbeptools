@@ -37,7 +37,7 @@ total TBNI score is returned as `TBNI_Score`.
 
 ``` r
 anlz_tbniscr(fimdata)
-#> # A tibble: 8,094 × 16
+#> # A tibble: 8,418 × 16
 #>    Reference      Year Month Season bay_segment TBNI_Score NumTaxa ScoreNumTaxa
 #>    <chr>         <dbl> <dbl> <chr>  <chr>            <dbl>   <dbl>        <dbl>
 #>  1 TBM1998010906  1998     1 Winter OTB                 18       2            2
@@ -50,7 +50,7 @@ anlz_tbniscr(fimdata)
 #>  8 TBM1998010922  1998     1 Winter OTB                  0       0            0
 #>  9 TBM1998010926  1998     1 Winter HB                  48       4            4
 #> 10 TBM1998010928  1998     1 Winter HB                   8       1            1
-#> # ℹ 8,084 more rows
+#> # ℹ 8,408 more rows
 #> # ℹ 8 more variables: BenthicTaxa <dbl>, ScoreBenthicTaxa <dbl>,
 #> #   TaxaSelect <dbl>, ScoreTaxaSelect <dbl>, NumGuilds <dbl>,
 #> #   ScoreNumGuilds <dbl>, Shannon <dbl>, ScoreShannon <dbl>

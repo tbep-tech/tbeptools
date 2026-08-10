@@ -42,7 +42,7 @@ A data frame of annual averages by bay segment
 ``` r
 tbniscr <- anlz_tbniscr(fimdata)
 anlz_tbniave(tbniscr)
-#> # A tibble: 108 × 5
+#> # A tibble: 112 × 5
 #>    bay_segment  Year Segment_TBNI Action          outcome
 #>    <fct>       <dbl>        <dbl> <fct>           <chr>  
 #>  1 HB           1998           47 Stay the Course green  
@@ -55,5 +55,5 @@ anlz_tbniave(tbniscr)
 #>  8 HB           2005           32 Caution         yellow 
 #>  9 HB           2006           41 Caution         yellow 
 #> 10 HB           2007           42 Caution         yellow 
-#> # ℹ 98 more rows
+#> # ℹ 102 more rows
 ```
