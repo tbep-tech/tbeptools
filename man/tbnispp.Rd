@@ -25,20 +25,12 @@ tbnispp
 \description{
 Reference table for Tampa Bay Nekton Index species classifications
 }
-\examples{
-\dontrun{
-library(dplyr)
-
-# import and clean
-tbnispp <- read.csv('../tbni-proc/data/TBIndex_spp_codes.csv',
-    header = TRUE, stringsAsFactors = FALSE) \%>\%
-  mutate(
-    NODCCODE = as.character(NODCCODE),
-    NODCCODE = case_when(NODCCODE == "9.998e+09" ~ "9998000000",
-                             TRUE ~ NODCCODE)
-  )
-
-save(tbnispp, file = 'data/tbnispp.RData', compress = 'xz')
+\details{
+See \code{data-raw/tbnispp-raw.R} for the script used to create the
+data object, which pulls the source rds file from the
+\href{https://github.com/tbep-tech/tbni-proc}{tbni-proc} repo.
 }
+\examples{
+dim(tbnispp)
 }
 \keyword{datasets}
