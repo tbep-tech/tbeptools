@@ -80,11 +80,10 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', lastl
       paste(., 'acres')
 
     # y loc for last bar label
-    lasty <- seagrass %>%
+    lastacres <- seagrass %>%
       filter(Year == maxyr) %>%
-      pull(Acres) %>%
-      `/`(1000) %>%
-      `-`(1)
+      pull(Acres)
+    lasty <- lastacres / 1000 - 1
 
     p <- p +
       ggplot2::annotate('text', x = nrow(toplo), y = lasty, label = lastlab, angle = 90, hjust = 1, vjust = 0.3, size = 3, family = family)
