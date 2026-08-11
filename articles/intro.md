@@ -38,7 +38,7 @@ chlorophyll-a, and secchi depth.
 Data collected from the monitoring program are processed and maintained
 in a spreadsheet titled
 `RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx` at
-<https://epcbocc.sharepoint.com/:x:/s/Share/EWKgPirIkoxMp9Hm_wVEICsBk6avI9iSRjFiOxX58wXzIQ?e=kAWZXl&download=1>
+<https://epcbocc.sharepoint.com/:x:/s/Share/IQCF2ebdelJRRpNa8yFPdVaIAWvFN-5YfM_x37X9iiSEkh4?e=5eti14&download=1>
 (viewable
 [here](https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU)).
 These data include observations at all stations and for all parameters
@@ -918,7 +918,7 @@ show_annualassess(epcdata, yrsel = 2025, caption = TRUE)
 | MTB     | 5.5          | 7.4    | 0.56                    | 0.83   |
 | LTB     | 3.0          | 4.6    | 0.60                    | 0.63   |
 
-Water quality outcomes for 2025. {.table .cl-ccd5751a
+Water quality outcomes for 2025. {.table .cl-9b4b5e3c
 quarto-disable-processing="true"}
 
 Second, the

@@ -32,8 +32,8 @@ if (FALSE) { # \dontrun{
 path <- '~/Desktop/sediment.zip'
 
 # download
-urlin1 <- 'https://epcbocc.sharepoint.com/:x:/s/Share/'
-urlin2 <- 'Ef9utuKCHD9LliarsOPKCJwB5kxgCObf0tY5x5wX20JQUA?e=DuTseb'
+urlin1 <- 'https://epcbocc.sharepoint.com/:u:/s/Share/'
+urlin2 <- 'IQD_brbighw_S5Ymq7DjygicAeZMYAjm39LWOcecF9tCUFA?e=hyZZRe'
 urlin <- paste0(urlin1, urlin2, '&download=1')
 read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 
