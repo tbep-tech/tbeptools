@@ -37,7 +37,7 @@ read_importbenthic <- function(path, download_latest = FALSE, remove = FALSE){
 
   ##
   # download
-  urlin <- 'https://epcbocc.sharepoint.com/:u:/s/Share/EQUCWBuwCNdGuMREYAyAD1gBKC98mYtCHMWX0FYLrbT4KA?e=nDfnnQ&download=1'
+  urlin <- 'https://epcbocc.sharepoint.com/:u:/s/Share/IQAFAlgbsAjXRrjERGAMgA9YASgvfJmLQhzFl9BWC620-Cg?e=rfGIk4&download=1'
   read_dlcurrent(path, download_latest, urlin = urlin)
 
   # unzip
