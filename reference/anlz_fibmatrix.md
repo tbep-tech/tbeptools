@@ -89,12 +89,14 @@ anlz_fibmatrix(
 ## Value
 
 A [`tibble`](https://tibble.tidyverse.org/reference/tibble.html) object
-with FIB summaries by year and station including columns for the
-estimated geometric mean of Enterococcus (marine) or E. coli (fresh)
-concentrations (`gmean`), the proportion of samples exceeding 130 CFU /
-100 mL (Enterococcus) or 410 CFU / 100 mL (`exced`), the count of
-samples (`cnt`), and a category indicating a letter outcome based on the
-proportion of exceedences (`cat`). Results can be summarized by bay
+with FIB summaries by year and station/bay segment (`grp`), including
+the estimated geometric mean of Enterococcus (marine) or E. coli (fresh)
+concentrations (`gmean`), the sample class (`class`, `"Marine"` or
+`"Fresh"`), a letter category based on the likelihood of exceeding the
+applicable threshold (`cat`), the count of samples over the lagged
+(`lagyr`) window exceeding that threshold (`nexceed`) and the total
+sample count over the same window (`nsamp`), and a continuous companion
+to `cat` (`exceed_rate`, see Details). Results can be summarized by bay
 segment if `bay_segment` is not `NULL` and the input data is from
 [`read_importentero`](https://tbep-tech.github.io/tbeptools/reference/read_importentero.md).
 
@@ -109,6 +111,9 @@ mL in a given year. For E. coli (fresh), the default threshold is 410
 CFU / 100 mL. The proportions are categorized as A, B, C, D, or E
 (Microbial Water Quality Assessment or MWQA categories) with
 corresponding colors, where the breakpoints for each category are \<10\\
+
+The `cat` letter grade is itself a discretized read on a single
+continuous quantity, also returned as `exceed_rate`: the one-sided 90\\
 
 If the input data are from
 [`read_importentero`](https://tbep-tech.github.io/tbeptools/reference/read_importentero.md)
@@ -150,71 +155,71 @@ been tested for other organizations.
 
 ``` r
 anlz_fibmatrix(fibdata)
-#> # A tibble: 120 × 7
-#>       yr grp   class  gmean Latitude Longitude cat  
-#>    <dbl> <fct> <chr>  <dbl>    <dbl>     <dbl> <chr>
-#>  1  2003 105   Marine  97.1     28.0     -82.4 C    
-#>  2  2003 152   Marine 266.      28.0     -82.5 D    
-#>  3  2003 137   Marine 342.      28.0     -82.5 D    
-#>  4  2004 105   Marine 216.      28.0     -82.4 C    
-#>  5  2004 152   Marine 246.      28.0     -82.5 C    
-#>  6  2004 137   Marine 302.      28.0     -82.5 D    
-#>  7  2005 105   Marine 117.      28.0     -82.4 C    
-#>  8  2005 152   Marine  91.7     28.0     -82.5 C    
-#>  9  2005 137   Marine  66.6     28.0     -82.5 C    
-#> 10  2006 105   Marine  90.7     28.0     -82.4 C    
+#> # A tibble: 120 × 10
+#>       yr grp   class  gmean Latitude Longitude cat   nexceed nsamp exceed_rate
+#>    <dbl> <fct> <chr>  <dbl>    <dbl>     <dbl> <chr>   <dbl> <dbl>       <dbl>
+#>  1  2003 105   Marine  97.1     28.0     -82.4 C          18    35       0.394
+#>  2  2003 152   Marine 266.      28.0     -82.5 D          23    36       0.519
+#>  3  2003 137   Marine 342.      28.0     -82.5 D          23    36       0.519
+#>  4  2004 105   Marine 216.      28.0     -82.4 C          18    36       0.382
+#>  5  2004 152   Marine 246.      28.0     -82.5 C          21    36       0.463
+#>  6  2004 137   Marine 302.      28.0     -82.5 D          26    36       0.605
+#>  7  2005 105   Marine 117.      28.0     -82.4 C          17    36       0.355
+#>  8  2005 152   Marine  91.7     28.0     -82.5 C          15    36       0.304
+#>  9  2005 137   Marine  66.6     28.0     -82.5 C          19    36       0.409
+#> 10  2006 105   Marine  90.7     28.0     -82.4 C          17    36       0.355
 #> # ℹ 110 more rows
 
 # use different dataset
 anlz_fibmatrix(enterodata, lagyr = 1)
 #> Warning: Stations with insufficient data for lagyr: 21FLPDEM_WQX-05-06
-#> # A tibble: 719 × 7
-#>       yr grp                    class  gmean Latitude Longitude cat  
-#>    <dbl> <fct>                  <chr>  <dbl>    <dbl>     <dbl> <chr>
-#>  1  2000 21FLDOH_WQX-MANATEE152 Marine  10.7     27.5     -82.7 A    
-#>  2  2001 21FLDOH_WQX-MANATEE152 Marine  16.0     27.5     -82.7 A    
-#>  3  2001 21FLHILL_WQX-101       Marine 284.      28.0     -82.6 C    
-#>  4  2001 21FLHILL_WQX-102       Marine  55.7     28.0     -82.6 A    
-#>  5  2001 21FLHILL_WQX-103       Marine 214.      28.0     -82.6 B    
-#>  6  2001 21FLHILL_WQX-104       Marine 408.      28.0     -82.6 D    
-#>  7  2001 21FLHILL_WQX-109       Marine  97.8     27.9     -82.4 B    
-#>  8  2001 21FLHILL_WQX-112       Marine  48.3     27.7     -82.4 A    
-#>  9  2001 21FLHILL_WQX-133       Marine 747.      27.9     -82.4 D    
-#> 10  2001 21FLHILL_WQX-136       Marine  26.1     27.7     -82.5 A    
+#> # A tibble: 719 × 10
+#>       yr grp      class gmean Latitude Longitude cat   nexceed nsamp exceed_rate
+#>    <dbl> <fct>    <chr> <dbl>    <dbl>     <dbl> <chr>   <dbl> <dbl>       <dbl>
+#>  1  2000 21FLDOH… Mari…  10.7     27.5     -82.7 A           0    11      0     
+#>  2  2001 21FLDOH… Mari…  16.0     27.5     -82.7 A           0    26      0     
+#>  3  2001 21FLHIL… Mari… 284.      28.0     -82.6 C           7    10      0.448 
+#>  4  2001 21FLHIL… Mari…  55.7     28.0     -82.6 A           2     7      0.0788
+#>  5  2001 21FLHIL… Mari… 214.      28.0     -82.6 B           6    12      0.288 
+#>  6  2001 21FLHIL… Mari… 408.      28.0     -82.6 D          10    12      0.614 
+#>  7  2001 21FLHIL… Mari…  97.8     27.9     -82.4 B           2     4      0.143 
+#>  8  2001 21FLHIL… Mari…  48.3     27.7     -82.4 A           1     7      0.0149
+#>  9  2001 21FLHIL… Mari… 747.      27.9     -82.4 D           8     9      0.632 
+#> 10  2001 21FLHIL… Mari…  26.1     27.7     -82.5 A           0     5      0     
 #> # ℹ 709 more rows
 
 # subset to only wet samples
 anlz_fibmatrix(enterodata, lagyr = 1, subset_wetdry = "wet",
                temporal_window = 2, wet_threshold = 0.5)
-#> # A tibble: 526 × 7
-#>       yr grp                    class   gmean Latitude Longitude cat  
-#>    <dbl> <fct>                  <chr>   <dbl>    <dbl>     <dbl> <chr>
-#>  1  2001 21FLDOH_WQX-MANATEE152 Marine   31.6     27.5     -82.7 A    
-#>  2  2001 21FLHILL_WQX-101       Marine 2252.      28.0     -82.6 C    
-#>  3  2001 21FLHILL_WQX-102       Marine   66.0     28.0     -82.6 A    
-#>  4  2001 21FLHILL_WQX-103       Marine  472.      28.0     -82.6 B    
-#>  5  2001 21FLHILL_WQX-104       Marine 3284.      28.0     -82.6 C    
-#>  6  2001 21FLHILL_WQX-109       Marine  133.      27.9     -82.4 A    
-#>  7  2001 21FLHILL_WQX-112       Marine   40       27.7     -82.4 A    
-#>  8  2001 21FLHILL_WQX-133       Marine 3286.      27.9     -82.4 C    
-#>  9  2002 21FLDOH_WQX-MANATEE152 Marine   13.7     27.5     -82.7 A    
-#> 10  2002 21FLHILL_WQX-101       Marine  531.      28.0     -82.6 C    
+#> # A tibble: 526 × 10
+#>       yr grp     class  gmean Latitude Longitude cat   nexceed nsamp exceed_rate
+#>    <dbl> <fct>   <chr>  <dbl>    <dbl>     <dbl> <chr>   <dbl> <dbl>       <dbl>
+#>  1  2001 21FLDO… Mari…   31.6     27.5     -82.7 A           0     4      0     
+#>  2  2001 21FLHI… Mari… 2252.      28.0     -82.6 C           2     2      0.316 
+#>  3  2001 21FLHI… Mari…   66.0     28.0     -82.6 A           1     3      0.0345
+#>  4  2001 21FLHI… Mari…  472.      28.0     -82.6 B           2     3      0.196 
+#>  5  2001 21FLHI… Mari… 3284.      28.0     -82.6 C           2     2      0.316 
+#>  6  2001 21FLHI… Mari…  133.      27.9     -82.4 A           1     2      0.0513
+#>  7  2001 21FLHI… Mari…   40       27.7     -82.4 A           0     1      0     
+#>  8  2001 21FLHI… Mari… 3286.      27.9     -82.4 C           2     2      0.316 
+#>  9  2002 21FLDO… Mari…   13.7     27.5     -82.7 A           0    10      0     
+#> 10  2002 21FLHI… Mari…  531.      28.0     -82.6 C           4     5      0.416 
 #> # ℹ 516 more rows
 
 # Manatee County data
 anlz_fibmatrix(mancofibdata, lagyr = 1)
-#> # A tibble: 263 × 7
-#>       yr grp   class   gmean Latitude Longitude cat  
-#>    <dbl> <fct> <chr>   <dbl>    <dbl>     <dbl> <chr>
-#>  1  2013 LM4   Marine  771.      27.5     -82.5 C    
-#>  2  2014 LM3   Marine  161       27.5     -82.5 A    
-#>  3  2014 LM4   Marine  387       27.5     -82.5 A    
-#>  4  2015 LM3   Marine  259.      27.5     -82.5 C    
-#>  5  2015 LM4   Marine  222.      27.5     -82.5 C    
-#>  6  2016 LM4   Marine 2419       27.5     -82.5 A    
-#>  7  2017 LM3   Marine 1553       27.5     -82.5 A    
-#>  8  2018 BC1   Fresh  1591.      27.4     -82.6 C    
-#>  9  2018 BC2   Fresh   674.      27.4     -82.6 C    
-#> 10  2018 BR1   Fresh    16.6     27.4     -82.5 A    
+#> # A tibble: 263 × 10
+#>       yr grp   class   gmean Latitude Longitude cat   nexceed nsamp exceed_rate
+#>    <dbl> <fct> <chr>   <dbl>    <dbl>     <dbl> <chr>   <dbl> <dbl>       <dbl>
+#>  1  2013 LM4   Marine  771.      27.5     -82.5 C           2     2     0.316  
+#>  2  2014 LM3   Marine  161       27.5     -82.5 A           1     1     0.1    
+#>  3  2014 LM4   Marine  387       27.5     -82.5 A           1     1     0.1    
+#>  4  2015 LM3   Marine  259.      27.5     -82.5 C           2     2     0.316  
+#>  5  2015 LM4   Marine  222.      27.5     -82.5 C           2     2     0.316  
+#>  6  2016 LM4   Marine 2419       27.5     -82.5 A           1     1     0.1    
+#>  7  2017 LM3   Marine 1553       27.5     -82.5 A           1     1     0.1    
+#>  8  2018 BC1   Fresh  1591.      27.4     -82.6 C           2     2     0.316  
+#>  9  2018 BC2   Fresh   674.      27.4     -82.6 C           7    12     0.362  
+#> 10  2018 BR1   Fresh    16.6     27.4     -82.5 A           1    11     0.00953
 #> # ℹ 253 more rows
 ```

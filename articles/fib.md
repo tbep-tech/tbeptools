@@ -253,24 +253,30 @@ right-centered window that uses the previous two years and the current
 year to calculate probabilities from the monthly samples (`lagyr = 3`).
 The columns for each station and year include the estimated geometric
 mean of the indicator concentrations (`gmean`) and a category indicating
-a letter outcome based on the likelihood of exceedences (`cat`).
+a letter outcome based on the likelihood of exceedences (`cat`). A
+continuous companion to `cat` is also included (`exceed_rate`), the
+one-sided 90% upper confidence limit on the true exceedance rate, which
+is useful where a continuous score is preferred over the five-level
+letter grade (see
+[`?anlz_fibmatrix`](https://tbep-tech.github.io/tbeptools/reference/anlz_fibmatrix.md)
+for details).
 
 ``` r
 
 anlz_fibmatrix(fibdata)
-#> # A tibble: 120 × 7
-#>       yr grp   class  gmean Latitude Longitude cat  
-#>    <dbl> <fct> <chr>  <dbl>    <dbl>     <dbl> <chr>
-#>  1  2003 105   Marine  97.1     28.0     -82.4 C    
-#>  2  2003 152   Marine 266.      28.0     -82.5 D    
-#>  3  2003 137   Marine 342.      28.0     -82.5 D    
-#>  4  2004 105   Marine 216.      28.0     -82.4 C    
-#>  5  2004 152   Marine 246.      28.0     -82.5 C    
-#>  6  2004 137   Marine 302.      28.0     -82.5 D    
-#>  7  2005 105   Marine 117.      28.0     -82.4 C    
-#>  8  2005 152   Marine  91.7     28.0     -82.5 C    
-#>  9  2005 137   Marine  66.6     28.0     -82.5 C    
-#> 10  2006 105   Marine  90.7     28.0     -82.4 C    
+#> # A tibble: 120 × 10
+#>       yr grp   class  gmean Latitude Longitude cat   nexceed nsamp exceed_rate
+#>    <dbl> <fct> <chr>  <dbl>    <dbl>     <dbl> <chr>   <dbl> <dbl>       <dbl>
+#>  1  2003 105   Marine  97.1     28.0     -82.4 C          18    35       0.394
+#>  2  2003 152   Marine 266.      28.0     -82.5 D          23    36       0.519
+#>  3  2003 137   Marine 342.      28.0     -82.5 D          23    36       0.519
+#>  4  2004 105   Marine 216.      28.0     -82.4 C          18    36       0.382
+#>  5  2004 152   Marine 246.      28.0     -82.5 C          21    36       0.463
+#>  6  2004 137   Marine 302.      28.0     -82.5 D          26    36       0.605
+#>  7  2005 105   Marine 117.      28.0     -82.4 C          17    36       0.355
+#>  8  2005 152   Marine  91.7     28.0     -82.5 C          15    36       0.304
+#>  9  2005 137   Marine  66.6     28.0     -82.5 C          19    36       0.409
+#> 10  2006 105   Marine  90.7     28.0     -82.4 C          17    36       0.355
 #> # ℹ 110 more rows
 ```
 
@@ -749,24 +755,25 @@ the previous two years and the current year to calculate probabilities
 from the monthly samples (`lagyr = 3`). The columns for each station and
 year include the estimated geometric mean of fecal bacterial
 concentrations (`gmean`) and a category indicating a letter outcome
-based on the likelihood of exceedences (`cat`).
+based on the likelihood of exceedences (`cat`), along with its
+continuous companion `exceed_rate` (see above).
 
 ``` r
 
 anlz_fibmatrix(enterodata)
-#> # A tibble: 605 × 7
-#>       yr grp                    class   gmean Latitude Longitude cat  
-#>    <dbl> <fct>                  <chr>   <dbl>    <dbl>     <dbl> <chr>
-#>  1  2002 21FLDOH_WQX-MANATEE152 Marine   13.6     27.5     -82.7 A    
-#>  2  2003 21FLDOH_WQX-MANATEE152 Marine   18.9     27.5     -82.7 A    
-#>  3  2003 21FLHILL_WQX-101       Marine  297.      28.0     -82.6 D    
-#>  4  2003 21FLHILL_WQX-102       Marine  103.      28.0     -82.6 B    
-#>  5  2003 21FLHILL_WQX-103       Marine  359.      28.0     -82.6 D    
-#>  6  2003 21FLHILL_WQX-104       Marine 2327.      28.0     -82.6 D    
-#>  7  2003 21FLHILL_WQX-109       Marine   36.6     27.9     -82.4 B    
-#>  8  2003 21FLHILL_WQX-112       Marine   49.4     27.7     -82.4 B    
-#>  9  2003 21FLHILL_WQX-133       Marine  829.      27.9     -82.4 E    
-#> 10  2003 21FLHILL_WQX-136       Marine   60.7     27.7     -82.5 A    
+#> # A tibble: 605 × 10
+#>       yr grp     class  gmean Latitude Longitude cat   nexceed nsamp exceed_rate
+#>    <dbl> <fct>   <chr>  <dbl>    <dbl>     <dbl> <chr>   <dbl> <dbl>       <dbl>
+#>  1  2002 21FLDO… Mari…   13.6     27.5     -82.7 A           1    94    0.00112 
+#>  2  2003 21FLDO… Mari…   18.9     27.5     -82.7 A           1   187    0.000563
+#>  3  2003 21FLHI… Mari…  297.      28.0     -82.6 D          23    34    0.553   
+#>  4  2003 21FLHI… Mari…  103.      28.0     -82.6 B           9    24    0.241   
+#>  5  2003 21FLHI… Mari…  359.      28.0     -82.6 D          24    36    0.547   
+#>  6  2003 21FLHI… Mari… 2327.      28.0     -82.6 D          28    35    0.687   
+#>  7  2003 21FLHI… Mari…   36.6     27.9     -82.4 B           5    16    0.161   
+#>  8  2003 21FLHI… Mari…   49.4     27.7     -82.4 B           6    27    0.121   
+#>  9  2003 21FLHI… Mari…  829.      27.9     -82.4 E          32    33    0.887   
+#> 10  2003 21FLHI… Mari…   60.7     27.7     -82.5 A           2    19    0.0283  
 #> # ℹ 595 more rows
 ```
 

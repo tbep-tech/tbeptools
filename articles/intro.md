@@ -918,7 +918,7 @@ show_annualassess(epcdata, yrsel = 2025, caption = TRUE)
 | MTB     | 5.5          | 7.4    | 0.56                    | 0.83   |
 | LTB     | 3.0          | 4.6    | 0.60                    | 0.63   |
 
-Water quality outcomes for 2025. {.table .cl-9b4b5e3c
+Water quality outcomes for 2025. {.table .cl-57506876
 quarto-disable-processing="true"}
 
 Second, the
