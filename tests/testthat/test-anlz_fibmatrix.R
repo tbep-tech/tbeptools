@@ -45,7 +45,46 @@ test_that("Checking anlz_fibmatrix station warning for insufficient data", {
 test_that("anlz_fibmatrix returns correct structure", {
   result <- anlz_fibmatrix(fibdatatst, stas = c("a", "b", "c"))
   expect_s3_class(result, "tbl_df")
-  expect_true(all(c("yr", "class", "grp", "gmean", "cat") %in% names(result)))
+  expect_true(all(c("yr", "class", "grp", "gmean", "cat", "nexceed", "nsamp", "exceed_rate") %in% names(result)))
+})
+
+test_that("anlz_fibmatrix exceed_rate matches the qbeta formula and is consistent with cat", {
+  result <- anlz_fibmatrix(fibdata) %>%
+    dplyr::filter(!is.na(cat))
+
+  expect_equal(
+    result$exceed_rate,
+    stats::qbeta(0.10, result$nexceed, result$nsamp - result$nexceed + 1)
+  )
+
+  # exceed_rate should be exactly the threshold rate (10/30/50/75%) right at
+  # a category boundary, and should increase monotonically with the letter
+  # grade (A best/lowest, E worst/highest) on average
+  avgs <- result %>%
+    dplyr::summarise(m = mean(exceed_rate), .by = 'cat') %>%
+    dplyr::arrange(factor(cat, levels = c('A', 'B', 'C', 'D', 'E')))
+
+  expect_equal(avgs$m, sort(avgs$m))
+})
+
+test_that("anlz_fibmatrix exceed_rate reproduces the binomial test at 0.10 significance", {
+  result <- anlz_fibmatrix(fibdata) %>%
+    # nexceed = 0 is a degenerate boundary case (the tail probability is
+    # always 1 regardless of the assumed rate, so exceed_rate is fixed at 0
+    # rather than solving the 0.10 equation) - excluded here, checked below
+    dplyr::filter(!is.na(cat), nexceed > 0)
+
+  chk <- pbinom(result$nexceed - 1, result$nsamp, result$exceed_rate, lower.tail = FALSE)
+  expect_equal(chk, rep(0.10, length(chk)), tolerance = 1e-6)
+})
+
+test_that("anlz_fibmatrix exceed_rate is 0 when there are no exceedances", {
+  result <- anlz_fibmatrix(fibdata) %>%
+    dplyr::filter(!is.na(cat), nexceed == 0)
+
+  expect_true(nrow(result) > 0)
+  expect_true(all(result$exceed_rate == 0))
+  expect_true(all(result$cat == 'A'))
 })
 
 test_that("anlz_fibmatrix handles default parameters", {
