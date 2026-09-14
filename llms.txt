@@ -466,6 +466,9 @@ Functions for plotting data.
   segments
 - [`show_tbniscrplotly()`](https://tbep-tech.github.io/tbeptools/reference/show_tbniscrplotly.md)
   : Creates a plotly object for TBNI score plots
+- [`show_tbniscrseas()`](https://tbep-tech.github.io/tbeptools/reference/show_tbniscrseas.md)
+  : Plot seasonal Tampa Bay Nekton Index results by month and bay
+  segment
 - [`show_tdlcrk()`](https://tbep-tech.github.io/tbeptools/reference/show_tdlcrk.md)
   : Make a map for tidal creek report card
 - [`show_tdlcrkindic()`](https://tbep-tech.github.io/tbeptools/reference/show_tdlcrkindic.md)

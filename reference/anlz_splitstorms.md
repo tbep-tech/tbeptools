@@ -49,9 +49,9 @@ anlz_splitstorms(hurricanes, split_date)
 #> # A tibble: 3 × 5
 #>    year period   sum   avg     n
 #>   <dbl> <ord>  <dbl> <dbl> <int>
-#> 1  1980 before     6  6        1
-#> 2  1981 before     7  1.75     4
-#> 3  1982 before     1  1        1
+#> 1  1980 before     7   3.5     2
+#> 2  1981 before     6   2       3
+#> 3  1982 before     1   1       1
 
 # Analysis with custom statistics
 anlz_splitstorms(hurricanes, split_date,
@@ -61,7 +61,7 @@ anlz_splitstorms(hurricanes, split_date,
 #> # A tibble: 3 × 4
 #>    year period   max   min
 #>   <dbl> <ord>  <dbl> <dbl>
-#> 1  1980 before     6     6
+#> 1  1980 before     6     1
 #> 2  1981 before     3     1
 #> 3  1982 before     1     1
 ```

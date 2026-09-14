@@ -265,16 +265,21 @@ and
 [`show_tbnimatrix()`](https://tbep-tech.github.io/tbeptools/reference/show_tbnimatrix.md)
 functions. The
 [`show_tbniscr()`](https://tbep-tech.github.io/tbeptools/reference/show_tbniscr.md)
-creates a line graph of values over time for each bay segment, whereas
-the
+function creates a line graph of values over time for each bay segment,
+whereas the
 [`show_tbniscrall()`](https://tbep-tech.github.io/tbeptools/reference/show_tbniscrall.md)
 function plots an overall average across bay segments over time. The
+[`show_tbniscrseas()`](https://tbep-tech.github.io/tbeptools/reference/show_tbniscrseas.md)
+function plots monthly results for TBNI scores or individual metrics
+across all stations for a chosen bay segment and year. The
 [`show_tbnimatrix()`](https://tbep-tech.github.io/tbeptools/reference/show_tbnimatrix.md)
-plots the annual bay segment averages as categorical values in a
-conventional “stoplight” graphic. The input to each function is the
+function plots the annual bay segment averages as categorical values in
+a conventional “stoplight” graphic. The input to each function is the
 output from the
 [`anlz_tbniscr()`](https://tbep-tech.github.io/tbeptools/reference/anlz_tbniscr.md)
 function.
+
+Annual scores by bay segment:
 
 ``` r
 
@@ -283,6 +288,8 @@ show_tbniscr(tbniscr)
 
 ![](tbni_files/figure-html/unnamed-chunk-14-1.png)
 
+Annual scores averaged by bay segment:
+
 ``` r
 
 show_tbniscrall(tbniscr)
@@ -290,26 +297,69 @@ show_tbniscrall(tbniscr)
 
 ![](tbni_files/figure-html/unnamed-chunk-15-1.png)
 
+Monthly TBNI scores across stations for a chosen bay segment and year:
+
+``` r
+
+show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year))
+```
+
+![](tbni_files/figure-html/unnamed-chunk-16-1.png)
+
+Monthly scores for an individual metric across stations for a chosen bay
+segment and year:
+
+``` r
+
+show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year), metric = 'Shannon')
+```
+
+![](tbni_files/figure-html/unnamed-chunk-17-1.png)
+
+TBNI outcome categories across all years by bay segment:
+
 ``` r
 
 show_tbnimatrix(tbniscr)
 ```
 
-![](tbni_files/figure-html/unnamed-chunk-16-1.png)
+![](tbni_files/figure-html/unnamed-chunk-18-1.png)
 
 Each of the plots can also be produced as
 [plotly](https://plotly.com/r/) interactive plots by setting
 `plotly = TRUE` inside each function.
+
+Annual scores by bay segment, plotly:
 
 ``` r
 
 show_tbniscr(tbniscr, plotly = T)
 ```
 
+Annual scores averaged by bay segment, plotly:
+
 ``` r
 
 show_tbniscrall(tbniscr, plotly = T)
 ```
+
+Monthly TBNI scores across stations for a chosen bay segment and year,
+plotly:
+
+``` r
+
+show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year), plotly = T)
+```
+
+Monthly scores for an individual metric across stations for a chosen bay
+segment and year, plotly:
+
+``` r
+
+show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year), metric = 'Shannon', plotly = T)
+```
+
+TBNI outcome categories across all years by bay segment, plotly:
 
 ``` r
 
@@ -345,7 +395,7 @@ p2 <- show_tbniscr(tbniscr)
 p1 + p2 + plot_layout(ncol = 1, heights = c(0.3, 1))
 ```
 
-![](tbni_files/figure-html/unnamed-chunk-20-1.png)
+![](tbni_files/figure-html/unnamed-chunk-24-1.png)
 
 ## References
 
