@@ -39,8 +39,8 @@ downloaded file if the MD5 hashes are different.
 ``` r
 if (FALSE) { # \dontrun{
 locin <- '~/Desktop/RWMDataSpreadsheet_ThroughCurrentReportMonth.xlsx'
-urlin1 <- 'https://epcbocc.sharepoint.com/:x:/s/Share/'
-urlin2 <- 'IQCF2ebdelJRRpNa8yFPdVaIAWvFN-5YfM_x37X9iiSEkh4?e=5eti14'
+urlin1 <- 'https://epcbocc.sharepoint.com/:x:/s/PublishedShare/'
+urlin2 <- 'IQAtFpJjaVHzS6ENmWdNf4csAXO5fC5QFwI8U4b69Yyc8FA?e=tMe7Yy'
 urlin <- paste0(urlin1, urlin2, '&download=1')
 read_dlcurrent(locin = locin, urlin = urlin)
 } # }

@@ -34,8 +34,8 @@ if (FALSE) { # \dontrun{
 path <- '~/Desktop/benthic.zip'
 
 # download
-urlin1 <- 'https://epcbocc.sharepoint.com/:u:/s/Share/'
-urlin2 <- 'IQAFAlgbsAjXRrjERGAMgA9YASgvfJmLQhzFl9BWC620-Cg?e=rfGIk4'
+urlin1 <- 'https://epcbocc.sharepoint.com/:u:/s/PublishedShare/'
+urlin2 <- 'IQDODa-pbW8pTaZMg-93L9sTAZW1Y6hjj1TD_8RY0mFGiQ8?e=9JBNmb'
 urlin <- paste0(urlin1, urlin2, '&download=1')
 read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 
