@@ -82,11 +82,11 @@
 
 
 <dt id="arg-perc">perc<a class="anchor" aria-label="anchor" href="#arg-perc"></a></dt>
-<dd><p>numeric values indicating break points for score categories, only used if <code>metric</code> is <code>NULL</code></p></dd>
+<dd><p>numeric values indicating break points for score categories, only used if <code>metric</code> is <code>NULL</code> or <code>"TBNI_Score"</code></p></dd>
 
 
 <dt id="arg-alph">alph<a class="anchor" aria-label="anchor" href="#arg-alph"></a></dt>
-<dd><p>numeric indicating alpha value for the score category background colors and the boxplot fill, only used if <code>metric</code> is <code>NULL</code></p></dd>
+<dd><p>numeric indicating alpha value for the score category background colors and the boxplot fill, only used if <code>metric</code> is <code>NULL</code> or <code>"TBNI_Score"</code></p></dd>
 
 
 <dt id="arg-plotly">plotly<a class="anchor" aria-label="anchor" href="#arg-plotly"></a></dt>
@@ -111,13 +111,13 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Boxplots show the distribution of site-level results by month for <code>yr</code> in <code>bay_segment</code>, with individual site values overlaid as jittered points.  If <code>metric</code> is <code>NULL</code>, the TBNI score is plotted with the same red/yellow/green score category background and break lines from <code>perc</code> as in <code><a href="show_tbniscr.html">show_tbniscr</a></code>.  If <code>metric</code> is specified, the selected metric is plotted as raw values (note that scored metrics cannot be shown).  Metric options include <code>"TBNI_Score"</code> or <code>NULL</code> (default), <code>"NumTaxa"</code>, <code>"BenthicTaxa"</code>, <code>"TaxaSelect"</code>, <code>"NumGuilds"</code>, and <code>"Shannon"</code>.</p>
+    <p>Boxplots show the distribution of site-level results by month for <code>yr</code> in <code>bay_segment</code>, with individual site values overlaid as jittered points.  If <code>metric</code> is <code>NULL</code> or <code>"TBNI_Score"</code>, the TBNI score is plotted with the same red/yellow/green score category background and break lines from <code>perc</code> as in <code><a href="show_tbniscr.html">show_tbniscr</a></code>.  If a different metric is specified, it is plotted as raw values with no background (note that scored metrics cannot be shown).  Metric options include <code>"TBNI_Score"</code> or <code>NULL</code> (default), <code>"NumTaxa"</code>, <code>"BenthicTaxa"</code>, <code>"TaxaSelect"</code>, <code>"NumGuilds"</code>, and <code>"Shannon"</code>.  The y-axis title includes <code>yr</code>, <code>bay_segment</code>, and the plotted metric.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">tbniscr</span> <span class="op">&lt;-</span> <span class="fu"><a href="anlz_tbniscr.html">anlz_tbniscr</a></span><span class="op">(</span><span class="va">fimdata</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">show_tbniscrseas</span><span class="op">(</span><span class="va">tbniscr</span>, yr <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">show_tbniscrseas</span><span class="op">(</span><span class="va">tbniscr</span>, bay_segment <span class="op">=</span> <span class="st">'OTB'</span>, yr <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="show_tbniscrseas-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>

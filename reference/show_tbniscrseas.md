@@ -45,12 +45,13 @@ show_tbniscrseas(
 - perc:
 
   numeric values indicating break points for score categories, only used
-  if `metric` is `NULL`
+  if `metric` is `NULL` or `"TBNI_Score"`
 
 - alph:
 
   numeric indicating alpha value for the score category background
-  colors and the boxplot fill, only used if `metric` is `NULL`
+  colors and the boxplot fill, only used if `metric` is `NULL` or
+  `"TBNI_Score"`
 
 - plotly:
 
@@ -81,18 +82,19 @@ object if `plotly = TRUE`
 
 Boxplots show the distribution of site-level results by month for `yr`
 in `bay_segment`, with individual site values overlaid as jittered
-points. If `metric` is `NULL`, the TBNI score is plotted with the same
-red/yellow/green score category background and break lines from `perc`
-as in
+points. If `metric` is `NULL` or `"TBNI_Score"`, the TBNI score is
+plotted with the same red/yellow/green score category background and
+break lines from `perc` as in
 [`show_tbniscr`](https://tbep-tech.github.io/tbeptools/reference/show_tbniscr.md).
-If `metric` is specified, the selected metric is plotted as raw values
-(note that scored metrics cannot be shown). Metric options include
-`"TBNI_Score"` or `NULL` (default), `"NumTaxa"`, `"BenthicTaxa"`,
-`"TaxaSelect"`, `"NumGuilds"`, and `"Shannon"`.
+If a different metric is specified, it is plotted as raw values with no
+background (note that scored metrics cannot be shown). Metric options
+include `"TBNI_Score"` or `NULL` (default), `"NumTaxa"`,
+`"BenthicTaxa"`, `"TaxaSelect"`, `"NumGuilds"`, and `"Shannon"`. The
+y-axis title includes `yr`, `bay_segment`, and the plotted metric.
 
 ## Examples
 
 ``` r
 tbniscr <- anlz_tbniscr(fimdata)
-show_tbniscrseas(tbniscr, yr = 2018)
+show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = 2018)
 ```
