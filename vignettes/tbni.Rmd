@@ -143,15 +143,33 @@ head(tbnimet)
 
 ## Plotting results
 
-The TBNI scores can be viewed as annual averages using the `show_tbniscr()`, `show_tbniscrall()` and `show_tbnimatrix()` functions.  The `show_tbniscr()` creates a line graph of values over time for each bay segment, whereas the `show_tbniscrall()` function plots an overall average across bay segments over time.  The `show_tbnimatrix()` plots the annual bay segment averages as categorical values in a conventional "stoplight" graphic.  The input to each function is the output from the `anlz_tbniscr()` function.  
+The TBNI scores can be viewed as annual averages using the `show_tbniscr()`, `show_tbniscrall()` and `show_tbnimatrix()` functions.  The `show_tbniscr()` function creates a line graph of values over time for each bay segment, whereas the `show_tbniscrall()` function plots an overall average across bay segments over time.  The `show_tbniscrsea()` function plots monthly results for TBNI scores or individual metrics across all stations for a chosen bay segment and year. The `show_tbnimatrix()` function plots the annual bay segment averages as categorical values in a conventional "stoplight" graphic.  The input to each function is the output from the `anlz_tbniscr()` function.  
+
+Annual scores by bay segment: 
 
 ```{r, fig.height = 5, fig.width = 7}
 show_tbniscr(tbniscr)
 ```
 
+Annual scores averaged by bay segment:
+
 ```{r, fig.height = 5, fig.width = 7}
 show_tbniscrall(tbniscr)
 ```
+
+Monthly TBNI scores across stations for a chosen bay segment and year:
+
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscrsea(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year))
+```
+
+Monthly scores for an individual metric across stations for a chosen bay segment and year:
+
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscrsea(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year), metric = 'Shannon')
+```
+
+TBNI outcome categories across all years by bay segment: 
 
 ```{r, fig.height = 7, fig.width = 3}
 show_tbnimatrix(tbniscr)
@@ -159,13 +177,31 @@ show_tbnimatrix(tbniscr)
 
 Each of the plots can also be produced as [plotly](https://plotly.com/r/) interactive plots by setting `plotly = TRUE` inside each function. 
 
+Annual scores by bay segment, plotly: 
+
 ```{r, fig.height = 5, fig.width = 7}
 show_tbniscr(tbniscr, plotly = T)
 ```
 
+Annual scores averaged by bay segment, plotly:
+
 ```{r, fig.height = 5, fig.width = 7}
 show_tbniscrall(tbniscr, plotly = T)
 ```
+
+Monthly TBNI scores across stations for a chosen bay segment and year, plotly:
+
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscrsea(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year), plotly = T)
+```
+
+Monthly scores for an individual metric across stations for a chosen bay segment and year, plotly:
+
+```{r, fig.height = 5, fig.width = 7}
+show_tbniscrsea(tbniscr, bay_segment = 'OTB', yr = max(tbniscr$Year), metric = 'Shannon', plotly = T)
+```
+
+TBNI outcome categories across all years by bay segment, plotly: 
 
 ```{r, fig.height = 7, fig.width = 3}
 show_tbnimatrix(tbniscr, plotly = T)

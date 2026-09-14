@@ -7,7 +7,7 @@
 show_tbniscrplotly(p, width = NULL, height = NULL)
 }
 \arguments{
-\item{p}{\code{\link[ggplot2]{ggplot}} object as output from \code{\link{show_tbniscr}} or \code{\link{show_tbniscrall}}}
+\item{p}{\code{\link[ggplot2]{ggplot}} object as output from \code{\link{show_tbniscr}}, \code{\link{show_tbniscrall}}, or \code{\link{show_tbniscrseas}} (with \code{metric = NULL})}
 
 \item{width}{numeric for width of the plot in pixels}
 
