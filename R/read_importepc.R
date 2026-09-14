@@ -6,7 +6,7 @@
 #'
 #' @return An unformatted \code{data.frame} from EPC
 #'
-#' @details Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{https://epcbocc.sharepoint.com/:x:/s/Share/IQCF2ebdelJRRpNa8yFPdVaIAWvFN-5YfM_x37X9iiSEkh4?e=5eti14&download=1}.  The files can be viewed at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU}.
+#' @details Loads the "RWMDataSpreadsheet" worksheet from the file located at \code{xlsx}.  The file is downloaded from \url{https://epcbocc.sharepoint.com/:x:/s/PublishedShare/IQAtFpJjaVHzS6ENmWdNf4csAXO5fC5QFwI8U4b69Yyc8FA?e=tMe7Yy&download=1}.  The files can be viewed at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EiypSSYdsEFCi84Sv_6-t7kBUYaXiIqN0B1n2w57Z_V3kQ?e=NdZQcU}.
 #'
 #' This function is used internally by \code{\link{read_importwq}} and \code{\link{read_importfib}} because both use the same source data from the Environmental Protection Commission of Hillsborough County.
 #'
@@ -27,7 +27,7 @@
 read_importepc <- function(xlsx, download_latest = FALSE, na = c('', 'NULL')){
 
   # download latest and compare with current if exists
-  urlin <- 'https://epcbocc.sharepoint.com/:x:/s/Share/IQCF2ebdelJRRpNa8yFPdVaIAWvFN-5YfM_x37X9iiSEkh4?e=5eti14&download=1'
+  urlin <- 'https://epcbocc.sharepoint.com/:x:/s/PublishedShare/IQAtFpJjaVHzS6ENmWdNf4csAXO5fC5QFwI8U4b69Yyc8FA?e=tMe7Yy&download=1'
   read_dlcurrent(xlsx, download_latest, urlin = urlin)
 
   # sanity checks

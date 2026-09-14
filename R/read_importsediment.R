@@ -7,7 +7,7 @@
 #' @return A \code{data.frame} of sediment data for Tampa Bay
 #'
 #' @details
-#' This function downloads and unzips a folder of results tables from \url{https://epcbocc.sharepoint.com/:u:/s/Share/IQD_brbighw_S5Ymq7DjygicAeZMYAjm39LWOcecF9tCUFA?e=hyZZRe&download=1} (viewable at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ}).
+#' This function downloads and unzips a folder of results tables from \url{https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQAr2aDfEyegTrJLR61qt1CxAQYxfnVYYWAwkbtArczrJS4?e=FE6hyM&download=1} (viewable at \url{https://epcbocc.sharepoint.com/:f:/s/Share/EtOJfziTTa9FliL1oROb9OsBRZU-nO60fu_0NRC162hHjQ?e=4gUXgJ}).
 #'
 #' The row entries for columns \code{"BetweenTELPEL"} and \code{"ExceedsPEL"} for rows where the \code{"Qualifier"} column is \code{"U"} or \code{"T"} (below detection, not detected) are assigned \code{NA}, regardless of the entry in the source data.
 #'
@@ -37,7 +37,7 @@ read_importsediment <- function(path, download_latest = FALSE, remove = FALSE){
 
   ##
   # download
-  urlin <- 'https://epcbocc.sharepoint.com/:u:/s/Share/IQD_brbighw_S5Ymq7DjygicAeZMYAjm39LWOcecF9tCUFA?e=hyZZRe&download=1'
+  urlin <- 'https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQAr2aDfEyegTrJLR61qt1CxAQYxfnVYYWAwkbtArczrJS4?e=FE6hyM&download=1'
   read_dlcurrent(path, download_latest, urlin = urlin)
 
   # unzip

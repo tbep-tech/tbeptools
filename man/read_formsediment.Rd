@@ -25,8 +25,8 @@ Function is used internally within \code{\link{read_importsediment}}
 path <- '~/Desktop/sediment.zip'
 
 # download
-urlin1 <- 'https://epcbocc.sharepoint.com/:u:/s/Share/'
-urlin2 <- 'IQD_brbighw_S5Ymq7DjygicAeZMYAjm39LWOcecF9tCUFA?e=hyZZRe'
+urlin1 <- 'https://epcbocc.sharepoint.com/:u:/s/PublishedShare/'
+urlin2 <- 'IQAr2aDfEyegTrJLR61qt1CxAQYxfnVYYWAwkbtArczrJS4?e=FE6hyM'
 urlin <- paste0(urlin1, urlin2, '&download=1')
 read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 

@@ -6,7 +6,7 @@
 #'
 #' @return A \code{data.frame} of formatted water quality data.
 #'
-#' @details Phytoplankton cell count data downloaded from https://epcbocc.sharepoint.com/:x:/s/Share/IQAwH0UOXa5kR57Q3dTvLNxUAdfNBbpnneJ0PfcPjiFQ8aw?e=5ki8tA&download=1
+#' @details Phytoplankton cell count data downloaded from https://epcbocc.sharepoint.com/:x:/s/PublishedShare/IQBWek-aqbRFSpzmJLZrL3CtAeLTo2Mv39-Df1b9LHFm5W0?e=XY4v4G&download=1
 #'
 #' @export
 #'
@@ -25,7 +25,7 @@
 read_importphyto <- function(xlsx, download_latest = FALSE, na = c('', 'NULL')){
 
   # download latest and compare with current if exists
-  urlin <- "https://epcbocc.sharepoint.com/:x:/s/Share/IQAwH0UOXa5kR57Q3dTvLNxUAdfNBbpnneJ0PfcPjiFQ8aw?e=5ki8tA&download=1"
+  urlin <- "https://epcbocc.sharepoint.com/:x:/s/PublishedShare/IQBWek-aqbRFSpzmJLZrL3CtAeLTo2Mv39-Df1b9LHFm5W0?e=XY4v4G&download=1"
   read_dlcurrent(xlsx, download_latest, urlin = urlin)
 
   # sanity checks
