@@ -26,9 +26,9 @@ show_tbniscrseas(
 
 \item{metric}{chr string for the column in \code{tbniscr} to plot on the y-axis, defaults to \code{NULL} to plot \code{"TBNI_Score"}, otherwise an individual TBNI metric can be specified, one of "TBNI_Score", "NumTaxa", "BenthicTaxa", "TaxaSelect", "NumGuilds", or "Shannon"}
 
-\item{perc}{numeric values indicating break points for score categories, only used if \code{metric} is \code{NULL}}
+\item{perc}{numeric values indicating break points for score categories, only used if \code{metric} is \code{NULL} or \code{"TBNI_Score"}}
 
-\item{alph}{numeric indicating alpha value for the score category background colors and the boxplot fill, only used if \code{metric} is \code{NULL}}
+\item{alph}{numeric indicating alpha value for the score category background colors and the boxplot fill, only used if \code{metric} is \code{NULL} or \code{"TBNI_Score"}}
 
 \item{plotly}{logical if matrix is created using plotly}
 
@@ -45,10 +45,10 @@ A \code{\link[ggplot2]{ggplot}} object showing monthly results for \code{yr} in 
 Plot seasonal Tampa Bay Nekton Index results by month and bay segment
 }
 \details{
-Boxplots show the distribution of site-level results by month for \code{yr} in \code{bay_segment}, with individual site values overlaid as jittered points.  If \code{metric} is \code{NULL}, the TBNI score is plotted with the same red/yellow/green score category background and break lines from \code{perc} as in \code{\link{show_tbniscr}}.  If \code{metric} is specified, the selected metric is plotted as raw values (note that scored metrics cannot be shown).  Metric options include \code{"TBNI_Score"} or \code{NULL} (default), \code{"NumTaxa"}, \code{"BenthicTaxa"}, \code{"TaxaSelect"}, \code{"NumGuilds"}, and \code{"Shannon"}.
+Boxplots show the distribution of site-level results by month for \code{yr} in \code{bay_segment}, with individual site values overlaid as jittered points.  If \code{metric} is \code{NULL} or \code{"TBNI_Score"}, the TBNI score is plotted with the same red/yellow/green score category background and break lines from \code{perc} as in \code{\link{show_tbniscr}}.  If a different metric is specified, it is plotted as raw values with no background (note that scored metrics cannot be shown).  Metric options include \code{"TBNI_Score"} or \code{NULL} (default), \code{"NumTaxa"}, \code{"BenthicTaxa"}, \code{"TaxaSelect"}, \code{"NumGuilds"}, and \code{"Shannon"}.  The y-axis title includes \code{yr}, \code{bay_segment}, and the plotted metric.
 }
 \examples{
 tbniscr <- anlz_tbniscr(fimdata)
-show_tbniscrseas(tbniscr, yr = 2018)
+show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = 2018)
 }
 \concept{show}

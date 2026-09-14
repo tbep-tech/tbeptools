@@ -30,6 +30,38 @@ test_that("Checking show_tbniscrseas class with perc ignored if metric supplied"
 
 })
 
+test_that("Checking show_tbniscrseas uses perc background for explicit metric = 'TBNI_Score'", {
+
+  tbniscr <- anlz_tbniscr(fimdata)
+  resdef <- show_tbniscrseas(tbniscr, yr = 2018)
+  resexp <- show_tbniscrseas(tbniscr, yr = 2018, metric = 'TBNI_Score')
+
+  nlaydef <- length(resdef$layers)
+  nlayexp <- length(resexp$layers)
+
+  expect_equal(nlaydef, nlayexp)
+  expect_error(show_tbniscrseas(tbniscr, yr = 2018, metric = 'TBNI_Score', perc = c(44, 34)))
+
+})
+
+test_that("Checking show_tbniscrseas y-axis title includes yr, bay_segment, and metric", {
+
+  tbniscr <- anlz_tbniscr(fimdata)
+  result <- show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = 2018, metric = 'NumTaxa')
+  expect_equal(ggplot2::get_labs(result)$y, '2018 OTB Number of Taxa')
+
+})
+
+test_that("Checking show_tbniscrseas plotly point tooltip shows station", {
+
+  tbniscr <- anlz_tbniscr(fimdata)
+  result <- show_tbniscrseas(tbniscr, yr = 2018, plotly = TRUE)
+  pb <- plotly::plotly_build(result)
+  istext <- sapply(pb$x$data, function(x) !is.null(x$mode) && grepl('markers', x$mode) && !is.null(x$text))
+  expect_true(any(istext))
+
+})
+
 test_that("Checking show_tbniscrseas sanity checks", {
 
   tbniscr <- anlz_tbniscr(fimdata)

@@ -6,14 +6,14 @@
 #' @param bay_segment chr string for the bay segment to plot, one of "OTB", "HB", "MTB", "LTB"
 #' @param yr numeric for the year to plot
 #' @param metric chr string for the column in \code{tbniscr} to plot on the y-axis, defaults to \code{NULL} to plot \code{"TBNI_Score"}, otherwise an individual TBNI metric can be specified, one of "TBNI_Score", "NumTaxa", "BenthicTaxa", "TaxaSelect", "NumGuilds", or "Shannon"
-#' @param perc numeric values indicating break points for score categories, only used if \code{metric} is \code{NULL}
-#' @param alph numeric indicating alpha value for the score category background colors and the boxplot fill, only used if \code{metric} is \code{NULL}
+#' @param perc numeric values indicating break points for score categories, only used if \code{metric} is \code{NULL} or \code{"TBNI_Score"}
+#' @param alph numeric indicating alpha value for the score category background colors and the boxplot fill, only used if \code{metric} is \code{NULL} or \code{"TBNI_Score"}
 #' @param plotly logical if matrix is created using plotly
 #' @param family optional chr string indicating font family for text labels
 #' @param width numeric for width of the plot in pixels, only applies of \code{plotly = TRUE}
 #' @param height numeric for height of the plot in pixels, only applies of \code{plotly = TRUE}
 #'
-#' @details Boxplots show the distribution of site-level results by month for \code{yr} in \code{bay_segment}, with individual site values overlaid as jittered points.  If \code{metric} is \code{NULL}, the TBNI score is plotted with the same red/yellow/green score category background and break lines from \code{perc} as in \code{\link{show_tbniscr}}.  If \code{metric} is specified, the selected metric is plotted as raw values (note that scored metrics cannot be shown).  Metric options include \code{"TBNI_Score"} or \code{NULL} (default), \code{"NumTaxa"}, \code{"BenthicTaxa"}, \code{"TaxaSelect"}, \code{"NumGuilds"}, and \code{"Shannon"}.
+#' @details Boxplots show the distribution of site-level results by month for \code{yr} in \code{bay_segment}, with individual site values overlaid as jittered points.  If \code{metric} is \code{NULL} or \code{"TBNI_Score"}, the TBNI score is plotted with the same red/yellow/green score category background and break lines from \code{perc} as in \code{\link{show_tbniscr}}.  If a different metric is specified, it is plotted as raw values with no background (note that scored metrics cannot be shown).  Metric options include \code{"TBNI_Score"} or \code{NULL} (default), \code{"NumTaxa"}, \code{"BenthicTaxa"}, \code{"TaxaSelect"}, \code{"NumGuilds"}, and \code{"Shannon"}.  The y-axis title includes \code{yr}, \code{bay_segment}, and the plotted metric.
 #'
 #' @return A \code{\link[ggplot2]{ggplot}} object showing monthly results for \code{yr} in \code{bay_segment} for the selected metric, or a \code{\link[plotly]{plotly}} object if \code{plotly = TRUE}
 #' @export
@@ -24,7 +24,7 @@
 #'
 #' @examples
 #' tbniscr <- anlz_tbniscr(fimdata)
-#' show_tbniscrseas(tbniscr, yr = 2018)
+#' show_tbniscrseas(tbniscr, bay_segment = 'OTB', yr = 2018)
 show_tbniscrseas <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB'), yr, metric = NULL, perc = c(32, 46),
                             alph = 1, plotly = FALSE, family = 'sans', width = NULL, height = NULL){
 
@@ -43,20 +43,20 @@ show_tbniscrseas <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB')
   if(!yr %in% tbniscr$Year)
     stop(paste('yr must be one of', paste(range(tbniscr$Year, na.rm = TRUE), collapse = ' to ')))
 
-  # perc only applies if metric is not specified, i.e., TBNI_Score is plotted
-  useperc <- is.null(metric)
-  if(useperc){
-
+  # resolve metric, defaults to TBNI_Score if not specified
+  if(is.null(metric))
     metric <- 'TBNI_Score'
+  else
+    metric <- match.arg(metric, names(metlab))
+
+  # perc only applies if TBNI_Score is plotted
+  useperc <- metric == 'TBNI_Score'
+  if(useperc){
 
     stopifnot(length(perc) == 2)
     stopifnot(perc[1] < perc[2])
     stopifnot(perc[1] > 22)
     stopifnot(perc[2] < 58)
-
-  } else {
-
-    metric <- match.arg(metric, names(metlab))
 
   }
 
@@ -88,11 +88,16 @@ show_tbniscrseas <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB')
       ggplot2::geom_hline(ggplot2::aes(yintercept = perc[1]), color = "black", linetype = "dotted") +
       ggplot2::geom_hline(ggplot2::aes(yintercept = perc[2]), color = "black", linetype = "dotted")
 
+  # station shown on point mouseover, plotly only
+  ptaes <- ggplot2::aes()
+  if(plotly)
+    ptaes <- ggplot2::aes(text = Reference)
+
   out <- out +
     ggplot2::geom_boxplot(alpha = alph, outlier.shape = NA, fill = boxcol) +
-    ggplot2::geom_point(position = ggplot2::position_jitter(width = 0.2), size = 1.5, alpha = 0.7) +
+    suppressWarnings(ggplot2::geom_point(ptaes, position = ggplot2::position_jitter(width = 0.2), size = 1.5, alpha = 0.7)) +
     ggplot2::scale_x_discrete(drop = FALSE) +
-    ggplot2::scale_y_continuous(name = metlab[[metric]]) +
+    ggplot2::scale_y_continuous(name = paste(yr, bay_segment, metlab[[metric]])) +
     ggplot2::theme(
       axis.title.x = ggplot2::element_blank(),
       axis.text.y = ggplot2::element_text(size = 12),
