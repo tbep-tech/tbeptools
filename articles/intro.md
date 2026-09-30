@@ -248,7 +248,7 @@ parameters, sampling stations, and waterbodies.
 
 # data sources
 util_importwqwa('dataSources')
-#> # A tibble: 511 × 4
+#> # A tibble: 512 × 4
 #>    dataSource              description                     name  fullMetadataUrl
 #>    <chr>                   <chr>                           <chr> <chr>          
 #>  1 21FLPOLK_WQ             "Polk County Natural Resources… Polk… NA             
@@ -261,7 +261,7 @@ util_importwqwa('dataSources')
 #>  8 CCHMN_CAPECORAL         "This dataset is used for Wate… CCHM… NA             
 #>  9 CCHMN_LEE               "This dataset is used for Wate… CCHM… NA             
 #> 10 CCHMN_SWFWMD            "This dataset is used for Wate… CCHM… NA             
-#> # ℹ 501 more rows
+#> # ℹ 502 more rows
 
 # parameters
 util_importwqwa('parameters')
@@ -282,7 +282,7 @@ util_importwqwa('parameters')
 
 # stations, using optional waterbodyId argument for Hillsborough Bay
 util_importwqwa('sampling-locations', waterbodyId = 20005)
-#> # A tibble: 416 × 8
+#> # A tibble: 417 × 8
 #>    dataSource       name  stationId latitude longitude waterBodyId waterBodyName
 #>    <chr>            <chr> <chr>     <chr>    <chr>           <int> <chr>        
 #>  1 USGS_NWIS        MCKA… 02301761  27.9153… -82.4234…       20005 Hillsborough…
@@ -295,7 +295,7 @@ util_importwqwa('sampling-locations', waterbodyId = 20005)
 #>  8 EPC_ROUTINE_MON… Big … 14410     27.7778… -82.4063…       20005 Hillsborough…
 #>  9 WIN_21FLHILL     14410 14410     27.7781… -82.4060…       20005 Hillsborough…
 #> 10 WIN_21FLHILL     14415 14415     27.7796… -82.4122…       20005 Hillsborough…
-#> # ℹ 406 more rows
+#> # ℹ 407 more rows
 #> # ℹ 1 more variable: county <chr>
 
 # waterbodies

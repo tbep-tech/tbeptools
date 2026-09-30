@@ -9,7 +9,9 @@ show_seagrasscoverage(
   seagrass,
   maxyr = 2024,
   family = "sans",
+  extend = F,
   lastlab = T,
+  covlab = T,
   axsbrk = c(0.08, 0.1)
 )
 ```
@@ -29,9 +31,18 @@ show_seagrasscoverage(
 
   optional chr string indicating font family for text labels
 
+- extend:
+
+  logical indicating if x-axis should be extended to maximum year in
+  `seagrass` even if `maxyr` is less than that
+
 - lastlab:
 
   logical indicating if text label on `maxyr` should be included
+
+- covlab:
+
+  logical indicating if text label for coverage goal should be included
 
 - axsbrk:
 
