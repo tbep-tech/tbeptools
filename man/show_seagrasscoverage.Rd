@@ -8,7 +8,9 @@ show_seagrasscoverage(
   seagrass,
   maxyr = 2024,
   family = "sans",
+  extend = F,
   lastlab = T,
+  covlab = T,
   axsbrk = c(0.08, 0.1)
 )
 }
@@ -19,7 +21,11 @@ show_seagrasscoverage(
 
 \item{family}{optional chr string indicating font family for text labels}
 
+\item{extend}{logical indicating if x-axis should be extended to maximum year in \code{seagrass} even if \code{maxyr} is less than that}
+
 \item{lastlab}{logical indicating if text label on \code{maxyr} should be included}
+
+\item{covlab}{logical indicating if text label for coverage goal should be included}
 
 \item{axsbrk}{numeric vector of length two indicating where the x-axis break occurs}
 }

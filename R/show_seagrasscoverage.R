@@ -3,7 +3,9 @@
 #' @param seagrass input \code{data.frame} included with the package as \code{\link{seagrass}}
 #' @param maxyr numeric for maximum year to plot
 #' @param family optional chr string indicating font family for text labels
+#' @param extend logical indicating if x-axis should be extended to maximum year in \code{seagrass} even if \code{maxyr} is less than that
 #' @param lastlab logical indicating if text label on \code{maxyr} should be included
+#' @param covlab logical indicating if text label for coverage goal should be included
 #' @param axsbrk numeric vector of length two indicating where the x-axis break occurs
 #'
 #' @details This function creates the flagship seagrass coverage graphic to report on coverage changes over time.  All data were pre-processed and included in the package as the \code{\link{seagrass}} dataset.  Original data are from the Southwest Florida Water Management District and available online at \link[https://data-swfwmd.opendata.arcgis.com/]{https://data-swfwmd.opendata.arcgis.com/}.  This function and the data used to create the plot are distinct from those used for the transect monitoring program.
@@ -16,7 +18,7 @@
 #'
 #' @examples
 #' show_seagrasscoverage(seagrass)
-show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', lastlab = T, axsbrk = c(0.08, 0.1)){
+show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', extend = F, lastlab = T, covlab = T, axsbrk = c(0.08, 0.1)){
 
   # check maxyr input
   chk <- !maxyr %in% seagrass$Year
@@ -27,15 +29,41 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', lastl
   exyrs <- seq(1950, 1953)
 
   toplo <- tibble::tibble(
-      Year = c(exyrs, seq(1982, maxyr))
+      Year = c(exyrs, seq(1982, max(seagrass$Year)))
     ) %>%
     dplyr::left_join(seagrass, by = 'Year', ) %>%
     dplyr::mutate(
       Acres = Acres / 1000,
       ind = 1:nrow(.)
     ) %>%
-    dplyr::filter(Year >= 1950 & Year <= maxyr)
+    dplyr::filter(Year >= 1950)
 
+  x1 <- which(toplo$Year == 2018) + 1
+  x2 <- max(toplo$ind) + 1
+  
+  # filter by maxyr if extend = F
+  if(!extend){
+    
+    toplo <- toplo %>%
+      dplyr::filter(Year <= maxyr)
+    
+    if(maxyr <= 2018)
+      x1 <- which(toplo$Year == maxyr) + 1
+    
+    if(maxyr > 2018)
+      x2 <- which(toplo$Year == maxyr) + 1
+    
+  } 
+
+  # keep all rows if extend = T, but set Acres to NA for years > maxyr
+  if(maxyr < max(seagrass$Year) & extend){
+    toplo <- toplo %>%
+      dplyr::mutate(
+        Acres = ifelse(Year > maxyr, NA, Acres),
+        Hectares = ifelse(Year > maxyr, NA, Hectares)
+      )
+  }
+  
   ##
   # base ggplot
 
@@ -46,12 +74,10 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', lastl
   lbs <- lbs[!lbs %in% exyrs[-1]]
   lbs[as.numeric(lbs) %% 2 != 0] <- ''
 
-  p <- ggplot2::ggplot(na.omit(toplo), ggplot2::aes(x = ind, y = Acres)) +
-    ggplot2::geom_col(fill = '#00806E', colour = 'black', width = 1.3) +
+  p <- ggplot2::ggplot(toplo, ggplot2::aes(x = ind, y = Acres)) +
+    ggplot2::geom_col(fill = '#00806E', colour = 'black', width = 1.3, na.rm = T) +
     ggplot2::geom_segment(x = 0, xend = 2, y = 38, yend = 38, col = 'red', size = 2) +
-    ggplot2::geom_segment(x = 4, xend = 42, y = 38, yend = 38, col = 'red', size = 2) +
-    ggplot2::geom_segment(x = 42, xend = nrow(toplo) + 1, y = 40, yend = 40, col = 'red', size = 2) +
-    ggplot2::annotate("text", label = "Seagrass Coverage Goal", x = 4, y = 40.5, color = 'red', size = 5, hjust = 0, family = family) +
+    ggplot2::geom_segment(x = 4, xend = x1, y = 38, yend = 38, col = 'red', size = 2) +
     ggplot2::scale_x_continuous(breaks = brks, labels = lbs, expand = c(0.04, 0.04)) +
     ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, 1.1 * max(toplo$Acres, na.rm = T))) +
     ggplot2::theme_grey(base_family = family) +
@@ -68,6 +94,15 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', lastl
       y = 'Seagrass Coverage (x1,000 acres)'
     )
 
+  # add coverage goal line if maxyr > 2018 or extend = T
+  if(maxyr > 2018 | extend)
+    p <- p + ggplot2::geom_segment(x = x1, xend = x2, y = 40, yend = 40, col = 'red', size = 2)
+  
+  # add coverage goal label if covlab = T
+  if(covlab){
+    p <- p + ggplot2::annotate("text", label = "Seagrass Coverage Goal", x = 4, y = 40.5, color = 'red', size = 5, hjust = 0, family = family)
+  }  
+  
   # add acreage label to last bar
   if(lastlab){
 
@@ -84,9 +119,12 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', lastl
       filter(Year == maxyr) %>%
       pull(Acres)
     lasty <- lastacres / 1000 - 1
+    lastx <- toplo %>%
+      filter(Year == maxyr) %>%
+      pull(ind)
 
     p <- p +
-      ggplot2::annotate('text', x = nrow(toplo), y = lasty, label = lastlab, angle = 90, hjust = 1, vjust = 0.3, size = 3, family = family)
+      ggplot2::annotate('text', x = lastx, y = lasty, label = lastlab, angle = 90, hjust = 1, vjust = 0.3, size = 3, family = family)
 
   }
 
