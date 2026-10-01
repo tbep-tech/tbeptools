@@ -26,7 +26,7 @@ path <- '~/Desktop/benthic.zip'
 
 # download
 urlin1 <- 'https://epcbocc.sharepoint.com/:u:/s/PublishedShare/'
-urlin2 <- 'IQDODa-pbW8pTaZMg-93L9sTAZW1Y6hjj1TD_8RY0mFGiQ8?e=9JBNmb'
+urlin2 <- 'IQDODa-pbW8pTaZMg-93L9sTAZW1Y6hjj1TD_8RY0mFGiQ8?e=FIphoq'
 urlin <- paste0(urlin1, urlin2, '&download=1')
 read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 
