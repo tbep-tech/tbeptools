@@ -22,7 +22,7 @@ card](https://tbep-tech.github.io/tbeptools/articles/intro.html). The
 required data for the TBBI are more extensive than the water quality
 report card and the data are made available as a zipped folder of csv
 files, available
-[here](https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQDODa-pbW8pTaZMg-93L9sTAZW1Y6hjj1TD_8RY0mFGiQ8?e=9JBNmb&download=1).
+[here](https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQDODa-pbW8pTaZMg-93L9sTAZW1Y6hjj1TD_8RY0mFGiQ8?e=FIphoq&download=1).
 The process for downloading and working with the data are similar as for
 the other functions in tbeptools.
 
@@ -483,7 +483,7 @@ The
 function will retrieve all sediment data for Tampa Bay collected
 annually by the Environmental Protection Commission of Hillsborough
 County, available
-[here](https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQAr2aDfEyegTrJLR61qt1CxAQYxfnVYYWAwkbtArczrJS4?e=FE6hyM&download=1).
+[here](https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQAr2aDfEyegTrJLR61qt1CxAQYxfnVYYWAwkbtArczrJS4?e=EQSGO3&download=1).
 
 ``` r
 

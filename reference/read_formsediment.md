@@ -33,7 +33,7 @@ path <- '~/Desktop/sediment.zip'
 
 # download
 urlin1 <- 'https://epcbocc.sharepoint.com/:u:/s/PublishedShare/'
-urlin2 <- 'IQAr2aDfEyegTrJLR61qt1CxAQYxfnVYYWAwkbtArczrJS4?e=FE6hyM'
+urlin2 <- 'IQAr2aDfEyegTrJLR61qt1CxAQYxfnVYYWAwkbtArczrJS4?e=EQSGO3'
 urlin <- paste0(urlin1, urlin2, '&download=1')
 read_dlcurrent(path, download_latest = TRUE, urlin = urlin)
 

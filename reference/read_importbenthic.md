@@ -31,7 +31,7 @@ A nested `tibble` of station, taxa, and field sample data.
 
 This function downloads and unzips a folder of base tables used to
 calculate the benthic index from
-<https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQDODa-pbW8pTaZMg-93L9sTAZW1Y6hjj1TD_8RY0mFGiQ8?e=9JBNmb&download=1>.
+<https://epcbocc.sharepoint.com/:u:/s/PublishedShare/IQDODa-pbW8pTaZMg-93L9sTAZW1Y6hjj1TD_8RY0mFGiQ8?e=FIphoq&download=1>.
 
 Index the corresponding list element in the `value` column to view each
 dataset. For example, the stations data in the first row can be viewed
