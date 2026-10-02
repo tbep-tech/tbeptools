@@ -2,6 +2,7 @@
 #'
 #' @param training logical if training data are imported or the complete database
 #' @param raw logical indicating if raw, unformatted data are returned, see details
+#' @param retry integer indicating maximum number of retries on request failure, default 5
 #'
 #' @return data frame
 #' @export
@@ -16,6 +17,8 @@
 #'
 #' If \code{raw = TRUE}, the unformatted data are returned.  The default is to use formatting that allows the raw data to be used with the downstream functions. The raw data may have extra information that may be of use outside of the plotting functions in this package.
 #'
+#' The request is retried with exponential backoff up to \code{retry} times if the JSON request fails, since the Water Atlas API intermittently fails.
+#'
 #' @examples
 #' \dontrun{
 #' # get training data
@@ -24,13 +27,35 @@
 #' # import all transect data
 #' transect <- read_transect()
 #' }
-read_transect <- function(training = FALSE, raw = FALSE){
+read_transect <- function(training = FALSE, raw = FALSE, retry = 5){
 
   url <- 'https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/all__use-with-care'
   if(training)
     url <- 'https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/training'
 
-  dat <- jsonlite::fromJSON(url)
+  retry_count <- 0
+  dat <- NULL
+
+  while(retry_count <= retry){
+
+    dat <- try(jsonlite::fromJSON(url), silent = TRUE)
+
+    if(!inherits(dat, 'try-error'))
+      break
+
+    retry_count <- retry_count + 1
+
+    if(retry_count > retry)
+      break
+
+    message(paste0('Request failed, retrying... (attempt ', retry_count, ' of ', retry, ')'))
+
+    Sys.sleep(2^retry_count)
+
+  }
+
+  if(inherits(dat, 'try-error'))
+    stop(paste('Failed to retrieve data after', retry, 'retries:', attr(dat, 'condition')$message))
 
   # format
   out <- read_formtransect(dat, training = training, raw = raw)

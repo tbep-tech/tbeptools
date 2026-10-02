@@ -23,12 +23,12 @@
 #' url <- 'https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/all__use-with-care'
 #' jsn <- fromJSON(url)
 #' trndat <- read_formtransect(jsn)
-#' }
 #'
 #' # training transect data
 #' url <- 'https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/training'
 #' jsn <- fromJSON(url)
 #' trndat <- read_formtransect(jsn, training = TRUE)
+#' }
 read_formtransect <- function(jsn, training = FALSE, raw = FALSE){
 
   if(training){
