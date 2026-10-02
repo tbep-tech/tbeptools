@@ -26,7 +26,7 @@ library(bookdown)
 library(patchwork)
 library(dplyr)
 library(knitr)
-library(mapview)
+library(leaflet)
 library(ggplot2)
 library(sf)
 
@@ -97,14 +97,25 @@ The imported data are formatted for calculating the TBNI.  The columns include a
 head(tbnispp)
 ```
 
-The `read_importfim()` function can also return a simple features object of sampled stations in the raw FIM data by setting \code{locs = TRUE}.  These data are matched to the appropriate bay segments for tabulating TBNI scores.  The resulting dataset indicates where sampling has occurred and can be mapped with the `mapview()` function.  For ease of use, a dataset named `fimstations` is included in tbeptools.      
+The `read_importfim()` function can also return a simple features object of sampled stations in the raw FIM data by setting \code{locs = TRUE}.  These data are matched to the appropriate bay segments for tabulating TBNI scores.  The resulting dataset indicates where sampling has occurred and can be mapped with `leaflet()`.  For ease of use, a dataset named `fimstations` is included in tbeptools.
 
 ```{r, eval = F}
 fimstations <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
-mapview(fimstations, zcol = 'bay_segment')
+
+pal <- colorFactor('Dark2', domain = fimstations$bay_segment)
+
+leaflet(fimstations) %>%
+  addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+  addCircleMarkers(color = ~pal(bay_segment), radius = 3, stroke = FALSE, fillOpacity = 0.8) %>%
+  addLegend('bottomright', pal = pal, values = ~bay_segment, title = 'Bay Segment')
 ```
 ```{r, echo = F, out.width = '100%'}
-mapview(fimstations, zcol = 'bay_segment')
+pal <- colorFactor('Dark2', domain = fimstations$bay_segment)
+
+leaflet(fimstations) %>%
+  addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+  addCircleMarkers(color = ~pal(bay_segment), radius = 3, stroke = FALSE, fillOpacity = 0.8) %>%
+  addLegend('bottomright', pal = pal, values = ~bay_segment, title = 'Bay Segment')
 ```
 
 The `read_importfim()` function processes the observed data as needed for the TBNI, including merging the rows with the `tbnispp` and `fimstations` data. Once imported, the metrics and scores can be calculated.  

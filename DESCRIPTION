@@ -89,7 +89,6 @@ Suggests:
   ggspatial,
   htmlwidgets,
   knitr,
-  mapview,
   mockery,
   rmarkdown,
   testthat (>= 2.1.0),

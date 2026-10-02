@@ -26,7 +26,7 @@ library(tbeptools)
 library(bookdown)
 library(dplyr)
 library(knitr)
-library(mapview)
+library(leaflet)
 library(plotly)
 library(sf)
 
@@ -45,7 +45,9 @@ Tidal creeks (aka tributaries) are essential habitats in the Tampa Bay Estuary a
 The tbeptools package includes a [simple features](https://r-spatial.github.io/sf/articles/sf1.html) spatial data object of the population of tidal creeks in southwest Florida, called `tidalcreeks()`. This includes `r nrow(tidalcreeks)` polyline features designated by a water body ID (`WBID`), creek id (`JEI`), and [FDEP class](https://floridadep.gov/dear/water-quality-standards/content/surface-water-quality-standards-classes-uses-criteria) (`class`, 1 for potable water, 2 for shellfish harvesting or propagation, and 3F/3M for freshwater/marine fish consumption, recreation, propagation and maintenance of a healthy, well-balanced population of fish and wildlife).
 
 ```{r, eval = T, cache = F}
-mapview(tidalcreeks, homebutton = F, legend = F)
+leaflet(tidalcreeks) %>%
+  addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+  addPolylines(weight = 2, color = '#00539C')
 ```
 
 The tidal creek assessment framework was established based on data from the FDEP [Impaired Waters Rule](https://www.flrules.org/gateway/ChapterHome.asp?Chapter=62-303) database run 56 available [here](http://publicfiles.dep.state.fl.us/DEAR/IWR/) which includes data collected through January 10th 2019. However, this framework is used for future IWR databases to refresh the site with new data as it becomes available.  Raw and updated data from the IWR database required for assessment is provided in the tbeptools package in the `iwrraw()` data object.  
