@@ -76,8 +76,8 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', exten
 
   p <- ggplot2::ggplot(toplo, ggplot2::aes(x = ind, y = Acres)) +
     ggplot2::geom_col(fill = '#00806E', colour = 'black', width = 1.3, na.rm = T) +
-    ggplot2::geom_segment(x = 0, xend = 2, y = 38, yend = 38, col = 'red', size = 2) +
-    ggplot2::geom_segment(x = 4, xend = x1, y = 38, yend = 38, col = 'red', size = 2) +
+    ggplot2::geom_segment(x = 0, xend = 2, y = 38, yend = 38, col = 'red', linewidth = 2) +
+    ggplot2::geom_segment(x = 4, xend = x1, y = 38, yend = 38, col = 'red', linewidth = 2) +
     ggplot2::scale_x_continuous(breaks = brks, labels = lbs, expand = c(0.04, 0.04)) +
     ggplot2::scale_y_continuous(expand = c(0, 0), limits = c(0, 1.1 * max(toplo$Acres, na.rm = T))) +
     ggplot2::theme_grey(base_family = family) +
@@ -96,7 +96,7 @@ show_seagrasscoverage <- function(seagrass, maxyr = 2024, family = 'sans', exten
 
   # add coverage goal line if maxyr > 2018 or extend = T
   if(maxyr > 2018 | extend)
-    p <- p + ggplot2::geom_segment(x = x1, xend = x2, y = 40, yend = 40, col = 'red', size = 2)
+    p <- p + ggplot2::geom_segment(x = x1, xend = x2, y = 40, yend = 40, col = 'red', linewidth = 2)
   
   # add coverage goal label if covlab = T
   if(covlab){

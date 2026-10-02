@@ -312,13 +312,13 @@ show_hmpreport <- function(acres, subtacres, hmptrgs, typ, twocol = FALSE, strat
       ggplot2::geom_segment(data = toplo,
         ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = z),
         arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
-        size = 0.7, alpha = 0,
+        linewidth = 0.7, alpha = 0,
         key_glyph = draw_key_up
         ) +
       ggplot2::geom_segment(data = toplo,
         ggplot2::aes(x = metric, xend = metric, y = yearfac, yend = yearfac, linetype = v),
         arrow = grid::arrow(length = grid::unit(0.25, 'cm'), type = 'open', angle = 45),
-        size = 0.7, alpha = 0,
+        linewidth = 0.7, alpha = 0,
         key_glyph = draw_key_down
       ) +
       labs(

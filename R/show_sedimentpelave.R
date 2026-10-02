@@ -54,7 +54,7 @@ show_sedimentpelave <- function(sedimentdata, yrrng = c(1993, 2024), bay_segment
     ggplot2::geom_point(size = 3) +
     ggplot2::scale_x_discrete(drop = F) +
     ggplot2::geom_errorbar(ggplot2::aes(ymin = lov, ymax = hiv), width = 0, na.rm = T) +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = grandave, linetype = grdtxt), color = 'grey', size = lnsz) +
+    ggplot2::geom_hline(ggplot2::aes(yintercept = grandave, linetype = grdtxt), color = 'grey', linewidth = lnsz) +
     ggplot2::geom_hline(aes(yintercept = brks[1]), color = "black", linetype = "dotted") +
     ggplot2::geom_hline(aes(yintercept = brks[2]), color = "black", linetype = "dotted") +
     ggplot2::geom_hline(aes(yintercept = brks[3]), color = "black", linetype = "dotted") +

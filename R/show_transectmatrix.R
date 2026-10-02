@@ -85,7 +85,7 @@ show_transectmatrix <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
     }
 
     p <- p +
-      ggplot2::geom_vline(xintercept = val + fudge, size = 2)
+      ggplot2::geom_vline(xintercept = val + fudge, linewidth = 2)
 
   }
 

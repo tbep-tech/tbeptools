@@ -104,7 +104,7 @@ show_sitemap <- function(epcdata, yrsel, mosel = c(1, 12), param = c('chla', 'la
     stop("Package \"ggrepel\" needed for this function to work. Please install it.", call. = FALSE)
 
   p <- ggmap::ggmap(bsmap) +
-    geom_sf(data = tbseglines, colour = 'black', inherit.aes = F, size = 1) +
+    geom_sf(data = tbseglines, colour = 'black', inherit.aes = F, linewidth = 1) +
     ggrepel::geom_text_repel(data = tomap, aes(label = round(val, 1), geometry = geometry), stat = "sf_coordinates", size = 3, inherit.aes = F) +
     ggspatial::annotation_scale(unit_category = 'metric', location = 'br')
 
