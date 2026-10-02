@@ -61,8 +61,4 @@ A [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html) object
 ``` r
 transect <- read_transect(training = TRUE)
 show_compplot(transect, yr = 2025, site = '3', species = 'Halodule', varplo = 'Abundance')
-#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#> ℹ Please use `linewidth` instead.
-#> ℹ The deprecated feature was likely used in the tbeptools package.
-#>   Please report the issue at <https://github.com/tbep-tech/tbeptools/issues>.
 ```

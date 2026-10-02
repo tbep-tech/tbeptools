@@ -32,7 +32,9 @@ population of fish and wildlife).
 
 ``` r
 
-mapview(tidalcreeks, homebutton = F, legend = F)
+leaflet(tidalcreeks) %>%
+  addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+  addPolylines(weight = 2, color = '#00539C')
 ```
 
 The tidal creek assessment framework was established based on data from

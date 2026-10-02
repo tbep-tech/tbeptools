@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbeptools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.1.0.9033</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,7 @@
     <li><a class="dropdown-item" href="../articles/habitatmasterplan.html">Habitat Master Plan</a></li>
     <li><a class="dropdown-item" href="../articles/fib.html">Fecal Indicator Bacteria</a></li>
   </ul></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/tbep-tech/tbeptools/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -47,7 +48,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_transect</span><span class="op">(</span>training <span class="op">=</span> <span class="cn">FALSE</span>, raw <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_transect</span><span class="op">(</span>training <span class="op">=</span> <span class="cn">FALSE</span>, raw <span class="op">=</span> <span class="cn">FALSE</span>, retry <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -61,6 +62,10 @@
 <dt id="arg-raw">raw<a class="anchor" aria-label="anchor" href="#arg-raw"></a></dt>
 <dd><p>logical indicating if raw, unformatted data are returned, see details</p></dd>
 
+
+<dt id="arg-retry">retry<a class="anchor" aria-label="anchor" href="#arg-retry"></a></dt>
+<dd><p>integer indicating maximum number of retries on request failure, default 5</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -71,6 +76,7 @@
     <p>The function imports a JSON file from the USF Water Atlas.  If <code>training = TRUE</code>, a dataset from the TBEP training survey is imported from <a href="https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/training" class="external-link">https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/training</a>.  If <code>training = FALSE</code>, the entire transect survey database is imported from <a href="https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/all__use-with-care" class="external-link">https://tampabay.wateratlas.usf.edu/seagrass-transect-data-portal/api/assessments/all__use-with-care</a>.</p>
 <p>Abundance is reported as a numeric value from 0 -5 for Braun-Blanquet coverage estimates, blade length is in cm, and short shoot density is number of shoots per square meter.  The short density is corrected for quadrat size included in the raw data.</p>
 <p>If <code>raw = TRUE</code>, the unformatted data are returned.  The default is to use formatting that allows the raw data to be used with the downstream functions. The raw data may have extra information that may be of use outside of the plotting functions in this package.</p>
+<p>The request is retried with exponential backoff up to <code>retry</code> times if the JSON request fails, since the Water Atlas API intermittently fails.</p>
     </div>
 
     <div class="section level2">

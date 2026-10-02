@@ -155,14 +155,19 @@ The
 function can also return a simple features object of sampled stations in
 the raw FIM data by setting . These data are matched to the appropriate
 bay segments for tabulating TBNI scores. The resulting dataset indicates
-where sampling has occurred and can be mapped with the `mapview()`
-function. For ease of use, a dataset named `fimstations` is included in
-tbeptools.
+where sampling has occurred and can be mapped with `leaflet()`. For ease
+of use, a dataset named `fimstations` is included in tbeptools.
 
 ``` r
 
 fimstations <- read_importfim(csv, download_latest = TRUE, locs = TRUE)
-mapview(fimstations, zcol = 'bay_segment')
+
+pal <- colorFactor('Dark2', domain = fimstations$bay_segment)
+
+leaflet(fimstations) %>%
+  addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+  addCircleMarkers(color = ~pal(bay_segment), radius = 3, stroke = FALSE, fillOpacity = 0.8) %>%
+  addLegend('bottomright', pal = pal, values = ~bay_segment, title = 'Bay Segment')
 ```
 
 The

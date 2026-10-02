@@ -5,7 +5,7 @@ Import JSON seagrass transect data from Water Atlas
 ## Usage
 
 ``` r
-read_transect(training = FALSE, raw = FALSE)
+read_transect(training = FALSE, raw = FALSE, retry = 5)
 ```
 
 ## Arguments
@@ -17,6 +17,11 @@ read_transect(training = FALSE, raw = FALSE)
 - raw:
 
   logical indicating if raw, unformatted data are returned, see details
+
+- retry:
+
+  integer indicating maximum number of retries on request failure,
+  default 5
 
 ## Value
 
@@ -41,6 +46,9 @@ If `raw = TRUE`, the unformatted data are returned. The default is to
 use formatting that allows the raw data to be used with the downstream
 functions. The raw data may have extra information that may be of use
 outside of the plotting functions in this package.
+
+The request is retried with exponential backoff up to `retry` times if
+the JSON request fails, since the Water Atlas API intermittently fails.
 
 ## Examples
 
