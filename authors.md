@@ -23,7 +23,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/tbep-tech/tbeptools/blob/v3.1.1/inst/CITATION)
+[`inst/CITATION`](https://github.com/tbep-tech/tbeptools/blob/master/inst/CITATION)
 
 Beck, M.W., Schrandt, M.N., Wessel, M.R., Sherwood, E.T., Raulerson,
 G.E., Budihal Prasad, A.A., Best, B.D., (2021). tbeptools: An R package

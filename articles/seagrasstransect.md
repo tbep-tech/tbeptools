@@ -20,7 +20,7 @@ collects the data at each transect.
 ``` r
 
 trnpts
-#> Simple feature collection with 66 features and 11 fields
+#> Simple feature collection with 68 features and 11 fields
 #> Geometry type: POINT
 #> Dimension:     XY
 #> Bounding box:  xmin: -82.8089 ymin: 27.49925 xmax: -82.39305 ymax: 28.0001
@@ -49,7 +49,7 @@ trnpts
 #> 9      <NA>         OTB POINT (-82.62015 27.88228)
 #> 10     <NA>         OTB POINT (-82.64793 27.90498)
 trnlns
-#> Simple feature collection with 66 features and 8 fields
+#> Simple feature collection with 68 features and 8 fields
 #> Geometry type: LINESTRING
 #> Dimension:     XY
 #> Bounding box:  xmin: -82.8118 ymin: 27.49807 xmax: -82.39306 ymax: 28.0001
