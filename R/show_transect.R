@@ -3,7 +3,7 @@
 #' @param transect data frame returned by \code{\link{read_transect}}
 #' @param site chr string indicating site results to plot
 #' @param species chr string indicating one to many of which species to plot
-#' @param yrrng numeric indicating year ranges to evaluate
+#' @param yrrng numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year
 #' @param varplo chr string indicating which variable to plot
 #' @param base_size numeric indicating text scaling size for plot
 #' @param facet logical indicating if plots are separated into facets by species
@@ -57,7 +57,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
   if(any(!species %in% spp))
     stop('Species must be one to many of ', paste(spp, collapse = ', '))
 
-  if(yrrng[1] >= yrrng[2])
+  if(yrrng[1] > yrrng[2])
     stop('Select different year range')
 
   # check correct length of optional color vector
@@ -144,6 +144,7 @@ show_transect <- function(transect, site, species = c('Halodule', 'Syringodium',
   # finish plot
   p <- p +
     ggplot2::scale_size(breaks = as.numeric(levels(factor(toplo1$val)))) +
+    ggplot2::scale_y_continuous(breaks = function(x) unique(round(pretty(x)))) +
     ggplot2::theme_minimal(base_size = base_size) +
     ggplot2::theme(
       panel.grid.major.y = ggplot2::element_blank(),

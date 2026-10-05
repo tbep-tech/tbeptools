@@ -16,3 +16,10 @@ test_that("Checking show_transectavespp reactable class", {
 test_that("Checking show_transectavespp error for invalid color entry", {
   expect_error(show_transectavespp(transectocc, sppcol = 'red'))
 })
+
+test_that("Checking show_transectavespp class, single year", {
+
+  result <- show_transectavespp(transectocc, yrrng = c(2020, 2020))
+  expect_is(result, 'ggplot')
+
+})

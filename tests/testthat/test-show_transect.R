@@ -36,3 +36,8 @@ test_that("Checking show_transect error for invalid year entry", {
 test_that("Checking show_transect error for no species at transect", {
   expect_error(show_transect(transect, site = 'S5T1', species = 'Caulerpa'))
 })
+
+test_that("Checking show_transect class, single year", {
+  result <- show_transect(transect, site = 'S3T10', species = 'Halodule', yrrng = c(2020, 2020))
+  expect_is(result, 'ggplot')
+})

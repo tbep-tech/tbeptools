@@ -34,3 +34,10 @@ test_that("Checking results for anlz_transectavespp, total FALSE", {
   expect_is(results, 'tbl_df')
 
 })
+
+test_that("Checking results for anlz_transectavespp, single year", {
+
+  results <- anlz_transectavespp(transectocc, yrrng = c(2020, 2020))
+  expect_equal(unique(results$yr), 2020)
+
+})

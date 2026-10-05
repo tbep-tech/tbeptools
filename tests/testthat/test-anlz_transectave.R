@@ -31,3 +31,10 @@ test_that("Checking results for anlz_transectave, rev = T", {
 
 })
 
+
+test_that("Checking results for anlz_transectave, single year", {
+
+  results <- anlz_transectave(transectocc, yrrng = c(2020, 2020))
+  expect_equal(unique(results$yr), 2020)
+
+})

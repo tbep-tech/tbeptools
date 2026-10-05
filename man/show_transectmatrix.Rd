@@ -29,7 +29,7 @@ show_transectmatrix(
 
 \item{neutral}{logical indicating if a neutral and continuous color scheme is used}
 
-\item{yrrng}{numeric indicating year ranges to evaluate}
+\item{yrrng}{numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year}
 
 \item{alph}{numeric indicating alpha value for score category colors}
 

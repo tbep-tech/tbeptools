@@ -25,3 +25,10 @@ test_that("Checking show_transectmatrix plotly class", {
   expect_is(result, 'plotly')
 
 })
+
+test_that("Checking show_transectmatrix class, single year", {
+
+  result <- show_transectmatrix(transectocc, yrrng = c(2020, 2020))
+  expect_is(result, 'ggplot')
+
+})

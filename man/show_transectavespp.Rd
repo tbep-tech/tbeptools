@@ -25,7 +25,7 @@ show_transectavespp(
 
 \item{bay_segment}{chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"}
 
-\item{yrrng}{numeric indicating year ranges to evaluate}
+\item{yrrng}{numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year}
 
 \item{species}{chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"}
 

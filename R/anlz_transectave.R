@@ -3,7 +3,7 @@
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
 #' @param total logical indicating if average frequency occurrence is calculated for the entire bay across segments
-#' @param yrrng numeric indicating year ranges to evaluate
+#' @param yrrng numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year
 #' @param rev logical if factor levels for bay segments are reversed
 #'
 #' @details
@@ -26,7 +26,7 @@ anlz_transectave <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB', 'L
 
   # sanity checks
   stopifnot(length(yrrng) == 2)
-  stopifnot(yrrng[1] < yrrng[2])
+  stopifnot(yrrng[1] <= yrrng[2])
 
   # bay segment factor levels
   levs <- c('OTB', 'HB', 'MTB', 'LTB', 'BCB')

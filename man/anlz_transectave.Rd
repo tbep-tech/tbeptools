@@ -19,7 +19,7 @@ anlz_transectave(
 
 \item{total}{logical indicating if average frequency occurrence is calculated for the entire bay across segments}
 
-\item{yrrng}{numeric indicating year ranges to evaluate}
+\item{yrrng}{numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year}
 
 \item{rev}{logical if factor levels for bay segments are reversed}
 }

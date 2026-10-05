@@ -3,7 +3,7 @@
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param site chr string indicating site results to plot
 #' @param species chr string indicating which species to plot
-#' @param yrrng numeric indicating year ranges to evaluate
+#' @param yrrng numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year
 #' @param abund logical indicating if abundance averages are plotted instead of frequency occurrence
 #' @param sppcol character vector of alternative colors to use for each species, must have length of six
 #'
@@ -35,7 +35,7 @@ show_transectsum <- function(transectocc, site, species = c('Halodule', 'Syringo
   if(!any(species %in% spp))
     stop(paste('Species must be one to many of', paste(spp, collapse = ', ')))
 
-  if(yrrng[1] >= yrrng[2])
+  if(yrrng[1] > yrrng[2])
     stop('Select different year range')
 
   # check correct length of optional color vector

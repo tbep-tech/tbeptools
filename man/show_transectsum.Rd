@@ -21,7 +21,7 @@ show_transectsum(
 
 \item{species}{chr string indicating which species to plot}
 
-\item{yrrng}{numeric indicating year ranges to evaluate}
+\item{yrrng}{numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year}
 
 \item{abund}{logical indicating if abundance averages are plotted instead of frequency occurrence}
 

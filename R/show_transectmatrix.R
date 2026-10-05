@@ -4,7 +4,7 @@
 #' @param bay_segment chr string for the bay segment, one to many of "HB", "OTB", "MTB", "LTB", "TCB", "MR", "BCB"
 #' @param total logical indicating if average frequency occurrence is calculated for the entire bay across segments
 #' @param neutral logical indicating if a neutral and continuous color scheme is used
-#' @param yrrng numeric indicating year ranges to evaluate
+#' @param yrrng numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year
 #' @param alph numeric indicating alpha value for score category colors
 #' @param txtsz numeric for size of text in the plot
 #' @param family optional chr string indicating font family for text labels

@@ -2,7 +2,7 @@
 #'
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
-#' @param yrrng numeric indicating year ranges to evaluate
+#' @param yrrng numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year
 #' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"
 #' @param total logical indicating if total frequency occurrence for all seagrass species is also returned, only applies if \code{asreact = FALSE}
 #' @param alph numeric indicating alpha value for score category colors
@@ -66,6 +66,7 @@ show_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
       ggplot2::geom_line(alpha = alph) +
       ggplot2::geom_point(pch = 21, size = 3, alpha = alph) +
       ggplot2::scale_fill_manual(values = sppcol) +
+      ggplot2::scale_x_continuous(breaks = function(x) unique(round(pretty(x)))) +
       ggplot2::theme_bw() +
       ggplot2::theme(
         axis.title.x = ggplot2::element_blank(),

@@ -2,7 +2,7 @@
 #'
 #' @param transectocc data frame returned by \code{\link{anlz_transectocc}}
 #' @param bay_segment chr string for the bay segment, one to many of "OTB", "HB", "MTB", "LTB", "BCB"
-#' @param yrrng numeric indicating year ranges to evaluate
+#' @param yrrng numeric vector of length two indicating min, max years to include, use the same year for both values to evaluate a single year
 #' @param species chr string of species to summarize, one to many of "Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa", "Dapis", "Chaetomorpha"
 #' @param total logical indicating if total frequency occurrence for all species is also returned
 #' @param by_seg logical indicating if separate results by bay segments are retained
@@ -29,7 +29,7 @@ anlz_transectavespp <- function(transectocc, bay_segment = c('OTB', 'HB', 'MTB',
 
   # sanity checks
   stopifnot(length(yrrng) == 2)
-  stopifnot(yrrng[1] < yrrng[2])
+  stopifnot(yrrng[1] <= yrrng[2])
 
   if(!any(species %in% c('Halodule', 'Syringodium', 'Thalassia', 'Ruppia', 'Halophila', 'Caulerpa', 'Dapis', 'Chaetomorpha')))
     stop('Incorrect species, must be one of Halodule, Syringodium, Thalassia, Ruppia, Halophila, Caulerpa, Dapis, Chaetomorpha')
