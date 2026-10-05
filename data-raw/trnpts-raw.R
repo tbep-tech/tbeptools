@@ -15,10 +15,10 @@ s4t10 <- trnpts %>%
 # add new 2026 ami points
 trnptsami <- read.csv('T:/05_GIS/SEAGRASS_TRANSECTS/AMI_TRANSECTS/AMI_New_Transects_S4T16_S4T17_Starting_Points.csv') |>
    mutate(
-      SEGMENT = 4, 
+      SEGMENT = 4,
       TRANSECT = as.numeric(gsub('^S4T', '', TRANSECT_ID)),
-      MonAgency = 'TBEP', 
-      STATUS = 'ACTIVE', 
+      MonAgency = 'SCWK',
+      STATUS = 'ACTIVE',
       Comments  = NA_character_,
       bay_segment = 'LTB',
       ID = 'START'

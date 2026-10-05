@@ -2,10 +2,10 @@ library(sf)
 library(dplyr)
 
 # ami transcts added 2026
-trnlnsami <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/AMI_TRANSECTS/AMI_New_Transects_S4T16_S4T17_Lines.shp') |> 
+trnlnsami <- st_read('T:/05_GIS/SEAGRASS_TRANSECTS/AMI_TRANSECTS/AMI_New_Transects_S4T16_S4T17_Lines.shp') |>
   mutate(
-    MonAgency = 'TBEP', 
-    ActiveYN = 'YES', 
+    MonAgency = 'SCWK',
+    ActiveYN = 'YES',
     Comments = NA_character_,
     OBJECTID = c(1, 2)
   ) |> 
