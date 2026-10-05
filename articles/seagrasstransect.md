@@ -84,7 +84,7 @@ with `leaflet()` to view their locations.
 
 ``` r
 
-cols <- c("#E16A86", "#CB7F2F", "#9F9400", "#50A315", "#00AC79", "#00AAB7", "#009ADE", "#A87BE4", "#DA65C3")
+cols <- c("#E16A86", "#CB7F2F", "#9F9400", "#50A315", "#00AC79", "#00AAB7", "#808000", "#009ADE", "#A87BE4", "#DA65C3")
 pal <- colorFactor(palette = cols, domain = trnpts$MonAgency)
 
 leaflet() %>%
