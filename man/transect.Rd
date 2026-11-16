@@ -3,9 +3,9 @@
 \docType{data}
 \name{transect}
 \alias{transect}
-\title{Seagrass transect data for Tampa Bay current as of 12052025}
+\title{Seagrass transect data for Tampa Bay current as of 11162026}
 \format{
-A data frame with 164724 rows and 11 variables:
+A data frame with 171267 rows and 11 variables:
 \describe{
 \item{Crew}{chr}
 \item{MonitoringAgency}{chr}
@@ -24,7 +24,7 @@ A data frame with 164724 rows and 11 variables:
 transect
 }
 \description{
-Seagrass transect data for Tampa Bay current as of 12052025
+Seagrass transect data for Tampa Bay current as of 11162026
 }
 \examples{
 \dontrun{
