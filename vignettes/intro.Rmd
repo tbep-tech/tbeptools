@@ -132,7 +132,7 @@ mancodata <- read_importwqp(org = '21FLMANA_WQX', type = 'wq', trace = T)
 pincodata <- read_importwqp(org = '21FLPDEM_WQX', type = 'wq', trace = T)
 ```
 
-Additionally, data can be retrieved from the Tampa Bay Water Atlas API (<https://dev.api.wateratlas.org/redoc/>) using two different functions.  These functions are generally quicker and more flexible than those from the USEPA Water Quality Portal.  The `util_importwqwa()` function retrieves metadata on the available information from the Water Atlas API.  This includes information on available data sources, parameters, sampling stations, and waterbodies.
+Additionally, data can be retrieved from the Tampa Bay Water Atlas API (<https://api.wateratlas.org/redoc/>) using two different functions.  These functions are generally quicker and more flexible than those from the USEPA Water Quality Portal.  The `util_importwqwa()` function retrieves metadata on the available information from the Water Atlas API.  This includes information on available data sources, parameters, sampling stations, and waterbodies.
 
 ```{r}
 # data sources

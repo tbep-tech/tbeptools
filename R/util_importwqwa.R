@@ -26,7 +26,7 @@ util_importwqwa <- function(endpoint, pageSize = 10000, waterbodyId = NULL){
 
   endpoint <- match.arg(endpoint, c('dataSources', 'parameters', 'sampling-locations', 'waterbodies'))
   
-  base_url <- "https://dev.api.wateratlas.org"
+  base_url <- "https://api.wateratlas.org"
 
   params <- list(
     pageSize = pageSize,
