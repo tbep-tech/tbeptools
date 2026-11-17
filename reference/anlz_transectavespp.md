@@ -9,7 +9,7 @@ year, and species
 anlz_transectavespp(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
-  yrrng = c(1998, 2025),
+  yrrng = c(1998, 2026),
   species = c("Halodule", "Syringodium", "Thalassia", "Ruppia", "Halophila", "Caulerpa",
     "Dapis", "Chaetomorpha"),
   total = TRUE,
@@ -67,7 +67,7 @@ transect <- read_transect()
 } # }
 transectocc <- anlz_transectocc(transect)
 anlz_transectavespp(transectocc)
-#> # A tibble: 252 × 3
+#> # A tibble: 261 × 3
 #>       yr Savspecies    foest
 #>    <dbl> <fct>         <dbl>
 #>  1  1998 Caulerpa     0.0166
@@ -80,5 +80,5 @@ anlz_transectavespp(transectocc)
 #>  8  1998 Thalassia    0.254 
 #>  9  1998 total        0.580 
 #> 10  1999 Caulerpa     0.0283
-#> # ℹ 242 more rows
+#> # ℹ 251 more rows
 ```

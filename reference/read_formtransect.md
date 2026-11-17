@@ -13,7 +13,7 @@ read_formtransect(jsn, training = FALSE, raw = FALSE)
 - jsn:
 
   A data frame returned from
-  [`fromJSON`](https://jeroen.r-universe.dev/jsonlite/reference/fromJSON.html)
+  [`fromJSON`](https://rdrr.io/pkg/jsonlite/man/fromJSON.html)
 
 - training:
 

@@ -145,7 +145,7 @@ transect <- read_transect(training = FALSE)
 
 # view the data
 transect
-#> # A tibble: 164,724 × 11
+#> # A tibble: 171,267 × 11
 #>    Crew              MonitoringAgency Date       Transect Site  Depth Savspecies
 #>    <chr>             <chr>            <date>     <chr>    <chr> <int> <chr>     
 #>  1 A. McClory, A. I… MCNRD            2024-08-13 S4T2     0       -10 No Cover  
@@ -158,7 +158,7 @@ transect
 #>  8 A. McClory, A. I… MCNRD            2024-08-13 S4T2     125     -25 Thalassia 
 #>  9 A. McClory, A. I… MCNRD            2024-08-13 S4T2     125     -25 Thalassia 
 #> 10 A. McClory, A. I… MCNRD            2024-08-13 S4T2     150      -5 Halodule  
-#> # ℹ 164,714 more rows
+#> # ℹ 171,257 more rows
 #> # ℹ 4 more variables: SeagrassEdge <dbl>, var <chr>, aveval <dbl>, sdval <dbl>
 ```
 
@@ -182,7 +182,7 @@ transectraw <- read_transect(training = FALSE, raw = TRUE)
 
 # view the data
 transectraw
-#> # A tibble: 55,224 × 46
+#> # A tibble: 57,406 × 46
 #>    IDall AssessmentYear CreatedAt   Crew  CountingTech SeagrassEdge Secchi Sonde
 #>    <int>          <int> <chr>       <chr> <chr>               <dbl>  <dbl> <lgl>
 #>  1     2           1998 1998-10-15… NA    NA                     NA     NA FALSE
@@ -195,7 +195,7 @@ transectraw
 #>  8     2           1998 1998-10-15… NA    NA                     NA     NA FALSE
 #>  9     2           1998 1998-10-15… NA    NA                     NA     NA FALSE
 #> 10     2           1998 1998-10-15… NA    NA                     NA     NA FALSE
-#> # ℹ 55,214 more rows
+#> # ℹ 57,396 more rows
 #> # ℹ 38 more variables: Weather <chr>, Hidden <lgl>, HiddenReason <lgl>,
 #> #   IsComplete <lgl>, QASubmittedAt <chr>, ReadyForQA <lgl>,
 #> #   QACompletedAt <chr>, MonitoringAgency <chr>, Transect <chr>,
@@ -231,21 +231,21 @@ species are aggregated. Drift or attached macroalgae and cyanobacteria
 
 transectocc <- anlz_transectocc(transect)
 transectocc
-#> # A tibble: 41,916 × 6
-#> # Groups:   Date, Transect [1,497]
-#>    Date       Transect Savspecies                  nsites foest bbest
-#>    <date>     <chr>    <chr>                        <int> <dbl> <dbl>
-#>  1 1997-10-11 S2T3     "AA"                            41     0     0
-#>  2 1997-10-11 S2T3     "Caulerpa"                      41     0     0
-#>  3 1997-10-11 S2T3     "Chaetomorpha"                  41     0     0
-#>  4 1997-10-11 S2T3     "DA"                            41     0     0
-#>  5 1997-10-11 S2T3     "DB: Dictyota\r\n"              41     0     0
-#>  6 1997-10-11 S2T3     "DB: Drift Brown\r\n"           41     0     0
-#>  7 1997-10-11 S2T3     "DG: Drift Green"               41     0     0
-#>  8 1997-10-11 S2T3     "DG: Ulva"                      41     0     0
-#>  9 1997-10-11 S2T3     "DG: Ulva fasciata\r\n"         41     0     0
-#> 10 1997-10-11 S2T3     "DG: Ulva intestinales\r\n"     41     0     0
-#> # ℹ 41,906 more rows
+#> # A tibble: 44,834 × 6
+#> # Groups:   Date, Transect [1,546]
+#>    Date       Transect Savspecies              nsites foest bbest
+#>    <date>     <chr>    <chr>                    <int> <dbl> <dbl>
+#>  1 1997-10-11 S2T3     "AA"                        41     0     0
+#>  2 1997-10-11 S2T3     "Caulerpa"                  41     0     0
+#>  3 1997-10-11 S2T3     "Chaetomorpha"              41     0     0
+#>  4 1997-10-11 S2T3     "DA"                        41     0     0
+#>  5 1997-10-11 S2T3     "DB: Dictyota\r\n"          41     0     0
+#>  6 1997-10-11 S2T3     "DB: Drift Brown\r\n"       41     0     0
+#>  7 1997-10-11 S2T3     "DG: Codium\r\n"            41     0     0
+#>  8 1997-10-11 S2T3     "DG: Drift Green"           41     0     0
+#>  9 1997-10-11 S2T3     "DG: Ulva"                  41     0     0
+#> 10 1997-10-11 S2T3     "DG: Ulva fasciata\r\n"     41     0     0
+#> # ℹ 44,824 more rows
 ```
 
 The second function,
@@ -266,7 +266,7 @@ specific bay segments and annual ranges can be filtered with the
 
 transectave <- anlz_transectave(transectocc)
 transectave
-#> # A tibble: 168 × 4
+#> # A tibble: 174 × 4
 #> # Groups:   bay_segment [6]
 #>    bay_segment    yr foest focat  
 #>    <fct>       <dbl> <dbl> <fct>  
@@ -280,7 +280,7 @@ transectave
 #>  8 OTB          1999  64.7 #E9C318
 #>  9 HB           1999  10.1 #CC3231
 #> 10 MTB          1999  51.8 #E9C318
-#> # ℹ 158 more rows
+#> # ℹ 164 more rows
 ```
 
 The third function,
@@ -304,7 +304,7 @@ default is to return all. *Caulerpa spp.*, *Dapis spp.*, and
 
 transectavespp <- anlz_transectavespp(transectocc)
 transectavespp
-#> # A tibble: 252 × 3
+#> # A tibble: 261 × 3
 #>       yr Savspecies    foest
 #>    <dbl> <fct>         <dbl>
 #>  1  1998 Caulerpa     0.0166
@@ -317,7 +317,7 @@ transectavespp
 #>  8  1998 Thalassia    0.254 
 #>  9  1998 total        0.580 
 #> 10  1999 Caulerpa     0.0283
-#> # ℹ 242 more rows
+#> # ℹ 251 more rows
 ```
 
 Results for individual bay segments from
@@ -329,7 +329,7 @@ totals are not returned in this case.
 
 transectavespp <- anlz_transectavespp(transectocc, by_seg = TRUE)
 transectavespp
-#> # A tibble: 1,400 × 5
+#> # A tibble: 1,450 × 5
 #>       yr bay_segment Savspecies   foest nsites
 #>    <dbl> <fct>       <fct>        <dbl>  <int>
 #>  1  1998 BCB         Caulerpa     0         96
@@ -342,7 +342,7 @@ transectavespp
 #>  8  1998 BCB         Syringodium  0         96
 #>  9  1998 BCB         Thalassia    0.304     96
 #> 10  1998 BCB         total        0.810     96
-#> # ℹ 1,390 more rows
+#> # ℹ 1,440 more rows
 ```
 
 ### Plotting results
@@ -354,7 +354,7 @@ species (`species` argument) and variable (`varplo` argument).
 
 ``` r
 
-show_compplot(traindat, yr = 2025, site = '3', species = 'Halodule', varplo = 'Abundance', base_size = 14)
+show_compplot(traindat, yr = 2026, site = '3', species = 'Halodule', varplo = 'Abundance', base_size = 14)
 ```
 
 ![](seagrasstransect_files/figure-html/unnamed-chunk-11-1.png)

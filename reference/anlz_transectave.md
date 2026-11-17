@@ -10,7 +10,7 @@ anlz_transectave(
   transectocc,
   bay_segment = c("OTB", "HB", "MTB", "LTB", "BCB"),
   total = TRUE,
-  yrrng = c(1998, 2025),
+  yrrng = c(1998, 2026),
   rev = FALSE
 )
 ```
@@ -60,7 +60,7 @@ transect <- read_transect()
 } # }
 transectocc <- anlz_transectocc(transect)
 anlz_transectave(transectocc)
-#> # A tibble: 168 × 4
+#> # A tibble: 174 × 4
 #> # Groups:   bay_segment [6]
 #>    bay_segment    yr foest focat  
 #>    <fct>       <dbl> <dbl> <fct>  
@@ -74,5 +74,5 @@ anlz_transectave(transectocc)
 #>  8 OTB          1999  64.7 #E9C318
 #>  9 HB           1999  10.1 #CC3231
 #> 10 MTB          1999  51.8 #E9C318
-#> # ℹ 158 more rows
+#> # ℹ 164 more rows
 ```

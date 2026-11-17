@@ -51,19 +51,19 @@ if (FALSE) { # \dontrun{
 transect <- read_transect()
 } # }
 anlz_transectocc(transect)
-#> # A tibble: 41,916 × 6
-#> # Groups:   Date, Transect [1,497]
-#>    Date       Transect Savspecies                  nsites foest bbest
-#>    <date>     <chr>    <chr>                        <int> <dbl> <dbl>
-#>  1 1997-10-11 S2T3     "AA"                            41     0     0
-#>  2 1997-10-11 S2T3     "Caulerpa"                      41     0     0
-#>  3 1997-10-11 S2T3     "Chaetomorpha"                  41     0     0
-#>  4 1997-10-11 S2T3     "DA"                            41     0     0
-#>  5 1997-10-11 S2T3     "DB: Dictyota\r\n"              41     0     0
-#>  6 1997-10-11 S2T3     "DB: Drift Brown\r\n"           41     0     0
-#>  7 1997-10-11 S2T3     "DG: Drift Green"               41     0     0
-#>  8 1997-10-11 S2T3     "DG: Ulva"                      41     0     0
-#>  9 1997-10-11 S2T3     "DG: Ulva fasciata\r\n"         41     0     0
-#> 10 1997-10-11 S2T3     "DG: Ulva intestinales\r\n"     41     0     0
-#> # ℹ 41,906 more rows
+#> # A tibble: 44,834 × 6
+#> # Groups:   Date, Transect [1,546]
+#>    Date       Transect Savspecies              nsites foest bbest
+#>    <date>     <chr>    <chr>                    <int> <dbl> <dbl>
+#>  1 1997-10-11 S2T3     "AA"                        41     0     0
+#>  2 1997-10-11 S2T3     "Caulerpa"                  41     0     0
+#>  3 1997-10-11 S2T3     "Chaetomorpha"              41     0     0
+#>  4 1997-10-11 S2T3     "DA"                        41     0     0
+#>  5 1997-10-11 S2T3     "DB: Dictyota\r\n"          41     0     0
+#>  6 1997-10-11 S2T3     "DB: Drift Brown\r\n"       41     0     0
+#>  7 1997-10-11 S2T3     "DG: Codium\r\n"            41     0     0
+#>  8 1997-10-11 S2T3     "DG: Drift Green"           41     0     0
+#>  9 1997-10-11 S2T3     "DG: Ulva"                  41     0     0
+#> 10 1997-10-11 S2T3     "DG: Ulva fasciata\r\n"     41     0     0
+#> # ℹ 44,824 more rows
 ```

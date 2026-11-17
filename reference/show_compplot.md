@@ -60,5 +60,7 @@ A [`ggplot`](https://ggplot2.tidyverse.org/reference/ggplot.html) object
 
 ``` r
 transect <- read_transect(training = TRUE)
-show_compplot(transect, yr = 2025, site = '3', species = 'Halodule', varplo = 'Abundance')
+show_compplot(transect, yr = 2026, site = '3', species = 'Halodule', varplo = 'Abundance')
+#> Warning: No shared levels found between `names(values)` of the manual scale and the
+#> data's linetype values.
 ```

@@ -236,7 +236,7 @@ pincodata <- read_importwqp(org = '21FLPDEM_WQX', type = 'wq', trace = T)
 ```
 
 Additionally, data can be retrieved from the Tampa Bay Water Atlas API
-(<https://dev.api.wateratlas.org/redoc/>) using two different functions.
+(<https://api.wateratlas.org/redoc/>) using two different functions.
 These functions are generally quicker and more flexible than those from
 the USEPA Water Quality Portal. The
 [`util_importwqwa()`](https://tbep-tech.github.io/tbeptools/reference/util_importwqwa.md)
@@ -248,7 +248,7 @@ parameters, sampling stations, and waterbodies.
 
 # data sources
 util_importwqwa('dataSources')
-#> # A tibble: 512 × 4
+#> # A tibble: 513 × 4
 #>    dataSource              description                     name  fullMetadataUrl
 #>    <chr>                   <chr>                           <chr> <chr>          
 #>  1 21FLPOLK_WQ             "Polk County Natural Resources… Polk… NA             
@@ -261,7 +261,7 @@ util_importwqwa('dataSources')
 #>  8 CCHMN_CAPECORAL         "This dataset is used for Wate… CCHM… NA             
 #>  9 CCHMN_LEE               "This dataset is used for Wate… CCHM… NA             
 #> 10 CCHMN_SWFWMD            "This dataset is used for Wate… CCHM… NA             
-#> # ℹ 502 more rows
+#> # ℹ 503 more rows
 
 # parameters
 util_importwqwa('parameters')
@@ -311,7 +311,7 @@ util_importwqwa('waterbodies')
 #>  6   18969 19th Street Pond  Lake            0.28              0 Saras… Pond CD…
 #>  7   20200 22nd Street Pond  Lake            4.44              0 Hills… NA      
 #>  8   18770 23rd Street Pond  Lake            0.38              0 Saras… NA      
-#>  9 2003898 42-Foot Canal     River           0.19          37507 Glades C-4 Can…
+#>  9 2003898 42-Foot Canal     River           0.19          37507 Hendry C-4 Can…
 #> 10     972 45th Ave NE Canal River          NA              5318 Pinel… NA      
 #> # ℹ 12,736 more rows
 ```
@@ -335,15 +335,15 @@ read_importwqwa(dataSource = 'WIN_21FLPDEM', parameter = 'Chla_ugl',
 #>    dataSource   stationID actualStationID actualLatitude actualLongitude
 #>    <chr>        <chr>     <chr>           <chr>          <chr>          
 #>  1 WIN_21FLPDEM 08-03     08-03           28.06884265    -82.76802461   
-#>  2 WIN_21FLPDEM 09-02     09-02           28.03412170    -82.77984738   
-#>  3 WIN_21FLPDEM 18-06     18-06           27.97196562    -82.78145490   
-#>  4 WIN_21FLPDEM 10-06     10-06           28.04126253    -82.75304796   
-#>  5 WIN_21FLPDEM 10-02     10-02           28.04694745    -82.75892469   
-#>  6 WIN_21FLPDEM 15-04     15-04           27.99051106    -82.78377469   
-#>  7 WIN_21FLPDEM 53-06     53-06           28.10642699    -82.77355400   
+#>  2 WIN_21FLPDEM 10-06     10-06           28.04126253    -82.75304796   
+#>  3 WIN_21FLPDEM 09-02     09-02           28.03412170    -82.77984738   
+#>  4 WIN_21FLPDEM 15-04     15-04           27.99051106    -82.78377469   
+#>  5 WIN_21FLPDEM 18-06     18-06           27.97196562    -82.78145490   
+#>  6 WIN_21FLPDEM 53-06     53-06           28.10642699    -82.77355400   
+#>  7 WIN_21FLPDEM 10-02     10-02           28.04694745    -82.75892469   
 #>  8 WIN_21FLPDEM 27-08     27-08           27.89148857    -82.82486245   
 #>  9 WIN_21FLPDEM 17-03     17-03           27.94098330    -82.80113945   
-#> 10 WIN_21FLPDEM 27-10     27-10           27.87980000    -82.80951000   
+#> 10 WIN_21FLPDEM 17-01     17-01           27.94392097    -82.80598073   
 #> # ℹ 18 more rows
 #> # ℹ 19 more variables: activityID <chr>, activityStartDate <date>,
 #> #   activityStartTime <chr>, activityType <chr>, relativeDepth <chr>,

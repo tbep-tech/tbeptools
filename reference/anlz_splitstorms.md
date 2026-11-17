@@ -46,22 +46,20 @@ hurricanes <- data.frame(
 # Basic analysis with default statistics (sum, average and count)
 split_date <- Sys.Date() - lubridate::years(1)
 anlz_splitstorms(hurricanes, split_date)
-#> # A tibble: 3 × 5
+#> # A tibble: 2 × 5
 #>    year period   sum   avg     n
 #>   <dbl> <ord>  <dbl> <dbl> <int>
-#> 1  1980 before     7   3.5     2
-#> 2  1981 before     6   2       3
-#> 3  1982 before     1   1       1
+#> 1  1980 before    10  3.33     3
+#> 2  1981 before     4  1.33     3
 
 # Analysis with custom statistics
 anlz_splitstorms(hurricanes, split_date,
                      stats = list(
                        max = max,
                        min = min))
-#> # A tibble: 3 × 4
+#> # A tibble: 2 × 4
 #>    year period   max   min
 #>   <dbl> <ord>  <dbl> <dbl>
 #> 1  1980 before     6     1
-#> 2  1981 before     3     1
-#> 3  1982 before     1     1
+#> 2  1981 before     2     1
 ```
