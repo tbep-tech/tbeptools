@@ -95,7 +95,7 @@ show_tbniscrseas <- function(tbniscr, bay_segment = c('OTB', 'HB', 'MTB', 'LTB')
 
   out <- out +
     ggplot2::geom_boxplot(alpha = alph, outlier.shape = NA, fill = boxcol) +
-    suppressWarnings(ggplot2::geom_point(ptaes, position = ggplot2::position_jitter(width = 0.2), size = 1.5, alpha = 0.7)) +
+    suppressWarnings(ggplot2::geom_point(ptaes, position = ggplot2::position_jitter(width = 0.2, height = 0), size = 1.5, alpha = 0.7)) +
     ggplot2::scale_x_discrete(drop = FALSE) +
     ggplot2::scale_y_continuous(name = paste(yr, bay_segment, metlab[[metric]])) +
     ggplot2::theme(
